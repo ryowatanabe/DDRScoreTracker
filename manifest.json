@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "DDR Score Tracker",
+  "version": "0.0.1",
+
+  "description": "",
+
+  "browser_action": {
+    "default_title": "DDR Score Tracker",
+    "default_popup": "browser_action/index.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://p.eagate.573.jp/*"
+      ],
+      "js": [
+        "const.js",
+        "content_scripts/main.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+
+  "background": {
+    "scripts": ["background/main.js"],
+    "persistent": false
+  },
+
+  "permissions": [
+    "storage"
+  ]
+}
