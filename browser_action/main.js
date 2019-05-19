@@ -1,8 +1,22 @@
-function retrieve()
+
+
+function updateMusicList()
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.retrieve(chrome.windows.WINDOW_ID_CURRENT);
+    backgroundPage.updateMusicList(chrome.windows.WINDOW_ID_CURRENT);
   });
 }
 
-document.getElementById('updateMusicListButton').addEventListener("click", retrieve);
+function updateScoreList()
+{
+
+}
+
+function updateScoreDetail()
+{
+
+}
+
+document.getElementById('updateMusicListButton').addEventListener("click", updateMusicList);
+document.getElementById('updateScoreListButton').addEventListener("click", updateScoreList);
+document.getElementById('updateScoreDetailButton').addEventListener("click", updateScoreDetail);

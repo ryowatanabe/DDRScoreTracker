@@ -25,7 +25,10 @@
   ],
 
   "background": {
-    "scripts": ["background/main.js"],
+    "scripts": [
+      "const.js",
+      "background/main.js"
+    ],
     "persistent": false
   },
 

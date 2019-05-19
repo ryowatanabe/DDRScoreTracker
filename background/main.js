@@ -1,16 +1,43 @@
-function retrieve(windowId)
+const STATE = {
+    IDLE: 0,
+    UPDATE_MUSIC_LIST: 1,
+};
+
+let state = STATE.IDLE;
+let tabId = 0;
+
+function updateMusicList(windowId)
 {
-  chrome.tabs.query({ windowId: windowId, index: 0 /* active: true */ }, function(tabs) {
-    console.log(tabs);
-    console.log(tabs[0].title);
-    chrome.tabs.update(tabs[0].id, { url: "https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_double.html?offset=0&filter=0&filtertype=0&sorttype=0" }, function(tab){
-      console.log('loaded');
+  if (state != STATE.IDLE){
+    // return false;
+  }
+  state = STATE.UPDATE_MUSIC_LIST;
+  chrome.tabs.query({ windowId: windowId, index: 0 }, function(tabs) {
+    tab = tabs[0];
+// TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
+//       現時点ではデバッグの利便性のため固定のタブを利用
+//  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
+    tabId = tab.id;
+    console.log("tab is created (tabId:" + tab.id + ")");
+    chrome.tabs.update(tabId, { url: MUSIC_LIST_URL }, function(tab){
+      console.log('navigate to: ' + MUSIC_LIST_URL);
     });
   });
 }
 
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
-  console.log(tabId);
-  console.log(changeInfo);
-  chrome.tabs.sendMessage(tabId, { type: 'RETRIEVE_MUSIC_LIST' }, function(res) { console.log(res); } );
+chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
+  if (tabId != tid){
+    return;
+  }
+  switch (state){
+    case STATE.UPDATE_MUSIC_LIST:
+      if (changeInfo.status == "complete"){
+        chrome.tabs.sendMessage(tabId, { type: 'PARSE_MUSIC_LIST' }, function(res) {
+          console.log(res);
+        });
+      }
+      break;
+    default:
+      break;
+  }
 });
