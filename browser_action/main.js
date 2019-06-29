@@ -76,7 +76,7 @@ function refreshList()
       { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] },
       { attribute: 'level', values: [ 13, 14 ] },
     ];
-    const charts = allCharts.filter(chart => {
+    let charts = allCharts.filter(chart => {
       let found = true;
       conditions.forEach(condition => {
         if(!condition.values.find(value => {
@@ -88,6 +88,17 @@ function refreshList()
       return found;
     });
     // sort
+    // TODO ソート方法を定義できるようにする
+    charts.sort(function(a, b){
+      if (a.score > b.score){
+        return -1;
+      } else if (a.score < b.score){
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+
     appCharts.charts = charts;
   });
 }
