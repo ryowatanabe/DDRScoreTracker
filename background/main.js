@@ -41,3 +41,13 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
       break;
   }
 });
+
+chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+  console.log("received message");
+  console.log(message);
+  //chrome.runtime.sendMessage("from background page", function (response){
+  //	console.log(response)
+  //});
+  sendResponse({ hoge: 1 });
+  return true;
+});

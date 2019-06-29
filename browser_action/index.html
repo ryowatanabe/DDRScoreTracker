@@ -1,6 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <script src="../lib/vue.js"></script>
   <script src="../lib/jquery-3.4.1.min.js"></script>
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
@@ -8,7 +9,16 @@
   <button id="updateMusicListButton" type="button" name="updateMusicList">update music list</button>
   <button id="updateScoreListButton" type="button" name="updateScoreList">update score list</button>
   <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">update score list (in detail)</button>
-  <div id="log">
+  <div id="app-charts">
+    <div v-for="chart in charts">
+        {{ chart.mId }} {{ chart.difficulty }}
+    </div>
+  </div>
+  <hr>
+  <div id="app-log">
+    <p v-for="line in log">
+        {{ line }}
+    </p>
   </div>
 </body>
 <script src="main.js"></script>
