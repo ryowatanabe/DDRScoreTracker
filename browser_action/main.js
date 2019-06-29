@@ -1,11 +1,13 @@
-var appCharts = new Vue({
+const appCharts = new Vue({
   el: '#app-charts',
   data: {
     charts: [
       {
-        mId: "0000000000000000",
+        musicId: "0000000000000000",
+        title: "",
+        playMode: 0,
         difficulty: 0,
-        status: 0,
+        level: 0,
         score: 0,
         combo: 0,
         playCount: 0,
@@ -15,7 +17,7 @@ var appCharts = new Vue({
   }
 })
 
-var appLog = new Vue({
+const appLog = new Vue({
   el: '#app-log',
   data: {
     log: []
@@ -32,7 +34,6 @@ appCharts.charts.push({
   playCount: 0,
   clearCount: 0
 });
-
 
 function updateMusicList()
 {
@@ -59,10 +60,46 @@ function updateScoreDetail()
 
 }
 
+function updateCharts()
+{
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    backgroundPage.updateCharts();
+  });
+}
+
+function refreshList()
+{
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    const allCharts = backgroundPage.getCharts();
+    // filter
+    const conditions = [
+      { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] },
+      { attribute: 'level', values: [ 13, 14 ] },
+    ];
+    const charts = allCharts.filter(chart => {
+      let found = true;
+      conditions.forEach(condition => {
+        if(!condition.values.find(value => {
+          return value == chart[condition.attribute];
+        })){
+          found = false;
+        }
+      });
+      return found;
+    });
+    // sort
+    appCharts.charts = charts;
+  });
+}
+
+
+
 document.getElementById('updateMusicListButton').addEventListener("click", updateMusicList);
 document.getElementById('updateSingleScoreListButton').addEventListener("click", updateSingleScoreList);
 document.getElementById('updateDoubleScoreListButton').addEventListener("click", updateDoubleScoreList);
 document.getElementById('updateScoreDetailButton').addEventListener("click", updateScoreDetail);
+document.getElementById('updateChartsButton').addEventListener("click", updateCharts);
+document.getElementById('refreshListButton').addEventListener("click", refreshList);
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   console.log("received message");

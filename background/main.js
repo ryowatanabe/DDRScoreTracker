@@ -8,11 +8,13 @@ const STATE = {
 let state = STATE.INITIALIZE;
 let tabId = 0;
 let storage = {};
+let charts = [];
 
 chrome.storage.local.get(
     getDefaults(),
     function(data) {
       storage = data;
+      updateCharts();
       state = STATE.IDLE;
     }
 );
@@ -22,6 +24,10 @@ function saveStorage() {
       storage,
       function() { }
   );
+}
+
+function getCharts() {
+  return charts;
 }
 
 function getDefaults() {
@@ -67,6 +73,41 @@ function updateScoreList(windowId, playMode)
   });
 }
 
+function updateCharts(){
+  charts = [];
+  Object.keys(storage.musics).forEach(function(musicId){
+    Object.values(PLAY_MODE).forEach(function(playMode){
+      Object.values(DIFFICULTIES).forEach(function(difficulty){
+        if (playMode == PLAY_MODE.DOUBLE && difficulty == DIFFICULTIES.BEGINNER){
+          return;
+        }
+        const chart = {
+          musicId: "",
+          title: "",
+          playMode: playMode,
+          difficulty: difficulty,
+          level: 0,
+          fullComboType: FULL_COMBO_TYPE.NO_FC,
+          scoreRank: SCORE_RANK.NO_PLAY,
+          score: 0,
+        };
+        const difficultyValue = difficulty + (playMode == PLAY_MODE.DOUBLE ? DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
+        chart.level = storage.musics[musicId]['difficulty'][difficultyValue];
+        if (chart.level == 0){
+          return;
+        }
+        chart.musicId = musicId;
+        chart.title = storage.musics[musicId]['title'];
+        if(musicId in storage.scores && difficultyValue in storage.scores[musicId]){
+          chart.fullComboType = storage.scores[musicId][difficultyValue]['fullComboType'];
+          chart.scoreRank = storage.scores[musicId][difficultyValue]['scoreRank'];
+          chart.score = storage.scores[musicId][difficultyValue]['score'];
+        }
+        charts.push(chart);
+      });
+    });
+  });
+}
 
 chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
   if (tabId != tid){

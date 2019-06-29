@@ -10,9 +10,11 @@
   <button id="updateSingleScoreListButton" type="button" name="updateSingleScoreList">update score list (SP)</button>
   <button id="updateDoubleScoreListButton" type="button" name="updateDoubleScoreList">update score list (DP)</button>
   <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">update score list (in detail)</button>
+  <button id="updateChartsButton" type="button" name="updateCharts">update charts</button>
+  <button id="refreshListButton" type="button" name="refreshList">refresh list</button>
   <div id="app-charts">
     <div v-for="chart in charts">
-        {{ chart.mId }} {{ chart.difficulty }}
+        {{ chart.level }} {{ chart.title }} {{ chart.score }}
     </div>
   </div>
   <hr>
