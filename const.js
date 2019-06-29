@@ -1,26 +1,32 @@
-const MUSIC_LIST_URL = "https://p.eagate.573.jp/game/ddr/ddra20/p/music/index.html";
-const SCORE_LIST_URL = {
-  SP: "https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_single.html",
-  DP: "https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_double.html"
-};
-const LOAD_INTERVAL = 3000;
-
 const PLAY_MODE = {
   SINGLE: 0,
   DOUBLE: 1
 };
 
+const MUSIC_LIST_URL = 'https://p.eagate.573.jp/game/ddr/ddra20/p/music/index.html';
+const SCORE_LIST_URL = {};
+SCORE_LIST_URL[PLAY_MODE.SINGLE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_single.html';
+SCORE_LIST_URL[PLAY_MODE.DOUBLE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_double.html';
+
+const LOAD_INTERVAL = 3000;
+
 const DIFFICULTIES = {
-  SINGLE_BEGINNER:  0,
-  SINGLE_BASIC:     1,
-  SINGLE_DIFFICULT: 2,
-  SINGLE_EXPERT:    3,
-  SINGLE_CHALLENGE: 4,
-  DOUBLE_BASIC:     5,
-  DOUBLE_DIFFICULT: 6,
-  DOUBLE_EXPERT:    7,
-  DOUBLE_CHALLENGE: 8,
+  BEGINNER:  0,
+  BASIC:     1,
+  DIFFICULT: 2,
+  EXPERT:    3,
+  CHALLENGE: 4
 };
+
+const DIFFICULTY_NAME_MAP = {
+  'beginner':  DIFFICULTIES.BEGINNER,
+  'basic':     DIFFICULTIES.BASIC,
+  'difficult': DIFFICULTIES.DIFFICULT,
+  'expert':    DIFFICULTIES.EXPERT,
+  'challenge': DIFFICULTIES.CHALLENGE
+};
+
+const DIFFICULTIES_OFFSET_FOR_DOUBLE = 4;
 
 const FULL_COMBO_TYPE = {
   NO_FC:        0,

@@ -7,7 +7,8 @@
 </head>
 <body>
   <button id="updateMusicListButton" type="button" name="updateMusicList">update music list</button>
-  <button id="updateScoreListButton" type="button" name="updateScoreList">update score list</button>
+  <button id="updateSingleScoreListButton" type="button" name="updateSingleScoreList">update score list (SP)</button>
+  <button id="updateDoubleScoreListButton" type="button" name="updateDoubleScoreList">update score list (DP)</button>
   <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">update score list (in detail)</button>
   <div id="app-charts">
     <div v-for="chart in charts">
@@ -21,5 +22,6 @@
     </p>
   </div>
 </body>
+<script src="../const.js"></script>
 <script src="main.js"></script>
 </html>

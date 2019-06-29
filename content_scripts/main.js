@@ -50,25 +50,22 @@ function parseScoreList(){
   const res = {
     hasNext: false,
     nextUrl: "",
-    playMode: PLAY_MODE.SINGLE,
     scores: {}
   };
-  const difficulties = [ 'beginner', 'basic', 'difficult', 'expert', 'challenge' ];
   const next = $('#next.arrow').get();
   if (next.length > 0) {
     res.hasNext = true;
     res.nextUrl = $('a', $(next[0]))[0].href;
   }
   const isDouble = $('#t_double.game_type .select').get();
-  if (isDouble.length > 0) {
-    res.playMode = PLAY_MODE.DOUBLE;
-  }
   const scores = $('tr.data').get();
   scores.forEach (function(score){
     const data = {
     };
-    difficulties.forEach (function (difficulty){
-      const scoreDetail = $('#' + difficulty + '.rank', $(score)).get();
+    Object.keys(DIFFICULTY_NAME_MAP).forEach (function (difficultyName){
+      const difficulty = DIFFICULTY_NAME_MAP[difficultyName] + (isDouble ? DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
+
+      const scoreDetail = $('#' + difficultyName + '.rank', $(score)).get();
       if (scoreDetail.length == 0) {
         return;
       }

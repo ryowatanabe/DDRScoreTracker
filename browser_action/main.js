@@ -41,10 +41,16 @@ function updateMusicList()
   });
 }
 
-function updateScoreList()
+function updateSingleScoreList()
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, 'DP');
+    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, PLAY_MODE.SINGLE);
+  });
+}
+function updateDoubleScoreList()
+{
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, PLAY_MODE.DOUBLE);
   });
 }
 
@@ -54,7 +60,8 @@ function updateScoreDetail()
 }
 
 document.getElementById('updateMusicListButton').addEventListener("click", updateMusicList);
-document.getElementById('updateScoreListButton').addEventListener("click", updateScoreList);
+document.getElementById('updateSingleScoreListButton').addEventListener("click", updateSingleScoreList);
+document.getElementById('updateDoubleScoreListButton').addEventListener("click", updateDoubleScoreList);
 document.getElementById('updateScoreDetailButton').addEventListener("click", updateScoreDetail);
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
