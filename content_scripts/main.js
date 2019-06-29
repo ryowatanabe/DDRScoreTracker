@@ -37,7 +37,10 @@ function parseMusicList(){
     const src = $('td img', $(music))[0].src;
     const musicId = src.replace(regexp, '$1')
     data.title = $('.music_tit', $(music))[0].innerText;
-    data.difficulty = $('.difficult', $(music)).get().map(function(element){return parseInt(element.innerText)});
+    data.difficulty = $('.difficult', $(music)).get().map(function(element){
+      const value = parseInt(element.innerText);
+      return value ? value : 0;
+    });
     res.musics[musicId] = data;
   });
   return res;
@@ -47,6 +50,7 @@ function parseScoreList(){
   const res = {
     hasNext: false,
     nextUrl: "",
+    playMode: PLAY_MODE.SINGLE,
     scores: {}
   };
   const difficulties = [ 'beginner', 'basic', 'difficult', 'expert', 'challenge' ];
@@ -54,6 +58,10 @@ function parseScoreList(){
   if (next.length > 0) {
     res.hasNext = true;
     res.nextUrl = $('a', $(next[0]))[0].href;
+  }
+  const isDouble = $('#t_double.game_type .select').get();
+  if (isDouble.length > 0) {
+    res.playMode = PLAY_MODE.DOUBLE;
   }
   const scores = $('tr.data').get();
   scores.forEach (function(score){
@@ -69,7 +77,8 @@ function parseScoreList(){
         scoreRank: SCORE_RANK.NO_PLAY,
         score: 0
       };
-      data[difficulty].score = parseInt($('.data_score', $(scoreDetail[0]))[0].innerText);
+      const value = parseInt($('.data_score', $(scoreDetail[0]))[0].innerText);
+      data[difficulty].score = value ? value : 0;
       const regexp = /^.*\/([^\/]+)$/;
       const scoreRankFileName     = $('div.data_rank img', $(scoreDetail[0]))[0].src.replace(regexp, '$1');
       const fullComboTypeFileName = $('div.data_rank img', $(scoreDetail[0]))[1].src.replace(regexp, '$1')

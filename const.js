@@ -5,6 +5,23 @@ const SCORE_LIST_URL = {
 };
 const LOAD_INTERVAL = 3000;
 
+const PLAY_MODE = {
+  SINGLE: 0,
+  DOUBLE: 1
+};
+
+const DIFFICULTIES = {
+  SINGLE_BEGINNER:  0,
+  SINGLE_BASIC:     1,
+  SINGLE_DIFFICULT: 2,
+  SINGLE_EXPERT:    3,
+  SINGLE_CHALLENGE: 4,
+  DOUBLE_BASIC:     5,
+  DOUBLE_DIFFICULT: 6,
+  DOUBLE_EXPERT:    7,
+  DOUBLE_CHALLENGE: 8,
+};
+
 const FULL_COMBO_TYPE = {
   NO_FC:        0,
   GOOD_FC:      1,
