@@ -43,8 +43,8 @@ function updateMusicList()
 
 function updateScoreList()
 {
-  chrome.runtime.sendMessage("from browser action", function (response){
-  	console.log(response)
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, 'DP');
   });
 }
 
