@@ -6,8 +6,7 @@ const appCharts = new Vue({
         marvelous_fc: 0,
         perfect_fc:   0,
         great_fc:     0,
-        good_fc:      0,
-        no_fc:        0
+        good_fc:      0
       }
     },
     charts: []
@@ -90,8 +89,13 @@ function refreshList()
       } else if (a.score < b.score){
         return 1;
       } else {
-        return 0;
+        if (a.title < b.title){
+          return -1;
+        } else if (a.title > b.title){
+          return 1;
+        }
       }
+      return 0;
     });
     appCharts.charts = charts;
     // statistics

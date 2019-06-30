@@ -12,7 +12,6 @@
   PFC:{{ statistics.fullComboType.perfect_fc }}
   FC:{{ statistics.fullComboType.great_fc }}
   GFC:{{ statistics.fullComboType.good_fc }}
-  NOFC:{{ statistics.fullComboType.no_fc }}
   <table>
     <tr v-for="chart in charts">
         <td class="level" v-bind:class="{ beginner: chart.difficulty == 0, basic: chart.difficulty == 1, difficult: chart.difficulty == 2, expert: chart.difficulty == 3, challenge: chart.difficulty == 4 }">

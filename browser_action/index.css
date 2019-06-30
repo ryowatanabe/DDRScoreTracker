@@ -1,6 +1,6 @@
 html { font-size: 12px }
 body { background-color: #000000; color: #ffffff; width: 480px; font-size: 1.0rem }
-
+table { width: 100% }
 tr, td {
   font-size: 1.0rem;
   line-height: 150%;
