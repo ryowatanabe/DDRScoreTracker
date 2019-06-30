@@ -1,8 +1,18 @@
-body { background-color: #000000; color: #ffffff; width: 480px }
+html { font-size: 12px }
+body { background-color: #000000; color: #ffffff; width: 480px; font-size: 1.0rem }
+
 tr, td {
+  font-size: 1.0rem;
+  line-height: 150%;
   padding: 2px;
   border-style: none none solid none;
-  border-width: 0px 0px 1px 0px; border-bottom-color: #ffffff }
+  border-width: 0px 0px 1px 0px; border-bottom-color: #ffffff
+ }
+
+.level { font-family: monospace; }
+.score_rank { font-family: monospace; }
+.full_combo_type { font-family: monospace; }
+.score { text-align: right; font-family: monospace; }
 
 .beginner { color: #00ffff }
 .basic { color: #ff8800 }
@@ -10,8 +20,8 @@ tr, td {
 .expert { color: #00ff00 }
 .challenge { color: #ff00ff }
 
-.rank_aaa { color: #ffff66 }
-.rank_aa { color: #ffff00 }
+.rank_aaa { color: #ffffff }
+.rank_aa { color: #ffffaa }
 .rank_a { color: #ffff00 }
 .rank_b { color: #0088ff }
 .rank_c { color: #ff00ff }

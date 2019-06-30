@@ -1,6 +1,15 @@
 const appCharts = new Vue({
   el: '#app-charts',
   data: {
+    statistics: {
+      fullComboType: {
+        marvelous_fc: 0,
+        perfect_fc:   0,
+        great_fc:     0,
+        good_fc:      0,
+        no_fc:        0
+      }
+    },
     charts: []
   }
 })
@@ -60,7 +69,7 @@ function refreshList()
     // filter
     const conditions = [
       { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] },
-      { attribute: 'level', values: [ 13, 14 ] },
+      { attribute: 'level', values: [ 17 ] },
     ];
     let charts = allCharts.filter(chart => {
       let found = true;
@@ -84,8 +93,15 @@ function refreshList()
         return 0;
       }
     });
-
     appCharts.charts = charts;
+    // statistics
+    appCharts.statistics['fullComboType'] = {
+      marvelous_fc: charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.MARVELOUS_FC }).length,
+      perfect_fc:   charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.PERFECT_FC }).length,
+      great_fc:     charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.GREAT_FC }).length,
+      good_fc:      charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.GOOD_FC }).length,
+      no_fc:        charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.NO_FC }).length
+    };
   });
 }
 

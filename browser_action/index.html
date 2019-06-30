@@ -7,6 +7,75 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
+  <div id="app-charts">
+  MFC:{{ statistics.fullComboType.marvelous_fc }}
+  PFC:{{ statistics.fullComboType.perfect_fc }}
+  FC:{{ statistics.fullComboType.great_fc }}
+  GFC:{{ statistics.fullComboType.good_fc }}
+  NOFC:{{ statistics.fullComboType.no_fc }}
+  <table>
+    <tr v-for="chart in charts">
+        <td class="level" v-bind:class="{ beginner: chart.difficulty == 0, basic: chart.difficulty == 1, difficult: chart.difficulty == 2, expert: chart.difficulty == 3, challenge: chart.difficulty == 4 }">
+          {{ chart.level }}<template v-if="chart.playMode == 0">&#39;</template><template v-if="chart.playMode == 1">&quot;</template>
+        </td>
+        <td>{{ chart.title }}</td>
+        <template v-if="chart.scoreRank == 0">
+          <td class="score_rank"></td>
+        </template>
+        <template v-if="chart.scoreRank == 1">
+          <td class="score_rank rank_e">E</td>
+        </template>
+        <template v-if="chart.scoreRank == 2">
+          <td class="score_rank rank_d">D</td>
+        </template>
+        <template v-if="chart.scoreRank == 3">
+          <td class="score_rank rank_d">D+</td>
+        </template>
+        <template v-if="chart.scoreRank == 4">
+          <td class="score_rank rank_c">C-</td>
+        </template>
+        <template v-if="chart.scoreRank == 5">
+          <td class="score_rank rank_c">C</td>
+        </template>
+        <template v-if="chart.scoreRank == 6">
+          <td class="score_rank rank_c">C+</td>
+        </template>
+        <template v-if="chart.scoreRank == 7">
+          <td class="score_rank rank_b">B-</td>
+        </template>
+        <template v-if="chart.scoreRank == 8">
+          <td class="score_rank rank_b">B</td>
+        </template>
+        <template v-if="chart.scoreRank == 9">
+          <td class="score_rank rank_b">B+</td>
+        </template>
+        <template v-if="chart.scoreRank == 10">
+          <td class="score_rank rank_a">A-</td>
+        </template>
+        <template v-if="chart.scoreRank == 11">
+          <td class="score_rank rank_a">A</td>
+        </template>
+        <template v-if="chart.scoreRank == 12">
+          <td class="score_rank rank_a">A+</td>
+        </template>
+        <template v-if="chart.scoreRank == 13">
+          <td class="score_rank rank_aa">AA-</td>
+        </template>
+        <template v-if="chart.scoreRank == 14">
+          <td class="score_rank rank_aa">AA</td>
+        </template>
+        <template v-if="chart.scoreRank == 15">
+          <td class="score_rank rank_aa">AA+</td>
+        </template>
+        <template v-if="chart.scoreRank == 16">
+          <td class="score_rank rank_aaa">AAA</td>
+        </template>
+        <td class="full_combo_type" v-bind:class="{ good_fc: chart.fullComboType == 1, great_fc: chart.fullComboType == 2, perfect_fc: chart.fullComboType == 3, marvelous_fc: chart.fullComboType == 4 }"><template v-if="chart.fullComboType > 0">○</template></td>
+        <td class="score">{{ chart.score.toLocaleString() }}</td>
+    </tr>
+  </table>
+  </div>
+  <hr>
   <button id="updateMusicListButton" type="button" name="updateMusicList">update music list</button>
   <button id="updateMusicList2Button" type="button" name="updateMusicList2">update score list (from detail)</button>
   <button id="updateSingleScoreListButton" type="button" name="updateSingleScoreList">update score list (SP)</button>
@@ -14,16 +83,6 @@
   <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">update score list (in detail)</button>
   <button id="updateChartsButton" type="button" name="updateCharts">update charts</button>
   <button id="refreshListButton" type="button" name="refreshList">refresh list</button>
-  <table id="app-charts">
-    <tr v-for="chart in charts">
-        <td v-bind:class="{ beginner: chart.difficulty == 0, basic: chart.difficulty == 1, difficult: chart.difficulty == 2, expert: chart.difficulty == 3, challenge: chart.difficulty == 4 }">{{ chart.level }}<template v-if="chart.playMode == 0">&#39;</template><template v-if="chart.playMode == 1">&quot;</template></td>
-        <td>{{ chart.title }}</td>
-        <td>{{ chart.scoreRank }}</td>
-        <td v-bind:class="{ good_fc: chart.fullComboType == 1, great_fc: chart.fullComboType == 2, perfect_fc: chart.fullComboType == 3, marvelous_fc: chart.fullComboType == 4 }"><template v-if="chart.fullComboType > 0">○</template></td>
-        <td>{{ chart.score.toLocaleString() }}</td>
-    </tr>
-  </table>
-  <hr>
   <div id="app-log">
     <p v-for="line in log">
         {{ line }}
