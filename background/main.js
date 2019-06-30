@@ -70,17 +70,25 @@ function fetchMissingMusicInfo(windowId)
   if (state != STATE.IDLE){
     //return false;
   }
-  /* 曲情報が欠けている曲を列挙する */
+  /* 曲情報が欠けている曲と、曲情報そのものはあるが、譜面情報が欠けている (追加鬼譜面など) 曲を列挙する */
   const targetMusicIDs = Object.keys(storage.scores).filter(musicId => {
-    return !(musicId in storage.musics);
+    if (!(musicId in storage.musics)) {
+      return true;
+    }
+    const missing = Object.keys(storage.scores[musicId]).find(difficulty => {
+      if (storage.musics[musicId].difficulty[difficulty] == 0 && storage.scores[musicId][difficulty].scoreRank > 0) {
+        return true;
+      }
+    });
+    return missing;
   });
-  if (targetMusicIDs.length == 0){
-    return false;
-  }
   targetUrls = targetMusicIDs.map(musicId => {
     return MUSIC_DETAIL_URL.replace('[musicId]', musicId);
   });
 
+  if (targetUrls.length == 0){
+    return false;
+  }
   state = STATE.UPDATE_MUSIC_DETAIL;
   chrome.tabs.query({ windowId: windowId, index: 0 }, function(tabs) {
     tab = tabs[0];
