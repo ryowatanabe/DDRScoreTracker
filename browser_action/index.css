@@ -1,1 +1,24 @@
-body { width:480px }
+body { background-color: #000000; color: #ffffff; width: 480px }
+tr, td {
+  padding: 2px;
+  border-style: none none solid none;
+  border-width: 0px 0px 1px 0px; border-bottom-color: #ffffff }
+
+.beginner { color: #00ffff }
+.basic { color: #ff8800 }
+.difficult { color: #ff4444 }
+.expert { color: #00ff00 }
+.challenge { color: #ff00ff }
+
+.rank_aaa { color: #ffff66 }
+.rank_aa { color: #ffff00 }
+.rank_a { color: #ffff00 }
+.rank_b { color: #0088ff }
+.rank_c { color: #ff00ff }
+.rank_d { color: #ff0000 }
+.rank_e { color: #bbbbbb }
+
+.good_fc { color: #0088ff }
+.great_fc { color: #00ff00 }
+.perfect_fc { color: #ffff00 }
+.marvelous_fc { color: #ffffff }

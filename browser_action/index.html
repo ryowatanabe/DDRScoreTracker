@@ -3,6 +3,7 @@
   <meta charset="utf-8">
   <script src="../lib/vue.js"></script>
   <script src="../lib/jquery-3.4.1.min.js"></script>
+  <script src="../const.js"></script>
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
@@ -12,11 +13,15 @@
   <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">update score list (in detail)</button>
   <button id="updateChartsButton" type="button" name="updateCharts">update charts</button>
   <button id="refreshListButton" type="button" name="refreshList">refresh list</button>
-  <div id="app-charts">
-    <div v-for="chart in charts">
-        {{ chart.level }} {{ chart.title }} {{ chart.score }}
-    </div>
-  </div>
+  <table id="app-charts">
+    <tr v-for="chart in charts">
+        <td v-bind:class="{ beginner: chart.difficulty == 0, basic: chart.difficulty == 1, difficult: chart.difficulty == 2, expert: chart.difficulty == 3, challenge: chart.difficulty == 4 }">{{ chart.level }}<template v-if="chart.playMode == 0">&#39;</template><template v-if="chart.playMode == 1">&quot;</template></td>
+        <td>{{ chart.title }}</td>
+        <td>{{ chart.scoreRank }}</td>
+        <td v-bind:class="{ good_fc: chart.fullComboType == 1, great_fc: chart.fullComboType == 2, perfect_fc: chart.fullComboType == 3, marvelous_fc: chart.fullComboType == 4 }"><template v-if="chart.fullComboType > 0">○</template></td>
+        <td>{{ chart.score.toLocaleString() }}</td>
+    </tr>
+  </table>
   <hr>
   <div id="app-log">
     <p v-for="line in log">
@@ -24,6 +29,5 @@
     </p>
   </div>
 </body>
-<script src="../const.js"></script>
 <script src="main.js"></script>
 </html>

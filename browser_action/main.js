@@ -1,19 +1,7 @@
 const appCharts = new Vue({
   el: '#app-charts',
   data: {
-    charts: [
-      {
-        musicId: "0000000000000000",
-        title: "",
-        playMode: 0,
-        difficulty: 0,
-        level: 0,
-        score: 0,
-        combo: 0,
-        playCount: 0,
-        clearCount: 0
-      }
-    ]
+    charts: []
   }
 })
 
@@ -25,15 +13,6 @@ const appLog = new Vue({
 })
 
 appLog.log.push("Initialized.");
-appCharts.charts.push({
-  mId: "0000000000000000",
-  difficulty: 0,
-  status: 0,
-  score: 0,
-  combo: 0,
-  playCount: 0,
-  clearCount: 0
-});
 
 function updateMusicList()
 {

@@ -7,6 +7,7 @@ const MUSIC_LIST_URL = 'https://p.eagate.573.jp/game/ddr/ddra20/p/music/index.ht
 const SCORE_LIST_URL = {};
 SCORE_LIST_URL[PLAY_MODE.SINGLE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_single.html';
 SCORE_LIST_URL[PLAY_MODE.DOUBLE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_double.html';
+const MUSIC_DETAIL_URL = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html?index='
 
 const LOAD_INTERVAL = 3000;
 
