@@ -2,11 +2,13 @@ const STATE = {
     INITIALIZE: 0,
     IDLE: 1,
     UPDATE_MUSIC_LIST: 2,
-    UPDATE_SCORE_LIST: 3
+    UPDATE_SCORE_LIST: 3,
+    UPDATE_MUSIC_DETAIL: 4
 };
 
 let state = STATE.INITIALIZE;
 let tabId = 0;
+let targetUrls = [];
 let storage = {};
 let charts = [];
 
@@ -37,10 +39,13 @@ function getDefaults() {
   }
 }
 
+/*
+公式の曲一覧から曲情報を取得し、ローカルの曲リストを更新する
+*/
 function updateMusicList(windowId)
 {
   if (state != STATE.IDLE){
-   return false;
+    return false;
   }
   state = STATE.UPDATE_MUSIC_LIST;
   chrome.tabs.query({ windowId: windowId, index: 0 }, function(tabs) {
@@ -56,10 +61,48 @@ function updateMusicList(windowId)
   });
 }
 
+/*
+ローカルの曲リストと成績リストを比較し、曲情報が欠けている曲について
+その情報を取得する
+*/
+function fetchMissingMusicInfo(windowId)
+{
+  if (state != STATE.IDLE){
+    //return false;
+  }
+  /* 曲情報が欠けている曲を列挙する */
+  const targetMusicIDs = Object.keys(storage.scores).filter(musicId => {
+    return !(musicId in storage.musics);
+  });
+  if (targetMusicIDs.length == 0){
+    return false;
+  }
+  targetUrls = targetMusicIDs.map(musicId => {
+    return MUSIC_DETAIL_URL.replace('[musicId]', musicId);
+  });
+
+  state = STATE.UPDATE_MUSIC_DETAIL;
+  chrome.tabs.query({ windowId: windowId, index: 0 }, function(tabs) {
+    tab = tabs[0];
+// TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
+//       現時点ではデバッグの利便性のため固定のタブを利用
+//  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
+    tabId = tab.id;
+    console.log("tab is created (tabId:" + tab.id + ")");
+    const targetUrl = targetUrls.pop();
+    chrome.tabs.update(tabId, { url: targetUrl }, function(tab){
+      console.log('navigate to: ' + targetUrl);
+    });
+  });
+}
+
+/*
+公式の成績一覧から成績情報を取得し、ローカルの曲リストを更新する
+*/
 function updateScoreList(windowId, playMode)
 {
   if (state != STATE.IDLE){
-   //return false;
+    //return false;
   }
   state = STATE.UPDATE_SCORE_LIST;
   chrome.tabs.query({ windowId: windowId, index: 0 }, function(tabs) {
@@ -125,6 +168,25 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           if (res.hasNext) {
             setTimeout(function(){
               chrome.tabs.update(tabId, { url: res.nextUrl }, function(tab){})
+            }, LOAD_INTERVAL);
+          } else {
+            state = STATE.IDLE;
+          }
+        });
+      }
+      break;
+    case STATE.UPDATE_MUSIC_DETAIL:
+      if (changeInfo.status == "complete"){
+        chrome.tabs.sendMessage(tabId, { type: 'PARSE_MUSIC_DETAIL' }, function(res) {
+          console.log(res);
+          Object.keys(res.musics).forEach(function(musicId){
+            storage.musics[musicId] = res.musics[musicId];
+          });
+          saveStorage();
+          if (targetUrls.length > 0) {
+            const targetUrl = targetUrls.pop();
+            setTimeout(function(){
+              chrome.tabs.update(tabId, { url: targetUrl }, function(tab){})
             }, LOAD_INTERVAL);
           } else {
             state = STATE.IDLE;

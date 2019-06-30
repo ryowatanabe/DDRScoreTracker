@@ -21,6 +21,13 @@ function updateMusicList()
   });
 }
 
+function updateMusicList2()
+{
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    backgroundPage.fetchMissingMusicInfo(chrome.windows.WINDOW_ID_CURRENT);
+  });
+}
+
 function updateSingleScoreList()
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
@@ -85,6 +92,7 @@ function refreshList()
 
 
 document.getElementById('updateMusicListButton').addEventListener("click", updateMusicList);
+document.getElementById('updateMusicList2Button').addEventListener("click", updateMusicList2);
 document.getElementById('updateSingleScoreListButton').addEventListener("click", updateSingleScoreList);
 document.getElementById('updateDoubleScoreListButton').addEventListener("click", updateDoubleScoreList);
 document.getElementById('updateScoreDetailButton').addEventListener("click", updateScoreDetail);

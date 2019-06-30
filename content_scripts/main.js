@@ -4,6 +4,11 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     sendResponse(parseMusicList());
     return true;
   }
+  if (message.type == 'PARSE_MUSIC_DETAIL') {
+    console.log("parsing music detail ...");
+    sendResponse(parseMusicDetail());
+    return true;
+  }
   if (message.type == 'PARSE_SCORE_LIST') {
     console.log("parsing score list ...");
     sendResponse(parseScoreList());
@@ -43,6 +48,27 @@ function parseMusicList(){
     });
     res.musics[musicId] = data;
   });
+  return res;
+}
+
+function parseMusicDetail(){
+  const res = {
+    musics: {}
+  };
+  data = {
+  }
+  const musicInfo = $('#music_info td').get();
+  const regexpForMusicId = /^.*img=([0-9a-zA-Z]+).*$/;
+  const src = $('img', $(musicInfo[0])).get()[0].src;
+  const musicId = src.replace(regexpForMusicId, '$1');
+  data.title = musicInfo[1].innerHTML.split('<br>')[0];
+  const regexpForDifficulties = /^.*songdetails_level_([0-9]*).png$/
+  const difficulties = $('li.step img').get();
+  data.difficulty = difficulties.map(element => {
+    const value = parseInt(element.src.replace(regexpForDifficulties, '$1'));
+    return value ? value : 0;
+  });
+  res.musics[musicId] =  data;
   return res;
 }
 
