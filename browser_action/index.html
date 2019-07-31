@@ -17,7 +17,7 @@
         <td class="level" v-bind:class="{ beginner: chart.difficulty == 0, basic: chart.difficulty == 1, difficult: chart.difficulty == 2, expert: chart.difficulty == 3, challenge: chart.difficulty == 4 }">
           {{ chart.level }}<template v-if="chart.playMode == 0">&#39;</template><template v-if="chart.playMode == 1">&quot;</template>
         </td>
-        <td>{{ chart.title }}</td>
+        <td class="title">{{ chart.title }}</td>
         <template v-if="chart.scoreRank == 0">
           <td class="score_rank"></td>
         </template>
@@ -82,6 +82,12 @@
   <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">update score list (in detail)</button>
   <button id="updateChartsButton" type="button" name="updateCharts">update charts</button>
   <button id="refreshListButton" type="button" name="refreshList">refresh list</button>
+  <textarea id="filterConditions" style="width:100%" rows="10">
+    [
+      { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] },
+      { attribute: 'level', values: [ 17 ] }
+    ]
+  </textarea>
   <div id="app-log">
     <p v-for="line in log">
         {{ line }}

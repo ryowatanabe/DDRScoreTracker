@@ -66,10 +66,7 @@ function refreshList()
   chrome.runtime.getBackgroundPage(function(backgroundPage){
     const allCharts = backgroundPage.getCharts();
     // filter
-    const conditions = [
-      { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] },
-      { attribute: 'level', values: [ 17 ] },
-    ];
+    const conditions = eval($('#filterConditions').get()[0].value);
     let charts = allCharts.filter(chart => {
       let found = true;
       conditions.forEach(condition => {

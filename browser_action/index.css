@@ -4,15 +4,16 @@ table { width: 100% }
 tr, td {
   font-size: 1.0rem;
   line-height: 150%;
-  padding: 2px;
+  padding: 0px;
   border-style: none none solid none;
   border-width: 0px 0px 1px 0px; border-bottom-color: #ffffff
  }
 
-.level { font-family: monospace; }
-.score_rank { font-family: monospace; }
-.full_combo_type { font-family: monospace; }
-.score { text-align: right; font-family: monospace; }
+.level { text-align: right; font-size: 1.2rem; font-weight: bold }
+.score_rank { font-size: 1.2rem; font-weight: bold }
+.title { vertical-align: bottom }
+.full_combo_type { font-size: 1.2rem; font-weight: bold }
+.score { text-align: right; font-family: monospace; font-size: 1.2rem }
 
 .beginner { color: #00ffff }
 .basic { color: #ff8800 }
