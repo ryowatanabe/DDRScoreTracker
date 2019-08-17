@@ -9,8 +9,12 @@ const STATE = {
 let state = STATE.INITIALIZE;
 let tabId = 0;
 let targetUrls = [];
+/*
+ storage.musics: 曲リスト。1曲1エントリ。
+ storage.scores: スコアリスト。1曲1エントリ。
+*/
 let storage = {};
-let charts = [];
+let charts = []; // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
 
 chrome.storage.local.get(
     getDefaults(),
@@ -26,6 +30,10 @@ function saveStorage() {
       storage,
       function() { }
   );
+}
+
+function getMusics() {
+  return storage.musics;
 }
 
 function getCharts() {
