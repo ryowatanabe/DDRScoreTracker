@@ -5,6 +5,7 @@
   <script src="../lib/jquery-3.4.1.min.js"></script>
   <script src="../const.js"></script>
   <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" type="text/css" href="tab.css">
 </head>
 <body>
   <div id="app-charts">
@@ -93,7 +94,40 @@
         {{ line }}
     </p>
   </div>
+
+  <div id="wrap">
+    <div id="tab-0" class="tab selected">Main</div>
+    <div id="tab-1" class="tab hidden">Tab</div>
+    <div id="tab-2" class="tab hidden">Tab</div>
+    <div id="tab-3" class="tab hidden">Tab</div>
+
+    <div id="container">
+      <div id="slide" class="">
+        <div id="tab-content-0" class="box">
+          <table>
+            <tr>
+              <td><a id="link">Check this Out</a></td>
+            </tr>
+            <tr>
+              <td>All</td>
+            </tr>
+            <tr>
+              <td>Single Play</td>
+            </tr>
+            <tr>
+              <td>Double Play</td>
+            </tr>
+          </table>
+        </div>
+        <div id="tab-content-1" class="box">TAB TWO</div>
+        <div id="tab-content-2" class="box">TAB THREE</div>
+        <div id="tab-content-3" class="box">TAB FOUR</div>
+      </div>
+    </div>
+  </div>
+
   <a href="debug.html">デバッグページ</a>
 </body>
 <script src="main.js"></script>
+<script src="tab.js"></script>
 </html>
