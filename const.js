@@ -13,6 +13,124 @@ const MUSIC_DETAIL_URL = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/mus
 
 const LOAD_INTERVAL = 3000;
 
+const LIST_TYPE = {
+  MENU: 0,
+  MUSIC: 1
+};
+
+const MENU_DATA = [
+  {
+    id: "all",
+    name: "All Music",
+    condition: [ ]
+  },
+  {
+    id: "sp-all",
+    name: "Single All",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.SINGLE ] } ]
+  },
+  {
+    id: "dp-all",
+    name: "Double All",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] } ]
+  },
+  {
+    id: "dp-lv1",
+    name: "Double Level 1",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 1 ] } ]
+  },
+  {
+    id: "dp-lv2",
+    name: "Double Level 2",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 2 ] } ]
+  },
+  {
+    id: "dp-lv3",
+    name: "Double Level 3",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 3 ] } ]
+  },
+  {
+    id: "dp-lv4",
+    name: "Double Level 4",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 4 ] } ]
+  },
+  {
+    id: "dp-lv5",
+    name: "Double Level 5",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 5 ] } ]
+  },
+  {
+    id: "dp-lv6",
+    name: "Double Level 6",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 6 ] } ]
+  },
+  {
+    id: "dp-lv7",
+    name: "Double Level 7",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 7 ] } ]
+  },
+  {
+    id: "dp-lv8",
+    name: "Double Level 8",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 8 ] } ]
+  },
+  {
+    id: "dp-lv9",
+    name: "Double Level 9",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 9 ] } ]
+  },
+  {
+    id: "dp-lv10",
+    name: "Double Level 10",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 10 ] } ]
+  },
+  {
+    id: "dp-lv11",
+    name: "Double Level 11",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 11 ] } ]
+  },
+  {
+    id: "dp-lv12",
+    name: "Double Level 12",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 12 ] } ]
+  },
+  {
+    id: "dp-lv13",
+    name: "Double Level 13",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 13 ] } ]
+  },
+  {
+    id: "dp-lv14",
+    name: "Double Level 14",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 14 ] } ]
+  },
+  {
+    id: "dp-lv15",
+    name: "Double Level 15",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 15 ] } ]
+  },
+  {
+    id: "dp-lv16",
+    name: "Double Level 16",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 16 ] } ]
+  },
+  {
+    id: "dp-lv17",
+    name: "Double Level 17",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 17 ] } ]
+  },
+  {
+    id: "dp-lv18",
+    name: "Double Level 18",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 18 ] } ]
+  },
+  {
+    id: "dp-lv19",
+    name: "Double Level 19",
+    condition: [ { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] }, { attribute: 'level', values: [ 19 ] } ]
+  },
+];
+
 const DIFFICULTIES = {
   BEGINNER:  0,
   BASIC:     1,

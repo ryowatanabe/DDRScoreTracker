@@ -8,98 +8,6 @@
   <link rel="stylesheet" type="text/css" href="tab.css">
 </head>
 <body>
-  <div id="app-charts">
-  MFC:{{ statistics.fullComboType.marvelous_fc }}
-  PFC:{{ statistics.fullComboType.perfect_fc }}
-  FC:{{ statistics.fullComboType.great_fc }}
-  GFC:{{ statistics.fullComboType.good_fc }}
-  <table>
-    <template v-for="chart in charts">
-      <tr>
-        <td class="level" v-bind:class="{ beginner: chart.difficulty == 0, basic: chart.difficulty == 1, difficult: chart.difficulty == 2, expert: chart.difficulty == 3, challenge: chart.difficulty == 4 }">
-          {{ chart.level }}<template v-if="chart.playMode == 0">&#39;</template><template v-if="chart.playMode == 1">&quot;</template>
-        </td>
-        <td class="title">{{ chart.title }}</td>
-        <template v-if="chart.scoreRank == 0">
-          <td class="score_rank"></td>
-        </template>
-        <template v-if="chart.scoreRank == 1">
-          <td class="score_rank rank_e">E</td>
-        </template>
-        <template v-if="chart.scoreRank == 2">
-          <td class="score_rank rank_d">D</td>
-        </template>
-        <template v-if="chart.scoreRank == 3">
-          <td class="score_rank rank_d">D+</td>
-        </template>
-        <template v-if="chart.scoreRank == 4">
-          <td class="score_rank rank_c">C-</td>
-        </template>
-        <template v-if="chart.scoreRank == 5">
-          <td class="score_rank rank_c">C</td>
-        </template>
-        <template v-if="chart.scoreRank == 6">
-          <td class="score_rank rank_c">C+</td>
-        </template>
-        <template v-if="chart.scoreRank == 7">
-          <td class="score_rank rank_b">B-</td>
-        </template>
-        <template v-if="chart.scoreRank == 8">
-          <td class="score_rank rank_b">B</td>
-        </template>
-        <template v-if="chart.scoreRank == 9">
-          <td class="score_rank rank_b">B+</td>
-        </template>
-        <template v-if="chart.scoreRank == 10">
-          <td class="score_rank rank_a">A-</td>
-        </template>
-        <template v-if="chart.scoreRank == 11">
-          <td class="score_rank rank_a">A</td>
-        </template>
-        <template v-if="chart.scoreRank == 12">
-          <td class="score_rank rank_a">A+</td>
-        </template>
-        <template v-if="chart.scoreRank == 13">
-          <td class="score_rank rank_aa">AA-</td>
-        </template>
-        <template v-if="chart.scoreRank == 14">
-          <td class="score_rank rank_aa">AA</td>
-        </template>
-        <template v-if="chart.scoreRank == 15">
-          <td class="score_rank rank_aa">AA+</td>
-        </template>
-        <template v-if="chart.scoreRank == 16">
-          <td class="score_rank rank_aaa">AAA</td>
-        </template>
-        <td class="full_combo_type" v-bind:class="{ good_fc: chart.fullComboType == 1, great_fc: chart.fullComboType == 2, perfect_fc: chart.fullComboType == 3, marvelous_fc: chart.fullComboType == 4 }"><template v-if="chart.fullComboType > 0">○</template></td>
-        <td class="score">{{ chart.score.toLocaleString() }}</td>
-      </tr>
-      <tr>
-        <td colspan="5" class="hr"></td>
-      </tr>
-    </template>
-  </table>
-  </div>
-  <hr>
-  <button id="updateMusicListButton" type="button" name="updateMusicList">update music list</button>
-  <button id="updateMusicList2Button" type="button" name="updateMusicList2">update score list (from detail)</button>
-  <button id="updateSingleScoreListButton" type="button" name="updateSingleScoreList">update score list (SP)</button>
-  <button id="updateDoubleScoreListButton" type="button" name="updateDoubleScoreList">update score list (DP)</button>
-  <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">update score list (in detail)</button>
-  <button id="updateChartsButton" type="button" name="updateCharts">update charts</button>
-  <button id="refreshListButton" type="button" name="refreshList">refresh list</button>
-  <textarea id="filterConditions" style="width:100%" rows="10">
-    [
-      { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] },
-      { attribute: 'level', values: [ 17 ] }
-    ]
-  </textarea>
-  <div id="app-log">
-    <p v-for="line in log">
-        {{ line }}
-    </p>
-  </div>
-
   <div id="wrap">
     <div id="tab-0" class="tab selected">Main</div>
     <div id="tab-1" class="tab hidden">Tab</div>
@@ -109,41 +17,103 @@
     <div id="container">
       <div id="slide" class="">
         <div id="tab-content-0" class="box">
-          <table>
-            <tr>
-              <td><a id="link">Check this Out</a></td>
-            </tr>
-            <tr>
-              <td class="hr"></td>
-            </tr>
-            <tr>
-              <td>All</td>
-            </tr>
-            <tr>
-              <td class="hr"></td>
-            </tr>
-            <tr>
-              <td>Single Play</td>
-            </tr>
-            <tr>
-              <td class="hr"></td>
-            </tr>
-            <tr>
-              <td>Double Play</td>
-            </tr>
-            <tr>
-              <td class="hr"></td>
-            </tr>
-          </table>
+          <div id="app-list">
+            <table>
+              <template v-for="element in elements">
+                <tr>
+                  <td><a :id="`link-${ element.id }`" class="menu_element">{{ element.name }}</a></td>
+                </tr>
+                <tr>
+                  <td class="hr"></td>
+                </tr>
+              </template>
+              <tr>
+                <td class="menu_element">
+                  <a href="debug.html">デバッグページ</a>
+                </td>
+              </tr>
+              <tr><td class="hr"></td></tr>
+            </table>
+          </div>
+        <div id="tab-content-1" class="box">
+          <div id="app-charts" class="content">
+            MFC:{{ statistics.fullComboType.marvelous_fc }}
+            PFC:{{ statistics.fullComboType.perfect_fc }}
+            FC:{{ statistics.fullComboType.great_fc }}
+            GFC:{{ statistics.fullComboType.good_fc }}
+            <table>
+              <template v-for="chart in charts">
+                <tr>
+                  <td class="level" v-bind:class="{ beginner: chart.difficulty == 0, basic: chart.difficulty == 1, difficult: chart.difficulty == 2, expert: chart.difficulty == 3, challenge: chart.difficulty == 4 }">
+                    {{ chart.level }}<template v-if="chart.playMode == 0">&#39;</template><template v-if="chart.playMode == 1">&quot;</template>
+                  </td>
+                  <td class="title">{{ chart.title }}</td>
+                  <template v-if="chart.scoreRank == 0">
+                    <td class="score_rank"></td>
+                  </template>
+                  <template v-if="chart.scoreRank == 1">
+                    <td class="score_rank rank_e">E</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 2">
+                    <td class="score_rank rank_d">D</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 3">
+                    <td class="score_rank rank_d">D+</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 4">
+                    <td class="score_rank rank_c">C-</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 5">
+                    <td class="score_rank rank_c">C</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 6">
+                    <td class="score_rank rank_c">C+</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 7">
+                    <td class="score_rank rank_b">B-</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 8">
+                    <td class="score_rank rank_b">B</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 9">
+                    <td class="score_rank rank_b">B+</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 10">
+                    <td class="score_rank rank_a">A-</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 11">
+                    <td class="score_rank rank_a">A</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 12">
+                    <td class="score_rank rank_a">A+</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 13">
+                    <td class="score_rank rank_aa">AA-</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 14">
+                    <td class="score_rank rank_aa">AA</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 15">
+                    <td class="score_rank rank_aa">AA+</td>
+                  </template>
+                  <template v-if="chart.scoreRank == 16">
+                    <td class="score_rank rank_aaa">AAA</td>
+                  </template>
+                  <td class="full_combo_type" v-bind:class="{ good_fc: chart.fullComboType == 1, great_fc: chart.fullComboType == 2, perfect_fc: chart.fullComboType == 3, marvelous_fc: chart.fullComboType == 4 }"><template v-if="chart.fullComboType > 0">○</template></td>
+                  <td class="score">{{ chart.score.toLocaleString() }}</td>
+                </tr>
+                <tr>
+                  <td colspan="5" class="hr"></td>
+                </tr>
+              </template>
+            </table>
+          </div>
         </div>
-        <div id="tab-content-1" class="box">TAB TWO</div>
         <div id="tab-content-2" class="box">TAB THREE</div>
         <div id="tab-content-3" class="box">TAB FOUR</div>
       </div>
     </div>
   </div>
-
-  <a href="debug.html">デバッグページ</a>
 </body>
 <script src="main.js"></script>
 <script src="tab.js"></script>

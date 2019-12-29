@@ -36,9 +36,9 @@
   position: absolute;
   width: 480px;
   /*height: 200px;*/
-
+  padding-top: 10px;
   /*line-height: 200px;*/
-  text-align: center;
+  text-align: left;
   font-size: 28pt;
   cursor: pointer;
 }

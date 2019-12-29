@@ -7,7 +7,7 @@ body {
   width: 480px;
   font-size: 1.0rem;
 }
-table { width: 100% }
+table { width: 100%; }
 tr, td {
   font-size: 1.0rem;
   line-height: 150%;
@@ -17,10 +17,14 @@ td.hr {
   border-style: none none solid none;
   border-width: 0px 0px 1px 0px; border-bottom-color: #ffffff;
 }
+.content {
+  font-size: 1.2rem;
+}
 a {
   color: #ffff00;
 }
 
+.menu_element { font-size: 1.2rem }
 .level { text-align: right; font-size: 1.2rem; font-weight: bold }
 .score_rank { font-size: 1.2rem; font-weight: bold }
 .title { vertical-align: bottom }

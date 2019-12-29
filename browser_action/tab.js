@@ -11,7 +11,13 @@ for (var i = 0; i < NUM_OF_TABS; i++){
   $("#tab-" + i).click(moveTabTo.bind(null, i));
 }
 
-$("#link").click(moveTabTo.bind(null, 1));
+MENU_DATA.forEach(function(element){
+  $("#link-" + element.id).click(function(){
+    $("#tab-1")[0].innerHTML = element.name;
+    refreshListImpl(element.condition);
+    moveTabTo(1);
+  });
+});
 
 function moveTabTo(toIndex) {
   if (tabState != TAB_STATE.IDLE){

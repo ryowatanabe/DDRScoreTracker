@@ -13,6 +13,14 @@ const appCharts = new Vue({
   }
 })
 
+const appList = new Vue({
+  el: '#app-list',
+  data: {
+    type: LIST_TYPE.MENU,
+    elements: MENU_DATA
+  }
+})
+
 const appLog = new Vue({
   el: '#app-log',
   data: {
@@ -61,12 +69,16 @@ function updateCharts()
   });
 }
 
-function refreshList()
+function refreshList(){
+  const conditions = eval($('#filterConditions').get()[0].value);
+  refreshListImpl(conditions)
+}
+
+function refreshListImpl(conditions)
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
     const allCharts = backgroundPage.getCharts();
     // filter
-    const conditions = eval($('#filterConditions').get()[0].value);
     let charts = allCharts.filter(chart => {
       let found = true;
       conditions.forEach(condition => {
