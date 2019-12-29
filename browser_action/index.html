@@ -14,7 +14,8 @@
   FC:{{ statistics.fullComboType.great_fc }}
   GFC:{{ statistics.fullComboType.good_fc }}
   <table>
-    <tr v-for="chart in charts">
+    <template v-for="chart in charts">
+      <tr>
         <td class="level" v-bind:class="{ beginner: chart.difficulty == 0, basic: chart.difficulty == 1, difficult: chart.difficulty == 2, expert: chart.difficulty == 3, challenge: chart.difficulty == 4 }">
           {{ chart.level }}<template v-if="chart.playMode == 0">&#39;</template><template v-if="chart.playMode == 1">&quot;</template>
         </td>
@@ -72,7 +73,11 @@
         </template>
         <td class="full_combo_type" v-bind:class="{ good_fc: chart.fullComboType == 1, great_fc: chart.fullComboType == 2, perfect_fc: chart.fullComboType == 3, marvelous_fc: chart.fullComboType == 4 }"><template v-if="chart.fullComboType > 0">○</template></td>
         <td class="score">{{ chart.score.toLocaleString() }}</td>
-    </tr>
+      </tr>
+      <tr>
+        <td colspan="5" class="hr"></td>
+      </tr>
+    </template>
   </table>
   </div>
   <hr>
@@ -109,13 +114,25 @@
               <td><a id="link">Check this Out</a></td>
             </tr>
             <tr>
+              <td class="hr"></td>
+            </tr>
+            <tr>
               <td>All</td>
+            </tr>
+            <tr>
+              <td class="hr"></td>
             </tr>
             <tr>
               <td>Single Play</td>
             </tr>
             <tr>
+              <td class="hr"></td>
+            </tr>
+            <tr>
               <td>Double Play</td>
+            </tr>
+            <tr>
+              <td class="hr"></td>
             </tr>
           </table>
         </div>

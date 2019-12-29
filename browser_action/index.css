@@ -12,9 +12,11 @@ tr, td {
   font-size: 1.0rem;
   line-height: 150%;
   padding: 0px;
+}
+td.hr {
   border-style: none none solid none;
   border-width: 0px 0px 1px 0px; border-bottom-color: #ffffff;
- }
+}
 a {
   color: #ffff00;
 }
