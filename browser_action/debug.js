@@ -17,4 +17,12 @@ function dumpMusicList()
   });
 }
 
+function updateParsedMusicList()
+{
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    backgroundPage.updateParsedMusicList();
+  });
+}
+
 document.getElementById('dumpMusicListButton').addEventListener("click", dumpMusicList);
+document.getElementById('updateParsedMusicListButton').addEventListener("click", updateParsedMusicList);

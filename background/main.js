@@ -14,6 +14,7 @@ let targetUrls = [];
  storage.scores: スコアリスト。1曲1エントリ。
 */
 let storage = {};
+let storageBytesInUse = 0;
 let charts = []; // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
 
 chrome.storage.local.get(
@@ -21,6 +22,7 @@ chrome.storage.local.get(
     function(data) {
       storage = data;
       updateCharts();
+      getBytesInUse();
       state = STATE.IDLE;
     }
 );
@@ -28,8 +30,16 @@ chrome.storage.local.get(
 function saveStorage() {
   chrome.storage.local.set(
       storage,
-      function() { }
+      function() {
+        getBytesInUse();
+      }
   );
+}
+
+function getBytesInUse(){
+  chrome.storage.local.getBytesInUse(null, function(bytesInUse){
+    storageBytesInUse = bytesInUse;
+  });
 }
 
 function getMusics() {
@@ -45,6 +55,38 @@ function getDefaults() {
     scores: {},
     musics: {}
   }
+}
+
+/*
+gh pagesから曲リストを取得し、ローカルの曲リストを更新する
+*/
+
+function updateParsedMusicList()
+{
+    $.ajax({
+      url: PARSED_MUSIC_LIST_URL,
+      dataType: 'text',
+      success: function( result ) {
+        var musics = {};
+        const lines = result.split("\n");
+        lines.forEach(function(line){
+          const elements = line.split("\t");
+          musics[elements[0]] = {
+            difficulty: elements.slice(1,10),
+            title: elements[10]
+          }
+        });
+        Object.keys(musics).forEach(function(musicId){
+          storage.musics[musicId] = musics[musicId];
+        });
+        saveStorage();
+      },
+      error: function( jqXHR, textStatus, errorThrown ) {
+        console.log("xhr error");
+        console.log(textStatus);
+        console.log(errorThrown);
+      }
+    });
 }
 
 /*

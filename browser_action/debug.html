@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <script src="../lib/vue.js"></script>
   <script src="../lib/jquery-3.4.1.min.js"></script>
-  <script src="../const.js"></script>
+  <script src="../common/const.js"></script>
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
@@ -86,11 +86,12 @@
   </textarea>
 
   <hr>
-  <button id="updateMusicListButton" type="button" name="updateMusicList">曲リストを更新</button>
-  <button id="updateMusicList2Button" type="button" name="updateMusicList2">スコアリストにあって曲リストにない曲の情報を取得</button>
-  <button id="updateSingleScoreListButton" type="button" name="updateSingleScoreList">スコアリストを更新 (SP)</button>
-  <button id="updateDoubleScoreListButton" type="button" name="updateDoubleScoreList">スコアリストを更新 (DP)</button>
-  <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">スコア詳細を取得</button>
+  <button id="updateParsedMusicListButton" type="button" name="updateParsedMusicList">パース済の曲リストを取得</button>
+  <button id="updateMusicListButton" type="button" name="updateMusicList">公式から曲リストを取得</button>
+  <button id="updateMusicList2Button" type="button" name="updateMusicList2">スコアリストにあって曲リストにない曲の情報を公式から取得</button>
+  <button id="updateSingleScoreListButton" type="button" name="updateSingleScoreList">スコアリストを公式から取得 (SP)</button>
+  <button id="updateDoubleScoreListButton" type="button" name="updateDoubleScoreList">スコアリストを公式から取得 (DP)</button>
+  <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">スコア詳細を公式から取得</button>
   <button id="updateChartsButton" type="button" name="updateCharts">update charts</button>
   <button id="refreshListButton" type="button" name="refreshList">refresh list</button>
   <textarea id="filterConditions" style="width:100%" rows="10">

@@ -18,7 +18,7 @@
       ],
       "js": [
         "lib/jquery-3.4.1.min.js",
-        "const.js",
+        "common/const.js",
         "content_scripts/main.js"
       ],
       "run_at": "document_start",
@@ -28,13 +28,15 @@
 
   "background": {
     "scripts": [
-      "const.js",
+      "lib/jquery-3.4.1.min.js",
+      "common/const.js",
       "background/main.js"
     ],
     "persistent": false
   },
 
   "permissions": [
-    "storage"
+    "storage",
+    "unlimitedStorage"
   ]
 }
