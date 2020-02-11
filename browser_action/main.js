@@ -82,9 +82,7 @@ function refreshListImpl(conditions)
     let charts = allCharts.filter(chart => {
       let found = true;
       conditions.forEach(condition => {
-        if(!condition.values.find(value => {
-          return value == chart[condition.attribute];
-        })){
+        if(!condition.values.includes(chart[condition.attribute])){
           found = false;
         }
       });

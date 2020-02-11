@@ -80,8 +80,11 @@ function updateParsedMusicList()
         const lines = result.split("\n");
         lines.forEach(function(line){
           const elements = line.split("\t");
+          if (elements.length <= 1) {
+            return;
+          }
           musics[elements[0]] = {
-            difficulty: elements.slice(1,10),
+            difficulty: elements.slice(1,10).map(element => parseInt(element, 10)),
             title: elements[10]
           }
         });
