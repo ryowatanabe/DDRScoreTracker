@@ -17,15 +17,18 @@ let storage = {};
 let storageBytesInUse = 0;
 let charts = []; // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
 
-chrome.storage.local.get(
-    getDefaults(),
-    function(data) {
-      storage = data;
-      updateCharts();
-      getBytesInUse();
-      state = STATE.IDLE;
-    }
-);
+function loadStorage() {
+  chrome.storage.local.get(
+      getDefaults(),
+      function(data) {
+        storage = data;
+        updateCharts();
+        getBytesInUse();
+        state = STATE.IDLE;
+      }
+  );
+}
+loadStorage();
 
 function saveStorage() {
   chrome.storage.local.set(
@@ -34,6 +37,12 @@ function saveStorage() {
         getBytesInUse();
       }
   );
+}
+
+function resetStorage() {
+  chrome.storage.local.clear(function(){
+    loadStorage();
+  });
 }
 
 function getBytesInUse(){

@@ -83,7 +83,7 @@ function parseScoreList(){
     res.hasNext = true;
     res.nextUrl = $('a', $(next[0]))[0].href;
   }
-  const isDouble = $('#t_double.game_type .select').get();
+  const isDouble = ($('#t_double.game_type .select').get().length > 0);
   const scores = $('tr.data').get();
   scores.forEach (function(score){
     const data = {
