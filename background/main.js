@@ -239,9 +239,19 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
   }
 });
 
-chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-  console.log("received message");
-  console.log(message);
-  //sendResponse({});
-  //return true;
-});
+(function()
+{
+  chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+    console.log("received message");
+    console.log(message);
+    //sendResponse({});
+    //return true;
+  });
+
+  const extension_id = chrome.i18n.getMessage('@@extension_id');
+  chrome.browserAction.onClicked.addListener(function(){
+    chrome.tabs.create({ url: `chrome-extension://${extension_id}/browser_action/index.html` }, function(tab){
+    });
+  });
+
+})();
