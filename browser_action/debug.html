@@ -101,13 +101,14 @@
     ]
   </textarea>
   <div id="app-log">
-    <p v-for="line in log">
-        {{ line }}
-    </p>
+    <template v-for="line in log">
+        {{ line }} <br>
+    </template>
   </div>
 
   <a href="index.html">戻る</a>
 </body>
+<script src="logReceiver.js"></script>
 <script src="main.js"></script>
 <script src="debug.js"></script>
 </html>

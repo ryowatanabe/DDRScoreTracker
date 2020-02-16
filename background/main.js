@@ -116,9 +116,9 @@ function updateMusicList(windowId)
 //       現時点ではデバッグの利便性のため固定のタブを利用
 //  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
     tabId = tab.id;
-    console.log("tab is created (tabId:" + tab.id + ")");
+    LOGGER.debug("tab is created (tabId:" + tab.id + ")");
     chrome.tabs.update(tabId, { url: MUSIC_LIST_URL }, function(tab){
-      console.log('navigate to: ' + MUSIC_LIST_URL);
+      LOGGER.debug('navigate to: ' + MUSIC_LIST_URL);
     });
   });
 }
@@ -181,6 +181,7 @@ function updateScoreList(windowId, playMode)
 //       現時点ではデバッグの利便性のため固定のタブを利用
 //  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
     tabId = tab.id;
+    LOGGER.debug("tab is created (tabId:" + tab.id + ")");
     chrome.tabs.update(tabId, { url: SCORE_LIST_URL[playMode] }, function(tab){
     });
   });
@@ -296,8 +297,6 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
 (function()
 {
   chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-    console.log("received message");
-    console.log(message);
     //sendResponse({});
     //return true;
   });

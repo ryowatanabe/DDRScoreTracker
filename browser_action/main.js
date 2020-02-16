@@ -24,11 +24,9 @@ const appList = new Vue({
 const appLog = new Vue({
   el: '#app-log',
   data: {
-    log: []
+    log: LOG_RECEIVER.data
   }
-})
-
-appLog.log.push("Initialized.");
+});
 
 function updateMusicList()
 {
@@ -125,10 +123,3 @@ document.getElementById('updateDoubleScoreListButton').addEventListener("click",
 document.getElementById('updateScoreDetailButton').addEventListener("click", updateScoreDetail);
 document.getElementById('updateChartsButton').addEventListener("click", updateCharts);
 document.getElementById('refreshListButton').addEventListener("click", refreshList);
-
-chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-  console.log("received message");
-  console.log(message);
-  sendResponse({ hoge: 1 });
-  return true;
-});

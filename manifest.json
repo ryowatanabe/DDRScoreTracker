@@ -19,6 +19,7 @@
       "js": [
         "lib/jquery-3.4.1.min.js",
         "common/const.js",
+        "common/logger.js",
         "content_scripts/main.js"
       ],
       "run_at": "document_start",
@@ -30,6 +31,7 @@
     "scripts": [
       "lib/jquery-3.4.1.min.js",
       "common/const.js",
+      "common/logger.js",
       "background/main.js"
     ],
     "persistent": false
