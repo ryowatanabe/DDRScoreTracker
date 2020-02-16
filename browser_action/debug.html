@@ -9,10 +9,13 @@
 <body>
 
   <div id="app-charts" class="content">
-    MFC:{{ statistics.fullComboType.marvelous_fc }}
-    PFC:{{ statistics.fullComboType.perfect_fc }}
-    FC:{{ statistics.fullComboType.great_fc }}
-    GFC:{{ statistics.fullComboType.good_fc }}
+    <template v-if="statistics.fullComboType.marvelous_fc > 0">MFC:{{ statistics.fullComboType.marvelous_fc }}</template>
+    <template v-if="statistics.fullComboType.perfect_fc > 0">PFC:{{ statistics.fullComboType.perfect_fc }}</template>
+    <template v-if="statistics.fullComboType.great_fc > 0">FC:{{ statistics.fullComboType.great_fc }}</template>
+    <template v-if="statistics.fullComboType.good_fc > 0">GFC:{{ statistics.fullComboType.good_fc }}</template>
+    <template v-if="statistics.fullComboType.clear > 0">Clear:{{ statistics.fullComboType.clear }}</template>
+    <template v-if="statistics.fullComboType.failed > 0">Failed:{{ statistics.fullComboType.failed }}</template>
+    <template v-if="statistics.fullComboType.no_play > 0">NoPlay:{{ statistics.fullComboType.no_play }}</template>
     <table>
       <template v-for="chart in charts">
         <tr>

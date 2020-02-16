@@ -109,7 +109,9 @@ function refreshListImpl(conditions)
       perfect_fc:   charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.PERFECT_FC }).length,
       great_fc:     charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.GREAT_FC }).length,
       good_fc:      charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.GOOD_FC }).length,
-      no_fc:        charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.NO_FC }).length
+      clear:        charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.NO_FC && chart.scoreRank > SCORE_RANK.E }).length,
+      failed:       charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.NO_FC && chart.scoreRank == SCORE_RANK.E }).length,
+      no_play:      charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.NO_FC && chart.scoreRank == SCORE_RANK.NO_PLAY }).length
     };
   });
 }
