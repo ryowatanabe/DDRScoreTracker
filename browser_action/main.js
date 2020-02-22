@@ -113,6 +113,7 @@ function refreshListImpl(conditions)
       failed:       charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.NO_FC && chart.scoreRank == SCORE_RANK.E }).length,
       no_play:      charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.NO_FC && chart.scoreRank == SCORE_RANK.NO_PLAY }).length
     };
+    appCharts.statistics['musicCount'] = charts.length;
   });
 }
 

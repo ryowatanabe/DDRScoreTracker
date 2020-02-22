@@ -47,6 +47,8 @@
     <template v-if="statistics.fullComboType.clear > 0">Clear:{{ statistics.fullComboType.clear }}</template>
     <template v-if="statistics.fullComboType.failed > 0">Failed:{{ statistics.fullComboType.failed }}</template>
     <template v-if="statistics.fullComboType.no_play > 0">NoPlay:{{ statistics.fullComboType.no_play }}</template>
+    <div class="graph">
+      <div class="inner"><span class="element marvelous_fc" v-bind:style="{ width: 'calc(' + statistics.fullComboType.marvelous_fc + ' / ' + statistics.musicCount + ' * 100%'}"></span><span class="element perfect_fc" v-bind:style="{ width: 'calc(' + statistics.fullComboType.perfect_fc + ' / ' + statistics.musicCount + ' * 100%'}"></span><span class="element great_fc" v-bind:style="{ width: 'calc(' + statistics.fullComboType.great_fc + ' / ' + statistics.musicCount + ' * 100%'}"></span><span class="element good_fc" v-bind:style="{ width: 'calc(' + statistics.fullComboType.good_fc + ' / ' + statistics.musicCount + ' * 100%'}"></span><span class="element clear" v-bind:style="{ width: 'calc(' + statistics.fullComboType.clear + ' / ' + statistics.musicCount + ' * 100%'}"></span><span class="element failed" v-bind:style="{ width: 'calc(' + statistics.fullComboType.failed + ' / ' + statistics.musicCount + ' * 100%'}"></span><span class="element no_play" v-bind:style="{ width: 'calc(' + statistics.fullComboType.no_play + ' / ' + statistics.musicCount + ' * 100%'}"></span></div></div>
     <table>
       <template v-for="chart in charts">
         <tr>
