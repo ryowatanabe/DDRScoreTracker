@@ -41,6 +41,18 @@ function refreshList2() {
   refreshListImpl(conditions);
 }
 
-document.getElementById('refreshList2Button').addEventListener("click", refreshList2);
+function openFilter() {
+  $("#filterContainer").attr('class', 'filter active');
+  $("#filterBackground").attr('class', 'filter-background active');
+}
+function closeFilter() {
+  $("#filterContainer").attr('class', 'filter');
+  $("#filterBackground").attr('class', 'filter-background');
+  setTimeout(refreshList2, 300);
+}
+
+document.getElementById('openFilterButton').addEventListener("click", openFilter);
+document.getElementById('closeFilterButton').addEventListener("click", closeFilter);
+
 document.getElementById('dumpMusicListButton').addEventListener("click", dumpMusicList);
 document.getElementById('updateParsedMusicListButton').addEventListener("click", updateParsedMusicList);
