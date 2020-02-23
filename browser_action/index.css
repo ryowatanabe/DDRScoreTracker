@@ -120,6 +120,38 @@ a {
 .graph .element.marvelous_fc { background-color: #ffffff }
 
 /*
+ロガー
+*/
+
+.log-switch {
+  float: right;
+  font-size: 1.2rem;
+  color: #ffff00;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.log {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  padding: 5px;
+  transition: all 0.3s ease-in-out 0s;
+  transform: translateX(100%);
+}
+.log.active {
+  transform: translateX(0);
+}
+.log-data {
+  clear: right;
+}
+
+/*
 スコアリストのグリッド表示
 */
 

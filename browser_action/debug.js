@@ -66,12 +66,25 @@ function updateParsedMusicList()
 document.getElementById('dumpMusicListButton').addEventListener("click", dumpMusicList);
 document.getElementById('updateParsedMusicListButton').addEventListener("click", updateParsedMusicList);
 
+function openLog() {
+  $("#logContainer").attr('class', 'log active');
+}
+function closeLog() {
+  $("#logContainer").attr('class', 'log');
+}
+function flushLog() {
+  LOG_RECEIVER.flush();
+}
+
 const appLog = new Vue({
   el: '#app-log',
   data: {
     log: LOG_RECEIVER.data
   }
 });
+LOG_RECEIVER.callback = openLog;
+document.getElementById('closeLogButton').addEventListener("click", closeLog);
+document.getElementById('flushLogButton').addEventListener("click", flushLog);
 
 document.getElementById('updateMusicListButton').addEventListener("click", updateMusicList);
 document.getElementById('updateMusicList2Button').addEventListener("click", updateMusicList2);

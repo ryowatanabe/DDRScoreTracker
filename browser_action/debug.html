@@ -20,17 +20,15 @@
   <button id="updateDoubleScoreListButton" type="button" name="updateDoubleScoreList">スコアリストを公式から取得 (DP)</button>
   <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">スコア詳細を公式から取得</button>
   <button id="updateChartsButton" type="button" name="updateCharts">update charts</button>
-  <button id="refreshListButton" type="button" name="refreshList">refresh list</button>
-  <textarea id="filterConditions" style="width:100%" rows="10">
-    [
-      { attribute: 'playMode', values: [ PLAY_MODE.DOUBLE ] },
-      { attribute: 'level', values: [ 17 ] }
-    ]
-  </textarea>
-  <div id="app-log">
-    <template v-for="line in log">
-        {{ line }} <br>
-    </template>
+
+  <div id="logContainer" class="log">
+    <div id="closeLogButton" class="log-switch">■閉じる</div>
+    <div id="flushLogButton" class="log-switch">■クリア</div>
+    <div id="app-log" class="log-data">
+      <template v-for="line in log">
+          {{ line }} <br>
+      </template>
+    </div>
   </div>
 
   <a href="index.html">戻る</a>

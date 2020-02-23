@@ -81,6 +81,7 @@ gh pagesから曲リストを取得し、ローカルの曲リストを更新す
 
 function updateParsedMusicList()
 {
+    LOGGER.debug("github pagesより楽曲リストを取得...");
     $.ajax({
       url: PARSED_MUSIC_LIST_URL,
       dataType: 'text',
