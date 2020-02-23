@@ -61,7 +61,7 @@ function updateCharts()
   });
 }
 
-function refreshList(){
+function refreshListDebug(){
   const conditions = eval($('#filterConditions').get()[0].value);
   refreshListImpl(conditions)
 }
