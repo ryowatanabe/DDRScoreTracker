@@ -10,11 +10,16 @@
 <div id="contentArea">
   <div id="openFilterButton" class="filter-switch">&lt;&lt;フィルタ</div>
   <div id="filterContainer" class="filter">
-    <div>
-      <span class="element"><input type="checkbox" id="filterCondition_playMode_0" name="playMode" value="0" /><label for="filterCondition_playMode_0">SP</label></span>
-      <span class="element"><input type="checkbox" id="filterCondition_playMode_1" name="playMode" value="1" /><label for="filterCondition_playMode_1">DP</label></span>
+    <div class="condition-group">
+      ゲームモード
+      <div>
+        <span class="element"><input type="checkbox" id="filterCondition_playMode_0" name="playMode" value="0" /><label for="filterCondition_playMode_0">SP</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_playMode_1" name="playMode" value="1" /><label for="filterCondition_playMode_1">DP</label></span>
+      </div>
     </div>
-    <div>
+    <div class="condition-group">
+      難易度
+      <div>
       <span class="element"><input type="checkbox" id="filterCondition_level_1" name="level" value="1" /><label for="filterCondition_level_1">Level 1</label></span>
       <span class="element"><input type="checkbox" id="filterCondition_level_2" name="level" value="2" /><label for="filterCondition_level_2">Level 2</label></span>
       <span class="element"><input type="checkbox" id="filterCondition_level_3" name="level" value="3" /><label for="filterCondition_level_3">Level 3</label></span>
@@ -34,7 +39,44 @@
       <span class="element"><input type="checkbox" id="filterCondition_level_17" name="level" value="17" /><label for="filterCondition_level_17">Level 17</label></span>
       <span class="element"><input type="checkbox" id="filterCondition_level_18" name="level" value="18" /><label for="filterCondition_level_18">Level 18</label></span>
       <span class="element"><input type="checkbox" id="filterCondition_level_19" name="level" value="19" /><label for="filterCondition_level_19">Level 19</label></span>
+      </div>
     </div>
+    <div class="condition-group">
+      フルコンボ・クリア種別
+      <div>
+        <span class="element"><input type="checkbox" id="filterCondition_clearType_8" name="clearType" value="8" /><label for="filterCondition_clearType_8">MFC</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_clearType_7" name="clearType" value="7" /><label for="filterCondition_clearType_7">PFC</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_clearType_6" name="clearType" value="6" /><label for="filterCondition_clearType_6">FC</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_clearType_5" name="clearType" value="5" /><label for="filterCondition_clearType_5">GFC</label></span>
+        <!--<span class="element"><input type="checkbox" id="filterCondition_clearType_4" name="clearType" value="4" /><label for="filterCondition_clearType_4">LIFE4</label></span>-->
+        <span class="element"><input type="checkbox" id="filterCondition_clearType_3" name="clearType" value="3" /><label for="filterCondition_clearType_3">Clear</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_clearType_2" name="clearType" value="2" /><label for="filterCondition_clearType_2">AssistClear</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_clearType_1" name="clearType" value="1" /><label for="filterCondition_clearType_1">Failed</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_clearType_0" name="clearType" value="0" /><label for="filterCondition_clearType_0">NoPlay</label></span>
+      </div>
+    </div>
+    <div class="condition-group">
+      スコアランク
+      <div>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_16" name="scoreRank" value="16" /><label for="filterCondition_scoreRank_16">AAA</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_15" name="scoreRank" value="15" /><label for="filterCondition_scoreRank_15">AA+</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_14" name="scoreRank" value="14" /><label for="filterCondition_scoreRank_14">AA</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_13" name="scoreRank" value="13" /><label for="filterCondition_scoreRank_13">AA-</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_12" name="scoreRank" value="12" /><label for="filterCondition_scoreRank_12">A+</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_11" name="scoreRank" value="11" /><label for="filterCondition_scoreRank_11">A</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_10" name="scoreRank" value="10" /><label for="filterCondition_scoreRank_10">A-</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_9" name="scoreRank" value="9" /><label for="filterCondition_scoreRank_9">B+</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_8" name="scoreRank" value="8" /><label for="filterCondition_scoreRank_8">B</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_7" name="scoreRank" value="7" /><label for="filterCondition_scoreRank_7">B-</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_6" name="scoreRank" value="6" /><label for="filterCondition_scoreRank_6">C+</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_5" name="scoreRank" value="5" /><label for="filterCondition_scoreRank_5">C</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_4" name="scoreRank" value="4" /><label for="filterCondition_scoreRank_4">C-</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_3" name="scoreRank" value="3" /><label for="filterCondition_scoreRank_3">D+</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_2" name="scoreRank" value="2" /><label for="filterCondition_scoreRank_2">D</label></span>
+        <span class="element"><input type="checkbox" id="filterCondition_scoreRank_1" name="scoreRank" value="1" /><label for="filterCondition_scoreRank_1">E</label></span>
+      </div>
+    </div>
+
     <div>
       <button id="closeFilterButton" type="button" name="refreshList2">　更　新　</button>
     </div>
@@ -43,16 +85,18 @@
   </div>
 
   <div id="app-charts" class="content">
-    <template v-if="statistics.fullComboType.marvelous_fc > 0">MFC:{{ statistics.fullComboType.marvelous_fc }}</template>
-    <template v-if="statistics.fullComboType.perfect_fc > 0">PFC:{{ statistics.fullComboType.perfect_fc }}</template>
-    <template v-if="statistics.fullComboType.great_fc > 0">FC:{{ statistics.fullComboType.great_fc }}</template>
-    <template v-if="statistics.fullComboType.good_fc > 0">GFC:{{ statistics.fullComboType.good_fc }}</template>
-    <template v-if="statistics.fullComboType.clear > 0">Clear:{{ statistics.fullComboType.clear }}</template>
-    <template v-if="statistics.fullComboType.failed > 0">Failed:{{ statistics.fullComboType.failed }}</template>
-    <template v-if="statistics.fullComboType.no_play > 0">NoPlay:{{ statistics.fullComboType.no_play }}</template>
-    <template v-if="statistics.musicCount > 0">
+    <template v-if="charts.length > 0">
+    <template v-if="statistics.clearType.marvelous_fc > 0">MFC:{{ statistics.clearType.marvelous_fc }}</template>
+    <template v-if="statistics.clearType.perfect_fc > 0">PFC:{{ statistics.clearType.perfect_fc }}</template>
+    <template v-if="statistics.clearType.great_fc > 0">FC:{{ statistics.clearType.great_fc }}</template>
+    <template v-if="statistics.clearType.good_fc > 0">GFC:{{ statistics.clearType.good_fc }}</template>
+    <template v-if="statistics.clearType.life4 > 0">LIFE4:{{ statistics.clearType.life4 }}</template>
+    <template v-if="statistics.clearType.clear > 0">Clear:{{ statistics.clearType.clear }}</template>
+    <template v-if="statistics.clearType.assist_clear > 0">AssistClear:{{ statistics.clearType.assist_clear }}</template>
+    <template v-if="statistics.clearType.failed > 0">Failed:{{ statistics.clearType.failed }}</template>
+    <template v-if="statistics.clearType.no_play > 0">NoPlay:{{ statistics.clearType.no_play }}</template>
     <div class="graph">
-      <div class="inner"><span class="element marvelous_fc" v-bind:style="{ width: 'calc(' + statistics.fullComboType.marvelous_fc + ' / ' + statistics.musicCount + ' * 100%'}"></span><span class="element perfect_fc" v-bind:style="{ width: 'calc(' + statistics.fullComboType.perfect_fc + ' / ' + statistics.musicCount + ' * 100%'}"></span><span class="element great_fc" v-bind:style="{ width: 'calc(' + statistics.fullComboType.great_fc + ' / ' + statistics.musicCount + ' * 100%'}"></span><span class="element good_fc" v-bind:style="{ width: 'calc(' + statistics.fullComboType.good_fc + ' / ' + statistics.musicCount + ' * 100%'}"></span><span class="element clear" v-bind:style="{ width: 'calc(' + statistics.fullComboType.clear + ' / ' + statistics.musicCount + ' * 100%'}"></span><span class="element failed" v-bind:style="{ width: 'calc(' + statistics.fullComboType.failed + ' / ' + statistics.musicCount + ' * 100%'}"></span><span class="element no_play" v-bind:style="{ width: 'calc(' + statistics.fullComboType.no_play + ' / ' + statistics.musicCount + ' * 100%'}"></span></div>
+      <div class="inner"><span class="element marvelous_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.marvelous_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element perfect_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.perfect_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element great_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.great_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element good_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.good_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element life4" v-bind:style="{ width: 'calc(' + statistics.clearType.life4 + ' / ' + charts.length + ' * 100%'}"></span><span class="element clear" v-bind:style="{ width: 'calc(' + statistics.clearType.clear + ' / ' + charts.length + ' * 100%'}"></span><span class="element assist_clear" v-bind:style="{ width: 'calc(' + statistics.clearType.assist_clear + ' / ' + charts.length + ' * 100%'}"></span><span class="element failed" v-bind:style="{ width: 'calc(' + statistics.clearType.failed + ' / ' + charts.length + ' * 100%'}"></span><span class="element no_play" v-bind:style="{ width: 'calc(' + statistics.clearType.no_play + ' / ' + charts.length + ' * 100%'}"></span></div>
     </div>
     </template>
     <table>

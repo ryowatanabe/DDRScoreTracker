@@ -42,7 +42,6 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
   background-color: #000000;
   border: 1px solid #ffffff;
   padding: 5px;
@@ -51,6 +50,12 @@ a {
 }
 .filter.active {
   transform: translateX(0);
+}
+.filter .condition-group {
+  border: 1px solid #ffffff;
+  margin-bottom: 5px;
+  padding: 5px;
+  line-height: 150%;
 }
 .filter .element {
   white-space: nowrap;

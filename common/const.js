@@ -168,6 +168,19 @@ const FULL_COMBO_TYPE_FILE_MAP = {
   'full_mar.png':     FULL_COMBO_TYPE.MARFVELOUS_FC
 };
 
+const CLEAR_TYPE = {
+  NO_PLAY:      0,
+  FAILED:       1,
+  ASSIST_CLEAR: 2,
+  CLEAR:        3,
+  LIFE4:        4,
+  GOOD_FC:      5,
+  GREAT_FC:     6,
+  PERFECT_FC:   7,
+  MARVELOUS_FC: 8
+}
+const CLEAR_TYPE_OFFSET_FOR_FULLCOMBO = 4;
+
 const SCORE_RANK = {
   NO_PLAY:   0,
   E:         1,

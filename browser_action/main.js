@@ -2,12 +2,6 @@ const appCharts = new Vue({
   el: '#app-charts',
   data: {
     statistics: {
-      fullComboType: {
-        marvelous_fc: 0,
-        perfect_fc:   0,
-        great_fc:     0,
-        good_fc:      0
-      }
     },
     charts: []
   }
@@ -104,20 +98,19 @@ function refreshListImpl(conditions)
     });
     appCharts.charts = charts;
     // statistics
-    appCharts.statistics['fullComboType'] = {
-      marvelous_fc: charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.MARVELOUS_FC }).length,
-      perfect_fc:   charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.PERFECT_FC }).length,
-      great_fc:     charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.GREAT_FC }).length,
-      good_fc:      charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.GOOD_FC }).length,
-      clear:        charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.NO_FC && chart.scoreRank > SCORE_RANK.E }).length,
-      failed:       charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.NO_FC && chart.scoreRank == SCORE_RANK.E }).length,
-      no_play:      charts.filter(chart => { return chart.fullComboType == FULL_COMBO_TYPE.NO_FC && chart.scoreRank == SCORE_RANK.NO_PLAY }).length
+    appCharts.statistics['clearType'] = {
+      marvelous_fc: charts.filter(chart => { return chart.clearType == CLEAR_TYPE.MARVELOUS_FC }).length,
+      perfect_fc:   charts.filter(chart => { return chart.clearType == CLEAR_TYPE.PERFECT_FC }).length,
+      great_fc:     charts.filter(chart => { return chart.clearType == CLEAR_TYPE.GREAT_FC }).length,
+      good_fc:      charts.filter(chart => { return chart.clearType == CLEAR_TYPE.GOOD_FC }).length,
+      life4:        charts.filter(chart => { return chart.clearType == CLEAR_TYPE.LIFE4 }).length,
+      clear:        charts.filter(chart => { return chart.clearType == CLEAR_TYPE.CLEAR }).length,
+      assist_clear: charts.filter(chart => { return chart.clearType == CLEAR_TYPE.ASSIST_CLEAR }).length,
+      failed:       charts.filter(chart => { return chart.clearType == CLEAR_TYPE.FAILED }).length,
+      no_play:      charts.filter(chart => { return chart.clearType == CLEAR_TYPE.NO_PLAY }).length
     };
-    appCharts.statistics['musicCount'] = charts.length;
   });
 }
-
-
 
 document.getElementById('updateMusicListButton').addEventListener("click", updateMusicList);
 document.getElementById('updateMusicList2Button').addEventListener("click", updateMusicList2);

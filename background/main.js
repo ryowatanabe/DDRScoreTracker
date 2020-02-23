@@ -202,6 +202,7 @@ function updateCharts(){
           difficulty: difficulty,
           level: 0,
           fullComboType: FULL_COMBO_TYPE.NO_FC,
+          clearType: CLEAR_TYPE.NO_PLAY,
           scoreRank: SCORE_RANK.NO_PLAY,
           score: 0,
         };
@@ -216,6 +217,22 @@ function updateCharts(){
           chart.fullComboType = storage.scores[musicId][difficultyValue]['fullComboType'];
           chart.scoreRank = storage.scores[musicId][difficultyValue]['scoreRank'];
           chart.score = storage.scores[musicId][difficultyValue]['score'];
+          /* TODO: アシストクリアとE判定クリアが未考慮 */
+          if (chart.fullComboType != FULL_COMBO_TYPE.NO_FC) {
+            chart.clearType = chart.fullComboType + CLEAR_TYPE_OFFSET_FOR_FULLCOMBO;
+          } else {
+            switch (chart.scoreRank) {
+              case SCORE_RANK.NO_PLAY:
+                chart.clearType = CLEAR_TYPE.NO_PLAY;
+                break;
+              case SCORE_RANK.E:
+                chart.clearType = CLEAR_TYPE.FAILED;
+                break;
+              default:
+                chart.clearType = CLEAR_TYPE.CLEAR;
+                break;
+            }
+          }
         }
         charts.push(chart);
       });

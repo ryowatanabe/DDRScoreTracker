@@ -26,7 +26,7 @@ function updateParsedMusicList()
 
 function refreshList2() {
   var conditions = [];
-  const names = [ "playMode", "level" ];
+  const names = [ "playMode", "level", "clearType", "scoreRank" ];
   names.forEach(function(name){
     const elements = $(`input[name=${name}]:checked`);
     if (elements.length > 0){
