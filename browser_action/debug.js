@@ -38,6 +38,9 @@ function refreshList2() {
     }
   });
   console.log(conditions);
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    backgroundPage.saveFilterConditions(conditions);
+  });
   refreshListImpl(conditions);
 }
 
@@ -56,3 +59,13 @@ document.getElementById('closeFilterButton').addEventListener("click", closeFilt
 
 document.getElementById('dumpMusicListButton').addEventListener("click", dumpMusicList);
 document.getElementById('updateParsedMusicListButton').addEventListener("click", updateParsedMusicList);
+
+chrome.runtime.getBackgroundPage(function(backgroundPage){
+  const filterConditions = backgroundPage.getFilterConditions();
+  filterConditions.forEach(function(condition){
+    condition.values.forEach(function(value){
+      $(`#filterCondition_${condition.attribute}_${value}`).prop('checked', true);
+    });
+  });
+  refreshList2();
+});

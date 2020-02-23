@@ -51,6 +51,14 @@ function getBytesInUse(){
   });
 }
 
+function getFilterConditions() {
+  return storage.filterConditions;
+}
+function saveFilterConditions(conditions) {
+    storage.filterConditions = conditions;
+    saveStorage();
+}
+
 function getMusics() {
   return storage.musics;
 }
@@ -62,7 +70,8 @@ function getCharts() {
 function getDefaults() {
   return {
     scores: {},
-    musics: {}
+    musics: {},
+    filterConditions: []
   }
 }
 
