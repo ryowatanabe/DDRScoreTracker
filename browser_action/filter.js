@@ -11,7 +11,6 @@ function refreshList() {
       conditions.push(condition);
     }
   });
-  console.log(conditions);
   chrome.runtime.getBackgroundPage(function(backgroundPage){
     backgroundPage.saveFilterConditions(conditions);
   });

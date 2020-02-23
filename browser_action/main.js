@@ -7,60 +7,6 @@ const appCharts = new Vue({
   }
 })
 
-const appList = new Vue({
-  el: '#app-list',
-  data: {
-    type: LIST_TYPE.MENU,
-    elements: MENU_DATA
-  }
-})
-
-const appLog = new Vue({
-  el: '#app-log',
-  data: {
-    log: LOG_RECEIVER.data
-  }
-});
-
-function updateMusicList()
-{
-  chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.updateMusicList(chrome.windows.WINDOW_ID_CURRENT);
-  });
-}
-
-function updateMusicList2()
-{
-  chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.fetchMissingMusicInfo(chrome.windows.WINDOW_ID_CURRENT);
-  });
-}
-
-function updateSingleScoreList()
-{
-  chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, PLAY_MODE.SINGLE);
-  });
-}
-function updateDoubleScoreList()
-{
-  chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, PLAY_MODE.DOUBLE);
-  });
-}
-
-function updateScoreDetail()
-{
-
-}
-
-function updateCharts()
-{
-  chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.updateCharts();
-  });
-}
-
 function refreshListDebug(){
   const conditions = eval($('#filterConditions').get()[0].value);
   refreshListImpl(conditions)
@@ -111,11 +57,3 @@ function refreshListImpl(conditions)
     };
   });
 }
-
-document.getElementById('updateMusicListButton').addEventListener("click", updateMusicList);
-document.getElementById('updateMusicList2Button').addEventListener("click", updateMusicList2);
-document.getElementById('updateSingleScoreListButton').addEventListener("click", updateSingleScoreList);
-document.getElementById('updateDoubleScoreListButton').addEventListener("click", updateDoubleScoreList);
-document.getElementById('updateScoreDetailButton').addEventListener("click", updateScoreDetail);
-document.getElementById('updateChartsButton').addEventListener("click", updateCharts);
-document.getElementById('refreshListButton').addEventListener("click", refreshList);

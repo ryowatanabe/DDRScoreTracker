@@ -71,7 +71,6 @@ a {
 }
 .filter .element {
   white-space: nowrap;
-  cursor: pointer;
 }
 .filter-background {
   z-index: 9;

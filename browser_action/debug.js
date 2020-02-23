@@ -1,3 +1,42 @@
+function updateMusicList()
+{
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    backgroundPage.updateMusicList(chrome.windows.WINDOW_ID_CURRENT);
+  });
+}
+
+function updateMusicList2()
+{
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    backgroundPage.fetchMissingMusicInfo(chrome.windows.WINDOW_ID_CURRENT);
+  });
+}
+
+function updateSingleScoreList()
+{
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, PLAY_MODE.SINGLE);
+  });
+}
+function updateDoubleScoreList()
+{
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, PLAY_MODE.DOUBLE);
+  });
+}
+
+function updateScoreDetail()
+{
+
+}
+
+function updateCharts()
+{
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    backgroundPage.updateCharts();
+  });
+}
+
 function dumpMusicList()
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
@@ -24,48 +63,19 @@ function updateParsedMusicList()
   });
 }
 
-function refreshList2() {
-  var conditions = [];
-  const names = [ "playMode", "level", "clearType", "scoreRank" ];
-  names.forEach(function(name){
-    const elements = $(`input[name=${name}]:checked`);
-    if (elements.length > 0){
-      const condition = {
-        attribute: name,
-        values: jQuery.map(elements, function(element){ return parseInt(element.value, 10); })
-      }
-      conditions.push(condition);
-    }
-  });
-  console.log(conditions);
-  chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.saveFilterConditions(conditions);
-  });
-  refreshListImpl(conditions);
-}
-
-function openFilter() {
-  $("#filterContainer").attr('class', 'filter active');
-  $("#filterBackground").attr('class', 'filter-background active');
-}
-function closeFilter() {
-  $("#filterContainer").attr('class', 'filter');
-  $("#filterBackground").attr('class', 'filter-background');
-  setTimeout(refreshList2, 300);
-}
-
-document.getElementById('openFilterButton').addEventListener("click", openFilter);
-document.getElementById('closeFilterButton').addEventListener("click", closeFilter);
-
 document.getElementById('dumpMusicListButton').addEventListener("click", dumpMusicList);
 document.getElementById('updateParsedMusicListButton').addEventListener("click", updateParsedMusicList);
 
-chrome.runtime.getBackgroundPage(function(backgroundPage){
-  const filterConditions = backgroundPage.getFilterConditions();
-  filterConditions.forEach(function(condition){
-    condition.values.forEach(function(value){
-      $(`#filterCondition_${condition.attribute}_${value}`).prop('checked', true);
-    });
-  });
-  refreshList2();
+const appLog = new Vue({
+  el: '#app-log',
+  data: {
+    log: LOG_RECEIVER.data
+  }
 });
+
+document.getElementById('updateMusicListButton').addEventListener("click", updateMusicList);
+document.getElementById('updateMusicList2Button').addEventListener("click", updateMusicList2);
+document.getElementById('updateSingleScoreListButton').addEventListener("click", updateSingleScoreList);
+document.getElementById('updateDoubleScoreListButton').addEventListener("click", updateDoubleScoreList);
+document.getElementById('updateScoreDetailButton').addEventListener("click", updateScoreDetail);
+document.getElementById('updateChartsButton').addEventListener("click", updateCharts);
