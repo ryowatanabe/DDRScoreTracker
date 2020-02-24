@@ -7,7 +7,12 @@ LOG_RECEIVER.flush = function () {
 };
 
 LOG_RECEIVER.push = function (content) {
-  this.data.push(content);
+  if (!Array.isArray(content)) {
+    content = [ content ];
+  }
+  content.forEach (function(line){
+    this.data.push(line);
+  }, this);
   if (typeof(Vue) !== 'undefined') {
     Vue.nextTick(this.callback);
   }

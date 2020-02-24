@@ -81,11 +81,12 @@ gh pagesから曲リストを取得し、ローカルの曲リストを更新す
 
 function updateParsedMusicList()
 {
-    LOGGER.debug("github pagesより楽曲リストを取得...");
+    LOGGER.info("github pagesより楽曲リストを取得...");
     $.ajax({
       url: PARSED_MUSIC_LIST_URL,
       dataType: 'text',
       success: function( result ) {
+        LOGGER.info("取得成功.");
         var musics = {};
         const lines = result.split("\n");
         lines.forEach(function(line){
@@ -98,15 +99,41 @@ function updateParsedMusicList()
             title: elements[10]
           }
         });
+        LOGGER.info(`${Object.keys(musics).length} 件のデータがあります.`);
         Object.keys(musics).forEach(function(musicId){
-          storage.musics[musicId] = musics[musicId];
+          if(storage.musics.hasOwnProperty(musicId)){
+            var isUpdated = false;
+            const iterator = musics[musicId].difficulty.keys();
+            for (let index in iterator) {
+              if (musics[musicId].difficulty[index] != 0 && storage.musics[musicId].difficulty[index] == 0){
+                isUpdated = true;
+                storage.musics[musicId].difficulty[index] = musics[musicId].difficulty[index];
+              }
+            }
+            if (isUpdated) {
+              LOGGER.info(`更新: ${[musicId, musics[musicId].difficulty, musics[musicId].title].flat().join("\t")}`);
+            }
+          } else {
+            LOGGER.info(`追加: ${[musicId, musics[musicId].difficulty, musics[musicId].title].flat().join("\t")}`);
+            storage.musics[musicId] = musics[musicId];
+          }
         });
         saveStorage();
+        LOGGER.info([
+          "処理を完了しました.",
+          ""
+        ]);
       },
       error: function( jqXHR, textStatus, errorThrown ) {
-        console.log("xhr error");
-        console.log(textStatus);
-        console.log(errorThrown);
+        LOGGER.info("通信エラーが発生しました.");
+        LOGGER.debug([
+          `textStatus: ${textStatus}`,
+          `errorThrown: ${errorThrown}`
+        ]);
+        LOGGER.info([
+          "処理を終了しました. 通信環境のよいところでやり直してください.",
+          ""
+        ]);
       }
     });
 }
