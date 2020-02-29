@@ -37,6 +37,13 @@ function updateCharts()
   });
 }
 
+function resetStorage()
+{
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    backgroundPage.resetStorage();
+  });
+}
+
 function dumpMusicList()
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
@@ -92,3 +99,4 @@ document.getElementById('updateSingleScoreListButton').addEventListener("click",
 document.getElementById('updateDoubleScoreListButton').addEventListener("click", updateDoubleScoreList);
 document.getElementById('updateScoreDetailButton').addEventListener("click", updateScoreDetail);
 document.getElementById('updateChartsButton').addEventListener("click", updateCharts);
+document.getElementById('resetStorageButton').addEventListener("click", resetStorage);

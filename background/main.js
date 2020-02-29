@@ -15,6 +15,9 @@ let targetUrls = [];
 */
 let storage = {};
 let storageBytesInUse = 0;
+
+let musicList;   // 曲リスト。1曲1エントリ。
+let scoreList;   // スコアリスト。1極1エントリ。
 let charts = []; // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
 
 function loadStorage() {
@@ -22,6 +25,8 @@ function loadStorage() {
       getDefaults(),
       function(data) {
         storage = data;
+        musicList = MusicList.createFromStorage(storage.musics);
+        //scoreList = ScoreList.createFromStorage(storage.scores);
         updateCharts();
         getBytesInUse();
         state = STATE.IDLE;
@@ -40,7 +45,9 @@ function saveStorage() {
 }
 
 function resetStorage() {
+  LOGGER.info("端末上に保存しているデータを削除します.");
   chrome.storage.local.clear(function(){
+    LOGGER.info("完了しました.");
     loadStorage();
   });
 }
@@ -89,6 +96,7 @@ function updateParsedMusicList()
         LOGGER.info("取得成功.");
         var musics = {};
         const lines = result.split("\n");
+        LOGGER.info(`${lines.length} 件のデータがあります.`);
         lines.forEach(function(line){
           const elements = line.split("\t");
           if (elements.length <= 1) {
@@ -99,7 +107,6 @@ function updateParsedMusicList()
             title: elements[10]
           }
         });
-        LOGGER.info(`${Object.keys(musics).length} 件のデータがあります.`);
         Object.keys(musics).forEach(function(musicId){
           if(storage.musics.hasOwnProperty(musicId)){
             var isUpdated = false;
