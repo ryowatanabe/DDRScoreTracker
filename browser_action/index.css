@@ -143,6 +143,7 @@ a {
   padding: 5px;
   transition: all 0.3s ease-in-out 0s;
   transform: translateX(100%);
+  overflow: scroll;
 }
 .log.active {
   transform: translateX(0);
