@@ -1,6 +1,6 @@
 function refreshList() {
   var conditions = [];
-  const names = [ "playMode", "level", "clearType", "scoreRank" ];
+  const names = [ "playMode", "difficulty", "level", "clearType", "scoreRank" ];
   names.forEach(function(name){
     const elements = $(`input[name=${name}]:checked`);
     if (elements.length > 0){
