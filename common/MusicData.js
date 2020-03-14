@@ -19,6 +19,9 @@ class MusicData {
   }
 
   static createFromString(encodedString) {
+    if(encodedString.trim() == "") {
+      return null;
+    }
     const elements = encodedString.split("\t");
     if (elements.length != 11) {
       LOGGER.error(`MusicData.create invalid string: ${encodedString}`);
