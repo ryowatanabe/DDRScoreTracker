@@ -234,7 +234,7 @@ function updateCharts(){
           return;
         }
         chart.musicId = musicId;
-        chart.title = storage.musics[musicId]['title'];
+        chart.title = musicList.getById(musicId).title;
         if(musicId in storage.scores && difficultyValue in storage.scores[musicId]){
           chart.fullComboType = storage.scores[musicId][difficultyValue]['fullComboType'];
           chart.scoreRank = storage.scores[musicId][difficultyValue]['scoreRank'];
