@@ -29,8 +29,8 @@ class MusicData {
     }
     const instance = new MusicData(
       elements[0],
-      elements.slice(1, 10).map(element => parseInt(element, 10)),
-      elements[10]
+      elements[10],
+      elements.slice(1, 10).map(element => parseInt(element, 10))
     );
     return instance;
   }
