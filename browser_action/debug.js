@@ -47,12 +47,8 @@ function resetStorage()
 function dumpMusicList()
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
-    const musics = backgroundPage.getMusics();
-    const encodedMusicList = Object.keys(musics).map(musicId => {
-      return [musicId, musics[musicId].difficulty, musics[musicId].title].flat().join("\t")
-    }).sort().join("\n");
-
-    $('#textarea').get()[0].innerHTML = encodedMusicList;
+    const musics = backgroundPage.getMusicList();
+    $('#textarea').get()[0].innerHTML = musics.encodedString;
     var copyText = document.querySelector("#textarea");
     copyText.select();
     if(document.execCommand("copy")){

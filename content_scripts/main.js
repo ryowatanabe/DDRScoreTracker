@@ -36,17 +36,17 @@ function parseMusicList(){
   }
   const musics = $('tr.data').get();
   musics.forEach (function(music){
-    const data = {
-    };
+
     const regexp = /^.*img=([0-9a-zA-Z]+).*$/;
     const src = $('td img', $(music))[0].src;
     const musicId = src.replace(regexp, '$1')
-    data.title = $('.music_tit', $(music))[0].innerText;
-    data.difficulty = $('.difficult', $(music)).get().map(function(element){
+    const title = $('.music_tit', $(music))[0].innerText;
+    const difficulty = $('.difficult', $(music)).get().map(function(element){
       const value = parseInt(element.innerText);
       return value ? value : 0;
     });
-    res.musics[musicId] = data;
+    const musicData = new MusicData(musicId, title, difficulty);
+    res.musics[musicId] = musicData;
   });
   return res;
 }
@@ -55,20 +55,19 @@ function parseMusicDetail(){
   const res = {
     musics: {}
   };
-  data = {
-  }
   const musicInfo = $('#music_info td').get();
   const regexpForMusicId = /^.*img=([0-9a-zA-Z]+).*$/;
   const src = $('img', $(musicInfo[0])).get()[0].src;
   const musicId = src.replace(regexpForMusicId, '$1');
-  data.title = musicInfo[1].innerHTML.split('<br>')[0];
+  const title = musicInfo[1].innerHTML.split('<br>')[0];
   const regexpForDifficulties = /^.*songdetails_level_([0-9]*).png$/
   const difficulties = $('li.step img').get();
-  data.difficulty = difficulties.map(element => {
+  const difficulty = difficulties.map(element => {
     const value = parseInt(element.src.replace(regexpForDifficulties, '$1'));
     return value ? value : 0;
   });
-  res.musics[musicId] =  data;
+  const musicData = new MusicData(musicId, title, difficulty);
+  res.musics[musicId] = musicData;
   return res;
 }
 

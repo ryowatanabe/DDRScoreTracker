@@ -20,6 +20,8 @@
         "lib/jquery-3.4.1.min.js",
         "common/const.js",
         "common/logger.js",
+        "common/MusicData.js",
+        "common/ScoreData.js",
         "content_scripts/main.js"
       ],
       "run_at": "document_start",
@@ -32,6 +34,8 @@
       "lib/jquery-3.4.1.min.js",
       "common/const.js",
       "common/logger.js",
+      "common/MusicData.js",
+      "common/ScoreData.js",
       "background/main.js"
     ],
     "persistent": false

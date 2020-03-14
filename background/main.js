@@ -37,7 +37,11 @@ loadStorage();
 
 function saveStorage() {
   chrome.storage.local.set(
-      storage,
+      {
+        scores: storage.scores,
+        musics: musicList.musics,
+        filterConditions: storage.filterCOnditions
+      },
       function() {
         getBytesInUse();
       }
@@ -66,8 +70,8 @@ function saveFilterConditions(conditions) {
     saveStorage();
 }
 
-function getMusics() {
-  return storage.musics;
+function getMusicList() {
+  return musicList;
 }
 
 function getCharts() {
@@ -94,36 +98,10 @@ function updateParsedMusicList()
       dataType: 'text',
       success: function( result ) {
         LOGGER.info("取得成功.");
-        var musics = {};
         const lines = result.split("\n");
         LOGGER.info(`${lines.length} 件のデータがあります.`);
         lines.forEach(function(line){
-          const elements = line.split("\t");
-          if (elements.length <= 1) {
-            return;
-          }
-          musics[elements[0]] = {
-            difficulty: elements.slice(1,10).map(element => parseInt(element, 10)),
-            title: elements[10]
-          }
-        });
-        Object.keys(musics).forEach(function(musicId){
-          if(storage.musics.hasOwnProperty(musicId)){
-            var isUpdated = false;
-            const iterator = musics[musicId].difficulty.keys();
-            for (let index in iterator) {
-              if (musics[musicId].difficulty[index] != 0 && storage.musics[musicId].difficulty[index] == 0){
-                isUpdated = true;
-                storage.musics[musicId].difficulty[index] = musics[musicId].difficulty[index];
-              }
-            }
-            if (isUpdated) {
-              LOGGER.info(`更新: ${[musicId, musics[musicId].difficulty, musics[musicId].title].flat().join("\t")}`);
-            }
-          } else {
-            LOGGER.info(`追加: ${[musicId, musics[musicId].difficulty, musics[musicId].title].flat().join("\t")}`);
-            storage.musics[musicId] = musics[musicId];
-          }
+          musicList.applyEncodedString(line);
         });
         saveStorage();
         LOGGER.info([
@@ -178,11 +156,11 @@ function fetchMissingMusicInfo(windowId)
   }
   /* 曲情報が欠けている曲と、曲情報そのものはあるが、譜面情報が欠けている (追加鬼譜面など) 曲を列挙する */
   const targetMusicIDs = Object.keys(storage.scores).filter(musicId => {
-    if (!(musicId in storage.musics)) {
+    if (!musicList.hasMusic(musicId)) {
       return true;
     }
     const missing = Object.keys(storage.scores[musicId]).find(difficulty => {
-      if (storage.musics[musicId].difficulty[difficulty] == 0 && storage.scores[musicId][difficulty].scoreRank > 0) {
+      if (musicList.getById(musicId).difficulty[difficulty] == 0 && storage.scores[musicId][difficulty].scoreRank > 0) {
         return true;
       }
     });
@@ -233,7 +211,7 @@ function updateScoreList(windowId, playMode)
 
 function updateCharts(){
   charts = [];
-  Object.keys(storage.musics).forEach(function(musicId){
+  Object.keys(musicList.musics).forEach(function(musicId){
     Object.values(PLAY_MODE).forEach(function(playMode){
       Object.values(DIFFICULTIES).forEach(function(difficulty){
         if (playMode == PLAY_MODE.DOUBLE && difficulty == DIFFICULTIES.BEGINNER){
@@ -251,7 +229,7 @@ function updateCharts(){
           score: 0,
         };
         const difficultyValue = difficulty + (playMode == PLAY_MODE.DOUBLE ? DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
-        chart.level = storage.musics[musicId]['difficulty'][difficultyValue];
+        chart.level = musicList.getById(musicId)['difficulty'][difficultyValue];
         if (chart.level == 0){
           return;
         }
@@ -294,7 +272,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
         chrome.tabs.sendMessage(tabId, { type: 'PARSE_MUSIC_LIST' }, function(res) {
           console.log(res);
           Object.keys(res.musics).forEach(function(musicId){
-            storage.musics[musicId] = res.musics[musicId];
+            musicList.applyObject(res.musics[musicId]);
           });
           saveStorage();
           if (res.hasNext) {
@@ -312,7 +290,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
         chrome.tabs.sendMessage(tabId, { type: 'PARSE_MUSIC_DETAIL' }, function(res) {
           console.log(res);
           Object.keys(res.musics).forEach(function(musicId){
-            storage.musics[musicId] = res.musics[musicId];
+            musicList.applyObject(res.musics[musicId]);
           });
           saveStorage();
           if (targetUrls.length > 0) {
