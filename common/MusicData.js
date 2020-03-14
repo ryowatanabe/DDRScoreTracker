@@ -70,8 +70,8 @@ class MusicList {
 
   applyMusicData(musicData) {
     if (this.hasMusic(musicData.musicId)) {
-      if (this.getById(musicId).merge(musicData)) {
-        LOGGER.debug(`Modified: ${this.getById(musicId).encodedString}`);
+      if (this.getById(musicData.musicId).merge(musicData)) {
+        LOGGER.debug(`Modified: ${this.getById(musicData.musicId).encodedString}`);
       }
     } else{
       LOGGER.debug(`Added: ${musicData.encodedString}`);
