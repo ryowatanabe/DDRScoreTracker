@@ -101,6 +101,7 @@ function updateParsedMusicList()
           musicList.applyEncodedString(line);
         });
         saveStorage();
+        updateCharts();
         LOGGER.info([
           "処理を完了しました.",
           ""
@@ -248,6 +249,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
             musicList.applyObject(res.musics[musicId]);
           });
           saveStorage();
+          updateCharts();
           if (res.hasNext) {
             setTimeout(function(){
               chrome.tabs.update(tabId, { url: res.nextUrl }, function(tab){})
@@ -266,6 +268,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
             musicList.applyObject(res.musics[musicId]);
           });
           saveStorage();
+          updateCharts();
           if (targetUrls.length > 0) {
             const targetUrl = targetUrls.pop();
             setTimeout(function(){
