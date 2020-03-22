@@ -75,7 +75,7 @@ function parseScoreList(){
   const res = {
     hasNext: false,
     nextUrl: "",
-    scores: {}
+    scores: []
   };
   const next = $('#next.arrow').get();
   if (next.length > 0) {
@@ -108,7 +108,7 @@ function parseScoreList(){
 
       scoreData.applyScoreDetail(difficulty, scoreDetail);
     });
-    res.scores[musicId] = scoreData;
+    res.scores.push(scoreData);
   });
   return res;
 }

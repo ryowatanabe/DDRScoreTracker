@@ -26,7 +26,8 @@ function loadStorage() {
       function(data) {
         storage = data;
         musicList = MusicList.createFromStorage(storage.musics);
-        scoreList = ScoreList.createFromStorage(storage.scores);
+        scoreList = new ScoreList();
+        //scoreList = ScoreList.createFromStorage(storage.scores);
         updateCharts();
         getBytesInUse();
         state = STATE.IDLE;
@@ -38,7 +39,7 @@ loadStorage();
 function saveStorage() {
   chrome.storage.local.set(
       {
-        scores: storage.scores,
+        scores: scoreList.musics,
         musics: musicList.musics,
         filterConditions: storage.filterConditions
       },
@@ -308,14 +309,8 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
       if (changeInfo.status == "complete"){
         chrome.tabs.sendMessage(tabId, { type: 'PARSE_SCORE_LIST' }, function(res) {
           console.log(res);
-          Object.keys(res.scores).forEach(function(musicId){
-            if (musicId in storage.scores){
-              Object.keys(res.scores[musicId]).forEach(function(difficulty){
-                storage.scores[musicId][difficulty] = res.scores[musicId][difficulty];
-              });
-            } else{
-              storage.scores[musicId] = res.scores[musicId];
-            }
+          res.scores.forEach(function(score){
+            scoreList.applyObject(score);
           });
           saveStorage();
           if (res.hasNext) {

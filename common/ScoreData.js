@@ -31,7 +31,7 @@ class ScoreData {
   static createFromStorage(storageData) {
     const instance = new ScoreData(storageData["musicId"]);
     Object.getOwnPropertyNames(storageData["difficulty"]).forEach(function(index){
-      this.difficulty[index] = ScoreDetail.createFromStorage(storageData["difficulty"][index]);
+      instance.difficulty[index] = ScoreDetail.createFromStorage(storageData["difficulty"][index]);
     });
     return instance;
   }
@@ -57,12 +57,17 @@ class ScoreList {
     return instance;
   }
 
-  applyScoreData() {
-
+  applyScoreData(scoreData) {
+    /*　ToDo: データの単純上書きでなく、マージが必要なケースを考慮する */
+    this.musics[scoreData.musicId] = scoreData;
   }
 
-  applyObject() {
-
+  applyObject(object) {
+    const scoreData = ScoreData.createFromStorage(object);
+    if (scoreData === null) {
+      return false;
+    }
+    this.applyScoreData(scoreData);
+    return true;
   }
-
 }
