@@ -285,6 +285,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
             scoreList.applyObject(score);
           });
           saveStorage();
+          updateCharts();
           if (res.hasNext) {
             setTimeout(function(){
               chrome.tabs.update(tabId, { url: res.nextUrl }, function(tab){})
