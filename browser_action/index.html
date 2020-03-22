@@ -11,6 +11,9 @@
   <div id="contentArea">
     <div id="openMenuButton" class="drawer-switch">&lt;&lt;Menu</div>
     <div id="openFilterButton" class="drawer-switch">&lt;&lt;Filter</div>
+
+    <div id="drawerBackground" class="drawer-background"></div>
+
     <div id="filterContainer" class="drawer filter">
       <div class="condition-group">
         ゲームモード
@@ -97,15 +100,18 @@
         </div>
       </div>-->
       <div>
-        <button id="closeFilterButton" type="button" name="refreshList2">　更　新　</button>
-        <a href="debug.html">設定</a>
-      </div>
-      <hr>
-      <div>
-        <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">スコア詳細を公式から取得</button>
+        <button id="closeFilterButton" type="button" name="refreshList2" class="drawer-close-button">更新</button>
       </div>
     </div>
-    <div id="filterBackground" class="drawer-background">
+
+    <div id="menuContainer" class="drawer menu">
+      <div class="function-group">
+        <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">スコア詳細を公式から取得</button>
+      </div>
+      <div>
+        <button id="closeMenuButton" type="button" class="drawer-close-button">閉じる</button>
+        <a href="debug.html">デバッグページ</a>
+      </div>
     </div>
 
     <div id="logContainer" class="drawer log">
@@ -150,4 +156,5 @@
 <script src="logContainer.js"></script>
 <script src="main.js"></script>
 <script src="filter.js"></script>
+<script src="menu.js"></script>
 </html>

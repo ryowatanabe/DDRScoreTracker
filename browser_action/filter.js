@@ -19,11 +19,11 @@ function refreshList() {
 
 function openFilter() {
   $("#filterContainer").addClass('active');
-  $("#filterBackground").addClass('active');
+  $("#drawerBackground").addClass('active');
 }
 function closeFilter() {
   $("#filterContainer").removeClass('active');
-  $("#filterBackground").removeClass('active');
+  $("#drawerBackground").removeClass('active');
   setTimeout(refreshList, 300);
 }
 

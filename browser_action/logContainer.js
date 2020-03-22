@@ -1,9 +1,11 @@
 function openLog() {
   $("#logContainer").addClass('active');
+  $("#drawerBackground").addClass('active');
   scrollLogToBottom();
 }
 function closeLog() {
   $("#logContainer").removeClass('active');
+  $("#drawerBackground").removeClass('active');
 }
 function flushLog() {
   LOG_RECEIVER.flush();

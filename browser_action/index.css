@@ -45,6 +45,9 @@ a {
   margin-left: 5px;
   cursor: pointer;
 }
+.drawer-close-button {
+  width: 100px;
+}
 .drawer {
   z-index: 10;
   position: fixed;
@@ -91,6 +94,18 @@ a {
 }
 .filter .element {
   white-space: nowrap;
+}
+
+/*
+機能メニュー
+*/
+
+.menu .function-group {
+  border: 1px solid #ffffff;
+  width: available;
+  margin-bottom: 5px;
+  padding: 5px;
+  line-height: 150%;
 }
 
 /*
