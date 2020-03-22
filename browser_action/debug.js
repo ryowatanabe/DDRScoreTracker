@@ -80,7 +80,13 @@ document.getElementById('dumpScoreListButton').addEventListener("click", dumpSco
 
 function restoreScoreList() {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
-    const object = JSON.parse($('#restoreScoreListArea').get()[0].value);
+    try {
+      const object = JSON.parse($('#restoreScoreListArea').get()[0].value);
+    } catch (error) {
+      console.log(error);
+      alert(error);
+      return;
+    }
     if (window.confirm('フォームの内容でスコアリストをリストアしますか？')) {
       backgroundPage.restoreScoreList(object);
       alert("リストアしました。");
