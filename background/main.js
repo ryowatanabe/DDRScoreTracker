@@ -9,10 +9,7 @@ const STATE = {
 let state = STATE.INITIALIZE;
 let tabId = 0;
 let targetUrls = [];
-/*
- storage.musics: 曲リスト。1曲1エントリ。
- storage.scores: スコアリスト。1曲1エントリ。
-*/
+
 let storage = {};
 let storageBytesInUse = 0;
 
@@ -155,12 +152,12 @@ function fetchMissingMusicInfo(windowId)
     //return false;
   }
   /* 曲情報が欠けている曲と、曲情報そのものはあるが、譜面情報が欠けている (追加鬼譜面など) 曲を列挙する */
-  const targetMusicIDs = Object.keys(storage.scores).filter(musicId => {
+  const targetMusicIDs = scoreList.musicIds.filter(musicId => {
     if (!musicList.hasMusic(musicId)) {
       return true;
     }
-    const missing = Object.keys(storage.scores[musicId]).find(difficulty => {
-      if (musicList.getMusicDataById(musicId).difficulty[difficulty] == 0 && storage.scores[musicId][difficulty].scoreRank > 0) {
+    const missing = scoreList.getScoreDataByMusicId(musicId).difficulties.find(difficulty => {
+      if (musicList.getMusicDataById(musicId).difficulty[difficulty] == 0) {
         return true;
       }
     });
@@ -211,7 +208,7 @@ function updateScoreList(windowId, playMode)
 
 function updateCharts(){
   charts = [];
-  Object.keys(musicList.musics).forEach(function(musicId){
+  musicList.musicIds.forEach(function(musicId){
     Object.values(PLAY_MODE).forEach(function(playMode){
       Object.values(DIFFICULTIES).forEach(function(difficulty){
         if (playMode == PLAY_MODE.DOUBLE && difficulty == DIFFICULTIES.BEGINNER){
@@ -235,10 +232,11 @@ function updateCharts(){
         }
         chart.musicId = musicId;
         chart.title = musicList.getMusicDataById(musicId).title;
-        if(musicId in storage.scores && difficultyValue in storage.scores[musicId]){
-          chart.fullComboType = storage.scores[musicId][difficultyValue]['fullComboType'];
-          chart.scoreRank = storage.scores[musicId][difficultyValue]['scoreRank'];
-          chart.score = storage.scores[musicId][difficultyValue]['score'];
+        if(scoreList.hasMusic(musicId) && scoreList.getScoreDataByMusicId(musicId).hasDifficulty(difficultyValue)){
+          const scoreDetail = scoreList.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
+          chart.fullComboType = scoreDetail.fullComboType;
+          chart.scoreRank     = scoreDetail.scoreRank;
+          chart.score         = scoreDetail.score;
           /* TODO: アシストクリアとE判定クリアが未考慮 */
           if (chart.fullComboType != FULL_COMBO_TYPE.NO_FC) {
             chart.clearType = chart.fullComboType + CLEAR_TYPE_OFFSET_FOR_FULLCOMBO;

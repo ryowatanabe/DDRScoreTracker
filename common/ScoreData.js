@@ -40,6 +40,18 @@ class ScoreData {
     /*　ToDo: データの単純上書きでなく、マージが必要なケースを考慮する */
     this.difficulty[difficulty] = scoreDetail;
   }
+
+  getScoreDetailByDifficulty(difficultyValue) {
+    return this.difficulty[difficultyValue];
+  }
+
+  hasDifficulty(difficultyValue) {
+    return this.difficulty.hasOwnProperty(difficultyValue);
+  }
+
+  get difficulties(){
+    return Object.getOwnPropertyNames(this.difficulty);
+  }
 }
 
 class ScoreList {
@@ -71,11 +83,15 @@ class ScoreList {
     return true;
   }
 
-  getScoreDataById(musicId){
+  getScoreDataByMusicId(musicId){
     return this.musics[musicId];
   }
 
   hasMusic(musicId){
     return this.musics.hasOwnProperty(musicId);
+  }
+
+  get musicIds(){
+    return Object.getOwnPropertyNames(this.musics);
   }
 }

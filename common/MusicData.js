@@ -108,6 +108,10 @@ class MusicList {
     return this.musics.hasOwnProperty(musicId);
   }
 
+  get musicIds(){
+    return Object.getOwnPropertyNames(this.musics);
+  }
+
   get encodedString(){
     return Object.getOwnPropertyNames(this.musics).map(musicId => {
       return this.getMusicDataById(musicId).encodedString;

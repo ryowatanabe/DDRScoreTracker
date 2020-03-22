@@ -106,6 +106,9 @@ function parseScoreList(){
       scoreDetail.scoreRank = SCORE_RANK_FILE_MAP[scoreRankFileName];
       scoreDetail.fullComboType = FULL_COMBO_TYPE_FILE_MAP[fullComboTypeFileName];
 
+      if (scoreDetail.scoreRank == SCORE_RANK.NO_PLAY) {
+        return;
+      }
       scoreData.applyScoreDetail(difficulty, scoreDetail);
     });
     res.scores.push(scoreData);
