@@ -27,13 +27,6 @@ class ChartData {
     return this.scoreDetail.score;
   }
 
-  get scoreString() {
-    if (this.scoreDetail === null || this.scoreDetail.score === null){
-      return "";
-    }
-    return this.scoreDetail.score.toLocaleString();
-  }
-
   get scoreRank() {
     if (this.scoreDetail === null){
       return null;
@@ -67,6 +60,62 @@ class ChartData {
       return null;
     }
     return this.scoreDetail.maxCombo;
+  }
+
+  get scoreString() {
+    if (this.scoreDetail === null || this.scoreDetail.score === null){
+      return "";
+    }
+    return this.scoreDetail.score.toLocaleString();
+  }
+
+  get fullComboTypeString() {
+    if (this.scoreDetail === null || this.scoreDetail.clearType === null){
+      return "";
+    }
+    return FULL_COMBO_TYPE_STRING[this.scoreDetail.clearType];
+  }
+
+  get fullComboSymbol() {
+    if (this.scoreDetail === null || this.scoreDetail.clearType === null){
+      return "";
+    }
+    return FULL_COMBO_SYMBOL[this.scoreDetail.clearType];
+  }
+
+  get clearTypeClassString() {
+    if (this.scoreDetail === null || this.scoreDetail.clearType === null){
+      return "";
+    }
+    return CLEAR_TYPE_CLASS_STRING[this.scoreDetail.clearType];
+  }
+
+  get scoreRankString() {
+    if (this.scoreDetail === null || this.scoreDetail.scoreRank === null){
+      return "";
+    }
+    return SCORE_RANK_STRING[this.scoreDetail.scoreRank];
+  }
+
+  get scoreRankClassString() {
+    if (this.scoreDetail === null || this.scoreDetail.scoreRank === null){
+      return "";
+    }
+    return SCORE_RANK_CLASS_STRING[this.scoreDetail.scoreRank];
+  }
+
+  get difficultyClassString() {
+    if (this.difficulty === null){
+      return "";
+    }
+    return DIFFICULTY_CLASS_STRING[this.difficulty];
+  }
+
+  get playModeSymbol() {
+    if (this.playMode === null){
+      return "";
+    }
+    return PLAY_MODE_SYMBOL[this.playMode];
   }
 }
 

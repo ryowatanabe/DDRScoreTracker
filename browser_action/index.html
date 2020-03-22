@@ -105,80 +105,25 @@
 
     <div id="app-charts" class="content">
       <template v-if="charts.length > 0">
-      <template v-if="statistics.clearType.marvelous_fc > 0">MFC:{{ statistics.clearType.marvelous_fc }}</template>
-      <template v-if="statistics.clearType.perfect_fc > 0">PFC:{{ statistics.clearType.perfect_fc }}</template>
-      <template v-if="statistics.clearType.great_fc > 0">FC:{{ statistics.clearType.great_fc }}</template>
-      <template v-if="statistics.clearType.good_fc > 0">GFC:{{ statistics.clearType.good_fc }}</template>
-      <template v-if="statistics.clearType.life4 > 0">LIFE4:{{ statistics.clearType.life4 }}</template>
-      <template v-if="statistics.clearType.clear > 0">Clear:{{ statistics.clearType.clear }}</template>
-      <template v-if="statistics.clearType.assist_clear > 0">AssistClear:{{ statistics.clearType.assist_clear }}</template>
-      <template v-if="statistics.clearType.failed > 0">Failed:{{ statistics.clearType.failed }}</template>
-      <template v-if="statistics.clearType.no_play > 0">NoPlay:{{ statistics.clearType.no_play }}</template>
-      <div class="graph">
-        <div class="inner"><span class="element marvelous_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.marvelous_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element perfect_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.perfect_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element great_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.great_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element good_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.good_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element life4" v-bind:style="{ width: 'calc(' + statistics.clearType.life4 + ' / ' + charts.length + ' * 100%'}"></span><span class="element clear" v-bind:style="{ width: 'calc(' + statistics.clearType.clear + ' / ' + charts.length + ' * 100%'}"></span><span class="element assist_clear" v-bind:style="{ width: 'calc(' + statistics.clearType.assist_clear + ' / ' + charts.length + ' * 100%'}"></span><span class="element failed" v-bind:style="{ width: 'calc(' + statistics.clearType.failed + ' / ' + charts.length + ' * 100%'}"></span><span class="element no_play" v-bind:style="{ width: 'calc(' + statistics.clearType.no_play + ' / ' + charts.length + ' * 100%'}"></span></div>
-      </div>
+        <template v-if="statistics.clearType.marvelous_fc > 0">MFC:{{ statistics.clearType.marvelous_fc }}</template>
+        <template v-if="statistics.clearType.perfect_fc > 0">PFC:{{ statistics.clearType.perfect_fc }}</template>
+        <template v-if="statistics.clearType.great_fc > 0">FC:{{ statistics.clearType.great_fc }}</template>
+        <template v-if="statistics.clearType.good_fc > 0">GFC:{{ statistics.clearType.good_fc }}</template>
+        <template v-if="statistics.clearType.life4 > 0">LIFE4:{{ statistics.clearType.life4 }}</template>
+        <template v-if="statistics.clearType.clear > 0">Clear:{{ statistics.clearType.clear }}</template>
+        <template v-if="statistics.clearType.assist_clear > 0">AssistClear:{{ statistics.clearType.assist_clear }}</template>
+        <template v-if="statistics.clearType.failed > 0">Failed:{{ statistics.clearType.failed }}</template>
+        <template v-if="statistics.clearType.no_play > 0">NoPlay:{{ statistics.clearType.no_play }}</template>
+        <div class="graph">
+          <div class="inner"><span class="element marvelous_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.marvelous_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element perfect_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.perfect_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element great_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.great_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element good_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.good_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element life4" v-bind:style="{ width: 'calc(' + statistics.clearType.life4 + ' / ' + charts.length + ' * 100%'}"></span><span class="element clear" v-bind:style="{ width: 'calc(' + statistics.clearType.clear + ' / ' + charts.length + ' * 100%'}"></span><span class="element assist_clear" v-bind:style="{ width: 'calc(' + statistics.clearType.assist_clear + ' / ' + charts.length + ' * 100%'}"></span><span class="element failed" v-bind:style="{ width: 'calc(' + statistics.clearType.failed + ' / ' + charts.length + ' * 100%'}"></span><span class="element no_play" v-bind:style="{ width: 'calc(' + statistics.clearType.no_play + ' / ' + charts.length + ' * 100%'}"></span></div>
+        </div>
       </template>
       <div class="score_list">
         <template v-for="chart in charts">
-          <div class="level" v-bind:class="{ beginner: chart.difficulty == 0, basic: chart.difficulty == 1, difficult: chart.difficulty == 2, expert: chart.difficulty == 3, challenge: chart.difficulty == 4 }">
-            {{ chart.level }}<template v-if="chart.playMode == 0">&#39;</template><template v-if="chart.playMode == 1">&quot;</template>
-          </div>
+          <div v-bind:class="[ 'level', chart.difficultyClassString ]">{{ chart.level }}{{ chart.playModeSymbol }}</div>
           <div class="title">{{ chart.title }}</div>
-          <template v-if="chart.scoreRank === null">
-            <div class="score_rank"></div>
-          </template>
-          <template v-if="chart.scoreRank == 0">
-            <div class="score_rank"></div>
-          </template>
-          <template v-if="chart.scoreRank == 1">
-            <div class="score_rank rank_e">E</div>
-          </template>
-          <template v-if="chart.scoreRank == 2">
-            <div class="score_rank rank_d">D</div>
-          </template>
-          <template v-if="chart.scoreRank == 3">
-            <div class="score_rank rank_d">D+</div>
-          </template>
-          <template v-if="chart.scoreRank == 4">
-            <div class="score_rank rank_c">C-</div>
-          </template>
-          <template v-if="chart.scoreRank == 5">
-            <div class="score_rank rank_c">C</div>
-          </template>
-          <template v-if="chart.scoreRank == 6">
-            <div class="score_rank rank_c">C+</div>
-          </template>
-          <template v-if="chart.scoreRank == 7">
-            <div class="score_rank rank_b">B-</div>
-          </template>
-          <template v-if="chart.scoreRank == 8">
-            <div class="score_rank rank_b">B</div>
-          </template>
-          <template v-if="chart.scoreRank == 9">
-            <div class="score_rank rank_b">B+</div>
-          </template>
-          <template v-if="chart.scoreRank == 10">
-            <div class="score_rank rank_a">A-</div>
-          </template>
-          <template v-if="chart.scoreRank == 11">
-            <div class="score_rank rank_a">A</div>
-          </template>
-          <template v-if="chart.scoreRank == 12">
-            <div class="score_rank rank_a">A+</div>
-          </template>
-          <template v-if="chart.scoreRank == 13">
-            <div class="score_rank rank_aa">AA-</div>
-          </template>
-          <template v-if="chart.scoreRank == 14">
-            <div class="score_rank rank_aa">AA</div>
-          </template>
-          <template v-if="chart.scoreRank == 15">
-            <div class="score_rank rank_aa">AA+</div>
-          </template>
-          <template v-if="chart.scoreRank == 16">
-            <div class="score_rank rank_aaa">AAA</div>
-          </template>
-          <div class="full_combo_type" v-bind:class="{ good_fc: chart.fullComboType == 1, great_fc: chart.fullComboType == 2, perfect_fc: chart.fullComboType == 3, marvelous_fc: chart.fullComboType == 4 }"><template v-if="chart.fullComboType > 0">○</template></div>
+          <div v-bind:class="[ 'score_rank', chart.scoreRankClassString ]">{{ chart.scoreRankString }}</div>
+          <div v-bind:class="[ 'full_combo_type', chart.clearTypeClassString ]">{{ chart.fullComboSymbol }}</div>
           <div class="score">{{ chart.scoreString }}</div>
         </template>
       </div>

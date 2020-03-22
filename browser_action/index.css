@@ -196,11 +196,11 @@ a {
 .challenge { color: #ff00ff }
 
 .rank_aaa { color: #ffffff }
-.rank_aa { color: #ffffaa }
-.rank_a { color: #ffff00 }
-.rank_b { color: #0088ff }
-.rank_c { color: #ff00ff }
-.rank_d { color: #ff0000 }
+.rank_aa_p, .rank_aa, .rank_aa_m { color: #ffffaa }
+.rank_a_p, .rank_a, .rank_a_m { color: #ffff00 }
+.rank_b_p, .rank_b, .rank_b_m { color: #0088ff }
+.rank_c_p, .rank_c, .rank_c_m { color: #ff00ff }
+.rank_d_p, .rank_d { color: #ff0000 }
 .rank_e { color: #bbbbbb }
 
 .good_fc { color: #0088ff }
