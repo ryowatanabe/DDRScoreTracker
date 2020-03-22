@@ -59,7 +59,7 @@
           <span class="element"><input type="checkbox" id="filterCondition_clearType_7" name="clearType" value="7" /><label for="filterCondition_clearType_7">PFC</label></span>
           <span class="element"><input type="checkbox" id="filterCondition_clearType_6" name="clearType" value="6" /><label for="filterCondition_clearType_6">FC</label></span>
           <span class="element"><input type="checkbox" id="filterCondition_clearType_5" name="clearType" value="5" /><label for="filterCondition_clearType_5">GFC</label></span>
-          <!--<span class="element"><input type="checkbox" id="filterCondition_clearType_4" name="clearType" value="4" /><label for="filterCondition_clearType_4">LIFE4</label></span>-->
+          <span class="element"><input type="checkbox" id="filterCondition_clearType_4" name="clearType" value="4" /><label for="filterCondition_clearType_4">LIFE4</label></span>
           <span class="element"><input type="checkbox" id="filterCondition_clearType_3" name="clearType" value="3" /><label for="filterCondition_clearType_3">Clear</label></span>
           <span class="element"><input type="checkbox" id="filterCondition_clearType_2" name="clearType" value="2" /><label for="filterCondition_clearType_2">AssistClear</label></span>
           <span class="element"><input type="checkbox" id="filterCondition_clearType_1" name="clearType" value="1" /><label for="filterCondition_clearType_1">Failed</label></span>
@@ -105,17 +105,13 @@
 
     <div id="app-charts" class="content">
       <template v-if="charts.length > 0">
-        <template v-if="statistics.clearType.marvelous_fc > 0">MFC:{{ statistics.clearType.marvelous_fc }}</template>
-        <template v-if="statistics.clearType.perfect_fc > 0">PFC:{{ statistics.clearType.perfect_fc }}</template>
-        <template v-if="statistics.clearType.great_fc > 0">FC:{{ statistics.clearType.great_fc }}</template>
-        <template v-if="statistics.clearType.good_fc > 0">GFC:{{ statistics.clearType.good_fc }}</template>
-        <template v-if="statistics.clearType.life4 > 0">LIFE4:{{ statistics.clearType.life4 }}</template>
-        <template v-if="statistics.clearType.clear > 0">Clear:{{ statistics.clearType.clear }}</template>
-        <template v-if="statistics.clearType.assist_clear > 0">AssistClear:{{ statistics.clearType.assist_clear }}</template>
-        <template v-if="statistics.clearType.failed > 0">Failed:{{ statistics.clearType.failed }}</template>
-        <template v-if="statistics.clearType.no_play > 0">NoPlay:{{ statistics.clearType.no_play }}</template>
+        <template v-for="item in statistics.clearType">
+          <template v-if="item.count > 0">
+            {{ item.clearTypeString }}:{{ item.count }}
+          </template>
+        </template>
         <div class="graph">
-          <div class="inner"><span class="element marvelous_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.marvelous_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element perfect_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.perfect_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element great_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.great_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element good_fc" v-bind:style="{ width: 'calc(' + statistics.clearType.good_fc + ' / ' + charts.length + ' * 100%'}"></span><span class="element life4" v-bind:style="{ width: 'calc(' + statistics.clearType.life4 + ' / ' + charts.length + ' * 100%'}"></span><span class="element clear" v-bind:style="{ width: 'calc(' + statistics.clearType.clear + ' / ' + charts.length + ' * 100%'}"></span><span class="element assist_clear" v-bind:style="{ width: 'calc(' + statistics.clearType.assist_clear + ' / ' + charts.length + ' * 100%'}"></span><span class="element failed" v-bind:style="{ width: 'calc(' + statistics.clearType.failed + ' / ' + charts.length + ' * 100%'}"></span><span class="element no_play" v-bind:style="{ width: 'calc(' + statistics.clearType.no_play + ' / ' + charts.length + ' * 100%'}"></span></div>
+          <div class="inner"><template v-for="item in statistics.clearType"><template v-if="item.count > 0"><span v-bind:class="[ 'element', item.clearTypeClassString ]" v-bind:style="{ width: 'calc(' + item.count + ' / ' + charts.length + ' * 100%'}"></span></template></template></div>
         </div>
       </template>
       <div class="score_list">

@@ -16,7 +16,7 @@ function refreshListImpl(filterConditions)
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
     const chartList = backgroundPage.getChartList().getFilteredAndSorted(filterConditions);
-    appCharts.charts     = chartList.charts;
     appCharts.statistics = chartList.statistics;
+    appCharts.charts     = chartList.charts;
   });
 }

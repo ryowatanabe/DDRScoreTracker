@@ -69,11 +69,11 @@ class ChartData {
     return this.scoreDetail.score.toLocaleString();
   }
 
-  get fullComboTypeString() {
+  get clearTypeString() {
     if (this.scoreDetail === null || this.scoreDetail.clearType === null){
       return "";
     }
-    return FULL_COMBO_TYPE_STRING[this.scoreDetail.clearType];
+    return CLEAR_TYPE_STRING[this.scoreDetail.clearType];
   }
 
   get fullComboSymbol() {
@@ -134,18 +134,25 @@ class ChartList {
   }
 
   get statistics() {
-    const statistics = {};
-    statistics['clearType'] = {
-      marvelous_fc: this.charts.filter(chartData => { return chartData.clearType == CLEAR_TYPE.MARVELOUS_FC }).length,
-      perfect_fc:   this.charts.filter(chartData => { return chartData.clearType == CLEAR_TYPE.PERFECT_FC }).length,
-      great_fc:     this.charts.filter(chartData => { return chartData.clearType == CLEAR_TYPE.GREAT_FC }).length,
-      good_fc:      this.charts.filter(chartData => { return chartData.clearType == CLEAR_TYPE.GOOD_FC }).length,
-      life4:        this.charts.filter(chartData => { return chartData.clearType == CLEAR_TYPE.LIFE4 }).length,
-      clear:        this.charts.filter(chartData => { return chartData.clearType == CLEAR_TYPE.CLEAR }).length,
-      assist_clear: this.charts.filter(chartData => { return chartData.clearType == CLEAR_TYPE.ASSIST_CLEAR }).length,
-      failed:       this.charts.filter(chartData => { return chartData.clearType == CLEAR_TYPE.FAILED }).length,
-      no_play:      this.charts.filter(chartData => { return chartData.clearType == CLEAR_TYPE.NO_PLAY }).length
+    const statistics = {
+      clearType: []
     };
+    Object.values(CLEAR_TYPE).forEach(function(clearType){
+      statistics.clearType.push({
+        clearType: clearType,
+        clearTypeString: CLEAR_TYPE_STRING[clearType],
+        clearTypeClassString: CLEAR_TYPE_CLASS_STRING[clearType],
+        count: this.charts.filter(chartData => { return chartData.clearType == clearType }).length,
+      });
+    }.bind(this));
+    statistics.clearType.sort(function(a, b){
+      if (a.clearType > b.clearType){
+        return -1;
+      } else if (a.clearType < b.clearType){
+        return 1;
+      }
+      return 0;
+    });
     return statistics;
   }
 
