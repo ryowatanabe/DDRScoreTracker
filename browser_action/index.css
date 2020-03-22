@@ -158,7 +158,7 @@ a {
 
 .score_list {
   display: grid;
-  grid-template-columns: minmax(1px, max-content) auto minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content)
+  grid-template-columns: minmax(1px, max-content) auto minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content)
 }
 
 .score_list > div {
@@ -176,6 +176,16 @@ a {
   overflow-x: hidden;
   text-overflow: ellipsis;
 }
+.score_list > .clear_count {
+  text-align: right;
+  font-family: monospace;
+  font-size: 1.0rem
+}
+.score_list > .play_count {
+  text-align: right;
+  font-family: monospace;
+  font-size: 1.0rem
+}
 .score_list > .score_rank {
   font-size: 1.2rem;
   font-weight: bold
@@ -184,6 +194,11 @@ a {
   font-size: 1.2rem; font-weight: bold
 }
 .score_list > .score {
+  text-align: right;
+  font-family: monospace;
+  font-size: 1.0rem
+}
+.score_list > .max_combo {
   text-align: right;
   font-family: monospace;
   font-size: 1.0rem
