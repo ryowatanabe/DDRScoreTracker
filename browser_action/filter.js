@@ -18,12 +18,12 @@ function refreshList() {
 }
 
 function openFilter() {
-  $("#filterContainer").attr('class', 'filter active');
-  $("#filterBackground").attr('class', 'filter-background active');
+  $("#filterContainer").addClass('active');
+  $("#filterBackground").addClass('active');
 }
 function closeFilter() {
-  $("#filterContainer").attr('class', 'filter');
-  $("#filterBackground").attr('class', 'filter-background');
+  $("#filterContainer").removeClass('active');
+  $("#filterBackground").removeClass('active');
   setTimeout(refreshList, 300);
 }
 

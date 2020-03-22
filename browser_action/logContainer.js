@@ -1,9 +1,9 @@
 function openLog() {
-  $("#logContainer").attr('class', 'log active');
+  $("#logContainer").addClass('active');
   scrollLogToBottom();
 }
 function closeLog() {
-  $("#logContainer").attr('class', 'log');
+  $("#logContainer").removeClass('active');
 }
 function flushLog() {
   LOG_RECEIVER.flush();

@@ -9,8 +9,9 @@
 </head>
 <body>
   <div id="contentArea">
-    <div id="openFilterButton" class="filter-switch">&lt;&lt;メニュー</div>
-    <div id="filterContainer" class="filter">
+    <div id="openMenuButton" class="drawer-switch">&lt;&lt;Menu</div>
+    <div id="openFilterButton" class="drawer-switch">&lt;&lt;Filter</div>
+    <div id="filterContainer" class="drawer filter">
       <div class="condition-group">
         ゲームモード
         <div>
@@ -104,19 +105,19 @@
         <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">スコア詳細を公式から取得</button>
       </div>
     </div>
-    <div id="filterBackground" class="filter-background">
+    <div id="filterBackground" class="drawer-background">
     </div>
 
-    <div id="logContainer" class="log">
-      <div id="closeLogButton" class="log-switch">■閉じる</div>
-      <div id="flushLogButton" class="log-switch">■クリア</div>
+    <div id="logContainer" class="drawer log">
+      <div id="closeLogButton" class="drawer-switch">■閉じる</div>
+      <div id="flushLogButton" class="drawer-switch">■クリア</div>
       <div id="app-log" class="log-data">
         <template v-for="line in log">
             {{ line }} <br>
         </template>
       </div>
-      <div id="closeLogButton2" class="log-switch">■閉じる</div>
-      <div id="flushLogButton2" class="log-switch">■クリア</div>
+      <div id="closeLogButton2" class="drawer-switch">■閉じる</div>
+      <div id="flushLogButton2" class="drawer-switch">■クリア</div>
     </div>
 
     <div id="app-charts" class="content">
