@@ -26,7 +26,7 @@ function loadStorage() {
       function(data) {
         storage = data;
         musicList = MusicList.createFromStorage(storage.musics);
-        //scoreList = ScoreList.createFromStorage(storage.scores);
+        scoreList = ScoreList.createFromStorage(storage.scores);
         updateCharts();
         getBytesInUse();
         state = STATE.IDLE;
@@ -40,7 +40,7 @@ function saveStorage() {
       {
         scores: storage.scores,
         musics: musicList.musics,
-        filterConditions: storage.filterCOnditions
+        filterConditions: storage.filterConditions
       },
       function() {
         getBytesInUse();

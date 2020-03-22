@@ -11,29 +11,35 @@ class ScoreDetail {
 
   static createFromStorage(storageData) {
     const instance = new ScoreDetail();
-    
+    Object.getOwnPropertyNames(storageData).map(attributeName => {
+      if(typeof(storageData[attributeName]) != 'undefined') {
+        instance[attributeName] = storageData[attributeName];
+      }
+    });
     return instance;
   }
 }
 
 class ScoreData {
-  musicId       = "";
-  score         = null;
-  scoreRank     = null;
-  fullComboType = null;
-  playCount     = null;
-  clearCount    = null;
-  maxCombo      = null;
+  musicId    = "";
+  difficulty = {};
 
-  constructor() {
+  constructor(musicId) {
+    this.musicId = musicId;
   }
 
-  static createFromStorage(musicId, storageData) {
-    const instance = new ScoreData();
-
+  static createFromStorage(storageData) {
+    const instance = new ScoreData(storageData["musicId"]);
+    Object.getOwnPropertyNames(storageData["difficulty"]).forEach(function(index){
+      this.difficulty[index] = ScoreDetail.createFromStorage(storageData["difficulty"][index]);
+    });
     return instance;
   }
 
+  applyScoreDetail(difficulty, scoreDetail) {
+    /*　ToDo: データの単純上書きでなく、マージが必要なケースを考慮する */
+    this.difficulty[difficulty] = scoreDetail;
+  }
 }
 
 class ScoreList {
@@ -44,10 +50,19 @@ class ScoreList {
 
   static createFromStorage(storageData) {
     const instance = new ScoreList();
-    Object.keys(storageData).forEach(function(musicId){
-      const scoreData = Scoreata.createFromStorage(musicId, storageData[musicId]);
+    Object.getOwnPropertyNames(storageData).forEach(function(musicId){
+      const scoreData = ScoreData.createFromStorage(storageData[musicId]);
       instance.applyScoreData(scoreData);
     });
     return instance;
   }
+
+  applyScoreData() {
+
+  }
+
+  applyObject() {
+
+  }
+
 }

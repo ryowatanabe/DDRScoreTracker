@@ -85,32 +85,30 @@ function parseScoreList(){
   const isDouble = ($('#t_double.game_type .select').get().length > 0);
   const scores = $('tr.data').get();
   scores.forEach (function(score){
-    const data = {
-    };
-    Object.keys(DIFFICULTY_NAME_MAP).forEach (function (difficultyName){
-      const difficulty = DIFFICULTY_NAME_MAP[difficultyName] + (isDouble ? DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
-
-      const scoreDetail = $('#' + difficultyName + '.rank', $(score)).get();
-      if (scoreDetail.length == 0) {
-        return;
-      }
-      data[difficulty] = {
-        fullComboType: FULL_COMBO_TYPE.NO_FC,
-        scoreRank: SCORE_RANK.NO_PLAY,
-        score: 0
-      };
-      const value = parseInt($('.data_score', $(scoreDetail[0]))[0].innerText);
-      data[difficulty].score = value ? value : 0;
-      const regexp = /^.*\/([^\/]+)$/;
-      const scoreRankFileName     = $('div.data_rank img', $(scoreDetail[0]))[0].src.replace(regexp, '$1');
-      const fullComboTypeFileName = $('div.data_rank img', $(scoreDetail[0]))[1].src.replace(regexp, '$1')
-      data[difficulty].scoreRank = SCORE_RANK_FILE_MAP[scoreRankFileName];
-      data[difficulty].fullComboType = FULL_COMBO_TYPE_FILE_MAP[fullComboTypeFileName];
-    });
     const regexp = /^.*img=([0-9a-zA-Z]+).*$/;
     const src = $('td img.jk', $(score))[0].src;
     const musicId = src.replace(regexp, '$1')
-    res.scores[musicId] = data;
+    const scoreData = new ScoreData(musicId);
+    Object.keys(DIFFICULTY_NAME_MAP).forEach (function (difficultyName){
+      const difficulty = DIFFICULTY_NAME_MAP[difficultyName] + (isDouble ? DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
+
+      const detail = $('#' + difficultyName + '.rank', $(score)).get();
+      if (detail.length == 0) {
+        return;
+      }
+
+      const scoreDetail = new ScoreDetail();
+      const value = parseInt($('.data_score', $(detail[0]))[0].innerText);
+      scoreDetail.score = value ? value : 0;
+      const regexp = /^.*\/([^\/]+)$/;
+      const scoreRankFileName     = $('div.data_rank img', $(detail[0]))[0].src.replace(regexp, '$1');
+      const fullComboTypeFileName = $('div.data_rank img', $(detail[0]))[1].src.replace(regexp, '$1')
+      scoreDetail.scoreRank = SCORE_RANK_FILE_MAP[scoreRankFileName];
+      scoreDetail.fullComboType = FULL_COMBO_TYPE_FILE_MAP[fullComboTypeFileName];
+
+      scoreData.applyScoreDetail(difficulty, scoreDetail);
+    });
+    res.scores[musicId] = scoreData;
   });
   return res;
 }
