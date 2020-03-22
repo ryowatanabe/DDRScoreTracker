@@ -73,8 +73,8 @@ class MusicList {
 
   applyMusicData(musicData) {
     if (this.hasMusic(musicData.musicId)) {
-      if (this.getById(musicData.musicId).merge(musicData)) {
-        LOGGER.debug(`Modified: ${this.getById(musicData.musicId).encodedString}`);
+      if (this.getMusicDataById(musicData.musicId).merge(musicData)) {
+        LOGGER.debug(`Modified: ${this.getMusicDataById(musicData.musicId).encodedString}`);
       }
     } else{
       LOGGER.debug(`Added: ${musicData.encodedString}`);
@@ -100,7 +100,7 @@ class MusicList {
     return true;
   }
 
-  getById(musicId){
+  getMusicDataById(musicId){
     return this.musics[musicId];
   }
 
@@ -110,7 +110,7 @@ class MusicList {
 
   get encodedString(){
     return Object.getOwnPropertyNames(this.musics).map(musicId => {
-      return this.getById(musicId).encodedString;
+      return this.getMusicDataById(musicId).encodedString;
     }).sort().join("\n");
   }
 }

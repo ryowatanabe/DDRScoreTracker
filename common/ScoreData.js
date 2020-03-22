@@ -70,4 +70,12 @@ class ScoreList {
     this.applyScoreData(scoreData);
     return true;
   }
+
+  getScoreDataById(musicId){
+    return this.musics[musicId];
+  }
+
+  hasMusic(musicId){
+    return this.musics.hasOwnProperty(musicId);
+  }
 }

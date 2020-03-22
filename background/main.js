@@ -26,8 +26,7 @@ function loadStorage() {
       function(data) {
         storage = data;
         musicList = MusicList.createFromStorage(storage.musics);
-        scoreList = new ScoreList();
-        //scoreList = ScoreList.createFromStorage(storage.scores);
+        scoreList = ScoreList.createFromStorage(storage.scores);
         updateCharts();
         getBytesInUse();
         state = STATE.IDLE;
@@ -161,7 +160,7 @@ function fetchMissingMusicInfo(windowId)
       return true;
     }
     const missing = Object.keys(storage.scores[musicId]).find(difficulty => {
-      if (musicList.getById(musicId).difficulty[difficulty] == 0 && storage.scores[musicId][difficulty].scoreRank > 0) {
+      if (musicList.getMusicDataById(musicId).difficulty[difficulty] == 0 && storage.scores[musicId][difficulty].scoreRank > 0) {
         return true;
       }
     });
@@ -230,12 +229,12 @@ function updateCharts(){
           score: 0,
         };
         const difficultyValue = difficulty + (playMode == PLAY_MODE.DOUBLE ? DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
-        chart.level = musicList.getById(musicId)['difficulty'][difficultyValue];
+        chart.level = musicList.getMusicDataById(musicId)['difficulty'][difficultyValue];
         if (chart.level == 0){
           return;
         }
         chart.musicId = musicId;
-        chart.title = musicList.getById(musicId).title;
+        chart.title = musicList.getMusicDataById(musicId).title;
         if(musicId in storage.scores && difficultyValue in storage.scores[musicId]){
           chart.fullComboType = storage.scores[musicId][difficultyValue]['fullComboType'];
           chart.scoreRank = storage.scores[musicId][difficultyValue]['scoreRank'];
