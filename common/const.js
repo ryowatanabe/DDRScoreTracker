@@ -8,6 +8,7 @@ const SCORE_LIST_URL = {};
 SCORE_LIST_URL[PLAY_MODE.SINGLE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_single.html';
 //SCORE_LIST_URL[PLAY_MODE.SINGLE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/rival/rival_musicdata_single.html?rival_id=11048968';
 SCORE_LIST_URL[PLAY_MODE.DOUBLE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_double.html';
+//https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_double.html?offset=17&filter=0&filtertype=0&sorttype=0
 //SCORE_LIST_URL[PLAY_MODE.DOUBLE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/rival/rival_musicdata_double.html?rival_id=11048968';
 const MUSIC_DETAIL_URL = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html?index=[musicId]'
 //const MUSIC_DETAIL_URL = 'https://p.eagate.573.jp/game/ddr/ddra20/p/rival/music_detail.html?rival_id=11048968&index=[musicId]'
@@ -152,22 +153,6 @@ const DIFFICULTY_NAME_MAP = {
 
 const DIFFICULTIES_OFFSET_FOR_DOUBLE = 4;
 
-const FULL_COMBO_TYPE = {
-  NO_FC:        0,
-  GOOD_FC:      1,
-  GREAT_FC:     2,
-  PERFECT_FC:   3,
-  MARVELOUS_FC: 4
-};
-
-const FULL_COMBO_TYPE_FILE_MAP = {
-  'full_none.png':    FULL_COMBO_TYPE.NO_FC,
-  'full_good.png':    FULL_COMBO_TYPE.GOOD_FC,
-  'full_great.png':   FULL_COMBO_TYPE.GREAT_FC,
-  'full_perfect.png': FULL_COMBO_TYPE.PERFECT_FC,
-  'full_mar.png':     FULL_COMBO_TYPE.MARFVELOUS_FC
-};
-
 const CLEAR_TYPE = {
   NO_PLAY:      0,
   FAILED:       1,
@@ -179,7 +164,14 @@ const CLEAR_TYPE = {
   PERFECT_FC:   7,
   MARVELOUS_FC: 8
 }
-const CLEAR_TYPE_OFFSET_FOR_FULLCOMBO = 4;
+
+const CLEAR_TYPE_FILE_MAP = {
+  'full_none.png':    null,
+  'full_good.png':    CLEAR_TYPE.GOOD_FC,
+  'full_great.png':   CLEAR_TYPE.GREAT_FC,
+  'full_perfect.png': CLEAR_TYPE.PERFECT_FC,
+  'full_mar.png':     CLEAR_TYPE.MARFVELOUS_FC
+};
 
 const SCORE_RANK = {
   NO_PLAY:   0,

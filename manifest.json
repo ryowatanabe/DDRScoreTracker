@@ -22,6 +22,7 @@
         "common/logger.js",
         "common/MusicData.js",
         "common/ScoreData.js",
+        "common/ChartData.js",
         "content_scripts/main.js"
       ],
       "run_at": "document_start",
@@ -36,6 +37,7 @@
       "common/logger.js",
       "common/MusicData.js",
       "common/ScoreData.js",
+      "common/ChartData.js",
       "background/main.js"
     ],
     "persistent": false

@@ -15,7 +15,7 @@ let storageBytesInUse = 0;
 
 let musicList;   // 曲リスト。1曲1エントリ。
 let scoreList;   // スコアリスト。1極1エントリ。
-let charts = []; // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
+let chartList = new ChartList(); // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
 
 function loadStorage() {
   chrome.storage.local.get(
@@ -71,8 +71,8 @@ function getMusicList() {
   return musicList;
 }
 
-function getCharts() {
-  return charts;
+function getChartList() {
+  return chartList;
 }
 
 function getDefaults() {
@@ -207,54 +207,29 @@ function updateScoreList(windowId, playMode)
 }
 
 function updateCharts(){
-  charts = [];
+  chartList.reset();
   musicList.musicIds.forEach(function(musicId){
     Object.values(PLAY_MODE).forEach(function(playMode){
       Object.values(DIFFICULTIES).forEach(function(difficulty){
         if (playMode == PLAY_MODE.DOUBLE && difficulty == DIFFICULTIES.BEGINNER){
           return;
         }
-        const chart = {
-          musicId: "",
-          title: "",
-          playMode: playMode,
-          difficulty: difficulty,
-          level: 0,
-          fullComboType: FULL_COMBO_TYPE.NO_FC,
-          clearType: CLEAR_TYPE.NO_PLAY,
-          scoreRank: SCORE_RANK.NO_PLAY,
-          score: 0,
-        };
+        const musicData = musicList.getMusicDataById(musicId);
         const difficultyValue = difficulty + (playMode == PLAY_MODE.DOUBLE ? DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
-        chart.level = musicList.getMusicDataById(musicId)['difficulty'][difficultyValue];
-        if (chart.level == 0){
+        if (!musicData.hasDifficulty(difficultyValue)) {
           return;
         }
-        chart.musicId = musicId;
-        chart.title = musicList.getMusicDataById(musicId).title;
-        if(scoreList.hasMusic(musicId) && scoreList.getScoreDataByMusicId(musicId).hasDifficulty(difficultyValue)){
-          const scoreDetail = scoreList.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
-          chart.fullComboType = scoreDetail.fullComboType;
-          chart.scoreRank     = scoreDetail.scoreRank;
-          chart.score         = scoreDetail.score;
-          /* TODO: アシストクリアとE判定クリアが未考慮 */
-          if (chart.fullComboType != FULL_COMBO_TYPE.NO_FC) {
-            chart.clearType = chart.fullComboType + CLEAR_TYPE_OFFSET_FOR_FULLCOMBO;
-          } else {
-            switch (chart.scoreRank) {
-              case SCORE_RANK.NO_PLAY:
-                chart.clearType = CLEAR_TYPE.NO_PLAY;
-                break;
-              case SCORE_RANK.E:
-                chart.clearType = CLEAR_TYPE.FAILED;
-                break;
-              default:
-                chart.clearType = CLEAR_TYPE.CLEAR;
-                break;
-            }
-          }
+
+        const chartData = new ChartData(musicId, playMode, difficulty);
+        chartData.musicData = musicData;
+
+        if (scoreList.hasMusic(musicId) && scoreList.getScoreDataByMusicId(musicId).hasDifficulty(difficultyValue)) {
+          chartData.scoreDetail = scoreList.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
+        } else{
+          chartData.scoreDetail = new ScoreDetail();
         }
-        charts.push(chart);
+
+        chartList.addChartData(chartData);
       });
     });
   });

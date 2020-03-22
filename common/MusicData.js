@@ -51,6 +51,14 @@ class MusicData {
     return isUpdated;
   }
 
+  getLevel(index) {
+    return this.difficulty[index];
+  }
+
+  hasDifficulty(index) {
+    return this.difficulty[index] != 0;
+  }
+
   get encodedString() {
     return [this.musicId, this.difficulty, this.title].flat().join("\t");
   }

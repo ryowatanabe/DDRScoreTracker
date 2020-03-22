@@ -102,9 +102,9 @@ function parseScoreList(){
       scoreDetail.score = value ? value : 0;
       const regexp = /^.*\/([^\/]+)$/;
       const scoreRankFileName     = $('div.data_rank img', $(detail[0]))[0].src.replace(regexp, '$1');
-      const fullComboTypeFileName = $('div.data_rank img', $(detail[0]))[1].src.replace(regexp, '$1')
+      const clearTypeFileName = $('div.data_rank img', $(detail[0]))[1].src.replace(regexp, '$1')
       scoreDetail.scoreRank = SCORE_RANK_FILE_MAP[scoreRankFileName];
-      scoreDetail.fullComboType = FULL_COMBO_TYPE_FILE_MAP[fullComboTypeFileName];
+      scoreDetail.clearType = CLEAR_TYPE_FILE_MAP[clearTypeFileName];
 
       if (scoreDetail.scoreRank == SCORE_RANK.NO_PLAY) {
         return;
