@@ -11,12 +11,25 @@ class ScoreDetail {
 
   static createFromStorage(storageData) {
     const instance = new ScoreDetail();
-    Object.getOwnPropertyNames(storageData).map(attributeName => {
+    Object.getOwnPropertyNames(storageData).forEach(attributeName => {
       if(typeof(storageData[attributeName]) != 'undefined') {
         instance[attributeName] = storageData[attributeName];
       }
     });
     return instance;
+  }
+
+  merge(scoreDetail) {
+    const attributes = [
+      "score", "scoreRank", "clearType", "playCount", "clearCount", "maxCombo"
+    ];
+    attributes.forEach(function(attributeName) {
+      if (scoreDetail[attributeName] !== null) {
+        if (this[attributeName] === null || scoreDetail[attributeName] > this[attributeName]) {
+          this[attributeName] = scoreDetail[attributeName];
+        }
+      }
+    }.bind(this));
   }
 
   get actualClearType() {
@@ -64,9 +77,18 @@ class ScoreData {
     return instance;
   }
 
-  applyScoreDetail(difficulty, scoreDetail) {
-    /*　ToDo: データの単純上書きでなく、マージが必要なケースを考慮する */
-    this.difficulty[difficulty] = scoreDetail;
+  applyScoreDetail(difficultyValue, scoreDetail) {
+    if (!this.hasDifficulty(difficultyValue)) {
+      this.difficulty[difficultyValue] = scoreDetail;
+      return;
+    }
+    this.getScoreDetailByDifficulty(difficultyValue).merge(scoreDetail);
+  }
+
+  merge(scoreData) {
+    scoreData.difficulties.forEach(function(difficultyValue) {
+      this.applyScoreDetail(difficultyValue, scoreData.getScoreDetailByDifficulty(difficultyValue));
+    }.bind(this));
   }
 
   getScoreDetailByDifficulty(difficultyValue) {
@@ -98,8 +120,11 @@ class ScoreList {
   }
 
   applyScoreData(scoreData) {
-    /*　ToDo: データの単純上書きでなく、マージが必要なケースを考慮する */
-    this.musics[scoreData.musicId] = scoreData;
+    if (!this.hasMusic(scoreData.musicId)) {
+      this.musics[scoreData.musicId] = scoreData;
+      return;
+    }
+    this.getScoreDataByMusicId(scoreData.musicId).merge(scoreData);
   }
 
   applyObject(object) {

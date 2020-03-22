@@ -127,7 +127,10 @@ function parseScoreDetail() {
     const regexpForMusicId = /^.*img=([0-9a-zA-Z]+).*$/;
     const src = $('img', $(musicInfo[0])).get()[0].src;
     const musicId = src.replace(regexpForMusicId, '$1');
-    
+
+    const params = (new URL(document.location)).searchParams;
+    const difficulty = params.get("diff");
+
     const scoreData = new ScoreData(musicId);
     const scoreDetail = new ScoreDetail();
     scoreDetail.score      = parseInt(detail[2]) ? parseInt(detail[2]) : 0;

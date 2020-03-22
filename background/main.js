@@ -341,7 +341,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           res.scores.forEach(function(score){
             scoreList.applyObject(score);
           });
-          //saveStorage();
+          saveStorage();
           updateCharts();
           if (targetUrls.length > 0) {
             const targetUrl = targetUrls.pop();
