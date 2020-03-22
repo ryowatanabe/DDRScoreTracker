@@ -16,7 +16,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   }
   if (message.type == 'PARSE_SCORE_DETAIL') {
     console.log("parsing score detail ...");
-    sendResponse({ foo: 3 });
+    sendResponse(parseScoreDetail());
     return true;
   }
   console.log("received unknown message");
@@ -113,5 +113,31 @@ function parseScoreList(){
     });
     res.scores.push(scoreData);
   });
+  return res;
+}
+
+function parseScoreDetail() {
+  const res = {
+    scores: []
+  };
+
+  const detail = $('#music_detail_table td').get().map(element => { return element.innerText; });
+  if (detail.length > 0) {
+    const musicInfo = $('#music_info td').get();
+    const regexpForMusicId = /^.*img=([0-9a-zA-Z]+).*$/;
+    const src = $('img', $(musicInfo[0])).get()[0].src;
+    const musicId = src.replace(regexpForMusicId, '$1');
+    
+    const scoreData = new ScoreData(musicId);
+    const scoreDetail = new ScoreDetail();
+    scoreDetail.score      = parseInt(detail[2]) ? parseInt(detail[2]) : 0;
+    scoreDetail.scoreRank  = SCORE_RANK_NAME_MAP[detail[1]];
+    scoreDetail.clearType  = CLEAR_TYPE_NAME_MAP[detail[7]];
+    scoreDetail.playCount  = parseInt(detail[4]) ? parseInt(detail[4]) : 0;
+    scoreDetail.clearCount = parseInt(detail[8]) ? parseInt(detail[8]) : 0;
+    scoreDetail.maxCombo   = parseInt(detail[3]) ? parseInt(detail[3]) : 0;
+    scoreData.applyScoreDetail(difficulty, scoreDetail);
+    res.scores.push(scoreData);
+  }
   return res;
 }

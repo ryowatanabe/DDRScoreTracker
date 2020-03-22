@@ -12,6 +12,7 @@ SCORE_LIST_URL[PLAY_MODE.DOUBLE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/pl
 //SCORE_LIST_URL[PLAY_MODE.DOUBLE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/rival/rival_musicdata_double.html?rival_id=11048968';
 const MUSIC_DETAIL_URL = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html?index=[musicId]'
 //const MUSIC_DETAIL_URL = 'https://p.eagate.573.jp/game/ddr/ddra20/p/rival/music_detail.html?rival_id=11048968&index=[musicId]'
+const SCORE_DETAIL_URL = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html?index=[musicId]&diff=[difficulty]'
 
 const PARSED_MUSIC_LIST_URL = 'https://ryowatanabe.github.io/DDRScoreTracker/musics.txt';
 
@@ -60,6 +61,14 @@ const CLEAR_TYPE_FILE_MAP = {
   'full_mar.png':     CLEAR_TYPE.MARFVELOUS_FC
 };
 
+const CLEAR_TYPE_NAME_MAP = {
+  '---': null,
+  'グッドフルコンボ': CLEAR_TYPE.GOOD_FC,
+  'グレートフルコンボ': CLEAR_TYPE.GREAT_FC,
+  'パーフェクトフルコンボ': CLEAR_TYPE.PERFECT_FC,
+  'マーベラスフルコンボ': CLEAR_TYPE.MARVELOUS_FC
+};
+
 const SCORE_RANK = {
   NO_PLAY:   0,
   E:         1,
@@ -98,6 +107,25 @@ const SCORE_RANK_FILE_MAP = {
   'rank_s_aa.png':   SCORE_RANK.AA,
   'rank_s_aa_p.png': SCORE_RANK.AA_PLUS,
   'rank_s_aaa.png':  SCORE_RANK.AAA
+};
+
+const SCORE_RANK_NAME_MAP = {
+  'E':    SCORE_RANK.E,
+  'D':    SCORE_RANK.D,
+  'D+':  SCORE_RANK.D_PLUS,
+  'C-':  SCORE_RANK.C_MINUS,
+  'C':    SCORE_RANK.C,
+  'C+':  SCORE_RANK.C_PLUS,
+  'B-':  SCORE_RANK.B_MINUS,
+  'B':    SCORE_RANK.B,
+  'B+':  SCORE_RANK.B_PLUS,
+  'A-':  SCORE_RANK.A_MINUS,
+  'A':    SCORE_RANK.A,
+  'A+':  SCORE_RANK.A_PLUS,
+  'AA-': SCORE_RANK.AA_MINUS,
+  'AA':   SCORE_RANK.AA,
+  'AA+': SCORE_RANK.AA_PLUS,
+  'AAA':  SCORE_RANK.AAA
 };
 
 /*

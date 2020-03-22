@@ -3,7 +3,8 @@ const STATE = {
     IDLE: 1,
     UPDATE_MUSIC_LIST: 2,
     UPDATE_SCORE_LIST: 3,
-    UPDATE_MUSIC_DETAIL: 4
+    UPDATE_MUSIC_DETAIL: 4,
+    UPDATE_SCORE_DETAIL: 5
 };
 
 let state = STATE.INITIALIZE;
@@ -187,7 +188,7 @@ function fetchMissingMusicInfo(windowId)
 }
 
 /*
-公式の成績一覧から成績情報を取得し、ローカルの曲リストを更新する
+公式の成績一覧ページから成績情報を取得し、ローカルのスコアリストを更新する
 */
 function updateScoreList(windowId, playMode)
 {
@@ -203,6 +204,40 @@ function updateScoreList(windowId, playMode)
     tabId = tab.id;
     LOGGER.debug("tab is created (tabId:" + tab.id + ")");
     chrome.tabs.update(tabId, { url: SCORE_LIST_URL[playMode] }, function(tab){
+    });
+  });
+}
+
+/*
+公式の成績詳細ページから成績情報を取得し、ローカルのスコアリストを更新する
+targetMusics: [
+  { musicId:xxx, difficulty:yy }, ...
+]
+*/
+function updateScoreDetail(windowId, targetMusics)
+{
+  if (state != STATE.IDLE){
+    //return false;
+  }
+  /* 巡回対象のURL一覧を生成 */
+  targetUrls = targetMusics.map(music => {
+    return SCORE_DETAIL_URL.replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
+  });
+
+  if (targetUrls.length == 0){
+    return false;
+  }
+  state = STATE.UPDATE_SCORE_DETAIL;
+  chrome.tabs.query({ windowId: windowId, index: 0 }, function(tabs) {
+    tab = tabs[0];
+// TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
+//       現時点ではデバッグの利便性のため固定のタブを利用
+//  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
+    tabId = tab.id;
+    console.log("tab is created (tabId:" + tab.id + ")");
+    const targetUrl = targetUrls.pop();
+    chrome.tabs.update(tabId, { url: targetUrl }, function(tab){
+      console.log('navigate to: ' + targetUrl);
     });
   });
 }
@@ -292,6 +327,26 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           if (res.hasNext) {
             setTimeout(function(){
               chrome.tabs.update(tabId, { url: res.nextUrl }, function(tab){})
+            }, LOAD_INTERVAL);
+          } else {
+            state = STATE.IDLE;
+          }
+        });
+      }
+      break;
+    case STATE.UPDATE_SCORE_DETAIL:
+      if (changeInfo.status == "complete"){
+        chrome.tabs.sendMessage(tabId, { type: 'PARSE_SCORE_DETAIL' }, function(res) {
+          console.log(res);
+          res.scores.forEach(function(score){
+            scoreList.applyObject(score);
+          });
+          //saveStorage();
+          updateCharts();
+          if (targetUrls.length > 0) {
+            const targetUrl = targetUrls.pop();
+            setTimeout(function(){
+              chrome.tabs.update(tabId, { url: targetUrl }, function(tab){})
             }, LOAD_INTERVAL);
           } else {
             state = STATE.IDLE;

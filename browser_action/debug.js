@@ -27,7 +27,11 @@ function updateDoubleScoreList()
 
 function updateScoreDetail()
 {
-
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    backgroundPage.updateScoreDetail(chrome.windows.WINDOW_ID_CURRENT, [
+      { musicId: "qOP1qP69o6id061o9bo8l6P11P1PQI1O", difficulty: 7 }
+    ]);
+  });
 }
 
 function updateCharts()
