@@ -8,7 +8,7 @@ const appCharts = new Vue({
 })
 
 function refreshListDebug(){
-  const conditions = eval($('#filterConditions').get()[0].value);
+  const conditions = JSON.parse($('#filterConditions').get()[0].value);
   refreshListImpl(conditions)
 }
 

@@ -88,6 +88,11 @@ function getDefaults() {
   }
 }
 
+function restoreScoreList(object) {
+  scoreList = ScoreList.createFromStorage(object);
+  updateCharts();
+}
+
 /*
 gh pagesから曲リストを取得し、ローカルの曲リストを更新する
 */

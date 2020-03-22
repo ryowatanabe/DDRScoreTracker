@@ -66,7 +66,7 @@ document.getElementById('dumpMusicListButton').addEventListener("click", dumpMus
 function dumpScoreList() {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
     const scoreList = backgroundPage.getScoreList();
-    $('#dumpScoreListArea').get()[0].innerHTML = JSON.stringify(scoreList);
+    $('#dumpScoreListArea').get()[0].innerHTML = JSON.stringify(scoreList.musics);
     var copyText = document.querySelector("#dumpScoreListArea");
     copyText.select();
     if(document.execCommand("copy")){
@@ -77,6 +77,19 @@ function dumpScoreList() {
   });
 }
 document.getElementById('dumpScoreListButton').addEventListener("click", dumpScoreList);
+
+function restoreScoreList() {
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    const object = JSON.parse($('#restoreScoreListArea').get()[0].value);
+    if (window.confirm('フォームの内容でスコアリストをリストアしますか？')) {
+      backgroundPage.restoreScoreList(object);
+      alert("リストアしました。");
+    } else{
+      alert("キャンセルしました。");
+    }
+  });
+}
+document.getElementById('restoreScoreListButton').addEventListener("click", restoreScoreList);
 
 function updateParsedMusicList()
 {
