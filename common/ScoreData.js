@@ -54,6 +54,7 @@ class ScoreDetail {
         if (this.scoreRank > SCORE_RANK.E) {
           return CLEAR_TYPE.ASSIST_CLEAR;
         }
+        return CLEAR_TYPE.FAILED;
       }
       return CLEAR_TYPE.CLEAR;
     }
