@@ -124,6 +124,9 @@
             {{ chart.level }}<template v-if="chart.playMode == 0">&#39;</template><template v-if="chart.playMode == 1">&quot;</template>
           </div>
           <div class="title">{{ chart.title }}</div>
+          <template v-if="chart.scoreRank === null">
+            <div class="score_rank"></div>
+          </template>
           <template v-if="chart.scoreRank == 0">
             <div class="score_rank"></div>
           </template>
@@ -176,7 +179,7 @@
             <div class="score_rank rank_aaa">AAA</div>
           </template>
           <div class="full_combo_type" v-bind:class="{ good_fc: chart.fullComboType == 1, great_fc: chart.fullComboType == 2, perfect_fc: chart.fullComboType == 3, marvelous_fc: chart.fullComboType == 4 }"><template v-if="chart.fullComboType > 0">○</template></div>
-          <div class="score">{{ chart.score.toLocaleString() }}</div>
+          <div class="score">{{ chart.scoreString }}</div>
         </template>
       </div>
     </div>

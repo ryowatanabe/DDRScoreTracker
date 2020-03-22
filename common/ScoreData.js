@@ -26,7 +26,7 @@ class ScoreDetail {
         return CLEAR_TYPE.NO_PLAY;
       }
       if (this.clearCount === null) {
-        switch (chart.scoreRank) {
+        switch (this.scoreRank) {
           case SCORE_RANK.NO_PLAY:
             return CLEAR_TYPE.NO_PLAY;
             break;
