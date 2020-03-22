@@ -72,6 +72,10 @@ function getMusicList() {
   return musicList;
 }
 
+function getScoreList() {
+  return scoreList;
+}
+
 function getChartList() {
   return chartList;
 }

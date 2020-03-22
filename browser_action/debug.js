@@ -48,12 +48,11 @@ function resetStorage()
   });
 }
 
-function dumpMusicList()
-{
+function dumpMusicList() {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
     const musics = backgroundPage.getMusicList();
-    $('#textarea').get()[0].innerHTML = musics.encodedString;
-    var copyText = document.querySelector("#textarea");
+    $('#dumpMusicListArea').get()[0].innerHTML = musics.encodedString;
+    var copyText = document.querySelector("#dumpMusicListArea");
     copyText.select();
     if(document.execCommand("copy")){
       alert('クリップボードにコピーしました。');
@@ -62,6 +61,22 @@ function dumpMusicList()
     }
   });
 }
+document.getElementById('dumpMusicListButton').addEventListener("click", dumpMusicList);
+
+function dumpScoreList() {
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    const scoreList = backgroundPage.getScoreList();
+    $('#dumpScoreListArea').get()[0].innerHTML = JSON.stringify(scoreList);
+    var copyText = document.querySelector("#dumpScoreListArea");
+    copyText.select();
+    if(document.execCommand("copy")){
+      alert('クリップボードにコピーしました。');
+    } else{
+      alert('クリップボードにコピーできませんでした。');
+    }
+  });
+}
+document.getElementById('dumpScoreListButton').addEventListener("click", dumpScoreList);
 
 function updateParsedMusicList()
 {
@@ -70,9 +85,7 @@ function updateParsedMusicList()
   });
 }
 
-document.getElementById('dumpMusicListButton').addEventListener("click", dumpMusicList);
 document.getElementById('updateParsedMusicListButton').addEventListener("click", updateParsedMusicList);
-
 document.getElementById('updateMusicListButton').addEventListener("click", updateMusicList);
 document.getElementById('updateMusicList2Button').addEventListener("click", updateMusicList2);
 document.getElementById('updateSingleScoreListButton').addEventListener("click", updateSingleScoreList);
