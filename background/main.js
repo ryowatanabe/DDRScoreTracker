@@ -180,7 +180,7 @@ function fetchMissingMusicInfo(windowId)
 //  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
     tabId = tab.id;
     console.log("tab is created (tabId:" + tab.id + ")");
-    const targetUrl = targetUrls.pop();
+    const targetUrl = targetUrls.shift();
     chrome.tabs.update(tabId, { url: targetUrl }, function(tab){
       console.log('navigate to: ' + targetUrl);
     });
@@ -235,7 +235,7 @@ function updateScoreDetail(windowId, targetMusics)
 //  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
     tabId = tab.id;
     console.log("tab is created (tabId:" + tab.id + ")");
-    const targetUrl = targetUrls.pop();
+    const targetUrl = targetUrls.shift();
     chrome.tabs.update(tabId, { url: targetUrl }, function(tab){
       console.log('navigate to: ' + targetUrl);
     });
@@ -305,7 +305,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           saveStorage();
           updateCharts();
           if (targetUrls.length > 0) {
-            const targetUrl = targetUrls.pop();
+            const targetUrl = targetUrls.shift();
             setTimeout(function(){
               chrome.tabs.update(tabId, { url: targetUrl }, function(tab){})
             }, LOAD_INTERVAL);
@@ -344,7 +344,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           saveStorage();
           updateCharts();
           if (targetUrls.length > 0) {
-            const targetUrl = targetUrls.pop();
+            const targetUrl = targetUrls.shift();
             setTimeout(function(){
               chrome.tabs.update(tabId, { url: targetUrl }, function(tab){})
             }, LOAD_INTERVAL);
