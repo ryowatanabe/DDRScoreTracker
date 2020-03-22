@@ -99,8 +99,24 @@
         <button id="closeFilterButton" type="button" name="refreshList2">　更　新　</button>
         <a href="debug.html">設定</a>
       </div>
+      <hr>
+      <div>
+        <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">スコア詳細を公式から取得</button>
+      </div>
     </div>
     <div id="filterBackground" class="filter-background">
+    </div>
+
+    <div id="logContainer" class="log">
+      <div id="closeLogButton" class="log-switch">■閉じる</div>
+      <div id="flushLogButton" class="log-switch">■クリア</div>
+      <div id="app-log" class="log-data">
+        <template v-for="line in log">
+            {{ line }} <br>
+        </template>
+      </div>
+      <div id="closeLogButton2" class="log-switch">■閉じる</div>
+      <div id="flushLogButton2" class="log-switch">■クリア</div>
     </div>
 
     <div id="app-charts" class="content">
@@ -130,6 +146,7 @@
   </div>
 </body>
 <script src="logReceiver.js"></script>
+<script src="logContainer.js"></script>
 <script src="main.js"></script>
 <script src="filter.js"></script>
 </html>
