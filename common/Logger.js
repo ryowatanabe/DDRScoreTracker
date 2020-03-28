@@ -8,8 +8,12 @@ export class Logger {
     }
   }
 
+  static get MESSAGE_TYPE() {
+    return 'LOG';
+  }
+
   static log(content, level = this.LOG_LEVEL.INFO) {
-    chrome.runtime.sendMessage({ type: 'LOG', level: level, content: content });
+    chrome.runtime.sendMessage({ type: this.MESSAGE_TYPE, level: level, content: content });
   }
 
   static error(content) {

@@ -1,3 +1,5 @@
+import { Logger } from '../common/Logger.js';
+
 export class LogReceiver {
   static data = [];
   static callback = function(){};
@@ -22,7 +24,7 @@ export class LogReceiver {
 (function()
 {
   chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-    if (message.type == 'LOG') {
+    if (message.type == Logger.MESSAGE_TYPE) {
       LogReceiver.push(message.content);
     }
   });
