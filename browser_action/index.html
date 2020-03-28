@@ -137,8 +137,15 @@
           <div class="inner"><template v-for="item in statistics.clearType"><template v-if="item.count > 0"><span v-bind:class="[ 'element', item.clearTypeClassString ]" v-bind:style="{ width: 'calc(' + item.count + ' / ' + charts.length + ' * 100%'}"></span></template></template></div>
         </div>
       </template>
+
+      <div v-if="maxPage > 1" class="pager">
+        <template v-for="index of maxPage">
+          <a v-if="index == currentPage" v-bind:class="[ 'element', 'current' ]">[{{ index }}]</a><a v-if="index != currentPage" v-on:click="gotoPage(index)" v-bind:class="[ 'element', 'link' ]">[{{ index }}]</a>
+        </template>
+      </div>
+
       <div class="score_list">
-        <template v-for="chart in charts">
+        <template v-for="chart in pageCharts">
           <div v-bind:class="[ 'level', chart.difficultyClassString ]">{{ chart.level }}{{ chart.playModeSymbol }}</div>
           <div class="title">{{ chart.title }}</div>
           <div class="clear_count"><template v-if="chart.clearCount !== null">{{ chart.clearCount }}/</template></div>
@@ -149,6 +156,13 @@
           <div class="max_combo"><template v-if="chart.maxCombo !== null">/{{ chart.maxCombo }}</template></div>
         </template>
       </div>
+
+      <div v-if="maxPage > 1" class="pager">
+        <template v-for="index of maxPage">
+          <a v-if="index == currentPage" v-bind:class="[ 'element', 'current' ]">[{{ index }}]</a><a v-if="index != currentPage" v-on:click="gotoPage(index)" v-bind:class="[ 'element', 'link' ]">[{{ index }}]</a>
+        </template>
+      </div>
+
     </div>
   </div>
 </body>

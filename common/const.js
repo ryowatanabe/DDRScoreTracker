@@ -16,6 +16,7 @@ const SCORE_DETAIL_URL = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/mus
 
 const PARSED_MUSIC_LIST_URL = 'https://ryowatanabe.github.io/DDRScoreTracker/musics.txt';
 
+const PAGE_LENGTH = 500;
 const LOAD_INTERVAL = 3000;
 
 const LIST_TYPE = {

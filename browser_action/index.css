@@ -121,6 +121,25 @@ a {
 }
 
 /*
+ページャー
+*/
+
+.pager .element {
+  font-size: 1.2rem;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.pager .current {
+  color: #ffffff;
+}
+
+.pager .link {
+  color: #ffff00;
+  cursor: pointer;
+}
+
+/*
 進捗グラフ
 */
 
