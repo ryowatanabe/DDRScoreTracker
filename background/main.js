@@ -1,7 +1,5 @@
 import { MusicList } from '../common/MusicList.js';
-import { MusicData } from '../common/MusicData.js';
 import { ScoreList } from '../common/ScoreList.js';
-import { ScoreData } from '../common/ScoreData.js';
 import { ScoreDetail } from '../common/ScoreDetail.js';
 import { ChartList } from '../common/ChartList.js';
 import { ChartData } from '../common/ChartData.js';
@@ -162,7 +160,7 @@ function updateMusicList(windowId)
 // TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
 //       現時点ではデバッグの利便性のため固定のタブを利用
 //  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
-    const tabId = tab.id;
+    tabId = tab.id;
     LOGGER.debug("tab is created (tabId:" + tab.id + ")");
     chrome.tabs.update(tabId, { url: MUSIC_LIST_URL }, function(tab){
       LOGGER.debug('navigate to: ' + MUSIC_LIST_URL);
@@ -204,7 +202,7 @@ function fetchMissingMusicInfo(windowId)
 // TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
 //       現時点ではデバッグの利便性のため固定のタブを利用
 //  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
-    const tabId = tab.id;
+    tabId = tab.id;
     console.log("tab is created (tabId:" + tab.id + ")");
     const targetUrl = targetUrls.shift();
     chrome.tabs.update(tabId, { url: targetUrl }, function(tab){
@@ -227,7 +225,7 @@ function updateScoreList(windowId, playMode)
 // TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
 //       現時点ではデバッグの利便性のため固定のタブを利用
 //  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
-    const tabId = tab.id;
+    tabId = tab.id;
     LOGGER.debug("tab is created (tabId:" + tab.id + ")");
     chrome.tabs.update(tabId, { url: SCORE_LIST_URL[playMode] }, function(tab){
     });
@@ -259,7 +257,7 @@ function updateScoreDetail(windowId, targetMusics)
 // TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
 //       現時点ではデバッグの利便性のため固定のタブを利用
 //  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
-    const tabId = tab.id;
+    tabId = tab.id;
     console.log("tab is created (tabId:" + tab.id + ")");
     const targetUrl = targetUrls.shift();
     chrome.tabs.update(tabId, { url: targetUrl }, function(tab){

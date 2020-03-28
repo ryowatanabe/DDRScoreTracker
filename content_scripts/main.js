@@ -1,3 +1,15 @@
+let MusicData;
+let ScoreData;
+let ScoreDetail;
+(async () => {
+  const musicData = await import(chrome.extension.getURL('common/MusicData.js'));
+  MusicData = musicData.MusicData;
+  const scoreData = await import(chrome.extension.getURL('common/ScoreData.js'));
+  ScoreData = scoreData.ScoreData;
+  const scoreDetail = await import(chrome.extension.getURL('common/ScoreDetail.js'));
+  ScoreDetail = scoreDetail.ScoreDetail;
+})();
+
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   if (message.type == 'PARSE_MUSIC_LIST') {
     console.log("parsing music list ...");

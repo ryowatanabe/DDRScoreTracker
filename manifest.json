@@ -20,9 +20,6 @@
         "lib/jquery-3.4.1.min.js",
         "common/const.js",
         "common/logger.js",
-        "common/MusicData.js",
-        "common/ScoreData.js",
-        "common/ChartList.js",
         "content_scripts/main.js"
       ],
       "run_at": "document_start",
@@ -34,6 +31,10 @@
     "page": "background/index.html",
     "persistent": false
   },
+
+  "web_accessible_resources": [
+    "common/*"
+  ],
 
   "permissions": [
     "storage",
