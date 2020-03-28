@@ -78,20 +78,20 @@ export class Constants {
   static get CLEAR_TYPE_FILE_MAP() {
     return {
       'full_none.png':    null,
-      'full_good.png':    CLEAR_TYPE.GOOD_FC,
-      'full_great.png':   CLEAR_TYPE.GREAT_FC,
-      'full_perfect.png': CLEAR_TYPE.PERFECT_FC,
-      'full_mar.png':     CLEAR_TYPE.MARFVELOUS_FC
+      'full_good.png':    this.CLEAR_TYPE.GOOD_FC,
+      'full_great.png':   this.CLEAR_TYPE.GREAT_FC,
+      'full_perfect.png': this.CLEAR_TYPE.PERFECT_FC,
+      'full_mar.png':     this.CLEAR_TYPE.MARFVELOUS_FC
     };
   }
 
   static get CLEAR_TYPE_NAME_MAP() {
     return {
       '---': null,
-      'グッドフルコンボ': CLEAR_TYPE.GOOD_FC,
-      'グレートフルコンボ': CLEAR_TYPE.GREAT_FC,
-      'パーフェクトフルコンボ': CLEAR_TYPE.PERFECT_FC,
-      'マーベラスフルコンボ': CLEAR_TYPE.MARVELOUS_FC
+      'グッドフルコンボ': this.CLEAR_TYPE.GOOD_FC,
+      'グレートフルコンボ': this.CLEAR_TYPE.GREAT_FC,
+      'パーフェクトフルコンボ': this.CLEAR_TYPE.PERFECT_FC,
+      'マーベラスフルコンボ': this.CLEAR_TYPE.MARVELOUS_FC
     };
   }
 
@@ -119,44 +119,44 @@ export class Constants {
 
   static get SCORE_RANK_FILE_MAP() {
     return {
-      'rank_s_none.png': SCORE_RANK.NO_PLAY,
-      'rank_s_e.png':    SCORE_RANK.E,
-      'rank_s_d.png':    SCORE_RANK.D,
-      'rank_s_d_p.png':  SCORE_RANK.D_PLUS,
-      'rank_s_c_m.png':  SCORE_RANK.C_MINUS,
-      'rank_s_c.png':    SCORE_RANK.C,
-      'rank_s_c_p.png':  SCORE_RANK.C_PLUS,
-      'rank_s_b_m.png':  SCORE_RANK.B_MINUS,
-      'rank_s_b.png':    SCORE_RANK.B,
-      'rank_s_b_p.png':  SCORE_RANK.B_PLUS,
-      'rank_s_a_m.png':  SCORE_RANK.A_MINUS,
-      'rank_s_a.png':    SCORE_RANK.A,
-      'rank_s_a_p.png':  SCORE_RANK.A_PLUS,
-      'rank_s_aa_m.png': SCORE_RANK.AA_MINUS,
-      'rank_s_aa.png':   SCORE_RANK.AA,
-      'rank_s_aa_p.png': SCORE_RANK.AA_PLUS,
-      'rank_s_aaa.png':  SCORE_RANK.AAA
+      'rank_s_none.png': this.SCORE_RANK.NO_PLAY,
+      'rank_s_e.png':    this.SCORE_RANK.E,
+      'rank_s_d.png':    this.SCORE_RANK.D,
+      'rank_s_d_p.png':  this.SCORE_RANK.D_PLUS,
+      'rank_s_c_m.png':  this.SCORE_RANK.C_MINUS,
+      'rank_s_c.png':    this.SCORE_RANK.C,
+      'rank_s_c_p.png':  this.SCORE_RANK.C_PLUS,
+      'rank_s_b_m.png':  this.SCORE_RANK.B_MINUS,
+      'rank_s_b.png':    this.SCORE_RANK.B,
+      'rank_s_b_p.png':  this.SCORE_RANK.B_PLUS,
+      'rank_s_a_m.png':  this.SCORE_RANK.A_MINUS,
+      'rank_s_a.png':    this.SCORE_RANK.A,
+      'rank_s_a_p.png':  this.SCORE_RANK.A_PLUS,
+      'rank_s_aa_m.png': this.SCORE_RANK.AA_MINUS,
+      'rank_s_aa.png':   this.SCORE_RANK.AA,
+      'rank_s_aa_p.png': this.SCORE_RANK.AA_PLUS,
+      'rank_s_aaa.png':  this.SCORE_RANK.AAA
     };
   }
 
   static get SCORE_RANK_NAME_MAP() {
     return {
-      'E':    SCORE_RANK.E,
-      'D':    SCORE_RANK.D,
-      'D+':  SCORE_RANK.D_PLUS,
-      'C-':  SCORE_RANK.C_MINUS,
-      'C':    SCORE_RANK.C,
-      'C+':  SCORE_RANK.C_PLUS,
-      'B-':  SCORE_RANK.B_MINUS,
-      'B':    SCORE_RANK.B,
-      'B+':  SCORE_RANK.B_PLUS,
-      'A-':  SCORE_RANK.A_MINUS,
-      'A':    SCORE_RANK.A,
-      'A+':  SCORE_RANK.A_PLUS,
-      'AA-': SCORE_RANK.AA_MINUS,
-      'AA':   SCORE_RANK.AA,
-      'AA+': SCORE_RANK.AA_PLUS,
-      'AAA':  SCORE_RANK.AAA
+      'E':    this.SCORE_RANK.E,
+      'D':    this.SCORE_RANK.D,
+      'D+':  this.SCORE_RANK.D_PLUS,
+      'C-':  this.SCORE_RANK.C_MINUS,
+      'C':    this.SCORE_RANK.C,
+      'C+':  this.SCORE_RANK.C_PLUS,
+      'B-':  this.SCORE_RANK.B_MINUS,
+      'B':    this.SCORE_RANK.B,
+      'B+':  this.SCORE_RANK.B_PLUS,
+      'A-':  this.SCORE_RANK.A_MINUS,
+      'A':    this.SCORE_RANK.A,
+      'A+':  this.SCORE_RANK.A_PLUS,
+      'AA-': this.SCORE_RANK.AA_MINUS,
+      'AA':   this.SCORE_RANK.AA,
+      'AA+': this.SCORE_RANK.AA_PLUS,
+      'AAA':  this.SCORE_RANK.AAA
     };
   }
 

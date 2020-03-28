@@ -22,8 +22,11 @@ function gotoPage(page) {
   appCharts.currentPage = page;
 }
 
-export function refreshList(filterConditions, sortConditions)
-{
+export function getCharts() {
+  return appCharts.charts;
+}
+
+export function refreshList(filterConditions, sortConditions) {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
     const chartList = backgroundPage.getChartList().getFilteredAndSorted(filterConditions, sortConditions);
     appCharts.statistics  = chartList.statistics;

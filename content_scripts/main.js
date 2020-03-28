@@ -113,8 +113,8 @@ function parseScoreList(){
     const src = $('td img.jk', $(score))[0].src;
     const musicId = src.replace(regexp, '$1')
     const scoreData = new ScoreData(musicId);
-    Object.keys(DIFFICULTY_NAME_MAP).forEach (function (difficultyName){
-      const difficulty = DIFFICULTY_NAME_MAP[difficultyName] + (isDouble ? DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
+    Object.keys(Constants.DIFFICULTY_NAME_MAP).forEach (function (difficultyName){
+      const difficulty = Constants.DIFFICULTY_NAME_MAP[difficultyName] + (isDouble ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
 
       const detail = $('#' + difficultyName + '.rank', $(score)).get();
       if (detail.length == 0) {
@@ -158,8 +158,8 @@ function parseScoreDetail() {
     const scoreData = new ScoreData(musicId);
     const scoreDetail = new ScoreDetail();
     scoreDetail.score      = parseInt(detail[2]) ? parseInt(detail[2]) : 0;
-    scoreDetail.scoreRank  = SCORE_RANK_NAME_MAP[detail[1]];
-    scoreDetail.clearType  = CLEAR_TYPE_NAME_MAP[detail[7]];
+    scoreDetail.scoreRank  = Constants.SCORE_RANK_NAME_MAP[detail[1]];
+    scoreDetail.clearType  = Constants.CLEAR_TYPE_NAME_MAP[detail[7]];
     scoreDetail.playCount  = parseInt(detail[4]) ? parseInt(detail[4]) : 0;
     scoreDetail.clearCount = parseInt(detail[8]) ? parseInt(detail[8]) : 0;
     scoreDetail.maxCombo   = parseInt(detail[3]) ? parseInt(detail[3]) : 0;

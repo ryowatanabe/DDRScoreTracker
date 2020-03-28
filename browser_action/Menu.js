@@ -1,3 +1,4 @@
+import { getCharts } from './Main.js';
 import { Constants } from '../common/Constants.js';
 
 function fetchParsedMusicList()
@@ -35,13 +36,13 @@ document.getElementById('updateDoubleScoreListButton').addEventListener("click",
 function updateScoreDetail()
 {
   const targetMusics = [];
-  appCharts.charts.forEach(function(chartData){
+  getCharts().forEach(function(chartData){
     targetMusics.push({
       musicId: chartData.musicId,
       difficulty: chartData.difficulty + (chartData.playMode == Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0)
     });
   });
-  closeFilter();
+  closeMenu();
   chrome.runtime.getBackgroundPage(function(backgroundPage){
     backgroundPage.updateScoreDetail(chrome.windows.WINDOW_ID_CURRENT, targetMusics);
   });
