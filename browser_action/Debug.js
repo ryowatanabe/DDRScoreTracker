@@ -54,8 +54,9 @@ document.getElementById('dumpScoreListButton').addEventListener("click", dumpSco
 
 function restoreScoreList() {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
+    let object;
     try {
-      const object = JSON.parse($('#restoreScoreListArea').get()[0].value);
+      object = JSON.parse($('#restoreScoreListArea').get()[0].value);
     } catch (error) {
       console.log(error);
       alert(error);
