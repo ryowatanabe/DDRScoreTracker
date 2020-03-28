@@ -21,6 +21,7 @@ function refreshList() {
     backgroundPage.saveFilterConditions(filterConditions, sortConditions);
   });
   refreshListImpl(filterConditions, sortConditions.concat([
+    /* tie breakers */
     { attribute: "title", order: "asc" },
     { attribute: "playMode", order: "asc" },
     { attribute: "difficulty", order: "asc" }
