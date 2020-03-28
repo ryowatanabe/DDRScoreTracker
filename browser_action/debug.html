@@ -8,18 +8,16 @@
 </head>
 <body>
 <div id="contentArea">
-  <div id="drawerBackground" class="drawer-background"></div>
-
+  <div id="logBackground" class="drawer-background"></div>
   <div id="logContainer" class="drawer log">
-    <div id="closeLogButton" class="drawer-switch">■閉じる</div>
-    <div id="flushLogButton" class="drawer-switch">■クリア</div>
+    <div id="scrollLogToBottomButton" class="drawer-switch">▼最新</div>
     <div id="app-log" class="log-data">
       <template v-for="line in log">
           {{ line }} <br>
       </template>
     </div>
-    <div id="closeLogButton2" class="drawer-switch">■閉じる</div>
-    <div id="flushLogButton2" class="drawer-switch">■クリア</div>
+    <div id="closeLogButton" class="drawer-switch">■閉じる</div>
+    <div id="flushLogButton" class="drawer-switch">■クリア</div>
   </div>
 
   <div>

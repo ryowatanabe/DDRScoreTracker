@@ -1,11 +1,11 @@
 function openLog() {
   $("#logContainer").addClass('active');
-  $("#drawerBackground").addClass('active');
+  $("#logBackground").addClass('active');
   scrollLogToBottom();
 }
 function closeLog() {
   $("#logContainer").removeClass('active');
-  $("#drawerBackground").removeClass('active');
+  $("#logBackground").removeClass('active');
 }
 function flushLog() {
   LOG_RECEIVER.flush();
@@ -29,7 +29,7 @@ const appLog = new Vue({
   }
 });
 LOG_RECEIVER.callback = openLog;
+
 document.getElementById('closeLogButton').addEventListener("click", closeLog);
 document.getElementById('flushLogButton').addEventListener("click", flushLog);
-document.getElementById('closeLogButton2').addEventListener("click", closeLog);
-document.getElementById('flushLogButton2').addEventListener("click", flushLog);
+document.getElementById('scrollLogToBottomButton').addEventListener("click", scrollLogToBottomImpl);

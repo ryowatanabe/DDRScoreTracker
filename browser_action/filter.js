@@ -16,7 +16,7 @@ function refreshList() {
     attribute: $(`input[name=sortCondition_attribute]:checked`).get()[0].value,
     order: $(`input[name=sortCondition_order]:checked`).get()[0].value
   }];
-  
+
   chrome.runtime.getBackgroundPage(function(backgroundPage){
     backgroundPage.saveFilterConditions(filterConditions, sortConditions);
   });
@@ -29,11 +29,11 @@ function refreshList() {
 
 function openFilter() {
   $("#filterContainer").addClass('active');
-  $("#drawerBackground").addClass('active');
+  $("#filterBackground").addClass('active');
 }
 function closeFilter() {
   $("#filterContainer").removeClass('active');
-  $("#drawerBackground").removeClass('active');
+  $("#filterBackground").removeClass('active');
   setTimeout(refreshList, 300);
 }
 

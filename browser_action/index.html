@@ -12,8 +12,7 @@
     <div id="openMenuButton" class="drawer-switch">&lt;&lt;Menu</div>
     <div id="openFilterButton" class="drawer-switch">&lt;&lt;Filter</div>
 
-    <div id="drawerBackground" class="drawer-background"></div>
-
+    <div id="filterBackground" class="drawer-background"></div>
     <div id="filterContainer" class="drawer filter">
       <div class="condition-group">
         ゲームモード
@@ -111,6 +110,7 @@
       </div>
     </div>
 
+    <div id="menuBackground" class="drawer-background"></div>
     <div id="menuContainer" class="drawer menu">
       <div class="function-group">
         <div>
@@ -158,16 +158,16 @@
       </div>
     </div>
 
+    <div id="logBackground" class="drawer-background"></div>
     <div id="logContainer" class="drawer log">
-      <div id="closeLogButton" class="drawer-switch">■閉じる</div>
-      <div id="flushLogButton" class="drawer-switch">■クリア</div>
+      <div id="scrollLogToBottomButton" class="drawer-switch">▼最新</div>
       <div id="app-log" class="log-data">
         <template v-for="line in log">
             {{ line }} <br>
         </template>
       </div>
-      <div id="closeLogButton2" class="drawer-switch">■閉じる</div>
-      <div id="flushLogButton2" class="drawer-switch">■クリア</div>
+      <div id="closeLogButton" class="drawer-switch">■閉じる</div>
+      <div id="flushLogButton" class="drawer-switch">■クリア</div>
     </div>
 
     <div id="app-charts" class="content">
