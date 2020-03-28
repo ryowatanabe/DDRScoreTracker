@@ -106,7 +106,7 @@ function restoreScoreList(object) {
 gh pagesから曲リストを取得し、ローカルの曲リストを更新する
 */
 
-function updateParsedMusicList()
+function fetchParsedMusicList()
 {
     LOGGER.info("github pagesより楽曲リストを取得...");
     $.ajax({

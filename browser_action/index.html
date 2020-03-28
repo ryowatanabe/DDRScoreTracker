@@ -113,7 +113,44 @@
 
     <div id="menuContainer" class="drawer menu">
       <div class="function-group">
-        <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">スコア詳細を公式から取得</button>
+        <div>
+          <button id="fetchParsedMusicListButton" type="button" name="fetchParsedMusicList">楽曲リストを取得</button>
+        </div>
+        <div>
+          最新の楽曲リストを取得します。
+        </div>
+      </div>
+      <div class="function-group">
+        <div>
+          <button id="fetchMissingMusicInfoButton" type="button" name="fetchMissingMusicInfo">不足している楽曲の情報を取得</button>
+        </div>
+        <div>
+          新曲が追加された場合など、スコアリストに存在するが楽曲リストに存在しない曲・譜面の情報を公式サイトから取得します。e-amusementへのログインが必要です。
+        </div>
+      </div>
+      <div class="function-group">
+        <div>
+          <button id="updateSingleScoreListButton" type="button" name="updateSingleScoreList">スコアリストを取得 (SP)</button>
+        </div>
+        <div>
+          Single Playのスコアリストを公式サイトから取得します。e-amusementへのログインが必要です。
+        </div>
+      </div>
+      <div class="function-group">
+        <div>
+          <button id="updateDoubleScoreListButton" type="button" name="updateDoubleScoreList">スコアリストを取得 (DP)</button>
+        </div>
+        <div>
+          Double Playのスコアリストを公式サイトから取得します。e-amusementへのログインが必要です。
+        </div>
+      </div>
+      <div class="function-group">
+        <div>
+          <button id="updateScoreDetailButton" type="button" name="updateScoreDetail">スコア詳細を取得</button>
+        </div>
+        <div>
+          現在リストに表示されている曲のスコア詳細を公式サイトから取得します。e-amusementへのログインが必要です。
+        </div>
       </div>
       <div>
         <button id="closeMenuButton" type="button" class="drawer-close-button">閉じる</button>
