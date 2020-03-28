@@ -44,7 +44,7 @@ export class MusicData {
   merge(musicData) {
     const iterator = this.difficulty.keys();
     let isUpdated = false;
-    for (let index in iterator) {
+    for (const index of iterator) {
       if (this.difficulty[index] == 0 && musicData.difficulty[index] != 0){
         isUpdated = true;
         this.difficulty[index] = musicData.difficulty[index];
