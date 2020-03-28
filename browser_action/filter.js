@@ -1,5 +1,5 @@
 function refreshList() {
-  var filterConditions = [];
+  let filterConditions = [];
   const names = [ "playMode", "difficulty", "level", "clearType", "scoreRank" ];
   names.forEach(function(name){
     const elements = $(`input[name=${name}]:checked`);
@@ -12,14 +12,19 @@ function refreshList() {
     }
   });
 
-  var sortConditions = [ { attribute: "score", order: "desc" } ];
-  //$(`input[name=sortCondition]:checked`).get()
-
-  sortConditions.push({ attribute: "title", order: "asc" });
+  let sortConditions = [{
+    attribute: $(`input[name=sortCondition_attribute]:checked`).get()[0].value,
+    order: $(`input[name=sortCondition_order]:checked`).get()[0].value
+  }];
+  
   chrome.runtime.getBackgroundPage(function(backgroundPage){
     backgroundPage.saveFilterConditions(filterConditions, sortConditions);
   });
-  refreshListImpl(filterConditions, sortConditions);
+  refreshListImpl(filterConditions, sortConditions.concat([
+    { attribute: "title", order: "asc" },
+    { attribute: "playMode", order: "asc" },
+    { attribute: "difficulty", order: "asc" }
+  ]));
 }
 
 function openFilter() {
@@ -46,12 +51,12 @@ document.getElementById('closeFilterButton').addEventListener("click", closeFilt
     });
     const sortConditions = backgroundPage.getSortConditions();
     if (sortConditions.length == 0) {
-      sortConditions.push("score");
+      sortConditions.push({ attribute: "score", order: "desc" });
     }
-    /*
     sortConditions.forEach(function(condition){
-      $(`#sortCondition_${condition}`).prop('checked', true);
-    });*/
+      $(`#sortCondition_attribute_${condition.attribute}`).prop('checked', true);
+      $(`#sortCondition_order_${condition.order}`).prop('checked', true);
+    });
     refreshList();
   });
 })();
