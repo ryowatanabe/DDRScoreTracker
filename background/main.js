@@ -1,3 +1,11 @@
+import { MusicList } from '../common/MusicList.js';
+import { MusicData } from '../common/MusicData.js';
+import { ScoreList } from '../common/ScoreList.js';
+import { ScoreData } from '../common/ScoreData.js';
+import { ScoreDetail } from '../common/ScoreDetail.js';
+import { ChartList } from '../common/ChartList.js';
+import { ChartData } from '../common/ChartData.js';
+
 const STATE = {
     INITIALIZE: 0,
     IDLE: 1,
@@ -150,11 +158,11 @@ function updateMusicList(windowId)
   }
   state = STATE.UPDATE_MUSIC_LIST;
   chrome.tabs.query({ windowId: windowId, index: 0 }, function(tabs) {
-    tab = tabs[0];
+    const tab = tabs[0];
 // TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
 //       現時点ではデバッグの利便性のため固定のタブを利用
 //  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
-    tabId = tab.id;
+    const tabId = tab.id;
     LOGGER.debug("tab is created (tabId:" + tab.id + ")");
     chrome.tabs.update(tabId, { url: MUSIC_LIST_URL }, function(tab){
       LOGGER.debug('navigate to: ' + MUSIC_LIST_URL);
@@ -192,11 +200,11 @@ function fetchMissingMusicInfo(windowId)
   }
   state = STATE.UPDATE_MUSIC_DETAIL;
   chrome.tabs.query({ windowId: windowId, index: 0 }, function(tabs) {
-    tab = tabs[0];
+    const tab = tabs[0];
 // TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
 //       現時点ではデバッグの利便性のため固定のタブを利用
 //  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
-    tabId = tab.id;
+    const tabId = tab.id;
     console.log("tab is created (tabId:" + tab.id + ")");
     const targetUrl = targetUrls.shift();
     chrome.tabs.update(tabId, { url: targetUrl }, function(tab){
@@ -215,11 +223,11 @@ function updateScoreList(windowId, playMode)
   }
   state = STATE.UPDATE_SCORE_LIST;
   chrome.tabs.query({ windowId: windowId, index: 0 }, function(tabs) {
-    tab = tabs[0];
+    const tab = tabs[0];
 // TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
 //       現時点ではデバッグの利便性のため固定のタブを利用
 //  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
-    tabId = tab.id;
+    const tabId = tab.id;
     LOGGER.debug("tab is created (tabId:" + tab.id + ")");
     chrome.tabs.update(tabId, { url: SCORE_LIST_URL[playMode] }, function(tab){
     });
@@ -247,11 +255,11 @@ function updateScoreDetail(windowId, targetMusics)
   }
   state = STATE.UPDATE_SCORE_DETAIL;
   chrome.tabs.query({ windowId: windowId, index: 0 }, function(tabs) {
-    tab = tabs[0];
+    const tab = tabs[0];
 // TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
 //       現時点ではデバッグの利便性のため固定のタブを利用
 //  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
-    tabId = tab.id;
+    const tabId = tab.id;
     console.log("tab is created (tabId:" + tab.id + ")");
     const targetUrl = targetUrls.shift();
     chrome.tabs.update(tabId, { url: targetUrl }, function(tab){
@@ -390,4 +398,17 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
     });
   });
 
+  window.fetchMissingMusicInfo = fetchMissingMusicInfo;
+  window.fetchParsedMusicList  = fetchParsedMusicList;
+  window.getChartList          = getChartList;
+  window.getFilterConditions   = getFilterConditions;
+  window.getMusicList          = getMusicList;
+  window.getScoreList          = getScoreList;
+  window.getSortConditions     = getSortConditions;
+  window.resetStorage          = resetStorage;
+  window.restoreScoreList      = restoreScoreList;
+  window.saveFilterConditions  = saveFilterConditions;
+  window.updateCharts          = updateCharts;
+  window.updateScoreDetail     = updateScoreDetail;
+  window.updateScoreList       = updateScoreList;
 })();

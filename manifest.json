@@ -22,7 +22,7 @@
         "common/logger.js",
         "common/MusicData.js",
         "common/ScoreData.js",
-        "common/ChartData.js",
+        "common/ChartList.js",
         "content_scripts/main.js"
       ],
       "run_at": "document_start",
@@ -31,15 +31,7 @@
   ],
 
   "background": {
-    "scripts": [
-      "lib/jquery-3.4.1.min.js",
-      "common/const.js",
-      "common/logger.js",
-      "common/MusicData.js",
-      "common/ScoreData.js",
-      "common/ChartData.js",
-      "background/main.js"
-    ],
+    "page": "background/index.html",
     "persistent": false
   },
 
