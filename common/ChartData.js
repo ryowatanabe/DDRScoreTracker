@@ -1,3 +1,5 @@
+import { Constants } from './Constants.js';
+
 export class ChartData {
   musicId     = null;
   playMode    = null;
@@ -16,7 +18,7 @@ export class ChartData {
   }
 
   get level(){
-    const index = this.difficulty + (this.playMode == PLAY_MODE.DOUBLE ? DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
+    const index = this.difficulty + (this.playMode == Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
     return this.musicData.getLevel(index);
   }
 
@@ -73,48 +75,48 @@ export class ChartData {
     if (this.scoreDetail === null || this.scoreDetail.clearType === null){
       return "";
     }
-    return CLEAR_TYPE_STRING[this.scoreDetail.clearType];
+    return Constants.CLEAR_TYPE_STRING[this.scoreDetail.clearType];
   }
 
   get fullComboSymbol() {
     if (this.scoreDetail === null || this.scoreDetail.clearType === null){
       return "";
     }
-    return FULL_COMBO_SYMBOL[this.scoreDetail.clearType];
+    return Constants.FULL_COMBO_SYMBOL[this.scoreDetail.clearType];
   }
 
   get clearTypeClassString() {
     if (this.scoreDetail === null || this.scoreDetail.clearType === null){
       return "";
     }
-    return CLEAR_TYPE_CLASS_STRING[this.scoreDetail.clearType];
+    return Constants.CLEAR_TYPE_CLASS_STRING[this.scoreDetail.clearType];
   }
 
   get scoreRankString() {
     if (this.scoreDetail === null || this.scoreDetail.scoreRank === null){
       return "";
     }
-    return SCORE_RANK_STRING[this.scoreDetail.scoreRank];
+    return Constants.SCORE_RANK_STRING[this.scoreDetail.scoreRank];
   }
 
   get scoreRankClassString() {
     if (this.scoreDetail === null || this.scoreDetail.scoreRank === null){
       return "";
     }
-    return SCORE_RANK_CLASS_STRING[this.scoreDetail.scoreRank];
+    return Constants.SCORE_RANK_CLASS_STRING[this.scoreDetail.scoreRank];
   }
 
   get difficultyClassString() {
     if (this.difficulty === null){
       return "";
     }
-    return DIFFICULTY_CLASS_STRING[this.difficulty];
+    return Constants.DIFFICULTY_CLASS_STRING[this.difficulty];
   }
 
   get playModeSymbol() {
     if (this.playMode === null){
       return "";
     }
-    return PLAY_MODE_SYMBOL[this.playMode];
+    return Constants.PLAY_MODE_SYMBOL[this.playMode];
   }
 }

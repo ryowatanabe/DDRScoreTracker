@@ -1,3 +1,5 @@
+import { refreshList as refreshListImpl } from './Main.js';
+
 function refreshList() {
   let filterConditions = [];
   const names = [ "playMode", "difficulty", "level", "clearType", "scoreRank" ];

@@ -1,3 +1,5 @@
+import { LogReceiver } from './LogReceiver.js';
+
 function openLog() {
   $("#logContainer").addClass('active');
   $("#logBackground").addClass('active');
@@ -25,10 +27,10 @@ function scrollLogToBottomImpl() {
 const appLog = new Vue({
   el: '#app-log',
   data: {
-    log: LOG_RECEIVER.data
+    log: LogReceiver.data
   }
 });
-LOG_RECEIVER.callback = openLog;
+LogReceiver.callback = openLog;
 
 document.getElementById('closeLogButton').addEventListener("click", closeLog);
 document.getElementById('flushLogButton').addEventListener("click", flushLog);

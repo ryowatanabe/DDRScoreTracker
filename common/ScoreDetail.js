@@ -1,3 +1,5 @@
+import { Constants } from './Constants.js';
+
 export class ScoreDetail {
   score      = null;
   scoreRank  = null;
@@ -36,27 +38,27 @@ export class ScoreDetail {
     if (this.clearType === null){
       /* 可能な範囲でクリアタイプを自動判定する */
       if (this.score === null || this.scoreRank === null) {
-        return CLEAR_TYPE.NO_PLAY;
+        return Constants.CLEAR_TYPE.NO_PLAY;
       }
       if (this.clearCount === null) {
         switch (this.scoreRank) {
-          case SCORE_RANK.NO_PLAY:
-            return CLEAR_TYPE.NO_PLAY;
+          case Constants.SCORE_RANK.NO_PLAY:
+            return Constants.CLEAR_TYPE.NO_PLAY;
             break;
-          case SCORE_RANK.E:
-            return CLEAR_TYPE.FAILED;
+          case Constants.SCORE_RANK.E:
+            return Constants.CLEAR_TYPE.FAILED;
             break;
           default:
-            return CLEAR_TYPE.CLEAR;
+            return Constants.CLEAR_TYPE.CLEAR;
             break;
         }
       } else if (this.clearCount == 0) {
-        if (this.scoreRank > SCORE_RANK.E) {
-          return CLEAR_TYPE.ASSIST_CLEAR;
+        if (this.scoreRank > Constants.SCORE_RANK.E) {
+          return Constants.CLEAR_TYPE.ASSIST_CLEAR;
         }
-        return CLEAR_TYPE.FAILED;
+        return Constants.CLEAR_TYPE.FAILED;
       }
-      return CLEAR_TYPE.CLEAR;
+      return Constants.CLEAR_TYPE.CLEAR;
     }
     return this.clearType;
   }

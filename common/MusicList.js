@@ -1,4 +1,5 @@
-import { MusicData } from "./MusicData.js";
+import { MusicData } from './MusicData.js';
+import { Logger } from './Logger.js';
 
 export class MusicList {
   musics = {};
@@ -18,10 +19,10 @@ export class MusicList {
   applyMusicData(musicData) {
     if (this.hasMusic(musicData.musicId)) {
       if (this.getMusicDataById(musicData.musicId).merge(musicData)) {
-        LOGGER.debug(`Modified: ${this.getMusicDataById(musicData.musicId).encodedString}`);
+        Logger.debug(`Modified: ${this.getMusicDataById(musicData.musicId).encodedString}`);
       }
     } else{
-      LOGGER.debug(`Added: ${musicData.encodedString}`);
+      Logger.debug(`Added: ${musicData.encodedString}`);
       this.musics[musicData.musicId] = musicData;
     }
   }

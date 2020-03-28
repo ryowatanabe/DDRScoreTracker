@@ -1,3 +1,5 @@
+import { Logger } from './Logger.js';
+
 export class MusicData {
   musicId    = "";
   title      = "";
@@ -24,7 +26,7 @@ export class MusicData {
     }
     const elements = encodedString.split("\t");
     if (elements.length != 11) {
-      LOGGER.error(`MusicData.create invalid string: ${encodedString}`);
+      Logger.error(`MusicData.create invalid string: ${encodedString}`);
       return null;
     }
     const instance = new MusicData(

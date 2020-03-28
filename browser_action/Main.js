@@ -1,3 +1,5 @@
+import { Constants } from '../common/Constants.js';
+
 const appCharts = new Vue({
   el: '#app-charts',
   data: {
@@ -16,17 +18,17 @@ const appCharts = new Vue({
 })
 
 function gotoPage(page) {
-  appCharts.pageCharts  = appCharts.charts.slice((page - 1) * PAGE_LENGTH, page * PAGE_LENGTH);
+  appCharts.pageCharts  = appCharts.charts.slice((page - 1) * Constants.PAGE_LENGTH, page * Constants.PAGE_LENGTH);
   appCharts.currentPage = page;
 }
 
-function refreshListImpl(filterConditions, sortConditions)
+export function refreshList(filterConditions, sortConditions)
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
     const chartList = backgroundPage.getChartList().getFilteredAndSorted(filterConditions, sortConditions);
     appCharts.statistics  = chartList.statistics;
     appCharts.charts      = chartList.charts;
-    appCharts.maxPage     = Math.ceil(chartList.charts.length / PAGE_LENGTH);
+    appCharts.maxPage     = Math.ceil(chartList.charts.length / Constants.PAGE_LENGTH);
     appCharts.currentPage = 1
     gotoPage(appCharts.currentPage);
   });

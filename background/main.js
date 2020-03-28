@@ -3,6 +3,10 @@ import { ScoreList } from '../common/ScoreList.js';
 import { ScoreDetail } from '../common/ScoreDetail.js';
 import { ChartList } from '../common/ChartList.js';
 import { ChartData } from '../common/ChartData.js';
+import { Constants } from '../common/Constants.js';
+import { Logger } from '../common/Logger.js';
+
+console.log(Constants.SCORE_LIST_URL);
 
 const STATE = {
     INITIALIZE: 0,
@@ -54,9 +58,9 @@ function saveStorage() {
 }
 
 function resetStorage() {
-  LOGGER.info("端末上に保存しているデータを削除します.");
+  Logger.info("端末上に保存しているデータを削除します.");
   chrome.storage.local.clear(function(){
-    LOGGER.info("完了しました.");
+    Logger.info("完了しました.");
     loadStorage();
   });
 }
@@ -114,31 +118,31 @@ gh pagesから曲リストを取得し、ローカルの曲リストを更新す
 
 function fetchParsedMusicList()
 {
-    LOGGER.info("github pagesより楽曲リストを取得...");
+    Logger.info("github pagesより楽曲リストを取得...");
     $.ajax({
-      url: PARSED_MUSIC_LIST_URL,
+      url: Constants.PARSED_MUSIC_LIST_URL,
       dataType: 'text',
       success: function( result ) {
-        LOGGER.info("取得成功.");
+        Logger.info("取得成功.");
         const lines = result.split("\n");
-        LOGGER.info(`${lines.length} 件のデータがあります.`);
+        Logger.info(`${lines.length} 件のデータがあります.`);
         lines.forEach(function(line){
           musicList.applyEncodedString(line);
         });
         saveStorage();
         updateCharts();
-        LOGGER.info([
+        Logger.info([
           "処理を完了しました.",
           ""
         ]);
       },
       error: function( jqXHR, textStatus, errorThrown ) {
-        LOGGER.info("通信エラーが発生しました.");
-        LOGGER.debug([
+        Logger.info("通信エラーが発生しました.");
+        Logger.debug([
           `textStatus: ${textStatus}`,
           `errorThrown: ${errorThrown}`
         ]);
-        LOGGER.info([
+        Logger.info([
           "処理を終了しました. 通信環境のよいところでやり直してください.",
           ""
         ]);
@@ -161,9 +165,9 @@ function updateMusicList(windowId)
 //       現時点ではデバッグの利便性のため固定のタブを利用
 //  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
     tabId = tab.id;
-    LOGGER.debug("tab is created (tabId:" + tab.id + ")");
-    chrome.tabs.update(tabId, { url: MUSIC_LIST_URL }, function(tab){
-      LOGGER.debug('navigate to: ' + MUSIC_LIST_URL);
+    Logger.debug("tab is created (tabId:" + tab.id + ")");
+    chrome.tabs.update(tabId, { url: Constants.MUSIC_LIST_URL }, function(tab){
+      Logger.debug('navigate to: ' + Constants.MUSIC_LIST_URL);
     });
   });
 }
@@ -190,7 +194,7 @@ function fetchMissingMusicInfo(windowId)
     return missing;
   });
   targetUrls = targetMusicIDs.map(musicId => {
-    return MUSIC_DETAIL_URL.replace('[musicId]', musicId);
+    return Constants.MUSIC_DETAIL_URL.replace('[musicId]', musicId);
   });
 
   if (targetUrls.length == 0){
@@ -226,8 +230,8 @@ function updateScoreList(windowId, playMode)
 //       現時点ではデバッグの利便性のため固定のタブを利用
 //  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
     tabId = tab.id;
-    LOGGER.debug("tab is created (tabId:" + tab.id + ")");
-    chrome.tabs.update(tabId, { url: SCORE_LIST_URL[playMode] }, function(tab){
+    Logger.debug("tab is created (tabId:" + tab.id + ")");
+    chrome.tabs.update(tabId, { url: Constants.SCORE_LIST_URL[playMode] }, function(tab){
     });
   });
 }
@@ -245,7 +249,7 @@ function updateScoreDetail(windowId, targetMusics)
   }
   /* 巡回対象のURL一覧を生成 */
   targetUrls = targetMusics.map(music => {
-    return SCORE_DETAIL_URL.replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
+    return Constants.SCORE_DETAIL_URL.replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
   });
 
   if (targetUrls.length == 0){
@@ -269,13 +273,13 @@ function updateScoreDetail(windowId, targetMusics)
 function updateCharts(){
   chartList.reset();
   musicList.musicIds.forEach(function(musicId){
-    Object.values(PLAY_MODE).forEach(function(playMode){
-      Object.values(DIFFICULTIES).forEach(function(difficulty){
-        if (playMode == PLAY_MODE.DOUBLE && difficulty == DIFFICULTIES.BEGINNER){
+    Object.values(Constants.PLAY_MODE).forEach(function(playMode){
+      Object.values(Constants.DIFFICULTIES).forEach(function(difficulty){
+        if (playMode == Constants.PLAY_MODE.DOUBLE && difficulty == Constants.DIFFICULTIES.BEGINNER){
           return;
         }
         const musicData = musicList.getMusicDataById(musicId);
-        const difficultyValue = difficulty + (playMode == PLAY_MODE.DOUBLE ? DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
+        const difficultyValue = difficulty + (playMode == Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
         if (!musicData.hasDifficulty(difficultyValue)) {
           return;
         }
@@ -312,7 +316,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           if (res.hasNext) {
             setTimeout(function(){
               chrome.tabs.update(tabId, { url: res.nextUrl }, function(tab){})
-            }, LOAD_INTERVAL);
+            }, Constants.LOAD_INTERVAL);
           } else {
             state = STATE.IDLE;
           }
@@ -332,7 +336,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
             const targetUrl = targetUrls.shift();
             setTimeout(function(){
               chrome.tabs.update(tabId, { url: targetUrl }, function(tab){})
-            }, LOAD_INTERVAL);
+            }, Constants.LOAD_INTERVAL);
           } else {
             state = STATE.IDLE;
           }
@@ -351,7 +355,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           if (res.hasNext) {
             setTimeout(function(){
               chrome.tabs.update(tabId, { url: res.nextUrl }, function(tab){})
-            }, LOAD_INTERVAL);
+            }, Constants.LOAD_INTERVAL);
           } else {
             state = STATE.IDLE;
           }
@@ -371,7 +375,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
             const targetUrl = targetUrls.shift();
             setTimeout(function(){
               chrome.tabs.update(tabId, { url: targetUrl }, function(tab){})
-            }, LOAD_INTERVAL);
+            }, Constants.LOAD_INTERVAL);
           } else {
             state = STATE.IDLE;
           }

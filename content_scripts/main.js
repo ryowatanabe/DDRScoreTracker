@@ -1,6 +1,7 @@
 let MusicData;
 let ScoreData;
 let ScoreDetail;
+let Constants;
 let isLoadCompleted = false;
 (async () => {
   const musicData = await import(chrome.extension.getURL('common/MusicData.js'));
@@ -9,6 +10,8 @@ let isLoadCompleted = false;
   ScoreData = scoreData.ScoreData;
   const scoreDetail = await import(chrome.extension.getURL('common/ScoreDetail.js'));
   ScoreDetail = scoreDetail.ScoreDetail;
+  const constants = await import(chrome.extension.getURL('common/Constants.js'));
+  Constants = constants.Constants;
   console.log("modules loaded.");
   isLoadCompleted = true;
 })();

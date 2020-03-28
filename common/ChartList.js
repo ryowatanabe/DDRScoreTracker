@@ -1,4 +1,5 @@
-import { ChartData } from "./ChartData.js";
+import { ChartData } from './ChartData.js';
+import { Constants } from './Constants.js';
 
 export class ChartList {
   charts = [];
@@ -18,11 +19,11 @@ export class ChartList {
     const statistics = {
       clearType: []
     };
-    Object.values(CLEAR_TYPE).forEach(function(clearType){
+    Object.values(Constants.CLEAR_TYPE).forEach(function(clearType){
       statistics.clearType.push({
         clearType: clearType,
-        clearTypeString: CLEAR_TYPE_STRING[clearType],
-        clearTypeClassString: CLEAR_TYPE_CLASS_STRING[clearType],
+        clearTypeString: Constants.CLEAR_TYPE_STRING[clearType],
+        clearTypeClassString: Constants.CLEAR_TYPE_CLASS_STRING[clearType],
         count: this.charts.filter(chartData => { return chartData.clearType == clearType }).length,
       });
     }.bind(this));
