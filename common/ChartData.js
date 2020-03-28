@@ -205,11 +205,12 @@ class ChartList {
       lt = 1;
       gt = -1;
     }
-    if (a[attribute] < b[attribute]) {
-      return lt;
-    } else if (a[attribute] > b[attribute]){
-      return gt;
+    if (a[attribute] === b[attribute]) {
+      return this.compareChartData(a, b, sortConditions.slice(1));
     }
-    return this.compareChartData(a, b, sortConditions.slice(1));
+    if (a[attribute] < b[attribute] || a[attribute] === null) {
+      return lt;
+    }
+    return gt;
   }
 }
