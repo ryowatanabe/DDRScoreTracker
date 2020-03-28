@@ -24,8 +24,8 @@ let targetUrls = [];
 let storage = {};
 let storageBytesInUse = 0;
 
-let musicList;   // 曲リスト。1曲1エントリ。
-let scoreList;   // スコアリスト。1極1エントリ。
+let musicList; // 曲リスト。1曲1エントリ。
+let scoreList; // スコアリスト。1極1エントリ。
 let chartList = new ChartList(); // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
 
 function loadStorage() {

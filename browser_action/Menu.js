@@ -1,3 +1,5 @@
+import { Constants } from '../common/Constants.js';
+
 function fetchParsedMusicList()
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
@@ -17,7 +19,7 @@ document.getElementById('fetchMissingMusicInfoButton').addEventListener("click",
 function updateSingleScoreList()
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, PLAY_MODE.SINGLE);
+    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, Constants.PLAY_MODE.SINGLE);
   });
 }
 document.getElementById('updateSingleScoreListButton').addEventListener("click", updateSingleScoreList);
@@ -25,7 +27,7 @@ document.getElementById('updateSingleScoreListButton').addEventListener("click",
 function updateDoubleScoreList()
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, PLAY_MODE.DOUBLE);
+    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, Constants.PLAY_MODE.DOUBLE);
   });
 }
 document.getElementById('updateDoubleScoreListButton').addEventListener("click", updateDoubleScoreList);
@@ -36,7 +38,7 @@ function updateScoreDetail()
   appCharts.charts.forEach(function(chartData){
     targetMusics.push({
       musicId: chartData.musicId,
-      difficulty: chartData.difficulty + (chartData.playMode == PLAY_MODE.DOUBLE ? DIFFICULTIES_OFFSET_FOR_DOUBLE : 0)
+      difficulty: chartData.difficulty + (chartData.playMode == Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0)
     });
   });
   closeFilter();
