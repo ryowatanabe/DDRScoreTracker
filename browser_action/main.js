@@ -20,10 +20,10 @@ function gotoPage(page) {
   appCharts.currentPage = page;
 }
 
-function refreshListImpl(filterConditions)
+function refreshListImpl(filterConditions, sortConditions)
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
-    const chartList = backgroundPage.getChartList().getFilteredAndSorted(filterConditions);
+    const chartList = backgroundPage.getChartList().getFilteredAndSorted(filterConditions, sortConditions);
     appCharts.statistics  = chartList.statistics;
     appCharts.charts      = chartList.charts;
     appCharts.maxPage     = Math.ceil(chartList.charts.length / PAGE_LENGTH);

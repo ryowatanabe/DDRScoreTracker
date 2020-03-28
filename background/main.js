@@ -38,7 +38,8 @@ function saveStorage() {
       {
         scores: scoreList.musics,
         musics: musicList.musics,
-        filterConditions: storage.filterConditions
+        filterConditions: storage.filterConditions,
+        sortConditions: storage.sortConditions
       },
       function() {
         getBytesInUse();
@@ -63,8 +64,15 @@ function getBytesInUse(){
 function getFilterConditions() {
   return storage.filterConditions;
 }
-function saveFilterConditions(conditions) {
-    storage.filterConditions = conditions;
+function getSortConditions() {
+  if (!Array.isArray(storage.sortConditions)) {
+    storage.sortConditions = [];
+  }
+  return storage.sortConditions;
+}
+function saveFilterConditions(filterConditions, sortConditions) {
+    storage.filterConditions = filterConditions;
+    storage.sortConditions   = sortConditions;
     saveStorage();
 }
 
@@ -84,7 +92,8 @@ function getDefaults() {
   return {
     scores: {},
     musics: {},
-    filterConditions: []
+    filterConditions: [],
+    sortConditions: []
   }
 }
 

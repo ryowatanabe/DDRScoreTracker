@@ -167,8 +167,14 @@ class ChartList {
 
   WHERE attributeName1 IN (value11, value22, ...) AND
         attributeName2 IN (value21, value22, ...) AND ...
+
+  sortCondition = [
+    { attribute: "attributeName1", order: "asc OR desc" },
+    { attribute: "attributeName2", order: "asc OR desc" },
+    ...
+  ]
   */
-  getFilteredAndSorted(filterConditions /*, sortConditions */) {
+  getFilteredAndSorted(filterConditions, sortConditions) {
     /* filter */
     const chartList = new ChartList();
     this.charts.forEach(function(chartData){
@@ -182,21 +188,28 @@ class ChartList {
         chartList.addChartData(chartData);
       }
     });
-    /* ToDo: customizable sort */
     chartList.charts.sort(function(a, b){
-      if (a.score > b.score){
-        return -1;
-      } else if (a.score < b.score){
-        return 1;
-      } else {
-        if (a.title < b.title){
-          return -1;
-        } else if (a.title > b.title){
-          return 1;
-        }
-      }
-      return 0;
+      return ChartList.compareChartData(a, b, sortConditions);
     });
     return chartList;
+  }
+
+  static compareChartData(a, b, sortConditions) {
+    if (sortConditions.length == 0) {
+      return 0;
+    }
+    const attribute = sortConditions[0].attribute;
+    let lt = -1;
+    let gt = 1;
+    if (sortConditions[0].order == "desc") {
+      lt = 1;
+      gt = -1;
+    }
+    if (a[attribute] < b[attribute]) {
+      return lt;
+    } else if (a[attribute] > b[attribute]){
+      return gt;
+    }
+    return this.compareChartData(a, b, sortConditions.slice(1));
   }
 }

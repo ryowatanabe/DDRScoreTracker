@@ -1,5 +1,5 @@
 function refreshList() {
-  var conditions = [];
+  var filterConditions = [];
   const names = [ "playMode", "difficulty", "level", "clearType", "scoreRank" ];
   names.forEach(function(name){
     const elements = $(`input[name=${name}]:checked`);
@@ -8,13 +8,18 @@ function refreshList() {
         attribute: name,
         values: jQuery.map(elements, function(element){ return parseInt(element.value, 10); })
       }
-      conditions.push(condition);
+      filterConditions.push(condition);
     }
   });
+
+  var sortConditions = [ { attribute: "score", order: "desc" } ];
+  //$(`input[name=sortCondition]:checked`).get()
+
+  sortConditions.push({ attribute: "title", order: "asc" });
   chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.saveFilterConditions(conditions);
+    backgroundPage.saveFilterConditions(filterConditions, sortConditions);
   });
-  refreshListImpl(conditions);
+  refreshListImpl(filterConditions, sortConditions);
 }
 
 function openFilter() {
@@ -39,6 +44,14 @@ document.getElementById('closeFilterButton').addEventListener("click", closeFilt
         $(`#filterCondition_${condition.attribute}_${value}`).prop('checked', true);
       });
     });
+    const sortConditions = backgroundPage.getSortConditions();
+    if (sortConditions.length == 0) {
+      sortConditions.push("score");
+    }
+    /*
+    sortConditions.forEach(function(condition){
+      $(`#sortCondition_${condition}`).prop('checked', true);
+    });*/
     refreshList();
   });
 })();
