@@ -1,6 +1,7 @@
 let MusicData;
 let ScoreData;
 let ScoreDetail;
+let isLoadCompleted = false;
 (async () => {
   const musicData = await import(chrome.extension.getURL('common/MusicData.js'));
   MusicData = musicData.MusicData;
@@ -8,9 +9,16 @@ let ScoreDetail;
   ScoreData = scoreData.ScoreData;
   const scoreDetail = await import(chrome.extension.getURL('common/ScoreDetail.js'));
   ScoreDetail = scoreDetail.ScoreDetail;
+  console.log("modules loaded.");
+  isLoadCompleted = true;
 })();
 
-chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+function onMessage(message, sender, sendResponse) {
+  if(!isLoadCompleted) {
+    console.log("loading modules not completed. still waiting...");
+    setTimeout(onMessage.bind(this, message, sender, sendResponse), 500);
+    return true;
+  }
   if (message.type == 'PARSE_MUSIC_LIST') {
     console.log("parsing music list ...");
     sendResponse(parseMusicList());
@@ -33,7 +41,8 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   }
   console.log("received unknown message");
   console.log(message);
-});
+}
+chrome.runtime.onMessage.addListener(onMessage);
 
 function parseMusicList(){
   const res = {
