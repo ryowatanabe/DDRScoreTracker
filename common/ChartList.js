@@ -19,14 +19,14 @@ export class ChartList {
     const statistics = {
       clearType: []
     };
-    Object.values(Constants.CLEAR_TYPE).forEach(function(clearType){
+    Object.values(Constants.CLEAR_TYPE).forEach((clearType) => {
       statistics.clearType.push({
         clearType: clearType,
         clearTypeString: Constants.CLEAR_TYPE_STRING[clearType],
         clearTypeClassString: Constants.CLEAR_TYPE_CLASS_STRING[clearType],
         count: this.charts.filter(chartData => { return chartData.clearType == clearType }).length,
       });
-    }.bind(this));
+    });
     statistics.clearType.sort(function(a, b){
       if (a.clearType > b.clearType){
         return -1;

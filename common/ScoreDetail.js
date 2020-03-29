@@ -25,13 +25,13 @@ export class ScoreDetail {
     const attributes = [
       "score", "scoreRank", "clearType", "playCount", "clearCount", "maxCombo"
     ];
-    attributes.forEach(function(attributeName) {
+    attributes.forEach((attributeName) => {
       if (scoreDetail[attributeName] !== null) {
         if (this[attributeName] === null || scoreDetail[attributeName] > this[attributeName]) {
           this[attributeName] = scoreDetail[attributeName];
         }
       }
-    }.bind(this));
+    });
   }
 
   get actualClearType() {

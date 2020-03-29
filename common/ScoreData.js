@@ -25,9 +25,9 @@ export class ScoreData {
   }
 
   merge(scoreData) {
-    scoreData.difficulties.forEach(function(difficultyValue) {
+    scoreData.difficulties.forEach((difficultyValue) => {
       this.applyScoreDetail(difficultyValue, scoreData.getScoreDetailByDifficulty(difficultyValue));
-    }.bind(this));
+    });
   }
 
   getScoreDetailByDifficulty(difficultyValue) {
