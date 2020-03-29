@@ -72,6 +72,13 @@ export class BrowserController {
         resolve('tab closed');
       });
     });
+  }
 
+  sendMessageToTab(message, callback) {
+    if (this.state != this.constructor.STATE.CREATED) {
+      throw(new Error(`state unmatch (current state: ${this.state})`));
+      return;
+    }
+    chrome.tabs.sendMessage(this.tabId, message, {}, callback);
   }
 }
