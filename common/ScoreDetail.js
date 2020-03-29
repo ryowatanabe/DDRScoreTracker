@@ -44,13 +44,10 @@ export class ScoreDetail {
         switch (this.scoreRank) {
           case Constants.SCORE_RANK.NO_PLAY:
             return Constants.CLEAR_TYPE.NO_PLAY;
-            break;
           case Constants.SCORE_RANK.E:
             return Constants.CLEAR_TYPE.FAILED;
-            break;
           default:
             return Constants.CLEAR_TYPE.CLEAR;
-            break;
         }
       } else if (this.clearCount == 0) {
         if (this.scoreRank > Constants.SCORE_RANK.E) {

@@ -1,5 +1,5 @@
-import { ScoreDetail } from '../../common/ScoreDetail.js';
-import { Constants } from '../../common/Constants.js';
+import { ScoreDetail } from '../../../common/ScoreDetail.js';
+import { Constants } from '../../../common/Constants.js';
 
 test('ScoreDetail.actualClearType (empty)', () => {
   const scoreDetail = ScoreDetail.createFromStorage({
@@ -63,6 +63,8 @@ test('ScoreDetail.actualClearType (detail clear)', () => {
 
 test('ScoreDetail.actualClearType (manual input life4)', () => {
   const scoreDetail = ScoreDetail.createFromStorage({
+    score: 900000,
+    scoreRank: Constants.SCORE_RANK.E,
     clearType: Constants.CLEAR_TYPE.LIFE4
   });
   expect(scoreDetail.actualClearType).toBe(Constants.CLEAR_TYPE.LIFE4);
