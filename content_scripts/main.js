@@ -2,8 +2,8 @@ let MusicData;
 let ScoreData;
 let ScoreDetail;
 let Constants;
-let isLoadCompleted = false;
-(async () => {
+
+async function loadModules() {
   const musicData = await import(chrome.extension.getURL('common/MusicData.js'));
   MusicData = musicData.MusicData;
   const scoreData = await import(chrome.extension.getURL('common/ScoreData.js'));
@@ -13,37 +13,34 @@ let isLoadCompleted = false;
   const constants = await import(chrome.extension.getURL('common/Constants.js'));
   Constants = constants.Constants;
   console.log("modules loaded.");
-  isLoadCompleted = true;
-})();
+};
 
 function onMessage(message, sender, sendResponse) {
-  if(!isLoadCompleted) {
-    console.log("loading modules not completed. still waiting...");
-    setTimeout(onMessage.bind(this, message, sender, sendResponse), 500);
-    return true;
-  }
-  if (message.type == 'PARSE_MUSIC_LIST') {
-    console.log("parsing music list ...");
-    sendResponse(parseMusicList());
-    return true;
-  }
-  if (message.type == 'PARSE_MUSIC_DETAIL') {
-    console.log("parsing music detail ...");
-    sendResponse(parseMusicDetail());
-    return true;
-  }
-  if (message.type == 'PARSE_SCORE_LIST') {
-    console.log("parsing score list ...");
-    sendResponse(parseScoreList());
-    return true;
-  }
-  if (message.type == 'PARSE_SCORE_DETAIL') {
-    console.log("parsing score detail ...");
-    sendResponse(parseScoreDetail());
-    return true;
-  }
-  console.log("received unknown message");
-  console.log(message);
+  loadModules().then((value) => {
+    if (message.type == 'PARSE_MUSIC_LIST') {
+      console.log("parsing music list ...");
+      sendResponse(parseMusicList());
+      return;
+    }
+    if (message.type == 'PARSE_MUSIC_DETAIL') {
+      console.log("parsing music detail ...");
+      sendResponse(parseMusicDetail());
+      return;
+    }
+    if (message.type == 'PARSE_SCORE_LIST') {
+      console.log("parsing score list ...");
+      sendResponse(parseScoreList());
+      return;
+    }
+    if (message.type == 'PARSE_SCORE_DETAIL') {
+      console.log("parsing score detail ...");
+      sendResponse(parseScoreDetail());
+      return;
+    }
+    console.log("received unknown message");
+    console.log(message);
+  });
+  return true;
 }
 chrome.runtime.onMessage.addListener(onMessage);
 
