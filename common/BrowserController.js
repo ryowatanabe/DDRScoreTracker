@@ -6,7 +6,8 @@ export class BrowserController {
       INITIALIZED: 1,
       CREATING: 2,
       CREATED: 3,
-      CLOSING: 4
+      CLOSING: 4,
+      WAITING: 5
     };
   }
 
@@ -39,20 +40,24 @@ export class BrowserController {
     });
   }
 
-  updateTab(url) {
+  updateTab(url, delay = 0) {
     return new Promise((resolve, reject) => {
       if (this.state != this.constructor.STATE.CREATED) {
         reject(new Error(`state unmatch (current state: ${this.state})`));
         return;
       }
-      chrome.tabs.update(this.tabId, { url: url }, (tab) => {
-        if (typeof(chrome.runtime.lastError) !== 'undefined') {
-          this.reset();
-          reject(new Error(chrome.runtime.lastError.message));
-          return;
-        }
-        resolve(`navigate to: ${url}`);
-      });
+      this.state = this.constructor.STATE.WAITING;
+      setTimeout(() => {
+        chrome.tabs.update(this.tabId, { url: url }, (tab) => {
+          if (typeof(chrome.runtime.lastError) !== 'undefined') {
+            this.reset();
+            reject(new Error(chrome.runtime.lastError.message));
+            return;
+          }
+          this.state = this.constructor.STATE.CREATED;
+          resolve(`navigate to: ${url}`);
+        });
+      }, delay);
     });
   }
 

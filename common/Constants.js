@@ -47,7 +47,7 @@ export class Constants {
     };
   }
 
-  static get DIFFICULTIES_NAME_MAP() {
+  static get DIFFICULTY_NAME_MAP() {
     return {
       'beginner':  this.DIFFICULTIES.BEGINNER,
       'basic':     this.DIFFICULTIES.BASIC,

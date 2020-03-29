@@ -17,7 +17,8 @@ document.getElementById('createTabButton').addEventListener("click", createTab);
 async function updateTab() {
   try {
     const url = $('#targetURL').val()
-    await browserController.updateTab(url);
+    const delay = $('#delay').val()
+    await browserController.updateTab(url, delay);
     Logger.debug(`navigate to: ${url}`);
   } catch (error) {
     Logger.error(error);

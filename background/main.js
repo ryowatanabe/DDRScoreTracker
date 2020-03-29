@@ -5,8 +5,9 @@ import { ChartList } from '../common/ChartList.js';
 import { ChartData } from '../common/ChartData.js';
 import { Constants } from '../common/Constants.js';
 import { Logger } from '../common/Logger.js';
+import { BrowserController } from '../common/BrowserController.js';
 
-console.log(Constants.SCORE_LIST_URL);
+const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT);
 
 const STATE = {
     INITIALIZE: 0,
@@ -18,7 +19,6 @@ const STATE = {
 };
 
 let state = STATE.INITIALIZE;
-let tabId = 0;
 let targetUrls = [];
 
 let storage = {};
@@ -153,30 +153,25 @@ function fetchParsedMusicList()
 /*
 公式の曲一覧から曲情報を取得し、ローカルの曲リストを更新する
 */
-function updateMusicList(windowId)
+async function updateMusicList(windowId)
 {
   if (state != STATE.IDLE){
     return false;
   }
   state = STATE.UPDATE_MUSIC_LIST;
-  chrome.tabs.query({ windowId: windowId, index: 0 }, function(tabs) {
-    const tab = tabs[0];
-// TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
-//       現時点ではデバッグの利便性のため固定のタブを利用
-//  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
-    tabId = tab.id;
-    Logger.debug("tab is created (tabId:" + tab.id + ")");
-    chrome.tabs.update(tabId, { url: Constants.MUSIC_LIST_URL }, function(tab){
-      Logger.debug('navigate to: ' + Constants.MUSIC_LIST_URL);
-    });
-  });
+  try {
+    await browserController.createTab();
+    await browserController.updateTab(Constants.MUSIC_LIST_URL);
+  } catch (error) {
+    Logger.error(error);
+  }
 }
 
 /*
 ローカルの曲リストと成績リストを比較し、曲情報が欠けている曲について
 その情報を取得する
 */
-function fetchMissingMusicInfo(windowId)
+async function fetchMissingMusicInfo(windowId)
 {
   if (state != STATE.IDLE){
     //return false;
@@ -201,39 +196,30 @@ function fetchMissingMusicInfo(windowId)
     return false;
   }
   state = STATE.UPDATE_MUSIC_DETAIL;
-  chrome.tabs.query({ windowId: windowId, index: 0 }, function(tabs) {
-    const tab = tabs[0];
-// TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
-//       現時点ではデバッグの利便性のため固定のタブを利用
-//  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
-    tabId = tab.id;
-    console.log("tab is created (tabId:" + tab.id + ")");
+  try {
     const targetUrl = targetUrls.shift();
-    chrome.tabs.update(tabId, { url: targetUrl }, function(tab){
-      console.log('navigate to: ' + targetUrl);
-    });
-  });
+    await browserController.createTab();
+    await browserController.updateTab(targetUrl);
+  } catch (error) {
+    Logger.error(error);
+  }
 }
 
 /*
 公式の成績一覧ページから成績情報を取得し、ローカルのスコアリストを更新する
 */
-function updateScoreList(windowId, playMode)
+async function updateScoreList(windowId, playMode)
 {
   if (state != STATE.IDLE){
     //return false;
   }
   state = STATE.UPDATE_SCORE_LIST;
-  chrome.tabs.query({ windowId: windowId, index: 0 }, function(tabs) {
-    const tab = tabs[0];
-// TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
-//       現時点ではデバッグの利便性のため固定のタブを利用
-//  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
-    tabId = tab.id;
-    Logger.debug("tab is created (tabId:" + tab.id + ")");
-    chrome.tabs.update(tabId, { url: Constants.SCORE_LIST_URL[playMode] }, function(tab){
-    });
-  });
+  try {
+    await browserController.createTab();
+    await browserController.updateTab(Constants.SCORE_LIST_URL[playMode]);
+  } catch (error) {
+    Logger.error(error);
+  }
 }
 
 /*
@@ -242,7 +228,7 @@ targetMusics: [
   { musicId:xxx, difficulty:yy }, ...
 ]
 */
-function updateScoreDetail(windowId, targetMusics)
+async function updateScoreDetail(windowId, targetMusics)
 {
   if (state != STATE.IDLE){
     //return false;
@@ -256,18 +242,13 @@ function updateScoreDetail(windowId, targetMusics)
     return false;
   }
   state = STATE.UPDATE_SCORE_DETAIL;
-  chrome.tabs.query({ windowId: windowId, index: 0 }, function(tabs) {
-    const tab = tabs[0];
-// TODO: 最終的には "作業用のタブを新規作成して使い、終わったら破棄する" 挙動にする
-//       現時点ではデバッグの利便性のため固定のタブを利用
-//  chrome.tabs.create({ windowId: windowId, active: false }, function(tab){
-    tabId = tab.id;
-    console.log("tab is created (tabId:" + tab.id + ")");
+  try {
     const targetUrl = targetUrls.shift();
-    chrome.tabs.update(tabId, { url: targetUrl }, function(tab){
-      console.log('navigate to: ' + targetUrl);
-    });
-  });
+    await browserController.createTab();
+    await browserController.updateTab(targetUrl);
+  } catch (error) {
+    Logger.error(error);
+  }
 }
 
 function updateCharts(){
@@ -300,13 +281,14 @@ function updateCharts(){
 }
 
 chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
-  if (tabId != tid){
+  // Logger.debug(`chrome.tabs.onUpdated(tabId: ${tid})`);
+  if (browserController.tabId != tid){
     return;
   }
   switch (state){
     case STATE.UPDATE_MUSIC_LIST:
       if (changeInfo.status == "complete"){
-        chrome.tabs.sendMessage(tabId, { type: 'PARSE_MUSIC_LIST' }, function(res) {
+        browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST' }, async (res) => {
           console.log(res);
           Object.keys(res.musics).forEach(function(musicId){
             musicList.applyObject(res.musics[musicId]);
@@ -314,9 +296,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           saveStorage();
           updateCharts();
           if (res.hasNext) {
-            setTimeout(function(){
-              chrome.tabs.update(tabId, { url: res.nextUrl }, function(tab){})
-            }, Constants.LOAD_INTERVAL);
+            await browserController.updateTab(res.nextUrl, Constants.LOAD_INTERVAL);
           } else {
             state = STATE.IDLE;
           }
@@ -325,7 +305,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
       break;
     case STATE.UPDATE_MUSIC_DETAIL:
       if (changeInfo.status == "complete"){
-        chrome.tabs.sendMessage(tabId, { type: 'PARSE_MUSIC_DETAIL' }, function(res) {
+        browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL' }, async (res) => {
           console.log(res);
           Object.keys(res.musics).forEach(function(musicId){
             musicList.applyObject(res.musics[musicId]);
@@ -334,9 +314,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           updateCharts();
           if (targetUrls.length > 0) {
             const targetUrl = targetUrls.shift();
-            setTimeout(function(){
-              chrome.tabs.update(tabId, { url: targetUrl }, function(tab){})
-            }, Constants.LOAD_INTERVAL);
+            await browserController.updateTab(targetUrl, Constants.LOAD_INTERVAL);
           } else {
             state = STATE.IDLE;
           }
@@ -345,7 +323,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
       break;
     case STATE.UPDATE_SCORE_LIST:
       if (changeInfo.status == "complete"){
-        chrome.tabs.sendMessage(tabId, { type: 'PARSE_SCORE_LIST' }, function(res) {
+        browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST' }, async (res) => {
           console.log(res);
           res.scores.forEach(function(score){
             scoreList.applyObject(score);
@@ -353,9 +331,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           saveStorage();
           updateCharts();
           if (res.hasNext) {
-            setTimeout(function(){
-              chrome.tabs.update(tabId, { url: res.nextUrl }, function(tab){})
-            }, Constants.LOAD_INTERVAL);
+            await browserController.updateTab(res.nextUrl, Constants.LOAD_INTERVAL);
           } else {
             state = STATE.IDLE;
           }
@@ -364,7 +340,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
       break;
     case STATE.UPDATE_SCORE_DETAIL:
       if (changeInfo.status == "complete"){
-        chrome.tabs.sendMessage(tabId, { type: 'PARSE_SCORE_DETAIL' }, function(res) {
+        browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL' }, async (res) => {
           console.log(res);
           res.scores.forEach(function(score){
             scoreList.applyObject(score);
@@ -373,9 +349,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           updateCharts();
           if (targetUrls.length > 0) {
             const targetUrl = targetUrls.shift();
-            setTimeout(function(){
-              chrome.tabs.update(tabId, { url: targetUrl }, function(tab){})
-            }, Constants.LOAD_INTERVAL);
+            await browserController.updateTab(targetUrl, Constants.LOAD_INTERVAL);
           } else {
             state = STATE.IDLE;
           }
