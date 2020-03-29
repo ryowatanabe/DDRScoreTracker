@@ -163,6 +163,7 @@ async function updateMusicList(windowId)
     await browserController.createTab();
     await browserController.updateTab(Constants.MUSIC_LIST_URL);
   } catch (error) {
+    browserController.reset();
     Logger.error(error);
   }
 }
@@ -201,6 +202,7 @@ async function fetchMissingMusicInfo(windowId)
     await browserController.createTab();
     await browserController.updateTab(targetUrl);
   } catch (error) {
+    browserController.reset();
     Logger.error(error);
   }
 }
@@ -218,6 +220,7 @@ async function updateScoreList(windowId, playMode)
     await browserController.createTab();
     await browserController.updateTab(Constants.SCORE_LIST_URL[playMode]);
   } catch (error) {
+    browserController.reset();
     Logger.error(error);
   }
 }
@@ -247,6 +250,7 @@ async function updateScoreDetail(windowId, targetMusics)
     await browserController.createTab();
     await browserController.updateTab(targetUrl);
   } catch (error) {
+    browserController.reset();
     Logger.error(error);
   }
 }
@@ -296,8 +300,14 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           saveStorage();
           updateCharts();
           if (res.hasNext) {
-            await browserController.updateTab(res.nextUrl, Constants.LOAD_INTERVAL);
+            try {
+              await browserController.updateTab(res.nextUrl, Constants.LOAD_INTERVAL);
+            } catch (error) {
+              browserController.reset();
+              Logger.error(error);
+            }
           } else {
+            await browserController.closeTab();
             state = STATE.IDLE;
           }
         });
@@ -313,9 +323,15 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           saveStorage();
           updateCharts();
           if (targetUrls.length > 0) {
-            const targetUrl = targetUrls.shift();
-            await browserController.updateTab(targetUrl, Constants.LOAD_INTERVAL);
+            try {
+              const targetUrl = targetUrls.shift();
+              await browserController.updateTab(targetUrl, Constants.LOAD_INTERVAL);
+            } catch (error) {
+              browserController.reset();
+              Logger.error(error);
+            }
           } else {
+            await browserController.closeTab();
             state = STATE.IDLE;
           }
         });
@@ -331,8 +347,14 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           saveStorage();
           updateCharts();
           if (res.hasNext) {
-            await browserController.updateTab(res.nextUrl, Constants.LOAD_INTERVAL);
+            try {
+              await browserController.updateTab(res.nextUrl, Constants.LOAD_INTERVAL);
+            } catch (error) {
+              browserController.reset();
+              Logger.error(error);
+            }
           } else {
+            await browserController.closeTab();
             state = STATE.IDLE;
           }
         });
@@ -348,9 +370,15 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           saveStorage();
           updateCharts();
           if (targetUrls.length > 0) {
-            const targetUrl = targetUrls.shift();
-            await browserController.updateTab(targetUrl, Constants.LOAD_INTERVAL);
+            try {
+              const targetUrl = targetUrls.shift();
+              await browserController.updateTab(targetUrl, Constants.LOAD_INTERVAL);
+            } catch (error) {
+              browserController.reset();
+              Logger.error(error);
+            }
           } else {
+            await browserController.closeTab();
             state = STATE.IDLE;
           }
         });
