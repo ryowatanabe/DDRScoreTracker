@@ -1,5 +1,7 @@
 # DDR Score Tracker
 
+|<img alt="DP LV15 sample screenshot" src="https://ryowatanabe.github.io/DDRScoreTracker/images/screenshot_dplv15.png" width="45%">|<img alt="DP Grades sample screenshot" src="https://ryowatanabe.github.io/DDRScoreTracker/images/screenshot_dpgrades.png" width="45%">|
+
 ## 概要
 
 [DanceDanceRevolution A20の公式サイト](https://p.eagate.573.jp/game/ddr/ddra20/p/)で閲覧可能なスコアデータを収集し、整理して閲覧することができるGoogle Chrome向け拡張機能です。
