@@ -20,7 +20,7 @@ function refreshList() {
   }];
 
   chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.saveFilterConditions(filterConditions, sortConditions);
+    backgroundPage.saveConditions(filterConditions, sortConditions);
   });
   refreshListImpl(filterConditions, sortConditions.concat([
     /* tie breakers */
@@ -46,17 +46,16 @@ document.getElementById('closeFilterButton').addEventListener("click", closeFilt
 (function()
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
-    const filterConditions = backgroundPage.getFilterConditions();
-    filterConditions.forEach(function(condition){
+    const conditions = backgroundPage.getConditions();
+    conditions.filter.forEach(function(condition){
       condition.values.forEach(function(value){
         $(`#filterCondition_${condition.attribute}_${value}`).prop('checked', true);
       });
     });
-    const sortConditions = backgroundPage.getSortConditions();
-    if (sortConditions.length == 0) {
-      sortConditions.push({ attribute: "score", order: "desc" });
+    if (conditions.sort.length == 0) {
+      conditions.sort.push({ attribute: "score", order: "desc" });
     }
-    sortConditions.forEach(function(condition){
+    conditions.sort.forEach(function(condition){
       $(`#sortCondition_attribute_${condition.attribute}`).prop('checked', true);
       $(`#sortCondition_order_${condition.order}`).prop('checked', true);
     });

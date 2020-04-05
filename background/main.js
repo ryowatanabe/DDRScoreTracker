@@ -5,9 +5,27 @@ import { ChartList } from '../common/ChartList.js';
 import { ChartData } from '../common/ChartData.js';
 import { Constants } from '../common/Constants.js';
 import { Logger } from '../common/Logger.js';
+import { Storage } from '../common/Storage.js';
 import { BrowserController } from '../common/BrowserController.js';
 
 const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT);
+const storage = new Storage(
+  {
+    scores: {},
+    musics: {},
+    conditions: {
+      filter: [],
+      sort: []
+    }
+  },
+  (data) => {
+    musicList = MusicList.createFromStorage(data.musics);
+    scoreList = ScoreList.createFromStorage(data.scores);
+    conditions = data.conditions;
+    updateCharts();
+    state = STATE.IDLE;
+  }
+);
 
 const STATE = {
     INITIALIZE: 0,
@@ -21,68 +39,36 @@ const STATE = {
 let state = STATE.INITIALIZE;
 let targetUrls = [];
 
-let storage = {};
-let storageBytesInUse = 0;
-
 let musicList; // 曲リスト。1曲1エントリ。
 let scoreList; // スコアリスト。1極1エントリ。
 let chartList = new ChartList(); // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
-
-function loadStorage() {
-  chrome.storage.local.get(
-      getDefaults(),
-      function(data) {
-        storage = data;
-        musicList = MusicList.createFromStorage(storage.musics);
-        scoreList = ScoreList.createFromStorage(storage.scores);
-        updateCharts();
-        getBytesInUse();
-        state = STATE.IDLE;
-      }
-  );
-}
-loadStorage();
+let conditions;
 
 function saveStorage() {
-  chrome.storage.local.set(
-      {
-        scores: scoreList.musics,
-        musics: musicList.musics,
-        filterConditions: storage.filterConditions,
-        sortConditions: storage.sortConditions
-      },
-      function() {
-        getBytesInUse();
-      }
-  );
+  storage.saveStorage({
+    scores: scoreList.musics,
+    musics: musicList.musics,
+    conditions: conditions
+  });
 }
 
 function resetStorage() {
-  Logger.info("端末上に保存しているデータを削除します.");
-  chrome.storage.local.clear(function(){
-    Logger.info("完了しました.");
-    loadStorage();
-  });
+  storage.resetStorage();
 }
 
 function getBytesInUse(){
-  chrome.storage.local.getBytesInUse(null, function(bytesInUse){
-    storageBytesInUse = bytesInUse;
-  });
+  return storage.bytesInUse;
 }
 
-function getFilterConditions() {
-  return storage.filterConditions;
+function getConditions() {
+  return conditions;
 }
-function getSortConditions() {
-  if (!Array.isArray(storage.sortConditions)) {
-    storage.sortConditions = [];
-  }
-  return storage.sortConditions;
-}
-function saveFilterConditions(filterConditions, sortConditions) {
-    storage.filterConditions = filterConditions;
-    storage.sortConditions   = sortConditions;
+
+function saveConditions(filterConditions, sortConditions) {
+    conditions = {
+      filter: filterConditions,
+      sort:   sortConditions
+    }
     saveStorage();
 }
 
@@ -96,15 +82,6 @@ function getScoreList() {
 
 function getChartList() {
   return chartList;
-}
-
-function getDefaults() {
-  return {
-    scores: {},
-    musics: {},
-    filterConditions: [],
-    sortConditions: []
-  }
 }
 
 function restoreScoreList(object) {
@@ -405,13 +382,12 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
   window.fetchMissingMusicInfo = fetchMissingMusicInfo;
   window.fetchParsedMusicList  = fetchParsedMusicList;
   window.getChartList          = getChartList;
-  window.getFilterConditions   = getFilterConditions;
+  window.getConditions         = getConditions;
   window.getMusicList          = getMusicList;
   window.getScoreList          = getScoreList;
-  window.getSortConditions     = getSortConditions;
   window.resetStorage          = resetStorage;
   window.restoreScoreList      = restoreScoreList;
-  window.saveFilterConditions  = saveFilterConditions;
+  window.saveConditions        = saveConditions;
   window.updateCharts          = updateCharts;
   window.updateScoreDetail     = updateScoreDetail;
   window.updateScoreList       = updateScoreList;

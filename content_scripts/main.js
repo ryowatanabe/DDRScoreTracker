@@ -1,9 +1,12 @@
+let Logger;
 let MusicData;
 let ScoreData;
 let ScoreDetail;
 let Constants;
 
 async function loadModules() {
+  const logger = await import(chrome.extension.getURL('common/Logger.js'));
+  Logger = logger.Logger;
   const musicData = await import(chrome.extension.getURL('common/MusicData.js'));
   MusicData = musicData.MusicData;
   const scoreData = await import(chrome.extension.getURL('common/ScoreData.js'));
@@ -39,6 +42,8 @@ function onMessage(message, sender, sendResponse) {
     }
     console.log("received unknown message");
     console.log(message);
+  }, (reason) => {
+    Logger.error(reason);
   });
   return true;
 }
