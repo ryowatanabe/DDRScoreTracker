@@ -2,7 +2,7 @@
 
 ## 概要
 
-DanceDanceRevolution A20の公式サイトで閲覧可能なスコアデータを収集し、整理して閲覧することができるGoogle Chrome向け拡張機能です。
+[DanceDanceRevolution A20の公式サイト](https://p.eagate.573.jp/game/ddr/ddra20/p/)で閲覧可能なスコアデータを収集し、整理して閲覧することができるGoogle Chrome向け拡張機能です。
 
 本ソフトウェアは `Score Manager` ではなく `Score Tracker` です。公式サイトのデータを手間なく収集し扱うことがコンセプトの中核にあり、利用者が情報を手入力して運用することは想定していません。(今後の開発において考慮する可能性はありますが、優先度は低いです)
 
@@ -12,7 +12,7 @@ DanceDanceRevolution A20の公式サイトで閲覧可能なスコアデータ�
 
 ### 拡張機能の読み込み
 
-Google Chromeのメニュー「ウィンドウ」→「拡張機能」→「パッケージ化されていない拡張機能を読み込む」で、manifest.jsonのあるディレクトリを選択してください。
+Google Chromeのメニュー「ウィンドウ」→[「拡張機能」](chrome://extensions)→「パッケージ化されていない拡張機能を読み込む」で、manifest.jsonのあるディレクトリを選択してください。
 
 ### DDR Score Trackerを開く
 
@@ -37,6 +37,9 @@ DDR Score Trackerのメニューを開き「スコア詳細を取得」ボタン
 本ソフトウェアで取得したデータは、ブラウザが動作しているPC上に保存されます。一度取得したデータの閲覧は、インターネット接続がオフラインの状態でも可能です。  
 また、取得したデータを外部のサーバに送信・保存することはありません。
 
+楽曲リストの取得は[github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics.txt)から行っています。  
+それ以外のデータの取得は[公式サイト](https://p.eagate.573.jp/game/ddr/ddra20/p/)から行います。
+
 ## 利用上の注意
 
 本ソフトウェアは、それが動作しているGoogle Chrome上で公式サイトを開き、表示したページの内容からスコア情報を取得しています。特にスコア詳細を取得する場合など、多くのページに連続してアクセスを行う場合があります。サーバに負荷をかけることのないように、人間が操作している状況に近くなるよう一定の時間を空けてアクセスしていますが、必要以上のアクセスが生じないよう利用にはご配慮ください。
@@ -53,4 +56,4 @@ $ yarn test
 
 ## License
 
-MIT
+[MIT](https://github.com/ryowatanabe/DDRScoreTracker/blob/master/LICENSE)
