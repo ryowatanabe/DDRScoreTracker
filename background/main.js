@@ -37,6 +37,7 @@ const STATE = {
 };
 
 let state = STATE.INITIALIZE;
+let targetMusics = [];
 let targetUrls = [];
 
 let musicList; // 曲リスト。1曲1エントリ。
@@ -204,28 +205,32 @@ async function updateScoreList(windowId, playMode)
 
 /*
 公式の成績詳細ページから成績情報を取得し、ローカルのスコアリストを更新する
-targetMusics: [
+targets: [
   { musicId:xxx, difficulty:yy }, ...
 ]
 */
-async function updateScoreDetail(windowId, targetMusics)
+async function updateScoreDetail(windowId, targets)
 {
+  Logger.info("スコア詳細を取得...");
   if (state != STATE.IDLE){
     //return false;
   }
   /* 巡回対象のURL一覧を生成 */
-  targetUrls = targetMusics.map(music => {
-    return Constants.SCORE_DETAIL_URL.replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
+  targets.forEach((music) => {
+    music.url = Constants.SCORE_DETAIL_URL.replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
+    targetMusics.push(music);
   });
-
-  if (targetUrls.length == 0){
+  if (targetMusics.length == 0){
+    Logger.info("データ取得対象の楽曲がありません.");
     return false;
   }
+  Logger.info(`取得対象は ${targetMusics.length} 件あります.`);
   state = STATE.UPDATE_SCORE_DETAIL;
   try {
-    const targetUrl = targetUrls.shift();
+    const targetMusic = targetMusics.shift();
+    Logger.info(`${musicList.getMusicDataById(targetMusic.musicId).title} [${Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty]}] (あと ${targetMusics.length} 件)`);
     await browserController.createTab();
-    await browserController.updateTab(targetUrl);
+    await browserController.updateTab(targetMusic.url);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
@@ -346,10 +351,11 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           });
           saveStorage();
           updateCharts();
-          if (targetUrls.length > 0) {
+          if (targetMusics.length > 0) {
             try {
-              const targetUrl = targetUrls.shift();
-              await browserController.updateTab(targetUrl, Constants.LOAD_INTERVAL);
+              const targetMusic = targetMusics.shift();
+              Logger.info(`${musicList.getMusicDataById(targetMusic.musicId).title} [${Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty]}] (あと ${targetMusics.length} 件)`);
+              await browserController.updateTab(targetMusic.url, Constants.LOAD_INTERVAL);
             } catch (error) {
               browserController.reset();
               Logger.error(error);
@@ -357,6 +363,10 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           } else {
             await browserController.closeTab();
             state = STATE.IDLE;
+            Logger.info([
+              "処理を完了しました.",
+              ""
+            ]);
           }
         });
       }

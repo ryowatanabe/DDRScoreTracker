@@ -164,6 +164,20 @@ export class Constants {
   表示・CSS class用文字列
   */
 
+  static get PLAY_MODE_AND_DIFFICULTY_STRING() {
+    const result = {};
+    result[0] = 'bSP';
+    result[1] = 'BSP';
+    result[2] = 'DSP';
+    result[3] = 'ESP';
+    result[4] = 'CSP';
+    result[5] = 'BDP';
+    result[6] = 'DDP';
+    result[7] = 'EDP';
+    result[8] = 'CDP';
+    return result;
+  }
+
   static get CLEAR_TYPE_STRING() {
     const result = {};
     result[this.CLEAR_TYPE.NO_PLAY]      = "NoPlay";
