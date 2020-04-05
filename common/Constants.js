@@ -56,7 +56,7 @@ export class Constants {
   }
 
   static get LOAD_INTERVAL() {
-    return 3000;
+    return 5000;
   }
 
   static get DIFFICULTIES() {
