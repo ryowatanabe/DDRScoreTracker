@@ -18,21 +18,18 @@ function fetchMissingMusicInfo()
 }
 document.getElementById('fetchMissingMusicInfoButton').addEventListener("click", fetchMissingMusicInfo);
 
-function updateSingleScoreList()
+function updateScoreList(playMode, musicType)
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, Constants.PLAY_MODE.SINGLE);
+    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, playMode, musicType);
   });
 }
-document.getElementById('updateSingleScoreListButton').addEventListener("click", updateSingleScoreList);
-
-function updateDoubleScoreList()
-{
-  chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, Constants.PLAY_MODE.DOUBLE);
-  });
-}
-document.getElementById('updateDoubleScoreListButton').addEventListener("click", updateDoubleScoreList);
+document.getElementById('updateSingleScoreListButton').addEventListener("click", updateScoreList.bind(this, Constants.PLAY_MODE.SINGLE, Constants.MUSIC_TYPE.NORMAL));
+document.getElementById('updateSingleNonstopScoreListButton').addEventListener("click", updateScoreList.bind(this, Constants.PLAY_MODE.SINGLE, Constants.MUSIC_TYPE.NONSTOP));
+document.getElementById('updateSingleGradeScoreListButton').addEventListener("click", updateScoreList.bind(this, Constants.PLAY_MODE.SINGLE, Constants.MUSIC_TYPE.GRADE));
+document.getElementById('updateDoubleScoreListButton').addEventListener("click", updateScoreList.bind(this, Constants.PLAY_MODE.DOUBLE, Constants.MUSIC_TYPE.NORMAL));
+document.getElementById('updateDoubleNonstopScoreListButton').addEventListener("click", updateScoreList.bind(this, Constants.PLAY_MODE.DOUBLE, Constants.MUSIC_TYPE.NONSTOP));
+document.getElementById('updateDoubleGradeScoreListButton').addEventListener("click", updateScoreList.bind(this, Constants.PLAY_MODE.DOUBLE, Constants.MUSIC_TYPE.GRADE));
 
 function updateScoreDetail()
 {

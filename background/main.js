@@ -192,7 +192,7 @@ async function fetchMissingMusicInfo(windowId)
 /*
 公式の成績一覧ページから成績情報を取得し、ローカルのスコアリストを更新する
 */
-async function updateScoreList(windowId, playMode)
+async function updateScoreList(windowId, playMode, musicType)
 {
   if (state != STATE.IDLE){
     //return false;
@@ -200,7 +200,7 @@ async function updateScoreList(windowId, playMode)
   state = STATE.UPDATE_SCORE_LIST;
   try {
     await browserController.createTab();
-    await browserController.updateTab(Constants.SCORE_LIST_URL[playMode][Constants.MUSIC_TYPE.NORMAL]);
+    await browserController.updateTab(Constants.SCORE_LIST_URL[playMode][musicType]);
   } catch (error) {
     browserController.reset();
     Logger.error(error);

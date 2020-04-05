@@ -112,7 +112,7 @@ function parseScoreList(){
   const scores = $('tr.data').get();
   scores.forEach (function(score){
     const regexp = /^.*img=([0-9a-zA-Z]+).*$/;
-    const src = $('td img.jk', $(score))[0].src;
+    const src = $('td img.jk, td img.jk2', $(score))[0].src;
     const musicId = src.replace(regexp, '$1')
     const scoreData = new ScoreData(musicId);
     Object.keys(Constants.DIFFICULTY_NAME_MAP).forEach (function (difficultyName){
@@ -147,7 +147,7 @@ function parseScoreDetail() {
     scores: []
   };
 
-  const detail = $('#music_detail_table td,#course_detail_table td').get().map(element => { return element.innerText; });
+  const detail = $('#music_detail_table td, #course_detail_table td').get().map(element => { return element.innerText; });
   if (detail.length > 0) {
     const musicInfo = $('#music_info td').get();
     const regexpForMusicId = /^.*img=([0-9a-zA-Z]+).*$/;

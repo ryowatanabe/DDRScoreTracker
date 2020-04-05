@@ -20,6 +20,8 @@ export class Constants {
 
   static get SCORE_LIST_URL() {
     const result = {};
+    result[this.PLAY_MODE.SINGLE] = {};
+    result[this.PLAY_MODE.DOUBLE] = {};
     result[this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.NORMAL]  = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_single.html';
     result[this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.NORMAL]  = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_double.html';
     result[this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/nonstop_data_single.html';
