@@ -1,9 +1,10 @@
 import { refreshList as refreshListImpl } from './Main.js';
 
+const filterNames = [ "playMode", "musicType", "difficulty", "level", "clearType", "scoreRank" ];
+
 export function refreshList() {
   let filterConditions = [];
-  const names = [ "playMode", "musicType", "difficulty", "level", "clearType", "scoreRank" ];
-  names.forEach(function(name){
+  filterNames.forEach(function(name){
     const elements = $(`input[name=${name}]:checked`);
     if (elements.length > 0){
       const condition = {
@@ -40,11 +41,30 @@ function closeFilter() {
   setTimeout(refreshList, 300);
 }
 
+function selectAll(name){
+  const elements = $(`input[name=${name}]`);
+  jQuery.map(elements, (element) => {
+    $(element).prop('checked', true);
+  });
+}
+function selectNone(name){
+  const elements = $(`input[name=${name}]`);
+  jQuery.map(elements, (element) => {
+    $(element).prop('checked', false);
+  });
+}
+
 document.getElementById('openFilterButton').addEventListener("click", openFilter);
 document.getElementById('closeFilterButton').addEventListener("click", closeFilter);
 
 (function()
 {
+  /* All, Noneのイベントハンドラをつける */
+  filterNames.forEach((name) => {
+    document.getElementById(`filterCondition_${name}_all`).addEventListener("click", selectAll.bind(this, name));
+    document.getElementById(`filterCondition_${name}_clear`).addEventListener("click", selectNone.bind(this, name));
+  });
+  /* デフォルトのチェックをつける */
   chrome.runtime.getBackgroundPage(function(backgroundPage){
     const conditions = backgroundPage.getConditions();
     conditions.filter.forEach(function(condition){

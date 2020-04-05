@@ -97,6 +97,9 @@ a {
 .filter .element {
   white-space: nowrap;
 }
+.filter a {
+  cursor: pointer;
+}
 
 /*
 機能メニュー
