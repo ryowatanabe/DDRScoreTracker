@@ -147,7 +147,7 @@ function parseScoreDetail() {
     scores: []
   };
 
-  const detail = $('#music_detail_table td').get().map(element => { return element.innerText; });
+  const detail = $('#music_detail_table td,#course_detail_table td').get().map(element => { return element.innerText; });
   if (detail.length > 0) {
     const musicInfo = $('#music_info td').get();
     const regexpForMusicId = /^.*img=([0-9a-zA-Z]+).*$/;

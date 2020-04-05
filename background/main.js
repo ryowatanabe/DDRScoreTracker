@@ -221,7 +221,7 @@ async function updateScoreDetail(windowId, targets)
   }
   /* 巡回対象のURL一覧を生成 */
   targets.forEach((music) => {
-    music.url = Constants.SCORE_DETAIL_URL[Constants.MUSIC_TYPE.NORMAL].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
+    music.url = Constants.SCORE_DETAIL_URL[musicList.getMusicDataById(music.musicId).type].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
     targetMusics.push(music);
   });
   if (targetMusics.length == 0){
