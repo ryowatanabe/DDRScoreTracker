@@ -6,18 +6,15 @@ function updateMusicList()
 }
 document.getElementById('updateMusicListButton').addEventListener("click", updateMusicList);
 
-function updateCharts()
-{
-  chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.updateCharts();
-  });
-}
-document.getElementById('updateChartsButton').addEventListener("click", updateCharts);
-
 function resetStorage()
 {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
-    backgroundPage.resetStorage();
+    if (window.confirm('端末上に保存されているデータをすべて削除しますか？')) {
+      backgroundPage.resetStorage();
+      alert("削除しました。");
+    } else{
+      alert("キャンセルしました。");
+    }
   });
 }
 document.getElementById('resetStorageButton').addEventListener("click", resetStorage);
