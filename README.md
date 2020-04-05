@@ -41,6 +41,16 @@ DDR Score Trackerのメニューを開き「スコア詳細を取得」ボタン
 
 本ソフトウェアは、それが動作しているGoogle Chrome上で公式サイトを開き、表示したページの内容からスコア情報を取得しています。特にスコア詳細を取得する場合など、多くのページに連続してアクセスを行う場合があります。サーバに負荷をかけることのないように、人間が操作している状況に近くなるよう一定の時間を空けてアクセスしていますが、必要以上のアクセスが生じないよう利用にはご配慮ください。
 
+## for developers
+
+```
+$ git clone git@github.com:ryowatanabe/DDRScoreTracker
+$ cd DDRScoreTracker
+$ yarn install
+
+$ yarn test
+```
+
 ## License
 
 MIT
