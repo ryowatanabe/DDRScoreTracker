@@ -1,12 +1,15 @@
+import { Constants } from './Constants.js';
 import { Logger } from './Logger.js';
 
 export class MusicData {
   musicId    = "";
+  type       = Constants.MUSIC_TYPE.NORMAL;
   title      = "";
   difficulty = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-  constructor(musicId, title, difficulty) {
+  constructor(musicId, type, title, difficulty) {
     this.musicId    = musicId;
+    this.type       = type
     this.title      = title;
     this.difficulty = difficulty;
   }
@@ -14,6 +17,7 @@ export class MusicData {
   static createFromStorage(storageData) {
     const instance = new MusicData(
       storageData["musicId"],
+      storageData["type"],
       storageData["title"],
       storageData["difficulty"]
     );
@@ -25,14 +29,15 @@ export class MusicData {
       return null;
     }
     const elements = encodedString.split("\t");
-    if (elements.length != 11) {
+    if (elements.length != 12) {
       Logger.error(`MusicData.create invalid string: ${encodedString}`);
       return null;
     }
     const instance = new MusicData(
       elements[0],
-      elements[10],
-      elements.slice(1, 10).map(element => parseInt(element, 10))
+      parseInt(elements[1], 10),
+      elements[11],
+      elements.slice(2, 11).map(element => parseInt(element, 10))
     );
     return instance;
   }
@@ -62,6 +67,6 @@ export class MusicData {
   }
 
   get encodedString() {
-    return [this.musicId, this.difficulty, this.title].flat().join("\t");
+    return [this.musicId, this.type, this.difficulty, this.title].flat().join("\t");
   }
 }

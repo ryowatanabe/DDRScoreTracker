@@ -37,6 +37,19 @@ function dumpMusicList() {
 }
 document.getElementById('dumpMusicListButton').addEventListener("click", dumpMusicList);
 
+function restoreMusicList() {
+  chrome.runtime.getBackgroundPage(function(backgroundPage){
+    const string = $('#restoreMusicListArea').get()[0].value;
+    if (window.confirm('フォームの内容で楽曲リストをリストアしますか？')) {
+      backgroundPage.restoreMusicList(string);
+      alert("リストアしました。");
+    } else{
+      alert("キャンセルしました。");
+    }
+  });
+}
+document.getElementById('restoreMusicListButton').addEventListener("click", restoreMusicList);
+
 function dumpScoreList() {
   chrome.runtime.getBackgroundPage(function(backgroundPage){
     const scoreList = backgroundPage.getScoreList();

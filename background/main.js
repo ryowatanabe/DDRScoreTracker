@@ -85,6 +85,16 @@ function getChartList() {
   return chartList;
 }
 
+function restoreMusicList(string) {
+  const lines = string.split("\n");
+  Logger.info(`${lines.length} 件のデータがあります.`);
+  lines.forEach(function(line){
+    musicList.applyEncodedString(line);
+  });
+  saveStorage();
+  updateCharts();
+}
+
 function restoreScoreList(object) {
   scoreList = ScoreList.createFromStorage(object);
   updateCharts();
@@ -102,13 +112,7 @@ function fetchParsedMusicList()
       dataType: 'text',
       success: function( result ) {
         Logger.info("取得成功.");
-        const lines = result.split("\n");
-        Logger.info(`${lines.length} 件のデータがあります.`);
-        lines.forEach(function(line){
-          musicList.applyEncodedString(line);
-        });
-        saveStorage();
-        updateCharts();
+        restoreMusicList(result);
         Logger.info([
           "処理を完了しました.",
           ""
@@ -168,7 +172,7 @@ async function fetchMissingMusicInfo(windowId)
     return missing;
   });
   targetUrls = targetMusicIDs.map(musicId => {
-    return Constants.MUSIC_DETAIL_URL.replace('[musicId]', musicId);
+    return Constants.MUSIC_DETAIL_URL[Constants.MUSIC_TYPE.NORMAL].replace('[musicId]', musicId);
   });
 
   if (targetUrls.length == 0){
@@ -196,7 +200,7 @@ async function updateScoreList(windowId, playMode)
   state = STATE.UPDATE_SCORE_LIST;
   try {
     await browserController.createTab();
-    await browserController.updateTab(Constants.SCORE_LIST_URL[playMode]);
+    await browserController.updateTab(Constants.SCORE_LIST_URL[playMode][Constants.MUSIC_TYPE.NORMAL]);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
@@ -217,7 +221,7 @@ async function updateScoreDetail(windowId, targets)
   }
   /* 巡回対象のURL一覧を生成 */
   targets.forEach((music) => {
-    music.url = Constants.SCORE_DETAIL_URL.replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
+    music.url = Constants.SCORE_DETAIL_URL[Constants.MUSIC_TYPE.NORMAL].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
     targetMusics.push(music);
   });
   if (targetMusics.length == 0){
@@ -396,6 +400,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
   window.getMusicList          = getMusicList;
   window.getScoreList          = getScoreList;
   window.resetStorage          = resetStorage;
+  window.restoreMusicList      = restoreMusicList;
   window.restoreScoreList      = restoreScoreList;
   window.saveConditions        = saveConditions;
   window.updateCharts          = updateCharts;
