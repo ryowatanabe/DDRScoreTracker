@@ -14,7 +14,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://p.eagate.573.jp/*"
+        "https://p.eagate.573.jp/game/ddr/ddra20/p/*"
       ],
       "js": [
         "lib/jquery-3.4.1.min.js",
