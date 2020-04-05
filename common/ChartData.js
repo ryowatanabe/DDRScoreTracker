@@ -13,6 +13,10 @@ export class ChartData {
     this.difficulty  = difficulty;
   }
 
+  get musicType() {
+    return this.musicData.type;
+  }
+
   get title(){
     return this.musicData.title;
   }

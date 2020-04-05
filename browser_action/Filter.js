@@ -2,7 +2,7 @@ import { refreshList as refreshListImpl } from './Main.js';
 
 function refreshList() {
   let filterConditions = [];
-  const names = [ "playMode", "difficulty", "level", "clearType", "scoreRank" ];
+  const names = [ "playMode", "musicType", "difficulty", "level", "clearType", "scoreRank" ];
   names.forEach(function(name){
     const elements = $(`input[name=${name}]:checked`);
     if (elements.length > 0){
