@@ -11,6 +11,8 @@ body {
 
 button {
   font-size: 1.2rem;
+  line-height: 150%;
+  margin: 2px;
 }
 
 table { width: 100%; }

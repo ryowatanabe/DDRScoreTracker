@@ -23,7 +23,7 @@
       <div class="condition-group">
         楽曲種別
         <div>
-          <span class="element"><input type="checkbox" id="filterCondition_musicType_0" name="musicType" value="0" /><label for="filterCondition_musicType_0">通常</label></span>
+          <span class="element"><input type="checkbox" id="filterCondition_musicType_0" name="musicType" value="0" /><label for="filterCondition_musicType_0">通常楽曲</label></span>
           <span class="element"><input type="checkbox" id="filterCondition_musicType_1" name="musicType" value="1" /><label for="filterCondition_musicType_1">NONSTOP</label></span>
           <span class="element"><input type="checkbox" id="filterCondition_musicType_2" name="musicType" value="2" /><label for="filterCondition_musicType_2">段位認定</label></span>
         </div>
@@ -137,14 +137,19 @@
       </div>
       <div class="function-group">
         <div>
-          <button id="updateSingleScoreListButton" type="button" name="updateSingleScoreList">スコアリストを取得 (SP/通常)</button>
-          <button id="updateSingleNonstopScoreListButton" type="button" name="updateSingleNonstopScoreList">(SP/NONSTOP)</button>
-          <button id="updateSingleGradeScoreListButton" type="button" name="updateSingleGradeScoreList">(SP/段位認定)</button>
+          スコアリストを取得
         </div>
         <div>
-          <button id="updateDoubleScoreListButton" type="button" name="updateDoubleScoreList">スコアリストを取得 (DP)</button>
-          <button id="updateDoubleNonstopScoreListButton" type="button" name="updateDoubleNonstopScoreList">(DP/NONSTOP)</button>
-          <button id="updateDoubleGradeScoreListButton" type="button" name="updateDoubleGradeScoreList">(DP/段位認定)</button>
+          SP:
+          <button id="updateSingleScoreListButton" type="button" name="updateSingleScoreList">通常楽曲</button>
+          <button id="updateSingleNonstopScoreListButton" type="button" name="updateSingleNonstopScoreList">NONSTOP</button>
+          <button id="updateSingleGradeScoreListButton" type="button" name="updateSingleGradeScoreList">段位認定</button>
+        </div>
+        <div>
+          DP:
+          <button id="updateDoubleScoreListButton" type="button" name="updateDoubleScoreList">通常楽曲</button>
+          <button id="updateDoubleNonstopScoreListButton" type="button" name="updateDoubleNonstopScoreList">NONSTOP</button>
+          <button id="updateDoubleGradeScoreListButton" type="button" name="updateDoubleGradeScoreList">段位認定</button>
         </div>
         <div>
           スコアリストを公式サイトから取得します。e-amusementへのログインが必要です。
