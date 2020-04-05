@@ -1,6 +1,6 @@
 # DDR Score Tracker
 
-|<img alt="DP LV15 sample screenshot" src="https://ryowatanabe.github.io/DDRScoreTracker/images/screenshot_dplv15.png" width="45%">|<img alt="DP Grades sample screenshot" src="https://ryowatanabe.github.io/DDRScoreTracker/images/screenshot_dpgrades.png" width="45%">|
+<img alt="DP LV15 sample screenshot" src="https://ryowatanabe.github.io/DDRScoreTracker/images/screenshot_dplv15.png" width="45%"> <img alt="DP Grades sample screenshot" src="https://ryowatanabe.github.io/DDRScoreTracker/images/screenshot_dpgrades.png" width="45%">
 
 ## 概要
 
@@ -10,17 +10,17 @@
 
 本ソフトウェアの利用には、e-amusement ベーシックコースへの加入が必要です。
 
-## 利用方法
-
 ## 利用上の注意
 
 現在の本ソフトウェアはα版です。通信周りの異常系を中心に、未考慮未実装の事項があるため、状況によって予想外の挙動を示す場合があります。また、データの互換性を失うような大幅な変更の可能性があります。
 
 本ソフトウェアは、それが動作しているGoogle Chrome上で公式サイトを開き、表示したページの内容からスコア情報を取得しています。特にスコア詳細を取得する場合など、多くのページに連続してアクセスを行う場合があります。サーバに負荷をかけることのないように、人間が操作している状況に近くなるよう一定の時間を空けてアクセスしていますが、必要以上のアクセスが生じないよう利用にはご配慮ください。
 
+## 利用方法
+
 ### 拡張機能の読み込み
 
-Google Chromeのメニュー「ウィンドウ」→[「拡張機能」](chrome://extensions)→「パッケージ化されていない拡張機能を読み込む」で、manifest.jsonのあるディレクトリを選択してください。
+Google Chromeのメニュー「ウィンドウ」→「拡張機能」→「パッケージ化されていない拡張機能を読み込む」で、manifest.jsonのあるディレクトリを選択してください。
 
 ### DDR Score Trackerを開く
 
