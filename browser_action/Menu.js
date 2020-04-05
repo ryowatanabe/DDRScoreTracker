@@ -1,4 +1,5 @@
 import { getCharts } from './Main.js';
+import { refreshList } from './Filter.js';
 import { Constants } from '../common/Constants.js';
 
 function fetchParsedMusicList()
@@ -42,7 +43,6 @@ function updateScoreDetail()
       difficulty: chartData.difficulty + (chartData.playMode == Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0)
     });
   });
-  closeMenu();
   chrome.runtime.getBackgroundPage(function(backgroundPage){
     backgroundPage.updateScoreDetail(chrome.windows.WINDOW_ID_CURRENT, targetMusics);
   });
@@ -56,6 +56,7 @@ function openMenu() {
 function closeMenu() {
   $("#menuContainer").removeClass('active');
   $("#menuBackground").removeClass('active');
+  setTimeout(refreshList, 300);
 }
 document.getElementById('openMenuButton').addEventListener("click", openMenu);
 document.getElementById('closeMenuButton').addEventListener("click", closeMenu);

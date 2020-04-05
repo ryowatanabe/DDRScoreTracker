@@ -1,6 +1,6 @@
 import { refreshList as refreshListImpl } from './Main.js';
 
-function refreshList() {
+export function refreshList() {
   let filterConditions = [];
   const names = [ "playMode", "musicType", "difficulty", "level", "clearType", "scoreRank" ];
   names.forEach(function(name){
