@@ -2,53 +2,76 @@
 
 <img alt="DP LV15 sample screenshot" src="https://ryowatanabe.github.io/DDRScoreTracker/images/screenshot_dplv15.png" width="45%"> <img alt="DP Grades sample screenshot" src="https://ryowatanabe.github.io/DDRScoreTracker/images/screenshot_dpgrades.png" width="45%">
 
-## 概要
+## Abstract / 概要
 
-[DanceDanceRevolution A20の公式サイト](https://p.eagate.573.jp/game/ddr/ddra20/p/)で閲覧可能なスコアデータを収集し、整理して閲覧することができるGoogle Chrome向け拡張機能です。
+This is a Google Chrome Extension which enables you collecting score data from [DanceDanceRevolution A20 official website](https://p.eagate.573.jp/game/ddr/ddra20/p/), organizing and viewing those data.
 
-本ソフトウェアは `Score Manager` ではなく `Score Tracker` です。公式サイトのデータを手間なく収集し扱うことがコンセプトの中核にあり、利用者が情報を手入力して運用することは想定していません。(今後の開発において考慮する可能性はありますが、優先度は低いです)
+[DanceDanceRevolution A20の公式サイト](https://p.eagate.573.jp/game/ddr/ddra20/p/)で閲覧可能なスコアデータを収集し, 整理して閲覧することができるGoogle Chrome拡張機能です.
 
-本ソフトウェアの利用には、e-amusement ベーシックコースへの加入が必要です。
+This software is not `Score Manager` but `Score Tracker`. Core concept of this software is to collect and utilize data on official website, without taking time and effort. It is unexpected that users enter data manually. (Though it is possible to consider it in future development, it will have low priority.)
 
-## 利用上の注意
+本ソフトウェアは `Score Manager` ではなく `Score Tracker` です. 公式サイトのデータを手間なく収集し扱うことがコンセプトの中核にあり, 利用者が情報を手入力して運用することは想定していません. (今後の開発において考慮する可能性はありますが, 優先度は低いです.)
 
-現在の本ソフトウェアはα版です。通信周りの異常系を中心に、未考慮未実装の事項があるため、状況によって予想外の挙動を示す場合があります。また、データの互換性を失うような大幅な変更の可能性があります。
+You have to subscribe e-amusement basic course for using this software.
 
-本ソフトウェアは、それが動作しているGoogle Chrome上で公式サイトを開き、表示したページの内容からスコア情報を取得しています。特にスコア詳細を取得する場合など、多くのページに連続してアクセスを行う場合があります。サーバに負荷をかけることのないように、人間が操作している状況に近くなるよう一定の時間を空けてアクセスしていますが、必要以上のアクセスが生じないよう利用にはご配慮ください。
+本ソフトウェアの利用には, e-amusement ベーシックコースへの加入が必要です.
 
-## 利用方法
+## Disclaimer / 免責事項
 
-### 拡張機能の読み込み
+This software is currently alpha. It may behave unexpectedly in some edge cases. In the future, it is subject to change without data compatibility.
 
-Google Chromeのメニュー「ウィンドウ」→「拡張機能」→「パッケージ化されていない拡張機能を読み込む」で、manifest.jsonのあるディレクトリを選択してください。
+現在の本ソフトウェアはα版です. 状況によって予想外の挙動をとることがありますし, 将来データの互換性を失うような変更の可能性があります.
 
-### DDR Score Trackerを開く
+## Important notes / 注意事項
 
-拡張機能が読み込まれると、Google ChromeのツールバーにDDR Score Trackerのボタンが追加されます。このボタンをクリックすると、新規タブでDDR Score Trackerが開きます。
+This software opens official website on Google Chrome which it works on, then it retrieves data from contents shown on the browser. It may access many pages sequentially, especially when it retrieves detailed score data. Though it takes interval when it retrieves multiple pages, please use it with care not to request too much than you need.
 
-### 楽曲リストの読み込み
+本ソフトウェアは, それが動作しているGoogle Chrome上で公式サイトを開き, 表示したページの内容からスコア情報を取得しています. 特にスコア詳細を取得する場合など, 多くのページに連続してアクセスを行う場合があります. サーバに負荷をかけることのないように, 人間が操作している状況に近くなるよう一定の時間を空けてアクセスしていますが, 必要以上のアクセスが生じないよう利用にはご配慮ください.
 
-DDR Score Trackerのメニューを開き「楽曲リストを取得」ボタンをクリックしてください。
+## How to use / 利用方法
 
-### スコア情報を取得
+### Loading extension / 拡張機能の読み込み
 
-DDR Score Trackerのメニューを開き「スコア情報を取得」の各ボタンをクリックしてください。
-各楽曲・譜面のスコアとフルコンボタイプを取得します。
+Choose `Window` > `Extensions` > `Load unpacked` in the Google Chrome's menu, then select directory which has `manifest.json` in it.
 
-### スコア詳細を取得
+Google Chromeのメニュー `ウィンドウ` → `拡張機能` → `パッケージ化されていない拡張機能を読み込む` で, `manifest.json` のあるディレクトリを選択してください.
 
-DDR Score Trackerのメニューを開き「スコア詳細を取得」ボタンをクリックしてください。
-そのときリストに表示中の楽曲・譜面について、プレイ回数・クリア回数・最大コンボ数といった情報を含むスコア詳細を取得します。
+### Launching DDR Score Tracker / DDR Score Trackerを開く
 
-## データの取り扱いについて
+After the extension is loaded, a button representing DDR Score Tracker is added into Google Chrome's toolbar. Click this button to launch DDR Score Tracker on new tab.
 
-本ソフトウェアで取得したデータは、ブラウザが動作しているPC上に保存されます。一度取得したデータの閲覧は、インターネット接続がオフラインの状態でも可能です。  
-また、取得したデータを外部のサーバに送信・保存することはありません。
+拡張機能が読み込まれると, Google ChromeのツールバーにDDR Score Trackerのボタンが追加されます. このボタンをクリックすると, 新規タブでDDR Score Trackerが開きます.
 
-楽曲リストの取得は[github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics.txt)から行っています。  
-それ以外のデータの取得は[公式サイト](https://p.eagate.573.jp/game/ddr/ddra20/p/)から行います。
+### Retrieving music list / 楽曲リストの読み込み
 
-## for developers
+Open DDR Score Tracker's menu, then click `楽曲リストを取得` button.
+
+DDR Score Trackerのメニューを開き `楽曲リストを取得` ボタンをクリックしてください.
+
+### Retrieving score data / スコア情報を取得
+
+Open DDR Score Tracker's menu, then click each button in `スコア情報を取得` section. Score and full combo type will be retrieved for each music and difficulty.
+
+DDR Score Trackerのメニューを開き `スコア情報を取得` の各ボタンをクリックしてください.
+各楽曲・譜面のスコアとフルコンボタイプを取得します.
+
+### Retrieving detailed score data / スコア詳細を取得
+
+Open DDR Score Tracker's menu, then click `スコア詳細を取得` button. Detailed score data includes play count, clear count, max combo etc. will be retrieved for each music and difficulty shown in the list at that time.
+
+DDR Score Trackerのメニューを開き「スコア詳細を取得」ボタンをクリックしてください. そのときリストに表示中の楽曲・譜面について, プレイ回数・クリア回数・最大コンボ数といった情報を含むスコア詳細を取得します.
+
+## Regarding the handling of data / データの取り扱いについて
+
+This software saves retrieved data on the PC which operates the browser. Once you retrieve data, you can browse them without internet connection. It does not send retrieved data to remote server.
+
+本ソフトウェアで取得したデータは, ブラウザが動作しているPC上に保存されます. 一度取得したデータの閲覧は, インターネット接続がオフラインの状態でも可能です. また, 取得したデータを外部のサーバに送信することはありません.
+
+This software retrieves music list from [github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics.txt). It retrieves any other data from [official website](https://p.eagate.573.jp/game/ddr/ddra20/p/).
+
+楽曲リストの取得は[github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics.txt)から行っています. それ以外のデータの取得は[公式サイト](https://p.eagate.573.jp/game/ddr/ddra20/p/)から行います.
+
+## For developers / 開発者向け
 
 ```
 $ git clone git@github.com:ryowatanabe/DDRScoreTracker
@@ -58,6 +81,6 @@ $ yarn install
 $ yarn test
 ```
 
-## License
+## License / ライセンス
 
 [MIT](https://github.com/ryowatanabe/DDRScoreTracker/blob/master/LICENSE)
