@@ -3,7 +3,7 @@
   "name": "DDR Score Tracker",
   "version": "0.0.1",
 
-  "description": "",
+  "description": "Google Chrome extension for tracking your DanceDanceRevolution play records",
 
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
 
