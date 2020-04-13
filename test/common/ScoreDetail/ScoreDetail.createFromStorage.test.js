@@ -1,4 +1,4 @@
-import { ScoreDetail } from '../../../common/ScoreDetail.js';
+import { ScoreDetail } from '../../../extension/common/ScoreDetail.js';
 
 test('ScoreDetail.createFromStorage', () => {
   const scoreDetail = ScoreDetail.createFromStorage({

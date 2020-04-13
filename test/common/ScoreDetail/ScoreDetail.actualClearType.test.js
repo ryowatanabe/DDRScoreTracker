@@ -1,5 +1,5 @@
-import { ScoreDetail } from '../../../common/ScoreDetail.js';
-import { Constants } from '../../../common/Constants.js';
+import { ScoreDetail } from '../../../extension/common/ScoreDetail.js';
+import { Constants } from '../../../extension/common/Constants.js';
 
 test('ScoreDetail.actualClearType (empty)', () => {
   const scoreDetail = ScoreDetail.createFromStorage({

@@ -1,4 +1,4 @@
-import { ScoreDetail } from '../../../common/ScoreDetail.js';
+import { ScoreDetail } from '../../../extension/common/ScoreDetail.js';
 
 const attributes = [
   "score", "scoreRank", "clearType", "playCount", "clearCount", "maxCombo"
