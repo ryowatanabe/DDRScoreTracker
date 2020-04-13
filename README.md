@@ -32,9 +32,9 @@ This software opens official website on Google Chrome which it works on, then it
 
 ### Loading extension / 拡張機能の読み込み
 
-Choose `Window` > `Extensions` > `Load unpacked` in the Google Chrome's menu, then select directory which has `manifest.json` in it.
+Choose `Window` > `Extensions` > `Load unpacked` in the Google Chrome's menu, then select `extension` directory which has `manifest.json` in it.
 
-Google Chromeのメニュー `ウィンドウ` → `拡張機能` → `パッケージ化されていない拡張機能を読み込む` で, `manifest.json` のあるディレクトリを選択してください.
+Google Chromeのメニュー `ウィンドウ` → `拡張機能` → `パッケージ化されていない拡張機能を読み込む` で, `manifest.json` のある `extension` ディレクトリを選択してください.
 
 ### Launching DDR Score Tracker / DDR Score Trackerを開く
 
@@ -77,7 +77,7 @@ This software retrieves music list from [github pages](https://ryowatanabe.githu
 $ git clone git@github.com:ryowatanabe/DDRScoreTracker
 $ cd DDRScoreTracker
 $ yarn install
-
+$ yarn build
 $ yarn test
 ```
 
