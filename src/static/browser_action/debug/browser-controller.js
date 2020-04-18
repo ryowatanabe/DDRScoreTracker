@@ -2,7 +2,7 @@ import { BrowserController } from '../../common/BrowserController.js';
 import { Logger } from '../../common/Logger.js';
 
 const windowId = chrome.windows.WINDOW_ID_CURRENT;
-$('#windowId').val(windowId);
+document.getElementById('windowId').value = windowId;
 const browserController = new BrowserController(windowId);
 
 async function createTab() {
@@ -16,8 +16,8 @@ document.getElementById('createTabButton').addEventListener('click', createTab);
 
 async function updateTab() {
   try {
-    const url = $('#targetURL').val();
-    const delay = $('#delay').val();
+    const url = document.getElementById('targetURL').value;
+    const delay = document.getElementById('delay').value;
     await browserController.updateTab(url, delay);
     Logger.debug(`navigate to: ${url}`);
   } catch (error) {
