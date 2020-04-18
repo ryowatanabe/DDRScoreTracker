@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "DDR Score Tracker",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "DanceDanceRevolutionの公式サイトからスコアデータを収集し, 整理して閲覧することができる拡張機能です.",
+    "description": "The description of the application, displayed in the web store."
+  }
+}

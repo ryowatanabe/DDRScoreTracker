@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "DDR Score Tracker",
+  "name": "__MSG_appName__",
   "version": null,
-
-  "description": "Google Chrome extension for tracking your DanceDanceRevolution play records",
+  "description": "__MSG_appDesc__",
+  "default_locale": "ja",
 
   "browser_action": {
     "default_title": "DDR Score Tracker"
