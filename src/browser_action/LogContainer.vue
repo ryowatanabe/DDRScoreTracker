@@ -1,11 +1,14 @@
 <template>
-  <div id="logContainer" class="drawer log">
-    <div id="scrollLogToBottomButton" class="drawer-switch" v-on:click="scrollToBottom">▼最新</div>
-    <div id="app-log" class="log-data">
-      <template v-for="line in log"> {{ line }} <br /> </template>
+  <div>
+    <div id="logBackground" class="drawer-background"></div>
+    <div id="logContainer" class="drawer log">
+      <div id="scrollLogToBottomButton" class="drawer-switch" v-on:click="scrollToBottom">▼最新</div>
+      <div id="app-log" class="log-data">
+        <template v-for="line in log"> {{ line }} <br /> </template>
+      </div>
+      <div id="closeLogButton" class="drawer-switch" v-on:click="close">■閉じる</div>
+      <div id="flushLogButton" class="drawer-switch" v-on:click="flush">■クリア</div>
     </div>
-    <div id="closeLogButton" class="drawer-switch" v-on:click="close">■閉じる</div>
-    <div id="flushLogButton" class="drawer-switch" v-on:click="flush">■クリア</div>
   </div>
 </template>
 
@@ -14,14 +17,14 @@ import Vue from 'vue';
 import { LogReceiver } from '../static/common/LogReceiver.js';
 
 function openLog() {
-  $('#logContainer').addClass('active');
-  $('#logBackground').addClass('active');
+  document.getElementById('logContainer').classList.add('active');
+  document.getElementById('logBackground').classList.add('active');
   scrollLogToBottom();
 }
 
 function closeLog() {
-  $('#logContainer').removeClass('active');
-  $('#logBackground').removeClass('active');
+  document.getElementById('logContainer').classList.remove('active');
+  document.getElementById('logBackground').classList.remove('active');
 }
 
 function flushLog() {
@@ -36,7 +39,8 @@ function scrollLogToBottom() {
   }
 }
 function scrollLogToBottomImpl() {
-  $('#logContainer').get()[0].scrollTo(0, $('#logContainer').get()[0].scrollHeight);
+  const logContainer = document.getElementById('logContainer');
+  logContainer.scrollTo(0, logContainer.scrollHeight);
   isScrollLogScheduled = false;
 }
 

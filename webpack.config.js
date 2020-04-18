@@ -9,7 +9,8 @@ const config = {
   context: path.join(__dirname, 'src'),
 
   entry: {
-    "browser_action/index": `./browser_action/index.js`,
+    "browser_action/index_vue": './browser_action/index.js',
+    "browser_action/debug/index_vue": './browser_action/debug/index.js',
   },
 
   module: {
