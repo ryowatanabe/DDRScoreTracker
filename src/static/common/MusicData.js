@@ -2,33 +2,28 @@ import { Constants } from './Constants.js';
 import { Logger } from './Logger.js';
 
 export class MusicData {
-  musicId    = "";
-  type       = Constants.MUSIC_TYPE.NORMAL;
-  title      = "";
+  musicId = '';
+  type = Constants.MUSIC_TYPE.NORMAL;
+  title = '';
   difficulty = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   constructor(musicId, type, title, difficulty) {
-    this.musicId    = musicId;
-    this.type       = type
-    this.title      = title;
+    this.musicId = musicId;
+    this.type = type;
+    this.title = title;
     this.difficulty = difficulty;
   }
 
   static createFromStorage(storageData) {
-    const instance = new MusicData(
-      storageData["musicId"],
-      storageData["type"],
-      storageData["title"],
-      storageData["difficulty"]
-    );
+    const instance = new MusicData(storageData['musicId'], storageData['type'], storageData['title'], storageData['difficulty']);
     return instance;
   }
 
   static createFromString(encodedString) {
-    if(encodedString.trim() == "") {
+    if (encodedString.trim() == '') {
       return null;
     }
-    const elements = encodedString.split("\t");
+    const elements = encodedString.split('\t');
     if (elements.length != 12) {
       Logger.error(`MusicData.create invalid string: ${encodedString}`);
       return null;
@@ -37,7 +32,7 @@ export class MusicData {
       elements[0],
       parseInt(elements[1], 10),
       elements[11],
-      elements.slice(2, 11).map(element => parseInt(element, 10))
+      elements.slice(2, 11).map((element) => parseInt(element, 10))
     );
     return instance;
   }
@@ -50,7 +45,7 @@ export class MusicData {
     const iterator = this.difficulty.keys();
     let isUpdated = false;
     for (const index of iterator) {
-      if (this.difficulty[index] == 0 && musicData.difficulty[index] != 0){
+      if (this.difficulty[index] == 0 && musicData.difficulty[index] != 0) {
         isUpdated = true;
         this.difficulty[index] = musicData.difficulty[index];
       }
@@ -67,6 +62,6 @@ export class MusicData {
   }
 
   get encodedString() {
-    return [this.musicId, this.type, this.difficulty, this.title].flat().join("\t");
+    return [this.musicId, this.type, this.difficulty, this.title].flat().join('\t');
   }
 }

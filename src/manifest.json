@@ -1,11 +1,9 @@
 {
   "manifest_version": 2,
   "name": "DDR Score Tracker",
-  "version": "0.0.1",
+  "version": null,
 
   "description": "Google Chrome extension for tracking your DanceDanceRevolution play records",
-
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
 
   "browser_action": {
     "default_title": "DDR Score Tracker"
@@ -13,13 +11,8 @@
 
   "content_scripts": [
     {
-      "matches": [
-        "https://p.eagate.573.jp/game/ddr/ddra20/p/*"
-      ],
-      "js": [
-        "lib/jquery-3.4.1.min.js",
-        "content_scripts/main.js"
-      ],
+      "matches": ["https://p.eagate.573.jp/game/ddr/ddra20/p/*"],
+      "js": ["lib/jquery-3.4.1.min.js", "content_scripts/main.js"],
       "run_at": "document_start",
       "all_frames": false
     }
@@ -30,12 +23,7 @@
     "persistent": false
   },
 
-  "web_accessible_resources": [
-    "common/*"
-  ],
+  "web_accessible_resources": ["common/*"],
 
-  "permissions": [
-    "storage",
-    "unlimitedStorage"
-  ]
+  "permissions": ["storage", "unlimitedStorage"]
 }

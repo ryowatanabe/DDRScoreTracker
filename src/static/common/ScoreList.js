@@ -3,12 +3,11 @@ import { ScoreData } from './ScoreData.js';
 export class ScoreList {
   musics = {};
 
-  constrctor() {
-  }
+  constrctor() {}
 
   static createFromStorage(storageData) {
     const instance = new ScoreList();
-    Object.getOwnPropertyNames(storageData).forEach(function(musicId){
+    Object.getOwnPropertyNames(storageData).forEach(function (musicId) {
       const scoreData = ScoreData.createFromStorage(storageData[musicId]);
       instance.applyScoreData(scoreData);
     });
@@ -32,15 +31,15 @@ export class ScoreList {
     return true;
   }
 
-  getScoreDataByMusicId(musicId){
+  getScoreDataByMusicId(musicId) {
     return this.musics[musicId];
   }
 
-  hasMusic(musicId){
+  hasMusic(musicId) {
     return this.musics.hasOwnProperty(musicId);
   }
 
-  get musicIds(){
+  get musicIds() {
     return Object.getOwnPropertyNames(this.musics);
   }
 }

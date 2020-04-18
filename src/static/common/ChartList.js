@@ -4,8 +4,7 @@ import { Constants } from './Constants.js';
 export class ChartList {
   charts = [];
 
-  constructor() {
-  }
+  constructor() {}
 
   reset() {
     this.charts = [];
@@ -17,20 +16,22 @@ export class ChartList {
 
   get statistics() {
     const statistics = {
-      clearType: []
+      clearType: [],
     };
     Object.values(Constants.CLEAR_TYPE).forEach((clearType) => {
       statistics.clearType.push({
         clearType: clearType,
         clearTypeString: Constants.CLEAR_TYPE_STRING[clearType],
         clearTypeClassString: Constants.CLEAR_TYPE_CLASS_STRING[clearType],
-        count: this.charts.filter(chartData => { return chartData.clearType == clearType }).length,
+        count: this.charts.filter((chartData) => {
+          return chartData.clearType == clearType;
+        }).length,
       });
     });
-    statistics.clearType.sort(function(a, b){
-      if (a.clearType > b.clearType){
+    statistics.clearType.sort(function (a, b) {
+      if (a.clearType > b.clearType) {
         return -1;
-      } else if (a.clearType < b.clearType){
+      } else if (a.clearType < b.clearType) {
         return 1;
       }
       return 0;
@@ -59,10 +60,10 @@ export class ChartList {
   getFilteredAndSorted(filterConditions, sortConditions) {
     /* filter */
     const chartList = new ChartList();
-    this.charts.forEach(function(chartData){
+    this.charts.forEach(function (chartData) {
       let isMatched = true;
-      filterConditions.forEach(condition => {
-        if(!condition.values.includes(chartData[condition.attribute])){
+      filterConditions.forEach((condition) => {
+        if (!condition.values.includes(chartData[condition.attribute])) {
           isMatched = false;
         }
       });
@@ -70,7 +71,7 @@ export class ChartList {
         chartList.addChartData(chartData);
       }
     });
-    chartList.charts.sort(function(a, b){
+    chartList.charts.sort(function (a, b) {
       return ChartList.compareChartData(a, b, sortConditions);
     });
     return chartList;
@@ -83,7 +84,7 @@ export class ChartList {
     const attribute = sortConditions[0].attribute;
     let lt = -1;
     let gt = 1;
-    if (sortConditions[0].order == "desc") {
+    if (sortConditions[0].order == 'desc') {
       lt = 1;
       gt = -1;
     }

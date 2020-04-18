@@ -12,19 +12,19 @@ async function createTab() {
     Logger.error(error);
   }
 }
-document.getElementById('createTabButton').addEventListener("click", createTab);
+document.getElementById('createTabButton').addEventListener('click', createTab);
 
 async function updateTab() {
   try {
-    const url = $('#targetURL').val()
-    const delay = $('#delay').val()
+    const url = $('#targetURL').val();
+    const delay = $('#delay').val();
     await browserController.updateTab(url, delay);
     Logger.debug(`navigate to: ${url}`);
   } catch (error) {
     Logger.error(error);
   }
 }
-document.getElementById('updateTabButton').addEventListener("click", updateTab);
+document.getElementById('updateTabButton').addEventListener('click', updateTab);
 
 async function closeTab() {
   try {
@@ -33,19 +33,19 @@ async function closeTab() {
     Logger.error(error);
   }
 }
-document.getElementById('closeTabButton').addEventListener("click", closeTab);
+document.getElementById('closeTabButton').addEventListener('click', closeTab);
 
 function sendMessageToTab() {
   try {
-    browserController.sendMessageToTab({ hoge: "pos" }, (response) => {
-      if (typeof(chrome.runtime.lastError) !== 'undefined') {
+    browserController.sendMessageToTab({ hoge: 'pos' }, (response) => {
+      if (typeof chrome.runtime.lastError !== 'undefined') {
         Logger.error(chrome.runtime.lastError.message);
         return;
       }
-      Logger.debug("message sent");
+      Logger.debug('message sent');
     });
   } catch (error) {
     Logger.error(error);
   }
 }
-document.getElementById('sendMessageToTabButton').addEventListener("click", sendMessageToTab);
+document.getElementById('sendMessageToTabButton').addEventListener('click', sendMessageToTab);

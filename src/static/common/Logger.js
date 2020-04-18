@@ -2,10 +2,10 @@ export class Logger {
   static get LOG_LEVEL() {
     return {
       DEBUG: 0,
-      INFO:  1,
-      WARN:  2,
-      ERROR: 3
-    }
+      INFO: 1,
+      WARN: 2,
+      ERROR: 3,
+    };
   }
 
   static get MESSAGE_TYPE() {

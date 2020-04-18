@@ -1,7 +1,7 @@
 import { ScoreDetail } from './ScoreDetail.js';
 
 export class ScoreData {
-  musicId    = "";
+  musicId = '';
   difficulty = {};
 
   constructor(musicId) {
@@ -9,9 +9,9 @@ export class ScoreData {
   }
 
   static createFromStorage(storageData) {
-    const instance = new ScoreData(storageData["musicId"]);
-    Object.getOwnPropertyNames(storageData["difficulty"]).forEach(function(index){
-      instance.difficulty[index] = ScoreDetail.createFromStorage(storageData["difficulty"][index]);
+    const instance = new ScoreData(storageData['musicId']);
+    Object.getOwnPropertyNames(storageData['difficulty']).forEach(function (index) {
+      instance.difficulty[index] = ScoreDetail.createFromStorage(storageData['difficulty'][index]);
     });
     return instance;
   }
@@ -38,7 +38,7 @@ export class ScoreData {
     return this.difficulty.hasOwnProperty(difficultyValue);
   }
 
-  get difficulties(){
+  get difficulties() {
     return Object.getOwnPropertyNames(this.difficulty);
   }
 }

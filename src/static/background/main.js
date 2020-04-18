@@ -15,8 +15,8 @@ const storage = new Storage(
     musics: {},
     conditions: {
       filter: [],
-      sort: []
-    }
+      sort: [],
+    },
   },
   (data) => {
     musicList = MusicList.createFromStorage(data.musics);
@@ -28,12 +28,12 @@ const storage = new Storage(
 );
 
 const STATE = {
-    INITIALIZE: 0,
-    IDLE: 1,
-    UPDATE_MUSIC_LIST: 2,
-    UPDATE_SCORE_LIST: 3,
-    UPDATE_MUSIC_DETAIL: 4,
-    UPDATE_SCORE_DETAIL: 5
+  INITIALIZE: 0,
+  IDLE: 1,
+  UPDATE_MUSIC_LIST: 2,
+  UPDATE_SCORE_LIST: 3,
+  UPDATE_MUSIC_DETAIL: 4,
+  UPDATE_SCORE_DETAIL: 5,
 };
 
 let state = STATE.INITIALIZE;
@@ -49,7 +49,7 @@ function saveStorage() {
   storage.saveStorage({
     scores: scoreList.musics,
     musics: musicList.musics,
-    conditions: conditions
+    conditions: conditions,
   });
 }
 
@@ -57,7 +57,7 @@ function resetStorage() {
   storage.resetStorage();
 }
 
-function getBytesInUse(){
+function getBytesInUse() {
   return storage.bytesInUse;
 }
 
@@ -66,11 +66,11 @@ function getConditions() {
 }
 
 function saveConditions(filterConditions, sortConditions) {
-    conditions = {
-      filter: filterConditions,
-      sort:   sortConditions
-    }
-    saveStorage();
+  conditions = {
+    filter: filterConditions,
+    sort: sortConditions,
+  };
+  saveStorage();
 }
 
 function getMusicList() {
@@ -86,9 +86,9 @@ function getChartList() {
 }
 
 function restoreMusicList(string) {
-  const lines = string.split("\n");
+  const lines = string.split('\n');
   Logger.info(`${lines.length} 件のデータがあります.`);
-  lines.forEach(function(line){
+  lines.forEach(function (line) {
     musicList.applyEncodedString(line);
   });
   saveStorage();
@@ -104,40 +104,29 @@ function restoreScoreList(object) {
 gh pagesから曲リストを取得し、ローカルの曲リストを更新する
 */
 
-function fetchParsedMusicList()
-{
-    Logger.info("github pagesより楽曲リストを取得...");
-    $.ajax({
-      url: Constants.PARSED_MUSIC_LIST_URL,
-      dataType: 'text',
-      success: function( result ) {
-        Logger.info("取得成功.");
-        restoreMusicList(result);
-        Logger.info([
-          "処理を完了しました.",
-          ""
-        ]);
-      },
-      error: function( jqXHR, textStatus, errorThrown ) {
-        Logger.info("通信エラーが発生しました.");
-        Logger.debug([
-          `textStatus: ${textStatus}`,
-          `errorThrown: ${errorThrown}`
-        ]);
-        Logger.info([
-          "処理を終了しました. 通信環境のよいところでやり直してください.",
-          ""
-        ]);
-      }
-    });
+function fetchParsedMusicList() {
+  Logger.info('github pagesより楽曲リストを取得...');
+  $.ajax({
+    url: Constants.PARSED_MUSIC_LIST_URL,
+    dataType: 'text',
+    success: function (result) {
+      Logger.info('取得成功.');
+      restoreMusicList(result);
+      Logger.info(['処理を完了しました.', '']);
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      Logger.info('通信エラーが発生しました.');
+      Logger.debug([`textStatus: ${textStatus}`, `errorThrown: ${errorThrown}`]);
+      Logger.info(['処理を終了しました. 通信環境のよいところでやり直してください.', '']);
+    },
+  });
 }
 
 /*
 公式の曲一覧から曲情報を取得し、ローカルの曲リストを更新する
 */
-async function updateMusicList(windowId)
-{
-  if (state != STATE.IDLE){
+async function updateMusicList(windowId) {
+  if (state != STATE.IDLE) {
     return false;
   }
   state = STATE.UPDATE_MUSIC_LIST;
@@ -154,28 +143,27 @@ async function updateMusicList(windowId)
 ローカルの曲リストと成績リストを比較し、曲情報が欠けている曲について
 その情報を取得する
 */
-async function fetchMissingMusicInfo(windowId)
-{
-  if (state != STATE.IDLE){
+async function fetchMissingMusicInfo(windowId) {
+  if (state != STATE.IDLE) {
     //return false;
   }
   /* 曲情報が欠けている曲と、曲情報そのものはあるが、譜面情報が欠けている (追加鬼譜面など) 曲を列挙する */
-  const targetMusicIDs = scoreList.musicIds.filter(musicId => {
+  const targetMusicIDs = scoreList.musicIds.filter((musicId) => {
     if (!musicList.hasMusic(musicId)) {
       return true;
     }
-    const missing = scoreList.getScoreDataByMusicId(musicId).difficulties.find(difficulty => {
+    const missing = scoreList.getScoreDataByMusicId(musicId).difficulties.find((difficulty) => {
       if (musicList.getMusicDataById(musicId).difficulty[difficulty] == 0) {
         return true;
       }
     });
     return missing;
   });
-  targetUrls = targetMusicIDs.map(musicId => {
+  targetUrls = targetMusicIDs.map((musicId) => {
     return Constants.MUSIC_DETAIL_URL[Constants.MUSIC_TYPE.NORMAL].replace('[musicId]', musicId);
   });
 
-  if (targetUrls.length == 0){
+  if (targetUrls.length == 0) {
     return false;
   }
   state = STATE.UPDATE_MUSIC_DETAIL;
@@ -192,9 +180,8 @@ async function fetchMissingMusicInfo(windowId)
 /*
 公式の成績一覧ページから成績情報を取得し、ローカルのスコアリストを更新する
 */
-async function updateScoreList(windowId, playMode, musicType)
-{
-  if (state != STATE.IDLE){
+async function updateScoreList(windowId, playMode, musicType) {
+  if (state != STATE.IDLE) {
     //return false;
   }
   state = STATE.UPDATE_SCORE_LIST;
@@ -213,10 +200,9 @@ targets: [
   { musicId:xxx, difficulty:yy }, ...
 ]
 */
-async function updateScoreDetail(windowId, targets)
-{
-  Logger.info("スコア詳細を取得...");
-  if (state != STATE.IDLE){
+async function updateScoreDetail(windowId, targets) {
+  Logger.info('スコア詳細を取得...');
+  if (state != STATE.IDLE) {
     //return false;
   }
   /* 巡回対象のURL一覧を生成 */
@@ -224,8 +210,8 @@ async function updateScoreDetail(windowId, targets)
     music.url = Constants.SCORE_DETAIL_URL[musicList.getMusicDataById(music.musicId).type].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
     targetMusics.push(music);
   });
-  if (targetMusics.length == 0){
-    Logger.info("データ取得対象の楽曲がありません.");
+  if (targetMusics.length == 0) {
+    Logger.info('データ取得対象の楽曲がありません.');
     return false;
   }
   Logger.info(`取得対象は ${targetMusics.length} 件あります.`);
@@ -241,12 +227,12 @@ async function updateScoreDetail(windowId, targets)
   }
 }
 
-function updateCharts(){
+function updateCharts() {
   chartList.reset();
-  musicList.musicIds.forEach(function(musicId){
-    Object.values(Constants.PLAY_MODE).forEach(function(playMode){
-      Object.values(Constants.DIFFICULTIES).forEach(function(difficulty){
-        if (playMode == Constants.PLAY_MODE.DOUBLE && difficulty == Constants.DIFFICULTIES.BEGINNER){
+  musicList.musicIds.forEach(function (musicId) {
+    Object.values(Constants.PLAY_MODE).forEach(function (playMode) {
+      Object.values(Constants.DIFFICULTIES).forEach(function (difficulty) {
+        if (playMode == Constants.PLAY_MODE.DOUBLE && difficulty == Constants.DIFFICULTIES.BEGINNER) {
           return;
         }
         const musicData = musicList.getMusicDataById(musicId);
@@ -260,7 +246,7 @@ function updateCharts(){
 
         if (scoreList.hasMusic(musicId) && scoreList.getScoreDataByMusicId(musicId).hasDifficulty(difficultyValue)) {
           chartData.scoreDetail = scoreList.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
-        } else{
+        } else {
           chartData.scoreDetail = new ScoreDetail();
         }
 
@@ -270,17 +256,17 @@ function updateCharts(){
   });
 }
 
-chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
+chrome.tabs.onUpdated.addListener(function (tid, changeInfo, tab) {
   // Logger.debug(`chrome.tabs.onUpdated(tabId: ${tid})`);
-  if (browserController.tabId != tid){
+  if (browserController.tabId != tid) {
     return;
   }
-  switch (state){
+  switch (state) {
     case STATE.UPDATE_MUSIC_LIST:
-      if (changeInfo.status == "complete"){
+      if (changeInfo.status == 'complete') {
         browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST' }, async (res) => {
           console.log(res);
-          Object.keys(res.musics).forEach(function(musicId){
+          Object.keys(res.musics).forEach(function (musicId) {
             musicList.applyObject(res.musics[musicId]);
           });
           saveStorage();
@@ -300,10 +286,10 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
       }
       break;
     case STATE.UPDATE_MUSIC_DETAIL:
-      if (changeInfo.status == "complete"){
+      if (changeInfo.status == 'complete') {
         browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL' }, async (res) => {
           console.log(res);
-          Object.keys(res.musics).forEach(function(musicId){
+          Object.keys(res.musics).forEach(function (musicId) {
             musicList.applyObject(res.musics[musicId]);
           });
           saveStorage();
@@ -324,10 +310,10 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
       }
       break;
     case STATE.UPDATE_SCORE_LIST:
-      if (changeInfo.status == "complete"){
+      if (changeInfo.status == 'complete') {
         browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST' }, async (res) => {
           console.log(res);
-          res.scores.forEach(function(score){
+          res.scores.forEach(function (score) {
             scoreList.applyObject(score);
           });
           saveStorage();
@@ -347,10 +333,10 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
       }
       break;
     case STATE.UPDATE_SCORE_DETAIL:
-      if (changeInfo.status == "complete"){
+      if (changeInfo.status == 'complete') {
         browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL' }, async (res) => {
           console.log(res);
-          res.scores.forEach(function(score){
+          res.scores.forEach(function (score) {
             scoreList.applyObject(score);
           });
           saveStorage();
@@ -358,7 +344,9 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           if (targetMusics.length > 0) {
             try {
               const targetMusic = targetMusics.shift();
-              Logger.info(`${musicList.getMusicDataById(targetMusic.musicId).title} [${Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty]}] (あと ${targetMusics.length} 件)`);
+              Logger.info(
+                `${musicList.getMusicDataById(targetMusic.musicId).title} [${Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty]}] (あと ${targetMusics.length} 件)`
+              );
               await browserController.updateTab(targetMusic.url, Constants.LOAD_INTERVAL);
             } catch (error) {
               browserController.reset();
@@ -367,10 +355,7 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
           } else {
             await browserController.closeTab();
             state = STATE.IDLE;
-            Logger.info([
-              "処理を完了しました.",
-              ""
-            ]);
+            Logger.info(['処理を完了しました.', '']);
           }
         });
       }
@@ -380,30 +365,28 @@ chrome.tabs.onUpdated.addListener(function(tid, changeInfo, tab){
   }
 });
 
-(function()
-{
+(function () {
   chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     //sendResponse({});
     //return true;
   });
 
   const extension_id = chrome.i18n.getMessage('@@extension_id');
-  chrome.browserAction.onClicked.addListener(function(){
-    chrome.tabs.create({ url: `chrome-extension://${extension_id}/browser_action/index.html` }, function(tab){
-    });
+  chrome.browserAction.onClicked.addListener(function () {
+    chrome.tabs.create({ url: `chrome-extension://${extension_id}/browser_action/index.html` }, function (tab) {});
   });
 
   window.fetchMissingMusicInfo = fetchMissingMusicInfo;
-  window.fetchParsedMusicList  = fetchParsedMusicList;
-  window.getChartList          = getChartList;
-  window.getConditions         = getConditions;
-  window.getMusicList          = getMusicList;
-  window.getScoreList          = getScoreList;
-  window.resetStorage          = resetStorage;
-  window.restoreMusicList      = restoreMusicList;
-  window.restoreScoreList      = restoreScoreList;
-  window.saveConditions        = saveConditions;
-  window.updateCharts          = updateCharts;
-  window.updateScoreDetail     = updateScoreDetail;
-  window.updateScoreList       = updateScoreList;
+  window.fetchParsedMusicList = fetchParsedMusicList;
+  window.getChartList = getChartList;
+  window.getConditions = getConditions;
+  window.getMusicList = getMusicList;
+  window.getScoreList = getScoreList;
+  window.resetStorage = resetStorage;
+  window.restoreMusicList = restoreMusicList;
+  window.restoreScoreList = restoreScoreList;
+  window.saveConditions = saveConditions;
+  window.updateCharts = updateCharts;
+  window.updateScoreDetail = updateScoreDetail;
+  window.updateScoreList = updateScoreList;
 })();

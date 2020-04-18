@@ -1,20 +1,19 @@
 import { Constants } from './Constants.js';
 
 export class ScoreDetail {
-  score      = null;
-  scoreRank  = null;
-  clearType  = null;
-  playCount  = null;
+  score = null;
+  scoreRank = null;
+  clearType = null;
+  playCount = null;
   clearCount = null;
-  maxCombo   = null;
+  maxCombo = null;
 
-  constructor() {
-  }
+  constructor() {}
 
   static createFromStorage(storageData) {
     const instance = new ScoreDetail();
-    Object.getOwnPropertyNames(storageData).forEach(attributeName => {
-      if(typeof(storageData[attributeName]) != 'undefined') {
+    Object.getOwnPropertyNames(storageData).forEach((attributeName) => {
+      if (typeof storageData[attributeName] != 'undefined') {
         instance[attributeName] = storageData[attributeName];
       }
     });
@@ -22,9 +21,7 @@ export class ScoreDetail {
   }
 
   merge(scoreDetail) {
-    const attributes = [
-      "score", "scoreRank", "clearType", "playCount", "clearCount", "maxCombo"
-    ];
+    const attributes = ['score', 'scoreRank', 'clearType', 'playCount', 'clearCount', 'maxCombo'];
     attributes.forEach((attributeName) => {
       if (scoreDetail[attributeName] !== null) {
         if (this[attributeName] === null || scoreDetail[attributeName] > this[attributeName]) {
@@ -35,7 +32,7 @@ export class ScoreDetail {
   }
 
   get actualClearType() {
-    if (this.clearType === null){
+    if (this.clearType === null) {
       /* 可能な範囲でクリアタイプを自動判定する */
       if (this.score === null || this.scoreRank === null) {
         return Constants.CLEAR_TYPE.NO_PLAY;

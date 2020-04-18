@@ -4,12 +4,11 @@ import { Logger } from './Logger.js';
 export class MusicList {
   musics = {};
 
-  constrctor() {
-  }
+  constrctor() {}
 
   static createFromStorage(storageData) {
     const instance = new MusicList();
-    Object.getOwnPropertyNames(storageData).forEach(function(musicId){
+    Object.getOwnPropertyNames(storageData).forEach(function (musicId) {
       const musicData = MusicData.createFromStorage(storageData[musicId]);
       instance.applyMusicData(musicData);
     });
@@ -21,7 +20,7 @@ export class MusicList {
       if (this.getMusicDataById(musicData.musicId).merge(musicData)) {
         Logger.debug(`Modified: ${this.getMusicDataById(musicData.musicId).encodedString}`);
       }
-    } else{
+    } else {
       Logger.debug(`Added: ${musicData.encodedString}`);
       this.musics[musicData.musicId] = musicData;
     }
@@ -45,21 +44,24 @@ export class MusicList {
     return true;
   }
 
-  getMusicDataById(musicId){
+  getMusicDataById(musicId) {
     return this.musics[musicId];
   }
 
-  hasMusic(musicId){
+  hasMusic(musicId) {
     return this.musics.hasOwnProperty(musicId);
   }
 
-  get musicIds(){
+  get musicIds() {
     return Object.getOwnPropertyNames(this.musics);
   }
 
-  get encodedString(){
-    return Object.getOwnPropertyNames(this.musics).map(musicId => {
-      return this.getMusicDataById(musicId).encodedString;
-    }).sort().join("\n");
+  get encodedString() {
+    return Object.getOwnPropertyNames(this.musics)
+      .map((musicId) => {
+        return this.getMusicDataById(musicId).encodedString;
+      })
+      .sort()
+      .join('\n');
   }
 }

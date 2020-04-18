@@ -7,7 +7,7 @@ export class BrowserController {
       CREATING: 2,
       CREATED: 3,
       CLOSING: 4,
-      WAITING: 5
+      WAITING: 5,
     };
   }
 
@@ -49,7 +49,7 @@ export class BrowserController {
       this.state = this.constructor.STATE.WAITING;
       setTimeout(() => {
         chrome.tabs.update(this.tabId, { url: url }, (tab) => {
-          if (typeof(chrome.runtime.lastError) !== 'undefined') {
+          if (typeof chrome.runtime.lastError !== 'undefined') {
             this.reset();
             reject(new Error(chrome.runtime.lastError.message));
             return;
@@ -70,7 +70,7 @@ export class BrowserController {
       this.state = this.constructor.STATE.CLOSING;
       chrome.tabs.remove(this.tabId, () => {
         this.reset();
-        if (typeof(chrome.runtime.lastError) !== 'undefined') {
+        if (typeof chrome.runtime.lastError !== 'undefined') {
           reject(new Error(chrome.runtime.lastError.message));
           return;
         }
@@ -81,7 +81,7 @@ export class BrowserController {
 
   sendMessageToTab(message, callback) {
     if (this.state != this.constructor.STATE.CREATED) {
-      throw(new Error(`state unmatch (current state: ${this.state})`));
+      throw new Error(`state unmatch (current state: ${this.state})`);
       return;
     }
     chrome.tabs.sendMessage(this.tabId, message, {}, callback);

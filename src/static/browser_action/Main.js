@@ -5,20 +5,19 @@ const appCharts = new Vue({
   data: {
     maxPage: 1,
     currentPage: 1,
-    statistics: {
-    },
+    statistics: {},
     pageCharts: [],
-    charts: []
+    charts: [],
   },
   methods: {
-    gotoPage: function(page) {
+    gotoPage: function (page) {
       gotoPage(page);
-    }
-  }
-})
+    },
+  },
+});
 
 function gotoPage(page) {
-  appCharts.pageCharts  = appCharts.charts.slice((page - 1) * Constants.PAGE_LENGTH, page * Constants.PAGE_LENGTH);
+  appCharts.pageCharts = appCharts.charts.slice((page - 1) * Constants.PAGE_LENGTH, page * Constants.PAGE_LENGTH);
   appCharts.currentPage = page;
 }
 
@@ -27,12 +26,12 @@ export function getCharts() {
 }
 
 export function refreshList(filterConditions, sortConditions) {
-  chrome.runtime.getBackgroundPage(function(backgroundPage){
+  chrome.runtime.getBackgroundPage(function (backgroundPage) {
     const chartList = backgroundPage.getChartList().getFilteredAndSorted(filterConditions, sortConditions);
-    appCharts.statistics  = chartList.statistics;
-    appCharts.charts      = chartList.charts;
-    appCharts.maxPage     = Math.ceil(chartList.charts.length / Constants.PAGE_LENGTH);
-    appCharts.currentPage = 1
+    appCharts.statistics = chartList.statistics;
+    appCharts.charts = chartList.charts;
+    appCharts.maxPage = Math.ceil(chartList.charts.length / Constants.PAGE_LENGTH);
+    appCharts.currentPage = 1;
     gotoPage(appCharts.currentPage);
   });
 }
