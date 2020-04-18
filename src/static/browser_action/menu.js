@@ -1,4 +1,3 @@
-import { getCharts } from './index.js';
 import { refreshList } from './filter.js';
 import { Constants } from '../common/Constants.js';
 
@@ -30,7 +29,7 @@ document.getElementById('updateDoubleGradeScoreListButton').addEventListener('cl
 
 function updateScoreDetail() {
   const targetMusics = [];
-  getCharts().forEach(function (chartData) {
+  window.getCharts().forEach(function (chartData) {
     targetMusics.push({
       musicId: chartData.musicId,
       difficulty: chartData.difficulty + (chartData.playMode == Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0),

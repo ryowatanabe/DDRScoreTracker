@@ -1,5 +1,3 @@
-import { refreshList as refreshListImpl } from './index.js';
-
 const filterNames = ['playMode', 'musicType', 'difficulty', 'level', 'clearType', 'scoreRank'];
 
 export function refreshList() {
@@ -27,7 +25,7 @@ export function refreshList() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     backgroundPage.saveConditions(filterConditions, sortConditions);
   });
-  refreshListImpl(
+  window.refreshList(
     filterConditions,
     sortConditions.concat([
       /* tie breakers */
