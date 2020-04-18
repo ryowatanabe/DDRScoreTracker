@@ -2,7 +2,11 @@
   "root": true,
   "env": {
     "browser": true,
-    "webextensions": true
+    "webextensions": true,
+    "es2020": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020
   },
   "extends": [
     "plugin:vue/essential",
