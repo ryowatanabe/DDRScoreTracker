@@ -1,23 +1,13 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <script src="../lib/vue.js"></script>
   <script src="../lib/jquery-3.4.1.min.js"></script>
+  <script src="./index.js" defer></script>
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
 <div id="contentArea">
-  <div id="logBackground" class="drawer-background"></div>
-  <div id="logContainer" class="drawer log">
-    <div id="scrollLogToBottomButton" class="drawer-switch">▼最新</div>
-    <div id="app-log" class="log-data">
-      <template v-for="line in log">
-          {{ line }} <br>
-      </template>
-    </div>
-    <div id="closeLogButton" class="drawer-switch">■閉じる</div>
-    <div id="flushLogButton" class="drawer-switch">■クリア</div>
-  </div>
+  <div id="log-container"></div>
 
   <div>
     <button id="dumpMusicListButton" type="button" name="dumpMusicList">楽曲リストを出力</button>
@@ -74,7 +64,5 @@
   <a href="index.html">戻る</a>
 </div>
 </body>
-<script src="LogReceiver.js" type="module"></script>
-<script src="LogContainer.js" type="module"></script>
 <script src="Debug.js" type="module"></script>
 </html>
