@@ -11,20 +11,23 @@
 
 <script>
 import Vue from 'vue';
-import { LogReceiver } from './LogReceiver.js';
+import { LogReceiver } from '../static/common/LogReceiver.js';
 
 function openLog() {
   $('#logContainer').addClass('active');
   $('#logBackground').addClass('active');
   scrollLogToBottom();
 }
+
 function closeLog() {
   $('#logContainer').removeClass('active');
   $('#logBackground').removeClass('active');
 }
+
 function flushLog() {
   logReceiver.flush();
 }
+
 let isScrollLogScheduled = false;
 function scrollLogToBottom() {
   if (!isScrollLogScheduled) {
@@ -37,7 +40,9 @@ function scrollLogToBottomImpl() {
   isScrollLogScheduled = false;
 }
 
-const logReceiver = new LogReceiver(openLog);
+const logReceiver = new LogReceiver(() => {
+  Vue.nextTick(openLog);
+});
 export default Vue.extend({
   data: function () {
     return {
@@ -57,3 +62,14 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style scoped>
+.log {
+  height: 100%;
+  overflow: scroll;
+}
+.log-data {
+  clear: right;
+}
+</style>
+<style src="../static/browser_action/drawer.css" scoped></style>

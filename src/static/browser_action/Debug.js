@@ -9,7 +9,6 @@ function resetStorage() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     if (window.confirm('端末上に保存されているデータをすべて削除しますか？')) {
       backgroundPage.resetStorage();
-      alert('削除しました。');
     } else {
       alert('キャンセルしました。');
     }
@@ -20,7 +19,7 @@ document.getElementById('resetStorageButton').addEventListener('click', resetSto
 function dumpMusicList() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     const musics = backgroundPage.getMusicList();
-    $('#dumpMusicListArea').get()[0].innerHTML = musics.encodedString;
+    document.getElementById('dumpMusicListArea').innerHTML = musics.encodedString;
     var copyText = document.querySelector('#dumpMusicListArea');
     copyText.select();
     if (document.execCommand('copy')) {
@@ -34,7 +33,7 @@ document.getElementById('dumpMusicListButton').addEventListener('click', dumpMus
 
 function restoreMusicList() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    const string = $('#restoreMusicListArea').get()[0].value;
+    const string = document.getElementById('restoreMusicListArea').value;
     if (window.confirm('フォームの内容で楽曲リストをリストアしますか？')) {
       backgroundPage.restoreMusicList(string);
       alert('リストアしました。');
@@ -48,7 +47,7 @@ document.getElementById('restoreMusicListButton').addEventListener('click', rest
 function dumpScoreList() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     const scoreList = backgroundPage.getScoreList();
-    $('#dumpScoreListArea').get()[0].innerHTML = JSON.stringify(scoreList.musics);
+    document.getElementById('dumpScoreListArea').innerHTML = JSON.stringify(scoreList.musics);
     var copyText = document.querySelector('#dumpScoreListArea');
     copyText.select();
     if (document.execCommand('copy')) {
@@ -64,7 +63,7 @@ function restoreScoreList() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     let object;
     try {
-      object = JSON.parse($('#restoreScoreListArea').get()[0].value);
+      object = JSON.parse(document.getElementById('restoreScoreListArea').value);
     } catch (error) {
       console.log(error);
       alert(error);

@@ -1,5 +1,4 @@
-import Vue from 'vue';
-import { Logger } from '../static/common/Logger.js';
+import { Logger } from './Logger.js';
 
 export class LogReceiver {
   constructor(callback = () => {}) {
@@ -24,6 +23,6 @@ export class LogReceiver {
     content.forEach((line) => {
       this.data.push(line);
     });
-    Vue.nextTick(this.callback);
+    this.callback();
   }
 }
