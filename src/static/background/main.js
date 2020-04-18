@@ -110,19 +110,21 @@ gh pagesから曲リストを取得し、ローカルの曲リストを更新す
 
 function fetchParsedMusicList() {
   Logger.info('github pagesより楽曲リストを取得...');
-  $.ajax({
-    url: Constants.PARSED_MUSIC_LIST_URL,
-    dataType: 'text',
-    success: function (result) {
-      Logger.info('取得成功.');
-      restoreMusicList(result);
+  fetch(Constants.PARSED_MUSIC_LIST_URL)
+  .then((response) => {
+    if(!response.ok) {
+      throw new Error(`HTTP status: ${response.status}`);
+    }
+    Logger.info('取得成功.');
+    response.text().then((text) => {
+      restoreMusicList(text);
       Logger.info(['処理を完了しました.', '']);
-    },
-    error: function (jqXHR, textStatus, errorThrown) {
-      Logger.info('通信エラーが発生しました.');
-      Logger.debug([`textStatus: ${textStatus}`, `errorThrown: ${errorThrown}`]);
-      Logger.info(['処理を終了しました. 通信環境のよいところでやり直してください.', '']);
-    },
+    });
+  })
+  .catch((reason) => {
+    Logger.info('通信エラーが発生しました.');
+    Logger.debug(reason);
+    Logger.info(['処理を終了しました. 通信環境のよいところでやり直してください.', '']);
   });
 }
 
@@ -392,6 +394,7 @@ chrome.tabs.onUpdated.addListener(function (tid, changeInfo, tab) {
   window.restoreScoreList = restoreScoreList;
   window.saveConditions = saveConditions;
   window.updateCharts = updateCharts;
+  window.updateMusicList = updateMusicList;
   window.updateScoreDetail = updateScoreDetail;
   window.updateScoreList = updateScoreList;
 })();

@@ -58,19 +58,18 @@ function parseMusicList() {
     nextUrl: '',
     musics: {},
   };
-  const next = $('#next.arrow').get();
+  const next = document.querySelectorAll('#next.arrow');
   if (next.length > 0) {
     res.hasNext = true;
-    res.nextUrl = $('a', $(next[0]))[0].href;
+    res.nextUrl = next[0].querySelector('a').href;
   }
-  const musics = $('tr.data').get();
+  const musics = document.querySelectorAll('tr.data');
   musics.forEach(function (music) {
     const regexp = /^.*img=([0-9a-zA-Z]+).*$/;
-    const src = $('td img', $(music))[0].src;
+    const src = music.querySelector('td img').src;
     const musicId = src.replace(regexp, '$1');
-    const title = $('.music_tit', $(music))[0].innerText;
-    const difficulty = $('.difficult', $(music))
-      .get()
+    const title = music.querySelector('.music_tit').innerText;
+    const difficulty = Array.from(music.querySelectorAll('.difficult'))
       .map(function (element) {
         const value = parseInt(element.innerText);
         return value ? value : 0;
