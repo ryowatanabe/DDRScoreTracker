@@ -20,7 +20,7 @@ function dumpMusicList() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     const musics = backgroundPage.getMusicList();
     document.getElementById('dumpMusicListArea').innerHTML = musics.encodedString;
-    var copyText = document.querySelector('#dumpMusicListArea');
+    var copyText = document.getElementById('dumpMusicListArea');
     copyText.select();
     if (document.execCommand('copy')) {
       alert('クリップボードにコピーしました。');
@@ -48,7 +48,7 @@ function dumpScoreList() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     const scoreList = backgroundPage.getScoreList();
     document.getElementById('dumpScoreListArea').innerHTML = JSON.stringify(scoreList.musics);
-    var copyText = document.querySelector('#dumpScoreListArea');
+    var copyText = document.getElementById('dumpScoreListArea');
     copyText.select();
     if (document.execCommand('copy')) {
       alert('クリップボードにコピーしました。');

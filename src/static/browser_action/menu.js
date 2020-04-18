@@ -1,5 +1,5 @@
-import { getCharts } from './Main.js';
-import { refreshList } from './Filter.js';
+import { getCharts } from './index.js';
+import { refreshList } from './filter.js';
 import { Constants } from '../common/Constants.js';
 
 function fetchParsedMusicList() {
@@ -43,12 +43,12 @@ function updateScoreDetail() {
 document.getElementById('updateScoreDetailButton').addEventListener('click', updateScoreDetail);
 
 function openMenu() {
-  $('#menuContainer').addClass('active');
-  $('#menuBackground').addClass('active');
+  document.getElementById('menuContainer').classList.add('active');
+  document.getElementById('menuBackground').classList.add('active');
 }
 function closeMenu() {
-  $('#menuContainer').removeClass('active');
-  $('#menuBackground').removeClass('active');
+  document.getElementById('menuContainer').classList.remove('active');
+  document.getElementById('menuBackground').classList.remove('active');
   setTimeout(refreshList, 300);
 }
 document.getElementById('openMenuButton').addEventListener('click', openMenu);

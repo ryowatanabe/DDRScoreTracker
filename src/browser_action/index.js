@@ -1,4 +1,4 @@
-import LogContainer from './LogContainer.vue';
+import LogContainer from './log-container.vue';
 
 document.addEventListener('DOMContentLoaded', () => {
   const logContainer = new LogContainer();

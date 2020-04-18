@@ -1,15 +1,15 @@
-import { refreshList as refreshListImpl } from './Main.js';
+import { refreshList as refreshListImpl } from './index.js';
 
 const filterNames = ['playMode', 'musicType', 'difficulty', 'level', 'clearType', 'scoreRank'];
 
 export function refreshList() {
   let filterConditions = [];
   filterNames.forEach(function (name) {
-    const elements = $(`input[name=${name}]:checked`);
+    const elements = Array.from(document.querySelectorAll(`input[name=${name}]:checked`));
     if (elements.length > 0) {
       const condition = {
         attribute: name,
-        values: jQuery.map(elements, function (element) {
+        values: elements.map((element) => {
           return parseInt(element.value, 10);
         }),
       };
@@ -19,8 +19,8 @@ export function refreshList() {
 
   let sortConditions = [
     {
-      attribute: $(`input[name=sortCondition_attribute]:checked`).get()[0].value,
-      order: $(`input[name=sortCondition_order]:checked`).get()[0].value,
+      attribute: document.querySelector(`input[name=sortCondition_attribute]:checked`).value,
+      order: document.querySelector(`input[name=sortCondition_order]:checked`).value,
     },
   ];
 
@@ -39,25 +39,25 @@ export function refreshList() {
 }
 
 function openFilter() {
-  $('#filterContainer').addClass('active');
-  $('#filterBackground').addClass('active');
+  document.getElementById('filterContainer').classList.add('active');
+  document.getElementById('filterBackground').classList.add('active');
 }
 function closeFilter() {
-  $('#filterContainer').removeClass('active');
-  $('#filterBackground').removeClass('active');
+  document.getElementById('filterContainer').classList.remove('active');
+  document.getElementById('filterBackground').classList.remove('active');
   setTimeout(refreshList, 300);
 }
 
 function selectAll(name) {
-  const elements = $(`input[name=${name}]`);
-  jQuery.map(elements, (element) => {
-    $(element).prop('checked', true);
+  const elements = document.querySelectorAll(`input[name=${name}]`);
+  elements.forEach((element) => {
+    element.checked = true;
   });
 }
 function selectNone(name) {
-  const elements = $(`input[name=${name}]`);
-  jQuery.map(elements, (element) => {
-    $(element).prop('checked', false);
+  const elements = document.querySelectorAll(`input[name=${name}]`);
+  elements.forEach((element) => {
+    element.checked = false;
   });
 }
 
@@ -75,15 +75,15 @@ document.getElementById('closeFilterButton').addEventListener('click', closeFilt
     const conditions = backgroundPage.getConditions();
     conditions.filter.forEach(function (condition) {
       condition.values.forEach(function (value) {
-        $(`#filterCondition_${condition.attribute}_${value}`).prop('checked', true);
+        document.querySelector(`#filterCondition_${condition.attribute}_${value}`).checked = true;
       });
     });
     if (conditions.sort.length == 0) {
       conditions.sort.push({ attribute: 'score', order: 'desc' });
     }
     conditions.sort.forEach(function (condition) {
-      $(`#sortCondition_attribute_${condition.attribute}`).prop('checked', true);
-      $(`#sortCondition_order_${condition.order}`).prop('checked', true);
+      document.querySelector(`#sortCondition_attribute_${condition.attribute}`).checked = true;
+      document.querySelector(`#sortCondition_order_${condition.order}`).checked = true;
     });
     refreshList();
   });

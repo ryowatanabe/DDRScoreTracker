@@ -3,7 +3,10 @@
   <meta charset="utf-8">
   <title>DDR Score Tracker</title>
   <script src="../lib/vue.js"></script>
-  <script src="../lib/jquery-3.4.1.min.js"></script>
+  <script src="index-vue.js" defer></script>
+  <script src="index.js" type="module" defer></script>
+  <script src="filter.js" type="module" defer></script>
+  <script src="menu.js" type="module" defer></script>
   <link rel="stylesheet" type="text/css" href="index.css">
   <link rel="stylesheet" type="text/css" href="drawer.css">
 </head>
@@ -178,21 +181,11 @@
       </div>
       <div>
         <button id="closeMenuButton" type="button" class="drawer-close-button">閉じる</button>
-        <a href="./debug/index.html">デバッグページ</a>
+        <a href="./debug.html">デバッグページ</a>
       </div>
     </div>
 
-    <div id="logBackground" class="drawer-background"></div>
-    <div id="logContainer" class="drawer log">
-      <div id="scrollLogToBottomButton" class="drawer-switch">▼最新</div>
-      <div id="app-log" class="log-data">
-        <template v-for="line in log">
-            {{ line }} <br>
-        </template>
-      </div>
-      <div id="closeLogButton" class="drawer-switch">■閉じる</div>
-      <div id="flushLogButton" class="drawer-switch">■クリア</div>
-    </div>
+    <div id="log-container"></div>
 
     <div id="app-charts" class="content">
       <template v-if="charts.length > 0">
@@ -234,9 +227,4 @@
     </div>
   </div>
 </body>
-<script src="LogReceiver.js" type="module"></script>
-<script src="LogContainer.js" type="module"></script>
-<script src="Main.js" type="module"></script>
-<script src="Filter.js" type="module"></script>
-<script src="Menu.js" type="module"></script>
 </html>

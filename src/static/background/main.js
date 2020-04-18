@@ -45,6 +45,10 @@ let scoreList; // スコアリスト。1極1エントリ。
 let chartList = new ChartList(); // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
 let conditions;
 
+function echo(message) {
+  Logger.debug(message);
+}
+
 function saveStorage() {
   storage.saveStorage({
     scores: scoreList.musics,
@@ -376,6 +380,7 @@ chrome.tabs.onUpdated.addListener(function (tid, changeInfo, tab) {
     chrome.tabs.create({ url: `chrome-extension://${extension_id}/browser_action/index.html` }, function (tab) {});
   });
 
+  window.echo = echo;
   window.fetchMissingMusicInfo = fetchMissingMusicInfo;
   window.fetchParsedMusicList = fetchParsedMusicList;
   window.getChartList = getChartList;
