@@ -13,11 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
 window.gotoPage = (page) => {
   chartList.pageCharts = chartList.charts.slice((page - 1) * Constants.PAGE_LENGTH, page * Constants.PAGE_LENGTH);
   chartList.currentPage = page;
-}
+};
 
 window.getCharts = () => {
   return chartList.charts;
-}
+};
 
 window.refreshList = (filterConditions, sortConditions) => {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
@@ -28,4 +28,4 @@ window.refreshList = (filterConditions, sortConditions) => {
     chartList.currentPage = 1;
     gotoPage(chartList.currentPage);
   });
-}
+};

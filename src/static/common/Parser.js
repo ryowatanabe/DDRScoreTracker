@@ -20,11 +20,10 @@ export function parseMusicList(rootElement) {
     const src = music.querySelector('td img').src;
     const musicId = src.replace(regexp, '$1');
     const title = music.querySelector('.music_tit').innerHTML;
-    const difficulty = Array.from(music.querySelectorAll('.difficult'))
-      .map(function (element) {
-        const value = parseInt(element.innerHTML);
-        return value ? value : 0;
-      });
+    const difficulty = Array.from(music.querySelectorAll('.difficult')).map(function (element) {
+      const value = parseInt(element.innerHTML);
+      return value ? value : 0;
+    });
     const musicData = new MusicData(musicId, Constants.MUSIC_TYPE.NORMAL, title, difficulty);
     res.musics.push(musicData);
   });
@@ -36,7 +35,7 @@ export function parseMusicDetail(rootElement) {
     musics: [],
   };
   const musicInfo = rootElement.querySelectorAll('#music_info td');
-  if(musicInfo.length != 2) {
+  if (musicInfo.length != 2) {
     return res;
   }
   const regexpForMusicId = /^.*img=([0-9a-zA-Z]+).*$/;

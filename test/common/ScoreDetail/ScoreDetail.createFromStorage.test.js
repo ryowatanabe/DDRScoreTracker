@@ -2,7 +2,7 @@ import { ScoreDetail } from '../../../src/static/common/ScoreDetail.js';
 
 test('ScoreDetail.createFromStorage', () => {
   const scoreDetail = ScoreDetail.createFromStorage({
-    score: 500000
+    score: 500000,
   });
   expect(scoreDetail.score).toBe(500000);
   expect(scoreDetail.scoreRank).toStrictEqual(null);
@@ -14,7 +14,7 @@ test('ScoreDetail.createFromStorage', () => {
 
 test('ScoreDetail.createFromStorage (convert undef into null)', () => {
   const scoreDetail = ScoreDetail.createFromStorage({
-    score: undefined
+    score: undefined,
   });
   expect(scoreDetail.score).toStrictEqual(null);
 });

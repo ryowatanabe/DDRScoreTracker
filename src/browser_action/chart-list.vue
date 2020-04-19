@@ -111,15 +111,33 @@ export default Vue.extend({
   display: inline-block;
   height: 100%;
 }
-.graph .element.no_play { background-color: #888888 }
-.graph .element.failed { background-color: #883300 }
-.graph .element.assist_clear { background-color: #8000ff }
-.graph .element.clear { background-color: #ff8800 }
-.graph .element.life4 { background-color: #ff0000 }
-.graph .element.good_fc { background-color: #0088ff }
-.graph .element.great_fc { background-color: #00ff00 }
-.graph .element.perfect_fc { background-color: #ffff00 }
-.graph .element.marvelous_fc { background-color: #ffffff }
+.graph .element.no_play {
+  background-color: #888888;
+}
+.graph .element.failed {
+  background-color: #883300;
+}
+.graph .element.assist_clear {
+  background-color: #8000ff;
+}
+.graph .element.clear {
+  background-color: #ff8800;
+}
+.graph .element.life4 {
+  background-color: #ff0000;
+}
+.graph .element.good_fc {
+  background-color: #0088ff;
+}
+.graph .element.great_fc {
+  background-color: #00ff00;
+}
+.graph .element.perfect_fc {
+  background-color: #ffff00;
+}
+.graph .element.marvelous_fc {
+  background-color: #ffffff;
+}
 
 /*
 スコアリストのグリッド表示
@@ -127,7 +145,10 @@ export default Vue.extend({
 
 .score_list {
   display: grid;
-  grid-template-columns: minmax(1px, max-content) auto minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content)
+  grid-template-columns: minmax(1px, max-content) auto minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(
+      1px,
+      max-content
+    );
 }
 
 .score_list > div {
@@ -138,58 +159,102 @@ export default Vue.extend({
 .score_list > .level {
   text-align: right;
   font-size: 1.2rem;
-  font-weight: bold
+  font-weight: bold;
 }
 .score_list > .title {
-  font-size: 1.0rem;
+  font-size: 1rem;
   overflow-x: hidden;
   text-overflow: ellipsis;
 }
 .score_list > .clear_count {
   text-align: right;
   font-family: monospace;
-  font-size: 1.0rem
+  font-size: 1rem;
 }
 .score_list > .play_count {
   text-align: right;
   font-family: monospace;
-  font-size: 1.0rem
+  font-size: 1rem;
 }
 .score_list > .score_rank {
   font-size: 1.2rem;
-  font-weight: bold
+  font-weight: bold;
 }
 .score_list > .full_combo_type {
-  font-size: 1.2rem; font-weight: bold
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 .score_list > .score {
   text-align: right;
   font-family: monospace;
-  font-size: 1.0rem
+  font-size: 1rem;
 }
 .score_list > .max_combo {
   text-align: right;
   font-family: monospace;
-  font-size: 1.0rem
+  font-size: 1rem;
 }
 
-.beginner { color: #00ffff }
-.basic { color: #ff8800 }
-.difficult { color: #ff4444 }
-.expert { color: #00ff00 }
-.challenge { color: #ff00ff }
+.beginner {
+  color: #00ffff;
+}
+.basic {
+  color: #ff8800;
+}
+.difficult {
+  color: #ff4444;
+}
+.expert {
+  color: #00ff00;
+}
+.challenge {
+  color: #ff00ff;
+}
 
-.rank_aaa { color: #ffffff }
-.rank_aa_p, .rank_aa, .rank_aa_m { color: #ffffaa }
-.rank_a_p, .rank_a, .rank_a_m { color: #ffff00 }
-.rank_b_p, .rank_b, .rank_b_m { color: #0088ff }
-.rank_c_p, .rank_c, .rank_c_m { color: #ff00ff }
-.rank_d_p, .rank_d { color: #ff0000 }
-.rank_e { color: #bbbbbb }
+.rank_aaa {
+  color: #ffffff;
+}
+.rank_aa_p,
+.rank_aa,
+.rank_aa_m {
+  color: #ffffaa;
+}
+.rank_a_p,
+.rank_a,
+.rank_a_m {
+  color: #ffff00;
+}
+.rank_b_p,
+.rank_b,
+.rank_b_m {
+  color: #0088ff;
+}
+.rank_c_p,
+.rank_c,
+.rank_c_m {
+  color: #ff00ff;
+}
+.rank_d_p,
+.rank_d {
+  color: #ff0000;
+}
+.rank_e {
+  color: #bbbbbb;
+}
 
-.life4 { color: #ff0000 }
-.good_fc { color: #0088ff }
-.great_fc { color: #00ff00 }
-.perfect_fc { color: #ffff00 }
-.marvelous_fc { color: #ffffff }
+.life4 {
+  color: #ff0000;
+}
+.good_fc {
+  color: #0088ff;
+}
+.great_fc {
+  color: #00ff00;
+}
+.perfect_fc {
+  color: #ffff00;
+}
+.marvelous_fc {
+  color: #ffffff;
+}
 </style>

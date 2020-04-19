@@ -111,21 +111,21 @@ gh pagesから曲リストを取得し、ローカルの曲リストを更新す
 function fetchParsedMusicList() {
   Logger.info('github pagesより楽曲リストを取得...');
   fetch(Constants.PARSED_MUSIC_LIST_URL)
-  .then((response) => {
-    if(!response.ok) {
-      throw new Error(`HTTP status: ${response.status}`);
-    }
-    Logger.info('取得成功.');
-    response.text().then((text) => {
-      restoreMusicList(text);
-      Logger.info(['処理を完了しました.', '']);
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP status: ${response.status}`);
+      }
+      Logger.info('取得成功.');
+      response.text().then((text) => {
+        restoreMusicList(text);
+        Logger.info(['処理を完了しました.', '']);
+      });
+    })
+    .catch((reason) => {
+      Logger.info('通信エラーが発生しました.');
+      Logger.debug(reason);
+      Logger.info(['処理を終了しました. 通信環境のよいところでやり直してください.', '']);
     });
-  })
-  .catch((reason) => {
-    Logger.info('通信エラーが発生しました.');
-    Logger.debug(reason);
-    Logger.info(['処理を終了しました. 通信環境のよいところでやり直してください.', '']);
-  });
 }
 
 /*
