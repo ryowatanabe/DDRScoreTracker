@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Parser.ParseScoreDetail (fullcombo) 1`] = `
+Object {
+  "scores": Array [
+    ScoreData {
+      "difficulty": Object {
+        "null": ScoreDetail {
+          "clearCount": 134,
+          "clearType": 6,
+          "maxCombo": 575,
+          "playCount": 136,
+          "score": 978110,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "06O0ObdQobq86lPDo6P18dQ1QPdilIQO",
+    },
+  ],
+}
+`;
+
+exports[`Parser.ParseScoreDetail (grade) 1`] = `
+Object {
+  "scores": Array [
+    ScoreData {
+      "difficulty": Object {
+        "null": ScoreDetail {
+          "clearCount": 1,
+          "clearType": null,
+          "maxCombo": 453,
+          "playCount": 17,
+          "score": 737560,
+          "scoreRank": 8,
+        },
+      },
+      "musicId": "idiOI1Qb9D0dQI6IOlob8QbOqdDOoObP",
+    },
+  ],
+}
+`;
+
+exports[`Parser.ParseScoreDetail (noLogin) 1`] = `
+Object {
+  "scores": Array [],
+}
+`;
+
+exports[`Parser.ParseScoreDetail (noPlay) 1`] = `
+Object {
+  "scores": Array [],
+}
+`;
+
+exports[`Parser.ParseScoreDetail (nonstop) 1`] = `
+Object {
+  "scores": Array [
+    ScoreData {
+      "difficulty": Object {
+        "null": ScoreDetail {
+          "clearCount": 4,
+          "clearType": null,
+          "maxCombo": 776,
+          "playCount": 4,
+          "score": 900110,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "88o8Oq69ldilblP10DI0qqb6b8I0DDi9",
+    },
+  ],
+}
+`;
+
+exports[`Parser.ParseScoreDetail (normal) 1`] = `
+Object {
+  "scores": Array [
+    ScoreData {
+      "difficulty": Object {
+        "null": ScoreDetail {
+          "clearCount": 47,
+          "clearType": null,
+          "maxCombo": 381,
+          "playCount": 47,
+          "score": 852650,
+          "scoreRank": 12,
+        },
+      },
+      "musicId": "9I00D9Id61iD6QP8i8Dd6698PoQ9bdi9",
+    },
+  ],
+}
+`;

@@ -98,20 +98,19 @@ export function parseScoreList(rootElement) {
   return res;
 }
 
-function parseScoreDetail() {
+export function parseScoreDetail(rootElement) {
   const res = {
     scores: [],
   };
 
-  const detail = $('#music_detail_table td, #course_detail_table td')
-    .get()
+  const detail = Array.from(rootElement.querySelectorAll('#music_detail_table td, #course_detail_table td'))
     .map((element) => {
-      return element.innerText;
+      return element.innerHTML;
     });
   if (detail.length > 0) {
-    const musicInfo = $('#music_info td').get();
+    const musicInfo = rootElement.querySelector('#music_info td');
     const regexpForMusicId = /^.*img=([0-9a-zA-Z]+).*$/;
-    const src = $('img', $(musicInfo[0])).get()[0].src;
+    const src = musicInfo.querySelector('img').src;
     const musicId = src.replace(regexpForMusicId, '$1');
 
     const params = new URL(document.location).searchParams;
