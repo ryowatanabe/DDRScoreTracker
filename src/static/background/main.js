@@ -272,8 +272,8 @@ chrome.tabs.onUpdated.addListener(function (tid, changeInfo, tab) {
       if (changeInfo.status == 'complete') {
         browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST' }, async (res) => {
           console.log(res);
-          Object.keys(res.musics).forEach(function (musicId) {
-            musicList.applyObject(res.musics[musicId]);
+          res.musics.forEach(function (music) {
+            musicList.applyObject(music);
           });
           saveStorage();
           updateCharts();
@@ -295,8 +295,8 @@ chrome.tabs.onUpdated.addListener(function (tid, changeInfo, tab) {
       if (changeInfo.status == 'complete') {
         browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL' }, async (res) => {
           console.log(res);
-          Object.keys(res.musics).forEach(function (musicId) {
-            musicList.applyObject(res.musics[musicId]);
+          res.musics.forEach(function (music) {
+            musicList.applyObject(music);
           });
           saveStorage();
           updateCharts();
