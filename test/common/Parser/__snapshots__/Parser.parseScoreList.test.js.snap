@@ -1,0 +1,1504 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Parser.ParseScoreList (grade) 1`] = `
+Object {
+  "hasNext": false,
+  "nextUrl": "",
+  "scores": Array [
+    ScoreData {
+      "difficulty": Object {
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 947180,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "9IliQ1O0dOQPiObPDDDblDO6oliDodlb",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 952340,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "IlQodD9Dbld8QiOql68bPPQbd6bll6i1",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 967720,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "dib16I1b0o9OdOd1O90dO1Q6iIO9PQo9",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 982370,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "8OoDQb16lP0i96qiDQqo90Q6bOP1o89D",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 973930,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "ddql809Qo8q68918lIDOPDQ6q1liD9b6",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 934000,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "9D69dQo1dQqPD6l9ObiI0b0i8d9ddool",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 778200,
+          "scoreRank": 9,
+        },
+      },
+      "musicId": "Pbbidbl9l8IqddQOq0069oQ6Oi1DQdP1",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 737560,
+          "scoreRank": 8,
+        },
+      },
+      "musicId": "idiOI1Qb9D0dQI6IOlob8QbOqdDOoObP",
+    },
+  ],
+}
+`;
+
+exports[`Parser.ParseScoreList (hasNext:false) 1`] = `
+Object {
+  "hasNext": false,
+  "nextUrl": "",
+  "scores": Array [
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 950170,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "io9b89PD18ibIO8PIqb1QODliqDdqiIO",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 920500,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "olloQOobddiIIPObP91l0qPl6oo8P9Dl",
+    },
+    ScoreData {
+      "difficulty": Object {},
+      "musicId": "dbq9dPPOQ60ibOol0I6b9iQol9lD669D",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 944380,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "QQbiq1qQd8d1blOldi889OdQd9P1106Q",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 925780,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "qI06bbQ1dloi0IIIO1IQ1q8bdPdl6l69",
+    },
+    ScoreData {
+      "difficulty": Object {},
+      "musicId": "01808Q1Q6lQQ1lP0qd80I0b0qqDd1OOP",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 967420,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "I81iP0Io9o1l9li0Iq99P1091O8DoDOd",
+    },
+    ScoreData {
+      "difficulty": Object {},
+      "musicId": "d6iI8ii9qi0Pi80dDQQlPq6qQo69860P",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 810900,
+          "scoreRank": 11,
+        },
+      },
+      "musicId": "8bI68oIq08d99P880bDPQ9D80O099Q10",
+    },
+    ScoreData {
+      "difficulty": Object {},
+      "musicId": "blI8D10Q1IDQ8Q19bi0IDlD80oD0bloi",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 965340,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "Qo1qdD0Q9d11d9Id6o09P9id8lPbOQ6o",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 976500,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "bDDd08iP8dlIlOo6iqd91dPiI1lQdOQq",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 883040,
+          "scoreRank": 12,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 961610,
+          "scoreRank": 15,
+        },
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 861520,
+          "scoreRank": 12,
+        },
+      },
+      "musicId": "PQQd6lQlDqilqliI0IobolqIDlo0Iboq",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 938120,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "8OPDQ1oQIOPdqqD18oo0lQ8OQOIbbDoP",
+    },
+    ScoreData {
+      "difficulty": Object {},
+      "musicId": "D0qloQo0bQliQqooQ609IP8i09old99D",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 958100,
+          "scoreRank": 15,
+        },
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 959190,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "0qOPDqq0qld66bll9ob9iIqiiQPiQIDQ",
+    },
+    ScoreData {
+      "difficulty": Object {},
+      "musicId": "D8I68Ibib9ldQDIPIQdO6lqI61PQlPO9",
+    },
+    ScoreData {
+      "difficulty": Object {},
+      "musicId": "oiIob81i6d6P6qbddOP6Q0d0obQ0PID9",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "5": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 996630,
+          "scoreRank": 16,
+        },
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 959410,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 918330,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "I61ioI01IOPDPbP1OO0l98PD0iDbid0D",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 946000,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "96QPqq0q6Id0Ii0QbD1bQqPbiDqb0lPo",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 862480,
+          "scoreRank": 12,
+        },
+      },
+      "musicId": "IQ0dIiDql9Q68d9ddQIiQbq1OPq8Db69",
+    },
+    ScoreData {
+      "difficulty": Object {},
+      "musicId": "ddOOOibQ6qIi9DI1bl8b108I1Ib6QDl9",
+    },
+    ScoreData {
+      "difficulty": Object {},
+      "musicId": "i9Pidb18b9O8bdqQ91QQP0oPdIdIODq1",
+    },
+    ScoreData {
+      "difficulty": Object {},
+      "musicId": "Q96bO9D61lib19IiIi0i69P80bo6q69Q",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 968660,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "80Q1idDo6O6Db0106b0q6qbOP1P8QQb0",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 991570,
+          "scoreRank": 16,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 967710,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "l1ODQ1bO9POQ6d8O0Iobbio11qb6O6bd",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 977210,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 933980,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "bP10qq9dPDDqIl16lPIDDd8b00dIIP08",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 987430,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 936230,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "0IIO08bII0QQDOdobqbl8Ib8Q8O8q1li",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 969820,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 954300,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "D0iDbio81PIbI8dD6QOIP9IidDOP0PDP",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 949350,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "Dd98lDdo8Ob698d9qbO9iD0PqO19oQbI",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 837650,
+          "scoreRank": 11,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 894940,
+          "scoreRank": 13,
+        },
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 22070,
+          "scoreRank": 1,
+        },
+      },
+      "musicId": "id9oObq9P6Q6Pq6lQPqI88OP1DD8D0O1",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 949230,
+          "scoreRank": 14,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 720280,
+          "scoreRank": 8,
+        },
+      },
+      "musicId": "00obPO6oPIPOoD9qb0dIl6q6D8P6o9bI",
+    },
+  ],
+}
+`;
+
+exports[`Parser.ParseScoreList (hasNext:true) 1`] = `
+Object {
+  "hasNext": true,
+  "nextUrl": "http://localhost/game/ddr/ddra20/p/playdata/music_data_double.html?offset=1&filter=0&filtertype=0&sorttype=0",
+  "scores": Array [
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 980240,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "QPd01OQqbOIiDoO1dbdo1IIbb60bqPdl",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 868570,
+          "scoreRank": 12,
+        },
+      },
+      "musicId": "OboID1PloIIoOOObQdQOP110I61Ddl9I",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 941410,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "918oPDQDoPlD1OlqlqQI08I6dD9iqoil",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 928580,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "16bl8D8lOddP9Obq0OIlOI6q8Pi1l9O0",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "5": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 991770,
+          "scoreRank": 16,
+        },
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 972640,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 978110,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "06O0ObdQobq86lPDo6P18dQ1QPdilIQO",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 990280,
+          "scoreRank": 16,
+        },
+      },
+      "musicId": "d0DDd1dP6llPbioqPdiQ0IDd918bDqI8",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 944460,
+          "scoreRank": 14,
+        },
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 949340,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "8bQQ0lP96186D8Ibo8IoOd6o16qioiIo",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 908040,
+          "scoreRank": 14,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 905730,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "1d9lDIl6iiiD0D0d8qd6dlDlq6P8o0QI",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "5": ScoreDetail {
+          "clearCount": null,
+          "clearType": 7,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 999800,
+          "scoreRank": 16,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 954110,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "Oq900IIl1Ob8qoIPqDP0PD6blbqIqlP1",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 899170,
+          "scoreRank": 13,
+        },
+      },
+      "musicId": "61oIP0QIlO90d18ObDP1Dii6PoIQoOD8",
+    },
+    ScoreData {
+      "difficulty": Object {},
+      "musicId": "ibI0QllidqQ089ql8dob6bIoodbbIoqq",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "5": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 960120,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 955270,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "16IqQ680IioldO69QD61liQod0DQ8boQ",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "5": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 993880,
+          "scoreRank": 16,
+        },
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 982010,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 975060,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "bd8oD0iqDQ8Qobd1oIqi8981QbD6I6Iq",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 931700,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "80PdqQ0iiOQb9i91lIliodiO9PI8O609",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "5": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 941610,
+          "scoreRank": 14,
+        },
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 952810,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 915410,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "oQolO9oOO01ll0I8969i8O1IQliloDqP",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "5": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 996280,
+          "scoreRank": 16,
+        },
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 963030,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 952130,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "lqI8DD9Plq6IO8P8P6Pl8Di98DlI9oP8",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 976950,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 852650,
+          "scoreRank": 12,
+        },
+      },
+      "musicId": "9I00D9Id61iD6QP8i8Dd6698PoQ9bdi9",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 890620,
+          "scoreRank": 13,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 826070,
+          "scoreRank": 11,
+        },
+      },
+      "musicId": "ilD80b8QQl9Qo0PP0lQ00b8bO9Oqoobo",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 938090,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "i91q8l0bbi8qll000ob6qDiQP891iiql",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 983060,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 986330,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "qdQoQli1d8DP0Obb919I6P1Odilib1Dd",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 975970,
+          "scoreRank": 15,
+        },
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 930700,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "I96dOqqqQIi9oiqbqDPbQ8I8PQbqOb1o",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 954720,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "oPP1Pdl6Qdlb8oq10PP1doDibdbbl9bl",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 939340,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "0Ib6qIb0iPOoQqqDIl90dP0PI0o9QlDd",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 820400,
+          "scoreRank": 11,
+        },
+      },
+      "musicId": "l9lq19DdiD8qQPoPOlboi1qQii0IQI86",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 943770,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "qIqqdd1Odqi1Iiolq9qqPOi0bPPld8Pb",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 986710,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 987410,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "l1lO999PqIboPQOD86PDQo1ol1iIiiOi",
+    },
+    ScoreData {
+      "difficulty": Object {},
+      "musicId": "ql1Q8P100IIlbl0Pdi08I8qD900idqQq",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 943290,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "id1lodDbo0Iq9088Qd19d1OlDPP01D8o",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 950510,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "i89IO1PPOl0boOol0bQI19Q9liQ0l6O1",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 992290,
+          "scoreRank": 16,
+        },
+      },
+      "musicId": "QIDd80o0OqobODP00ldQ1D9dl81qQi0d",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 948110,
+          "scoreRank": 14,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 900810,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "QoDQ0oq08QqiI0DQ8dIPb10qIi6d6i89",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 943240,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "8Q8OiP8QPbl8bqID1loQq896ldPQd99o",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 835860,
+          "scoreRank": 11,
+        },
+      },
+      "musicId": "q6iD8idqo69qIPl00IQidoq1o1o1d1b9",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "5": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 986770,
+          "scoreRank": 15,
+        },
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 970000,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 985530,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "16oDDIlP8bIODQ6Ql0881d9Qqdb19b98",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 954350,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "IbDoODD9qb66Iqd6DbOQiOoDll1DqiO9",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 941190,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "Pd1d96Q91oiboqb86DdddD68dbq81Pdo",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 903190,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "qiDOD0iidOli9l0qbP6IbOD19OQ8D8Po",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 956890,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "QlID98Ddoi6O8lP8IQd6iid610011l60",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "5": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 985290,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 922770,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "I1qd16dPdqPi96ql0lP10OQDbo11D89P",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "5": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 987100,
+          "scoreRank": 15,
+        },
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 980770,
+          "scoreRank": 15,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 997090,
+          "scoreRank": 16,
+        },
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 741050,
+          "scoreRank": 8,
+        },
+      },
+      "musicId": "Q9Q088PPd0bPi9QQ8iil1lQqPdiQP69D",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 951930,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "i9il1DIDl91Db0OdllOddIqO600Pl89q",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 930940,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "qilOP8l6bDPi98lqDbO6O1obOi068QOQ",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 926780,
+          "scoreRank": 14,
+        },
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 873030,
+          "scoreRank": 12,
+        },
+      },
+      "musicId": "bo9l0Dl0PbqQQQ16Qq6bOOi68o0996Pq",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 881630,
+          "scoreRank": 12,
+        },
+      },
+      "musicId": "qbbPQoqqqiPd98d61P0qDd0iDId6OqoQ",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 682940,
+          "scoreRank": 6,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 865410,
+          "scoreRank": 12,
+        },
+      },
+      "musicId": "9idOOIdDO01D8PO06bOPPbOIOoiQ8O0P",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "5": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 945410,
+          "scoreRank": 14,
+        },
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 943090,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "O9qDQOQO8dDDIiO9dPP0Pb8qQo9l89D9",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 849630,
+          "scoreRank": 11,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 962170,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "911lId0IooIOq1oDPoQ0iQiDiOIbd6oo",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 922760,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "doIiQl6oDPP6i9qobqoobblPQqPiI9bD",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 966380,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "1P9bqO00bIQ0q8d1Q80l0Dq8oi6boqb0",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "6": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 900680,
+          "scoreRank": 14,
+        },
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 957630,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "D11ldIqD8dQIi9oQQIIo86QOI8D9olP8",
+    },
+  ],
+}
+`;
+
+exports[`Parser.ParseScoreList (noLogin) 1`] = `
+Object {
+  "hasNext": false,
+  "nextUrl": "",
+  "scores": Array [],
+}
+`;
+
+exports[`Parser.ParseScoreList (nonstop) 1`] = `
+Object {
+  "hasNext": false,
+  "nextUrl": "",
+  "scores": Array [
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 957550,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "qbbOOO1QibO1861bqQII9lqlPiIoqb98",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": 5,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 938620,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "I90bQ81P1blOPIdd9PPl6I9D8DQ1dIob",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 900110,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "88o8Oq69ldilblP10DI0qqb6b8I0DDi9",
+    },
+    ScoreData {
+      "difficulty": Object {},
+      "musicId": "q6oOPqQPlOQoooq888bPI1OPDlqDIQQD",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 908230,
+          "scoreRank": 14,
+        },
+      },
+      "musicId": "i1DqPb01I6I1dP8qoO1qiIPDlOD9D9oQ",
+    },
+    ScoreData {
+      "difficulty": Object {
+        "7": ScoreDetail {
+          "clearCount": null,
+          "clearType": null,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 862990,
+          "scoreRank": 12,
+        },
+      },
+      "musicId": "DQilQP810dq8D9i11q6Oq0ooDdQQO0lI",
+    },
+  ],
+}
+`;

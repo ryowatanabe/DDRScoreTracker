@@ -59,32 +59,32 @@ export function parseScoreList(rootElement) {
     nextUrl: '',
     scores: [],
   };
-  const next = $('#next.arrow').get();
+  const next = rootElement.querySelectorAll('#next.arrow');
   if (next.length > 0) {
     res.hasNext = true;
-    res.nextUrl = $('a', $(next[0]))[0].href;
+    res.nextUrl = next[0].querySelector('a').href;
   }
-  const isDouble = $('#t_double.game_type .select').get().length > 0;
-  const scores = $('tr.data').get();
+  const isDouble = rootElement.querySelectorAll('#t_double.game_type .select').length > 0;
+  const scores = Array.from(rootElement.querySelectorAll('tr.data'));
   scores.forEach(function (score) {
     const regexp = /^.*img=([0-9a-zA-Z]+).*$/;
-    const src = $('td img.jk, td img.jk2', $(score))[0].src;
+    const src = score.querySelector('td img.jk, td img.jk2').src;
     const musicId = src.replace(regexp, '$1');
     const scoreData = new ScoreData(musicId);
     Object.keys(Constants.DIFFICULTY_NAME_MAP).forEach(function (difficultyName) {
       const difficulty = Constants.DIFFICULTY_NAME_MAP[difficultyName] + (isDouble ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
 
-      const detail = $('#' + difficultyName + '.rank', $(score)).get();
+      const detail = score.querySelectorAll('#' + difficultyName + '.rank');
       if (detail.length == 0) {
         return;
       }
 
       const scoreDetail = new ScoreDetail();
-      const value = parseInt($('.data_score', $(detail[0]))[0].innerText);
+      const value = parseInt(detail[0].querySelector('.data_score').innerHTML);
       scoreDetail.score = value ? value : 0;
       const regexp = /^.*\/([^\/]+)$/;
-      const scoreRankFileName = $('div.data_rank img', $(detail[0]))[0].src.replace(regexp, '$1');
-      const clearTypeFileName = $('div.data_rank img', $(detail[0]))[1].src.replace(regexp, '$1');
+      const scoreRankFileName = detail[0].querySelectorAll('div.data_rank img')[0].src.replace(regexp, '$1');
+      const clearTypeFileName = detail[0].querySelectorAll('div.data_rank img')[1].src.replace(regexp, '$1');
       scoreDetail.scoreRank = Constants.SCORE_RANK_FILE_MAP[scoreRankFileName];
       scoreDetail.clearType = Constants.CLEAR_TYPE_FILE_MAP[clearTypeFileName];
 
