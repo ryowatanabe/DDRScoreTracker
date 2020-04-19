@@ -33,6 +33,7 @@ const config = {
     new VueLoaderPlugin(),
     new CopyPlugin([
       { from: 'static', to: './' },
+      { from: 'res', to: './res/' },
       {
         from: 'manifest.json',
         to: 'manifest.json',
