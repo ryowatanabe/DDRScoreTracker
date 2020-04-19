@@ -32,9 +32,9 @@ window.getCharts = () => {
 
 window.refreshList = (filterConditions, sortConditions) => {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    if(backgroundPage.getChartCount() == 0) {
+    if (backgroundPage.getChartCount() == 0) {
       openMenu();
-    } else{
+    } else {
       const newChartList = backgroundPage.getChartList().getFilteredAndSorted(filterConditions, sortConditions);
       chartList.statistics = newChartList.statistics;
       chartList.charts = newChartList.charts;

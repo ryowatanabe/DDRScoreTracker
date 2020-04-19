@@ -75,7 +75,7 @@ export default Vue.extend({
     },
     initialize: () => {
       initialize();
-    }
+    },
   },
 });
 </script>

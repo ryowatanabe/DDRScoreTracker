@@ -2,6 +2,7 @@
 <head>
   <meta charset="utf-8">
   <script src="./index.js" defer></script>
+  <script src="../../common/i18n.js" defer></script>
   <link rel="stylesheet" type="text/css" href="../index.css">
 </head>
 <body>
@@ -9,61 +10,49 @@
   <div id="log-container"></div>
 
   <div>
-    <button id="dumpMusicListButton" type="button" name="dumpMusicList">楽曲リストを出力</button>
-    <div>
-      端末に保存された楽曲リストをフォームに出力し、クリップボードにコピーします。
-    </div>
+    <button id="dumpMusicListButton" type="button" name="dumpMusicList" data-i18n-key="browser_action_debug_page_dump_music_list" data-i18n-text></button>
+    <div data-i18n-key="browser_action_debug_page_dump_music_list_description" data-i18n-text></div>
     <textarea id="dumpMusicListArea" style="width:100%" rows="10"></textarea>
   </div>
   <hr>
 
   <div>
-    <button id="restoreMusicListButton" type="button" name="restoreMusicList">楽曲リストをリストア</button>
-    <div>
-      「楽曲リストを出力」でバックアップしたデータを使って楽曲リストをリストアします。フォームにデータを貼り付けて、ボタンを押してください。
-    </div>
+    <button id="restoreMusicListButton" type="button" name="restoreMusicList" data-i18n-key="browser_action_debug_page_restore_music_list" data-i18n-text></button>
+    <div data-i18n-key="browser_action_debug_page_restore_music_list_description" data-i18n-text></div>
     <textarea id="restoreMusicListArea" style="width:100%" rows="10"></textarea>
   </div>
   <hr>
 
   <div>
-    <button id="dumpScoreListButton" type="button" name="dumpScoreList">スコアリストを出力</button>
-    <div>
-      端末に保存されたスコアリストをフォームに出力し、クリップボードにコピーします。
-    </div>
+    <button id="dumpScoreListButton" type="button" name="dumpScoreList" data-i18n-key="browser_action_debug_page_dump_score_list" data-i18n-text></button>
+    <div data-i18n-key="browser_action_debug_page_dump_score_list_description" data-i18n-text></div>
     <textarea id="dumpScoreListArea" style="width:100%" rows="10"></textarea>
   </div>
   <hr>
 
   <div>
-    <button id="restoreScoreListButton" type="button" name="restoreScoreList">スコアリストをリストア</button>
-    <div>
-      「スコアリストを出力」でバックアップしたデータを使ってスコアリストをリストアします。フォームにデータを貼り付けて、ボタンを押してください。
-    </div>
+    <button id="restoreScoreListButton" type="button" name="restoreScoreList" data-i18n-key="browser_action_debug_page_restore_score_list" data-i18n-text></button>
+    <div data-i18n-key="browser_action_debug_page_restore_score_list_description" data-i18n-text></div>
     <textarea id="restoreScoreListArea" style="width:100%" rows="10"></textarea>
   </div>
   <hr>
 
   <div>
-    <button id="updateMusicListButton" type="button" name="updateMusicList">公式から楽曲リストを取得</button>
-    <div>
-      公式サイトの楽曲一覧から楽曲リストを取得します。隠し曲や追加鬼譜面の情報は含まれていません。
-    </div>
+    <button id="updateMusicListButton" type="button" name="updateMusicList" data-i18n-key="browser_action_debug_page_get_music_list_from_official_site" data-i18n-text></button>
+    <div data-i18n-key="browser_action_debug_page_get_music_list_from_official_site_description" data-i18n-text></div>
   </div>
   <hr>
 
   <div>
-    <button id="resetStorageButton" type="button" name="resetStorage">データリセット</button>
-    <div>
-      端末上に保存されているデータ(楽曲リスト、スコアリストなど)をすべて削除します。
-    </div>
+    <button id="resetStorageButton" type="button" name="resetStorage" data-i18n-key="browser_action_debug_page_reset_data" data-i18n-text></button>
+    <div data-i18n-key="browser_action_debug_page_reset_data_description" data-i18n-text></div>
   </div>
   <hr>
 
   <a href="./browser-controller.html">testing BrowserController &gt;&gt;</a>
   <hr>
 
-  <a href="../index.html">&lt;&lt; 戻る</a>
+  <a href="../index.html" data-i18n-key="browser_action_debug_page_return" data-i18n-text></a>
 </div>
 </body>
 </html>

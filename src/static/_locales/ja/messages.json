@@ -1,10 +1,149 @@
 {
   "appName": {
-    "message": "DDR Score Tracker",
-    "description": "The title of the application, displayed in the web store."
+    "message": "DDR Score Tracker"
   },
   "appDesc": {
-    "message": "DanceDanceRevolutionの公式サイトからスコアデータを収集し, 整理して閲覧することができる拡張機能です.",
-    "description": "The description of the application, displayed in the web store."
+    "message": "DanceDanceRevolutionの公式サイトからスコアデータを収集し、整理して閲覧することができる拡張機能です。"
+  },
+  "browser_action_filter_filter_condition_game_mode": {
+    "message": "ゲームモード"
+  },
+  "browser_action_filter_filter_condition_music_type": {
+    "message": "楽曲種別"
+  },
+  "browser_action_filter_filter_condition_music_type_normal": {
+    "message": "通常楽曲"
+  },
+  "browser_action_filter_filter_condition_music_type_nonstop": {
+    "message": "NONSTOP"
+  },
+  "browser_action_filter_filter_condition_music_type_grade": {
+    "message": "段位認定"
+  },
+  "browser_action_filter_filter_condition_difficulty": {
+    "message": "難易度"
+  },
+  "browser_action_filter_filter_condition_level": {
+    "message": "レベル"
+  },
+  "browser_action_filter_filter_condition_clear_type": {
+    "message": "フルコンボ・クリア種別"
+  },
+  "browser_action_filter_filter_condition_score_rank": {
+    "message": "スコアランク"
+  },
+  "browser_action_filter_sort_condition": {
+    "message": "ソート"
+  },
+  "browser_action_filter_sort_condition_score": {
+    "message": "スコア"
+  },
+  "browser_action_filter_sort_condition_title": {
+    "message": "曲名"
+  },
+  "browser_action_filter_sort_condition_level": {
+    "message": "レベル"
+  },
+  "browser_action_filter_sort_condition_play_count": {
+    "message": "プレイ回数"
+  },
+  "browser_action_filter_sort_condition_clear_count": {
+    "message": "クリア回数"
+  },
+  "browser_action_filter_sort_condition_max_combo": {
+    "message": "最大コンボ数"
+  },
+  "browser_action_filter_sort_condition_asc": {
+    "message": "▲昇順"
+  },
+  "browser_action_filter_sort_condition_desc": {
+    "message": "▼降順"
+  },
+  "browser_action_filter_update_button": {
+    "message": "更新"
+  },
+  "browser_action_menu_get_music_list": {
+    "message": "楽曲リストを取得"
+  },
+  "browser_action_menu_get_music_list_description": {
+    "message": "最新の楽曲リストを取得します。"
+  },
+  "browser_action_menu_get_missing_music_info": {
+    "message": "不足している楽曲の情報を取得"
+  },
+  "browser_action_menu_get_missing_music_info_description": {
+    "message": "新曲が追加された場合など、スコアリストに存在するが楽曲リストに存在しない曲・譜面の情報を公式サイトから取得します。e-amusementへのログインが必要です。"
+  },
+  "browser_action_menu_get_score_data": {
+    "message": "スコア情報を取得"
+  },
+  "browser_action_menu_get_score_data_description": {
+    "message": "スコアリストを公式サイトから取得します。e-amusementへのログインが必要です。"
+  },
+  "browser_action_menu_get_score_data_single_play": {
+    "message": "SP:"
+  },
+  "browser_action_menu_get_score_data_double_play": {
+    "message": "DP:"
+  },
+  "browser_action_menu_get_score_data_normal": {
+    "message": "通常楽曲"
+  },
+  "browser_action_menu_get_score_data_nonstop": {
+    "message": "NONSTOP"
+  },
+  "browser_action_menu_get_score_data_grade": {
+    "message": "段位認定"
+  },
+  "browser_action_menu_get_score_detail": {
+    "message": "スコア詳細を取得"
+  },
+  "browser_action_menu_get_score_detail_description": {
+    "message": "現在リストに表示されている曲のスコア詳細を公式サイトから取得します。e-amusementへのログインが必要です。"
+  },
+  "browser_action_menu_close_button": {
+    "message": "閉じる"
+  },
+  "browser_action_menu_to_debug_page_button": {
+    "message": "デバッグページ"
+  },
+  "browser_action_debug_page_dump_music_list": {
+    "message": "楽曲リストを出力"
+  },
+  "browser_action_debug_page_dump_music_list_description": {
+    "message": "端末に保存された楽曲リストをフォームに出力し、クリップボードにコピーします。"
+  },
+  "browser_action_debug_page_restore_music_list": {
+    "message": "楽曲リストをリストア"
+  },
+  "browser_action_debug_page_restore_music_list_description": {
+    "message": "「楽曲リストを出力」でバックアップしたデータを使って楽曲リストをリストアします。フォームにデータを貼り付けて、ボタンを押してください。"
+  },
+  "browser_action_debug_page_dump_score_list": {
+    "message": "スコアリストを出力"
+  },
+  "browser_action_debug_page_dump_score_list_description": {
+    "message": "端末に保存されたスコアリストをフォームに出力し、クリップボードにコピーします。"
+  },
+  "browser_action_debug_page_restore_score_list": {
+    "message": "スコアリストをリストア"
+  },
+  "browser_action_debug_page_restore_score_list_description": {
+    "message": "「スコアリストを出力」でバックアップしたデータを使ってスコアリストをリストアします。フォームにデータを貼り付けて、ボタンを押してください。"
+  },
+  "browser_action_debug_page_get_music_list_from_official_site": {
+    "message": "公式から楽曲リストを取得"
+  },
+  "browser_action_debug_page_get_music_list_from_official_site_description": {
+    "message": "公式サイトの楽曲一覧から楽曲リストを取得します。隠し曲や追加鬼譜面の情報は含まれていません。"
+  },
+  "browser_action_debug_page_reset_data": {
+    "message": "データリセット"
+  },
+  "browser_action_debug_page_reset_data_description": {
+    "message": "端末上に保存されているデータ(楽曲リスト、スコアリストなど)をすべて削除します。"
+  },
+  "browser_action_debug_page_return": {
+    "message": "<< 戻る"
   }
 }
