@@ -145,5 +145,14 @@
   },
   "browser_action_debug_page_return": {
     "message": "<< 戻る"
+  },
+  "log_container_scroll_to_bottom_button": {
+    "message": "▼最新"
+  },
+  "log_container_close_button": {
+    "message": "■閉じる"
+  },
+  "log_container_flush_button": {
+    "message": "■クリア"
   }
 }
