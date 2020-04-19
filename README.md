@@ -30,11 +30,24 @@ This software opens official website on Google Chrome which it works on, then it
 
 ## How to use / 利用方法
 
+## Setup / セットアップ
+
+```
+$ git clone git@github.com:ryowatanabe/DDRScoreTracker
+$ cd DDRScoreTracker
+$ yarn install
+$ yarn build
+```
+
+The extension will be placed in `dist/` directory.
+
+`dist/` ディレクトリに拡張機能が出力されます。
+
 ### Loading extension / 拡張機能の読み込み
 
-Choose `Window` > `Extensions` > `Load unpacked` in the Google Chrome's menu, then select `extension` directory which has `manifest.json` in it.
+Choose `Window` > `Extensions` > `Load unpacked` in the Google Chrome's menu, then select `dist/` directory which has `manifest.json` in it.
 
-Google Chromeのメニュー `ウィンドウ` → `拡張機能` → `パッケージ化されていない拡張機能を読み込む` で, `manifest.json` のある `extension` ディレクトリを選択してください.
+Google Chromeのメニュー `ウィンドウ` → `拡張機能` → `パッケージ化されていない拡張機能を読み込む` で, `manifest.json` のある `dist/` ディレクトリを選択してください.
 
 ### Launching DDR Score Tracker / DDR Score Trackerを開く
 
@@ -70,16 +83,6 @@ This software saves retrieved data on the PC which operates the browser. Once yo
 This software retrieves music list from [github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics.txt). It retrieves any other data from [official website](https://p.eagate.573.jp/game/ddr/ddra20/p/).
 
 楽曲リストの取得は[github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics.txt)から行っています. それ以外のデータの取得は[公式サイト](https://p.eagate.573.jp/game/ddr/ddra20/p/)から行います.
-
-## For developers / 開発者向け
-
-```
-$ git clone git@github.com:ryowatanabe/DDRScoreTracker
-$ cd DDRScoreTracker
-$ yarn install
-$ yarn build
-$ yarn test
-```
 
 ## License / ライセンス
 
