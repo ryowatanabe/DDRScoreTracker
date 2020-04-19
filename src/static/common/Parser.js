@@ -103,10 +103,9 @@ export function parseScoreDetail(rootElement) {
     scores: [],
   };
 
-  const detail = Array.from(rootElement.querySelectorAll('#music_detail_table td, #course_detail_table td'))
-    .map((element) => {
-      return element.innerHTML;
-    });
+  const detail = Array.from(rootElement.querySelectorAll('#music_detail_table td, #course_detail_table td')).map((element) => {
+    return element.innerHTML;
+  });
   if (detail.length > 0) {
     const musicInfo = rootElement.querySelector('#music_info td');
     const regexpForMusicId = /^.*img=([0-9a-zA-Z]+).*$/;
