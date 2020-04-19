@@ -3,8 +3,6 @@
   <meta charset="utf-8">
   <title>DDR Score Tracker</title>
   <script src="index.js" defer></script>
-  <script src="filter.js" type="module" defer></script>
-  <script src="menu.js" type="module" defer></script>
   <link rel="stylesheet" type="text/css" href="index.css">
   <link rel="stylesheet" type="text/css" href="drawer.css">
 </head>
@@ -13,8 +11,8 @@
     <div id="openMenuButton" class="drawer-switch">&lt;&lt;Menu</div>
     <div id="openFilterButton" class="drawer-switch">&lt;&lt;Filter</div>
 
-    <div id="filterBackground" class="drawer-background"></div>
-    <div id="filterContainer" class="drawer filter">
+    <div id="filterBackground" class="drawer-background not-initialized"></div>
+    <div id="filterContainer" class="drawer filter not-initialized">
       <div class="condition-group">
         ゲームモード
         <a id="filterCondition_playMode_all">[All]</a>
@@ -131,8 +129,8 @@
       </div>
     </div>
 
-    <div id="menuBackground" class="drawer-background"></div>
-    <div id="menuContainer" class="drawer menu">
+    <div id="menuBackground" class="drawer-background not-initialized"></div>
+    <div id="menuContainer" class="drawer menu not-initialized">
       <div class="function-group">
         <div>
           <button id="fetchParsedMusicListButton" type="button" name="fetchParsedMusicList">楽曲リストを取得</button>

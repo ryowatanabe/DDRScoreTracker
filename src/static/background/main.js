@@ -85,6 +85,10 @@ function getScoreList() {
   return scoreList;
 }
 
+function getChartCount() {
+  return chartList.charts.length;
+}
+
 function getChartList() {
   return chartList;
 }
@@ -385,6 +389,7 @@ chrome.tabs.onUpdated.addListener(function (tid, changeInfo, tab) {
   window.echo = echo;
   window.fetchMissingMusicInfo = fetchMissingMusicInfo;
   window.fetchParsedMusicList = fetchParsedMusicList;
+  window.getChartCount = getChartCount;
   window.getChartList = getChartList;
   window.getConditions = getConditions;
   window.getMusicList = getMusicList;

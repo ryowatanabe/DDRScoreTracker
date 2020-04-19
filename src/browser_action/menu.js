@@ -1,5 +1,5 @@
 import { refreshList } from './filter.js';
-import { Constants } from '../common/Constants.js';
+import { Constants } from '../static/common/Constants.js';
 
 function fetchParsedMusicList() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
@@ -41,7 +41,14 @@ function updateScoreDetail() {
 }
 document.getElementById('updateScoreDetailButton').addEventListener('click', updateScoreDetail);
 
-function openMenu() {
+export function initialize() {
+  document.getElementById('menuContainer').classList.remove('not-initialized');
+  document.getElementById('menuBackground').classList.remove('not-initialized');
+  document.getElementById('menuContainer').classList.add('initialized');
+  document.getElementById('menuBackground').classList.add('initialized');
+}
+
+export function openMenu() {
   document.getElementById('menuContainer').classList.add('active');
   document.getElementById('menuBackground').classList.add('active');
 }

@@ -36,6 +36,13 @@ export function refreshList() {
   );
 }
 
+export function initialize() {
+  document.getElementById('filterContainer').classList.remove('not-initialized');
+  document.getElementById('filterBackground').classList.remove('not-initialized');
+  document.getElementById('filterContainer').classList.add('initialized');
+  document.getElementById('filterBackground').classList.add('initialized');
+}
+
 function openFilter() {
   document.getElementById('filterContainer').classList.add('active');
   document.getElementById('filterBackground').classList.add('active');

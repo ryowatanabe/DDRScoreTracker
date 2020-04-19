@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div id="logBackground" class="drawer-background"></div>
-    <div id="logContainer" class="drawer log">
+    <div id="logBackground" class="drawer-background not-initialized"></div>
+    <div id="logContainer" class="drawer log not-initialized">
       <div id="scrollLogToBottomButton" class="drawer-switch" v-on:click="scrollToBottom">▼最新</div>
       <div id="app-log" class="log-data">
         <template v-for="line in log"> {{ line }} <br /> </template>
@@ -15,6 +15,13 @@
 <script>
 import Vue from 'vue';
 import { LogReceiver } from '../static/common/LogReceiver.js';
+
+function initialize() {
+  document.getElementById('logContainer').classList.remove('not-initialized');
+  document.getElementById('logBackground').classList.remove('not-initialized');
+  document.getElementById('logContainer').classList.add('initialized');
+  document.getElementById('logBackground').classList.add('initialized');
+}
 
 function openLog() {
   document.getElementById('logContainer').classList.add('active');
@@ -63,6 +70,12 @@ export default Vue.extend({
     flush: () => {
       flushLog();
     },
+    open: () => {
+      openLog();
+    },
+    initialize: () => {
+      initialize();
+    }
   },
 });
 </script>
