@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Parser.ParseMusicDetail (noLogin) 1`] = `
+Object {
+  "musics": Array [],
+}
+`;
+
+exports[`Parser.ParseMusicDetail (normal) 1`] = `
+Object {
+  "musics": Array [
+    MusicData {
+      "difficulty": Array [
+        4,
+        7,
+        11,
+        14,
+        0,
+        7,
+        12,
+        15,
+        0,
+      ],
+      "musicId": "06O0ObdQobq86lPDo6P18dQ1QPdilIQO",
+      "title": "妖隠し -あやかしかくし-",
+      "type": 0,
+    },
+  ],
+}
+`;

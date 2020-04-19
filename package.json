@@ -33,7 +33,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "lint": "eslint --ext .js,.vue src",
-    "prettier": "prettier \"src/**/*.{js,vue,json}\"",
+    "prettier": "prettier \"src/**/*.{js,vue,json}\" \"test/**/*.js\"",
     "prettier:write": "yarn prettier --write",
     "build": "yarn clean; cross-env NODE_ENV=production webpack --hide-modules",
     "build:dev": "cross-env NODE_ENV=development webpack --hide-modules",

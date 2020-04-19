@@ -35,18 +35,21 @@ export function parseMusicDetail(rootElement) {
   const res = {
     musics: [],
   };
-  const musicInfo = $('#music_info td').get();
+  const musicInfo = rootElement.querySelectorAll('#music_info td');
+  if(musicInfo.length != 2) {
+    return res;
+  }
   const regexpForMusicId = /^.*img=([0-9a-zA-Z]+).*$/;
-  const src = $('img', $(musicInfo[0])).get()[0].src;
+  const src = musicInfo[0].querySelector('img').src;
   const musicId = src.replace(regexpForMusicId, '$1');
   const title = musicInfo[1].innerHTML.split('<br>')[0];
   const regexpForDifficulties = /^.*songdetails_level_([0-9]*).png$/;
-  const difficulties = $('li.step img').get();
+  const difficulties = Array.from(rootElement.querySelectorAll('li.step img'));
   const difficulty = difficulties.map((element) => {
     const value = parseInt(element.src.replace(regexpForDifficulties, '$1'));
     return value ? value : 0;
   });
-  const musicData = new MusicData(musicId, title, difficulty);
+  const musicData = new MusicData(musicId, Constants.MUSIC_TYPE.NORMAL, title, difficulty);
   res.musics.push(musicData);
   return res;
 }
