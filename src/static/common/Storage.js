@@ -1,4 +1,5 @@
 import { Logger } from './Logger.js';
+import { I18n } from './I18n.js';
 
 export class Storage {
   storageData = {};
@@ -29,9 +30,9 @@ export class Storage {
   }
 
   resetStorage(callback = function () {}) {
-    Logger.info('端末上に保存しているデータを削除します.');
+    Logger.info(I18n.getMessage('log_message_reset_local_storage_begin'));
     chrome.storage.local.clear(() => {
-      Logger.info('完了しました.');
+      Logger.info(I18n.getMessage('log_message_done'));
       this.loadStorage();
       callback();
     });

@@ -7,6 +7,7 @@ import { Constants } from '../common/Constants.js';
 import { Logger } from '../common/Logger.js';
 import { Storage } from '../common/Storage.js';
 import { BrowserController } from '../common/BrowserController.js';
+import { I18n } from '../common/I18n.js';
 
 const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT);
 const storage = new Storage(
@@ -41,7 +42,7 @@ let targetMusics = [];
 let targetUrls = [];
 
 let musicList; // 曲リスト。1曲1エントリ。
-let scoreList; // スコアリスト。1極1エントリ。
+let scoreList; // スコアリスト。1曲1エントリ。
 let chartList = new ChartList(); // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
 let conditions;
 
@@ -95,7 +96,7 @@ function getChartList() {
 
 function restoreMusicList(string) {
   const lines = string.split('\n');
-  Logger.info(`${lines.length} 件のデータがあります.`);
+  Logger.info(I18n.getMessage('log_message_restore_music_list_count', lines.length));
   lines.forEach(function (line) {
     musicList.applyEncodedString(line);
   });
@@ -113,22 +114,22 @@ gh pagesから曲リストを取得し、ローカルの曲リストを更新す
 */
 
 function fetchParsedMusicList() {
-  Logger.info('github pagesより楽曲リストを取得...');
+  Logger.info(I18n.getMessage('log_message_fetch_parsed_music_list_begin'));
   fetch(Constants.PARSED_MUSIC_LIST_URL)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP status: ${response.status}`);
       }
-      Logger.info('取得成功.');
+      Logger.info(I18n.getMessage('log_message_fetch_parsed_music_list_fetch_success'));
       response.text().then((text) => {
         restoreMusicList(text);
-        Logger.info(['処理を完了しました.', '']);
+        Logger.info([I18n.getMessage('log_message_done'), '']);
       });
     })
     .catch((reason) => {
-      Logger.info('通信エラーが発生しました.');
+      Logger.info(I18n.getMessage('log_message_network_error'));
       Logger.debug(reason);
-      Logger.info(['処理を終了しました. 通信環境のよいところでやり直してください.', '']);
+      Logger.info([I18n.getMessage('log_message_network_error_please_retry'), '']);
     });
 }
 
@@ -211,7 +212,7 @@ targets: [
 ]
 */
 async function updateScoreDetail(windowId, targets) {
-  Logger.info('スコア詳細を取得...');
+  Logger.info(I18n.getMessage('log_message_update_score_detail_begin'));
   if (state != STATE.IDLE) {
     //return false;
   }
@@ -221,14 +222,20 @@ async function updateScoreDetail(windowId, targets) {
     targetMusics.push(music);
   });
   if (targetMusics.length == 0) {
-    Logger.info('データ取得対象の楽曲がありません.');
+    Logger.info(I18n.getMessage('log_message_update_score_detail_no_target'));
     return false;
   }
-  Logger.info(`取得対象は ${targetMusics.length} 件あります.`);
+  Logger.info(I18n.getMessage('log_message_update_score_detail_target_found', targetMusics.length));
   state = STATE.UPDATE_SCORE_DETAIL;
   try {
     const targetMusic = targetMusics.shift();
-    Logger.info(`${musicList.getMusicDataById(targetMusic.musicId).title} [${Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty]}] (あと ${targetMusics.length} 件)`);
+    Logger.info(
+      I18n.getMessage('log_message_update_score_detail_progress', [
+        musicList.getMusicDataById(targetMusic.musicId).title,
+        Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty],
+        targetMusics.length,
+      ])
+    );
     await browserController.createTab();
     await browserController.updateTab(targetMusic.url);
   } catch (error) {
@@ -365,7 +372,7 @@ chrome.tabs.onUpdated.addListener(function (tid, changeInfo, tab) {
           } else {
             await browserController.closeTab();
             state = STATE.IDLE;
-            Logger.info(['処理を完了しました.', '']);
+            Logger.info([I18n.getMessage('log_message_done'), '']);
           }
         });
       }
