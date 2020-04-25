@@ -158,7 +158,55 @@
   "log_message_done": {
     "message": "完了しました。"
   },
+  "log_message_network_error": {
+    "message": "通信エラーが発生しました。"
+  },
+  "log_message_network_error_please_retry": {
+    "message": "処理を終了しました。通信環境のよいところでやり直してください。"
+  },
   "log_message_reset_local_storage_begin": {
     "message": "端末上に保存しているデータを削除します。"
+  },
+  "log_message_restore_music_list_count": {
+    "message": "$COUNT$ 件のデータがあります。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "log_message_fetch_parsed_music_list_begin": {
+    "message": "github pagesより楽曲リストを取得..."
+  },
+  "log_message_fetch_parsed_music_list_fetch_success": {
+    "message": "取得成功。"
+  },
+  "log_message_update_score_detail_begin": {
+    "message": "スコア詳細を取得..."
+  },
+  "log_message_update_score_detail_no_target": {
+    "message": "データ取得対象の楽曲がありません。"
+  },
+  "log_message_update_score_detail_target_found": {
+    "message": "取得対象は $COUNT$ 件あります。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "log_message_update_score_detail_progress": {
+    "message": "$TITLE$ [$DIFFICULTY$] (あと $COUNT$ 件)",
+    "placeholders": {
+      "title": {
+        "content": "$1"
+      },
+      "difficulty": {
+        "content": "$2"
+      },
+      "count": {
+        "content": "$3"
+      }
+    }
   }
 }
