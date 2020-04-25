@@ -4,5 +4,209 @@
   },
   "appDesc": {
     "message": "Google Chrome extension for tracking your DanceDanceRevolution play records"
+  },
+  "browser_action_filter_filter_condition_game_mode": {
+    "message": "Game Mode"
+  },
+  "browser_action_filter_filter_condition_music_type": {
+    "message": "Music Type"
+  },
+  "browser_action_filter_filter_condition_music_type_normal": {
+    "message": "Normal"
+  },
+  "browser_action_filter_filter_condition_music_type_nonstop": {
+    "message": "Nonstop"
+  },
+  "browser_action_filter_filter_condition_music_type_grade": {
+    "message": "Grade"
+  },
+  "browser_action_filter_filter_condition_difficulty": {
+    "message": "Difficulty"
+  },
+  "browser_action_filter_filter_condition_level": {
+    "message": "Level"
+  },
+  "browser_action_filter_filter_condition_clear_type": {
+    "message": "Clear Type"
+  },
+  "browser_action_filter_filter_condition_score_rank": {
+    "message": "Score Rank"
+  },
+  "browser_action_filter_sort_condition": {
+    "message": "Sort"
+  },
+  "browser_action_filter_sort_condition_score": {
+    "message": "Score"
+  },
+  "browser_action_filter_sort_condition_title": {
+    "message": "Title"
+  },
+  "browser_action_filter_sort_condition_level": {
+    "message": "Level"
+  },
+  "browser_action_filter_sort_condition_play_count": {
+    "message": "Play Count"
+  },
+  "browser_action_filter_sort_condition_clear_count": {
+    "message": "Clear Count"
+  },
+  "browser_action_filter_sort_condition_max_combo": {
+    "message": "Max Combo"
+  },
+  "browser_action_filter_sort_condition_asc": {
+    "message": "▲Asc"
+  },
+  "browser_action_filter_sort_condition_desc": {
+    "message": "▼Desc"
+  },
+  "browser_action_filter_update_button": {
+    "message": "Update"
+  },
+  "browser_action_menu_get_music_list": {
+    "message": "Get music list"
+  },
+  "browser_action_menu_get_music_list_description": {
+    "message": "Fetch latest music list."
+  },
+  "browser_action_menu_get_missing_music_info": {
+    "message": "Get missing music info"
+  },
+  "browser_action_menu_get_missing_music_info_description": {
+    "message": "Fetch information about musics and charts which exists only in local score list (not in local music list), from official site. Logging in to e-amusement is required."
+  },
+  "browser_action_menu_get_score_data": {
+    "message": "Get score data"
+  },
+  "browser_action_menu_get_score_data_description": {
+    "message": "Fetch score data from official site. Logging in to e-amusement is required."
+  },
+  "browser_action_menu_get_score_data_single_play": {
+    "message": "SP:"
+  },
+  "browser_action_menu_get_score_data_double_play": {
+    "message": "DP:"
+  },
+  "browser_action_menu_get_score_data_normal": {
+    "message": "Normal"
+  },
+  "browser_action_menu_get_score_data_nonstop": {
+    "message": "Nonstop"
+  },
+  "browser_action_menu_get_score_data_grade": {
+    "message": "Grade"
+  },
+  "browser_action_menu_get_score_detail": {
+    "message": "Get detailed score data"
+  },
+  "browser_action_menu_get_score_detail_description": {
+    "message": "Fetch detailed score data for musics shown in current list from official site. Logging in to e-amusement is required."
+  },
+  "browser_action_menu_close_button": {
+    "message": "Close"
+  },
+  "browser_action_menu_to_debug_page_button": {
+    "message": "Debug page"
+  },
+  "browser_action_debug_page_dump_music_list": {
+    "message": "Export music list"
+  },
+  "browser_action_debug_page_dump_music_list_description": {
+    "message": "Export local music list into the form below, then copy it to clipboard."
+  },
+  "browser_action_debug_page_restore_music_list": {
+    "message": "Restore music list"
+  },
+  "browser_action_debug_page_restore_music_list_description": {
+    "message": "Restore music list using exported data. Paste data into the form below, then click button."
+  },
+  "browser_action_debug_page_dump_score_list": {
+    "message": "Export score list"
+  },
+  "browser_action_debug_page_dump_score_list_description": {
+    "message": "Export local music list into the form below, then copy it to clipboard."
+  },
+  "browser_action_debug_page_restore_score_list": {
+    "message": "Restore score list"
+  },
+  "browser_action_debug_page_restore_score_list_description": {
+    "message": "Restore score list using exported data. Paste data into the form below, then click button."
+  },
+  "browser_action_debug_page_get_music_list_from_official_site": {
+    "message": "Get music list from official site"
+  },
+  "browser_action_debug_page_get_music_list_from_official_site_description": {
+    "message": "Fetch music list from official site. Hidden musics and charts are not included."
+  },
+  "browser_action_debug_page_reset_data": {
+    "message": "Reset data"
+  },
+  "browser_action_debug_page_reset_data_description": {
+    "message": "Delete all data stored in local storage."
+  },
+  "browser_action_debug_page_return": {
+    "message": "<< Back"
+  },
+  "log_container_scroll_to_bottom_button": {
+    "message": "▼Latest"
+  },
+  "log_container_close_button": {
+    "message": "■Close"
+  },
+  "log_container_flush_button": {
+    "message": "■Clear"
+  },
+  "log_message_done": {
+    "message": "Done."
+  },
+  "log_message_network_error": {
+    "message": "Network error occured."
+  },
+  "log_message_network_error_please_retry": {
+    "message": "Process aborted. Retry in good internet connection."
+  },
+  "log_message_reset_local_storage_begin": {
+    "message": "Delete data stored in local storage."
+  },
+  "log_message_restore_music_list_count": {
+    "message": "$COUNT$ data exists.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "log_message_fetch_parsed_music_list_begin": {
+    "message": "Fetching data from github pages..."
+  },
+  "log_message_fetch_parsed_music_list_fetch_success": {
+    "message": "Success."
+  },
+  "log_message_update_score_detail_begin": {
+    "message": "Fetching detailed score data..."
+  },
+  "log_message_update_score_detail_no_target": {
+    "message": "There is no music to get data."
+  },
+  "log_message_update_score_detail_target_found": {
+    "message": "There are $COUNT$ musics.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "log_message_update_score_detail_progress": {
+    "message": "$TITLE$ [$DIFFICULTY$] ($COUNT$ left)",
+    "placeholders": {
+      "title": {
+        "content": "$1"
+      },
+      "difficulty": {
+        "content": "$2"
+      },
+      "count": {
+        "content": "$3"
+      }
+    }
   }
 }
