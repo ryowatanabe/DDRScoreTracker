@@ -154,5 +154,11 @@
   },
   "log_container_flush_button": {
     "message": "■クリア"
+  },
+  "log_message_done": {
+    "message": "完了しました。"
+  },
+  "log_message_reset_local_storage_begin": {
+    "message": "端末上に保存しているデータを削除します。"
   }
 }
