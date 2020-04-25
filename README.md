@@ -32,6 +32,12 @@ This software opens official website on Google Chrome which it works on, then it
 
 ## Setup / セットアップ
 
+### Install from Chrome web store / Chrome ウェブストアからインストール
+
+https://chrome.google.com/webstore/detail/ddr-score-tracker/kecflehdfdgjkmfbhhhjdfijfaghfipk
+
+### Build from source / ソースコードからビルド
+
 ```
 $ git clone git@github.com:ryowatanabe/DDRScoreTracker
 $ cd DDRScoreTracker
@@ -42,8 +48,6 @@ $ yarn build
 The extension will be placed in `dist/` directory.
 
 `dist/` ディレクトリに拡張機能が出力されます。
-
-### Loading extension / 拡張機能の読み込み
 
 Choose `Window` > `Extensions` > `Load unpacked` in the Google Chrome's menu, then select `dist/` directory which has `manifest.json` in it.
 
