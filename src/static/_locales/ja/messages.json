@@ -208,5 +208,30 @@
         "content": "$3"
       }
     }
+  },
+  "log_message_fetch_missing_music_info_begin": {
+    "message": "不足している楽曲の情報を取得..."
+  },
+  "log_message_fetch_missing_music_info_no_target": {
+    "message": "データ取得対象の楽曲がありません。"
+  },
+  "log_message_fetch_missing_music_info_target_found": {
+    "message": "取得対象は $COUNT$ 件あります。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "log_message_fetch_missing_music_info_progress": {
+    "message": "$TITLE$ (あと $COUNT$ 件)",
+    "placeholders": {
+      "title": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      }
+    }
   }
 }

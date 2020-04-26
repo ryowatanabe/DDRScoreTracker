@@ -39,7 +39,6 @@ const STATE = {
 
 let state = STATE.INITIALIZE;
 let targetMusics = [];
-let targetUrls = [];
 
 let musicList; // 曲リスト。1曲1エントリ。
 let scoreList; // スコアリスト。1曲1エントリ。
@@ -158,6 +157,7 @@ async function fetchMissingMusicInfo(windowId) {
   if (state != STATE.IDLE) {
     //return false;
   }
+  Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_begin'));
   /* 曲情報が欠けている曲と、曲情報そのものはあるが、譜面情報が欠けている (追加鬼譜面など) 曲を列挙する */
   const targetMusicIDs = scoreList.musicIds.filter((musicId) => {
     if (!musicList.hasMusic(musicId)) {
@@ -170,18 +170,23 @@ async function fetchMissingMusicInfo(windowId) {
     });
     return missing;
   });
-  targetUrls = targetMusicIDs.map((musicId) => {
-    return Constants.MUSIC_DETAIL_URL[Constants.MUSIC_TYPE.NORMAL].replace('[musicId]', musicId);
+  targetMusics = targetMusicIDs.map((musicId) => {
+    return {
+      musicId: musicId,
+      url: Constants.MUSIC_DETAIL_URL[Constants.MUSIC_TYPE.NORMAL].replace('[musicId]', musicId),
+    };
   });
-
-  if (targetUrls.length == 0) {
+  if (targetMusics.length == 0) {
+    Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_no_target'));
     return false;
   }
+  Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_target_found', targetMusics.length));
   state = STATE.UPDATE_MUSIC_DETAIL;
   try {
-    const targetUrl = targetUrls.shift();
+    const targetMusic = targetMusics.shift();
+    Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [targetMusic.musicId, targetMusics.length]));
     await browserController.createTab();
-    await browserController.updateTab(targetUrl);
+    await browserController.updateTab(targetMusic.url);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
@@ -212,14 +217,14 @@ targets: [
 ]
 */
 async function updateScoreDetail(windowId, targets) {
-  Logger.info(I18n.getMessage('log_message_update_score_detail_begin'));
   if (state != STATE.IDLE) {
     //return false;
   }
+  Logger.info(I18n.getMessage('log_message_update_score_detail_begin'));
   /* 巡回対象のURL一覧を生成 */
-  targets.forEach((music) => {
+  targetMusics = targets.map((music) => {
     music.url = Constants.SCORE_DETAIL_URL[musicList.getMusicDataById(music.musicId).type].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
-    targetMusics.push(music);
+    return music;
   });
   if (targetMusics.length == 0) {
     Logger.info(I18n.getMessage('log_message_update_score_detail_no_target'));
@@ -311,10 +316,11 @@ chrome.tabs.onUpdated.addListener(function (tid, changeInfo, tab) {
           });
           saveStorage();
           updateCharts();
-          if (targetUrls.length > 0) {
+          if (targetMusics.length > 0) {
             try {
-              const targetUrl = targetUrls.shift();
-              await browserController.updateTab(targetUrl, Constants.LOAD_INTERVAL);
+              const targetMusic = targetMusics.shift();
+              Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [targetMusic.musicId, targetMusics.length]));
+              await browserController.updateTab(targetMusic.url, Constants.LOAD_INTERVAL);
             } catch (error) {
               browserController.reset();
               Logger.error(error);
@@ -362,7 +368,11 @@ chrome.tabs.onUpdated.addListener(function (tid, changeInfo, tab) {
             try {
               const targetMusic = targetMusics.shift();
               Logger.info(
-                `${musicList.getMusicDataById(targetMusic.musicId).title} [${Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty]}] (あと ${targetMusics.length} 件)`
+                I18n.getMessage('log_message_update_score_detail_progress', [
+                  musicList.getMusicDataById(targetMusic.musicId).title,
+                  Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty],
+                  targetMusics.length,
+                ])
               );
               await browserController.updateTab(targetMusic.url, Constants.LOAD_INTERVAL);
             } catch (error) {

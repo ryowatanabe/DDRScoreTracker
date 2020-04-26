@@ -208,5 +208,30 @@
         "content": "$3"
       }
     }
+  },
+  "log_message_fetch_missing_music_info_begin": {
+    "message": "Fetching missing music info..."
+  },
+  "log_message_fetch_missing_music_info_no_target": {
+    "message": "There is no music to get data."
+  },
+  "log_message_fetch_missing_music_info_target_found": {
+    "message": "There are $COUNT$ musics.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "log_message_fetch_missing_music_info_progress": {
+    "message": "$TITLE$ ($COUNT$ left)",
+    "placeholders": {
+      "title": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      }
+    }
   }
 }
