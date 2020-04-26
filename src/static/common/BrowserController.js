@@ -11,13 +11,11 @@ export class BrowserController {
     };
   }
 
-  tabId = null;
-  windowId = null;
-  state = null;
-
   constructor(windowId) {
+    this.tabId = null;
     this.windowId = windowId;
     this.state = this.constructor.STATE.INITIALIZED;
+    this.delay = 0;
   }
 
   reset() {
@@ -40,7 +38,7 @@ export class BrowserController {
     });
   }
 
-  updateTab(url, delay = 0) {
+  updateTab(url, delay = this.delay) {
     return new Promise((resolve, reject) => {
       if (this.state != this.constructor.STATE.CREATED) {
         reject(new Error(`state unmatch (current state: ${this.state})`));

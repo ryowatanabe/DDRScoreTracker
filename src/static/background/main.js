@@ -10,6 +10,7 @@ import { BrowserController } from '../common/BrowserController.js';
 import { I18n } from '../common/I18n.js';
 
 const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT);
+browserController.delay = Constants.LOAD_INTERVAL;
 const storage = new Storage(
   {
     scores: {},
@@ -295,7 +296,7 @@ chrome.tabs.onUpdated.addListener(function (tid, changeInfo, tab) {
           updateCharts();
           if (res.hasNext) {
             try {
-              await browserController.updateTab(res.nextUrl, Constants.LOAD_INTERVAL);
+              await browserController.updateTab(res.nextUrl);
             } catch (error) {
               browserController.reset();
               Logger.error(error);
@@ -320,7 +321,7 @@ chrome.tabs.onUpdated.addListener(function (tid, changeInfo, tab) {
             try {
               const targetMusic = targetMusics.shift();
               Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [targetMusic.musicId, targetMusics.length]));
-              await browserController.updateTab(targetMusic.url, Constants.LOAD_INTERVAL);
+              await browserController.updateTab(targetMusic.url);
             } catch (error) {
               browserController.reset();
               Logger.error(error);
@@ -343,7 +344,7 @@ chrome.tabs.onUpdated.addListener(function (tid, changeInfo, tab) {
           updateCharts();
           if (res.hasNext) {
             try {
-              await browserController.updateTab(res.nextUrl, Constants.LOAD_INTERVAL);
+              await browserController.updateTab(res.nextUrl);
             } catch (error) {
               browserController.reset();
               Logger.error(error);
@@ -374,7 +375,7 @@ chrome.tabs.onUpdated.addListener(function (tid, changeInfo, tab) {
                   targetMusics.length,
                 ])
               );
-              await browserController.updateTab(targetMusic.url, Constants.LOAD_INTERVAL);
+              await browserController.updateTab(targetMusic.url);
             } catch (error) {
               browserController.reset();
               Logger.error(error);
