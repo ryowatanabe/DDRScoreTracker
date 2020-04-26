@@ -110,6 +110,7 @@ Object {
       "musicId": "idiOI1Qb9D0dQI6IOlob8QbOqdDOoObP",
     },
   ],
+  "status": 0,
 }
 `;
 
@@ -541,6 +542,7 @@ Object {
       "musicId": "00obPO6oPIPOoD9qb0dIl6q6D8P6o9bI",
     },
   ],
+  "status": 0,
 }
 `;
 
@@ -1414,6 +1416,7 @@ Object {
       "musicId": "D11ldIqD8dQIi9oQQIIo86QOI8D9olP8",
     },
   ],
+  "status": 0,
 }
 `;
 
@@ -1422,6 +1425,7 @@ Object {
   "hasNext": false,
   "nextUrl": "",
   "scores": Array [],
+  "status": 2,
 }
 `;
 
@@ -1500,5 +1504,6 @@ Object {
       "musicId": "DQilQP810dq8D9i11q6Oq0ooDdQQO0lI",
     },
   ],
+  "status": 0,
 }
 `;

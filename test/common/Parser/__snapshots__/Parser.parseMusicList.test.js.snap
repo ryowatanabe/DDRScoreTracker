@@ -502,6 +502,7 @@ Object {
     },
   ],
   "nextUrl": "",
+  "status": 0,
 }
 `;
 
@@ -1311,5 +1312,6 @@ Object {
     },
   ],
   "nextUrl": "http://localhost/game/ddr/ddra20/p/music/index.html?offset=1&filter=0&filtertype=0&playmode=2",
+  "status": 0,
 }
 `;

@@ -3,10 +3,7 @@ let MusicData;
 let ScoreData;
 let ScoreDetail;
 let Constants;
-let parseMusicList;
-let parseMusicDetail;
-let parseScoreList;
-let parseScoreDetail;
+let Parser;
 
 async function loadModules() {
   const logger = await import(chrome.extension.getURL('common/Logger.js'));
@@ -20,10 +17,7 @@ async function loadModules() {
   const constants = await import(chrome.extension.getURL('common/Constants.js'));
   Constants = constants.Constants;
   const parser = await import(chrome.extension.getURL('common/Parser.js'));
-  parseMusicList = parser.parseMusicList;
-  parseMusicDetail = parser.parseMusicDetail;
-  parseScoreList = parser.parseScoreList;
-  parseScoreDetail = parser.parseScoreDetail;
+  Parser = parser.Parser;
   console.log('modules loaded.');
 }
 
@@ -32,22 +26,22 @@ function onMessage(message, sender, sendResponse) {
     (value) => {
       if (message.type == 'PARSE_MUSIC_LIST') {
         console.log('parsing music list ...');
-        sendResponse(parseMusicList(document.body));
+        sendResponse(Parser.parseMusicList(document.body));
         return;
       }
       if (message.type == 'PARSE_MUSIC_DETAIL') {
         console.log('parsing music detail ...');
-        sendResponse(parseMusicDetail(document.body));
+        sendResponse(Parser.parseMusicDetail(document.body));
         return;
       }
       if (message.type == 'PARSE_SCORE_LIST') {
         console.log('parsing score list ...');
-        sendResponse(parseScoreList(document.body));
+        sendResponse(Parser.parseScoreList(document.body));
         return;
       }
       if (message.type == 'PARSE_SCORE_DETAIL') {
         console.log('parsing score detail ...');
-        sendResponse(parseScoreDetail(document.body));
+        sendResponse(Parser.parseScoreDetail(document.body));
         return;
       }
       console.log('received unknown message');

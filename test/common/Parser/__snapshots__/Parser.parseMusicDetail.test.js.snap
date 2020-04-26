@@ -3,6 +3,7 @@
 exports[`Parser.ParseMusicDetail (noLogin) 1`] = `
 Object {
   "musics": Array [],
+  "status": 2,
 }
 `;
 
@@ -26,5 +27,6 @@ Object {
       "type": 0,
     },
   ],
+  "status": 0,
 }
 `;
