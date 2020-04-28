@@ -7,7 +7,9 @@ const browserController = new BrowserController(windowId);
 
 async function createTab() {
   try {
-    await browserController.createTab();
+    const url = document.getElementById('targetURL').value;
+    await browserController.createTab(url);
+    Logger.debug(`tab created`);
   } catch (error) {
     Logger.error(error);
   }
@@ -29,6 +31,7 @@ document.getElementById('updateTabButton').addEventListener('click', updateTab);
 async function closeTab() {
   try {
     await browserController.closeTab();
+    Logger.debug(`tab closed`);
   } catch (error) {
     Logger.error(error);
   }

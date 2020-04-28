@@ -9,8 +9,8 @@ import { Storage } from '../common/Storage.js';
 import { BrowserController } from '../common/BrowserController.js';
 import { I18n } from '../common/I18n.js';
 
-const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT);
-browserController.delay = Constants.LOAD_INTERVAL;
+let browserController;
+
 const storage = new Storage(
   {
     scores: {},
@@ -142,8 +142,7 @@ async function updateMusicList(windowId) {
   }
   state = STATE.UPDATE_MUSIC_LIST;
   try {
-    await browserController.createTab();
-    await browserController.updateTab(Constants.MUSIC_LIST_URL);
+    await browserController.createTab(Constants.MUSIC_LIST_URL);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
@@ -186,8 +185,7 @@ async function fetchMissingMusicInfo(windowId) {
   try {
     const targetMusic = targetMusics.shift();
     Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [targetMusic.musicId, targetMusics.length]));
-    await browserController.createTab();
-    await browserController.updateTab(targetMusic.url);
+    await browserController.createTab(targetMusic.url);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
@@ -203,8 +201,7 @@ async function updateScoreList(windowId, playMode, musicType) {
   }
   state = STATE.UPDATE_SCORE_LIST;
   try {
-    await browserController.createTab();
-    await browserController.updateTab(Constants.SCORE_LIST_URL[playMode][musicType]);
+    await browserController.createTab(Constants.SCORE_LIST_URL[playMode][musicType]);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
@@ -242,8 +239,7 @@ async function updateScoreDetail(windowId, targets) {
         targetMusics.length,
       ])
     );
-    await browserController.createTab();
-    await browserController.updateTab(targetMusic.url);
+    await browserController.createTab(targetMusic.url);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
@@ -279,121 +275,112 @@ function updateCharts() {
   });
 }
 
-chrome.tabs.onUpdated.addListener(function (tid, changeInfo, tab) {
-  // Logger.debug(`chrome.tabs.onUpdated(tabId: ${tid})`);
-  if (browserController.tabId != tid) {
-    return;
-  }
+function onUpdatedTab() {
   switch (state) {
     case STATE.UPDATE_MUSIC_LIST:
-      if (changeInfo.status == 'complete') {
-        browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST' }, async (res) => {
-          console.log(res);
-          res.musics.forEach(function (music) {
-            musicList.applyObject(music);
-          });
-          saveStorage();
-          updateCharts();
-          if (res.hasNext) {
-            try {
-              await browserController.updateTab(res.nextUrl);
-            } catch (error) {
-              browserController.reset();
-              Logger.error(error);
-            }
-          } else {
-            await browserController.closeTab();
-            state = STATE.IDLE;
-          }
+      browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST' }, async (res) => {
+        console.log(res);
+        res.musics.forEach(function (music) {
+          musicList.applyObject(music);
         });
-      }
+        saveStorage();
+        updateCharts();
+        if (res.hasNext) {
+          try {
+            await browserController.updateTab(res.nextUrl);
+          } catch (error) {
+            browserController.reset();
+            Logger.error(error);
+          }
+        } else {
+          await browserController.closeTab();
+          state = STATE.IDLE;
+        }
+      });
       break;
     case STATE.UPDATE_MUSIC_DETAIL:
-      if (changeInfo.status == 'complete') {
-        browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL' }, async (res) => {
-          console.log(res);
-          res.musics.forEach(function (music) {
-            musicList.applyObject(music);
-          });
-          saveStorage();
-          updateCharts();
-          if (targetMusics.length > 0) {
-            try {
-              const targetMusic = targetMusics.shift();
-              Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [targetMusic.musicId, targetMusics.length]));
-              await browserController.updateTab(targetMusic.url);
-            } catch (error) {
-              browserController.reset();
-              Logger.error(error);
-            }
-          } else {
-            await browserController.closeTab();
-            state = STATE.IDLE;
-          }
+      browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL' }, async (res) => {
+        console.log(res);
+        res.musics.forEach(function (music) {
+          musicList.applyObject(music);
         });
-      }
+        saveStorage();
+        updateCharts();
+        if (targetMusics.length > 0) {
+          try {
+            const targetMusic = targetMusics.shift();
+            Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [targetMusic.musicId, targetMusics.length]));
+            await browserController.updateTab(targetMusic.url);
+          } catch (error) {
+            browserController.reset();
+            Logger.error(error);
+          }
+        } else {
+          await browserController.closeTab();
+          state = STATE.IDLE;
+        }
+      });
       break;
     case STATE.UPDATE_SCORE_LIST:
-      if (changeInfo.status == 'complete') {
-        browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST' }, async (res) => {
-          console.log(res);
-          res.scores.forEach(function (score) {
-            scoreList.applyObject(score);
-          });
-          saveStorage();
-          updateCharts();
-          if (res.hasNext) {
-            try {
-              await browserController.updateTab(res.nextUrl);
-            } catch (error) {
-              browserController.reset();
-              Logger.error(error);
-            }
-          } else {
-            await browserController.closeTab();
-            state = STATE.IDLE;
-          }
+      browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST' }, async (res) => {
+        console.log(res);
+        res.scores.forEach(function (score) {
+          scoreList.applyObject(score);
         });
-      }
+        saveStorage();
+        updateCharts();
+        if (res.hasNext) {
+          try {
+            await browserController.updateTab(res.nextUrl);
+          } catch (error) {
+            browserController.reset();
+            Logger.error(error);
+          }
+        } else {
+          await browserController.closeTab();
+          state = STATE.IDLE;
+        }
+      });
       break;
     case STATE.UPDATE_SCORE_DETAIL:
-      if (changeInfo.status == 'complete') {
-        browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL' }, async (res) => {
-          console.log(res);
-          res.scores.forEach(function (score) {
-            scoreList.applyObject(score);
-          });
-          saveStorage();
-          updateCharts();
-          if (targetMusics.length > 0) {
-            try {
-              const targetMusic = targetMusics.shift();
-              Logger.info(
-                I18n.getMessage('log_message_update_score_detail_progress', [
-                  musicList.getMusicDataById(targetMusic.musicId).title,
-                  Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty],
-                  targetMusics.length,
-                ])
-              );
-              await browserController.updateTab(targetMusic.url);
-            } catch (error) {
-              browserController.reset();
-              Logger.error(error);
-            }
-          } else {
-            await browserController.closeTab();
-            state = STATE.IDLE;
-            Logger.info([I18n.getMessage('log_message_done'), '']);
-          }
+      browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL' }, async (res) => {
+        console.log(res);
+        res.scores.forEach(function (score) {
+          scoreList.applyObject(score);
         });
-      }
+        saveStorage();
+        updateCharts();
+        if (targetMusics.length > 0) {
+          try {
+            const targetMusic = targetMusics.shift();
+            Logger.info(
+              I18n.getMessage('log_message_update_score_detail_progress', [
+                musicList.getMusicDataById(targetMusic.musicId).title,
+                Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty],
+                targetMusics.length,
+              ])
+            );
+            await browserController.updateTab(targetMusic.url);
+          } catch (error) {
+            browserController.reset();
+            Logger.error(error);
+          }
+        } else {
+          await browserController.closeTab();
+          state = STATE.IDLE;
+          Logger.info([I18n.getMessage('log_message_done'), '']);
+        }
+      });
       break;
     default:
       break;
   }
-});
+}
 
 (function () {
+  browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT, onUpdatedTab);
+  browserController.delay = Constants.LOAD_INTERVAL;
+
   chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     //sendResponse({});
     //return true;
