@@ -12,24 +12,24 @@ export class BrowserController {
     };
   }
 
-  constructor(windowId, callback = () => {}) {
+  constructor(windowId, onUpdateTab = () => {}) {
     this.tabId = null;
     this.windowId = windowId;
     this.state = this.constructor.STATE.INITIALIZED;
     this.delay = 0;
-    this.onUpdateTab = callback;
+    this.onUpdateTab = onUpdateTab;
     this.onUpdateTabInternal = this.onUpdateTabInternalImpl.bind(this);
   }
 
   onUpdateTabInternalImpl(tid, changeInfo, tab) {
     if (this.tabId === null) {
-      console.error(`BrowserController.onUpdateTabInternalImpl: called when tabId is null`);
+      Logger.error(`BrowserController.onUpdateTabInternalImpl: called when tabId is null`);
       return;
     }
     if (tid != this.tabId) {
       return;
     }
-    console.log(`${tid}, ${JSON.stringify(changeInfo)}, ${JSON.stringify(tab)}`);
+    Logger.debug(`${tid}, ${JSON.stringify(changeInfo)}, ${JSON.stringify(tab)}`);
     if (changeInfo.status == 'complete') {
       switch (this.state) {
         case this.constructor.STATE.NAVIGATING:
@@ -37,7 +37,7 @@ export class BrowserController {
           this.onUpdateTab();
           break;
         default:
-          console.error(`BrowserController.onUpdateTabInternalImpl: state unmatch (current state: ${this.state})`);
+          Logger.error(`BrowserController.onUpdateTabInternalImpl: state unmatch (current state: ${this.state})`);
           break;
       }
     }
@@ -57,7 +57,7 @@ export class BrowserController {
       this.state = this.constructor.STATE.CREATING;
       chrome.tabs.onUpdated.addListener(this.onUpdateTabInternal);
       chrome.tabs.create({ windowId: this.windowId, url: url, active: active }, (tab) => {
-        console.log(`BrowserController.createTab: tab created (id: ${tab.id}, url: ${url})`);
+        Logger.debug(`BrowserController.createTab: tab created (id: ${tab.id}, url: ${url})`);
         this.tabId = tab.id;
         this.state = this.constructor.STATE.NAVIGATING;
         resolve(`tab created (id: ${this.tabId})`);
@@ -74,7 +74,7 @@ export class BrowserController {
       this.state = this.constructor.STATE.WAITING;
       setTimeout(() => {
         chrome.tabs.update(this.tabId, { url: url }, (tab) => {
-          console.log(`BrowserController.updateTab: navigate to ${url})`);
+          Logger.debug(`BrowserController.updateTab: navigate to ${url})`);
           if (typeof chrome.runtime.lastError !== 'undefined') {
             this.reset();
             reject(new Error(chrome.runtime.lastError.message));

@@ -233,5 +233,8 @@
         "content": "$2"
       }
     }
+  },
+  "options_ui_enable_debug_log": {
+    "message": "デバッグログを有効にする"
   }
 }

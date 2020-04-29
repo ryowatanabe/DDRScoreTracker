@@ -55,6 +55,11 @@ function scrollLogToBottomImpl() {
 const logReceiver = new LogReceiver(() => {
   Vue.nextTick(openLog);
 });
+chrome.runtime.getBackgroundPage(function (backgroundPage) {
+  const options = backgroundPage.getOptions();
+  logReceiver.enableDebugLog = options.enableDebugLog;
+});
+
 export default Vue.extend({
   data: function () {
     return {

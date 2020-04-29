@@ -17,11 +17,13 @@ const storage = new Storage(
       filter: [],
       sort: [],
     },
+    options: {},
   },
   (data) => {
     musicList = MusicList.createFromStorage(data.musics);
     scoreList = ScoreList.createFromStorage(data.scores);
     conditions = data.conditions;
+    options = data.options;
     updateCharts();
     state = STATE.IDLE;
   }
@@ -43,6 +45,7 @@ let musicList; // 曲リスト。1曲1エントリ。
 let scoreList; // スコアリスト。1曲1エントリ。
 let chartList = new ChartList(); // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
 let conditions;
+let options;
 
 function echo(message) {
   Logger.debug(message);
@@ -53,6 +56,7 @@ function saveStorage() {
     scores: scoreList.musics,
     musics: musicList.musics,
     conditions: conditions,
+    options: options,
   });
 }
 
@@ -68,11 +72,20 @@ function getConditions() {
   return conditions;
 }
 
+function getOptions() {
+  return options;
+}
+
 function saveConditions(filterConditions, sortConditions) {
   conditions = {
     filter: filterConditions,
     sort: sortConditions,
   };
+  saveStorage();
+}
+
+function saveOptions(newOptions) {
+  options = newOptions;
   saveStorage();
 }
 
@@ -273,7 +286,7 @@ function updateCharts() {
   });
 }
 
-function onUpdatedTab() {
+function onUpdateTab() {
   switch (state) {
     case STATE.UPDATE_MUSIC_LIST:
       browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST' }, async (res) => {
@@ -375,7 +388,7 @@ function onUpdatedTab() {
   }
 }
 
-const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT, onUpdatedTab);
+const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT, onUpdateTab);
 
 (function () {
   browserController.delay = Constants.LOAD_INTERVAL;
@@ -396,12 +409,14 @@ const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT
   window.getChartCount = getChartCount;
   window.getChartList = getChartList;
   window.getConditions = getConditions;
+  window.getOptions = getOptions;
   window.getMusicList = getMusicList;
   window.getScoreList = getScoreList;
   window.resetStorage = resetStorage;
   window.restoreMusicList = restoreMusicList;
   window.restoreScoreList = restoreScoreList;
   window.saveConditions = saveConditions;
+  window.saveOptions = saveOptions;
   window.updateCharts = updateCharts;
   window.updateMusicList = updateMusicList;
   window.updateScoreDetail = updateScoreDetail;
