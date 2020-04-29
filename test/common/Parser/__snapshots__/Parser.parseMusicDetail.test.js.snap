@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Parser.ParseMusicDetail (error) 1`] = `
+Object {
+  "musics": Array [],
+  "status": 1,
+}
+`;
+
 exports[`Parser.ParseMusicDetail (noLogin) 1`] = `
 Object {
   "musics": Array [],

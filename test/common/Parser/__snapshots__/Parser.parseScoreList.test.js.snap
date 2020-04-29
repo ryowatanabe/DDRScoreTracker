@@ -1,5 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Parser.ParseScoreList (error) 1`] = `
+Object {
+  "hasNext": false,
+  "nextUrl": "",
+  "scores": Array [],
+  "status": 1,
+}
+`;
+
 exports[`Parser.ParseScoreList (grade) 1`] = `
 Object {
   "hasNext": false,

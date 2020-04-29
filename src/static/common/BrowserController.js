@@ -22,7 +22,6 @@ export class BrowserController {
   }
 
   onUpdateTabInternalImpl(tid, changeInfo, tab) {
-    console.log(`${tid}, ${JSON.stringify(changeInfo)}, ${JSON.stringify(tab)}`);
     if (this.tabId === null) {
       console.error(`BrowserController.onUpdateTabInternalImpl: called when tabId is null`);
       return;
@@ -30,6 +29,7 @@ export class BrowserController {
     if (tid != this.tabId) {
       return;
     }
+    console.log(`${tid}, ${JSON.stringify(changeInfo)}, ${JSON.stringify(tab)}`);
     if (changeInfo.status == 'complete') {
       switch (this.state) {
         case this.constructor.STATE.NAVIGATING:

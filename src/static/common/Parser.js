@@ -12,11 +12,14 @@ export class Parser {
     };
   }
 
-  static isLoginRequired(rootElement) {
+  static getResultStatus(rootElement) {
     if (rootElement.querySelector('#login.errinfo_btn') !== null) {
-      return true;
+      return this.STATUS.LOGIN_REQUIRED;
     }
-    return false;
+    if (rootElement.querySelector('#error') !== null) {
+      return this.STATUS.UNKNOWN_ERROR;
+    }
+    return this.STATUS.SUCCESS;
   }
 
   static parseMusicList(rootElement) {
@@ -24,7 +27,11 @@ export class Parser {
       hasNext: false,
       nextUrl: '',
       musics: [],
+      status: this.getResultStatus(rootElement),
     };
+    if (res.status != this.STATUS.SUCCESS) {
+      return res;
+    }
     const next = rootElement.querySelectorAll('#next.arrow');
     if (next.length > 0) {
       res.hasNext = true;
@@ -50,9 +57,9 @@ export class Parser {
   static parseMusicDetail(rootElement) {
     const res = {
       musics: [],
+      status: this.getResultStatus(rootElement),
     };
-    if (this.isLoginRequired(rootElement)) {
-      res.status = this.STATUS.LOGIN_REQUIRED;
+    if (res.status != this.STATUS.SUCCESS) {
       return res;
     }
     const musicInfo = rootElement.querySelectorAll('#music_info td');
@@ -81,9 +88,9 @@ export class Parser {
       hasNext: false,
       nextUrl: '',
       scores: [],
+      status: this.getResultStatus(rootElement),
     };
-    if (this.isLoginRequired(rootElement)) {
-      res.status = this.STATUS.LOGIN_REQUIRED;
+    if (res.status != this.STATUS.SUCCESS) {
       return res;
     }
     const next = rootElement.querySelectorAll('#next.arrow');
@@ -129,9 +136,9 @@ export class Parser {
   static parseScoreDetail(rootElement) {
     const res = {
       scores: [],
+      status: this.getResultStatus(rootElement),
     };
-    if (this.isLoginRequired(rootElement)) {
-      res.status = this.STATUS.LOGIN_REQUIRED;
+    if (res.status != this.STATUS.SUCCESS) {
       return res;
     }
     const detail = Array.from(rootElement.querySelectorAll('#music_detail_table td, #course_detail_table td')).map((element) => {

@@ -1,5 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Parser.ParseMusicList (error) 1`] = `
+Object {
+  "hasNext": false,
+  "musics": Array [],
+  "nextUrl": "",
+  "status": 1,
+}
+`;
+
 exports[`Parser.ParseMusicList (hasNext:false) 1`] = `
 Object {
   "hasNext": false,
@@ -1313,5 +1322,14 @@ Object {
   ],
   "nextUrl": "http://localhost/game/ddr/ddra20/p/music/index.html?offset=1&filter=0&filtertype=0&playmode=2",
   "status": 0,
+}
+`;
+
+exports[`Parser.ParseMusicList (noLogin) 1`] = `
+Object {
+  "hasNext": false,
+  "musics": Array [],
+  "nextUrl": "",
+  "status": 2,
 }
 `;

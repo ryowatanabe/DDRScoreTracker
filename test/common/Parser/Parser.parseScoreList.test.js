@@ -2,6 +2,14 @@ import { Parser } from '../../../src/static/common/Parser.js';
 const fs = require('fs');
 const path = require('path');
 
+test('Parser.ParseScoreList (error)', async () => {
+  const html = fs.readFileSync(path.resolve(path.join(__dirname, 'fixtures/error.html')), 'utf8');
+  const rootElement = document.createElement('body');
+  rootElement.innerHTML = html;
+  const res = Parser.parseScoreList(rootElement);
+  expect(res).toMatchSnapshot();
+});
+
 test('Parser.ParseScoreList (noLogin)', async () => {
   const html = fs.readFileSync(path.resolve(path.join(__dirname, 'fixtures/no-login.html')), 'utf8');
   const rootElement = document.createElement('body');

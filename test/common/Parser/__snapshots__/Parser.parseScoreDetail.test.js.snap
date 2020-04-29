@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Parser.ParseScoreDetail (error) 1`] = `
+Object {
+  "scores": Array [],
+  "status": 1,
+}
+`;
+
 exports[`Parser.ParseScoreDetail (fullcombo) 1`] = `
 Object {
   "scores": Array [
