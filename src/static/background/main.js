@@ -9,8 +9,6 @@ import { Storage } from '../common/Storage.js';
 import { BrowserController } from '../common/BrowserController.js';
 import { I18n } from '../common/I18n.js';
 
-let browserController;
-
 const storage = new Storage(
   {
     scores: {},
@@ -377,8 +375,9 @@ function onUpdatedTab() {
   }
 }
 
+const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT, onUpdatedTab);
+
 (function () {
-  browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT, onUpdatedTab);
   browserController.delay = Constants.LOAD_INTERVAL;
 
   chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {

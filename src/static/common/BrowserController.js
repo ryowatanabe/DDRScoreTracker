@@ -12,7 +12,7 @@ export class BrowserController {
     };
   }
 
-  constructor(windowId, callback) {
+  constructor(windowId, callback = () => {}) {
     this.tabId = null;
     this.windowId = windowId;
     this.state = this.constructor.STATE.INITIALIZED;

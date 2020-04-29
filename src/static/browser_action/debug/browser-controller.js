@@ -3,7 +3,9 @@ import { Logger } from '../../common/Logger.js';
 
 const windowId = chrome.windows.WINDOW_ID_CURRENT;
 document.getElementById('windowId').value = windowId;
-const browserController = new BrowserController(windowId);
+const browserController = new BrowserController(windowId, () => {
+  Logger.debug('page loaded');
+});
 
 async function createTab() {
   try {
