@@ -44,6 +44,7 @@ export class BrowserController {
   }
 
   reset() {
+    chrome.tabs.onUpdated.removeListener(this.onUpdateTabInternal);
     this.tabId = null;
     this.state = this.constructor.STATE.INITIALIZED;
   }

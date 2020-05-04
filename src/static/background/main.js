@@ -324,7 +324,8 @@ function onUpdateTab() {
             await browserController.updateTab(res.nextUrl);
           } catch (error) {
             browserController.reset();
-            Logger.error(error);
+            Logger.error(error.message);
+            state = STATE.IDLE;
           }
         } else {
           await closeTab();
@@ -351,7 +352,8 @@ function onUpdateTab() {
             await browserController.updateTab(targetMusic.url);
           } catch (error) {
             browserController.reset();
-            Logger.error(error);
+            Logger.error(error.message);
+            state = STATE.IDLE;
           }
         } else {
           await closeTab();
@@ -376,7 +378,8 @@ function onUpdateTab() {
             await browserController.updateTab(res.nextUrl);
           } catch (error) {
             browserController.reset();
-            Logger.error(error);
+            Logger.error(error.message);
+            state = STATE.IDLE;
           }
         } else {
           await closeTab();
@@ -409,7 +412,8 @@ function onUpdateTab() {
             await browserController.updateTab(targetMusic.url);
           } catch (error) {
             browserController.reset();
-            Logger.error(error);
+            Logger.error(error.message);
+            state = STATE.IDLE;
           }
         } else {
           await closeTab();
