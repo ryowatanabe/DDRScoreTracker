@@ -161,6 +161,12 @@
   "log_message_network_error": {
     "message": "通信エラーが発生しました。"
   },
+  "log_message_unknown_error": {
+    "message": "エラーが発生しました。"
+  },
+  "log_message_login_required": {
+    "message": "e-amusementにログインしてください。"
+  },
   "log_message_network_error_please_retry": {
     "message": "処理を終了しました。通信環境のよいところでやり直してください。"
   },
@@ -180,6 +186,12 @@
   },
   "log_message_fetch_parsed_music_list_fetch_success": {
     "message": "取得成功。"
+  },
+  "log_message_update_music_list_begin": {
+    "message": "楽曲リストを取得..."
+  },
+  "log_message_update_score_list_begin": {
+    "message": "スコア情報を取得..."
   },
   "log_message_update_score_detail_begin": {
     "message": "スコア詳細を取得..."

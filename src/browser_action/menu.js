@@ -1,5 +1,6 @@
 import { refreshList } from './filter.js';
 import { Constants } from '../static/common/Constants.js';
+import { Logger } from '../static/common/Logger.js';
 
 function fetchParsedMusicList() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
@@ -17,7 +18,14 @@ document.getElementById('fetchMissingMusicInfoButton').addEventListener('click',
 
 function updateScoreList(playMode, musicType) {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.updateScoreList(chrome.windows.WINDOW_ID_CURRENT, playMode, musicType);
+    backgroundPage
+      .updateScoreList(chrome.windows.WINDOW_ID_CURRENT, playMode, musicType)
+      .then((value) => {
+        Logger.debug(`updateScoreList success : ${value}`);
+      })
+      .catch((error) => {
+        Logger.debug(`updateScoreList failed : ${JSON.stringify(error.message)}`);
+      });
   });
 }
 document.getElementById('updateSingleScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.SINGLE, Constants.MUSIC_TYPE.NORMAL));

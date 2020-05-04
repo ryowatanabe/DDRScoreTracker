@@ -7,6 +7,7 @@ import { Constants } from '../common/Constants.js';
 import { Logger } from '../common/Logger.js';
 import { Storage } from '../common/Storage.js';
 import { BrowserController } from '../common/BrowserController.js';
+import { Parser } from '../common/Parser.js';
 import { I18n } from '../common/I18n.js';
 
 const storage = new Storage(
@@ -149,14 +150,19 @@ function fetchParsedMusicList() {
 */
 async function updateMusicList(windowId) {
   if (state != STATE.IDLE) {
-    return false;
+    const message = `updateMusicList: state unmatch (current state: ${state})`;
+    Logger.debug(message);
+    throw new Error(message);
   }
+  Logger.info(I18n.getMessage('log_message_update_music_list_begin'));
   state = STATE.UPDATE_MUSIC_LIST;
   try {
     await browserController.createTab(Constants.MUSIC_LIST_URL);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
+    state = STATE.IDLE;
+    throw error;
   }
 }
 
@@ -166,7 +172,9 @@ async function updateMusicList(windowId) {
 */
 async function fetchMissingMusicInfo(windowId) {
   if (state != STATE.IDLE) {
-    //return false;
+    const message = `fetchMissingMusicInfo: state unmatch (current state: ${state})`;
+    Logger.debug(message);
+    throw new Error(message);
   }
   Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_begin'));
   /* 曲情報が欠けている曲と、曲情報そのものはあるが、譜面情報が欠けている (追加鬼譜面など) 曲を列挙する */
@@ -200,6 +208,8 @@ async function fetchMissingMusicInfo(windowId) {
   } catch (error) {
     browserController.reset();
     Logger.error(error);
+    state = STATE.IDLE;
+    throw error;
   }
 }
 
@@ -208,14 +218,19 @@ async function fetchMissingMusicInfo(windowId) {
 */
 async function updateScoreList(windowId, playMode, musicType) {
   if (state != STATE.IDLE) {
-    //return false;
+    const message = `updateScoreList: state unmatch (current state: ${state})`;
+    Logger.debug(message);
+    throw new Error(message);
   }
+  Logger.info(I18n.getMessage('log_message_update_score_list_begin'));
   state = STATE.UPDATE_SCORE_LIST;
   try {
     await browserController.createTab(Constants.SCORE_LIST_URL[playMode][musicType]);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
+    state = STATE.IDLE;
+    throw error;
   }
 }
 
@@ -227,7 +242,9 @@ targets: [
 */
 async function updateScoreDetail(windowId, targets) {
   if (state != STATE.IDLE) {
-    //return false;
+    const message = `updateScoreDetail: state unmatch (current state: ${state})`;
+    Logger.debug(message);
+    throw new Error(message);
   }
   Logger.info(I18n.getMessage('log_message_update_score_detail_begin'));
   /* 巡回対象のURL一覧を生成 */
@@ -254,6 +271,8 @@ async function updateScoreDetail(windowId, targets) {
   } catch (error) {
     browserController.reset();
     Logger.error(error);
+    state = STATE.IDLE;
+    throw error;
   }
 }
 
@@ -291,6 +310,10 @@ function onUpdateTab() {
     case STATE.UPDATE_MUSIC_LIST:
       browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST' }, async (res) => {
         console.log(res);
+        if (res.status != Parser.STATUS.SUCCESS) {
+          await handleError(res);
+          return;
+        }
         res.musics.forEach(function (music) {
           musicList.applyObject(music);
         });
@@ -304,7 +327,7 @@ function onUpdateTab() {
             Logger.error(error);
           }
         } else {
-          await browserController.closeTab();
+          await closeTab();
           state = STATE.IDLE;
         }
       });
@@ -312,6 +335,10 @@ function onUpdateTab() {
     case STATE.UPDATE_MUSIC_DETAIL:
       browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL' }, async (res) => {
         console.log(res);
+        if (res.status != Parser.STATUS.SUCCESS) {
+          await handleError(res);
+          return;
+        }
         res.musics.forEach(function (music) {
           musicList.applyObject(music);
         });
@@ -327,7 +354,7 @@ function onUpdateTab() {
             Logger.error(error);
           }
         } else {
-          await browserController.closeTab();
+          await closeTab();
           state = STATE.IDLE;
         }
       });
@@ -335,6 +362,10 @@ function onUpdateTab() {
     case STATE.UPDATE_SCORE_LIST:
       browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST' }, async (res) => {
         console.log(res);
+        if (res.status != Parser.STATUS.SUCCESS) {
+          await handleError(res);
+          return;
+        }
         res.scores.forEach(function (score) {
           scoreList.applyObject(score);
         });
@@ -348,7 +379,7 @@ function onUpdateTab() {
             Logger.error(error);
           }
         } else {
-          await browserController.closeTab();
+          await closeTab();
           state = STATE.IDLE;
         }
       });
@@ -356,6 +387,10 @@ function onUpdateTab() {
     case STATE.UPDATE_SCORE_DETAIL:
       browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL' }, async (res) => {
         console.log(res);
+        if (res.status != Parser.STATUS.SUCCESS) {
+          await handleError(res);
+          return;
+        }
         res.scores.forEach(function (score) {
           scoreList.applyObject(score);
         });
@@ -377,7 +412,7 @@ function onUpdateTab() {
             Logger.error(error);
           }
         } else {
-          await browserController.closeTab();
+          await closeTab();
           state = STATE.IDLE;
           Logger.info([I18n.getMessage('log_message_done'), '']);
         }
@@ -385,6 +420,28 @@ function onUpdateTab() {
       break;
     default:
       break;
+  }
+}
+
+async function handleError(res) {
+  switch (res.status) {
+    case Parser.STATUS.UNKNOWN_ERROR:
+      Logger.info(I18n.getMessage('log_message_unknown_error'));
+      break;
+    case Parser.STATUS.LOGIN_REQUIRED:
+      Logger.info(I18n.getMessage('log_message_login_required'));
+      break;
+    default:
+      throw new Error(`unknown Parser.STATUS (${res.status})`);
+  }
+  await closeTab();
+  state = STATE.IDLE;
+  Logger.info([I18n.getMessage('log_message_done'), '']);
+}
+
+async function closeTab() {
+  if (options.notcloseTabAfterUse != true) {
+    await browserController.closeTab();
   }
 }
 
