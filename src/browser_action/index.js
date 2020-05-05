@@ -23,10 +23,13 @@ window.addEventListener('load', () => {
       if (backgroundPage.getState() != BACKGROUND_STATE.IDLE) {
         logContainer.disableButtons();
         logContainer.open();
+      } else {
+        logContainer.enableButtons();
       }
     });
   }, 300);
 });
+window.addEventListener('unload', () => {});
 
 window.gotoPage = (page) => {
   chartList.pageCharts = chartList.charts.slice((page - 1) * Constants.PAGE_LENGTH, page * Constants.PAGE_LENGTH);
