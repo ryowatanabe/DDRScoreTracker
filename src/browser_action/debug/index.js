@@ -82,13 +82,33 @@ function restoreScoreList() {
 }
 document.getElementById('restoreScoreListButton').addEventListener('click', restoreScoreList);
 
+const logContainer = new LogContainer();
 document.addEventListener('DOMContentLoaded', () => {
-  const logContainer = new LogContainer();
   logContainer.$mount('#log-container');
 });
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    logContainer.initialize();
+    chrome.runtime.getBackgroundPage(function (backgroundPage) {
+      if (backgroundPage.getState() != BACKGROUND_STATE.IDLE) {
+        logContainer.disableButtons();
+        logContainer.open();
+      } else {
+        logContainer.enableButtons();
+      }
+    });
+  }, 300);
+});
+window.addEventListener('unload', () => {});
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type == CHANGE_BACKGROUND_STATE_MESSAGE_TYPE) {
     console.log(`change background state ${message.oldState} -> ${message.state}`);
+    if (message.state == BACKGROUND_STATE.IDLE) {
+      logContainer.enableButtons();
+    } else {
+      logContainer.disableButtons();
+    }
   }
 });
