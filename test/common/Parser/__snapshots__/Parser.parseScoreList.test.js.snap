@@ -2,7 +2,9 @@
 
 exports[`Parser.ParseScoreList (error) 1`] = `
 Object {
+  "currentPage": null,
   "hasNext": false,
+  "maxPage": null,
   "nextUrl": "",
   "scores": Array [],
   "status": 1,
@@ -11,7 +13,9 @@ Object {
 
 exports[`Parser.ParseScoreList (grade) 1`] = `
 Object {
+  "currentPage": 1,
   "hasNext": false,
+  "maxPage": 1,
   "nextUrl": "",
   "scores": Array [
     ScoreData {
@@ -125,7 +129,9 @@ Object {
 
 exports[`Parser.ParseScoreList (hasNext:false) 1`] = `
 Object {
+  "currentPage": 18,
   "hasNext": false,
+  "maxPage": 18,
   "nextUrl": "",
   "scores": Array [
     ScoreData {
@@ -557,7 +563,9 @@ Object {
 
 exports[`Parser.ParseScoreList (hasNext:true) 1`] = `
 Object {
+  "currentPage": 1,
   "hasNext": true,
+  "maxPage": 18,
   "nextUrl": "http://localhost/game/ddr/ddra20/p/playdata/music_data_double.html?offset=1&filter=0&filtertype=0&sorttype=0",
   "scores": Array [
     ScoreData {
@@ -1431,7 +1439,9 @@ Object {
 
 exports[`Parser.ParseScoreList (noLogin) 1`] = `
 Object {
+  "currentPage": null,
   "hasNext": false,
+  "maxPage": null,
   "nextUrl": "",
   "scores": Array [],
   "status": 2,
@@ -1440,7 +1450,9 @@ Object {
 
 exports[`Parser.ParseScoreList (nonstop) 1`] = `
 Object {
+  "currentPage": 1,
   "hasNext": false,
+  "maxPage": 1,
   "nextUrl": "",
   "scores": Array [
     ScoreData {

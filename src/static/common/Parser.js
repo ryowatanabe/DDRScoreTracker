@@ -26,6 +26,8 @@ export class Parser {
     const res = {
       hasNext: false,
       nextUrl: '',
+      currentPage: null,
+      maxPage: null,
       musics: [],
       status: this.getResultStatus(rootElement),
     };
@@ -37,6 +39,11 @@ export class Parser {
       res.hasNext = true;
       res.nextUrl = next[0].querySelector('a').href;
     }
+
+    res.currentPage = parseInt(rootElement.querySelector('#thispage').querySelector('a').innerHTML, 10);
+    const pages = rootElement.querySelectorAll('#paging_box')[0].querySelectorAll('.page_num');
+    res.maxPage = parseInt(pages[pages.length - 1].querySelector('a').innerHTML, 10);
+
     const musics = rootElement.querySelectorAll('tr.data');
     musics.forEach(function (music) {
       const regexp = /^.*img=([0-9a-zA-Z]+).*$/;
@@ -87,6 +94,8 @@ export class Parser {
     const res = {
       hasNext: false,
       nextUrl: '',
+      currentPage: null,
+      maxPage: null,
       scores: [],
       status: this.getResultStatus(rootElement),
     };
@@ -98,6 +107,11 @@ export class Parser {
       res.hasNext = true;
       res.nextUrl = next[0].querySelector('a').href;
     }
+
+    res.currentPage = parseInt(rootElement.querySelector('#thispage').querySelector('a').innerHTML, 10);
+    const pages = rootElement.querySelectorAll('#paging_box')[0].querySelectorAll('.page_num');
+    res.maxPage = parseInt(pages[pages.length - 1].querySelector('a').innerHTML, 10);
+
     const isDouble = rootElement.querySelectorAll('#t_double.game_type .select').length > 0;
     const scores = Array.from(rootElement.querySelectorAll('tr.data'));
     scores.forEach(function (score) {

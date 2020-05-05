@@ -2,7 +2,9 @@
 
 exports[`Parser.ParseMusicList (error) 1`] = `
 Object {
+  "currentPage": null,
   "hasNext": false,
+  "maxPage": null,
   "musics": Array [],
   "nextUrl": "",
   "status": 1,
@@ -11,7 +13,9 @@ Object {
 
 exports[`Parser.ParseMusicList (hasNext:false) 1`] = `
 Object {
+  "currentPage": 17,
   "hasNext": false,
+  "maxPage": 17,
   "musics": Array [
     MusicData {
       "difficulty": Array [
@@ -517,7 +521,9 @@ Object {
 
 exports[`Parser.ParseMusicList (hasNext:true) 1`] = `
 Object {
+  "currentPage": 1,
   "hasNext": true,
+  "maxPage": 17,
   "musics": Array [
     MusicData {
       "difficulty": Array [
@@ -1327,7 +1333,9 @@ Object {
 
 exports[`Parser.ParseMusicList (noLogin) 1`] = `
 Object {
+  "currentPage": null,
   "hasNext": false,
+  "maxPage": null,
   "musics": Array [],
   "nextUrl": "",
   "status": 2,
