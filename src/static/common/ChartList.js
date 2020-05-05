@@ -20,12 +20,8 @@ export class ChartList {
   updateStatistics() {
     const statistics = {
       clearType: [],
-      score: {
-        max: 0,
-        average: 0,
-        median: 0,
-        min: 0,
-      },
+      scoreRank: [],
+      score: {},
     };
     /* clearType */
     Object.values(Constants.CLEAR_TYPE).forEach((clearType) => {
@@ -39,12 +35,21 @@ export class ChartList {
       });
     });
     statistics.clearType.sort(function (a, b) {
-      if (a.clearType > b.clearType) {
-        return -1;
-      } else if (a.clearType < b.clearType) {
-        return 1;
-      }
-      return 0;
+      return b.clearType - a.clearType;
+    });
+    /* scoreRank */
+    Object.values(Constants.SCORE_RANK).forEach((scoreRank) => {
+      statistics.scoreRank.push({
+        scoreRank: scoreRank,
+        scoreRankString: Constants.SCORE_RANK_STRING[scoreRank],
+        scoreRankClassString: Constants.SCORE_RANK_CLASS_STRING[scoreRank],
+        count: this.charts.filter((chartData) => {
+          return chartData.scoreRank == scoreRank;
+        }).length,
+      });
+    });
+    statistics.scoreRank.sort(function (a, b) {
+      return b.scoreRank - a.scoreRank;
     });
     /* score */
     if (this.charts.length > 0) {
