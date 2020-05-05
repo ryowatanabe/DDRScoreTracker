@@ -51,7 +51,7 @@ export class Parser {
       const musicId = src.replace(regexp, '$1');
       const title = music.querySelector('.music_tit').innerHTML;
       const difficulty = Array.from(music.querySelectorAll('.difficult')).map(function (element) {
-        const value = parseInt(element.innerHTML);
+        const value = parseInt(element.innerHTML, 10);
         return value ? value : 0;
       });
       const musicData = new MusicData(musicId, Constants.MUSIC_TYPE.NORMAL, title, difficulty);
@@ -81,7 +81,7 @@ export class Parser {
     const regexpForDifficulties = /^.*songdetails_level_([0-9]*).png$/;
     const difficulties = Array.from(rootElement.querySelectorAll('li.step img'));
     const difficulty = difficulties.map((element) => {
-      const value = parseInt(element.src.replace(regexpForDifficulties, '$1'));
+      const value = parseInt(element.src.replace(regexpForDifficulties, '$1'), 10);
       return value ? value : 0;
     });
     const musicData = new MusicData(musicId, Constants.MUSIC_TYPE.NORMAL, title, difficulty);
@@ -128,7 +128,7 @@ export class Parser {
         }
 
         const scoreDetail = new ScoreDetail();
-        const value = parseInt(detail[0].querySelector('.data_score').innerHTML);
+        const value = parseInt(detail[0].querySelector('.data_score').innerHTML, 10);
         scoreDetail.score = value ? value : 0;
         const regexp = /^.*\/([^\/]+)$/;
         const scoreRankFileName = detail[0].querySelectorAll('div.data_rank img')[0].src.replace(regexp, '$1');
@@ -169,12 +169,12 @@ export class Parser {
 
       const scoreData = new ScoreData(musicId);
       const scoreDetail = new ScoreDetail();
-      scoreDetail.score = parseInt(detail[2]) ? parseInt(detail[2]) : 0;
+      scoreDetail.score = parseInt(detail[2], 10) ? parseInt(detail[2], 10) : 0;
       scoreDetail.scoreRank = Constants.SCORE_RANK_NAME_MAP[detail[1]];
       scoreDetail.clearType = Constants.CLEAR_TYPE_NAME_MAP[detail[7]];
-      scoreDetail.playCount = parseInt(detail[4]) ? parseInt(detail[4]) : 0;
-      scoreDetail.clearCount = parseInt(detail[8]) ? parseInt(detail[8]) : 0;
-      scoreDetail.maxCombo = parseInt(detail[3]) ? parseInt(detail[3]) : 0;
+      scoreDetail.playCount = parseInt(detail[4], 10) ? parseInt(detail[4], 10) : 0;
+      scoreDetail.clearCount = parseInt(detail[8], 10) ? parseInt(detail[8], 10) : 0;
+      scoreDetail.maxCombo = parseInt(detail[3], 10) ? parseInt(detail[3], 10) : 0;
       scoreData.applyScoreDetail(difficulty, scoreDetail);
       res.scores.push(scoreData);
     }
