@@ -41,6 +41,21 @@ let chartList = new ChartList(); // 曲リストとスコアリストを結合�
 let conditions;
 let options;
 
+function abortAction() {
+  switch (state) {
+    case STATE.UPDATE_MUSIC_LIST:
+    case STATE.UPDATE_SCORE_LIST:
+    case STATE.UPDATE_MUSIC_DETAIL:
+    case STATE.UPDATE_SCORE_DETAIL:
+      Logger.info(I18n.getMessage('log_message_aborting'));
+      state = STATE.ABORTING;
+      break;
+    default:
+      Logger.debug(`abortAction: state unmatch (current state: ${state})`);
+      break;
+  }
+}
+
 function echo(message) {
   Logger.debug(message);
 }
@@ -304,6 +319,15 @@ function updateCharts() {
 
 function onUpdateTab() {
   switch (state) {
+    case STATE.ABORTING:
+      setTimeout(async () => {
+        try {
+          await closeTab();
+        } catch (e) {}
+        changeState(STATE.IDLE);
+        Logger.info(I18n.getMessage('log_message_aborted'));
+      }, 0);
+      break;
     case STATE.UPDATE_MUSIC_LIST:
       browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST' }, async (res) => {
         console.log(res);
@@ -473,6 +497,7 @@ const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT
     chrome.tabs.create({ url: `chrome-extension://${extension_id}/browser_action/index.html` }, function (tab) {});
   });
 
+  window.abortAction = abortAction;
   window.echo = echo;
   window.fetchMissingMusicInfo = fetchMissingMusicInfo;
   window.fetchParsedMusicList = fetchParsedMusicList;

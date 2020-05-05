@@ -158,6 +158,9 @@
   "log_container_copy_button": {
     "message": "■コピー"
   },
+  "log_container_abort_button": {
+    "message": "■中止"
+  },
   "log_container_copied_to_clipboard": {
     "message": "クリップボードにコピーしました。"
   },
@@ -166,6 +169,9 @@
   },
   "log_message_done": {
     "message": "完了しました。"
+  },
+  "log_message_aborting": {
+    "message": "処理を中止しています..."
   },
   "log_message_aborted": {
     "message": "処理を終了しました。"

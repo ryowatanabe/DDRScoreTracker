@@ -18,10 +18,10 @@ export class MusicList {
   applyMusicData(musicData) {
     if (this.hasMusic(musicData.musicId)) {
       if (this.getMusicDataById(musicData.musicId).merge(musicData)) {
-        Logger.debug(`Modified: ${this.getMusicDataById(musicData.musicId).encodedString}`);
+        Logger.info(`Modified: ${this.getMusicDataById(musicData.musicId).encodedString}`);
       }
     } else {
-      Logger.debug(`Added: ${musicData.encodedString}`);
+      Logger.info(`Added: ${musicData.encodedString}`);
       this.musics[musicData.musicId] = musicData;
     }
   }

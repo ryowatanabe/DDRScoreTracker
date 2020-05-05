@@ -2,12 +2,13 @@
   <div>
     <div id="logBackground" class="drawer-background not-initialized"></div>
     <div id="logContainer" class="drawer log not-initialized">
-      <div id="scrollLogToBottomButton" class="drawer-switch" v-on:click="scrollToBottom">{{ getMessage('log_container_scroll_to_bottom_button') }}</div>
+      <div id="scrollToBottomButton" class="drawer-switch" v-on:click="scrollToBottom">{{ getMessage('log_container_scroll_to_bottom_button') }}</div>
       <div id="app-log" class="log-data">
         <template v-for="line in log"> {{ line }} <br /> </template>
       </div>
-      <div id="closeLogButton" class="drawer-switch" v-on:click="closeAndFlush">{{ getMessage('log_container_close_button') }}</div>
-      <div id="copyLogButton" class="drawer-switch" v-on:click="copy">{{ getMessage('log_container_copy_button') }}</div>
+      <div id="closeButton" class="drawer-switch" v-on:click="closeAndFlush">{{ getMessage('log_container_close_button') }}</div>
+      <div id="copyButton" class="drawer-switch" v-on:click="copy">{{ getMessage('log_container_copy_button') }}</div>
+      <div id="abortButton" class="drawer-switch" v-on:click="abort">{{ getMessage('log_container_abort_button') }}</div>
     </div>
   </div>
 </template>
@@ -25,36 +26,44 @@ function initialize() {
 }
 
 function disableButtons() {
-  document.getElementById('closeLogButton').style.display = 'none';
-  document.getElementById('copyLogButton').style.display = 'none';
+  document.getElementById('closeButton').style.display = 'none';
+  document.getElementById('copyButton').style.display = 'none';
+  document.getElementById('abortButton').style.display = 'block';
 }
 
 function enableButtons() {
-  document.getElementById('closeLogButton').style.display = 'block';
-  document.getElementById('copyLogButton').style.display = 'block';
+  document.getElementById('closeButton').style.display = 'block';
+  document.getElementById('copyButton').style.display = 'block';
+  document.getElementById('abortButton').style.display = 'none';
 }
 
-function openLog() {
+function open() {
   document.getElementById('logContainer').classList.add('active');
   document.getElementById('logBackground').classList.add('active');
-  scrollLogToBottom();
+  scrollToBottom();
 }
 
 function closeAndFlush() {
-  closeLog();
-  flushLog();
+  close();
+  flush();
 }
 
-function closeLog() {
+function close() {
   document.getElementById('logContainer').classList.remove('active');
   document.getElementById('logBackground').classList.remove('active');
 }
 
-function flushLog() {
+function flush() {
   logReceiver.flush();
 }
 
-function copyLog() {
+function abort() {
+  chrome.runtime.getBackgroundPage(function (backgroundPage) {
+    backgroundPage.abortAction();
+  });
+}
+
+function copy() {
   var log = document.getElementById('app-log');
   document.getSelection().selectAllChildren(log);
   if (document.execCommand('copy')) {
@@ -65,20 +74,20 @@ function copyLog() {
 }
 
 let isScrollLogScheduled = false;
-function scrollLogToBottom() {
+function scrollToBottom() {
   if (!isScrollLogScheduled) {
     isScrollLogScheduled = true;
-    setTimeout(scrollLogToBottomImpl, 500);
+    setTimeout(scrollToBottomImpl, 500);
   }
 }
-function scrollLogToBottomImpl() {
+function scrollToBottomImpl() {
   const logContainer = document.getElementById('logContainer');
   logContainer.scrollTo(0, logContainer.scrollHeight);
   isScrollLogScheduled = false;
 }
 
 const logReceiver = new LogReceiver(() => {
-  Vue.nextTick(openLog);
+  Vue.nextTick(open);
 });
 chrome.runtime.getBackgroundPage(function (backgroundPage) {
   const options = backgroundPage.getOptions();
@@ -94,22 +103,25 @@ export default Vue.extend({
   methods: {
     getMessage: I18n.getMessage,
     scrollToBottom: () => {
-      scrollLogToBottom();
+      scrollToBottom();
     },
     close: () => {
-      closeLog();
+      close();
     },
     copy: () => {
-      copyLog();
+      copy();
     },
     flush: () => {
-      flushLog();
+      flush();
     },
     closeAndFlush: () => {
       closeAndFlush();
     },
     open: () => {
-      openLog();
+      open();
+    },
+    abort: () => {
+      abort();
     },
     enableButtons: () => {
       enableButtons();

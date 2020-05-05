@@ -158,6 +158,9 @@
   "log_container_copy_button": {
     "message": "■Copy"
   },
+  "log_container_abort_button": {
+    "message": "■Abort"
+  },
   "log_container_copied_to_clipboard": {
     "message": "Copied to clipboard."
   },
@@ -166,6 +169,9 @@
   },
   "log_message_done": {
     "message": "Done."
+  },
+  "log_message_aborting": {
+    "message": "Aborting process..."
   },
   "log_message_aborted": {
     "message": "Process aborted."
