@@ -205,8 +205,30 @@
   "log_message_update_music_list_begin": {
     "message": "楽曲リストを取得..."
   },
+  "log_message_update_music_list_progress": {
+    "message": "$CURRENT$ / $MAX$ ページ",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
   "log_message_update_score_list_begin": {
     "message": "スコア情報を取得..."
+  },
+  "log_message_update_score_list_progress": {
+    "message": "$CURRENT$ / $MAX$ ページ",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
   },
   "log_message_update_score_detail_begin": {
     "message": "スコア詳細を取得..."

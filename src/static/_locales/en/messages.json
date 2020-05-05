@@ -205,8 +205,30 @@
   "log_message_update_music_list_begin": {
     "message": "Fetching music list..."
   },
-  "log_message_update_score_detail_begin": {
+  "log_message_update_music_list_progress": {
+    "message": "Page $CURRENT$ / $MAX$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
+  },
+  "log_message_update_score_list_begin": {
     "message": "Fetching score data..."
+  },
+  "log_message_update_score_list_progress": {
+    "message": "Page $CURRENT$ / $MAX$",
+    "placeholders": {
+      "current": {
+        "content": "$1"
+      },
+      "max": {
+        "content": "$2"
+      }
+    }
   },
   "log_message_update_score_detail_begin": {
     "message": "Fetching detailed score data..."

@@ -169,6 +169,7 @@ async function updateMusicList(windowId) {
   Logger.info(I18n.getMessage('log_message_update_music_list_begin'));
   changeState(STATE.UPDATE_MUSIC_LIST);
   try {
+    Logger.info(I18n.getMessage('log_message_update_music_list_progress', [1, '?']));
     await browserController.createTab(Constants.MUSIC_LIST_URL);
   } catch (error) {
     browserController.reset();
@@ -237,6 +238,7 @@ async function updateScoreList(windowId, playMode, musicType) {
   Logger.info(I18n.getMessage('log_message_update_score_list_begin'));
   changeState(STATE.UPDATE_SCORE_LIST);
   try {
+    Logger.info(I18n.getMessage('log_message_update_score_list_progress', [1, '?']));
     await browserController.createTab(Constants.SCORE_LIST_URL[playMode][musicType]);
   } catch (error) {
     browserController.reset();
@@ -342,6 +344,7 @@ function onUpdateTab() {
         updateCharts();
         if (res.hasNext) {
           try {
+            Logger.info(I18n.getMessage('log_message_update_music_list_progress', [res.currentPage + 1, res.maxPage]));
             await browserController.updateTab(res.nextUrl);
           } catch (error) {
             browserController.reset();
@@ -400,6 +403,7 @@ function onUpdateTab() {
         updateCharts();
         if (res.hasNext) {
           try {
+            Logger.info(I18n.getMessage('log_message_update_score_list_progress', [res.currentPage + 1, res.maxPage]));
             await browserController.updateTab(res.nextUrl);
           } catch (error) {
             browserController.reset();
