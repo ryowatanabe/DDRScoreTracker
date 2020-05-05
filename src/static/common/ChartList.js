@@ -1,23 +1,33 @@
 import { ChartData } from './ChartData.js';
 import { Constants } from './Constants.js';
+import { Statistics } from './Statistics.js';
 
 export class ChartList {
   charts = [];
+  statistics = {};
 
   constructor() {}
 
   reset() {
     this.charts = [];
+    this.statistics = {};
   }
 
   addChartData(chartData) {
     this.charts.push(chartData);
   }
 
-  get statistics() {
+  updateStatistics() {
     const statistics = {
       clearType: [],
+      score: {
+        max: 0,
+        average: 0,
+        median: 0,
+        min: 0,
+      },
     };
+    /* clearType */
     Object.values(Constants.CLEAR_TYPE).forEach((clearType) => {
       statistics.clearType.push({
         clearType: clearType,
@@ -36,7 +46,17 @@ export class ChartList {
       }
       return 0;
     });
-    return statistics;
+    /* score */
+    if (this.charts.length > 0) {
+      const values = this.charts.map((chart) => {
+        return chart.score ? chart.score : 0;
+      });
+      statistics.max = Statistics.max(values);
+      statistics.min = Statistics.min(values);
+      statistics.average = Statistics.average(values);
+      statistics.median = Statistics.median(values);
+    }
+    this.statistics = statistics;
   }
 
   /*
@@ -71,6 +91,9 @@ export class ChartList {
         chartList.addChartData(chartData);
       }
     });
+    /* update statistics */
+    chartList.updateStatistics();
+    /* sort */
     chartList.charts.sort(function (a, b) {
       return ChartList.compareChartData(a, b, sortConditions);
     });
