@@ -155,6 +155,15 @@
   "log_container_flush_button": {
     "message": "■Clear"
   },
+  "log_container_copy_button": {
+    "message": "■Copy"
+  },
+  "log_container_copied_to_clipboard": {
+    "message": "Copied to clipboard."
+  },
+  "log_container_could_not_copy_to_clipboard": {
+    "message": "Could not copy to clipboard."
+  },
   "log_message_done": {
     "message": "Done."
   },

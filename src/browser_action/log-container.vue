@@ -6,8 +6,8 @@
       <div id="app-log" class="log-data">
         <template v-for="line in log"> {{ line }} <br /> </template>
       </div>
-      <div id="closeLogButton" class="drawer-switch" v-on:click="close">{{ getMessage('log_container_close_button') }}</div>
-      <div id="flushLogButton" class="drawer-switch" v-on:click="flush">{{ getMessage('log_container_flush_button') }}</div>
+      <div id="closeLogButton" class="drawer-switch" v-on:click="closeAndFlush">{{ getMessage('log_container_close_button') }}</div>
+      <div id="copyLogButton" class="drawer-switch" v-on:click="copy">{{ getMessage('log_container_copy_button') }}</div>
     </div>
   </div>
 </template>
@@ -24,10 +24,25 @@ function initialize() {
   document.getElementById('logBackground').classList.add('initialized');
 }
 
+function disableButtons() {
+  document.getElementById('closeLogButton').style.display = 'none';
+  document.getElementById('copyLogButton').style.display = 'none';
+}
+
+function enableButtons() {
+  document.getElementById('closeLogButton').style.display = 'block';
+  document.getElementById('copyLogButton').style.display = 'block';
+}
+
 function openLog() {
   document.getElementById('logContainer').classList.add('active');
   document.getElementById('logBackground').classList.add('active');
   scrollLogToBottom();
+}
+
+function closeAndFlush() {
+  closeLog();
+  flushLog();
 }
 
 function closeLog() {
@@ -37,6 +52,16 @@ function closeLog() {
 
 function flushLog() {
   logReceiver.flush();
+}
+
+function copyLog() {
+  var log = document.getElementById('app-log');
+  document.getSelection().selectAllChildren(log);
+  if (document.execCommand('copy')) {
+    alert(I18n.getMessage('log_container_copied_to_clipboard'));
+  } else {
+    alert(I18n.getMessage('log_container_could_not_copy_to_clipboard'));
+  }
 }
 
 let isScrollLogScheduled = false;
@@ -74,11 +99,23 @@ export default Vue.extend({
     close: () => {
       closeLog();
     },
+    copy: () => {
+      copyLog();
+    },
     flush: () => {
       flushLog();
     },
+    closeAndFlush: () => {
+      closeAndFlush();
+    },
     open: () => {
       openLog();
+    },
+    enableButtons: () => {
+      enableButtons();
+    },
+    disableButtons: () => {
+      disableButtons();
     },
     initialize: () => {
       initialize();

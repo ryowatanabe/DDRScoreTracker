@@ -1,6 +1,7 @@
 import { Constants } from '../static/common/Constants.js';
 import ChartList from './chart-list.vue';
 import LogContainer from './log-container.vue';
+import { STATE as BACKGROUND_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_BACKGROUND_STATE_MESSAGE_TYPE } from '../static/background/state.js';
 
 import { initialize as initializeFilter, refreshList } from './filter.js';
 import { initialize as initializeMenu, openMenu } from './menu.js';
@@ -18,6 +19,12 @@ window.addEventListener('load', () => {
     logContainer.initialize();
     initializeFilter();
     initializeMenu();
+    chrome.runtime.getBackgroundPage(function (backgroundPage) {
+      if (backgroundPage.getState() != BACKGROUND_STATE.IDLE) {
+        logContainer.disableButtons();
+        logContainer.open();
+      }
+    });
   }, 300);
 });
 
@@ -44,3 +51,14 @@ window.refreshList = (filterConditions, sortConditions) => {
     }
   });
 };
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.type == CHANGE_BACKGROUND_STATE_MESSAGE_TYPE) {
+    console.log(`change background state ${message.oldState} -> ${message.state}`);
+    if (message.state == BACKGROUND_STATE.IDLE) {
+      logContainer.enableButtons();
+    } else {
+      logContainer.disableButtons();
+    }
+  }
+});

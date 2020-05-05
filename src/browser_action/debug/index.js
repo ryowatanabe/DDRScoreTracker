@@ -1,4 +1,5 @@
 import LogContainer from '../log-container.vue';
+import { STATE as BACKGROUND_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_BACKGROUND_STATE_MESSAGE_TYPE } from '../../static/background/state.js';
 
 function updateMusicList() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
@@ -84,4 +85,10 @@ document.getElementById('restoreScoreListButton').addEventListener('click', rest
 document.addEventListener('DOMContentLoaded', () => {
   const logContainer = new LogContainer();
   logContainer.$mount('#log-container');
+});
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.type == CHANGE_BACKGROUND_STATE_MESSAGE_TYPE) {
+    console.log(`change background state ${message.oldState} -> ${message.state}`);
+  }
 });

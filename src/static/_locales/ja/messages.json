@@ -155,6 +155,15 @@
   "log_container_flush_button": {
     "message": "■クリア"
   },
+  "log_container_copy_button": {
+    "message": "■コピー"
+  },
+  "log_container_copied_to_clipboard": {
+    "message": "クリップボードにコピーしました。"
+  },
+  "log_container_could_not_copy_to_clipboard": {
+    "message": "クリップボードにコピーできませんでした。"
+  },
   "log_message_done": {
     "message": "完了しました。"
   },

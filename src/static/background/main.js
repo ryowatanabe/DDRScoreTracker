@@ -10,6 +10,8 @@ import { BrowserController } from '../common/BrowserController.js';
 import { Parser } from '../common/Parser.js';
 import { I18n } from '../common/I18n.js';
 
+import { STATE, CHANGE_STATE_MESSAGE_TYPE } from './state.js';
+
 const storage = new Storage(
   {
     scores: {},
@@ -26,18 +28,9 @@ const storage = new Storage(
     conditions = data.conditions;
     options = data.options;
     updateCharts();
-    state = STATE.IDLE;
+    changeState(STATE.IDLE);
   }
 );
-
-const STATE = {
-  INITIALIZE: 0,
-  IDLE: 1,
-  UPDATE_MUSIC_LIST: 2,
-  UPDATE_SCORE_LIST: 3,
-  UPDATE_MUSIC_DETAIL: 4,
-  UPDATE_SCORE_DETAIL: 5,
-};
 
 let state = STATE.INITIALIZE;
 let targetMusics = [];
@@ -50,6 +43,10 @@ let options;
 
 function echo(message) {
   Logger.debug(message);
+}
+
+function getState() {
+  return state;
 }
 
 function saveStorage() {
@@ -135,13 +132,13 @@ function fetchParsedMusicList() {
       Logger.info(I18n.getMessage('log_message_fetch_parsed_music_list_fetch_success'));
       response.text().then((text) => {
         restoreMusicList(text);
-        Logger.info([I18n.getMessage('log_message_done'), '']);
+        Logger.info(I18n.getMessage('log_message_done'));
       });
     })
     .catch((reason) => {
       Logger.info(I18n.getMessage('log_message_network_error'));
       Logger.debug(reason);
-      Logger.info([I18n.getMessage('log_message_aborted'), '']);
+      Logger.info(I18n.getMessage('log_message_aborted'));
     });
 }
 
@@ -155,13 +152,13 @@ async function updateMusicList(windowId) {
     throw new Error(message);
   }
   Logger.info(I18n.getMessage('log_message_update_music_list_begin'));
-  state = STATE.UPDATE_MUSIC_LIST;
+  changeState(STATE.UPDATE_MUSIC_LIST);
   try {
     await browserController.createTab(Constants.MUSIC_LIST_URL);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
-    state = STATE.IDLE;
+    changeState(STATE.IDLE);
     throw error;
   }
 }
@@ -200,7 +197,7 @@ async function fetchMissingMusicInfo(windowId) {
     return false;
   }
   Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_target_found', targetMusics.length));
-  state = STATE.UPDATE_MUSIC_DETAIL;
+  changeState(STATE.UPDATE_MUSIC_DETAIL);
   try {
     const targetMusic = targetMusics.shift();
     Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [targetMusic.musicId, targetMusics.length]));
@@ -208,7 +205,7 @@ async function fetchMissingMusicInfo(windowId) {
   } catch (error) {
     browserController.reset();
     Logger.error(error);
-    state = STATE.IDLE;
+    changeState(STATE.IDLE);
     throw error;
   }
 }
@@ -223,13 +220,13 @@ async function updateScoreList(windowId, playMode, musicType) {
     throw new Error(message);
   }
   Logger.info(I18n.getMessage('log_message_update_score_list_begin'));
-  state = STATE.UPDATE_SCORE_LIST;
+  changeState(STATE.UPDATE_SCORE_LIST);
   try {
     await browserController.createTab(Constants.SCORE_LIST_URL[playMode][musicType]);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
-    state = STATE.IDLE;
+    changeState(STATE.IDLE);
     throw error;
   }
 }
@@ -257,7 +254,7 @@ async function updateScoreDetail(windowId, targets) {
     return false;
   }
   Logger.info(I18n.getMessage('log_message_update_score_detail_target_found', targetMusics.length));
-  state = STATE.UPDATE_SCORE_DETAIL;
+  changeState(STATE.UPDATE_SCORE_DETAIL);
   try {
     const targetMusic = targetMusics.shift();
     Logger.info(
@@ -271,7 +268,7 @@ async function updateScoreDetail(windowId, targets) {
   } catch (error) {
     browserController.reset();
     Logger.error(error);
-    state = STATE.IDLE;
+    changeState(STATE.IDLE);
     throw error;
   }
 }
@@ -325,13 +322,13 @@ function onUpdateTab() {
           } catch (error) {
             browserController.reset();
             Logger.error(error.message);
-            state = STATE.IDLE;
-            Logger.info([I18n.getMessage('log_message_aborted'), '']);
+            changeState(STATE.IDLE);
+            Logger.info(I18n.getMessage('log_message_aborted'));
           }
         } else {
           await closeTab();
-          state = STATE.IDLE;
-          Logger.info([I18n.getMessage('log_message_done'), '']);
+          changeState(STATE.IDLE);
+          Logger.info(I18n.getMessage('log_message_done'));
         }
       });
       break;
@@ -355,13 +352,13 @@ function onUpdateTab() {
           } catch (error) {
             browserController.reset();
             Logger.error(error.message);
-            state = STATE.IDLE;
-            Logger.info([I18n.getMessage('log_message_aborted'), '']);
+            changeState(STATE.IDLE);
+            Logger.info(I18n.getMessage('log_message_aborted'));
           }
         } else {
           await closeTab();
-          state = STATE.IDLE;
-          Logger.info([I18n.getMessage('log_message_done'), '']);
+          changeState(STATE.IDLE);
+          Logger.info(I18n.getMessage('log_message_done'));
         }
       });
       break;
@@ -383,13 +380,13 @@ function onUpdateTab() {
           } catch (error) {
             browserController.reset();
             Logger.error(error.message);
-            state = STATE.IDLE;
-            Logger.info([I18n.getMessage('log_message_aborted'), '']);
+            changeState(STATE.IDLE);
+            Logger.info(I18n.getMessage('log_message_aborted'));
           }
         } else {
           await closeTab();
-          state = STATE.IDLE;
-          Logger.info([I18n.getMessage('log_message_done'), '']);
+          changeState(STATE.IDLE);
+          Logger.info(I18n.getMessage('log_message_done'));
         }
       });
       break;
@@ -419,19 +416,24 @@ function onUpdateTab() {
           } catch (error) {
             browserController.reset();
             Logger.error(error.message);
-            state = STATE.IDLE;
-            Logger.info([I18n.getMessage('log_message_aborted'), '']);
+            changeState(STATE.IDLE);
+            Logger.info(I18n.getMessage('log_message_aborted'));
           }
         } else {
           await closeTab();
-          state = STATE.IDLE;
-          Logger.info([I18n.getMessage('log_message_done'), '']);
+          changeState(STATE.IDLE);
+          Logger.info(I18n.getMessage('log_message_done'));
         }
       });
       break;
     default:
       break;
   }
+}
+
+function changeState(nextState) {
+  chrome.runtime.sendMessage({ type: CHANGE_STATE_MESSAGE_TYPE, oldState: state, state: nextState });
+  state = nextState;
 }
 
 async function handleError(res) {
@@ -446,8 +448,8 @@ async function handleError(res) {
       throw new Error(`unknown Parser.STATUS (${res.status})`);
   }
   await closeTab();
-  state = STATE.IDLE;
-  Logger.info([I18n.getMessage('log_message_aborted'), '']);
+  changeState(STATE.IDLE);
+  Logger.info(I18n.getMessage('log_message_aborted'));
 }
 
 async function closeTab() {
@@ -480,6 +482,7 @@ const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT
   window.getOptions = getOptions;
   window.getMusicList = getMusicList;
   window.getScoreList = getScoreList;
+  window.getState = getState;
   window.resetStorage = resetStorage;
   window.restoreMusicList = restoreMusicList;
   window.restoreScoreList = restoreScoreList;
