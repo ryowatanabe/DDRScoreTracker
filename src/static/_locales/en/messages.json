@@ -158,17 +158,17 @@
   "log_message_done": {
     "message": "Done."
   },
+  "log_message_aborted": {
+    "message": "Process aborted."
+  },
   "log_message_network_error": {
-    "message": "Network error occured."
+    "message": "Network error occured. Retry in good internet connection."
   },
   "log_message_unknown_error": {
     "message": "An error occured."
   },
   "log_message_login_required": {
     "message": "Please log in to e-amusement."
-  },
-  "log_message_network_error_please_retry": {
-    "message": "Process aborted. Retry in good internet connection."
   },
   "log_message_reset_local_storage_begin": {
     "message": "Delete data stored in local storage."

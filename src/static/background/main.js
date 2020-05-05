@@ -141,7 +141,7 @@ function fetchParsedMusicList() {
     .catch((reason) => {
       Logger.info(I18n.getMessage('log_message_network_error'));
       Logger.debug(reason);
-      Logger.info([I18n.getMessage('log_message_network_error_please_retry'), '']);
+      Logger.info([I18n.getMessage('log_message_aborted'), '']);
     });
 }
 
@@ -326,10 +326,12 @@ function onUpdateTab() {
             browserController.reset();
             Logger.error(error.message);
             state = STATE.IDLE;
+            Logger.info([I18n.getMessage('log_message_aborted'), '']);
           }
         } else {
           await closeTab();
           state = STATE.IDLE;
+          Logger.info([I18n.getMessage('log_message_done'), '']);
         }
       });
       break;
@@ -354,10 +356,12 @@ function onUpdateTab() {
             browserController.reset();
             Logger.error(error.message);
             state = STATE.IDLE;
+            Logger.info([I18n.getMessage('log_message_aborted'), '']);
           }
         } else {
           await closeTab();
           state = STATE.IDLE;
+          Logger.info([I18n.getMessage('log_message_done'), '']);
         }
       });
       break;
@@ -380,10 +384,12 @@ function onUpdateTab() {
             browserController.reset();
             Logger.error(error.message);
             state = STATE.IDLE;
+            Logger.info([I18n.getMessage('log_message_aborted'), '']);
           }
         } else {
           await closeTab();
           state = STATE.IDLE;
+          Logger.info([I18n.getMessage('log_message_done'), '']);
         }
       });
       break;
@@ -414,6 +420,7 @@ function onUpdateTab() {
             browserController.reset();
             Logger.error(error.message);
             state = STATE.IDLE;
+            Logger.info([I18n.getMessage('log_message_aborted'), '']);
           }
         } else {
           await closeTab();
@@ -440,7 +447,7 @@ async function handleError(res) {
   }
   await closeTab();
   state = STATE.IDLE;
-  Logger.info([I18n.getMessage('log_message_done'), '']);
+  Logger.info([I18n.getMessage('log_message_aborted'), '']);
 }
 
 async function closeTab() {

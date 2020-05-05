@@ -158,17 +158,17 @@
   "log_message_done": {
     "message": "完了しました。"
   },
+  "log_message_aborted": {
+    "message": "処理を終了しました。"
+  },
   "log_message_network_error": {
-    "message": "通信エラーが発生しました。"
+    "message": "通信エラーが発生しました。通信環境のよいところでやり直してください。"
   },
   "log_message_unknown_error": {
     "message": "エラーが発生しました。"
   },
   "log_message_login_required": {
     "message": "e-amusementにログインしてください。"
-  },
-  "log_message_network_error_please_retry": {
-    "message": "処理を終了しました。通信環境のよいところでやり直してください。"
   },
   "log_message_reset_local_storage_begin": {
     "message": "端末上に保存しているデータを削除します。"
