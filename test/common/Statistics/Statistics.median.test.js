@@ -23,3 +23,10 @@ test('Statistics.median (even number of elements / sorted)', () => {
 test('Statistics.median (even number of elements / not sorted)', () => {
   expect(Statistics.median([1000, 10, 10000, 100])).toStrictEqual(550);
 });
+
+test('Statistics.median (not destructive)', () => {
+  const before = [1000, 10, 100, 10000, 1];
+  let after = before.slice();
+  Statistics.median(after);
+  expect(after).toStrictEqual(before);
+});

@@ -6,7 +6,8 @@ export class Statistics {
     if (values.length == 0) {
       return null;
     }
-    return values.sort((a, b) => {
+    let copy = values.slice();
+    return copy.sort((a, b) => {
       return b - a;
     })[0];
   }
@@ -18,7 +19,8 @@ export class Statistics {
     if (values.length == 0) {
       return null;
     }
-    return values.sort((a, b) => {
+    let copy = values.slice();
+    return copy.sort((a, b) => {
       return a - b;
     })[0];
   }
@@ -44,9 +46,10 @@ export class Statistics {
     if (values.length == 0) {
       return null;
     }
-    values.sort((a, b) => {
+    let copy = values.slice();
+    copy.sort((a, b) => {
       return a - b;
     });
-    return this.average([values[Math.floor((values.length - 1) / 2)], values[Math.ceil((values.length - 1) / 2)]]);
+    return this.average([copy[Math.floor((copy.length - 1) / 2)], copy[Math.ceil((copy.length - 1) / 2)]]);
   }
 }

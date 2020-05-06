@@ -15,3 +15,10 @@ test('Statistics.min (sorted)', () => {
 test('Statistics.min (not sorted)', () => {
   expect(Statistics.min([3, 1, 2])).toStrictEqual(1);
 });
+
+test('Statistics.min (not destructive)', () => {
+  const before = [3, 1, 2];
+  let after = before.slice();
+  Statistics.min(after);
+  expect(after).toStrictEqual(before);
+});

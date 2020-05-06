@@ -15,3 +15,10 @@ test('Statistics.average (sorted)', () => {
 test('Statistics.average (not sorted)', () => {
   expect(Statistics.average([1000, 10, 100])).toStrictEqual(370);
 });
+
+test('Statistics.average (not destructive)', () => {
+  const before = [1000, 10, 100];
+  let after = before.slice();
+  Statistics.average(after);
+  expect(after).toStrictEqual(before);
+});

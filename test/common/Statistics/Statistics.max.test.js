@@ -15,3 +15,10 @@ test('Statistics.max (sorted)', () => {
 test('Statistics.max (not sorted)', () => {
   expect(Statistics.max([1, 3, 2])).toStrictEqual(3);
 });
+
+test('Statistics.max (not destructive)', () => {
+  const before = [1, 3, 2];
+  let after = before.slice();
+  Statistics.max(after);
+  expect(after).toStrictEqual(before);
+});
