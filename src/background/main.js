@@ -1,16 +1,16 @@
-import { MusicList } from '../common/MusicList.js';
-import { ScoreList } from '../common/ScoreList.js';
-import { ScoreDetail } from '../common/ScoreDetail.js';
-import { ChartList } from '../common/ChartList.js';
-import { ChartData } from '../common/ChartData.js';
-import { Constants } from '../common/Constants.js';
-import { Logger } from '../common/Logger.js';
-import { Storage } from '../common/Storage.js';
-import { BrowserController } from '../common/BrowserController.js';
-import { Parser } from '../common/Parser.js';
-import { I18n } from '../common/I18n.js';
+import { MusicList } from '../static/common/MusicList.js';
+import { ScoreList } from '../static/common/ScoreList.js';
+import { ScoreDetail } from '../static/common/ScoreDetail.js';
+import { ChartList } from '../static/common/ChartList.js';
+import { ChartData } from '../static/common/ChartData.js';
+import { Constants } from '../static/common/Constants.js';
+import { Logger } from '../static/common/Logger.js';
+import { Storage } from '../static/common/Storage.js';
+import { BrowserController } from '../static/common/BrowserController.js';
+import { Parser } from '../static/common/Parser.js';
+import { I18n } from '../static/common/I18n.js';
 
-import { STATE, CHANGE_STATE_MESSAGE_TYPE } from './state.js';
+import { STATE, CHANGE_STATE_MESSAGE_TYPE } from '../static/background/state.js';
 
 const storage = new Storage(
   {

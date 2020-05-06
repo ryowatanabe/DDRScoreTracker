@@ -1,11 +1,9 @@
 import { ScoreDetail } from './ScoreDetail.js';
 
 export class ScoreData {
-  musicId = '';
-  difficulty = {};
-
   constructor(musicId) {
     this.musicId = musicId;
+    this.difficulty = {};
   }
 
   static createFromStorage(storageData) {

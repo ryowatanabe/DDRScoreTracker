@@ -3,10 +3,10 @@ import { Constants } from './Constants.js';
 import { Statistics } from './Statistics.js';
 
 export class ChartList {
-  charts = [];
-  statistics = {};
-
-  constructor() {}
+  constructor() {
+    this.charts = [];
+    this.statistics = {};
+  }
 
   reset() {
     this.charts = [];

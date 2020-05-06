@@ -9,6 +9,7 @@ const config = {
   context: path.join(__dirname, 'src'),
 
   entry: {
+    "background/main": './background/main.js',
     "browser_action/index": './browser_action/index.js',
     "browser_action/debug/index": './browser_action/debug/index.js',
   },

@@ -1,13 +1,13 @@
 import { ScoreData } from './ScoreData.js';
 
 export class ScoreList {
-  musics = {};
-
-  constrctor() {}
+  constructor() {
+    this.musics = {};
+  }
 
   static createFromStorage(storageData) {
     const instance = new ScoreList();
-    Object.getOwnPropertyNames(storageData).forEach(function (musicId) {
+    Object.getOwnPropertyNames(storageData).forEach((musicId) => {
       const scoreData = ScoreData.createFromStorage(storageData[musicId]);
       instance.applyScoreData(scoreData);
     });

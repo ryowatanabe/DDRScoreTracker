@@ -1,16 +1,12 @@
 import { Constants } from './Constants.js';
 
 export class ChartData {
-  musicId = null;
-  playMode = null;
-  difficulty = null;
-  musicData = null;
-  scoreDetail = null;
-
   constructor(musicId, playMode, difficulty) {
     this.musicId = musicId;
     this.playMode = playMode;
     this.difficulty = difficulty;
+    this.musicData = null;
+    this.scoreDetail = null;
   }
 
   get musicType() {

@@ -2,14 +2,11 @@ import { Logger } from './Logger.js';
 import { I18n } from './I18n.js';
 
 export class Storage {
-  storageData = {};
-  defaultData = {};
-  loadCallback = function () {};
-  bytesInUse = 0;
-
   constructor(defaultData = {}, loadCallback = function () {}) {
+    this.storageData = {};
     this.defaultData = defaultData;
     this.loadCallback = loadCallback;
+    this.bytesInUse = 0;
     this.loadStorage();
   }
 

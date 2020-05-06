@@ -21,7 +21,7 @@
   ],
 
   "background": {
-    "page": "background/index.html",
+    "scripts": ["background/main.js"],
     "persistent": false
   },
 

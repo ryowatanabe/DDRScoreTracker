@@ -2,13 +2,13 @@ import { MusicData } from './MusicData.js';
 import { Logger } from './Logger.js';
 
 export class MusicList {
-  musics = {};
-
-  constrctor() {}
+  constructor() {
+    this.musics = {};
+  }
 
   static createFromStorage(storageData) {
     const instance = new MusicList();
-    Object.getOwnPropertyNames(storageData).forEach(function (musicId) {
+    Object.getOwnPropertyNames(storageData).forEach((musicId) => {
       const musicData = MusicData.createFromStorage(storageData[musicId]);
       instance.applyMusicData(musicData);
     });

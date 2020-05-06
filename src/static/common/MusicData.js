@@ -2,11 +2,6 @@ import { Constants } from './Constants.js';
 import { Logger } from './Logger.js';
 
 export class MusicData {
-  musicId = '';
-  type = Constants.MUSIC_TYPE.NORMAL;
-  title = '';
-  difficulty = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-
   constructor(musicId, type, title, difficulty) {
     this.musicId = musicId;
     this.type = type;

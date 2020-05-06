@@ -1,14 +1,14 @@
 import { Constants } from './Constants.js';
 
 export class ScoreDetail {
-  score = null;
-  scoreRank = null;
-  clearType = null;
-  playCount = null;
-  clearCount = null;
-  maxCombo = null;
-
-  constructor() {}
+  constructor() {
+    this.score = null;
+    this.scoreRank = null;
+    this.clearType = null;
+    this.playCount = null;
+    this.clearCount = null;
+    this.maxCombo = null;
+  }
 
   static createFromStorage(storageData) {
     const instance = new ScoreDetail();
