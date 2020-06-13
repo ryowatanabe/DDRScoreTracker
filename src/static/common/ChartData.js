@@ -33,7 +33,7 @@ export class ChartData {
     if (this.scoreDetail === null) {
       return null;
     }
-    return this.scoreDetail.scoreRank;
+    return this.scoreDetail.actualScoreRank;
   }
 
   get clearType() {

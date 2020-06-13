@@ -38,6 +38,7 @@ export class Storage {
   updateBytesInUse(callback = function () {}) {
     chrome.storage.local.getBytesInUse(null, (bytesInUse) => {
       this.bytesInUse = bytesInUse;
+      Logger.debug(`Storage.updateBytesInUse: ${bytesInUse} bytes used`);
       callback(bytesInUse);
     });
   }

@@ -244,7 +244,7 @@ export class Constants {
 
   static get SCORE_RANK_STRING() {
     const result = {};
-    result[this.SCORE_RANK.NO_PLAY] = '';
+    result[this.SCORE_RANK.NO_PLAY] = 'NoPlay';
     result[this.SCORE_RANK.E] = 'E';
     result[this.SCORE_RANK.D] = 'D';
     result[this.SCORE_RANK.D_PLUS] = 'D+';

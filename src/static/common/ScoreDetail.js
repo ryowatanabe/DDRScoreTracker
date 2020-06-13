@@ -56,4 +56,11 @@ export class ScoreDetail {
     }
     return this.clearType;
   }
+
+  get actualScoreRank() {
+    if(this.scoreRank === null) {
+      return Constants.SCORE_RANK.NO_PLAY;
+    }
+    return this.scoreRank;
+  }
 }

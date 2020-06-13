@@ -58,8 +58,12 @@ export class ChartList {
       });
       statistics.max = Statistics.max(values);
       statistics.min = Statistics.min(values);
-      statistics.average = Statistics.average(values);
+      statistics.average = Math.round(Statistics.average(values));
       statistics.median = Statistics.median(values);
+      statistics.maxString = statistics.max.toLocaleString();
+      statistics.minString = statistics.min.toLocaleString();
+      statistics.averageString = statistics.average.toLocaleString();
+      statistics.medianString = statistics.median.toLocaleString();
     }
     this.statistics = statistics;
   }

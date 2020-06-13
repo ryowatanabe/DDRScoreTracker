@@ -12,6 +12,19 @@
           ></template>
         </div>
       </div>
+      <template v-for="item in statistics.scoreRank">
+        <template v-if="item.count > 0"> {{ item.scoreRankString }}:{{ item.count }} </template>
+      </template>
+      <div class="graph">
+        <div class="inner">
+          <template v-for="item in statistics.scoreRank"
+            ><template v-if="item.count > 0"
+              ><span v-bind:class="['element', item.scoreRankClassString]" v-bind:style="{ width: 'calc(' + item.count + ' / ' + charts.length + ' * 100%' }"></span></template
+          ></template>
+        </div>
+      </div>
+
+      Max:{{ statistics.maxString }} Average:{{ statistics.averageString }} Median:{{ statistics.medianString }} Min:{{ statistics.minString }}
     </template>
 
     <div v-if="maxPage > 1" class="pager">
@@ -137,6 +150,40 @@ export default Vue.extend({
 }
 .graph .element.marvelous_fc {
   background-color: #ffffff;
+}
+
+.graph .rank_aaa {
+  background-color: #ffffff;
+}
+.graph .rank_aa_p,
+.graph .rank_aa,
+.graph .rank_aa_m {
+  background-color: #ffffaa;
+}
+.graph .rank_a_p,
+.graph .rank_a,
+.graph .rank_a_m {
+  background-color: #ffff00;
+}
+.graph .rank_b_p,
+.graph .rank_b,
+.graph .rank_b_m {
+  background-color: #0088ff;
+}
+.graph .rank_c_p,
+.graph .rank_c,
+.graph .rank_c_m {
+  background-color: #ff00ff;
+}
+.graph .rank_d_p,
+.graph .rank_d {
+  background-color: #ff0000;
+}
+.graph .rank_e {
+  background-color: #bbbbbb;
+}
+.graph .rank_none {
+  background-color: #888888;
 }
 
 /*
