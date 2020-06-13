@@ -58,7 +58,7 @@ export class ScoreDetail {
   }
 
   get actualScoreRank() {
-    if(this.scoreRank === null) {
+    if (this.scoreRank === null) {
       return Constants.SCORE_RANK.NO_PLAY;
     }
     return this.scoreRank;

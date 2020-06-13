@@ -23,8 +23,18 @@
           ></template>
         </div>
       </div>
-
-      Max:{{ statistics.maxString }} Average:{{ statistics.averageString }} Median:{{ statistics.medianString }} Min:{{ statistics.minString }}
+      <template v-for="name in [ 'max', 'average', 'median', 'min' ]">
+        {{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }}
+        <div class="graph">
+          <div class="inner">
+            <span
+              v-bind:class="['element', statistics.score[name].scoreRankClassString]"
+              v-bind:style="{ width: 'calc(' + statistics.score[name].value + ' / ' + 1000000 + ' * 100%' }"
+              ></span>
+          </div>
+        </div>
+      </template>
+      <template v-for="name in [ 'max', 'average', 'median', 'min' ]">{{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }} </template>
     </template>
 
     <div v-if="maxPage > 1" class="pager">
@@ -65,6 +75,7 @@
 <script>
 import Vue from 'vue';
 import { Constants } from '../static/common/Constants.js';
+import { I18n } from '../static/common/I18n.js';
 
 export default Vue.extend({
   data: function () {
@@ -77,6 +88,7 @@ export default Vue.extend({
     };
   },
   methods: {
+    getMessage: I18n.getMessage,
     gotoPage: function (page) {
       gotoPage(page);
     },

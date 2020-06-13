@@ -15,6 +15,15 @@
     <div id="filterBackground" class="drawer-background not-initialized"></div>
     <div id="filterContainer" class="drawer filter not-initialized">
       <div class="condition-group">
+        <span data-i18n-key="browser_action_filter_summary_setting" data-i18n-text></span>
+        <div>
+          <span class="element"><input type="checkbox" id="summarySetting_clearType" name="clearType" value="1" /><label for="summarySetting_clearType" data-i18n-key="browser_action_filter_summary_setting_clear_type" data-i18n-text></label></span>
+          <span class="element"><input type="checkbox" id="summarySetting_scoreRank" name="scoreRank" value="1" /><label for="summarySetting_scoreRank" data-i18n-key="browser_action_filter_summary_setting_score_rank" data-i18n-text></label></span>
+          <span class="element"><input type="checkbox" id="summarySetting_scoreAverage" name="scoreAverage" value="1" /><label for="summarySetting_scoreAverage" data-i18n-key="browser_action_filter_summary_setting_score_average" data-i18n-text></label></span>
+          <span class="element"><input type="checkbox" id="summarySetting_scoreStatistics" name="scoreStatistics" value="1" /><label for="summarySetting_scoreStatistics" data-i18n-key="browser_action_filter_summary_setting_score_statistics" data-i18n-text></label></span>
+        </div>
+      </div>
+      <div class="condition-group">
         <span data-i18n-key="browser_action_filter_filter_condition_game_mode" data-i18n-text></span>
         <a id="filterCondition_playMode_all">[All]</a>
         <a id="filterCondition_playMode_clear">[Clear]</a>

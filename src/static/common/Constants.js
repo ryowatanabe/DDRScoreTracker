@@ -139,6 +139,26 @@ export class Constants {
     };
   }
 
+  static get SCORE_TO_SCORE_RANK_THRESHOLD() {
+    return [
+      { score: 990000, scoreRank: this.SCORE_RANK.AAA },
+      { score: 950000, scoreRank: this.SCORE_RANK.AA_PLUS },
+      { score: 900000, scoreRank: this.SCORE_RANK.AA },
+      { score: 890000, scoreRank: this.SCORE_RANK.AA_MINUS },
+      { score: 850000, scoreRank: this.SCORE_RANK.A_PLUS },
+      { score: 800000, scoreRank: this.SCORE_RANK.A },
+      { score: 790000, scoreRank: this.SCORE_RANK.A_MINUS },
+      { score: 750000, scoreRank: this.SCORE_RANK.B_PLUS },
+      { score: 700000, scoreRank: this.SCORE_RANK.B },
+      { score: 690000, scoreRank: this.SCORE_RANK.B_MINUS },
+      { score: 650000, scoreRank: this.SCORE_RANK.C_PLUS },
+      { score: 600000, scoreRank: this.SCORE_RANK.C },
+      { score: 590000, scoreRank: this.SCORE_RANK.C_MINUS },
+      { score: 550000, scoreRank: this.SCORE_RANK.D_PLUS },
+      { score: 0, scoreRank: this.SCORE_RANK.D },
+    ];
+  }
+
   static get SCORE_RANK_FILE_MAP() {
     return {
       'rank_s_none.png': this.SCORE_RANK.NO_PLAY,

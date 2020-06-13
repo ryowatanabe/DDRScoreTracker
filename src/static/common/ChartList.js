@@ -56,16 +56,33 @@ export class ChartList {
       const values = this.charts.map((chart) => {
         return chart.score ? chart.score : 0;
       });
-      statistics.max = Statistics.max(values);
-      statistics.min = Statistics.min(values);
-      statistics.average = Math.round(Statistics.average(values));
-      statistics.median = Statistics.median(values);
-      statistics.maxString = statistics.max.toLocaleString();
-      statistics.minString = statistics.min.toLocaleString();
-      statistics.averageString = statistics.average.toLocaleString();
-      statistics.medianString = statistics.median.toLocaleString();
+      const attributeNames = ['max', 'min', 'average', 'median'];
+      statistics.score = {
+        max: { value: Statistics.max(values) },
+        min: { value: Statistics.min(values) },
+        average: { value: Math.round(Statistics.average(values)) },
+        median: { value: Statistics.median(values) },
+      };
+      attributeNames.forEach((attributeName) => {
+        statistics.score[attributeName].string = statistics.score[attributeName].value.toLocaleString();
+        const scoreRank = this.scoreToScoreRank(statistics.score[attributeName].value);
+        statistics.score[attributeName].scoreRank = scoreRank;
+        statistics.score[attributeName].scoreRankString = Constants.SCORE_RANK_STRING[scoreRank];
+        statistics.score[attributeName].scoreRankClassString = Constants.SCORE_RANK_CLASS_STRING[scoreRank];
+      });
     }
+    console.log(statistics);
     this.statistics = statistics;
+  }
+
+  scoreToScoreRank(score) {
+    for (let i = 0; i < Constants.SCORE_TO_SCORE_RANK_THRESHOLD.length; i++) {
+      const element = Constants.SCORE_TO_SCORE_RANK_THRESHOLD[i];
+      if (score >= element.score) {
+        return element.scoreRank;
+      }
+    }
+    return Constants.SCORE_RANK.NO_PLAY;
   }
 
   /*
