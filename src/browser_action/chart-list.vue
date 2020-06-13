@@ -23,7 +23,7 @@
           ></template>
         </div>
       </div>
-      <template v-for="name in [ 'max', 'average', 'median', 'min' ]">
+      <template v-for="name in statistics.score.order">
         {{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }}
         <div class="graph">
           <div class="inner">
@@ -34,7 +34,7 @@
           </div>
         </div>
       </template>
-      <template v-for="name in [ 'max', 'average', 'median', 'min' ]">{{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }} </template>
+      <template v-for="name in statistics.score.order">{{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }} </template>
     </template>
 
     <div v-if="maxPage > 1" class="pager">

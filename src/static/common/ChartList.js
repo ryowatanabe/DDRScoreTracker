@@ -70,8 +70,12 @@ export class ChartList {
         statistics.score[attributeName].scoreRankString = Constants.SCORE_RANK_STRING[scoreRank];
         statistics.score[attributeName].scoreRankClassString = Constants.SCORE_RANK_CLASS_STRING[scoreRank];
       });
+      if (statistics.score.average.value < statistics.score.median.value) {
+        statistics.score.order = ['max', 'median', 'average', 'min'];
+      } else {
+        statistics.score.order = ['max', 'average', 'median', 'min'];
+      }
     }
-    console.log(statistics);
     this.statistics = statistics;
   }
 
