@@ -4,10 +4,10 @@ const filterNames = ['playMode', 'musicType', 'difficulty', 'level', 'clearType'
 export function refreshList() {
   let summarySettings = {};
   summaryNames.forEach((name) => {
-    const elements = Array.from(document.querySelectorAll(`input[name=summarySetting_${name}]:checked`));
-    if (elements.length > 0) {
-      summarySettings[name] = true;
-    }
+    const elements = Array.from(document.querySelectorAll(`input[name=summarySetting]:checked`));
+    elements.forEach((element) => {
+      summarySettings[element.value] = true;
+    });
   });
 
   let filterConditions = [];
@@ -64,13 +64,13 @@ function closeFilter() {
 }
 
 function selectAll(name) {
-  const elements = document.querySelectorAll(`input[name=filterCondition_${name}]`);
+  const elements = document.querySelectorAll(`input[name=${name}]`);
   elements.forEach((element) => {
     element.checked = true;
   });
 }
 function selectNone(name) {
-  const elements = document.querySelectorAll(`input[name=filterCondition_${name}]`);
+  const elements = document.querySelectorAll(`input[name=${name}]`);
   elements.forEach((element) => {
     element.checked = false;
   });
@@ -81,9 +81,11 @@ document.getElementById('closeFilterButton').addEventListener('click', closeFilt
 
 (function () {
   /* All, Noneのイベントハンドラをつける */
+  document.getElementById('summarySetting_all').addEventListener('click', selectAll.bind(this, 'summarySetting'));
+  document.getElementById('summarySetting_clear').addEventListener('click', selectNone.bind(this, 'summarySetting'));
   filterNames.forEach((name) => {
-    document.getElementById(`filterCondition_${name}_all`).addEventListener('click', selectAll.bind(this, name));
-    document.getElementById(`filterCondition_${name}_clear`).addEventListener('click', selectNone.bind(this, name));
+    document.getElementById(`filterCondition_${name}_all`).addEventListener('click', selectAll.bind(this, `filterCondition_${name}`));
+    document.getElementById(`filterCondition_${name}_clear`).addEventListener('click', selectNone.bind(this, `filterCondition_${name}`));
   });
   /* デフォルトのチェックをつける */
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
