@@ -58,10 +58,10 @@ export class ChartList {
       });
       const attributeNames = ['max', 'min', 'average', 'median'];
       statistics.score = {
-        max: { value: Statistics.max(values) },
-        min: { value: Statistics.min(values) },
-        average: { value: Math.round(Statistics.average(values)) },
-        median: { value: Statistics.median(values) },
+        max: { label: 'scoreMax', value: Statistics.max(values) },
+        min: { label: 'scoreMin', value: Statistics.min(values) },
+        average: { label: 'scoreAverage', value: Math.round(Statistics.average(values)) },
+        median: { label: 'scoreMedian', value: Statistics.median(values) },
       };
       attributeNames.forEach((attributeName) => {
         statistics.score[attributeName].string = statistics.score[attributeName].value.toLocaleString();

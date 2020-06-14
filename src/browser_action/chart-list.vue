@@ -28,7 +28,7 @@
         </div>
       </template>
       <template v-for="name in statistics.score.order">
-        <template v-if="summarySettings[name]">
+        <template v-if="summarySettings[statistics.score[name].label]">
           {{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }}
           <div class="graph">
             <div class="inner">

@@ -32,7 +32,7 @@ export function refreshList() {
   ];
 
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.saveConditions(filterConditions, sortConditions);
+    backgroundPage.saveConditions(summarySettings, filterConditions, sortConditions);
   });
   window.refreshList(
     summarySettings,
@@ -88,6 +88,9 @@ document.getElementById('closeFilterButton').addEventListener('click', closeFilt
   /* デフォルトのチェックをつける */
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     const conditions = backgroundPage.getConditions();
+    for (let [key, value] of Object.entries(conditions.summary)) {
+      document.querySelector(`#summarySetting_${key}`).checked = true;
+    }
     conditions.filter.forEach(function (condition) {
       condition.values.forEach(function (value) {
         document.querySelector(`#filterCondition_${condition.attribute}_${value}`).checked = true;

@@ -17,6 +17,7 @@ const storage = new Storage(
     scores: {},
     musics: {},
     conditions: {
+      summary: { clearType: true },
       filter: [],
       sort: [],
     },
@@ -89,8 +90,9 @@ function getOptions() {
   return options;
 }
 
-function saveConditions(filterConditions, sortConditions) {
+function saveConditions(summarySettings, filterConditions, sortConditions) {
   conditions = {
+    summary: summarySettings,
     filter: filterConditions,
     sort: sortConditions,
   };
