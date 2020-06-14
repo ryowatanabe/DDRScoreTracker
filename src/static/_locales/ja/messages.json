@@ -137,6 +137,24 @@
   "browser_action_menu_get_score_detail_description": {
     "message": "現在リストに表示されている曲のスコア詳細を公式サイトから取得します。e-amusementへのログインが必要です。"
   },
+  "browser_action_menu_export_score_to_skill_attack": {
+    "message": "DDR SAにスコアをエクスポート"
+  },
+  "browser_action_menu_export_score_to_skill_attack_ddrcode": {
+    "message": "DDR-CODE"
+  },
+  "browser_action_menu_export_score_to_skill_attack_password": {
+    "message": "パスワード"
+  },
+  "browser_action_menu_export_score_to_skill_attack_description": {
+    "message": "DDR Skill Attackにスコアデータをエクスポートします。DDR Skill Attackに登録の上、DDR-CODEとパスワードを上のフォームに入力してからボタンを押してください。パスワードは端末上には保存されません。"
+  },
+  "browser_action_menu_open_skill_attack_page": {
+    "message": "DDR SA Webサイトを開く"
+  },
+  "browser_action_menu_open_skill_attack_user_page": {
+    "message": "DDR SA ユーザページを開く"
+  },
   "browser_action_menu_close_button": {
     "message": "閉じる"
   },

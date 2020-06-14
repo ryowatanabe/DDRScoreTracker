@@ -137,6 +137,24 @@
   "browser_action_menu_get_score_detail_description": {
     "message": "Fetch detailed score data for musics shown in current list from official site. Logging in to e-amusement is required."
   },
+  "browser_action_menu_export_score_to_skill_attack": {
+    "message": "Export score to DDR Skill Attack"
+  },
+  "browser_action_menu_export_score_to_skill_attack_ddrcode": {
+    "message": "DDR-CODE"
+  },
+  "browser_action_menu_export_score_to_skill_attack_password": {
+    "message": "Password"
+  },
+  "browser_action_menu_export_score_to_skill_attack_description": {
+    "message": "Export score data to DDR Skill Attack. Account of DDR Skill Attack is required. Fill your DDR-CODE and password into above form, then push the button. Your password is not saved on the device."
+  },
+  "browser_action_menu_open_skill_attack_page": {
+    "message": "Open DDR SA Website"
+  },
+  "browser_action_menu_open_skill_attack_user_page": {
+    "message": "Open your DDR SA page"
+  },
   "browser_action_menu_close_button": {
     "message": "Close"
   },
