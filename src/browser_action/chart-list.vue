@@ -1,40 +1,48 @@
 <template>
   <div id="app-charts" class="content">
     <template v-if="charts.length > 0">
-      <template v-for="item in statistics.clearType">
-        <template v-if="item.count > 0"> {{ item.clearTypeString }}:{{ item.count }} </template>
-      </template>
-      <div class="graph">
-        <div class="inner">
-          <template v-for="item in statistics.clearType"
-            ><template v-if="item.count > 0"
-              ><span v-bind:class="['element', item.clearTypeClassString]" v-bind:style="{ width: 'calc(' + item.count + ' / ' + charts.length + ' * 100%' }"></span></template
-          ></template>
-        </div>
-      </div>
-      <template v-for="item in statistics.scoreRank">
-        <template v-if="item.count > 0"> {{ item.scoreRankString }}:{{ item.count }} </template>
-      </template>
-      <div class="graph">
-        <div class="inner">
-          <template v-for="item in statistics.scoreRank"
-            ><template v-if="item.count > 0"
-              ><span v-bind:class="['element', item.scoreRankClassString]" v-bind:style="{ width: 'calc(' + item.count + ' / ' + charts.length + ' * 100%' }"></span></template
-          ></template>
-        </div>
-      </div>
-      <template v-for="name in statistics.score.order">
-        {{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }}
+      <template v-if="summarySettings.clearType">
+        <template v-for="item in statistics.clearType">
+          <template v-if="item.count > 0"> {{ item.clearTypeString }}:{{ item.count }} </template>
+        </template>
         <div class="graph">
           <div class="inner">
-            <span
-              v-bind:class="['element', statistics.score[name].scoreRankClassString]"
-              v-bind:style="{ width: 'calc(' + statistics.score[name].value + ' / ' + 1000000 + ' * 100%' }"
-              ></span>
+            <template v-for="item in statistics.clearType"
+              ><template v-if="item.count > 0"
+                ><span v-bind:class="['element', item.clearTypeClassString]" v-bind:style="{ width: 'calc(' + item.count + ' / ' + charts.length + ' * 100%' }"></span></template
+            ></template>
           </div>
         </div>
       </template>
-      <template v-for="name in statistics.score.order">{{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }} </template>
+      <template v-if="summarySettings.scoreRank">
+        <template v-for="item in statistics.scoreRank">
+          <template v-if="item.count > 0"> {{ item.scoreRankString }}:{{ item.count }} </template>
+        </template>
+        <div class="graph">
+          <div class="inner">
+            <template v-for="item in statistics.scoreRank"
+              ><template v-if="item.count > 0"
+                ><span v-bind:class="['element', item.scoreRankClassString]" v-bind:style="{ width: 'calc(' + item.count + ' / ' + charts.length + ' * 100%' }"></span></template
+            ></template>
+          </div>
+        </div>
+      </template>
+      <template v-for="name in statistics.score.order">
+        <template v-if="summarySettings[name]">
+          {{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }}
+          <div class="graph">
+            <div class="inner">
+              <span
+                v-bind:class="['element', statistics.score[name].scoreRankClassString]"
+                v-bind:style="{ width: 'calc(' + statistics.score[name].value + ' / ' + 1000000 + ' * 100%' }"
+              ></span>
+            </div>
+          </div>
+        </template>
+      </template>
+      <template v-if="summarySettings.scoreStatistics">
+        <template v-for="name in statistics.score.order">{{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }} </template>
+      </template>
     </template>
 
     <div v-if="maxPage > 1" class="pager">
@@ -85,6 +93,7 @@ export default Vue.extend({
       statistics: {},
       pageCharts: [],
       charts: [],
+      summarySettings: {},
     };
   },
   methods: {
@@ -203,6 +212,7 @@ export default Vue.extend({
 */
 
 .score_list {
+  clear: right;
   display: grid;
   grid-template-columns: minmax(1px, max-content) auto minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(
       1px,

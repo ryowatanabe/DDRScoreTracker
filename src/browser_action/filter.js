@@ -1,9 +1,18 @@
+const summaryNames = ['clearType', 'scoreRank', 'scoreMax', 'scoreAverage', 'scoreMedian', 'scoreMin', 'scoreStatistics'];
 const filterNames = ['playMode', 'musicType', 'difficulty', 'level', 'clearType', 'scoreRank'];
 
 export function refreshList() {
+  let summarySettings = {};
+  summaryNames.forEach((name) => {
+    const elements = Array.from(document.querySelectorAll(`input[name=summarySetting_${name}]:checked`));
+    if (elements.length > 0) {
+      summarySettings[name] = true;
+    }
+  });
+
   let filterConditions = [];
-  filterNames.forEach(function (name) {
-    const elements = Array.from(document.querySelectorAll(`input[name=${name}]:checked`));
+  filterNames.forEach((name) => {
+    const elements = Array.from(document.querySelectorAll(`input[name=filterCondition_${name}]:checked`));
     if (elements.length > 0) {
       const condition = {
         attribute: name,
@@ -26,6 +35,7 @@ export function refreshList() {
     backgroundPage.saveConditions(filterConditions, sortConditions);
   });
   window.refreshList(
+    summarySettings,
     filterConditions,
     sortConditions.concat([
       /* tie breakers */
@@ -54,13 +64,13 @@ function closeFilter() {
 }
 
 function selectAll(name) {
-  const elements = document.querySelectorAll(`input[name=${name}]`);
+  const elements = document.querySelectorAll(`input[name=filterCondition_${name}]`);
   elements.forEach((element) => {
     element.checked = true;
   });
 }
 function selectNone(name) {
-  const elements = document.querySelectorAll(`input[name=${name}]`);
+  const elements = document.querySelectorAll(`input[name=filterCondition_${name}]`);
   elements.forEach((element) => {
     element.checked = false;
   });

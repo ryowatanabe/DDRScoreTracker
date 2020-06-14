@@ -40,7 +40,7 @@ window.getCharts = () => {
   return chartList.charts;
 };
 
-window.refreshList = (filterConditions, sortConditions) => {
+window.refreshList = (summarySettings, filterConditions, sortConditions) => {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     if (backgroundPage.getChartCount() == 0) {
       openMenu();
@@ -50,6 +50,7 @@ window.refreshList = (filterConditions, sortConditions) => {
       chartList.charts = newChartList.charts;
       chartList.maxPage = Math.ceil(newChartList.charts.length / Constants.PAGE_LENGTH);
       chartList.currentPage = 1;
+      chartList.summarySettings = summarySettings;
       gotoPage(chartList.currentPage);
     }
   });
