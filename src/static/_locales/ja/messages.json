@@ -5,6 +5,42 @@
   "appDesc": {
     "message": "DanceDanceRevolutionの公式サイトからスコアデータを収集し、整理して閲覧することができる拡張機能です。"
   },
+  "chart_list_summary_score_max": {
+    "message": "最高値"
+  },
+  "chart_list_summary_score_min": {
+    "message": "最低値"
+  },
+  "chart_list_summary_score_average": {
+    "message": "平均値"
+  },
+  "chart_list_summary_score_median": {
+    "message": "中央値"
+  },
+  "browser_action_filter_summary_setting": {
+    "message": "サマリ表示"
+  },
+  "browser_action_filter_summary_setting_clear_type": {
+    "message": "フルコンボ・クリア種別"
+  },
+  "browser_action_filter_summary_setting_score_rank": {
+    "message": "スコアランク"
+  },
+  "browser_action_filter_summary_setting_score_max": {
+    "message": "スコア最高値"
+  },
+  "browser_action_filter_summary_setting_score_min": {
+    "message": "スコア最低値"
+  },
+  "browser_action_filter_summary_setting_score_average": {
+    "message": "スコア平均値"
+  },
+  "browser_action_filter_summary_setting_score_median": {
+    "message": "スコア中央値"
+  },
+  "browser_action_filter_summary_setting_score_statistics": {
+    "message": "スコア統計サマリ"
+  },
   "browser_action_filter_filter_condition_game_mode": {
     "message": "ゲームモード"
   },

@@ -5,6 +5,42 @@
   "appDesc": {
     "message": "Google Chrome extension for tracking your DanceDanceRevolution play records"
   },
+  "chart_list_summary_score_max": {
+    "message": "Max Score"
+  },
+  "chart_list_summary_score_min": {
+    "message": "Min Score"
+  },
+  "chart_list_summary_score_average": {
+    "message": "Avg Score"
+  },
+  "chart_list_summary_score_median": {
+    "message": "Median"
+  },
+  "browser_action_filter_summary_setting": {
+    "message": "Summary View"
+  },
+  "browser_action_filter_summary_setting_clear_type": {
+    "message": "Clear Type"
+  },
+  "browser_action_filter_summary_setting_score_rank": {
+    "message": "Score Rank"
+  },
+  "browser_action_filter_summary_setting_score_max": {
+    "message": "Max Score"
+  },
+  "browser_action_filter_summary_setting_score_min": {
+    "message": "Min Score"
+  },
+  "browser_action_filter_summary_setting_score_average": {
+    "message": "Avg Score"
+  },
+  "browser_action_filter_summary_setting_score_median": {
+    "message": "Median"
+  },
+  "browser_action_filter_summary_setting_score_statistics": {
+    "message": "Score Statistics"
+  },
   "browser_action_filter_filter_condition_game_mode": {
     "message": "Game Mode"
   },
