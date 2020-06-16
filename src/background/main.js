@@ -3,6 +3,8 @@ import { ScoreList } from '../static/common/ScoreList.js';
 import { ScoreDetail } from '../static/common/ScoreDetail.js';
 import { ChartList } from '../static/common/ChartList.js';
 import { ChartData } from '../static/common/ChartData.js';
+import { SkillAttackIndexMap } from '../static/common/SkillAttackIndexMap.js';
+import { SkillAttackDataList } from '../static/common/SkillAttackDataList.js';
 import { Constants } from '../static/common/Constants.js';
 import { Logger } from '../static/common/Logger.js';
 import { Storage } from '../static/common/Storage.js';
@@ -489,8 +491,8 @@ async function closeTab() {
 }
 
 async function exportScoreToSkillAttack(ddrcode, password) {
-  const indexMap = {};
-  const skillData = {};
+  let skillAttackIndexMap;
+  let skillAttackDataList;
 
   Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_begin'));
   fetch('http://skillattack.com/sa4/data/master_music.txt')
@@ -500,36 +502,18 @@ async function exportScoreToSkillAttack(ddrcode, password) {
       }
       Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_fetch_music_master_success'));
       response.text().then((text) => {
-        const lines = text.split('\n');
-        Logger.debug(`master_music.txt contains ${lines.length} elements.`);
-        lines.forEach((line) => {
-          const elements = line.split('\t');
-          indexMap[elements[1]] = parseInt(elements[0], 10);
+        skillAttackIndexMap = SkillAttackIndexMap.createFromText(text);
 
-          fetch(`http://skillattack.com/sa4/data/dancer/${ddrcode}/score_${ddrcode}.txt`)
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error(`HTTP status: ${response.status}`);
-              }
-              response.text().then((text) => {
-                const lines = text.split('\n');
-                Logger.debug(`score_${ddrcode}.txt contains ${lines.length} elements.`);
-                lines.forEach((line) => {
-                  const elements = line.split('\t');
-                  const skill = {
-                    index: parseInt(elements[0], 10),
-                    playMode: parseInt(elements[1], 10),
-                    difficulty: parseInt(elements[2], 10),
-                    updatedAt: parseInt(elements[4], 10),
-                    score: parseInt(elements[5], 10),
-                    clearType: parseInt(elements[6], 10),
-                  };
-                  Logger.debug(skill);
-                });
-              });
-            })
-            .catch((reason) => {});
-        });
+        fetch(`http://skillattack.com/sa4/data/dancer/${ddrcode}/score_${ddrcode}.txt`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP status: ${response.status}`);
+            }
+            response.text().then((text) => {
+              skillAttackDataList = SkillAttackDataList.createFromText(text);
+            });
+          })
+          .catch((reason) => {});
       });
     })
     .catch((reason) => {
