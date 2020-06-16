@@ -510,7 +510,10 @@ async function exportScoreToSkillAttack(ddrcode, password) {
               throw new Error(`HTTP status: ${response.status}`);
             }
             response.text().then((text) => {
-              skillAttackDataList = SkillAttackDataList.createFromText(text);
+              skillAttackDataList = new SkillAttackDataList(skillAttackIndexMap);
+              skillAttackDataList.applyText(text);
+              const skillAttackDataListDiff = skillAttackDataList.getDiff(scoreList);
+              Logger.debug(skillAttackDataListDiff);
             });
           })
           .catch((reason) => {});

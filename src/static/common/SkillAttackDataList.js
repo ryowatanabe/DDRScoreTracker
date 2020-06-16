@@ -1,23 +1,24 @@
 import { SkillAttackDataElement } from './SkillAttackDataElement.js';
+import { Constants } from './Constants.js';
 import { Logger } from './Logger.js';
+import { Util } from './Util.js';
 
 export class SkillAttackDataList {
-  constructor() {
+  constructor(skillAttackIndexMap) {
     this.elements = {};
+    this.skillAttackIndexMap = skillAttackIndexMap;
   }
 
-  static createFromText(text) {
+  applyText(text) {
     const lines = text.split('\n');
-    const instance = new SkillAttackDataList();
     Logger.debug(`SkillAttackDataList.createFromText: text contains ${lines.length} elements.`);
     lines.forEach((line) => {
       if (line.trim() == '') {
         return;
       }
       const skillAttackDataElement = SkillAttackDataElement.createFromString(line);
-      instance.applyElement(skillAttackDataElement);
+      this.applyElement(skillAttackDataElement);
     });
-    return instance;
   }
 
   hasIndex(index) {
@@ -56,5 +57,46 @@ export class SkillAttackDataList {
       }
       this.elements[element.index][element.difficultyValue] = element;
     }
+  }
+
+  getDiff(scoreList) {
+    const diff = new SkillAttackDataList(this.skillAttackIndexMap);
+    scoreList.musicIds.forEach((musicId) => {
+      const scoreData = scoreList.getScoreDataByMusicId(musicId);
+      const index = this.skillAttackIndexMap.getIndexByMusicId(musicId);
+      if (typeof index == 'undefined') {
+        return;
+      }
+      scoreData.difficulties.forEach((difficultyValue) => {
+        const scoreDetail = scoreData.getScoreDetailByDifficulty(difficultyValue);
+        const currentData = this.getElement(index, difficultyValue);
+        const score = scoreDetail.score;
+        const clearType = scoreDetail.clearType > 5 ? scoreDetail.clearType - 5 : 0;
+        if(currentData !== null) {
+          // 更新チェック
+          if (score > currentData.score || clearType > currentData.clearType) {
+            diff.applyElement(new SkillAttackDataElement(
+              index,
+              Util.getPlayMode(difficultyValue),
+              Util.getDifficulty(difficultyValue),
+              0,
+              score,
+              clearType
+            ));
+          }
+        } else {
+          // 新規
+          diff.applyElement(new SkillAttackDataElement(
+            index,
+            Util.getPlayMode(difficultyValue),
+            Util.getDifficulty(difficultyValue),
+            0,
+            score,
+            clearType
+          ));
+        }
+      });
+    });
+    return diff;
   }
 }
