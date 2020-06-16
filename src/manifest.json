@@ -32,5 +32,5 @@
 
   "web_accessible_resources": ["common/*"],
 
-  "permissions": ["storage", "unlimitedStorage"]
+  "permissions": ["storage", "unlimitedStorage", "http://skillattack.com/"]
 }

@@ -488,6 +488,57 @@ async function closeTab() {
   }
 }
 
+async function exportScoreToSkillAttack(ddrcode, password) {
+  const indexMap = {};
+  const skillData = {};
+
+  Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_begin'));
+  fetch('http://skillattack.com/sa4/data/master_music.txt')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP status: ${response.status}`);
+      }
+      Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_fetch_music_master_success'));
+      response.text().then((text) => {
+        const lines = text.split('\n');
+        Logger.debug(`master_music.txt contains ${lines.length} elements.`);
+        lines.forEach((line) => {
+          const elements = line.split('\t');
+          indexMap[elements[1]] = parseInt(elements[0], 10);
+
+          fetch(`http://skillattack.com/sa4/data/dancer/${ddrcode}/score_${ddrcode}.txt`)
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP status: ${response.status}`);
+              }
+              response.text().then((text) => {
+                const lines = text.split('\n');
+                Logger.debug(`score_${ddrcode}.txt contains ${lines.length} elements.`);
+                lines.forEach((line) => {
+                  const elements = line.split('\t');
+                  const skill = {
+                    index: parseInt(elements[0], 10),
+                    playMode: parseInt(elements[1], 10),
+                    difficulty: parseInt(elements[2], 10),
+                    updatedAt: parseInt(elements[4], 10),
+                    score: parseInt(elements[5], 10),
+                    clearType: parseInt(elements[6], 10),
+                  };
+                  Logger.debug(skill);
+                });
+              });
+            })
+            .catch((reason) => {});
+        });
+      });
+    })
+    .catch((reason) => {
+      Logger.info(I18n.getMessage('log_message_network_error'));
+      Logger.debug(reason);
+      Logger.info(I18n.getMessage('log_message_aborted'));
+    });
+}
+
 const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT, onUpdateTab);
 
 (function () {
@@ -505,6 +556,7 @@ const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT
 
   window.abortAction = abortAction;
   window.echo = echo;
+  window.exportScoreToSkillAttack = exportScoreToSkillAttack;
   window.fetchMissingMusicInfo = fetchMissingMusicInfo;
   window.fetchParsedMusicList = fetchParsedMusicList;
   window.getChartCount = getChartCount;
