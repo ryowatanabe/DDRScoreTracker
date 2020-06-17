@@ -34,6 +34,16 @@ export class SkillAttackDataElement {
     return this.difficulty + (this.playMode == Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
   }
 
+  get formString() {
+    switch(this.clearType){
+      case 1:
+        return `${this.score}*`;
+      case 2:
+        return `${this.score}**`;
+    }
+    return `${this.score}`;
+  }
+
   merge(skillAttackDataElement) {
     if (this.index != skillAttackDataElement.index || this.playMode != skillAttackDataElement.playMode || this.difficulty != skillAttackDataElement.difficulty) {
       return false;

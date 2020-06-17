@@ -103,4 +103,24 @@ export class SkillAttackDataList {
     });
     return diff;
   }
+
+  urlSearchParams(ddrcode, password) {
+    const difficultyNames = ['gsp', 'bsp', 'dsp', 'esp', 'csp', 'bdp', 'ddp', 'edp', 'cdp'];
+    const params = new URLSearchParams();
+    params.append('_', 'score_submit');
+    params.append('password', password);
+    params.append('ddrcode', ddrcode);
+    Object.getOwnPropertyNames(this.elements).forEach((index) => {
+      params.append('index[]', `${index}`);
+      for (let difficultyValue = 0; difficultyValue < difficultyNames.length; difficultyValue++ ) {
+        const element = this.getElement(index, difficultyValue);
+        if (element !== null) {
+          params.append(`${difficultyNames[difficultyValue]}[]`, element.formString);
+        } else {
+          params.append(`${difficultyNames[difficultyValue]}[]`, '');
+        }
+      }
+    });
+    return params;
+  }
 }

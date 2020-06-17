@@ -513,7 +513,14 @@ async function exportScoreToSkillAttack(ddrcode, password) {
               skillAttackDataList = new SkillAttackDataList(skillAttackIndexMap);
               skillAttackDataList.applyText(text);
               const skillAttackDataListDiff = skillAttackDataList.getDiff(musicList, scoreList);
-              Logger.debug(skillAttackDataListDiff);
+              fetch('http://skillattack.com/sa4/dancer_input.php', {
+                method: "POST",
+                body: skillAttackDataListDiff.urlSearchParams(ddrcode, password)
+              })
+              .then((response) => {
+                Logger.info(I18n.getMessage('log_message_done'));
+              })
+              .catch((reason) => {});
             });
           })
           .catch((reason) => {});
