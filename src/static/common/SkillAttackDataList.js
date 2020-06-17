@@ -59,7 +59,7 @@ export class SkillAttackDataList {
     }
   }
 
-  getDiff(scoreList) {
+  getDiff(musicList, scoreList) {
     const diff = new SkillAttackDataList(this.skillAttackIndexMap);
     scoreList.musicIds.forEach((musicId) => {
       const scoreData = scoreList.getScoreDataByMusicId(musicId);
@@ -72,9 +72,12 @@ export class SkillAttackDataList {
         const currentData = this.getElement(index, difficultyValue);
         const score = scoreDetail.score;
         const clearType = scoreDetail.clearType > 5 ? scoreDetail.clearType - 5 : 0;
+        const musicTitle = musicList.hasMusic(musicId) ? musicList.getMusicDataById(musicId).title : '???';
+        const difficultyString = Constants.PLAY_MODE_AND_DIFFICULTY_STRING[difficultyValue];
         if(currentData !== null) {
           // 更新チェック
           if (score > currentData.score || clearType > currentData.clearType) {
+            Logger.info(`${musicTitle} (${difficultyString}) : ${currentData.score} ${currentData.clearType} → ${score} ${clearType}`);
             diff.applyElement(new SkillAttackDataElement(
               index,
               Util.getPlayMode(difficultyValue),
@@ -86,6 +89,7 @@ export class SkillAttackDataList {
           }
         } else {
           // 新規
+          Logger.info(`${musicTitle} (${difficultyString}) : ${score} ${clearType}`);
           diff.applyElement(new SkillAttackDataElement(
             index,
             Util.getPlayMode(difficultyValue),

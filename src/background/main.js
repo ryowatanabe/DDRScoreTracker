@@ -512,7 +512,7 @@ async function exportScoreToSkillAttack(ddrcode, password) {
             response.text().then((text) => {
               skillAttackDataList = new SkillAttackDataList(skillAttackIndexMap);
               skillAttackDataList.applyText(text);
-              const skillAttackDataListDiff = skillAttackDataList.getDiff(scoreList);
+              const skillAttackDataListDiff = skillAttackDataList.getDiff(musicList, scoreList);
               Logger.debug(skillAttackDataListDiff);
             });
           })
