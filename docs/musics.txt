@@ -367,6 +367,7 @@ I96dOqqqQIi9oiqbqDPbQ8I8PQbqOb1o	0	3	6	8	11	13	6	10	12	14	朧
 I9Ob6PlIiOQl6iQ6qO6QO0iQ1ld9DDO0	0	3	9	12	16	0	9	12	16	0	BLSTR
 I9iODl9bl1d8PilOilii9Dd19PP6QI66	0	4	5	8	10	0	4	9	13	0	チカラ
 ID9Dqo9QQQIP9ObD0lbbi6O6PiD18oD0	2	0	0	0	0	0	0	0	0	18	九段
+IDP9ldQoD8bdQ6d9Q0oI6QlI9b6Db9Oo	0	4	8	12	15	0	8	12	15	0	星屑の夜果て
 IDPbb8oiQl0od6b8OqlPDo08o0QDo6iQ	0	3	4	7	11	13	5	7	11	13	La receta
 IDldD8o8P8dbIP6oiDo11i10lo6bP6oQ	0	2	4	6	8	0	4	6	9	0	real-high-SPEED
 II68b0dooOIOlOiq0iQO18blDd6b9O9D	0	4	9	13	16	0	8	13	16	0	New York EVOLVED (Type A)
@@ -527,6 +528,7 @@ Q86b6I1Qi6Q918l6iOoOQl866oQoIQOi	0	2	5	8	11	0	5	8	11	0	ハピ恋☆らぶりぃ�
 Q8Ioq8POo69ol8bPiOPQPq61oqoPo0DO	0	3	4	7	8	0	3	6	8	0	Forever Sunshine
 Q8Q6d00DoIiPolOb9PIO0Pll96O0I1qD	0	2	6	8	11	14	5	8	11	14	ヤマトなでなで♡かぐや姫
 Q8bIDb60oPo890oi0l0O9PQd9lOb8o1Q	0	5	9	14	17	0	9	14	17	0	The History of the Future
+Q8bIddo10ilqbd6I8QOq1bod1OO8dqlO	0	4	7	11	14	0	7	11	14	0	Silly Love
 Q8qb1oQobdqDqi0i19qqb11P1oDoiD8O	0	4	8	11	14	15	8	11	14	15	IMANOGUILTS
 Q96Qo0qbQ81odQoqPOOQ98oDbo6Pb1IO	0	1	4	10	13	0	5	11	13	0	チルノのパーフェクトさんすう教室 (EDM REMIX)
 Q96bO9D61lib19IiIi0i69P80bo6q69Q	0	4	5	9	11	0	5	8	11	0	321STARS
@@ -535,6 +537,7 @@ Q9l0i6DPO08obldq101ldDioiqdIDqlq	0	2	5	9	13	17	5	10	13	17	タイガーランペ�
 QD0q90q9PIl9PdqqO9D9DO09DbiODOI6	0	3	3	7	10	0	3	7	11	0	Star Gate Heaven
 QD6b8i08P1IQloIPOPiqlIPoDlPi9DPI	0	3	5	8	12	14	5	8	11	14	Diamond Night
 QD8D6IQ1QoOPIPIIbI10QDOdd96OPIQi	0	3	6	9	12	11	6	9	12	11	#OurMemories
+QD9Ib18D9lIO10O19d16PbPb68q1190d	0	5	9	12	17	0	9	12	17	0	び
 QDP0i688bQi1Idqil1dOqDdPdoIPP6Q0	0	5	6	9	12	0	6	9	12	0	DXY!
 QI06q9lPIoo80DlI18Ooi6dbPl89bqi0	0	3	6	8	11	15	6	9	11	15	Our Soul
 QI96D9PqIQ90PidPQPdbqbi0q9q8lQbb	0	3	6	7	11	0	5	6	8	0	Quickening
@@ -811,6 +814,7 @@ lldPQPDP0qq8iqQ910l8b8PoQ6O668Q0	0	3	6	9	13	10	6	10	13	10	DOWNER & UPPER
 lo6bOoq86d9od6qQ9PiPibOioOQb96lP	0	1	4	8	11	10	4	8	11	11	TWINKLE♡HEART
 loD6oi96869O8ilii1QPOPDoP91l1PQQ	0	2	7	10	13	11	7	10	13	13	Summer fantasy (Darwin remix)
 loP08P1PPi990lPD0O060d888O9o6qb8	0	2	5	8	12	0	5	8	12	0	Seasons
+loii6b8OODDOl9q0OD88Ibb9I0qO0PPo	0	2	6	10	14	0	6	10	14	0	ラブキラ☆スプラッシュ
 lq9iPP06O8qiP1iooiboPO910b86di19	0	2	7	10	14	0	7	10	14	0	IRON HEART
 lqI8DD9Plq6IO8P8P6Pl8Di98DlI9oP8	0	3	7	12	15	0	7	12	15	0	おーまい！らぶりー！すうぃーてぃ！だーりん！
 lqOQbO0ql96IdDdD689o9PI1iI8Q1Ibi	0	2	3	6	10	0	5	7	11	0	Gotta Dance
