@@ -87,3 +87,10 @@ function closeMenu() {
 }
 document.getElementById('openMenuButton').addEventListener('click', openMenu);
 document.getElementById('closeMenuButton').addEventListener('click', closeMenu);
+
+(function () {
+  chrome.runtime.getBackgroundPage(function (backgroundPage) {
+    const saSettings = backgroundPage.getSaSettings();
+    document.querySelector(`#exportScoreToSkillAttackDdrCode`).value = saSettings.ddrcode;
+  });
+})();

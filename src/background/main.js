@@ -23,12 +23,16 @@ const storage = new Storage(
       filter: [],
       sort: [],
     },
+    saSettings: {
+      ddrcode: '',
+    },
     options: {},
   },
   (data) => {
     musicList = MusicList.createFromStorage(data.musics);
     scoreList = ScoreList.createFromStorage(data.scores);
     conditions = data.conditions;
+    saSettings = data.saSettings;
     options = data.options;
     updateCharts();
     changeState(STATE.IDLE);
@@ -42,6 +46,7 @@ let musicList; // 曲リスト。1曲1エントリ。
 let scoreList; // スコアリスト。1曲1エントリ。
 let chartList = new ChartList(); // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
 let conditions;
+let saSettings;
 let options;
 
 function abortAction() {
@@ -72,6 +77,7 @@ function saveStorage() {
     scores: scoreList.musics,
     musics: musicList.musics,
     conditions: conditions,
+    saSettings: saSettings,
     options: options,
   });
 }
@@ -88,6 +94,10 @@ function getConditions() {
   return conditions;
 }
 
+function getSaSettings() {
+  return saSettings;
+}
+
 function getOptions() {
   return options;
 }
@@ -98,6 +108,11 @@ function saveConditions(summarySettings, filterConditions, sortConditions) {
     filter: filterConditions,
     sort: sortConditions,
   };
+  saveStorage();
+}
+
+function saveSaSettings(ddrcode) {
+  saSettings.ddrcode = ddrcode;
   saveStorage();
 }
 
@@ -496,6 +511,7 @@ async function exportScoreToSkillAttack(ddrcode, password) {
     Logger.info(I18n.getMessage('log_message_aborted'));
     return;
   }
+  saveSaSettings(ddrcode);
 
   let skillAttackIndexMap;
   let skillAttackDataList;
@@ -541,8 +557,6 @@ async function exportScoreToSkillAttack(ddrcode, password) {
                       Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_no_differences'));
                       return;
                     }
-                    return;
-
                     fetch('http://skillattack.com/sa4/dancer_input.php', {
                       method: 'POST',
                       body: skillAttackDataListDiff.urlSearchParams(ddrcode, password),
@@ -604,6 +618,7 @@ const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT
   window.getConditions = getConditions;
   window.getOptions = getOptions;
   window.getMusicList = getMusicList;
+  window.getSaSettings = getSaSettings;
   window.getScoreList = getScoreList;
   window.getState = getState;
   window.resetStorage = resetStorage;
