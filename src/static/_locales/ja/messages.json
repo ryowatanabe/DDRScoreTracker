@@ -337,6 +337,21 @@
       }
     }
   },
+  "log_message_export_score_to_skill_attack_begin": {
+    "message": "skill attackにスコアデータを送信..."
+  },
+  "log_message_export_score_to_skill_attack_password_invalid": {
+    "message": "パスワードが正しくありません。"
+  },
+  "log_message_export_score_to_skill_attack_fetch_music_master_success": {
+    "message": "楽曲リストを取得しました。"
+  },
+  "log_message_export_score_to_skill_attack_fetch_score_data_success": {
+    "message": "スコアリストを取得しました。"
+  },
+  "log_message_export_score_to_skill_attack_no_differences": {
+    "message": "更新がありません。"
+  },
   "options_ui_enable_debug_log": {
     "message": "デバッグログを有効にする"
   },

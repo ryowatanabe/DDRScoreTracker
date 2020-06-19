@@ -143,7 +143,7 @@ gh pagesから曲リストを取得し、ローカルの曲リストを更新す
 
 function fetchParsedMusicList() {
   Logger.info(I18n.getMessage('log_message_fetch_parsed_music_list_begin'));
-  fetch(Constants.PARSED_MUSIC_LIST_URL)
+  fetch(Constants.PARSED_MUSIC_LIST_URL, { cache: 'no-store' })
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP status: ${response.status}`);
@@ -491,39 +491,84 @@ async function closeTab() {
 }
 
 async function exportScoreToSkillAttack(ddrcode, password) {
+  if (ddrcode.trim() == '') {
+    Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_password_invalid'));
+    Logger.info(I18n.getMessage('log_message_aborted'));
+    return;
+  }
+
   let skillAttackIndexMap;
   let skillAttackDataList;
-
+  const params = new URLSearchParams();
+  params.append('_', '');
+  params.append('password', password);
+  params.append('ddrcode', ddrcode);
   Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_begin'));
-  fetch('http://skillattack.com/sa4/data/master_music.txt')
+  fetch('http://skillattack.com/sa4/dancer_input.php', {
+    method: 'POST',
+    body: params,
+  })
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP status: ${response.status}`);
       }
-      Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_fetch_music_master_success'));
       response.text().then((text) => {
-        skillAttackIndexMap = SkillAttackIndexMap.createFromText(text);
-
-        fetch(`http://skillattack.com/sa4/data/dancer/${ddrcode}/score_${ddrcode}.txt`)
+        if (text.indexOf('Password invalid') >= 0) {
+          Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_password_invalid'));
+          Logger.info(I18n.getMessage('log_message_aborted'));
+          return;
+        }
+        fetch('http://skillattack.com/sa4/data/master_music.txt', { cache: 'no-store' })
           .then((response) => {
             if (!response.ok) {
               throw new Error(`HTTP status: ${response.status}`);
             }
+            Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_fetch_music_master_success'));
             response.text().then((text) => {
-              skillAttackDataList = new SkillAttackDataList(skillAttackIndexMap);
-              skillAttackDataList.applyText(text);
-              const skillAttackDataListDiff = skillAttackDataList.getDiff(musicList, scoreList);
-              fetch('http://skillattack.com/sa4/dancer_input.php', {
-                method: "POST",
-                body: skillAttackDataListDiff.urlSearchParams(ddrcode, password)
-              })
-              .then((response) => {
-                Logger.info(I18n.getMessage('log_message_done'));
-              })
-              .catch((reason) => {});
+              skillAttackIndexMap = SkillAttackIndexMap.createFromText(text);
+
+              fetch(`http://skillattack.com/sa4/data/dancer/${ddrcode}/score_${ddrcode}.txt`, { cache: 'no-store' })
+                .then((response) => {
+                  if (!response.ok) {
+                    throw new Error(`HTTP status: ${response.status}`);
+                  }
+                  Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_fetch_score_data_success'));
+                  response.text().then((text) => {
+                    skillAttackDataList = new SkillAttackDataList(skillAttackIndexMap);
+                    skillAttackDataList.applyText(text);
+                    const skillAttackDataListDiff = skillAttackDataList.getDiff(musicList, scoreList);
+                    if (skillAttackDataListDiff.count == 0) {
+                      Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_no_differences'));
+                      return;
+                    }
+                    return;
+
+                    fetch('http://skillattack.com/sa4/dancer_input.php', {
+                      method: 'POST',
+                      body: skillAttackDataListDiff.urlSearchParams(ddrcode, password),
+                    })
+                      .then((response) => {
+                        Logger.info(I18n.getMessage('log_message_done'));
+                      })
+                      .catch((reason) => {
+                        Logger.info(I18n.getMessage('log_message_network_error'));
+                        Logger.debug(reason);
+                        Logger.info(I18n.getMessage('log_message_aborted'));
+                      });
+                  });
+                })
+                .catch((reason) => {
+                  Logger.info(I18n.getMessage('log_message_network_error'));
+                  Logger.debug(reason);
+                  Logger.info(I18n.getMessage('log_message_aborted'));
+                });
             });
           })
-          .catch((reason) => {});
+          .catch((reason) => {
+            Logger.info(I18n.getMessage('log_message_network_error'));
+            Logger.debug(reason);
+            Logger.info(I18n.getMessage('log_message_aborted'));
+          });
       });
     })
     .catch((reason) => {
@@ -531,6 +576,7 @@ async function exportScoreToSkillAttack(ddrcode, password) {
       Logger.debug(reason);
       Logger.info(I18n.getMessage('log_message_aborted'));
     });
+  return;
 }
 
 const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT, onUpdateTab);

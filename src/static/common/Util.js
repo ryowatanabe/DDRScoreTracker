@@ -1,7 +1,7 @@
 import { Constants } from './Constants.js';
 
 export class Util {
-  static getPlayMode(difficultyValue){
+  static getPlayMode(difficultyValue) {
     return difficultyValue > Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE ? 1 : 0;
   }
   static getDifficulty(difficultyValue) {

@@ -2,6 +2,23 @@ import { Constants } from './Constants.js';
 import { Logger } from './Logger.js';
 
 export class SkillAttackDataElement {
+  get clearTypeString() {
+    return {
+      0: '',
+      1: 'FC',
+      2: 'PFC',
+      3: 'MFC',
+    };
+  }
+
+  get scoreString() {
+    let string = this.score.toLocaleString();
+    if (this.clearType != 0) {
+      string = string + ' ' + this.clearTypeString[this.clearType];
+    }
+    return string;
+  }
+
   constructor(index, playMode, difficulty, updatedAt, score, clearType) {
     this.index = index;
     this.playMode = playMode;
@@ -35,7 +52,7 @@ export class SkillAttackDataElement {
   }
 
   get formString() {
-    switch(this.clearType){
+    switch (this.clearType) {
       case 1:
         return `${this.score}*`;
       case 2:

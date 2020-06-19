@@ -74,30 +74,17 @@ export class SkillAttackDataList {
         const clearType = scoreDetail.clearType > 5 ? scoreDetail.clearType - 5 : 0;
         const musicTitle = musicList.hasMusic(musicId) ? musicList.getMusicDataById(musicId).title : '???';
         const difficultyString = Constants.PLAY_MODE_AND_DIFFICULTY_STRING[difficultyValue];
-        if(currentData !== null) {
+        const data = new SkillAttackDataElement(index, Util.getPlayMode(difficultyValue), Util.getDifficulty(difficultyValue), 0, score, clearType);
+        if (currentData !== null) {
           // 更新チェック
           if (score > currentData.score || clearType > currentData.clearType) {
-            Logger.info(`${musicTitle} (${difficultyString}) : ${currentData.score} ${currentData.clearType} → ${score} ${clearType}`);
-            diff.applyElement(new SkillAttackDataElement(
-              index,
-              Util.getPlayMode(difficultyValue),
-              Util.getDifficulty(difficultyValue),
-              0,
-              score,
-              clearType
-            ));
+            Logger.info(`${musicTitle} (${difficultyString}) : ${currentData.scoreString} → ${data.scoreString}`);
+            diff.applyElement(data);
           }
         } else {
           // 新規
-          Logger.info(`${musicTitle} (${difficultyString}) : ${score} ${clearType}`);
-          diff.applyElement(new SkillAttackDataElement(
-            index,
-            Util.getPlayMode(difficultyValue),
-            Util.getDifficulty(difficultyValue),
-            0,
-            score,
-            clearType
-          ));
+          Logger.info(`${musicTitle} (${difficultyString}) : ${data.scoreString}`);
+          diff.applyElement(data);
         }
       });
     });
@@ -112,7 +99,7 @@ export class SkillAttackDataList {
     params.append('ddrcode', ddrcode);
     Object.getOwnPropertyNames(this.elements).forEach((index) => {
       params.append('index[]', `${index}`);
-      for (let difficultyValue = 0; difficultyValue < difficultyNames.length; difficultyValue++ ) {
+      for (let difficultyValue = 0; difficultyValue < difficultyNames.length; difficultyValue++) {
         const element = this.getElement(index, difficultyValue);
         if (element !== null) {
           params.append(`${difficultyNames[difficultyValue]}[]`, element.formString);
@@ -122,5 +109,9 @@ export class SkillAttackDataList {
       }
     });
     return params;
+  }
+
+  get count() {
+    return Object.getOwnPropertyNames(this.elements).length;
   }
 }
