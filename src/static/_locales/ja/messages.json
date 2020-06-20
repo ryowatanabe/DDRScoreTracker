@@ -137,6 +137,24 @@
   "browser_action_menu_get_score_detail_description": {
     "message": "現在リストに表示されている曲のスコア詳細を公式サイトから取得します。e-amusementへのログインが必要です。"
   },
+  "browser_action_menu_export_score_to_skill_attack": {
+    "message": "DDR SAにスコアをエクスポート"
+  },
+  "browser_action_menu_export_score_to_skill_attack_ddrcode": {
+    "message": "DDR-CODE"
+  },
+  "browser_action_menu_export_score_to_skill_attack_password": {
+    "message": "パスワード"
+  },
+  "browser_action_menu_export_score_to_skill_attack_description": {
+    "message": "DDR Skill Attackにスコアデータをエクスポートします。DDR Skill Attackに登録の上、DDR-CODEとパスワードを上のフォームに入力してからボタンを押してください。パスワードは端末上には保存されません。"
+  },
+  "browser_action_menu_open_skill_attack_page": {
+    "message": "DDR SA Webサイトを開く"
+  },
+  "browser_action_menu_open_skill_attack_user_page": {
+    "message": "DDR SA ユーザページを開く"
+  },
   "browser_action_menu_close_button": {
     "message": "閉じる"
   },
@@ -319,10 +337,31 @@
       }
     }
   },
+  "log_message_export_score_to_skill_attack_begin": {
+    "message": "skill attackにスコアデータを送信..."
+  },
+  "log_message_export_score_to_skill_attack_password_invalid": {
+    "message": "パスワードが正しくありません。"
+  },
+  "log_message_export_score_to_skill_attack_fetch_music_master_success": {
+    "message": "楽曲リストを取得しました。"
+  },
+  "log_message_export_score_to_skill_attack_fetch_score_data_success": {
+    "message": "スコアリストを取得しました。"
+  },
+  "log_message_export_score_to_skill_attack_no_differences": {
+    "message": "更新がありません。"
+  },
+  "log_message_export_score_to_skill_attack_send_data": {
+    "message": "データを送信しています..."
+  },
   "options_ui_enable_debug_log": {
     "message": "デバッグログを有効にする"
   },
   "options_ui_not_close_tab_after_use": {
     "message": "使用後のタブを閉じない"
+  },
+  "options_ui_not_send_data_to_skill_attack": {
+    "message": "skill attackへのデータ送信を行わない"
   }
 }

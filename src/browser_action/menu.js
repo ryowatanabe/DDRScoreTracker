@@ -49,6 +49,26 @@ function updateScoreDetail() {
 }
 document.getElementById('updateScoreDetailButton').addEventListener('click', updateScoreDetail);
 
+document.getElementById('exportScoreToSkillAttackButton').addEventListener('click', () => {
+  chrome.runtime.getBackgroundPage(function (backgroundPage) {
+    backgroundPage
+      .exportScoreToSkillAttack(document.getElementById('exportScoreToSkillAttackDdrCode').value, document.getElementById('exportScoreToSkillAttackPassword').value)
+      .then((value) => {
+        Logger.debug(`exportScoreToSkillAttack success : ${value}`);
+      })
+      .catch((error) => {
+        Logger.debug(`exportScoreToSkillAttack failed : ${JSON.stringify(error.message)}`);
+      });
+  });
+});
+document.getElementById('openSkillAttackPageButton').addEventListener('click', () => {
+  window.open('http://skillattack.com/sa4/');
+});
+document.getElementById('openSkillAttackUserPageButton').addEventListener('click', () => {
+  const ddrcode = document.getElementById('exportScoreToSkillAttackDdrCode').value;
+  window.open('http://skillattack.com/sa4/dancer_profile.php?ddrcode=' + ddrcode);
+});
+
 export function initialize() {
   document.getElementById('menuContainer').classList.remove('not-initialized');
   document.getElementById('menuBackground').classList.remove('not-initialized');
@@ -67,3 +87,10 @@ function closeMenu() {
 }
 document.getElementById('openMenuButton').addEventListener('click', openMenu);
 document.getElementById('closeMenuButton').addEventListener('click', closeMenu);
+
+(function () {
+  chrome.runtime.getBackgroundPage(function (backgroundPage) {
+    const saSettings = backgroundPage.getSaSettings();
+    document.querySelector(`#exportScoreToSkillAttackDdrCode`).value = saSettings.ddrcode;
+  });
+})();

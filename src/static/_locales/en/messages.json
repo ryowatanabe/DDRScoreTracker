@@ -137,6 +137,24 @@
   "browser_action_menu_get_score_detail_description": {
     "message": "Fetch detailed score data for musics shown in current list from official site. Logging in to e-amusement is required."
   },
+  "browser_action_menu_export_score_to_skill_attack": {
+    "message": "Export score to DDR Skill Attack"
+  },
+  "browser_action_menu_export_score_to_skill_attack_ddrcode": {
+    "message": "DDR-CODE"
+  },
+  "browser_action_menu_export_score_to_skill_attack_password": {
+    "message": "Password"
+  },
+  "browser_action_menu_export_score_to_skill_attack_description": {
+    "message": "Export score data to DDR Skill Attack. Account of DDR Skill Attack is required. Fill your DDR-CODE and password into above form, then push the button. Your password is not saved on the device."
+  },
+  "browser_action_menu_open_skill_attack_page": {
+    "message": "Open DDR SA Website"
+  },
+  "browser_action_menu_open_skill_attack_user_page": {
+    "message": "Open your DDR SA page"
+  },
   "browser_action_menu_close_button": {
     "message": "Close"
   },
@@ -319,10 +337,31 @@
       }
     }
   },
+  "log_message_export_score_to_skill_attack_begin": {
+    "message": "Send score data to skill attack..."
+  },
+  "log_message_export_score_to_skill_attack_password_invalid": {
+    "message": "Password is incorrect."
+  },
+  "log_message_export_score_to_skill_attack_fetch_music_master_success": {
+    "message": "Fetched music list."
+  },
+  "log_message_export_score_to_skill_attack_fetch_score_data_success": {
+    "message": "Fetched score list."
+  },
+  "log_message_export_score_to_skill_attack_no_differences": {
+    "message": "No update found."
+  },
+  "log_message_export_score_to_skill_attack_send_data": {
+    "message": "Sending data..."
+  },
   "options_ui_enable_debug_log": {
     "message": "Enable debug log"
   },
   "options_ui_not_close_tab_after_use": {
     "message": "Not close tabs after use"
+  },
+  "options_ui_not_send_data_to_skill_attack": {
+    "message": "Not send data to skill attack"
   }
 }
