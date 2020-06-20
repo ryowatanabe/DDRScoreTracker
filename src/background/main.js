@@ -557,7 +557,7 @@ async function exportScoreToSkillAttack(ddrcode, password) {
                       Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_no_differences'));
                       return;
                     }
-                    if(options.notSendDataToSkillAttack) {
+                    if (options.notSendDataToSkillAttack) {
                       Logger.info(I18n.getMessage('log_message_done'));
                       return;
                     }

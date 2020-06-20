@@ -82,7 +82,7 @@ DDR Score Trackerのメニューを開き「スコア詳細を取得」ボタン
 
 ### When you want to forcibly stop the process / 強制的に処理を止めたい場合
 
-In `Window` > `Extensions` > `Load unpacked` in the Google Chrome's menu, turn off DDR Score Tracker and then turn on it again.
+In `Window` > `Extensions` in the Google Chrome's menu, turn off DDR Score Tracker and then turn it on again.
 
 Google Chromeのメニュー `ウィンドウ` → `拡張機能` にて DDR Score Tracker をオフにしたあと, 再度オンにしてください.
 
