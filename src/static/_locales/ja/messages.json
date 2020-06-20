@@ -5,6 +5,18 @@
   "appDesc": {
     "message": "DanceDanceRevolutionの公式サイトからスコアデータを収集し、整理して閲覧することができる拡張機能です。"
   },
+  "browser_action_filter_saved_filters": {
+    "message": "保存されたフィルタ"
+  },
+  "browser_action_filter_saved_filters_new_filter": {
+    "message": "(新規作成)"
+  },
+  "browser_action_filter_saved_filters_save_button": {
+    "message": "上書き保存"
+  },
+  "browser_action_filter_saved_filters_save_as_button": {
+    "message": "名前を付けて保存"
+  },
   "chart_list_summary_score_max": {
     "message": "最高値"
   },

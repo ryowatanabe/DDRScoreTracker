@@ -53,6 +53,9 @@ a {
 .filter a {
   cursor: pointer;
 }
+.filter select {
+  height: 2em;
+}
 
 /*
 機能メニュー
