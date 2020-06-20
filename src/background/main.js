@@ -567,6 +567,9 @@ async function exportScoreToSkillAttack(ddrcode, password) {
                       body: skillAttackDataListDiff.urlSearchParams(ddrcode, password),
                     })
                       .then((response) => {
+                        if (!response.ok) {
+                          throw new Error(`HTTP status: ${response.status}`);
+                        }
                         Logger.info(I18n.getMessage('log_message_done'));
                       })
                       .catch((reason) => {
