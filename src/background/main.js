@@ -557,6 +557,11 @@ async function exportScoreToSkillAttack(ddrcode, password) {
                       Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_no_differences'));
                       return;
                     }
+                    if(options.notSendDataToSkillAttack) {
+                      Logger.info(I18n.getMessage('log_message_done'));
+                      return;
+                    }
+                    Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_send_data'));
                     fetch('http://skillattack.com/sa4/dancer_input.php', {
                       method: 'POST',
                       body: skillAttackDataListDiff.urlSearchParams(ddrcode, password),

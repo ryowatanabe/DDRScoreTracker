@@ -352,10 +352,16 @@
   "log_message_export_score_to_skill_attack_no_differences": {
     "message": "更新がありません。"
   },
+  "log_message_export_score_to_skill_attack_send_data": {
+    "message": "データを送信しています..."
+  },
   "options_ui_enable_debug_log": {
     "message": "デバッグログを有効にする"
   },
   "options_ui_not_close_tab_after_use": {
     "message": "使用後のタブを閉じない"
+  },
+  "options_ui_not_send_data_to_skill_attack": {
+    "message": "skill attackへのデータ送信を行わない"
   }
 }

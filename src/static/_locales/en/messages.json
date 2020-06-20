@@ -337,10 +337,31 @@
       }
     }
   },
+  "log_message_export_score_to_skill_attack_begin": {
+    "message": "Send score data to skill attack..."
+  },
+  "log_message_export_score_to_skill_attack_password_invalid": {
+    "message": "Password is incorrect."
+  },
+  "log_message_export_score_to_skill_attack_fetch_music_master_success": {
+    "message": "Fetched music list."
+  },
+  "log_message_export_score_to_skill_attack_fetch_score_data_success": {
+    "message": "Fetched score list."
+  },
+  "log_message_export_score_to_skill_attack_no_differences": {
+    "message": "No update found."
+  },
+  "log_message_export_score_to_skill_attack_send_data": {
+    "message": "Sending data..."
+  },
   "options_ui_enable_debug_log": {
     "message": "Enable debug log"
   },
   "options_ui_not_close_tab_after_use": {
     "message": "Not close tabs after use"
+  },
+  "options_ui_not_send_data_to_skill_attack": {
+    "message": "Not send data to skill attack"
   }
 }
