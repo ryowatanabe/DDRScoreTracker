@@ -61,22 +61,30 @@ After the extension is loaded, a button representing DDR Score Tracker is added 
 
 ### Retrieving music list / 楽曲リストの読み込み
 
-Open DDR Score Tracker's menu, then click `楽曲リストを取得` button.
+Open DDR Score Tracker's menu, then click `Get music list` button.
 
 DDR Score Trackerのメニューを開き `楽曲リストを取得` ボタンをクリックしてください.
 
 ### Retrieving score data / スコア情報を取得
 
-Open DDR Score Tracker's menu, then click each button in `スコア情報を取得` section. Score and full combo type will be retrieved for each music and difficulty.
+Open DDR Score Tracker's menu, then click each button in `Get score data` section. Score and full combo type will be retrieved for each music and difficulty.
 
 DDR Score Trackerのメニューを開き `スコア情報を取得` の各ボタンをクリックしてください.
 各楽曲・譜面のスコアとフルコンボタイプを取得します.
 
 ### Retrieving detailed score data / スコア詳細を取得
 
-Open DDR Score Tracker's menu, then click `スコア詳細を取得` button. Detailed score data includes play count, clear count, max combo etc. will be retrieved for each music and difficulty shown in the list at that time.
+Open DDR Score Tracker's menu, then click `Get detailed score data` button. Detailed score data includes play count, clear count, max combo etc. will be retrieved for each music and difficulty shown in the list at that time.
 
 DDR Score Trackerのメニューを開き「スコア詳細を取得」ボタンをクリックしてください. そのときリストに表示中の楽曲・譜面について, プレイ回数・クリア回数・最大コンボ数といった情報を含むスコア詳細を取得します.
+
+## Troubleshooting / こんなときは
+
+### When you want to forcibly stop the process / 強制的に処理を止めたい場合
+
+In `Window` > `Extensions` > `Load unpacked` in the Google Chrome's menu, turn off DDR Score Tracker and then turn on it again.
+
+Google Chromeのメニュー `ウィンドウ` → `拡張機能` にて DDR Score Tracker をオフにしたあと, 再度オンにしてください.
 
 ## Regarding the handling of data / データの取り扱いについて
 
