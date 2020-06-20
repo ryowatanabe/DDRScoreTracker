@@ -18,6 +18,7 @@ const storage = new Storage(
   {
     scores: {},
     musics: {},
+    savedConditions: [],
     conditions: {
       summary: { clearType: true },
       filter: [],
@@ -31,6 +32,7 @@ const storage = new Storage(
   (data) => {
     musicList = MusicList.createFromStorage(data.musics);
     scoreList = ScoreList.createFromStorage(data.scores);
+    savedConditions = data.savedConditions;
     conditions = data.conditions;
     saSettings = data.saSettings;
     options = data.options;
@@ -45,6 +47,7 @@ let targetMusics = [];
 let musicList; // 曲リスト。1曲1エントリ。
 let scoreList; // スコアリスト。1曲1エントリ。
 let chartList = new ChartList(); // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
+let savedConditions;
 let conditions;
 let saSettings;
 let options;
@@ -76,6 +79,7 @@ function saveStorage() {
   storage.saveStorage({
     scores: scoreList.musics,
     musics: musicList.musics,
+    savedConditions: savedConditions,
     conditions: conditions,
     saSettings: saSettings,
     options: options,
@@ -90,6 +94,10 @@ function getBytesInUse() {
   return storage.bytesInUse;
 }
 
+function getSavedConditions() {
+  return savedConditions;
+}
+
 function getConditions() {
   return conditions;
 }
@@ -100,6 +108,26 @@ function getSaSettings() {
 
 function getOptions() {
   return options;
+}
+
+function saveSavedCondition(newSavedCondition) {
+  let isUpdated = false;
+  savedConditions.forEach((savedCondition) => {
+    if (savedCondition.name == newSavedCondition.name) {
+      savedCondition = newSavedCondition;
+      isUpdated = true;
+    }
+  });
+  if (!isUpdated) {
+    savedConditions.push(newSavedCondition);
+  }
+  saveStorage();
+  return savedConditions;
+}
+
+function saveSavedConditions(newSavedConditions) {
+  savedConditions = newSavedConditions;
+  saveStorage();
 }
 
 function saveConditions(summarySettings, filterConditions, sortConditions) {
@@ -627,6 +655,7 @@ const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT
   window.getOptions = getOptions;
   window.getMusicList = getMusicList;
   window.getSaSettings = getSaSettings;
+  window.getSavedConditions = getSavedConditions;
   window.getScoreList = getScoreList;
   window.getState = getState;
   window.resetStorage = resetStorage;
@@ -634,6 +663,8 @@ const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT
   window.restoreScoreList = restoreScoreList;
   window.saveConditions = saveConditions;
   window.saveOptions = saveOptions;
+  window.saveSavedCondition = saveSavedCondition;
+  window.saveSavedConditions = saveSavedConditions;
   window.updateCharts = updateCharts;
   window.updateMusicList = updateMusicList;
   window.updateScoreDetail = updateScoreDetail;

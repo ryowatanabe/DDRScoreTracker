@@ -1,16 +1,24 @@
+import { I18n } from '../static/common/I18n.js';
+
 const summaryNames = ['clearType', 'scoreRank', 'scoreMax', 'scoreAverage', 'scoreMedian', 'scoreMin', 'scoreStatistics'];
 const filterNames = ['playMode', 'musicType', 'difficulty', 'level', 'clearType', 'scoreRank'];
 
-export function refreshList() {
-  let summarySettings = {};
+let savedConditions = [];
+
+function getConditions() {
+  const result = {
+    summary: {},
+    filter: [],
+    sort: [],
+  };
+
   summaryNames.forEach((name) => {
     const elements = Array.from(document.querySelectorAll(`input[name=summarySetting]:checked`));
     elements.forEach((element) => {
-      summarySettings[element.value] = true;
+      result.summary[element.value] = true;
     });
   });
 
-  let filterConditions = [];
   filterNames.forEach((name) => {
     const elements = Array.from(document.querySelectorAll(`input[name=filterCondition_${name}]:checked`));
     if (elements.length > 0) {
@@ -20,24 +28,30 @@ export function refreshList() {
           return parseInt(element.value, 10);
         }),
       };
-      filterConditions.push(condition);
+      result.filter.push(condition);
     }
   });
 
-  let sortConditions = [
+  result.sort = [
     {
       attribute: document.querySelector(`input[name=sortCondition_attribute]:checked`).value,
       order: document.querySelector(`input[name=sortCondition_order]:checked`).value,
     },
   ];
 
+  return result;
+}
+
+export function refreshList() {
+  const conditions = getConditions();
+
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.saveConditions(summarySettings, filterConditions, sortConditions);
+    backgroundPage.saveConditions(conditions.summary, conditions.filter, conditions.sort);
   });
   window.refreshList(
-    summarySettings,
-    filterConditions,
-    sortConditions.concat([
+    conditions.summary,
+    conditions.filter,
+    conditions.sort.concat([
       /* tie breakers */
       { attribute: 'title', order: 'asc' },
       { attribute: 'playMode', order: 'asc' },
@@ -76,6 +90,74 @@ function selectNone(name) {
   });
 }
 
+function applyConditions(conditions) {
+  // reset
+  summaryNames.forEach((name) => {
+    document.querySelectorAll(`input[name=summarySetting]`).forEach((element) => {
+      element.checked = false;
+    });
+  });
+  filterNames.forEach((name) => {
+    document.querySelectorAll(`input[name=filterCondition_${name}]`).forEach((element) => {
+      element.checked = false;
+    });
+  });
+  // check
+  for (let [key, value] of Object.entries(conditions.summary)) {
+    document.querySelector(`#summarySetting_${key}`).checked = true;
+  }
+  conditions.filter.forEach(function (condition) {
+    condition.values.forEach(function (value) {
+      document.querySelector(`#filterCondition_${condition.attribute}_${value}`).checked = true;
+    });
+  });
+  if (conditions.sort.length == 0) {
+    conditions.sort.push({ attribute: 'score', order: 'desc' });
+  }
+  conditions.sort.forEach(function (condition) {
+    document.querySelector(`#sortCondition_attribute_${condition.attribute}`).checked = true;
+    document.querySelector(`#sortCondition_order_${condition.order}`).checked = true;
+  });
+}
+
+function applySavedFilter() {
+  const filterName = document.getElementById('savedFilterSelect').value;
+  if (filterName != '') {
+    savedConditions.forEach((savedCondition) => {
+      if (savedCondition.name == filterName) {
+        applyConditions(savedCondition);
+      }
+    });
+  }
+}
+
+function saveFilter() {
+  const filterName = document.getElementById('savedFilterSelect').value;
+  if (filterName == '') {
+    saveAsFilter();
+    return;
+  }
+
+  const conditions = getConditions();
+}
+
+function saveAsFilter() {
+  let filterName;
+  do {
+    filterName = window.prompt('', '').trim();
+  } while (filterName == '');
+
+  chrome.runtime.getBackgroundPage(function (backgroundPage) {
+    const conditions = getConditions();
+    conditions.name = filterName;
+    backgroundPage.saveSavedCondition(conditions);
+  });
+}
+
+document.getElementById('savedFilterSelect').addEventListener('change', applySavedFilter);
+document.getElementById('saveFilterButton').addEventListener('click', saveFilter);
+document.getElementById('saveAsFilterButton').addEventListener('click', saveAsFilter);
+
 document.getElementById('openFilterButton').addEventListener('click', openFilter);
 document.getElementById('closeFilterButton').addEventListener('click', closeFilter);
 
@@ -87,24 +169,27 @@ document.getElementById('closeFilterButton').addEventListener('click', closeFilt
     document.getElementById(`filterCondition_${name}_all`).addEventListener('click', selectAll.bind(this, `filterCondition_${name}`));
     document.getElementById(`filterCondition_${name}_clear`).addEventListener('click', selectNone.bind(this, `filterCondition_${name}`));
   });
-  /* デフォルトのチェックをつける */
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
+    /* saved filtersのプルダウンを作る */
+    savedConditions = backgroundPage.getSavedConditions();
+    savedConditions.forEach((savedCondition) => {
+      const option = document.createElement('option');
+      const textContent = document.createTextNode(savedCondition.name);
+      option.setAttribute('value', savedCondition.name);
+      option.appendChild(textContent);
+      document.getElementById('savedFilterSelect').appendChild(option);
+    });
+    const option = document.createElement('option');
+    const textContent = document.createTextNode(I18n.getMessage('browser_action_filter_saved_filters_new_filter'));
+    option.setAttribute('value', '');
+    option.appendChild(textContent);
+    document.getElementById('savedFilterSelect').appendChild(option);
+    document.getElementById('savedFilterSelect').value = '';
+
+    /* デフォルトのチェックをつける */
     const conditions = backgroundPage.getConditions();
-    for (let [key, value] of Object.entries(conditions.summary)) {
-      document.querySelector(`#summarySetting_${key}`).checked = true;
-    }
-    conditions.filter.forEach(function (condition) {
-      condition.values.forEach(function (value) {
-        document.querySelector(`#filterCondition_${condition.attribute}_${value}`).checked = true;
-      });
-    });
-    if (conditions.sort.length == 0) {
-      conditions.sort.push({ attribute: 'score', order: 'desc' });
-    }
-    conditions.sort.forEach(function (condition) {
-      document.querySelector(`#sortCondition_attribute_${condition.attribute}`).checked = true;
-      document.querySelector(`#sortCondition_order_${condition.order}`).checked = true;
-    });
+    applyConditions(conditions);
+
     refreshList();
   });
 })();
