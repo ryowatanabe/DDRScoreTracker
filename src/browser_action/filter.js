@@ -90,6 +90,25 @@ function selectNone(name) {
   });
 }
 
+function updateSavedFilterSelect(selectedValue = '') {
+  const savedFilterSelect = document.getElementById('savedFilterSelect');
+  while (savedFilterSelect.firstChild) { savedFilterSelect.removeChild(savedFilterSelect.firstChild); }
+
+  savedConditions.forEach((savedCondition) => {
+    const option = document.createElement('option');
+    const textContent = document.createTextNode(savedCondition.name);
+    option.setAttribute('value', savedCondition.name);
+    option.appendChild(textContent);
+    savedFilterSelect.appendChild(option);
+  });
+  const option = document.createElement('option');
+  const textContent = document.createTextNode(I18n.getMessage('browser_action_filter_saved_filters_new_filter'));
+  option.setAttribute('value', '');
+  option.appendChild(textContent);
+  savedFilterSelect.appendChild(option);
+  savedFilterSelect.value = selectedValue;
+}
+
 function applyConditions(conditions) {
   // reset
   summaryNames.forEach((name) => {
@@ -138,7 +157,12 @@ function saveFilter() {
     return;
   }
 
-  const conditions = getConditions();
+  chrome.runtime.getBackgroundPage(function (backgroundPage) {
+    const conditions = getConditions();
+    conditions.name = filterName;
+    savedConditions = backgroundPage.saveSavedCondition(conditions);
+    updateSavedFilterSelect(filterName);
+  });
 }
 
 function saveAsFilter() {
@@ -150,7 +174,8 @@ function saveAsFilter() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     const conditions = getConditions();
     conditions.name = filterName;
-    backgroundPage.saveSavedCondition(conditions);
+    savedConditions = backgroundPage.saveSavedCondition(conditions);
+    updateSavedFilterSelect(filterName);
   });
 }
 
@@ -172,19 +197,7 @@ document.getElementById('closeFilterButton').addEventListener('click', closeFilt
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     /* saved filtersのプルダウンを作る */
     savedConditions = backgroundPage.getSavedConditions();
-    savedConditions.forEach((savedCondition) => {
-      const option = document.createElement('option');
-      const textContent = document.createTextNode(savedCondition.name);
-      option.setAttribute('value', savedCondition.name);
-      option.appendChild(textContent);
-      document.getElementById('savedFilterSelect').appendChild(option);
-    });
-    const option = document.createElement('option');
-    const textContent = document.createTextNode(I18n.getMessage('browser_action_filter_saved_filters_new_filter'));
-    option.setAttribute('value', '');
-    option.appendChild(textContent);
-    document.getElementById('savedFilterSelect').appendChild(option);
-    document.getElementById('savedFilterSelect').value = '';
+    updateSavedFilterSelect();
 
     /* デフォルトのチェックをつける */
     const conditions = backgroundPage.getConditions();

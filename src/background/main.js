@@ -114,7 +114,9 @@ function saveSavedCondition(newSavedCondition) {
   let isUpdated = false;
   savedConditions.forEach((savedCondition) => {
     if (savedCondition.name == newSavedCondition.name) {
-      savedCondition = newSavedCondition;
+      savedCondition.summary = newSavedCondition.summary;
+      savedCondition.filter = newSavedCondition.filter;
+      savedCondition.sort = newSavedCondition.sort;
       isUpdated = true;
     }
   });
@@ -128,6 +130,7 @@ function saveSavedCondition(newSavedCondition) {
 function saveSavedConditions(newSavedConditions) {
   savedConditions = newSavedConditions;
   saveStorage();
+  return savedConditions;
 }
 
 function saveConditions(summarySettings, filterConditions, sortConditions) {
