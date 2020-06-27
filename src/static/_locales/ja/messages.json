@@ -5,6 +5,21 @@
   "appDesc": {
     "message": "DanceDanceRevolutionの公式サイトからスコアデータを収集し、整理して閲覧することができる拡張機能です。"
   },
+  "browser_action_filter_saved_filters": {
+    "message": "保存されたフィルタ"
+  },
+  "browser_action_filter_saved_filters_edit": {
+    "message": "[ソート・編集]"
+  },
+  "browser_action_filter_saved_filters_new_filter": {
+    "message": "(新規作成)"
+  },
+  "browser_action_filter_saved_filters_save_button": {
+    "message": "上書き保存"
+  },
+  "browser_action_filter_saved_filters_save_as_button": {
+    "message": "名前を付けて保存"
+  },
   "chart_list_summary_score_max": {
     "message": "最高値"
   },
@@ -16,6 +31,9 @@
   },
   "chart_list_summary_score_median": {
     "message": "中央値"
+  },
+  "filter_editor_delete_button": {
+    "message": "削除"
   },
   "browser_action_filter_summary_setting": {
     "message": "サマリ表示"
@@ -160,6 +178,9 @@
   },
   "browser_action_menu_to_debug_page_button": {
     "message": "デバッグページ"
+  },
+  "browser_action_edit_filter_return": {
+    "message": "<< 戻る"
   },
   "browser_action_debug_page_dump_music_list": {
     "message": "楽曲リストを出力"
