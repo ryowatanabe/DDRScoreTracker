@@ -92,7 +92,9 @@ function selectNone(name) {
 
 function updateSavedFilterSelect(selectedValue = '') {
   const savedFilterSelect = document.getElementById('savedFilterSelect');
-  while (savedFilterSelect.firstChild) { savedFilterSelect.removeChild(savedFilterSelect.firstChild); }
+  while (savedFilterSelect.firstChild) {
+    savedFilterSelect.removeChild(savedFilterSelect.firstChild);
+  }
 
   savedConditions.forEach((savedCondition) => {
     const option = document.createElement('option');

@@ -5,6 +5,21 @@
   "appDesc": {
     "message": "Google Chrome extension for tracking your DanceDanceRevolution play records"
   },
+  "browser_action_filter_saved_filters": {
+    "message": "Saved Filters"
+  },
+  "browser_action_filter_saved_filters_edit": {
+    "message": "[Sort and Edit]"
+  },
+  "browser_action_filter_saved_filters_new_filter": {
+    "message": "(create new)"
+  },
+  "browser_action_filter_saved_filters_save_button": {
+    "message": "Save"
+  },
+  "browser_action_filter_saved_filters_save_as_button": {
+    "message": "Save as"
+  },
   "chart_list_summary_score_max": {
     "message": "Max Score"
   },
@@ -16,6 +31,9 @@
   },
   "chart_list_summary_score_median": {
     "message": "Median"
+  },
+  "filter_editor_delete_button": {
+    "message": "Delete"
   },
   "browser_action_filter_summary_setting": {
     "message": "Summary View"
@@ -160,6 +178,9 @@
   },
   "browser_action_menu_to_debug_page_button": {
     "message": "Debug page"
+  },
+  "browser_action_edit_filter_return": {
+    "message": "<< Back"
   },
   "browser_action_debug_page_dump_music_list": {
     "message": "Export music list"
