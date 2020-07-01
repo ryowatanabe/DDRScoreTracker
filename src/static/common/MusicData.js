@@ -40,7 +40,7 @@ export class MusicData {
     const iterator = this.difficulty.keys();
     let isUpdated = false;
     for (const index of iterator) {
-      if (this.difficulty[index] == 0 && musicData.difficulty[index] != 0) {
+      if (this.difficulty[index] != musicData.difficulty[index]) {
         isUpdated = true;
         this.difficulty[index] = musicData.difficulty[index];
       }
