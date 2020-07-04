@@ -96,6 +96,11 @@ This software retrieves music list from [github pages](https://ryowatanabe.githu
 
 楽曲リストの取得は[github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics.txt)から行っています. それ以外のデータの取得は[公式サイト](https://p.eagate.573.jp/game/ddr/ddra20/p/)から行います.
 
+## Changelog / 変更履歴
+
+[CHANGELOG.md](https://github.com/ryowatanabe/DDRScoreTracker/blob/master/CHANGELOG.md)
+
+
 ## License / ライセンス
 
 [MIT](https://github.com/ryowatanabe/DDRScoreTracker/blob/master/LICENSE)
