@@ -531,7 +531,7 @@ async function handleError(res) {
 }
 
 async function closeTab() {
-  if (options.notcloseTabAfterUse != true) {
+  if (options.notCloseTabAfterUse != true) {
     await browserController.closeTab();
   }
 }

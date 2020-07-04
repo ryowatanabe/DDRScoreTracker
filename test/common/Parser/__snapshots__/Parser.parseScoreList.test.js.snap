@@ -11,7 +11,32 @@ Object {
 }
 `;
 
-exports[`Parser.ParseScoreList (grade) 1`] = `
+exports[`Parser.ParseScoreList (grade dp plus) 1`] = `
+Object {
+  "currentPage": 1,
+  "hasNext": false,
+  "maxPage": 1,
+  "nextUrl": "",
+  "scores": Array [
+    ScoreData {
+      "difficulty": Object {
+        "8": ScoreDetail {
+          "clearCount": null,
+          "clearType": 6,
+          "maxCombo": null,
+          "playCount": null,
+          "score": 988830,
+          "scoreRank": 15,
+        },
+      },
+      "musicId": "bIb6Q6DD9iP1d61dbOqdi6IQPllOb1IP",
+    },
+  ],
+  "status": 0,
+}
+`;
+
+exports[`Parser.ParseScoreList (grade dp) 1`] = `
 Object {
   "currentPage": 1,
   "hasNext": false,

@@ -42,8 +42,16 @@ test('Parser.ParseScoreList (nonstop)', async () => {
   expect(res).toMatchSnapshot();
 });
 
-test('Parser.ParseScoreList (grade)', async () => {
-  const html = fs.readFileSync(path.resolve(path.join(__dirname, 'fixtures/score-list-grade-1.html')), 'utf8');
+test('Parser.ParseScoreList (grade dp)', async () => {
+  const html = fs.readFileSync(path.resolve(path.join(__dirname, 'fixtures/score-list-grade-dp-1.html')), 'utf8');
+  const rootElement = document.createElement('body');
+  rootElement.innerHTML = html;
+  const res = Parser.parseScoreList(rootElement);
+  expect(res).toMatchSnapshot();
+});
+
+test('Parser.ParseScoreList (grade dp plus)', async () => {
+  const html = fs.readFileSync(path.resolve(path.join(__dirname, 'fixtures/score-list-grade-dp-plus-1.html')), 'utf8');
   const rootElement = document.createElement('body');
   rootElement.innerHTML = html;
   const res = Parser.parseScoreList(rootElement);

@@ -74,6 +74,9 @@
   "browser_action_filter_filter_condition_music_type_grade": {
     "message": "段位認定"
   },
+  "browser_action_filter_filter_condition_music_type_grade_plus": {
+    "message": "段位認定(PLUS)"
+  },
   "browser_action_filter_filter_condition_difficulty": {
     "message": "難易度"
   },
@@ -148,6 +151,9 @@
   },
   "browser_action_menu_get_score_data_grade": {
     "message": "段位認定"
+  },
+  "browser_action_menu_get_score_data_grade_plus": {
+    "message": "段位認定(PLUS)"
   },
   "browser_action_menu_get_score_detail": {
     "message": "スコア詳細を取得"

@@ -31,9 +31,11 @@ function updateScoreList(playMode, musicType) {
 document.getElementById('updateSingleScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.SINGLE, Constants.MUSIC_TYPE.NORMAL));
 document.getElementById('updateSingleNonstopScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.SINGLE, Constants.MUSIC_TYPE.NONSTOP));
 document.getElementById('updateSingleGradeScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.SINGLE, Constants.MUSIC_TYPE.GRADE));
+document.getElementById('updateSingleGradePlusScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.SINGLE, Constants.MUSIC_TYPE.GRADE_PLUS));
 document.getElementById('updateDoubleScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.DOUBLE, Constants.MUSIC_TYPE.NORMAL));
 document.getElementById('updateDoubleNonstopScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.DOUBLE, Constants.MUSIC_TYPE.NONSTOP));
 document.getElementById('updateDoubleGradeScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.DOUBLE, Constants.MUSIC_TYPE.GRADE));
+document.getElementById('updateDoubleGradePlusScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.DOUBLE, Constants.MUSIC_TYPE.GRADE_PLUS));
 
 function updateScoreDetail() {
   const targetMusics = [];

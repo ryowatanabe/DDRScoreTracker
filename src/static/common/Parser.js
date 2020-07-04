@@ -112,7 +112,7 @@ export class Parser {
     const pages = rootElement.querySelectorAll('#paging_box')[0].querySelectorAll('.page_num');
     res.maxPage = parseInt(pages[pages.length - 1].querySelector('a').innerHTML, 10);
 
-    const isDouble = rootElement.querySelectorAll('#t_double.game_type .select').length > 0;
+    const isDouble = rootElement.querySelectorAll('#t_double.game_type .select, #t_double.grade_type .select, #t_double_p.grade_type .select').length > 0;
     const scores = Array.from(rootElement.querySelectorAll('tr.data'));
     scores.forEach(function (score) {
       const regexp = /^.*img=([0-9a-zA-Z]+).*$/;

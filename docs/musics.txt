@@ -142,6 +142,7 @@
 6bO0Dq60bboi009iDbO8o9Q9999PiiDP	0	2	5	8	11	13	5	8	11	13	Leaving…
 6bdDP91o1II60Qo99D60QI81o6oPlI80	0	5	11	13	15	0	12	14	16	0	Arrabbiata
 6bid6d9qPQ80DOqiidQQ891o6Od8801l	0	8	12	15	18	19	12	15	18	19	Over The “Period”
+6bo6ID6l11qd6lolilI6o6q8I6ddo88i	3	0	0	0	0	10	0	0	0	0	初段 (PLUS)
 6boDb6Pdd6QDP1oPdlQ0Qo1ld0lQb6P6	0	0	0	0	0	14	0	0	0	15	B4U ("VOLTAGE" Special)
 6d6bqoOlqi8ooqOdlqdPblqol88b68QP	0	4	7	11	16	0	7	12	16	0	VANESSA
 6d8DiDl0i1oldbbo0o60PQ0q96d608Dq	0	4	9	12	16	0	9	12	16	0	ALPACORE
@@ -157,6 +158,7 @@
 6l0iQ18D0I00P89lIqI8bl9biIOi018O	0	3	7	11	15	0	7	11	15	0	BRILLIANT 2U (AKBK MIX)
 6lD1ooDi8Pdl0OlO0QoIioI8119I0PPq	0	3	7	10	14	0	8	10	15	0	Sakura Sunrise
 6lQ9iQdq8P0Q11q9O8dbl9Q9Pi8bIb98	0	5	6	8	12	12	6	8	12	11	Dance Dance Revolution
+6loIiOd8PP90dPOq16Q6PdPPO0DQDOPP	3	0	0	0	0	13	0	0	0	0	四段 (PLUS)
 6loP1dbiOq0Q8i9QQOI6o0iOO6bdIQOO	0	2	5	9	12	14	5	9	11	14	Tell me what to do
 6lqoOddiPQ6D6160bOdP116bQdIliII8	0	3	4	7	9	0	5	7	9	0	STAY (Organic house Version)
 6o966dbdo9dPIil6qQ09d1I0o0Qld611	0	0	0	0	0	13	0	0	0	13	Dance Dance Revolution(X-Special)
@@ -234,6 +236,7 @@
 90qP0000qoO8o8dIidlO611ilO11Oo9Q	0	2	5	10	13	0	5	10	13	0	Hopeful
 911lId0IooIOq1oDPoQ0iQiDiOIbd6oo	0	5	7	11	13	11	7	11	13	11	桜
 918oPDQDoPlD1OlqlqQI08I6dD9iqoil	0	2	5	9	13	0	5	10	13	0	朝色の紙飛行機
+91DOoD99iIq9oIdOi9QqDQ0qlQPQPOii	3	0	0	0	0	14	0	0	0	0	五段 (PLUS)
 91dD6iqPO066do99169POPbQPbo9o6oq	0	2	6	10	13	0	7	10	13	0	地方創生☆チクワクティクス
 91qD6DbDqi96qbIO66oboliPD8IPP6io	0	3	7	11	13	16	7	11	13	16	輪廻転生
 96Q0Piqo9PPQoQdi9001DO6P9Piqi0dq	0	4	6	8	11	11	6	8	12	12	Waiting 4 u
@@ -396,6 +399,7 @@ Ib01P6O8OPl8qqQi9QO6dii18ID69I8P	0	3	7	11	13	0	7	11	13	0	Grand Chariot
 IbDoODD9qb66Iqd6DbOQiOoDll1DqiO9	0	3	6	10	12	0	6	10	13	0	君氏危うくも近うよれ
 IbI90PiioDlqPP19D1odPPbP1PP0009O	0	2	5	9	12	0	6	9	12	0	SKY HIGH (20th Anniversary Mix)
 Ibd8d0bllqOo61lqlQPd8lP01D0Qb9o6	0	3	4	7	11	0	4	7	13	0	ヒマワリ
+Iblb8l6qPOQD8do891b1O0Pd9q60b6oD	3	0	0	0	0	0	0	0	0	12	三段 (PLUS)
 Id8IPlqQodD01dPiq8oPPQoPQq6booi0	0	2	8	12	15	0	8	12	15	0	SUPER SUMMER SALE
 IlQodD9Dbld8QiOql68bPPQbd6bll6i1	2	0	0	0	0	0	0	0	0	11	二段
 IlbI1QQOPI0o0IdoPI6QPldqQob16DOq	0	4	8	13	16	0	8	13	16	0	ナイト・オブ・ナイツ (Ryu☆Remix)
@@ -414,10 +418,12 @@ O110IdDiDlDQ66bb1o9lbqiqQq6lOid1	0	2	4	7	9	0	5	6	8	0	TimeHollow
 O111bDqd0oQ1O8IqiIDQq091l1IDO8oI	0	4	5	8	13	0	4	7	13	0	Flow (Jammin' Ragga Mix)
 O1blDPOQ8IQb00o0D89QIDIlo8b06liD	0	3	4	7	9	0	4	7	10	0	HIGHER
 O6I9ioqii8i6I1DIb1PqOD6q0ooo8bDo	0	7	8	10	12	13	8	11	13	13	Across the nightmare
+O6Pi0O800b8b6d9dd9P89dD1900I1q80	1	5	8	12	15	0	8	12	15	0	HYPER
 O6llIdODQD6oDQ6QiPQDOlob9i8l6qib	0	6	11	13	17	18	10	13	17	18	Fascination MAXX
 O6q0qIQdII9086d9q6o0D1PO06liQ9iO	0	5	8	12	16	0	8	12	15	0	Poochie
 O6q1o06Po9lQbqOl08Io1obqQ9QPi09b	0	0	0	0	0	11	0	0	0	10	CELEBRATE NITE(EURO TRANCE STYLE)
 O8qii6oiooPd8lbPqDo9QQioIoQQOoq0	0	3	4	6	9	0	3	6	9	0	INSIDE YOUR HEART
+O91QbQb0QdObIO6d8lo8lq00ibOQP9PQ	3	0	0	0	0	17	0	0	0	0	八段 (PLUS)
 O9Id8Qi6OIDIQ6bPi610q0001l1P099q	0	4	9	11	15	0	9	11	15	0	PARANOIA survivor
 O9qDQOQO8dDDIiO9dPP0Pb8qQo9l89D9	0	5	11	14	17	0	11	15	17	0	最小三倍完全数
 ODQOP1dblD6q8d160Ioi0dIoQloI6oQO	0	4	4	6	9	0	5	6	9	0	THE SHINING POLARIS
@@ -517,6 +523,7 @@ Pl0dPid9lQDo6PDQDqPboPqO6iIDIqoo	0	5	9	10	12	0	10	12	11	0	PARANOiA MAX～DIRTY M
 PlIiPiPoI9DIbPdIPoqQlIq61Pd8QIDo	0	2	5	7	10	13	4	7	10	14	Tribe
 Pld9iO6oi9qlDD08l8QDdIi6d6Q6iDd1	0	2	5	9	12	0	5	9	13	0	Programmed Universe
 PldO10PIiQ6lOiI16o060OQIiq69QO96	0	3	5	9	13	0	5	10	13	0	すきなことだけでいいです
+Plld00DiIO9bPqdq190li1iIPDdq6Qlb	1	3	7	11	15	17	7	10	14	17	Intelligence
 PloPqd6Q19Q990dl16I0Qi06i0l8o168	0	3	6	9	12	0	6	10	12	0	魔理沙は大変なものを盗んでいきました
 PlqI9Q1I6qdqb0IolOl1qP0bOQP0ibPP	0	4	5	8	11	0	4	8	12	0	FIRE
 Po09DbIQ9QPoboQi0900lbbOqDoPbIod	0	2	5	9	11	14	3	9	12	13	neko＊neko
@@ -583,6 +590,7 @@ Qq6D900bD60PddqqbdQb96Pd60918100	0	4	6	9	12	0	6	9	12	0	滅亡天使 † にこ�
 Qq8bbbqO6qQ1DPODd16oi1QDQoQ9b8DO	0	3	7	11	16	0	7	11	15	0	KHAMEN BREAK
 b08D1ODPP0IqlIl91dDDdD1d0lD8bP1d	0	2	4	7	11	0	4	8	11	0	dreaming can make a wish come true
 b0DP0oqbid0iIQ6D88dDIiiDiq9oi19Q	0	3	5	8	11	0	5	8	11	0	stealth
+b0DliOIqlP9lldO9qQo0986QIo9io96d	3	0	0	0	0	0	0	0	0	16	七段 (PLUS)
 b0Po680ibI600ObOi6qqidI06oqo0Olq	0	4	3	8	10	0	5	7	11	0	GORGEOUS 2012
 b0QQ6OPD1dDqQ6D6IDQqlDd180Db609I	0	3	8	12	15	15	8	12	16	16	TRIP MACHINE PhoeniX
 b0lI9Ili8loOb1DD6Dd8lqII60b90101	0	3	5	8	12	0	6	7	12	0	Taj He Spitz (Tommie Sunshine's Brooklyn Fire Re-Touch)
@@ -593,6 +601,7 @@ b60odbPO1IQd6d0qPIi1dQODq16i9811	0	1	5	8	11	13	5	8	11	13	Elysium
 b6dqPiOO6iO6b8D90Ido6QPOlObd9o98	0	3	5	9	13	0	5	8	10	0	Mind Parasite
 b6l6qPPdiOqqPqqII0IPqI981bolOqIb	0	3	5	9	12	14	6	9	12	14	La libertad
 b6ldDOq9qi1IiIIdiIl1108q1iQ9O6d6	0	2	8	11	14	0	8	11	14	0	Shiny World
+b6qOqD9bOQO1O0q8000D6dIdqb80li1b	3	0	0	0	0	12	0	0	0	0	三段 (PLUS)
 b80qOO6l8060990qQPod1bOd8Q9d69qo	0	4	9	12	16	0	9	13	16	0	The World Ends Now
 b8dqI0Iq60iQPPobiiQ8O6PiIqdodDiQ	0	4	5	7	12	0	5	8	12	0	GIRIGILI門前雀羅
 b9IoO68b1Qd9I6O8qqoo6q1o8DQ8l9lo	0	3	7	10	14	0	7	10	14	0	Synergy For Angels
@@ -600,6 +609,7 @@ b9OboQl6d9PqQddIdQDobP0d8o6dOqob	2	0	0	0	0	11	0	0	0	0	二段
 b9QiIQ18b6o1bqPdqI6lI1OIqboPIDI9	0	2	5	9	11	0	5	9	12	0	妄想税
 bD1DbibPIq9IIlQd0OIIl0o91QI1il69	0	3	6	9	13	16	7	10	13	16	Monkey Business
 bDDd08iP8dlIlOo6iqd91dPiI1lQdOQq	0	3	5	10	13	0	5	9	13	0	xenon
+bIb6Q6DD9iP1d61dbOqdi6IQPllOb1IP	3	0	0	0	0	0	0	0	0	10	初段 (PLUS)
 bIloQ900Iq01ql6ddP9idIb6iQ11i9D6	0	3	7	11	13	0	7	11	13	0	Far east nightbird kors k Remix -DDR edit ver-
 bIlqP91O9ld1lqlq6qoq9OiPdqIDPP0l	0	5	9	14	18	0	9	14	18	0	Lachryma《Re:Queen’M》
 bP10qq9dPDDqIl16lPIDDd8b00dIIP08	0	2	5	10	14	0	5	10	14	0	50th Memorial Songs -Beginning Story-
@@ -636,6 +646,7 @@ bqqIiO96di90bdP0QD1biD8DoDQIddOD	0	2	5	8	10	0	5	8	10	0	Back In Your Arms
 d0DDd1dP6llPbioqPdiQ0IDd918bDqI8	0	3	7	10	14	0	7	10	14	0	ありふれたせかいせいふく
 d0IiI99IlI00lq606l68qOIl8PidiOlO	0	3	5	7	10	0	4	7	11	0	Beautiful Inside (Cube::Hard Mix)
 d0P01d9q8oOd8OP1bQPoqlq96906PqPD	0	0	0	0	0	12	0	0	0	13	DROP OUT(FROM NONSTOP MEGAMIX)
+d0l89dI9d6Di11DQ9P8D1Pl1d0Db81D9	3	0	0	0	0	11	0	0	0	0	二段 (PLUS)
 d0q8IDbqDI686q9Dl09ll0Id6bIio9Pd	0	3	5	7	9	0	4	8	9	0	Bad Routine
 d11l6160iiP1bDbQPQl0Pi8lddlld80i	0	0	0	0	0	13	0	0	0	13	BRILLIANT 2U ("STREAM" Special)
 d18DI8bO1lql60Ol1dqQlI8qIobl191P	0	3	7	9	12	15	7	9	12	15	Beautiful Dream
@@ -661,6 +672,7 @@ dDlDPddq08iD8IOb9I1PbODP9696966D	0	5	7	10	13	0	7	10	13	0	プレインエイジ�
 dDldd8OlbPQDoD80dO0DiDOiIoP1PQoD	0	3	7	9	13	0	5	9	13	0	Saturn
 dIQDOoO80odDP8OiOQIQ9oI0o99OdQDQ	0	5	8	10	13	13	8	12	13	13	SABER WING
 dIdDQD1Q8oPQ90Q1DPbiQI661qD9oi6I	0	4	8	12	16	0	8	12	16	0	Golden Arrow
+dO01ddIq0bq9019olIDoD1IIPIb9DQ9D	3	0	0	0	0	0	0	0	0	15	六段 (PLUS)
 dO9b8Id9QQ8DOO69Q0lqi6O9QlDPIPl9	0	3	6	9	13	15	6	9	13	15	Cosmic Hurricane
 dOb880lOloIIod00PQ1iQOQqlOOQ0Ql0	0	7	9	13	17	0	10	14	17	0	Be a Hero!
 dOblQOoDb96l00dqPlIb9DQl86q9PboI	0	2	5	8	11	13	3	7	12	13	回レ！雪月花
@@ -698,6 +710,7 @@ dq190Il9iO1bD698ll6ddObIlqdIQ1O9	0	3	7	8	11	0	8	9	10	0	AM-3P
 dq6b0b6OD9DbDPQOO608oDo8Q80ODIqO	0	3	6	10	13	0	6	10	13	0	Crazy Hot
 dqOoPll1qlDdo6Pd6O0DPPO6l16OIdD1	0	2	5	8	12	0	5	8	11	0	ルミナスデイズ
 dqPDQ8Pb68iib8bIIPld10Q0oD8l600o	0	3	7	10	12	11	7	11	13	12	going up
+dqQD9ilqIIilOQi986Ql6dd1ldiPob88	1	4	7	12	14	17	8	13	15	17	☆☆☆☆
 dqb09QD6o0O8PooiqbqQOdqQ1l80o691	0	5	8	12	16	0	8	12	16	0	Life is beautiful
 i0P1O6lbP1oDd6q6b08iPPoq6iPdI818	0	4	9	13	16	0	9	13	16	0	最終鬼畜妹フランドール・Ｓ
 i0b0118q8D1QlQbIbli0P0IQ0QP08QdO	0	6	9	13	16	0	9	13	16	0	tokyoEVOLVED (TYPE2)
@@ -722,6 +735,7 @@ i91q8l0bbi8qll000ob6qDiQP891iiql	0	4	7	10	13	0	7	10	13	0	乙女繚乱 舞い咲�
 i9DPi1Do9qoIQid09o1oilodPlDP6doO	0	3	4	6	9	0	3	6	10	0	Miracle Moon ～L.E.D.LIGHT STYLE MIX～
 i9Pidb18b9O8bdqQ91QQP0oPdIdIODq1	0	2	4	7	8	0	3	6	8	0	30 Lives (Up-Up-Down-Dance Mix)
 i9il1DIDl91Db0OdllOddIqO600Pl89q	0	3	6	9	11	0	6	9	11	0	恋のパズルマジック
+iDiiO18PPl6iDlDlddi9ildIqO60bQdo	3	0	0	0	0	0	0	0	0	11	二段 (PLUS)
 iI1iQD6Id0PiPDoo919doOooDib09I6b	0	3	7	9	10	0	7	10	12	0	MIDNIGHT SPECIAL
 iI8qbP0IIb16Oi9bIbb8O9dbDDi1ql86	0	3	5	6	8	0	4	7	9	0	♥Love²シュガ→♥
 iI96000Ib9DlIOPlDQIO00oDiO9DbPI0	0	3	7	11	15	0	7	11	15	0	Nostalgia Is Lost
@@ -758,6 +772,7 @@ ii119ll8dOQ8IQqi1IOP1o8DIQbqo8Pi	0	3	3	6	8	0	5	7	8	0	dream of love
 ii6Oooool0IoOqi1qdDo96QIil6IoOq0	0	3	5	8	10	0	5	7	10	0	BURNIN' THE FLOOR
 il0QbI6IOIidllO108olqd8i9Pb1Oq8Q	0	2	5	8	11	0	5	8	12	0	Decade
 il6PIiDq11dD1981dQ00918D96lPQ0iQ	0	3	5	7	10	0	5	7	11	0	air
+ilD1Qb1IqqDP1bo1i66q688q6doPq6Qb	3	0	0	0	0	0	0	0	0	13	四段 (PLUS)
 ilD80b8QQl9Qo0PP0lQ00b8bO9Oqoobo	0	4	8	12	15	0	8	12	15	0	御千手メディテーション
 ilIbq9Db1d86PIo0b96qdd0oPOQ6bqi1	0	2	3	7	10	0	4	5	12	0	CURUS
 illQ66d0QlbDl18OOb8P0ODD0oDP19PQ	0	3	4	7	10	0	4	7	11	0	令和
@@ -776,11 +791,13 @@ l0od6D6dl9PQdl1iDPOlD80io0iqqDb8	0	2	4	6	8	0	3	6	8	0	Love Again
 l1ODQ1bO9POQ6d8O0Iobbio11qb6O6bd	0	3	7	9	12	0	7	9	11	0	50th Memorial Songs -二人の時 ～under the cherry blossoms～-
 l1bDOIlb6ddI6od0q1llI0I6blq9oP0l	0	2	5	9	13	0	5	9	13	0	ハッピーシンセサイザ
 l1lO999PqIboPQOD86PDQo1ol1iIiiOi	0	3	6	10	13	0	5	9	13	0	革命パッショネイト
+l1o0olodIDDiqDQ101obOD1qo81q0QOP	1	4	7	12	16	0	7	12	16	0	ONE HALF
 l609D9lOqbDP6iIld1dI18l888dODQ6Q	0	3	4	9	11	0	5	9	11	0	Polovtsian Dances And Chorus
 l61ldlPo1DQ081860O86D0Qo0qdOd0qP	0	3	5	9	14	0	5	9	13	0	Ace out
 l666Dd0bIO9O69boPd898b19bPDo1IdO	0	3	7	11	15	0	7	11	14	0	starmine
 l66Io69ob00OoOiDOI9lIqlidbDoDq89	0	2	5	9	12	0	5	9	12	0	Towards the TOWER
 l6999IbQI61IO9qQbllobqo68lqobibq	0	3	6	8	11	13	7	8	11	13	MAX LOVE
+l6Pd9dQdoq1qI9iOOqdbDQI0qiQioP60	3	0	0	0	0	16	0	0	0	0	七段 (PLUS)
 l6d0ibbliQPQDdb1lP18D9qbPDi1698b	0	6	9	14	17	0	10	14	17	0	ÆTHER
 l6qQi9qlO8diPd18dl6DdqPid01P91iQ	0	1	5	9	12	0	4	9	12	0	Ha･lle･lu･jah
 l81l981iPod0PDIIObIldoQb6Ol9o1Iq	0	4	8	11	14	0	8	11	14	0	Bounce Trippy
@@ -873,6 +890,7 @@ obd0PDIDq8qqd9q9qdbDdqD98bd61I8D	0	5	8	12	16	0	8	12	16	0	SWEET HOME PARTY
 od66Qb16lI019I06lllII811I9ol6l0i	0	3	6	10	14	12	6	10	14	13	ようこそジャパリパークへ
 odD0Ql6iQbidDlqdPIdo8iQO09OoIbD0	0	1	4	7	10	0	4	7	10	0	MAGIC PARADE
 odOQ1d1i6oil81b1QIDP6dOqqdooD918	0	3	5	8	9	13	5	7	10	13	Colors ～for EXTREME～
+odPd96PliIo9OIO8q8iD8Qd6QoId6o1d	3	0	0	0	0	15	0	0	0	0	六段 (PLUS)
 odQbP0bQqD89PolQ96II0PiqQQIddPi6	0	3	5	8	10	13	5	8	10	14	escape
 odd1O0boo1boqDb0dIOQdQi1IqdO1DQd	0	6	8	11	15	0	8	12	16	0	roppongi EVOLVED ver.A
 odliP8d18DQi0b8lPbPI1PdoQ0PDd0IP	0	2	7	10	12	0	7	10	12	0	Smiling Passion
@@ -881,6 +899,7 @@ oi9q8DQ1QddP1699qIbqP886iOIPI16I	0	2	4	7	11	0	5	7	11	0	Something Special
 oiIob81i6d6P6qbddOP6Q0d0obQ0PID9	0	2	4	7	10	0	4	7	11	0	Your Angel
 oiQliqIliq91Dl169ldqbb18OPblOb1i	0	2	2	5	11	0	3	6	8	0	Under the Sky
 oio6bqP08PPoP9qIq1oi9Dib9PIq9l11	0	0	0	0	0	10	0	0	0	11	Silent Hill (3rd christmas mix)
+oiqql6iPq8Oq0QIqlqb1DOOO8ioPo8b9	3	0	0	0	0	0	0	0	0	17	八段 (PLUS)
 ol6IDd019O0qq8dblPQ96ol1oPbI990b	0	6	10	13	16	0	9	13	16	0	HAPPY☆LUCKY☆YEAPPY
 ol8oiPo8iod9bDPPD1qdlbPd1ddqP6oP	2	0	0	0	0	18	0	0	0	0	九段
 olDoq69qD008Q9bb8d9OOlPO160Qd0dq	0	2	5	9	11	0	5	9	11	0	Stay 4 Ever
@@ -894,6 +913,7 @@ oo8DId90dbDliiQQlQPQQoIq6lPliqo9	0	3	4	6	10	0	5	6	9	0	Happy Wedding
 ooo6qID66I6191bQib1QQdlPoio6Iodl	0	4	6	10	13	0	6	10	13	0	STERLING SILVER
 oqPii6QDdPOI6lDDQ96DOI8ill61bobd	0	4	7	11	14	0	7	11	14	0	STERLING SILVER (U1 overground mix)
 q08PbOPPbPobob0OII096bP9iil9908D	0	3	7	10	13	15	6	9	13	15	FLOWER
+q0IObiQdI9o918O0DbPlldqd01liQ8Ql	3	0	0	0	0	0	0	0	0	14	五段 (PLUS)
 q0QIob1PDI6IP86dlPb6I6il9d6bP606	0	2	6	11	16	9	6	12	16	9	†渚の小悪魔ラヴリィ～レイディオ†
 q11d0oiQIlbP91dqqddPq9D80lbODbDi	0	2	6	9	14	13	6	9	14	13	Right on time (Ryu☆Remix)
 q1o901oPqbbI1Q61qo688bDd0Pqlb08l	0	2	4	6	9	12	4	7	9	12	Shine

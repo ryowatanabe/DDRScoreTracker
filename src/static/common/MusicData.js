@@ -45,6 +45,10 @@ export class MusicData {
         this.difficulty[index] = musicData.difficulty[index];
       }
     }
+    if (this.type != musicData.type) {
+      isUpdated = true;
+      this.type = musicData.type;
+    }
     if (this.title != musicData.title) {
       isUpdated = true;
       this.title = musicData.title;

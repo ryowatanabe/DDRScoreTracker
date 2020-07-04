@@ -74,6 +74,9 @@
   "browser_action_filter_filter_condition_music_type_grade": {
     "message": "Grade"
   },
+  "browser_action_filter_filter_condition_music_type_grade_plus": {
+    "message": "Grade(PLUS)"
+  },
   "browser_action_filter_filter_condition_difficulty": {
     "message": "Difficulty"
   },
@@ -148,6 +151,9 @@
   },
   "browser_action_menu_get_score_data_grade": {
     "message": "Grade"
+  },
+  "browser_action_menu_get_score_data_grade_plus": {
+    "message": "Grade(PLUS)"
   },
   "browser_action_menu_get_score_detail": {
     "message": "Get detailed score data"
