@@ -385,6 +385,9 @@
   "options_ui_enable_debug_log": {
     "message": "デバッグログを有効にする"
   },
+  "options_ui_open_tab_as_active": {
+    "message": "タブをアクティブタブとして開く"
+  },
   "options_ui_not_close_tab_after_use": {
     "message": "使用後のタブを閉じない"
   },

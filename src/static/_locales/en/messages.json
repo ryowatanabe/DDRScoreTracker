@@ -385,6 +385,9 @@
   "options_ui_enable_debug_log": {
     "message": "Enable debug log"
   },
+  "options_ui_open_tab_as_active": {
+    "message": "Open tabs as active tab"
+  },
   "options_ui_not_close_tab_after_use": {
     "message": "Not close tabs after use"
   },

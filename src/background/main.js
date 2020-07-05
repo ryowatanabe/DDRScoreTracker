@@ -220,7 +220,7 @@ async function updateMusicList(windowId) {
   changeState(STATE.UPDATE_MUSIC_LIST);
   try {
     Logger.info(I18n.getMessage('log_message_update_music_list_progress', [1, '?']));
-    await browserController.createTab(Constants.MUSIC_LIST_URL);
+    await browserController.createTab(Constants.MUSIC_LIST_URL, options.openTabAsActive);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
@@ -267,7 +267,7 @@ async function fetchMissingMusicInfo(windowId) {
   try {
     const targetMusic = targetMusics.shift();
     Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [targetMusic.musicId, targetMusics.length]));
-    await browserController.createTab(targetMusic.url);
+    await browserController.createTab(targetMusic.url, options.openTabAsActive);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
@@ -289,7 +289,7 @@ async function updateScoreList(windowId, playMode, musicType) {
   changeState(STATE.UPDATE_SCORE_LIST);
   try {
     Logger.info(I18n.getMessage('log_message_update_score_list_progress', [1, '?']));
-    await browserController.createTab(Constants.SCORE_LIST_URL[playMode][musicType]);
+    await browserController.createTab(Constants.SCORE_LIST_URL[playMode][musicType], options.openTabAsActive);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
@@ -331,7 +331,7 @@ async function updateScoreDetail(windowId, targets) {
         targetMusics.length,
       ])
     );
-    await browserController.createTab(targetMusic.url);
+    await browserController.createTab(targetMusic.url, options.openTabAsActive);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
