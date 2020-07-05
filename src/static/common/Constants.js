@@ -1,22 +1,30 @@
 export class Constants {
   static get PLAY_MODE() {
     return {
-      first: 0,
       SINGLE: 0,
       DOUBLE: 1,
-      last: 1,
     };
+  }
+  static get PLAY_MODE_FIRST() {
+    return 0;
+  }
+  static get PLAY_MODE_LAST() {
+    return 1;
   }
 
   static get MUSIC_TYPE() {
     return {
-      first: 0,
       NORMAL: 0,
       NONSTOP: 1,
       GRADE: 2,
       GRADE_PLUS: 3,
-      last: 3,
     };
+  }
+  static get MUSIC_TYPE_FIRST() {
+    return 0;
+  }
+  static get MUSIC_TYPE_LAST() {
+    return 3;
   }
 
   static get MUSIC_LIST_URL() {

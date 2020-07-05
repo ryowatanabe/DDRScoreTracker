@@ -290,8 +290,8 @@ async function updateScoreList(windowId) {
   Logger.info(I18n.getMessage('log_message_update_score_list_begin'));
   changeState(STATE.UPDATE_SCORE_LIST);
   try {
-    targetPlayMode = Constants.PLAY_MODE.first;
-    targetMusicType = Constants.MUSIC_TYPE.first;
+    targetPlayMode = Constants.PLAY_MODE_FIRST;
+    targetMusicType = Constants.MUSIC_TYPE_FIRST;
     Logger.info(I18n.getMessage('log_message_update_score_list_progress', [targetPlayMode, targetMusicType, 1, '?']));
     await browserController.createTab(Constants.SCORE_LIST_URL[targetPlayMode][targetMusicType], options.openTabAsActive);
   } catch (error) {
@@ -467,14 +467,14 @@ function onUpdateTab() {
           }
         } else {
           let hasNext = false;
-          if (targetMusicType != Constants.MUSIC_TYPE.last) {
+          if (targetMusicType != Constants.MUSIC_TYPE_LAST) {
             hasNext = true;
             targetMusicType++;
           } else {
-            if (targetPlayMode != Constants.PLAY_MODE.last) {
+            if (targetPlayMode != Constants.PLAY_MODE_LAST) {
               hasNext = true;
               targetPlayMode++;
-              targetMusicType = Constants.MUSIC_TYPE.first;
+              targetMusicType = Constants.MUSIC_TYPE_FIRST;
             }
           }
           if (hasNext) {
