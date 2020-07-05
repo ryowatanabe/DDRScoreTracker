@@ -16,10 +16,10 @@ function fetchMissingMusicInfo() {
 }
 document.getElementById('fetchMissingMusicInfoButton').addEventListener('click', fetchMissingMusicInfo);
 
-function updateScoreList(playMode, musicType) {
+function updateScoreList() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     backgroundPage
-      .updateScoreList(chrome.windows.WINDOW_ID_CURRENT, playMode, musicType)
+      .updateScoreList(chrome.windows.WINDOW_ID_CURRENT)
       .then((value) => {
         Logger.debug(`updateScoreList success : ${value}`);
       })
@@ -28,14 +28,7 @@ function updateScoreList(playMode, musicType) {
       });
   });
 }
-document.getElementById('updateSingleScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.SINGLE, Constants.MUSIC_TYPE.NORMAL));
-document.getElementById('updateSingleNonstopScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.SINGLE, Constants.MUSIC_TYPE.NONSTOP));
-document.getElementById('updateSingleGradeScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.SINGLE, Constants.MUSIC_TYPE.GRADE));
-document.getElementById('updateSingleGradePlusScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.SINGLE, Constants.MUSIC_TYPE.GRADE_PLUS));
-document.getElementById('updateDoubleScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.DOUBLE, Constants.MUSIC_TYPE.NORMAL));
-document.getElementById('updateDoubleNonstopScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.DOUBLE, Constants.MUSIC_TYPE.NONSTOP));
-document.getElementById('updateDoubleGradeScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.DOUBLE, Constants.MUSIC_TYPE.GRADE));
-document.getElementById('updateDoubleGradePlusScoreListButton').addEventListener('click', updateScoreList.bind(this, Constants.PLAY_MODE.DOUBLE, Constants.MUSIC_TYPE.GRADE_PLUS));
+document.getElementById('updateScoreListButton').addEventListener('click', updateScoreList);
 
 function updateScoreDetail() {
   const targetMusics = [];

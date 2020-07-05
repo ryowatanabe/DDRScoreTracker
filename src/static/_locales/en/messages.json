@@ -301,13 +301,19 @@
     "message": "Fetching score data..."
   },
   "log_message_update_score_list_progress": {
-    "message": "Page $CURRENT$ / $MAX$",
+    "message": "Mode: $MODE$, Type: $TYPE$, Page: $CURRENT$ / $MAX$",
     "placeholders": {
-      "current": {
+      "mode": {
         "content": "$1"
       },
-      "max": {
+      "type": {
         "content": "$2"
+      },
+      "current": {
+        "content": "$3"
+      },
+      "max": {
+        "content": "$4"
       }
     }
   },

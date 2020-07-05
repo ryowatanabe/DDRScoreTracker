@@ -42,6 +42,8 @@ const storage = new Storage(
 );
 
 let state = STATE.INITIALIZE;
+let targetPlayMode;
+let targetMusicType;
 let targetMusics = [];
 
 let musicList; // 曲リスト。1曲1エントリ。
@@ -279,7 +281,7 @@ async function fetchMissingMusicInfo(windowId) {
 /*
 公式の成績一覧ページから成績情報を取得し、ローカルのスコアリストを更新する
 */
-async function updateScoreList(windowId, playMode, musicType) {
+async function updateScoreList(windowId) {
   if (state != STATE.IDLE) {
     const message = `updateScoreList: state unmatch (current state: ${state})`;
     Logger.debug(message);
@@ -288,8 +290,10 @@ async function updateScoreList(windowId, playMode, musicType) {
   Logger.info(I18n.getMessage('log_message_update_score_list_begin'));
   changeState(STATE.UPDATE_SCORE_LIST);
   try {
-    Logger.info(I18n.getMessage('log_message_update_score_list_progress', [1, '?']));
-    await browserController.createTab(Constants.SCORE_LIST_URL[playMode][musicType], options.openTabAsActive);
+    targetPlayMode = Constants.PLAY_MODE.first;
+    targetMusicType = Constants.MUSIC_TYPE.first;
+    Logger.info(I18n.getMessage('log_message_update_score_list_progress', [targetPlayMode, targetMusicType, 1, '?']));
+    await browserController.createTab(Constants.SCORE_LIST_URL[targetPlayMode][targetMusicType], options.openTabAsActive);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
@@ -453,7 +457,7 @@ function onUpdateTab() {
         updateCharts();
         if (res.hasNext) {
           try {
-            Logger.info(I18n.getMessage('log_message_update_score_list_progress', [res.currentPage + 1, res.maxPage]));
+            Logger.info(I18n.getMessage('log_message_update_score_list_progress', [targetPlayMode, targetMusicType, res.currentPage + 1, res.maxPage]));
             await browserController.updateTab(res.nextUrl);
           } catch (error) {
             browserController.reset();
@@ -462,9 +466,32 @@ function onUpdateTab() {
             Logger.info(I18n.getMessage('log_message_aborted'));
           }
         } else {
-          await closeTab();
-          changeState(STATE.IDLE);
-          Logger.info(I18n.getMessage('log_message_done'));
+          let hasNext = false;
+          if (targetMusicType != Constants.MUSIC_TYPE.last) {
+            hasNext = true;
+            targetMusicType++;
+          } else {
+            if (targetPlayMode != Constants.PLAY_MODE.last) {
+              hasNext = true;
+              targetPlayMode++;
+              targetMusicType = Constants.MUSIC_TYPE.first;
+            }
+          }
+          if (hasNext) {
+            try {
+              Logger.info(I18n.getMessage('log_message_update_score_list_progress', [targetPlayMode, targetMusicType, 1, '?']));
+              await browserController.updateTab(Constants.SCORE_LIST_URL[targetPlayMode][targetMusicType]);
+            } catch (error) {
+              browserController.reset();
+              Logger.error(error.message);
+              changeState(STATE.IDLE);
+              Logger.info(I18n.getMessage('log_message_aborted'));
+            }
+          } else {
+            await closeTab();
+            changeState(STATE.IDLE);
+            Logger.info(I18n.getMessage('log_message_done'));
+          }
         }
       });
       break;

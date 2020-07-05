@@ -1,17 +1,21 @@
 export class Constants {
   static get PLAY_MODE() {
     return {
+      first: 0,
       SINGLE: 0,
       DOUBLE: 1,
+      last: 1,
     };
   }
 
   static get MUSIC_TYPE() {
     return {
+      first: 0,
       NORMAL: 0,
       NONSTOP: 1,
       GRADE: 2,
       GRADE_PLUS: 3,
+      last: 3,
     };
   }
 

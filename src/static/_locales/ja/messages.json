@@ -301,13 +301,19 @@
     "message": "スコア情報を取得..."
   },
   "log_message_update_score_list_progress": {
-    "message": "$CURRENT$ / $MAX$ ページ",
+    "message": "ゲームモード: $MODE$, 種別: $TYPE$, ページ: $CURRENT$ / $MAX$",
     "placeholders": {
-      "current": {
+      "mode": {
         "content": "$1"
       },
-      "max": {
+      "type": {
         "content": "$2"
+      },
+      "current": {
+        "content": "$3"
+      },
+      "max": {
+        "content": "$4"
       }
     }
   },
