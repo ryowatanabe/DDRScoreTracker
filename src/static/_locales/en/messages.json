@@ -399,5 +399,8 @@
   },
   "options_ui_not_send_data_to_skill_attack": {
     "message": "Not send data to skill attack"
+  },
+  "options_ui_music_list_reload_interval": {
+    "message": "Interval for checking music list updates (sec)"
   }
 }

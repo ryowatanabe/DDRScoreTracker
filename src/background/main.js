@@ -27,7 +27,12 @@ const storage = new Storage(
     saSettings: {
       ddrcode: '',
     },
-    options: {},
+    options: {
+      musicListReloadInterval: Constants.MUSIC_LIST_RELOAD_INTERVAL,
+    },
+    internalStatus: {
+      musicListUpdatedAt: 0,
+    },
   },
   (data) => {
     musicList = MusicList.createFromStorage(data.musics);
@@ -36,6 +41,7 @@ const storage = new Storage(
     conditions = data.conditions;
     saSettings = data.saSettings;
     options = data.options;
+    internalStatus = data.internalStatus;
     updateCharts();
     changeState(STATE.IDLE);
   }
@@ -53,6 +59,7 @@ let savedConditions;
 let conditions;
 let saSettings;
 let options;
+let internalStatus;
 
 function abortAction() {
   switch (state) {
@@ -85,6 +92,7 @@ function saveStorage() {
     conditions: conditions,
     saSettings: saSettings,
     options: options,
+    internalStatus: internalStatus,
   });
 }
 
@@ -102,6 +110,10 @@ function getSavedConditions() {
 
 function getConditions() {
   return conditions;
+}
+
+function getInternalStatus() {
+  return internalStatus;
 }
 
 function getSaSettings() {
@@ -199,6 +211,8 @@ function fetchParsedMusicList() {
       Logger.info(I18n.getMessage('log_message_fetch_parsed_music_list_fetch_success'));
       response.text().then((text) => {
         restoreMusicList(text);
+        internalStatus.musicListUpdatedAt = Math.floor(Date.now() / 1000);
+        saveStorage();
         Logger.info(I18n.getMessage('log_message_done'));
       });
     })
@@ -682,6 +696,7 @@ const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT
   window.getChartCount = getChartCount;
   window.getChartList = getChartList;
   window.getConditions = getConditions;
+  window.getInternalStatus = getInternalStatus;
   window.getOptions = getOptions;
   window.getMusicList = getMusicList;
   window.getSaSettings = getSaSettings;

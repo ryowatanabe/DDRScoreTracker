@@ -399,5 +399,8 @@
   },
   "options_ui_not_send_data_to_skill_attack": {
     "message": "skill attackへのデータ送信を行わない"
+  },
+  "options_ui_music_list_reload_interval": {
+    "message": "楽曲リストのチェック間隔 (秒)"
   }
 }
