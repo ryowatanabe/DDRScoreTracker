@@ -201,26 +201,25 @@ function restoreScoreList(object) {
 gh pagesから曲リストを取得し、ローカルの曲リストを更新する
 */
 
-function fetchParsedMusicList() {
+async function fetchParsedMusicList() {
   Logger.info(I18n.getMessage('log_message_fetch_parsed_music_list_begin'));
-  fetch(Constants.PARSED_MUSIC_LIST_URL, { cache: 'no-store' })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP status: ${response.status}`);
-      }
-      Logger.info(I18n.getMessage('log_message_fetch_parsed_music_list_fetch_success'));
-      response.text().then((text) => {
-        restoreMusicList(text);
-        internalStatus.musicListUpdatedAt = Math.floor(Date.now() / 1000);
-        saveStorage();
-        Logger.info(I18n.getMessage('log_message_done'));
-      });
-    })
-    .catch((reason) => {
-      Logger.info(I18n.getMessage('log_message_network_error'));
-      Logger.debug(reason);
-      Logger.info(I18n.getMessage('log_message_aborted'));
-    });
+  try {
+    const response = await fetch(Constants.PARSED_MUSIC_LIST_URL, { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`HTTP status: ${response.status}`);
+    }
+    Logger.info(I18n.getMessage('log_message_fetch_parsed_music_list_fetch_success'));
+    const text = await response.text();
+    restoreMusicList(text);
+    internalStatus.musicListUpdatedAt = Date.now();
+    saveStorage();
+    Logger.info(I18n.getMessage('log_message_done'));
+  } catch (error) {
+    Logger.info(I18n.getMessage('log_message_network_error'));
+    Logger.debug(error);
+    Logger.info(I18n.getMessage('log_message_aborted'));
+    throw error;
+  }
 }
 
 /*

@@ -41,18 +41,21 @@ window.getCharts = () => {
 };
 
 window.refreshList = (summarySettings, filterConditions, sortConditions) => {
-  chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    if (backgroundPage.getChartCount() == 0) {
-      openMenu();
-    } else {
-      const newChartList = backgroundPage.getChartList().getFilteredAndSorted(filterConditions, sortConditions);
-      chartList.statistics = newChartList.statistics;
-      chartList.charts = newChartList.charts;
-      chartList.maxPage = Math.ceil(newChartList.charts.length / Constants.PAGE_LENGTH);
-      chartList.currentPage = 1;
-      chartList.summarySettings = summarySettings;
-      gotoPage(chartList.currentPage);
+  chrome.runtime.getBackgroundPage(async function (backgroundPage) {
+    const internalStatus = backgroundPage.getInternalStatus();
+    const options = backgroundPage.getOptions();
+    if (internalStatus.musicListUpdatedAt + options.musicListReloadInterval < Date.now()) {
+      try {
+        await backgroundPage.fetchParsedMusicList();
+      } catch (error) {}
     }
+    const newChartList = backgroundPage.getChartList().getFilteredAndSorted(filterConditions, sortConditions);
+    chartList.statistics = newChartList.statistics;
+    chartList.charts = newChartList.charts;
+    chartList.maxPage = Math.ceil(newChartList.charts.length / Constants.PAGE_LENGTH);
+    chartList.currentPage = 1;
+    chartList.summarySettings = summarySettings;
+    gotoPage(chartList.currentPage);
   });
 };
 

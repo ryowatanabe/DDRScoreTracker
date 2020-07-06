@@ -73,11 +73,11 @@ export class Constants {
   }
 
   static get MUSIC_LIST_RELOAD_INTERVAL() {
-    return 86400;
+    return 86400000; // milliseconds
   }
 
   static get LOAD_INTERVAL() {
-    return 5000;
+    return 5000; // milliseconds
   }
 
   static get DIFFICULTIES() {
