@@ -2,9 +2,13 @@
 
 ## [Unreleased]
 
+### Added
+
+ - Automatically check for music list updates
+
 ### Changed
 
- - Unified "Retrieve score data" buttons into one 
+ - Unified "Retrieve score data" buttons into one
 
 ## [0.0.7] - 2020-07-04
 
