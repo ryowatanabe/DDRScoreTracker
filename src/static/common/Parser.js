@@ -13,7 +13,7 @@ export class Parser {
   }
 
   static getResultStatus(rootElement) {
-    if (rootElement.querySelector('#login.errinfo_btn') !== null) {
+    if (rootElement.querySelector('#login.errinfo_btn') !== null || rootElement.querySelector('#basic.errinfo_btn') !== null) {
       return this.STATUS.LOGIN_REQUIRED;
     }
     if (rootElement.querySelector('#error') !== null) {
