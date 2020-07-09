@@ -10,11 +10,15 @@
 
  - Unified "Retrieve score data" buttons into one
 
+### Fixed
+
+ - Updated e-amusement login error detection corresponding to A20 PLUS site changes
+
 ## [0.0.7] - 2020-07-04
 
 ### Added
 
- - Support for A20PLUS grades
+ - Support for A20 PLUS grades
  - Saved filters feature
 
 ## [0.0.6] - 2020-06-21
