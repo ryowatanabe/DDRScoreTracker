@@ -177,7 +177,7 @@ function getScoreList() {
 
 function getDifferences() {
   differences.forEach((difference) => {
-    if(musicList.hasMusic(difference.musicId)){
+    if (musicList.hasMusic(difference.musicId)) {
       difference.musicData = musicList.getMusicDataById(difference.musicId);
     }
   });

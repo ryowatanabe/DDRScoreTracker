@@ -11,6 +11,7 @@ const config = {
   entry: {
     "background/main": './background/main.js',
     "browser_action/index": './browser_action/index.js',
+    "browser_action/diff": './browser_action/diff.js',
     "browser_action/editFilter": './browser_action/editFilter.js',
     "browser_action/debug/index": './browser_action/debug/index.js',
   },

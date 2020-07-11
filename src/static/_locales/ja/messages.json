@@ -137,6 +137,9 @@
   "browser_action_menu_get_score_data_description": {
     "message": "スコアリストを公式サイトから取得します。e-amusementへのログインが必要です。"
   },
+  "browser_action_menu_get_score_data_last_update": {
+    "message": "前回の更新一覧"
+  },
   "browser_action_menu_get_score_data_single_play": {
     "message": "SP:"
   },

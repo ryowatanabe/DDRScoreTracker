@@ -1,3 +1,4 @@
+import { Constants } from './Constants.js';
 import { ScoreDetail } from './ScoreDetail.js';
 import { Util } from './Util.js';
 
@@ -49,7 +50,7 @@ export class ScoreDiff {
   }
 
   get level() {
-    return this.musicData.getLevel(difficultyValue);
+    return this.musicData.getLevel(this.difficultyValue);
   }
 
   get beforeScore() {
@@ -191,5 +192,4 @@ export class ScoreDiff {
     }
     return Constants.PLAY_MODE_SYMBOL[this.playMode];
   }
-
 }
