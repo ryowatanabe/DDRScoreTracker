@@ -301,7 +301,7 @@
     "message": "スコア情報を取得..."
   },
   "log_message_update_score_list_progress": {
-    "message": "ゲームモード: $MODE$, 種別: $TYPE$, ページ: $CURRENT$ / $MAX$",
+    "message": "$MODE$, $TYPE$, $CURRENT$ / $MAX$ ページ",
     "placeholders": {
       "mode": {
         "content": "$1"
@@ -316,6 +316,24 @@
         "content": "$4"
       }
     }
+  },
+  "log_message_update_score_list_play_mode_0": {
+    "message": "SP"
+  },
+  "log_message_update_score_list_play_mode_1": {
+    "message": "DP"
+  },
+  "log_message_update_score_list_music_type_0": {
+    "message": "通常楽曲"
+  },
+  "log_message_update_score_list_music_type_1": {
+    "message": "NONSTOP"
+  },
+  "log_message_update_score_list_music_type_2": {
+    "message": "段位認定"
+  },
+  "log_message_update_score_list_music_type_3": {
+    "message": "段位認定(PLUS)"
   },
   "log_message_update_score_detail_begin": {
     "message": "スコア詳細を取得..."

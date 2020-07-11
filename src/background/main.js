@@ -305,7 +305,14 @@ async function updateScoreList(windowId) {
   try {
     targetPlayMode = Constants.PLAY_MODE_FIRST;
     targetMusicType = Constants.MUSIC_TYPE_FIRST;
-    Logger.info(I18n.getMessage('log_message_update_score_list_progress', [targetPlayMode, targetMusicType, 1, '?']));
+    Logger.info(
+      I18n.getMessage('log_message_update_score_list_progress', [
+        I18n.getMessage(`log_message_update_score_list_play_mode_${targetPlayMode}`),
+        I18n.getMessage(`log_message_update_score_list_music_type_${targetMusicType}`),
+        1,
+        '?',
+      ])
+    );
     await browserController.createTab(Constants.SCORE_LIST_URL[targetPlayMode][targetMusicType], options.openTabAsActive);
   } catch (error) {
     browserController.reset();
@@ -470,7 +477,14 @@ function onUpdateTab() {
         updateCharts();
         if (res.hasNext) {
           try {
-            Logger.info(I18n.getMessage('log_message_update_score_list_progress', [targetPlayMode, targetMusicType, res.currentPage + 1, res.maxPage]));
+            Logger.info(
+              I18n.getMessage('log_message_update_score_list_progress', [
+                I18n.getMessage(`log_message_update_score_list_play_mode_${targetPlayMode}`),
+                I18n.getMessage(`log_message_update_score_list_music_type_${targetMusicType}`),
+                res.currentPage + 1,
+                res.maxPage,
+              ])
+            );
             await browserController.updateTab(res.nextUrl);
           } catch (error) {
             browserController.reset();
@@ -492,7 +506,14 @@ function onUpdateTab() {
           }
           if (hasNext) {
             try {
-              Logger.info(I18n.getMessage('log_message_update_score_list_progress', [targetPlayMode, targetMusicType, 1, '?']));
+              Logger.info(
+                I18n.getMessage('log_message_update_score_list_progress', [
+                  I18n.getMessage(`log_message_update_score_list_play_mode_${targetPlayMode}`),
+                  I18n.getMessage(`log_message_update_score_list_music_type_${targetMusicType}`),
+                  1,
+                  '?',
+                ])
+              );
               await browserController.updateTab(Constants.SCORE_LIST_URL[targetPlayMode][targetMusicType]);
             } catch (error) {
               browserController.reset();

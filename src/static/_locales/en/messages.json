@@ -301,7 +301,7 @@
     "message": "Fetching score data..."
   },
   "log_message_update_score_list_progress": {
-    "message": "Mode: $MODE$, Type: $TYPE$, Page: $CURRENT$ / $MAX$",
+    "message": "$MODE$, $TYPE$, Page $CURRENT$ / $MAX$",
     "placeholders": {
       "mode": {
         "content": "$1"
@@ -316,6 +316,24 @@
         "content": "$4"
       }
     }
+  },
+  "log_message_update_score_list_play_mode_0": {
+    "message": "SP"
+  },
+  "log_message_update_score_list_play_mode_1": {
+    "message": "DP"
+  },
+  "log_message_update_score_list_music_type_0": {
+    "message": "Normal"
+  },
+  "log_message_update_score_list_music_type_1": {
+    "message": "Nonstop"
+  },
+  "log_message_update_score_list_music_type_2": {
+    "message": "Grade"
+  },
+  "log_message_update_score_list_music_type_3": {
+    "message": "Grade(PLUS)"
   },
   "log_message_update_score_detail_begin": {
     "message": "Fetching detailed score data..."
