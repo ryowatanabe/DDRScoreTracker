@@ -471,7 +471,10 @@ function onUpdateTab() {
           return;
         }
         res.scores.forEach(function (score) {
-          scoreList.applyObject(score);
+          const differences = scoreList.applyObject(score);
+          if (differences.length > 0) {
+            Logger.debug(differences);
+          }
         });
         saveStorage();
         updateCharts();

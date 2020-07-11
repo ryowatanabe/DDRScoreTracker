@@ -1,4 +1,5 @@
 import { ScoreDetail } from './ScoreDetail.js';
+import { ScoreDiff } from './ScoreDiff.js';
 
 export class ScoreData {
   constructor(musicId) {
@@ -17,15 +18,28 @@ export class ScoreData {
   applyScoreDetail(difficultyValue, scoreDetail) {
     if (!this.hasDifficulty(difficultyValue)) {
       this.difficulty[difficultyValue] = scoreDetail;
-      return;
+      const diff = ScoreDiff.createFromScoreDetail(null, scoreDetail);
+      diff.musicId = this.musicId;
+      diff.difficulty = difficultyValue;
+      return diff;
     }
-    this.getScoreDetailByDifficulty(difficultyValue).merge(scoreDetail);
+    const diff = this.getScoreDetailByDifficulty(difficultyValue).merge(scoreDetail);
+    if (diff !== null) {
+      diff.musicId = this.musicId;
+      diff.difficulty = difficultyValue;
+    }
+    return diff;
   }
 
   merge(scoreData) {
+    const differences = [];
     scoreData.difficulties.forEach((difficultyValue) => {
-      this.applyScoreDetail(difficultyValue, scoreData.getScoreDetailByDifficulty(difficultyValue));
+      const diff = this.applyScoreDetail(difficultyValue, scoreData.getScoreDetailByDifficulty(difficultyValue));
+      if (diff !== null) {
+        differences.push(diff);
+      }
     });
+    return differences;
   }
 
   getScoreDetailByDifficulty(difficultyValue) {

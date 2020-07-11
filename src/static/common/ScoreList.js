@@ -1,4 +1,5 @@
 import { ScoreData } from './ScoreData.js';
+import { ScoreDiff } from './ScoreDiff.js';
 
 export class ScoreList {
   constructor() {
@@ -17,18 +18,17 @@ export class ScoreList {
   applyScoreData(scoreData) {
     if (!this.hasMusic(scoreData.musicId)) {
       this.musics[scoreData.musicId] = scoreData;
-      return;
+      return ScoreDiff.createMultiFromScoreData(scoreData);
     }
-    this.getScoreDataByMusicId(scoreData.musicId).merge(scoreData);
+    return this.getScoreDataByMusicId(scoreData.musicId).merge(scoreData);
   }
 
   applyObject(object) {
     const scoreData = ScoreData.createFromStorage(object);
     if (scoreData === null) {
-      return false;
+      return [];
     }
-    this.applyScoreData(scoreData);
-    return true;
+    return this.applyScoreData(scoreData);
   }
 
   getScoreDataByMusicId(musicId) {

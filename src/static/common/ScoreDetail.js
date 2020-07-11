@@ -1,3 +1,4 @@
+import { ScoreDiff } from './ScoreDiff.js';
 import { Constants } from './Constants.js';
 
 export class ScoreDetail {
@@ -20,15 +21,27 @@ export class ScoreDetail {
     return instance;
   }
 
+  clone() {
+    return Object.assign(new ScoreDetail(), this);
+  }
+
   merge(scoreDetail) {
+    let isUpdated = false;
+    const before = this.clone();
     const attributes = ['score', 'scoreRank', 'clearType', 'playCount', 'clearCount', 'maxCombo'];
     attributes.forEach((attributeName) => {
       if (scoreDetail[attributeName] !== null) {
         if (this[attributeName] === null || scoreDetail[attributeName] > this[attributeName]) {
-          this[attributeName] = scoreDetail[attributeName];
+          isUpdated = true;
         }
+        // データの手入力をしないので、常に外部から与えたデータ (サイトから取得したデータ) が正となる
+        this[attributeName] = scoreDetail[attributeName];
       }
     });
+    if (isUpdated) {
+      return ScoreDiff.createFromScoreDetail(before, this);
+    }
+    return null;
   }
 
   get actualClearType() {
