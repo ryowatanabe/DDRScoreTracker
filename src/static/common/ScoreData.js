@@ -20,13 +20,13 @@ export class ScoreData {
       this.difficulty[difficultyValue] = scoreDetail;
       const diff = ScoreDiff.createFromScoreDetail(null, scoreDetail);
       diff.musicId = this.musicId;
-      diff.difficulty = difficultyValue;
+      diff.difficultyValue = difficultyValue;
       return diff;
     }
     const diff = this.getScoreDetailByDifficulty(difficultyValue).merge(scoreDetail);
     if (diff !== null) {
       diff.musicId = this.musicId;
-      diff.difficulty = difficultyValue;
+      diff.difficultyValue = difficultyValue;
     }
     return diff;
   }

@@ -55,6 +55,7 @@ let targetMusics = [];
 let musicList; // 曲リスト。1曲1エントリ。
 let scoreList; // スコアリスト。1曲1エントリ。
 let chartList = new ChartList(); // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
+let differences = []; // スコア差分リスト。
 let savedConditions;
 let conditions;
 let saSettings;
@@ -172,6 +173,15 @@ function getMusicList() {
 
 function getScoreList() {
   return scoreList;
+}
+
+function getDifferences() {
+  differences.forEach((difference) => {
+    if(musicList.hasMusic(difference.musicId)){
+      difference.musicData = musicList.getMusicDataById(difference.musicId);
+    }
+  });
+  return differences;
 }
 
 function getChartCount() {
@@ -302,6 +312,7 @@ async function updateScoreList(windowId) {
   }
   Logger.info(I18n.getMessage('log_message_update_score_list_begin'));
   changeState(STATE.UPDATE_SCORE_LIST);
+  differences = [];
   try {
     targetPlayMode = Constants.PLAY_MODE_FIRST;
     targetMusicType = Constants.MUSIC_TYPE_FIRST;
@@ -471,10 +482,7 @@ function onUpdateTab() {
           return;
         }
         res.scores.forEach(function (score) {
-          const differences = scoreList.applyObject(score);
-          if (differences.length > 0) {
-            Logger.debug(differences);
-          }
+          differences = differences.concat(scoreList.applyObject(score));
         });
         saveStorage();
         updateCharts();
@@ -719,6 +727,7 @@ const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT
   window.getChartCount = getChartCount;
   window.getChartList = getChartList;
   window.getConditions = getConditions;
+  window.getDifferences = getDifferences;
   window.getInternalStatus = getInternalStatus;
   window.getOptions = getOptions;
   window.getMusicList = getMusicList;
