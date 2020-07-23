@@ -41,8 +41,9 @@ attributes.forEach(
       base[attributeName] = 1;
       const target = ScoreDetail.createFromStorage({});
       target[attributeName] = 0;
+      // データの手入力をしないので、値の大小にかかわらず常に外部から与えたデータ (サイトから取得したデータ) が正となる。 ScoreDetail.mergeのコードも参照
       const expected = ScoreDetail.createFromStorage({});
-      expected[attributeName] = 1;
+      expected[attributeName] = 0;
       base.merge(target);
       expect(base).toStrictEqual(expected);
     });
