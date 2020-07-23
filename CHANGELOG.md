@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+ - Show score updates after retrieving score data
+
 ## [0.0.8] - 2020-07-16
 
 ### Added
