@@ -8,7 +8,7 @@
     </div>
 
     <div class="score_list">
-      <template v-for="difference in differences">
+      <template v-for="difference in pageDifferences">
         <div v-bind:class="['level', difference.difficultyClassString]">{{ difference.level }}{{ difference.playModeSymbol }}</div>
         <div class="title">{{ difference.title }}</div>
 
@@ -43,13 +43,20 @@ export default Vue.extend({
     return {
       maxPage: 1,
       currentPage: 1,
+      pageDifferences: [],
       differences: [],
     };
   },
   methods: {
     getMessage: I18n.getMessage,
+    setData: function (differences) {
+      this.differences = differences;
+      this.maxPage = Math.ceil(this.differences.length / Constants.PAGE_LENGTH);
+      this.gotoPage(1);
+    },
     gotoPage: function (page) {
-      gotoPage(page);
+      this.pageDifferences = this.differences.slice((page - 1) * Constants.PAGE_LENGTH, page * Constants.PAGE_LENGTH);
+      this.currentPage = page;
     },
   },
 });

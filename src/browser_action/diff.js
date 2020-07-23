@@ -20,7 +20,7 @@ window.addEventListener('load', () => {
     differences.sort(function (a, b) {
       return compareScoreDiff(a, b, sortConditions);
     });
-    chartDiffList.differences = differences;
+    chartDiffList.setData(differences);
   });
 });
 window.addEventListener('unload', () => {});
