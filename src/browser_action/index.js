@@ -31,11 +31,6 @@ window.addEventListener('load', () => {
 });
 window.addEventListener('unload', () => {});
 
-window.gotoPage = (page) => {
-  chartList.pageCharts = chartList.charts.slice((page - 1) * Constants.PAGE_LENGTH, page * Constants.PAGE_LENGTH);
-  chartList.currentPage = page;
-};
-
 window.getCharts = () => {
   return chartList.charts;
 };
@@ -50,12 +45,8 @@ window.refreshList = (summarySettings, filterConditions, sortConditions) => {
       } catch (error) {}
     }
     const newChartList = backgroundPage.getChartList().getFilteredAndSorted(filterConditions, sortConditions);
-    chartList.statistics = newChartList.statistics;
-    chartList.charts = newChartList.charts;
-    chartList.maxPage = Math.ceil(newChartList.charts.length / Constants.PAGE_LENGTH);
-    chartList.currentPage = 1;
     chartList.summarySettings = summarySettings;
-    gotoPage(chartList.currentPage);
+    chartList.setData(newChartList);
   });
 };
 

@@ -98,8 +98,15 @@ export default Vue.extend({
   },
   methods: {
     getMessage: I18n.getMessage,
+    setData: function (chartList) {
+      this.statistics = chartList.statistics;
+      this.charts = chartList.charts;
+      this.maxPage = Math.ceil(this.charts.length / Constants.PAGE_LENGTH);
+      this.gotoPage(1);
+    },
     gotoPage: function (page) {
-      gotoPage(page);
+      this.pageCharts = this.charts.slice((page - 1) * Constants.PAGE_LENGTH, page * Constants.PAGE_LENGTH);
+      this.currentPage = page;
     },
   },
 });
