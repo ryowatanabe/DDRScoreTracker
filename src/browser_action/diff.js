@@ -11,11 +11,11 @@ window.addEventListener('load', () => {
   chrome.runtime.getBackgroundPage(async function (backgroundPage) {
     const differences = backgroundPage.getDifferences();
     const sortConditions = [
-      { attribute: "playMode", order: "asc" },
-      { attribute: "level", order: "desc" },
-      { attribute: "afterScore", order: "desc" },
-      { attribute: "beforeScore", order: "desc" },
-      { attribute: "title", order: "asc" },
+      { attribute: 'playMode', order: 'asc' },
+      { attribute: 'level', order: 'desc' },
+      { attribute: 'afterScore', order: 'desc' },
+      { attribute: 'beforeScore', order: 'desc' },
+      { attribute: 'title', order: 'asc' },
     ];
     differences.sort(function (a, b) {
       return compareScoreDiff(a, b, sortConditions);

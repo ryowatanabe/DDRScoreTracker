@@ -83,6 +83,11 @@ function closeMenu() {
 document.getElementById('openMenuButton').addEventListener('click', openMenu);
 document.getElementById('closeMenuButton').addEventListener('click', closeMenu);
 
+function openDiff() {
+  window.openDiff();
+}
+document.getElementById('openScoreDiffButton').addEventListener('click', openDiff);
+
 (function () {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     const saSettings = backgroundPage.getSaSettings();

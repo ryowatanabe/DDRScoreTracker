@@ -230,6 +230,12 @@
   "browser_action_debug_page_return": {
     "message": "<< Back"
   },
+  "diff_container_close_button": {
+    "message": "■Close"
+  },
+  "diff_container_no_update": {
+    "message": "No score updates."
+  },
   "log_container_scroll_to_bottom_button": {
     "message": "▼Latest"
   },

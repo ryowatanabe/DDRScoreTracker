@@ -230,6 +230,12 @@
   "browser_action_debug_page_return": {
     "message": "<< 戻る"
   },
+  "diff_container_close_button": {
+    "message": "■閉じる"
+  },
+  "diff_container_no_update": {
+    "message": "更新されたスコアはありません。"
+  },
   "log_container_scroll_to_bottom_button": {
     "message": "▼最新"
   },

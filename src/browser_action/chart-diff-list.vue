@@ -1,34 +1,48 @@
 <template>
-  <div id="app-charts" class="content">
-    <div v-if="maxPage > 1" class="pager">
-      <template v-for="index of maxPage">
-        <a v-if="index == currentPage" v-bind:class="['element', 'current']">[{{ index }}]</a
-        ><a v-if="index != currentPage" v-on:click="gotoPage(index)" v-bind:class="['element', 'link']">[{{ index }}]</a>
-      </template>
-    </div>
+  <div>
+    <div id="diffBackground" class="drawer-background not-initialized"></div>
+    <div id="diffContainer" class="drawer diff not-initialized">
+      <div id="closeButton" class="drawer-switch" v-on:click="close">{{ getMessage('diff_container_close_button') }}</div>
 
-    <div class="score_list">
-      <template v-for="difference in pageDifferences">
-        <div v-bind:class="['level', difference.difficultyClassString]">{{ difference.level }}{{ difference.playModeSymbol }}</div>
-        <div class="title">{{ difference.title }}</div>
+      <div id="app-charts" class="content">
+        <div v-if="maxPage > 1" class="pager">
+          <template v-for="index of maxPage">
+            <a v-if="index == currentPage" v-bind:class="['element', 'current']">[{{ index }}]</a
+            ><a v-if="index != currentPage" v-on:click="gotoPage(index)" v-bind:class="['element', 'link']">[{{ index }}]</a>
+          </template>
+        </div>
 
-        <div v-bind:class="['score_rank', difference.beforeScoreRankClassString]">{{ difference.beforeScoreRankString }}</div>
-        <div v-bind:class="['full_combo_type', difference.beforeClearTypeClassString]">{{ difference.beforeFullComboSymbol }}</div>
-        <div class="score">{{ difference.beforeScoreString }}</div>
+        <template v-if="differences.length > 0">
+          <div class="score_list">
+            <template v-for="difference in pageDifferences">
+              <div v-bind:class="['level', difference.difficultyClassString]">{{ difference.level }}{{ difference.playModeSymbol }}</div>
+              <div class="title">{{ difference.title }}</div>
 
-        <div>→</div>
+              <div v-bind:class="['score_rank', difference.beforeScoreRankClassString]">{{ difference.beforeScoreRankString }}</div>
+              <div v-bind:class="['full_combo_type', difference.beforeClearTypeClassString]">{{ difference.beforeFullComboSymbol }}</div>
+              <div class="score">{{ difference.beforeScoreString }}</div>
 
-        <div v-bind:class="['score_rank', difference.afterScoreRankClassString]">{{ difference.afterScoreRankString }}</div>
-        <div v-bind:class="['full_combo_type', difference.afterClearTypeClassString]">{{ difference.afterFullComboSymbol }}</div>
-        <div class="score">{{ difference.afterScoreString }}</div>
-      </template>
-    </div>
+              <div>→</div>
 
-    <div v-if="maxPage > 1" class="pager">
-      <template v-for="index of maxPage">
-        <a v-if="index == currentPage" v-bind:class="['element', 'current']">[{{ index }}]</a
-        ><a v-if="index != currentPage" v-on:click="gotoPage(index)" v-bind:class="['element', 'link']">[{{ index }}]</a>
-      </template>
+              <div v-bind:class="['score_rank', difference.afterScoreRankClassString]">{{ difference.afterScoreRankString }}</div>
+              <div v-bind:class="['full_combo_type', difference.afterClearTypeClassString]">{{ difference.afterFullComboSymbol }}</div>
+              <div class="score">{{ difference.afterScoreString }}</div>
+            </template>
+          </div>
+        </template>
+        <template v-else>
+          <div>{{ getMessage('diff_container_no_update') }}</div>
+        </template>
+
+        <div v-if="maxPage > 1" class="pager">
+          <template v-for="index of maxPage">
+            <a v-if="index == currentPage" v-bind:class="['element', 'current']">[{{ index }}]</a
+            ><a v-if="index != currentPage" v-on:click="gotoPage(index)" v-bind:class="['element', 'link']">[{{ index }}]</a>
+          </template>
+        </div>
+      </div>
+
+      <div id="closeButton2" class="drawer-switch" v-on:click="close">{{ getMessage('diff_container_close_button') }}</div>
     </div>
   </div>
 </template>
@@ -37,6 +51,43 @@
 import Vue from 'vue';
 import { Constants } from '../static/common/Constants.js';
 import { I18n } from '../static/common/I18n.js';
+
+function compareScoreDiff(a, b, sortConditions) {
+  if (sortConditions.length == 0) {
+    return 0;
+  }
+  const attribute = sortConditions[0].attribute;
+  let lt = -1;
+  let gt = 1;
+  if (sortConditions[0].order == 'desc') {
+    lt = 1;
+    gt = -1;
+  }
+  if (a[attribute] === b[attribute]) {
+    return compareScoreDiff(a, b, sortConditions.slice(1));
+  }
+  if (a[attribute] < b[attribute] || a[attribute] === null) {
+    return lt;
+  }
+  return gt;
+}
+
+function initialize() {
+  document.getElementById('diffContainer').classList.remove('not-initialized');
+  document.getElementById('diffBackground').classList.remove('not-initialized');
+  document.getElementById('diffContainer').classList.add('initialized');
+  document.getElementById('diffBackground').classList.add('initialized');
+}
+
+function open() {
+  document.getElementById('diffContainer').classList.add('active');
+  document.getElementById('diffBackground').classList.add('active');
+}
+
+function close() {
+  document.getElementById('diffContainer').classList.remove('active');
+  document.getElementById('diffBackground').classList.remove('active');
+}
 
 export default Vue.extend({
   data: function () {
@@ -57,6 +108,32 @@ export default Vue.extend({
     gotoPage: function (page) {
       this.pageDifferences = this.differences.slice((page - 1) * Constants.PAGE_LENGTH, page * Constants.PAGE_LENGTH);
       this.currentPage = page;
+    },
+    close: () => {
+      close();
+    },
+    loadAndOpen: function () {
+      chrome.runtime.getBackgroundPage(async (backgroundPage) => {
+        const differences = backgroundPage.getDifferences();
+        const sortConditions = [
+          { attribute: 'playMode', order: 'asc' },
+          { attribute: 'level', order: 'desc' },
+          { attribute: 'afterScore', order: 'desc' },
+          { attribute: 'beforeScore', order: 'desc' },
+          { attribute: 'title', order: 'asc' },
+        ];
+        differences.sort(function (a, b) {
+          return compareScoreDiff(a, b, sortConditions);
+        });
+        this.setData(differences);
+        this.open();
+      });
+    },
+    open: () => {
+      open();
+    },
+    initialize: () => {
+      initialize();
     },
   },
 });
@@ -284,3 +361,13 @@ export default Vue.extend({
   color: #ffffff;
 }
 </style>
+<style scoped>
+.diff {
+  height: 100%;
+  overflow: scroll;
+}
+.content {
+  clear: right;
+}
+</style>
+<style src="../static/browser_action/drawer.css" scoped></style>
