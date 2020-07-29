@@ -100,6 +100,9 @@ This software retrieves music list from [github pages](https://ryowatanabe.githu
 
 [CHANGELOG.md](https://github.com/ryowatanabe/DDRScoreTracker/blob/master/CHANGELOG.md)
 
+## Internal Specifications / 内部仕様
+
+[SPEC.md (Japanese only)](https://github.com/ryowatanabe/DDRScoreTracker/blob/master/SPEC.md)
 
 ## License / ライセンス
 
