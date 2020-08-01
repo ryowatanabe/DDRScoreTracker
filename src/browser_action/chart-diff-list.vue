@@ -248,10 +248,12 @@ export default Vue.extend({
 .score_list {
   clear: right;
   display: grid;
-  grid-template-columns: minmax(1px, max-content) auto minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(
+  grid-template-columns:
+    minmax(1px, max-content) auto minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(
       1px,
       max-content
-    );
+    )
+    minmax(1px, max-content);
 }
 
 .score_list > div {

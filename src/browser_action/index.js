@@ -41,7 +41,7 @@ window.getCharts = () => {
 
 window.openDiff = () => {
   chartDiffList.loadAndOpen();
-}
+};
 
 window.refreshList = (summarySettings, filterConditions, sortConditions) => {
   chrome.runtime.getBackgroundPage(async function (backgroundPage) {

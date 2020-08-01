@@ -69,6 +69,15 @@ function abortAction() {
     case STATE.UPDATE_MUSIC_DETAIL:
     case STATE.UPDATE_SCORE_DETAIL:
       Logger.info(I18n.getMessage('log_message_aborting'));
+      setTimeout(async () => {
+        try {
+          await closeTab(true);
+        } catch (e) {
+          Logger.debug(e);
+        }
+        changeState(STATE.IDLE);
+        Logger.info(I18n.getMessage('log_message_aborted'));
+      }, 0);
       state = STATE.ABORTING;
       break;
     default:
@@ -406,15 +415,6 @@ function updateCharts() {
 
 function onUpdateTab() {
   switch (state) {
-    case STATE.ABORTING:
-      setTimeout(async () => {
-        try {
-          await closeTab();
-        } catch (e) {}
-        changeState(STATE.IDLE);
-        Logger.info(I18n.getMessage('log_message_aborted'));
-      }, 0);
-      break;
     case STATE.UPDATE_MUSIC_LIST:
       browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST' }, async (res) => {
         console.log(res);
@@ -577,6 +577,7 @@ function onUpdateTab() {
       });
       break;
     default:
+      Logger.debug('onUpdateTab: event was ignored.');
       break;
   }
 }
@@ -602,9 +603,9 @@ async function handleError(res) {
   Logger.info(I18n.getMessage('log_message_aborted'));
 }
 
-async function closeTab() {
+async function closeTab(force) {
   if (options.notCloseTabAfterUse != true) {
-    await browserController.closeTab();
+    await browserController.closeTab(force);
   }
 }
 
