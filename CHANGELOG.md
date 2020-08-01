@@ -6,6 +6,10 @@
 
  - Show score updates after retrieving score data
 
+### Fixed
+
+ - Now data retrieval actions can be correctly aborted. (In some cases, background script could not return to idle state after aborting)
+
 ## [0.0.8] - 2020-07-16
 
 ### Added
