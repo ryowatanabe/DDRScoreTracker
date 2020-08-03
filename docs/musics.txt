@@ -28,7 +28,7 @@
 0Qb8PDoQ06Q66obPI1P988oI61ioPb6l	0	3	6	9	12	0	6	9	13	0	フー・フローツ
 0b1660ibo0liI01ibOO6lD8olIb88qDi	0	3	6	9	11	13	6	9	11	13	Uranus
 0bDqIO9Q0PPIPlPll1D8Pbol9O6DlPdb	0	2	7	10	13	0	7	11	13	0	ラキラキ
-0bq9qI9PoPIlQl89bDO60o9q8I1iIP66	0	5	8	12	15	0	8	12	15	0	HyperTwist
+0bq9qI9PoPIlQl89bDO60o9q8I1iIP66	0	5	8	12	15	18	8	12	15	18	HyperTwist
 0d8Q9I86lo8oDlQiPd81ll66ob0qli89	0	3	6	9	11	0	6	9	12	0	しゃかりきリレーション
 0dOOOolo0P6180OQDo16DdO6o6D8O8lQ	0	2	5	9	12	0	5	9	12	0	DIGITAL LUV
 0dOi10q9Q6oi0Q9960iQQDO6olqlDDqo	0	2	4	8	12	0	6	8	12	0	Private Eye
@@ -49,7 +49,7 @@
 109P1iO9i6q1q0bdQobiodQDoD619dqd	0	6	9	12	14	18	9	13	15	18	Healing-D-Vision
 10oQOoD00O1ql8qD88dI0i0biP69blq6	0	2	3	7	9	0	3	7	9	0	GRADUATION ～それぞれの明日～
 11dQb0qIdbO098ObDqOQQ8Ili9Il0lOd	0	6	8	12	15	18	8	11	15	18	Go For The Top
-160Oo1q8DolI6068lQi66OQbQ9Q8ODQI	0	2	7	11	15	0	7	12	15	0	バンブーソード・ガール
+160Oo1q8DolI6068lQi66OQbQ9Q8ODQI	0	2	7	11	15	18	7	12	15	17	バンブーソード・ガール
 16IqQ680IioldO69QD61liQod0DQ8boQ	0	3	5	8	11	0	6	8	11	0	色は匂へど散りぬるを
 16Pio809ID669Di8OoPblQO0lDq668dQ	0	3	4	7	11	0	5	7	10	0	Scorching Moon
 16bl8D8lOddP9Obq0OIlOI6q8Pi1l9O0	0	3	6	10	13	0	7	10	13	0	天ノ弱
@@ -158,7 +158,7 @@
 6iO8d9ld00I6lDIO6qbOldP99oqloqb9	0	4	6	10	14	0	6	10	14	0	Dead Heat
 6iq1dqQ1PDQlDO0bio0l89oDDDi6b0oD	0	3	5	7	11	0	4	7	11	0	華爛漫 -Flowers-
 6l0iQ18D0I00P89lIqI8bl9biIOi018O	0	3	7	11	15	0	7	11	15	0	BRILLIANT 2U (AKBK MIX)
-6lD1ooDi8Pdl0OlO0QoIioI8119I0PPq	0	3	7	10	14	0	8	10	15	0	Sakura Sunrise
+6lD1ooDi8Pdl0OlO0QoIioI8119I0PPq	0	3	7	10	14	16	8	10	15	16	Sakura Sunrise
 6lQ9iQdq8P0Q11q9O8dbl9Q9Pi8bIb98	0	5	6	8	12	12	6	8	12	11	Dance Dance Revolution
 6loIiOd8PP90dPOq16Q6PdPPO0DQDOPP	3	0	0	0	0	13	0	0	0	0	四段 (PLUS)
 6loP1dbiOq0Q8i9QQOI6o0iOO6bdIQOO	0	2	5	9	12	14	5	9	11	14	Tell me what to do
@@ -312,7 +312,7 @@ D9IO16idQq6iiI88loI1i986lIID0O9O	0	3	6	9	12	0	6	9	13	0	LONG TRAIN RUNNIN' (20th 
 D9lq0DioIl9D6ll0d61990DP9qPPb1dP	0	3	7	11	16	0	6	11	16	0	True Blue
 D9odQ60DDolq9QI9DDl98DIobdPPIil9	0	2	5	8	11	0	5	8	11	0	Special One
 D9ooldO1009Pq1dP6P88lD80P0Oi060P	0	4	7	10	13	0	7	10	13	0	LEVEL UP
-DD6olq00PD91odbO9QbldDb0bQ18oqo1	0	3	8	11	14	0	8	11	14	0	Pierce The Sky
+DD6olq00PD91odbO9QbldDb0bQ18oqo1	0	3	8	11	14	16	8	11	14	16	Pierce The Sky
 DDDiQOd1IQQ6QIIq09PDqdQdDIll6bQI	0	2	5	11	13	16	5	11	13	16	打打打打打打打打打打
 DDPPI6IIi0i9looibDbiODoOPOl6ID8i	0	2	6	8	10	0	6	8	10	0	Feidie
 DDqDDqDQ1Db60IiIDbIl6Pd8DPOq0q06	0	3	4	9	12	0	5	9	12	0	VANITY ANGEL
@@ -479,7 +479,7 @@ P0IoP69l6q08q8DoPD1Q8bqq099Pi1iP	0	3	8	12	16	0	7	12	16	0	海神
 P0O81Dl9Oiiid8bdOi0oqbD8DqolObbP	0	4	5	9	12	0	5	10	12	0	BE LOVIN
 P0iOob80dDPqI8oIqq1dOiDd9qilQqDl	0	4	8	11	14	16	8	11	14	16	PRANA
 P160qOD09PQoOPI6iIOO69qDoqQl1qDQ	0	2	5	9	13	0	5	10	13	0	熱情のサパデアード
-P1boP1O60bdI16i6lqqd1Q8ioiPbolqd	0	3	6	12	15	0	6	12	15	0	ΩVERSOUL
+P1boP1O60bdI16i6lqqd1Q8ioiPbolqd	0	3	6	12	15	17	6	12	15	17	ΩVERSOUL
 P66d8iQQIIQO96qoDdIqi9l19i69D9Dq	0	3	6	10	13	15	6	10	13	15	チルノのパーフェクトさんすう教室
 P6id8qqolbP0oqO060OOqbl60DI9iQoQ	0	5	10	13	17	0	9	14	18	0	Catch Our Fire!
 P869didbP8Q69IQ0dIqo1ibOb0bb99Q1	0	3	7	10	13	0	7	9	12	0	宇宙(ソラ)への片道切符
@@ -560,7 +560,7 @@ Q9l0i6DPO08obldq101ldDioiqdIDqlq	0	2	5	9	13	17	5	10	13	17	タイガーランペ�
 QD0q90q9PIl9PdqqO9D9DO09DbiODOI6	0	3	3	7	10	0	3	7	11	0	Star Gate Heaven
 QD6b8i08P1IQloIPOPiqlIPoDlPi9DPI	0	3	5	8	12	14	5	8	11	14	Diamond Night
 QD8D6IQ1QoOPIPIIbI10QDOdd96OPIQi	0	3	6	9	12	11	6	9	12	11	#OurMemories
-QD9Ib18D9lIO10O19d16PbPb68q1190d	0	5	9	12	17	0	9	12	17	0	び
+QD9Ib18D9lIO10O19d16PbPb68q1190d	0	5	9	12	17	18	9	12	17	18	び
 QDP0i688bQi1Idqil1dOqDdPdoIPP6Q0	0	5	6	9	12	0	6	9	12	0	DXY!
 QI06q9lPIoo80DlI18Ooi6dbPl89bqi0	0	3	6	8	11	15	6	9	11	15	Our Soul
 QI96D9PqIQ90PidPQPdbqbi0q9q8lQbb	0	3	6	7	11	0	5	6	8	0	Quickening
@@ -606,7 +606,7 @@ b1do8OI6qDDlQO0PI16868ql6bdbI886	0	6	10	13	16	0	11	13	16	0	Splash Gold
 b60odbPO1IQd6d0qPIi1dQODq16i9811	0	1	5	8	11	13	5	8	11	13	Elysium
 b6dqPiOO6iO6b8D90Ido6QPOlObd9o98	0	3	5	9	13	0	5	8	10	0	Mind Parasite
 b6l6qPPdiOqqPqqII0IPqI981bolOqIb	0	3	5	9	12	14	6	9	12	14	La libertad
-b6ldDOq9qi1IiIIdiIl1108q1iQ9O6d6	0	2	8	11	14	0	8	11	14	0	Shiny World
+b6ldDOq9qi1IiIIdiIl1108q1iQ9O6d6	0	2	8	11	14	16	8	11	14	16	Shiny World
 b6qOqD9bOQO1O0q8000D6dIdqb80li1b	3	0	0	0	0	12	0	0	0	0	三段 (PLUS)
 b80qOO6l8060990qQPod1bOd8Q9d69qo	0	4	9	12	16	0	9	13	16	0	The World Ends Now
 b8dqI0Iq60iQPPobiiQ8O6PiIqdodDiQ	0	4	5	7	12	0	5	8	12	0	GIRIGILI門前雀羅
@@ -617,7 +617,7 @@ bD1DbibPIq9IIlQd0OIIl0o91QI1il69	0	3	6	9	13	16	7	10	13	16	Monkey Business
 bDDd08iP8dlIlOo6iqd91dPiI1lQdOQq	0	3	5	10	13	0	5	9	13	0	xenon
 bIb6Q6DD9iP1d61dbOqdi6IQPllOb1IP	3	0	0	0	0	0	0	0	0	10	初段 (PLUS)
 bIloQ900Iq01ql6ddP9idIb6iQ11i9D6	0	3	7	11	13	0	7	11	13	0	Far east nightbird kors k Remix -DDR edit ver-
-bIlqP91O9ld1lqlq6qoq9OiPdqIDPP0l	0	5	9	14	18	0	9	14	18	0	Lachryma《Re:Queen’M》
+bIlqP91O9ld1lqlq6qoq9OiPdqIDPP0l	0	5	9	14	18	19	9	14	18	19	Lachryma《Re:Queen’M》
 bP10qq9dPDDqIl16lPIDDd8b00dIIP08	0	2	5	10	14	0	5	10	14	0	50th Memorial Songs -Beginning Story-
 bP69QdDQ0QQ9dP0dDio0dO61i9Dbdl00	0	3	6	7	10	0	6	7	10	0	Let the beat hit em!(CLASSIC R&B STYLE)
 bPD6ObloQPOOiQb1DbQDdilodiddlIlb	0	4	5	8	10	0	6	8	11	0	ECSTASY
@@ -977,4 +977,4 @@ qo6l9dbb8D0iDQI1odo0Qb9O1ibDdoIb	0	5	9	12	15	0	9	12	16	0	Remain
 qoDOoP99lq8bd19iqiloObQDqD8QbOq0	0	3	6	9	12	10	6	9	12	10	SigSig
 qoidddb08iIoDOo9DQoO0loPl8lPQ81o	0	2	4	9	13	0	4	9	13	0	スイーツはとまらない♪
 qq8qDqqPQdP0loDI6DDO9d6dQ601iOID	0	2	5	10	13	0	5	10	14	0	siberite
-qqDOddP66Ol1q1IIOb1OPO68DP1ood1i	0	5	8	13	16	0	8	13	16	0	Firestorm
+qqDOddP66Ol1q1IIOb1OPO68DP1ood1i	0	5	8	13	16	16	8	13	16	16	Firestorm
