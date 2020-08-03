@@ -428,6 +428,6 @@
     "message": "Not send data to skill attack"
   },
   "options_ui_music_list_reload_interval": {
-    "message": "Interval for checking music list updates (msec)"
+    "message": "Interval for checking music list updates (msec, 0 for disable)"
   }
 }

@@ -47,7 +47,7 @@ window.refreshList = (summarySettings, filterConditions, sortConditions) => {
   chrome.runtime.getBackgroundPage(async function (backgroundPage) {
     const internalStatus = backgroundPage.getInternalStatus();
     const options = backgroundPage.getOptions();
-    if (internalStatus.musicListUpdatedAt + options.musicListReloadInterval < Date.now()) {
+    if (options.musicListReloadInterval > 0 && internalStatus.musicListUpdatedAt + options.musicListReloadInterval < Date.now()) {
       try {
         await backgroundPage.fetchParsedMusicList();
       } catch (error) {}
