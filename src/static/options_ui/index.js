@@ -26,4 +26,7 @@ function saveOptions() {
   document.querySelector('[name=notCloseTabAfterUse]').addEventListener('click', saveOptions);
   document.querySelector('[name=notSendDataToSkillAttack]').addEventListener('click', saveOptions);
   document.querySelector('[name=musicListReloadInterval]').addEventListener('change', saveOptions);
+
+  const extension_id = chrome.i18n.getMessage('@@extension_id');
+  document.getElementById('options_openDebugPage').href = `chrome-extension://${extension_id}/browser_action/debug/index.html`;
 })();
