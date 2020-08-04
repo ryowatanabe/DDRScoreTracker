@@ -49,7 +49,17 @@ export class ScoreDiff {
     return Util.getDifficulty(this.difficultyValue);
   }
 
+  get levelString() {
+    if (this.level == 0) {
+      return '?';
+    }
+    return this.level;
+  }
+
   get level() {
+    if (this.musicData === null) {
+      return 0;
+    }
     return this.musicData.getLevel(this.difficultyValue);
   }
 

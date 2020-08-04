@@ -15,7 +15,7 @@
         <template v-if="differences.length > 0">
           <div class="score_list">
             <template v-for="difference in pageDifferences">
-              <div v-bind:class="['level', difference.difficultyClassString]">{{ difference.level }}{{ difference.playModeSymbol }}</div>
+              <div v-bind:class="['level', difference.difficultyClassString]">{{ difference.levelString }}{{ difference.playModeSymbol }}</div>
               <div class="title">{{ difference.title }}</div>
 
               <div v-bind:class="['score_rank', difference.beforeScoreRankClassString]">{{ difference.beforeScoreRankString }}</div>
