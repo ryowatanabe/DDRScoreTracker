@@ -54,7 +54,7 @@
 
     <div class="score_list">
       <template v-for="chart in pageCharts">
-        <div v-bind:class="['level', chart.difficultyClassString]">{{ chart.level }}{{ chart.playModeSymbol }}</div>
+        <div v-bind:class="['level', chart.difficultyClassString]">{{ chart.levelString }}{{ chart.playModeSymbol }}</div>
         <div class="title">{{ chart.title }}</div>
         <div class="clear_count">
           <template v-if="chart.clearCount !== null">{{ chart.clearCount }}/</template>

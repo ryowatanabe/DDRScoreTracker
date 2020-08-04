@@ -11,6 +11,7 @@ import { Storage } from '../static/common/Storage.js';
 import { BrowserController } from '../static/common/BrowserController.js';
 import { Parser } from '../static/common/Parser.js';
 import { I18n } from '../static/common/I18n.js';
+import { Util } from '../static/common/Util.js';
 
 import { STATE, CHANGE_STATE_MESSAGE_TYPE } from '../static/background/state.js';
 
@@ -393,15 +394,16 @@ function updateCharts() {
           return;
         }
         const musicData = musicList.getMusicDataById(musicId);
-        const difficultyValue = difficulty + (playMode == Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
-        if (!musicData.hasDifficulty(difficultyValue)) {
+        const difficultyValue = Util.getDifficultyValue(playMode, difficulty);
+        const scoreDataExists = scoreList.hasMusic(musicId) && scoreList.getScoreDataByMusicId(musicId).hasDifficulty(difficultyValue);
+        if (!musicData.hasDifficulty(difficultyValue) && !scoreDataExists) {
           return;
         }
 
         const chartData = new ChartData(musicId, playMode, difficulty);
         chartData.musicData = musicData;
 
-        if (scoreList.hasMusic(musicId) && scoreList.getScoreDataByMusicId(musicId).hasDifficulty(difficultyValue)) {
+        if (scoreDataExists) {
           chartData.scoreDetail = scoreList.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
         } else {
           chartData.scoreDetail = new ScoreDetail();

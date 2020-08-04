@@ -1,4 +1,5 @@
 import { Constants } from './Constants.js';
+import { Util } from './Util.js';
 
 export class ChartData {
   constructor(musicId, playMode, difficulty) {
@@ -17,9 +18,15 @@ export class ChartData {
     return this.musicData.title;
   }
 
+  get levelString() {
+    if (this.level == 0) {
+      return '?';
+    }
+    return this.level;
+  }
+
   get level() {
-    const index = this.difficulty + (this.playMode == Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
-    return this.musicData.getLevel(index);
+    return this.musicData.getLevel(Util.getDifficultyValue(this.playMode, this.difficulty));
   }
 
   get score() {
