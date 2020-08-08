@@ -37,6 +37,9 @@ export class ScoreData {
   }
 
   merge(scoreData) {
+    if (scoreData.musicType != Constants.MUSIC_TYPE.UNKNOWN) {
+      this.musicType = scoreData.musicType;
+    }
     const differences = [];
     scoreData.difficulties.forEach((difficultyValue) => {
       const diff = this.applyScoreDetail(difficultyValue, scoreData.getScoreDetailByDifficulty(difficultyValue));

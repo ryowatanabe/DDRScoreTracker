@@ -502,6 +502,7 @@ function onUpdateTab() {
           return;
         }
         res.scores.forEach(function (score) {
+          score.musicType = targetMusicType;
           differences = differences.concat(scoreList.applyObject(score));
         });
         saveStorage();
