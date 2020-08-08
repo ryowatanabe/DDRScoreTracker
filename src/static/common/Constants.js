@@ -14,7 +14,7 @@ export class Constants {
 
   static get MUSIC_TYPE() {
     return {
-      UNKNOwN: -1,
+      UNKNOWN: -1,
       NORMAL: 0,
       NONSTOP: 1,
       GRADE: 2,

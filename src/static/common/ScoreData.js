@@ -1,14 +1,19 @@
+import { Constants } from './Constants.js';
 import { ScoreDetail } from './ScoreDetail.js';
 import { ScoreDiff } from './ScoreDiff.js';
 
 export class ScoreData {
   constructor(musicId) {
     this.musicId = musicId;
+    this.musicType = Constants.MUSIC_TYPE.UNKNOWN;
     this.difficulty = {};
   }
 
   static createFromStorage(storageData) {
     const instance = new ScoreData(storageData['musicId']);
+    if (typeof storageData['musicType'] != 'undefined') {
+      instance.musicType = storageData['musicType'];
+    }
     Object.getOwnPropertyNames(storageData['difficulty']).forEach(function (index) {
       instance.difficulty[index] = ScoreDetail.createFromStorage(storageData['difficulty'][index]);
     });
