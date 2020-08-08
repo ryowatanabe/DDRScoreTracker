@@ -52,6 +52,7 @@ let state = STATE.INITIALIZE;
 let targetPlayMode;
 let targetMusicType;
 let targetMusics = [];
+let targetMusic;
 
 let musicList; // 曲リスト。1曲1エントリ。
 let scoreList; // スコアリスト。1曲1エントリ。
@@ -288,9 +289,14 @@ async function fetchMissingMusicInfo(windowId) {
     return missing;
   });
   targetMusics = targetMusicIDs.map((musicId) => {
+    let musicType = scoreList.getScoreDataByMusicId(musicId).musicType;
+    if (musicType == Constants.MUSIC_TYPE.UNKNOWN) {
+      musicType = Constants.MUSIC_TYPE.NORMAL;
+    }
     return {
       musicId: musicId,
-      url: Constants.MUSIC_DETAIL_URL[Constants.MUSIC_TYPE.NORMAL].replace('[musicId]', musicId),
+      type: musicType,
+      url: Constants.MUSIC_DETAIL_URL[musicType].replace('[musicId]', musicId),
     };
   });
   if (targetMusics.length == 0) {
@@ -300,7 +306,7 @@ async function fetchMissingMusicInfo(windowId) {
   Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_target_found', targetMusics.length));
   changeState(STATE.UPDATE_MUSIC_DETAIL);
   try {
-    const targetMusic = targetMusics.shift();
+    targetMusic = targetMusics.shift();
     Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [targetMusic.musicId, targetMusics.length]));
     await browserController.createTab(targetMusic.url, options.openTabAsActive);
   } catch (error) {
@@ -472,13 +478,14 @@ function onUpdateTab() {
           return;
         }
         res.musics.forEach(function (music) {
+          music.type = targetMusic.type;
           musicList.applyObject(music);
         });
         saveStorage();
         updateCharts();
         if (targetMusics.length > 0) {
           try {
-            const targetMusic = targetMusics.shift();
+            targetMusic = targetMusics.shift();
             Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [targetMusic.musicId, targetMusics.length]));
             await browserController.updateTab(targetMusic.url);
           } catch (error) {
