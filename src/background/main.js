@@ -1,4 +1,5 @@
 import { MusicList } from '../static/common/MusicList.js';
+import { MusicData } from '../static/common/MusicData.js';
 import { ScoreList } from '../static/common/ScoreList.js';
 import { ScoreDetail } from '../static/common/ScoreDetail.js';
 import { ChartList } from '../static/common/ChartList.js';
@@ -364,7 +365,16 @@ async function updateScoreDetail(windowId, targets) {
   Logger.info(I18n.getMessage('log_message_update_score_detail_begin'));
   /* 巡回対象のURL一覧を生成 */
   targetMusics = targets.map((music) => {
-    music.url = Constants.SCORE_DETAIL_URL[musicList.getMusicDataById(music.musicId).type].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
+    let musicType = Constants.MUSIC_TYPE.NORMAL;
+    if (musicList.hasMusic(music.musicId)) {
+      musicType = musicList.getMusicDataById(music.musicId).type;
+    } else if (scoreList.hasMusic(music.musicId)) {
+      musicType = scoreList.getScoreDataByMusicId(music.musicId).musicType;
+    }
+    if (musicType == Constants.MUSIC_TYPE.UNKNOWN) {
+      musicType = Constants.MUSIC_TYPE.NORMAL;
+    }
+    music.url = Constants.SCORE_DETAIL_URL[musicType].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
     return music;
   });
   if (targetMusics.length == 0) {
@@ -377,7 +387,7 @@ async function updateScoreDetail(windowId, targets) {
     const targetMusic = targetMusics.shift();
     Logger.info(
       I18n.getMessage('log_message_update_score_detail_progress', [
-        musicList.getMusicDataById(targetMusic.musicId).title,
+        musicList.hasMusic(targetMusic.musicId) ? musicList.getMusicDataById(targetMusic.musicId).title : targetMusic.musicId,
         Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty],
         targetMusics.length,
       ])
@@ -430,6 +440,7 @@ function updateCharts() {
           }
 
           const chartData = new ChartData(musicId, playMode, difficulty);
+          chartData.musicData = new MusicData(musicId, scoreList.getScoreDataByMusicId(musicId).musicType, '', [0, 0, 0, 0, 0, 0, 0, 0, 0]);
           chartData.scoreDetail = scoreList.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
 
           chartList.addChartData(chartData);
@@ -585,7 +596,7 @@ function onUpdateTab() {
             const targetMusic = targetMusics.shift();
             Logger.info(
               I18n.getMessage('log_message_update_score_detail_progress', [
-                musicList.getMusicDataById(targetMusic.musicId).title,
+                musicList.hasMusic(targetMusic.musicId) ? musicList.getMusicDataById(targetMusic.musicId).title : targetMusic.musicId,
                 Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty],
                 targetMusics.length,
               ])
