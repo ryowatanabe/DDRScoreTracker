@@ -413,6 +413,24 @@ function updateCharts() {
       });
     });
   });
+  scoreList.musicIds.forEach(function (musicId) {
+    if (!musicList.hasMusic(musicId)) {
+      Object.values(Constants.PLAY_MODE).forEach(function (playMode) {
+        Object.values(Constants.DIFFICULTIES).forEach(function (difficulty) {
+          const difficultyValue = Util.getDifficultyValue(playMode, difficulty);
+          const scoreDataExists = scoreList.hasMusic(musicId) && scoreList.getScoreDataByMusicId(musicId).hasDifficulty(difficultyValue);
+          if (!scoreDataExists) {
+            return;
+          }
+
+          const chartData = new ChartData(musicId, playMode, difficulty);
+          chartData.scoreDetail = scoreList.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
+
+          chartList.addChartData(chartData);
+        });
+      });
+    }
+  });
 }
 
 function onUpdateTab() {

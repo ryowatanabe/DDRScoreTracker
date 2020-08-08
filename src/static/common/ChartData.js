@@ -11,10 +11,16 @@ export class ChartData {
   }
 
   get musicType() {
+    if (this.musicData == null) {
+      return Constants.MUSIC_TYPE.UNKNOWN;
+    }
     return this.musicData.type;
   }
 
   get title() {
+    if (this.musicData == null) {
+      return this.musicId;
+    }
     return this.musicData.title;
   }
 
@@ -26,6 +32,9 @@ export class ChartData {
   }
 
   get level() {
+    if (this.musicData == null) {
+      return 0;
+    }
     return this.musicData.getLevel(Util.getDifficultyValue(this.playMode, this.difficulty));
   }
 
