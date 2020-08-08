@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+## Changed
+
+ - Show score data / score updates for musics which is not in music list
+
 ## [0.0.9] - 2020-08-01
 
 ### Added
