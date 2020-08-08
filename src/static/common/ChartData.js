@@ -22,7 +22,7 @@ export class ChartData {
     if (this.level == 0) {
       return '?';
     }
-    return this.level;
+    return String(this.level);
   }
 
   get level() {
