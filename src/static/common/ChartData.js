@@ -21,6 +21,9 @@ export class ChartData {
     if (this.musicData == null) {
       return this.musicId;
     }
+    if (this.musicData.title == '') {
+      return this.musicId;
+    }
     return this.musicData.title;
   }
 

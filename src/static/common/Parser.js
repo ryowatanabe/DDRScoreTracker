@@ -70,14 +70,14 @@ export class Parser {
       return res;
     }
     const musicInfo = rootElement.querySelectorAll('#music_info td');
-    if (musicInfo.length != 2) {
+    if (musicInfo.length < 1) {
       res.status = this.STATUS.UNKNOWN_ERROR;
       return res;
     }
     const regexpForMusicId = /^.*img=([0-9a-zA-Z]+).*$/;
     const src = musicInfo[0].querySelector('img').src;
     const musicId = src.replace(regexpForMusicId, '$1');
-    const title = musicInfo[1].innerHTML.split('<br>')[0];
+    const title = musicInfo.length > 1 ? musicInfo[1].innerHTML.split('<br>')[0] : '';
     const regexpForDifficulties = /^.*songdetails_level_([0-9]*).png$/;
     const difficulties = Array.from(rootElement.querySelectorAll('li.step img'));
     const difficulty = difficulties.map((element) => {

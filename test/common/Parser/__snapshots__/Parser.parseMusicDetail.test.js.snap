@@ -7,10 +7,58 @@ Object {
 }
 `;
 
+exports[`Parser.ParseMusicDetail (grade) 1`] = `
+Object {
+  "musics": Array [
+    MusicData {
+      "difficulty": Array [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        17,
+      ],
+      "musicId": "oiqql6iPq8Oq0QIqlqb1DOOO8ioPo8b9",
+      "title": "",
+      "type": 0,
+    },
+  ],
+  "status": 0,
+}
+`;
+
 exports[`Parser.ParseMusicDetail (noLogin) 1`] = `
 Object {
   "musics": Array [],
   "status": 2,
+}
+`;
+
+exports[`Parser.ParseMusicDetail (nonstop) 1`] = `
+Object {
+  "musics": Array [
+    MusicData {
+      "difficulty": Array [
+        4,
+        8,
+        9,
+        11,
+        0,
+        9,
+        13,
+        11,
+        0,
+      ],
+      "musicId": "qbbOOO1QibO1861bqQII9lqlPiIoqb98",
+      "title": "",
+      "type": 0,
+    },
+  ],
+  "status": 0,
 }
 `;
 
