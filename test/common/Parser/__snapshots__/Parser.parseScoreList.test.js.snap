@@ -30,6 +30,7 @@ Object {
         },
       },
       "musicId": "bIb6Q6DD9iP1d61dbOqdi6IQPllOb1IP",
+      "musicType": -1,
     },
   ],
   "status": 0,
@@ -55,6 +56,7 @@ Object {
         },
       },
       "musicId": "9IliQ1O0dOQPiObPDDDblDO6oliDodlb",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -68,6 +70,7 @@ Object {
         },
       },
       "musicId": "IlQodD9Dbld8QiOql68bPPQbd6bll6i1",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -81,6 +84,7 @@ Object {
         },
       },
       "musicId": "dib16I1b0o9OdOd1O90dO1Q6iIO9PQo9",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -94,6 +98,7 @@ Object {
         },
       },
       "musicId": "8OoDQb16lP0i96qiDQqo90Q6bOP1o89D",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -107,6 +112,7 @@ Object {
         },
       },
       "musicId": "ddql809Qo8q68918lIDOPDQ6q1liD9b6",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -120,6 +126,7 @@ Object {
         },
       },
       "musicId": "9D69dQo1dQqPD6l9ObiI0b0i8d9ddool",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -133,6 +140,7 @@ Object {
         },
       },
       "musicId": "Pbbidbl9l8IqddQOq0069oQ6Oi1DQdP1",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -146,6 +154,7 @@ Object {
         },
       },
       "musicId": "idiOI1Qb9D0dQI6IOlob8QbOqdDOoObP",
+      "musicType": -1,
     },
   ],
   "status": 0,
@@ -171,6 +180,7 @@ Object {
         },
       },
       "musicId": "io9b89PD18ibIO8PIqb1QODliqDdqiIO",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -184,10 +194,12 @@ Object {
         },
       },
       "musicId": "olloQOobddiIIPObP91l0qPl6oo8P9Dl",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {},
       "musicId": "dbq9dPPOQ60ibOol0I6b9iQol9lD669D",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -201,6 +213,7 @@ Object {
         },
       },
       "musicId": "QQbiq1qQd8d1blOldi889OdQd9P1106Q",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -214,10 +227,12 @@ Object {
         },
       },
       "musicId": "qI06bbQ1dloi0IIIO1IQ1q8bdPdl6l69",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {},
       "musicId": "01808Q1Q6lQQ1lP0qd80I0b0qqDd1OOP",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -231,10 +246,12 @@ Object {
         },
       },
       "musicId": "I81iP0Io9o1l9li0Iq99P1091O8DoDOd",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {},
       "musicId": "d6iI8ii9qi0Pi80dDQQlPq6qQo69860P",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -248,10 +265,12 @@ Object {
         },
       },
       "musicId": "8bI68oIq08d99P880bDPQ9D80O099Q10",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {},
       "musicId": "blI8D10Q1IDQ8Q19bi0IDlD80oD0bloi",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -265,6 +284,7 @@ Object {
         },
       },
       "musicId": "Qo1qdD0Q9d11d9Id6o09P9id8lPbOQ6o",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -278,6 +298,7 @@ Object {
         },
       },
       "musicId": "bDDd08iP8dlIlOo6iqd91dPiI1lQdOQq",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -307,6 +328,7 @@ Object {
         },
       },
       "musicId": "PQQd6lQlDqilqliI0IobolqIDlo0Iboq",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -320,10 +342,12 @@ Object {
         },
       },
       "musicId": "8OPDQ1oQIOPdqqD18oo0lQ8OQOIbbDoP",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {},
       "musicId": "D0qloQo0bQliQqooQ609IP8i09old99D",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -345,14 +369,17 @@ Object {
         },
       },
       "musicId": "0qOPDqq0qld66bll9ob9iIqiiQPiQIDQ",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {},
       "musicId": "D8I68Ibib9ldQDIPIQdO6lqI61PQlPO9",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {},
       "musicId": "oiIob81i6d6P6qbddOP6Q0d0obQ0PID9",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -382,6 +409,7 @@ Object {
         },
       },
       "musicId": "I61ioI01IOPDPbP1OO0l98PD0iDbid0D",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -395,6 +423,7 @@ Object {
         },
       },
       "musicId": "96QPqq0q6Id0Ii0QbD1bQqPbiDqb0lPo",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -408,18 +437,22 @@ Object {
         },
       },
       "musicId": "IQ0dIiDql9Q68d9ddQIiQbq1OPq8Db69",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {},
       "musicId": "ddOOOibQ6qIi9DI1bl8b108I1Ib6QDl9",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {},
       "musicId": "i9Pidb18b9O8bdqQ91QQP0oPdIdIODq1",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {},
       "musicId": "Q96bO9D61lib19IiIi0i69P80bo6q69Q",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -433,6 +466,7 @@ Object {
         },
       },
       "musicId": "80Q1idDo6O6Db0106b0q6qbOP1P8QQb0",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -454,6 +488,7 @@ Object {
         },
       },
       "musicId": "l1ODQ1bO9POQ6d8O0Iobbio11qb6O6bd",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -475,6 +510,7 @@ Object {
         },
       },
       "musicId": "bP10qq9dPDDqIl16lPIDDd8b00dIIP08",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -496,6 +532,7 @@ Object {
         },
       },
       "musicId": "0IIO08bII0QQDOdobqbl8Ib8Q8O8q1li",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -517,6 +554,7 @@ Object {
         },
       },
       "musicId": "D0iDbio81PIbI8dD6QOIP9IidDOP0PDP",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -530,6 +568,7 @@ Object {
         },
       },
       "musicId": "Dd98lDdo8Ob698d9qbO9iD0PqO19oQbI",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -559,6 +598,7 @@ Object {
         },
       },
       "musicId": "id9oObq9P6Q6Pq6lQPqI88OP1DD8D0O1",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -580,6 +620,7 @@ Object {
         },
       },
       "musicId": "00obPO6oPIPOoD9qb0dIl6q6D8P6o9bI",
+      "musicType": -1,
     },
   ],
   "status": 0,
@@ -605,6 +646,7 @@ Object {
         },
       },
       "musicId": "QPd01OQqbOIiDoO1dbdo1IIbb60bqPdl",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -618,6 +660,7 @@ Object {
         },
       },
       "musicId": "OboID1PloIIoOOObQdQOP110I61Ddl9I",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -631,6 +674,7 @@ Object {
         },
       },
       "musicId": "918oPDQDoPlD1OlqlqQI08I6dD9iqoil",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -644,6 +688,7 @@ Object {
         },
       },
       "musicId": "16bl8D8lOddP9Obq0OIlOI6q8Pi1l9O0",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -673,6 +718,7 @@ Object {
         },
       },
       "musicId": "06O0ObdQobq86lPDo6P18dQ1QPdilIQO",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -686,6 +732,7 @@ Object {
         },
       },
       "musicId": "d0DDd1dP6llPbioqPdiQ0IDd918bDqI8",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -707,6 +754,7 @@ Object {
         },
       },
       "musicId": "8bQQ0lP96186D8Ibo8IoOd6o16qioiIo",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -728,6 +776,7 @@ Object {
         },
       },
       "musicId": "1d9lDIl6iiiD0D0d8qd6dlDlq6P8o0QI",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -749,6 +798,7 @@ Object {
         },
       },
       "musicId": "Oq900IIl1Ob8qoIPqDP0PD6blbqIqlP1",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -762,10 +812,12 @@ Object {
         },
       },
       "musicId": "61oIP0QIlO90d18ObDP1Dii6PoIQoOD8",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {},
       "musicId": "ibI0QllidqQ089ql8dob6bIoodbbIoqq",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -787,6 +839,7 @@ Object {
         },
       },
       "musicId": "16IqQ680IioldO69QD61liQod0DQ8boQ",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -816,6 +869,7 @@ Object {
         },
       },
       "musicId": "bd8oD0iqDQ8Qobd1oIqi8981QbD6I6Iq",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -829,6 +883,7 @@ Object {
         },
       },
       "musicId": "80PdqQ0iiOQb9i91lIliodiO9PI8O609",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -858,6 +913,7 @@ Object {
         },
       },
       "musicId": "oQolO9oOO01ll0I8969i8O1IQliloDqP",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -887,6 +943,7 @@ Object {
         },
       },
       "musicId": "lqI8DD9Plq6IO8P8P6Pl8Di98DlI9oP8",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -908,6 +965,7 @@ Object {
         },
       },
       "musicId": "9I00D9Id61iD6QP8i8Dd6698PoQ9bdi9",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -929,6 +987,7 @@ Object {
         },
       },
       "musicId": "ilD80b8QQl9Qo0PP0lQ00b8bO9Oqoobo",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -942,6 +1001,7 @@ Object {
         },
       },
       "musicId": "i91q8l0bbi8qll000ob6qDiQP891iiql",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -963,6 +1023,7 @@ Object {
         },
       },
       "musicId": "qdQoQli1d8DP0Obb919I6P1Odilib1Dd",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -984,6 +1045,7 @@ Object {
         },
       },
       "musicId": "I96dOqqqQIi9oiqbqDPbQ8I8PQbqOb1o",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -997,6 +1059,7 @@ Object {
         },
       },
       "musicId": "oPP1Pdl6Qdlb8oq10PP1doDibdbbl9bl",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1010,6 +1073,7 @@ Object {
         },
       },
       "musicId": "0Ib6qIb0iPOoQqqDIl90dP0PI0o9QlDd",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1023,6 +1087,7 @@ Object {
         },
       },
       "musicId": "l9lq19DdiD8qQPoPOlboi1qQii0IQI86",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1036,6 +1101,7 @@ Object {
         },
       },
       "musicId": "qIqqdd1Odqi1Iiolq9qqPOi0bPPld8Pb",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1057,10 +1123,12 @@ Object {
         },
       },
       "musicId": "l1lO999PqIboPQOD86PDQo1ol1iIiiOi",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {},
       "musicId": "ql1Q8P100IIlbl0Pdi08I8qD900idqQq",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1074,6 +1142,7 @@ Object {
         },
       },
       "musicId": "id1lodDbo0Iq9088Qd19d1OlDPP01D8o",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1087,6 +1156,7 @@ Object {
         },
       },
       "musicId": "i89IO1PPOl0boOol0bQI19Q9liQ0l6O1",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1100,6 +1170,7 @@ Object {
         },
       },
       "musicId": "QIDd80o0OqobODP00ldQ1D9dl81qQi0d",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1121,6 +1192,7 @@ Object {
         },
       },
       "musicId": "QoDQ0oq08QqiI0DQ8dIPb10qIi6d6i89",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1134,6 +1206,7 @@ Object {
         },
       },
       "musicId": "8Q8OiP8QPbl8bqID1loQq896ldPQd99o",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1147,6 +1220,7 @@ Object {
         },
       },
       "musicId": "q6iD8idqo69qIPl00IQidoq1o1o1d1b9",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1176,6 +1250,7 @@ Object {
         },
       },
       "musicId": "16oDDIlP8bIODQ6Ql0881d9Qqdb19b98",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1189,6 +1264,7 @@ Object {
         },
       },
       "musicId": "IbDoODD9qb66Iqd6DbOQiOoDll1DqiO9",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1202,6 +1278,7 @@ Object {
         },
       },
       "musicId": "Pd1d96Q91oiboqb86DdddD68dbq81Pdo",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1215,6 +1292,7 @@ Object {
         },
       },
       "musicId": "qiDOD0iidOli9l0qbP6IbOD19OQ8D8Po",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1228,6 +1306,7 @@ Object {
         },
       },
       "musicId": "QlID98Ddoi6O8lP8IQd6iid610011l60",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1249,6 +1328,7 @@ Object {
         },
       },
       "musicId": "I1qd16dPdqPi96ql0lP10OQDbo11D89P",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1286,6 +1366,7 @@ Object {
         },
       },
       "musicId": "Q9Q088PPd0bPi9QQ8iil1lQqPdiQP69D",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1299,6 +1380,7 @@ Object {
         },
       },
       "musicId": "i9il1DIDl91Db0OdllOddIqO600Pl89q",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1312,6 +1394,7 @@ Object {
         },
       },
       "musicId": "qilOP8l6bDPi98lqDbO6O1obOi068QOQ",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1333,6 +1416,7 @@ Object {
         },
       },
       "musicId": "bo9l0Dl0PbqQQQ16Qq6bOOi68o0996Pq",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1346,6 +1430,7 @@ Object {
         },
       },
       "musicId": "qbbPQoqqqiPd98d61P0qDd0iDId6OqoQ",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1367,6 +1452,7 @@ Object {
         },
       },
       "musicId": "9idOOIdDO01D8PO06bOPPbOIOoiQ8O0P",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1388,6 +1474,7 @@ Object {
         },
       },
       "musicId": "O9qDQOQO8dDDIiO9dPP0Pb8qQo9l89D9",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1409,6 +1496,7 @@ Object {
         },
       },
       "musicId": "911lId0IooIOq1oDPoQ0iQiDiOIbd6oo",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1422,6 +1510,7 @@ Object {
         },
       },
       "musicId": "doIiQl6oDPP6i9qobqoobblPQqPiI9bD",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1435,6 +1524,7 @@ Object {
         },
       },
       "musicId": "1P9bqO00bIQ0q8d1Q80l0Dq8oi6boqb0",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1456,6 +1546,7 @@ Object {
         },
       },
       "musicId": "D11ldIqD8dQIi9oQQIIo86QOI8D9olP8",
+      "musicType": -1,
     },
   ],
   "status": 0,
@@ -1492,6 +1583,7 @@ Object {
         },
       },
       "musicId": "qbbOOO1QibO1861bqQII9lqlPiIoqb98",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1505,6 +1597,7 @@ Object {
         },
       },
       "musicId": "I90bQ81P1blOPIdd9PPl6I9D8DQ1dIob",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1518,10 +1611,12 @@ Object {
         },
       },
       "musicId": "88o8Oq69ldilblP10DI0qqb6b8I0DDi9",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {},
       "musicId": "q6oOPqQPlOQoooq888bPI1OPDlqDIQQD",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1535,6 +1630,7 @@ Object {
         },
       },
       "musicId": "i1DqPb01I6I1dP8qoO1qiIPDlOD9D9oQ",
+      "musicType": -1,
     },
     ScoreData {
       "difficulty": Object {
@@ -1548,6 +1644,7 @@ Object {
         },
       },
       "musicId": "DQilQP810dq8D9i11q6Oq0ooDdQQO0lI",
+      "musicType": -1,
     },
   ],
   "status": 0,
