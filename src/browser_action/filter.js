@@ -1,6 +1,5 @@
 import { I18n } from '../static/common/I18n.js';
 
-const summaryNames = ['clearType', 'scoreRank', 'scoreMax', 'scoreAverage', 'scoreMedian', 'scoreMin', 'scoreStatistics'];
 const filterNames = ['playMode', 'musicType', 'difficulty', 'level', 'clearType', 'scoreRank'];
 
 let savedConditions = [];
@@ -12,11 +11,9 @@ function getConditions() {
     sort: [],
   };
 
-  summaryNames.forEach((name) => {
-    const elements = Array.from(document.querySelectorAll(`input[name=summarySetting]:checked`));
-    elements.forEach((element) => {
-      result.summary[element.value] = true;
-    });
+  const elements = Array.from(document.querySelectorAll(`input[name=summarySetting]:checked`));
+  elements.forEach((element) => {
+    result.summary[element.value] = true;
   });
 
   filterNames.forEach((name) => {
@@ -113,10 +110,8 @@ function updateSavedFilterSelect(selectedValue = '') {
 
 function applyConditions(conditions) {
   // reset
-  summaryNames.forEach((name) => {
-    document.querySelectorAll(`input[name=summarySetting]`).forEach((element) => {
-      element.checked = false;
-    });
+  document.querySelectorAll(`input[name=summarySetting]`).forEach((element) => {
+    element.checked = false;
   });
   filterNames.forEach((name) => {
     document.querySelectorAll(`input[name=filterCondition_${name}]`).forEach((element) => {
@@ -124,9 +119,9 @@ function applyConditions(conditions) {
     });
   });
   // check
-  for (let [key, value] of Object.entries(conditions.summary)) {
+  Object.keys(conditions.summary).forEach(function (key) {
     document.querySelector(`#summarySetting_${key}`).checked = true;
-  }
+  });
   conditions.filter.forEach(function (condition) {
     condition.values.forEach(function (value) {
       document.querySelector(`#filterCondition_${condition.attribute}_${value}`).checked = true;

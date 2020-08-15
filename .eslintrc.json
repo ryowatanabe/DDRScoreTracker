@@ -20,6 +20,9 @@
           "args": "after-used",
           "argsIgnorePattern": "^_"
       }
+    ],
+    "vue/require-v-for-key": [
+      "off"
     ]
   },
   "plugins": [
