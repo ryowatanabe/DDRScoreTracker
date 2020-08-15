@@ -30,13 +30,13 @@ This software opens official website on Google Chrome which it works on, then it
 
 ## How to use / 利用方法
 
-## Setup / セットアップ
+### Setup / セットアップ
 
-### Install from Chrome web store / Chrome ウェブストアからインストール
+#### Install from Chrome web store / Chrome ウェブストアからインストール
 
 https://chrome.google.com/webstore/detail/ddr-score-tracker/kecflehdfdgjkmfbhhhjdfijfaghfipk
 
-### Build from source / ソースコードからビルド
+#### Build from source / ソースコードからビルド
 
 ```
 $ git clone git@github.com:ryowatanabe/DDRScoreTracker
@@ -61,9 +61,9 @@ After the extension is loaded, a button representing DDR Score Tracker is added 
 
 ### Retrieving music list / 楽曲リストの読み込み
 
-Open DDR Score Tracker's menu, then click `Get music list` button.
+The latest music list is automatically retrieved daily. If you want to update music list manually, open DDR Score Tracker's menu, then click `Get music list` button.
 
-DDR Score Trackerのメニューを開き `楽曲リストを取得` ボタンをクリックしてください.
+最新の楽曲リストは毎日自動的に取得されます. 手動で楽曲リストを更新したい場合には, DDR Score Trackerのメニューを開き `楽曲リストを取得` ボタンをクリックしてください.
 
 ### Retrieving score data / スコア情報を取得
 
@@ -82,9 +82,13 @@ DDR Score Trackerのメニューを開き「スコア詳細を取得」ボタン
 
 ### When you want to forcibly stop the process / 強制的に処理を止めたい場合
 
-In `Window` > `Extensions` in the Google Chrome's menu, turn off DDR Score Tracker and then turn it on again.
+By pressing `■Abort` button, you can stop the data retrieving process.
 
-Google Chromeのメニュー `ウィンドウ` → `拡張機能` にて DDR Score Tracker をオフにしたあと, 再度オンにしてください.
+`■中止` ボタンを押すことによって, データ取得処理を停止することができます.
+
+If it doesn't work, in `Window` > `Extensions` in the Google Chrome's menu, turn off DDR Score Tracker and then turn it on again.
+
+もしそれが機能しない場合には, Google Chromeのメニュー `ウィンドウ` → `拡張機能` にて DDR Score Tracker をオフにしたあと, 再度オンにしてください.
 
 ## Regarding the handling of data / データの取り扱いについて
 
