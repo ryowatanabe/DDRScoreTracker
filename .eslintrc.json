@@ -17,12 +17,9 @@
     "no-unused-vars": [
       "error",
       {
-          "args": "after-used",
-          "argsIgnorePattern": "^_"
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
       }
-    ],
-    "vue/require-v-for-key": [
-      "off"
     ]
   },
   "plugins": [
