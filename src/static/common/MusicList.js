@@ -49,7 +49,7 @@ export class MusicList {
   }
 
   hasMusic(musicId) {
-    return this.musics.hasOwnProperty(musicId);
+    return Object.prototype.hasOwnProperty.call(this.musics, musicId);
   }
 
   get musicIds() {

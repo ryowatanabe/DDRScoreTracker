@@ -1,4 +1,3 @@
-import { ChartData } from './ChartData.js';
 import { Constants } from './Constants.js';
 import { Statistics } from './Statistics.js';
 

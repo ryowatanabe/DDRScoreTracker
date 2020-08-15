@@ -55,7 +55,7 @@ export class ScoreData {
   }
 
   hasDifficulty(difficultyValue) {
-    return this.difficulty.hasOwnProperty(difficultyValue);
+    return Object.prototype.hasOwnProperty.call(this.difficulty, difficultyValue);
   }
 
   get difficulties() {

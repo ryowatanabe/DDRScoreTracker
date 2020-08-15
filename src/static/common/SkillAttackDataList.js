@@ -22,15 +22,15 @@ export class SkillAttackDataList {
   }
 
   hasIndex(index) {
-    if (this.elements.hasOwnProperty(index)) {
+    if (Object.prototype.hasOwnProperty.call(this.elements, index)) {
       return true;
     }
     return false;
   }
 
   hasElement(index, difficultyValue) {
-    if (this.elements.hasOwnProperty(index)) {
-      if (this.elements[index].hasOwnProperty(difficultyValue)) {
+    if (Object.prototype.hasOwnProperty.call(this.elements, index)) {
+      if (Object.prototype.hasOwnProperty.call(this.elements[index], difficultyValue)) {
         return true;
       }
     }

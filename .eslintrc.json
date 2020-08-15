@@ -13,6 +13,15 @@
     "eslint:recommended",
     "plugin:prettier/recommended"
   ],
+  "rules": {
+    "no-unused-vars": [
+      "error",
+      {
+          "args": "after-used",
+          "argsIgnorePattern": "^_"
+      }
+    ]
+  },
   "plugins": [
     "vue"
   ]

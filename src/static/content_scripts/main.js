@@ -1,21 +1,9 @@
 let Logger;
-let MusicData;
-let ScoreData;
-let ScoreDetail;
-let Constants;
 let Parser;
 
 async function loadModules() {
   const logger = await import(chrome.extension.getURL('common/Logger.js'));
   Logger = logger.Logger;
-  const musicData = await import(chrome.extension.getURL('common/MusicData.js'));
-  MusicData = musicData.MusicData;
-  const scoreData = await import(chrome.extension.getURL('common/ScoreData.js'));
-  ScoreData = scoreData.ScoreData;
-  const scoreDetail = await import(chrome.extension.getURL('common/ScoreDetail.js'));
-  ScoreDetail = scoreDetail.ScoreDetail;
-  const constants = await import(chrome.extension.getURL('common/Constants.js'));
-  Constants = constants.Constants;
   const parser = await import(chrome.extension.getURL('common/Parser.js'));
   Parser = parser.Parser;
   console.log('modules loaded.');
@@ -23,7 +11,7 @@ async function loadModules() {
 
 function onMessage(message, sender, sendResponse) {
   loadModules().then(
-    (value) => {
+    (_value) => {
       if (message.type == 'PARSE_MUSIC_LIST') {
         console.log('parsing music list ...');
         sendResponse(Parser.parseMusicList(document.body));

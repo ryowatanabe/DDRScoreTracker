@@ -75,7 +75,7 @@ export class BrowserController {
       this.changeState(this.constructor.STATE.WAITING);
       setTimeout(() => {
         if (this.state == this.constructor.STATE.WAITING) {
-          chrome.tabs.update(this.tabId, { url: url }, (tab) => {
+          chrome.tabs.update(this.tabId, { url: url }, (_tab) => {
             Logger.debug(`BrowserController.updateTab: navigate to ${url})`);
             if (typeof chrome.runtime.lastError !== 'undefined') {
               this.reset();
@@ -112,7 +112,6 @@ export class BrowserController {
   sendMessageToTab(message, callback) {
     if (this.state != this.constructor.STATE.IDLE) {
       throw new Error(`BrowserController.sendMessageToTab: state unmatch (current state: ${this.state})`);
-      return;
     }
     chrome.tabs.sendMessage(this.tabId, message, {}, callback);
   }

@@ -24,11 +24,11 @@ export class SkillAttackIndexMap {
   }
 
   hasIndex(index) {
-    return this.indexToMusicIdMap.hasOwnProperty(index);
+    return Object.prototype.hasOwnProperty.call(this.indexToMusicIdMap, index);
   }
 
   hasMusicId(musicId) {
-    return this.musicIdToIndexMap.hasOwnProperty(musicId);
+    return Object.prototype.hasOwnProperty.call(this.musicIdToIndexMap, musicId);
   }
 
   getMusicIdByIndex(index) {

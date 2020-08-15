@@ -42,7 +42,7 @@ document.getElementById('closeTabButton').addEventListener('click', closeTab);
 
 function sendMessageToTab() {
   try {
-    browserController.sendMessageToTab({ hoge: 'pos' }, (response) => {
+    browserController.sendMessageToTab({ hoge: 'pos' }, (_response) => {
       if (typeof chrome.runtime.lastError !== 'undefined') {
         Logger.error(chrome.runtime.lastError.message);
         return;

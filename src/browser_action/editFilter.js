@@ -1,4 +1,3 @@
-import { Constants } from '../static/common/Constants.js';
 import FilterEditor from './filter-editor.vue';
 
 const filterEditor = new FilterEditor();
