@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-for="(savedCondition, index) in savedConditions">
-      <div>
+      <div v-bind:key="index">
         <input type="text" v-bind:id="'savedConditionName' + index" v-bind:value="savedCondition.name" v-on:change="changeName(index)" />
         <button v-on:click="movePrevious(index)" v-bind:disabled="index == 0">↑</button>
         <button v-on:click="moveNext(index)" v-bind:disabled="index == savedConditions.length - 1">↓</button>
