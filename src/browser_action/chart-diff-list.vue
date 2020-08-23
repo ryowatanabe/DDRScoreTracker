@@ -7,26 +7,48 @@
       <div id="app-charts" class="content">
         <div v-if="maxPage > 1" class="pager">
           <template v-for="index of maxPage">
-            <a v-if="index == currentPage" v-bind:class="['element', 'current']">[{{ index }}]</a
-            ><a v-if="index != currentPage" v-on:click="gotoPage(index)" v-bind:class="['element', 'link']">[{{ index }}]</a>
+            <a v-if="index == currentPage" v-bind:key="index" v-bind:class="['element', 'current']">[{{ index }}]</a
+            ><a v-if="index != currentPage" v-bind:key="index" v-on:click="gotoPage(index)" v-bind:class="['element', 'link']">[{{ index }}]</a>
           </template>
         </div>
 
         <template v-if="differences.length > 0">
           <div class="score_list">
             <template v-for="difference in pageDifferences">
-              <div v-bind:class="['level', difference.difficultyClassString]">{{ difference.levelString }}{{ difference.playModeSymbol }}</div>
-              <div class="title">{{ difference.title }}</div>
+              <div v-bind:key="'level_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty" v-bind:class="['level', difference.difficultyClassString]">
+                {{ difference.levelString }}{{ difference.playModeSymbol }}
+              </div>
+              <div v-bind:key="'title_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty" class="title">{{ difference.title }}</div>
 
-              <div v-bind:class="['score_rank', difference.beforeScoreRankClassString]">{{ difference.beforeScoreRankString }}</div>
-              <div v-bind:class="['full_combo_type', difference.beforeClearTypeClassString]">{{ difference.beforeFullComboSymbol }}</div>
-              <div class="score">{{ difference.beforeScoreString }}</div>
+              <div
+                v-bind:key="'beforeScoreRank_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty"
+                v-bind:class="['score_rank', difference.beforeScoreRankClassString]"
+              >
+                {{ difference.beforeScoreRankString }}
+              </div>
+              <div
+                v-bind:key="'beforeFullComboType_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty"
+                v-bind:class="['full_combo_type', difference.beforeClearTypeClassString]"
+              >
+                {{ difference.beforeFullComboSymbol }}
+              </div>
+              <div v-bind:key="'beforeScore_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty" class="score">{{ difference.beforeScoreString }}</div>
 
-              <div>→</div>
+              <div v-bind:key="'arrow_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty">→</div>
 
-              <div v-bind:class="['score_rank', difference.afterScoreRankClassString]">{{ difference.afterScoreRankString }}</div>
-              <div v-bind:class="['full_combo_type', difference.afterClearTypeClassString]">{{ difference.afterFullComboSymbol }}</div>
-              <div class="score">{{ difference.afterScoreString }}</div>
+              <div
+                v-bind:key="'afterScoreRank_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty"
+                v-bind:class="['score_rank', difference.afterScoreRankClassString]"
+              >
+                {{ difference.afterScoreRankString }}
+              </div>
+              <div
+                v-bind:key="'afterFullComboType_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty"
+                v-bind:class="['full_combo_type', difference.afterClearTypeClassString]"
+              >
+                {{ difference.afterFullComboSymbol }}
+              </div>
+              <div v-bind:key="'afterScore_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty" class="score">{{ difference.afterScoreString }}</div>
             </template>
           </div>
         </template>
@@ -36,8 +58,8 @@
 
         <div v-if="maxPage > 1" class="pager">
           <template v-for="index of maxPage">
-            <a v-if="index == currentPage" v-bind:class="['element', 'current']">[{{ index }}]</a
-            ><a v-if="index != currentPage" v-on:click="gotoPage(index)" v-bind:class="['element', 'link']">[{{ index }}]</a>
+            <a v-if="index == currentPage" v-bind:key="index" v-bind:class="['element', 'current']">[{{ index }}]</a
+            ><a v-if="index != currentPage" v-bind:key="index" v-on:click="gotoPage(index)" v-bind:class="['element', 'link']">[{{ index }}]</a>
           </template>
         </div>
       </div>

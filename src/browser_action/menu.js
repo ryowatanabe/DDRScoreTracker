@@ -11,7 +11,7 @@ document.getElementById('fetchParsedMusicListButton').addEventListener('click', 
 
 function fetchMissingMusicInfo() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.fetchMissingMusicInfo(chrome.windows.WINDOW_ID_CURRENT);
+    backgroundPage.fetchMissingMusicInfo();
   });
 }
 document.getElementById('fetchMissingMusicInfoButton').addEventListener('click', fetchMissingMusicInfo);
@@ -19,7 +19,7 @@ document.getElementById('fetchMissingMusicInfoButton').addEventListener('click',
 function updateScoreList() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     backgroundPage
-      .updateScoreList(chrome.windows.WINDOW_ID_CURRENT)
+      .updateScoreList()
       .then((value) => {
         Logger.debug(`updateScoreList success : ${value}`);
       })
@@ -39,7 +39,7 @@ function updateScoreDetail() {
     });
   });
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.updateScoreDetail(chrome.windows.WINDOW_ID_CURRENT, targetMusics);
+    backgroundPage.updateScoreDetail(targetMusics);
   });
 }
 document.getElementById('updateScoreDetailButton').addEventListener('click', updateScoreDetail);

@@ -247,7 +247,7 @@ async function fetchParsedMusicList() {
 /*
 公式の曲一覧から曲情報を取得し、ローカルの曲リストを更新する
 */
-async function updateMusicList(windowId) {
+async function updateMusicList() {
   if (state != STATE.IDLE) {
     const message = `updateMusicList: state unmatch (current state: ${state})`;
     Logger.debug(message);
@@ -270,7 +270,7 @@ async function updateMusicList(windowId) {
 ローカルの曲リストと成績リストを比較し、曲情報が欠けている曲について
 その情報を取得する
 */
-async function fetchMissingMusicInfo(windowId) {
+async function fetchMissingMusicInfo() {
   if (state != STATE.IDLE) {
     const message = `fetchMissingMusicInfo: state unmatch (current state: ${state})`;
     Logger.debug(message);
@@ -321,7 +321,7 @@ async function fetchMissingMusicInfo(windowId) {
 /*
 公式の成績一覧ページから成績情報を取得し、ローカルのスコアリストを更新する
 */
-async function updateScoreList(windowId) {
+async function updateScoreList() {
   if (state != STATE.IDLE) {
     const message = `updateScoreList: state unmatch (current state: ${state})`;
     Logger.debug(message);
@@ -356,7 +356,7 @@ targets: [
   { musicId:xxx, difficulty:yy }, ...
 ]
 */
-async function updateScoreDetail(windowId, targets) {
+async function updateScoreDetail(targets) {
   if (state != STATE.IDLE) {
     const message = `updateScoreDetail: state unmatch (current state: ${state})`;
     Logger.debug(message);
@@ -749,14 +749,14 @@ const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT
 (function () {
   browserController.delay = Constants.LOAD_INTERVAL;
 
-  chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+  chrome.runtime.onMessage.addListener(function (_message, _sender, _sendResponse) {
     //sendResponse({});
     //return true;
   });
 
   const extension_id = chrome.i18n.getMessage('@@extension_id');
   chrome.browserAction.onClicked.addListener(function () {
-    chrome.tabs.create({ url: `chrome-extension://${extension_id}/browser_action/index.html` }, function (tab) {});
+    chrome.tabs.create({ url: `chrome-extension://${extension_id}/browser_action/index.html` }, function (_tab) {});
   });
 
   window.abortAction = abortAction;
@@ -764,6 +764,7 @@ const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT
   window.exportScoreToSkillAttack = exportScoreToSkillAttack;
   window.fetchMissingMusicInfo = fetchMissingMusicInfo;
   window.fetchParsedMusicList = fetchParsedMusicList;
+  window.getBytesInUse = getBytesInUse;
   window.getChartCount = getChartCount;
   window.getChartList = getChartList;
   window.getConditions = getConditions;

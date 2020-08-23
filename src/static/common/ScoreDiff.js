@@ -1,5 +1,4 @@
 import { Constants } from './Constants.js';
-import { ScoreDetail } from './ScoreDetail.js';
 import { Util } from './Util.js';
 
 export class ScoreDiff {

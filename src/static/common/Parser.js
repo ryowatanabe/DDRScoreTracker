@@ -130,7 +130,7 @@ export class Parser {
         const scoreDetail = new ScoreDetail();
         const value = parseInt(detail[0].querySelector('.data_score').innerHTML, 10);
         scoreDetail.score = value ? value : 0;
-        const regexp = /^.*\/([^\/]+)$/;
+        const regexp = /^.*\/([^/]+)$/;
         const scoreRankFileName = detail[0].querySelectorAll('div.data_rank img')[0].src.replace(regexp, '$1');
         const clearTypeFileName = detail[0].querySelectorAll('div.data_rank img')[1].src.replace(regexp, '$1');
         scoreDetail.scoreRank = Constants.SCORE_RANK_FILE_MAP[scoreRankFileName];

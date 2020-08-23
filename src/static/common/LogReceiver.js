@@ -6,7 +6,7 @@ export class LogReceiver {
     this.callback = callback;
     this.enableDebugLog = false;
 
-    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    chrome.runtime.onMessage.addListener((message, _sender, _sendResponse) => {
       if (message.type == Logger.MESSAGE_TYPE) {
         if (message.level == Logger.LOG_LEVEL.DEBUG && this.enableDebugLog != true) {
           return;

@@ -3,7 +3,7 @@ import { STATE as BACKGROUND_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_BACKGROU
 
 function updateMusicList() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.updateMusicList(chrome.windows.WINDOW_ID_CURRENT);
+    backgroundPage.updateMusicList();
   });
 }
 document.getElementById('updateMusicListButton').addEventListener('click', updateMusicList);
@@ -102,7 +102,7 @@ window.addEventListener('load', () => {
 });
 window.addEventListener('unload', () => {});
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message, _sender, _sendResponse) => {
   if (message.type == CHANGE_BACKGROUND_STATE_MESSAGE_TYPE) {
     console.log(`change background state ${message.oldState} -> ${message.state}`);
     if (message.state == BACKGROUND_STATE.IDLE) {

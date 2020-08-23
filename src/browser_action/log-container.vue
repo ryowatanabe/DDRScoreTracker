@@ -4,7 +4,7 @@
     <div id="logContainer" class="drawer log not-initialized">
       <div id="scrollToBottomButton" class="drawer-switch" v-on:click="scrollToBottom">{{ getMessage('log_container_scroll_to_bottom_button') }}</div>
       <div id="app-log" class="log-data">
-        <template v-for="line in log"> {{ line }} <br /> </template>
+        <div v-for="(line, index) in log" v-bind:key="index">{{ line }}</div>
       </div>
       <div id="closeButton" class="drawer-switch" v-on:click="closeAndFlush">{{ getMessage('log_container_close_button') }}</div>
       <div id="copyButton" class="drawer-switch" v-on:click="copy">{{ getMessage('log_container_copy_button') }}</div>

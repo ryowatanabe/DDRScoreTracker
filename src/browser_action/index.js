@@ -1,11 +1,10 @@
-import { Constants } from '../static/common/Constants.js';
 import ChartList from './chart-list.vue';
 import ChartDiffList from './chart-diff-list.vue';
 import LogContainer from './log-container.vue';
 import { STATE as BACKGROUND_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_BACKGROUND_STATE_MESSAGE_TYPE } from '../static/background/state.js';
 
-import { initialize as initializeFilter, refreshList } from './filter.js';
-import { initialize as initializeMenu, openMenu } from './menu.js';
+import { initialize as initializeFilter } from './filter.js';
+import { initialize as initializeMenu } from './menu.js';
 
 const chartList = new ChartList();
 const chartDiffList = new ChartDiffList();
@@ -50,7 +49,9 @@ window.refreshList = (summarySettings, filterConditions, sortConditions) => {
     if (options.musicListReloadInterval > 0 && internalStatus.musicListUpdatedAt + options.musicListReloadInterval < Date.now()) {
       try {
         await backgroundPage.fetchParsedMusicList();
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     }
     const newChartList = backgroundPage.getChartList().getFilteredAndSorted(filterConditions, sortConditions);
     chartList.summarySettings = summarySettings;
@@ -58,7 +59,7 @@ window.refreshList = (summarySettings, filterConditions, sortConditions) => {
   });
 };
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message, _sender, _sendResponse) => {
   if (message.type == CHANGE_BACKGROUND_STATE_MESSAGE_TYPE) {
     console.log(`change background state ${message.oldState} -> ${message.state}`);
     if (message.state == BACKGROUND_STATE.IDLE) {
