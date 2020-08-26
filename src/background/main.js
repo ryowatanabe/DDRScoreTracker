@@ -637,7 +637,7 @@ async function handleError(res) {
     default:
       throw new Error(`unknown Parser.STATUS (${res.status})`);
   }
-  await closeTab();
+  browserController.reset();
   changeState(STATE.IDLE);
   Logger.info(I18n.getMessage('log_message_aborted'));
 }

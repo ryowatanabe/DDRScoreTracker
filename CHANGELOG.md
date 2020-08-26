@@ -1,8 +1,14 @@
 # Changelog
 
+## [Unreleased]
+
+### Changed
+
+ - Not close tabs after error occured
+
 ## [0.0.10] - 2020-08-23
 
-## Changed
+### Changed
 
  - Show score data / score updates for musics which is not in music list
 
