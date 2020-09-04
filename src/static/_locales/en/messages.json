@@ -221,6 +221,12 @@
   "browser_action_debug_page_get_music_list_from_official_site_description": {
     "message": "Fetch music list from official site. Hidden musics and charts are not included."
   },
+  "browser_action_debug_page_refresh_all_music_info": {
+    "message": "Refresh music list"
+  },
+  "browser_action_debug_page_refresh_all_music_info_description": {
+    "message": "Refresh local music list by fetching data from official site."
+  },
   "browser_action_debug_page_reset_data": {
     "message": "Reset data"
   },
@@ -371,6 +377,9 @@
         "content": "$3"
       }
     }
+  },
+  "log_message_refresh_all_music_info_begin": {
+    "message": "Fetching and refreshing music info..."
   },
   "log_message_fetch_missing_music_info_begin": {
     "message": "Fetching missing music info..."

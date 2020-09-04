@@ -221,6 +221,12 @@
   "browser_action_debug_page_get_music_list_from_official_site_description": {
     "message": "公式サイトの楽曲一覧から楽曲リストを取得します。隠し曲や追加鬼譜面の情報は含まれていません。"
   },
+  "browser_action_debug_page_refresh_all_music_info": {
+    "message": "楽曲情報の再取得"
+  },
+  "browser_action_debug_page_refresh_all_music_info_description": {
+    "message": "端末上の楽曲リストに含まれる全ての曲の楽曲情報を、公式サイトから再取得します。"
+  },
   "browser_action_debug_page_reset_data": {
     "message": "データリセット"
   },
@@ -371,6 +377,9 @@
         "content": "$3"
       }
     }
+  },
+  "log_message_refresh_all_music_info_begin": {
+    "message": "楽曲情報を再取得..."
   },
   "log_message_fetch_missing_music_info_begin": {
     "message": "不足している楽曲の情報を取得..."

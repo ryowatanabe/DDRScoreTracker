@@ -8,6 +8,13 @@ function updateMusicList() {
 }
 document.getElementById('updateMusicListButton').addEventListener('click', updateMusicList);
 
+function refreshAllMusicInfo() {
+  chrome.runtime.getBackgroundPage(function (backgroundPage) {
+    backgroundPage.refreshAllMusicInfo();
+  });
+}
+document.getElementById('refreshAllMusicInfoButton').addEventListener('click', refreshAllMusicInfo);
+
 function resetStorage() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     if (window.confirm('端末上に保存されているデータをすべて削除しますか？')) {

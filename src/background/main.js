@@ -267,6 +267,45 @@ async function updateMusicList() {
 }
 
 /*
+曲リストに現存する全曲の曲情報を再取得する
+*/
+async function refreshAllMusicInfo() {
+  if (state != STATE.IDLE) {
+    const message = `refreshAllMusicInfo: state unmatch (current state: ${state})`;
+    Logger.debug(message);
+    throw new Error(message);
+  }
+  Logger.info(I18n.getMessage('log_message_refresh_all_music_info_begin'));
+  targetMusics = musicList.musicIds.map((musicId) => {
+    let musicType = musicList.getMusicDataById(musicId).type;
+    if (musicType == Constants.MUSIC_TYPE.UNKNOWN) {
+      musicType = Constants.MUSIC_TYPE.NORMAL;
+    }
+    return {
+      musicId: musicId,
+      type: musicType,
+      url: Constants.MUSIC_DETAIL_URL[musicType].replace('[musicId]', musicId),
+    };
+  });
+  if (targetMusics.length == 0) {
+    Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_no_target'));
+    return false;
+  }
+  Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_target_found', targetMusics.length));
+  changeState(STATE.UPDATE_MUSIC_DETAIL);
+  try {
+    targetMusic = targetMusics.shift();
+    Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [targetMusic.musicId, targetMusics.length]));
+    await browserController.createTab(targetMusic.url, options.openTabAsActive);
+  } catch (error) {
+    browserController.reset();
+    Logger.error(error);
+    changeState(STATE.IDLE);
+    throw error;
+  }
+}
+
+/*
 ローカルの曲リストと成績リストを比較し、曲情報が欠けている曲について
 その情報を取得する
 */
@@ -776,6 +815,7 @@ const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT
   window.getSavedConditions = getSavedConditions;
   window.getScoreList = getScoreList;
   window.getState = getState;
+  window.refreshAllMusicInfo = refreshAllMusicInfo;
   window.resetStorage = resetStorage;
   window.restoreMusicList = restoreMusicList;
   window.restoreScoreList = restoreScoreList;
