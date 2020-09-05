@@ -102,7 +102,7 @@ This software retrieves music list from [github pages](https://ryowatanabe.githu
 
 ## Changelog / 変更履歴
 
-[CHANGELOG.md](https://github.com/ryowatanabe/DDRScoreTracker/blob/master/CHANGELOG.md)
+[CHANGELOG.md (English only)](https://github.com/ryowatanabe/DDRScoreTracker/blob/master/CHANGELOG.md)
 
 ## Internal Specifications / 内部仕様
 
