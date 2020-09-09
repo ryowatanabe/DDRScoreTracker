@@ -1,3 +1,4 @@
+import { Constants } from './Constants.js';
 import { Logger } from './Logger.js';
 
 export class MusicData {
@@ -39,16 +40,16 @@ export class MusicData {
     const iterator = this.difficulty.keys();
     let isUpdated = false;
     for (const index of iterator) {
-      if (this.difficulty[index] != musicData.difficulty[index]) {
+      if (musicData.difficulty[index] != 0 && this.difficulty[index] != musicData.difficulty[index]) {
         isUpdated = true;
         this.difficulty[index] = musicData.difficulty[index];
       }
     }
-    if (this.type != musicData.type) {
+    if (musicData.type != Constants.MUSIC_TYPE.UNKNOWN && this.type != musicData.type) {
       isUpdated = true;
       this.type = musicData.type;
     }
-    if (this.title != musicData.title) {
+    if (musicData.title != '' && this.title != musicData.title) {
       isUpdated = true;
       this.title = musicData.title;
     }
