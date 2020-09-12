@@ -29,7 +29,7 @@ export class Constants {
   }
 
   static get MUSIC_LIST_VERSION() {
-    return 1;
+    return 2;
   }
 
   static get MUSIC_LIST_URL() {
