@@ -2,15 +2,20 @@ import { Constants } from './Constants.js';
 import { Logger } from './Logger.js';
 
 export class MusicData {
-  constructor(musicId, type, title, difficulty) {
+  constructor(musicId, type, title, difficulty, isDeleted) {
     this.musicId = musicId;
     this.type = type;
     this.title = title;
     this.difficulty = difficulty;
+    this.isDeleted = isDeleted;
+  }
+
+  static createEmptyData(musicId, musicType) {
+    return new MusicData(musicId, musicType, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0);
   }
 
   static createFromStorage(storageData) {
-    const instance = new MusicData(storageData['musicId'], storageData['type'], storageData['title'], storageData['difficulty']);
+    const instance = new MusicData(storageData['musicId'], storageData['type'], storageData['title'], storageData['difficulty'], storageData['isDeleted']);
     return instance;
   }
 
@@ -19,15 +24,16 @@ export class MusicData {
       return null;
     }
     const elements = encodedString.split('\t');
-    if (elements.length != 12) {
+    if (elements.length != 13) {
       Logger.error(`MusicData.create invalid string: ${encodedString}`);
       return null;
     }
     const instance = new MusicData(
       elements[0],
       parseInt(elements[1], 10),
-      elements[11],
-      elements.slice(2, 11).map((element) => parseInt(element, 10))
+      elements[12],
+      elements.slice(3, 12).map((element) => parseInt(element, 10)),
+      parseInt(elements[2], 10)
     );
     return instance;
   }
@@ -52,6 +58,10 @@ export class MusicData {
     if (musicData.title != '' && this.title != musicData.title) {
       isUpdated = true;
       this.title = musicData.title;
+    }
+    if ((this.isDeleted = musicData.isDeleted)) {
+      isUpdated = true;
+      this.isDeleted = musicData.isDeleted;
     }
     return isUpdated;
   }

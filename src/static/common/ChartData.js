@@ -41,6 +41,13 @@ export class ChartData {
     return this.musicData.getLevel(Util.getDifficultyValue(this.playMode, this.difficulty));
   }
 
+  get isDeleted() {
+    if (this.musicData == null) {
+      return 0;
+    }
+    return this.musicData.isDeleted;
+  }
+
   get score() {
     if (this.scoreDetail === null) {
       return null;

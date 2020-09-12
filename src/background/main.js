@@ -479,7 +479,7 @@ function updateCharts() {
           }
 
           const chartData = new ChartData(musicId, playMode, difficulty);
-          chartData.musicData = new MusicData(musicId, scoreList.getScoreDataByMusicId(musicId).musicType, '', [0, 0, 0, 0, 0, 0, 0, 0, 0]);
+          chartData.musicData = MusicData.createEmptyData(musicId, scoreList.getScoreDataByMusicId(musicId).musicType);
           chartData.scoreDetail = scoreList.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
 
           chartList.addChartData(chartData);
