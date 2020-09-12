@@ -89,6 +89,18 @@
   "browser_action_filter_filter_condition_score_rank": {
     "message": "スコアランク"
   },
+  "browser_action_filter_filter_condition_availability": {
+    "message": "収録状況"
+  },
+  "browser_action_filter_filter_condition_availability_0": {
+    "message": "収録中"
+  },
+  "browser_action_filter_filter_condition_availability_1": {
+    "message": "収録終了/プレイ済"
+  },
+  "browser_action_filter_filter_condition_availability_2": {
+    "message": "収録終了/未プレイ"
+  },
   "browser_action_filter_sort_condition": {
     "message": "ソート"
   },

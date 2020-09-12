@@ -1,6 +1,6 @@
 import { I18n } from '../static/common/I18n.js';
 
-const filterNames = ['playMode', 'musicType', 'difficulty', 'level', 'clearType', 'scoreRank'];
+const filterNames = ['playMode', 'musicType', 'difficulty', 'level', 'clearType', 'scoreRank', 'availability'];
 
 let savedConditions = [];
 
@@ -124,7 +124,10 @@ function applyConditions(conditions) {
   });
   conditions.filter.forEach(function (condition) {
     condition.values.forEach(function (value) {
-      document.querySelector(`#filterCondition_${condition.attribute}_${value}`).checked = true;
+      const element = document.querySelector(`#filterCondition_${condition.attribute}_${value}`);
+      if (element) {
+        element.checked = true;
+      }
     });
   });
   if (conditions.sort.length == 0) {

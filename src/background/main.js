@@ -1,7 +1,6 @@
 import { MusicList } from '../static/common/MusicList.js';
 import { MusicData } from '../static/common/MusicData.js';
 import { ScoreList } from '../static/common/ScoreList.js';
-import { ScoreDetail } from '../static/common/ScoreDetail.js';
 import { ChartList } from '../static/common/ChartList.js';
 import { ChartData } from '../static/common/ChartData.js';
 import { SkillAttackIndexMap } from '../static/common/SkillAttackIndexMap.js';
@@ -460,8 +459,6 @@ function updateCharts() {
 
         if (scoreDataExists) {
           chartData.scoreDetail = scoreList.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
-        } else {
-          chartData.scoreDetail = new ScoreDetail();
         }
 
         chartList.addChartData(chartData);
