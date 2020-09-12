@@ -80,6 +80,12 @@ DDR Score Trackerのメニューを開き「スコア詳細を取得」ボタン
 
 ## Troubleshooting / こんなときは
 
+### When you want to backup your score data / スコアデータのバックアップを行いたい場合
+
+In debug page, you can export and restore your score list.
+
+デバッグページにて, スコアリストのバックアップとリストアを行うことができます.
+
 ### When you want to forcibly stop the process / 強制的に処理を止めたい場合
 
 By pressing `■Abort` button, you can stop the data retrieving process.
