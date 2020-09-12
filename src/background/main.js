@@ -206,18 +206,12 @@ function getChartList() {
 
 function restoreMusicList(string) {
   const lines = string.split('\n');
-  const version = parseInt(lines.shift(), 10);
-  if (version != Constants.MUSIC_LIST_VERSION) {
-    Logger.info(I18n.getMessage('log_message_restore_music_list_version_mismatch'));
-    return false;
-  }
   Logger.info(I18n.getMessage('log_message_restore_music_list_count', lines.length));
   lines.forEach(function (line) {
     musicList.applyEncodedString(line);
   });
   saveStorage();
   updateCharts();
-  return true;
 }
 
 function restoreScoreList(object) {
@@ -232,19 +226,16 @@ gh pagesから曲リストを取得し、ローカルの曲リストを更新す
 async function fetchParsedMusicList() {
   Logger.info(I18n.getMessage('log_message_fetch_parsed_music_list_begin'));
   try {
-    const response = await fetch(Constants.PARSED_MUSIC_LIST_URL, { cache: 'no-store' });
+    const response = await fetch(Constants.PARSED_MUSIC_LIST_URL.replace('[version]', Constants.MUSIC_LIST_VERSION), { cache: 'no-store' });
     if (!response.ok) {
       throw new Error(`HTTP status: ${response.status}`);
     }
     Logger.info(I18n.getMessage('log_message_fetch_parsed_music_list_fetch_success'));
     const text = await response.text();
-    if (restoreMusicList(text)) {
-      internalStatus.musicListUpdatedAt = Date.now();
-      saveStorage();
-      Logger.info(I18n.getMessage('log_message_done'));
-    } else {
-      Logger.info(I18n.getMessage('log_message_aborted'));
-    }
+    restoreMusicList(text);
+    internalStatus.musicListUpdatedAt = Date.now();
+    saveStorage();
+    Logger.info(I18n.getMessage('log_message_done'));
   } catch (error) {
     Logger.info(I18n.getMessage('log_message_network_error'));
     Logger.debug(error);

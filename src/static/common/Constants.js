@@ -70,7 +70,7 @@ export class Constants {
   }
 
   static get PARSED_MUSIC_LIST_URL() {
-    return 'https://ryowatanabe.github.io/DDRScoreTracker/musics.txt';
+    return 'https://ryowatanabe.github.io/DDRScoreTracker/musics/[version].txt';
   }
 
   static get PAGE_LENGTH() {
