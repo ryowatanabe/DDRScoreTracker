@@ -284,6 +284,9 @@
   "log_message_reset_local_storage_begin": {
     "message": "端末上に保存しているデータを削除します。"
   },
+  "log_message_restore_music_list_version_mismatch": {
+    "message": "楽曲データのバージョンが一致しません。"
+  },
   "log_message_restore_music_list_count": {
     "message": "$COUNT$ 件のデータがあります。",
     "placeholders": {

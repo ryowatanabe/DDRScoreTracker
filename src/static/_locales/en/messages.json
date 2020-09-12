@@ -284,6 +284,9 @@
   "log_message_reset_local_storage_begin": {
     "message": "Delete data stored in local storage."
   },
+  "log_message_restore_music_list_version_mismatch": {
+    "message": "Version of music data does not match."
+  },
   "log_message_restore_music_list_count": {
     "message": "$COUNT$ data exists.",
     "placeholders": {

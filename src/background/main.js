@@ -206,12 +206,18 @@ function getChartList() {
 
 function restoreMusicList(string) {
   const lines = string.split('\n');
+  const version = parseInt(lines.shift(), 10);
+  if (version != Constants.MUSIC_LIST_VERSION) {
+    Logger.info(I18n.getMessage('log_message_restore_music_list_version_mismatch'));
+    return false;
+  }
   Logger.info(I18n.getMessage('log_message_restore_music_list_count', lines.length));
   lines.forEach(function (line) {
     musicList.applyEncodedString(line);
   });
   saveStorage();
   updateCharts();
+  return true;
 }
 
 function restoreScoreList(object) {
@@ -232,10 +238,13 @@ async function fetchParsedMusicList() {
     }
     Logger.info(I18n.getMessage('log_message_fetch_parsed_music_list_fetch_success'));
     const text = await response.text();
-    restoreMusicList(text);
-    internalStatus.musicListUpdatedAt = Date.now();
-    saveStorage();
-    Logger.info(I18n.getMessage('log_message_done'));
+    if (restoreMusicList(text)) {
+      internalStatus.musicListUpdatedAt = Date.now();
+      saveStorage();
+      Logger.info(I18n.getMessage('log_message_done'));
+    } else {
+      Logger.info(I18n.getMessage('log_message_aborted'));
+    }
   } catch (error) {
     Logger.info(I18n.getMessage('log_message_network_error'));
     Logger.debug(error);

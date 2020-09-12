@@ -28,6 +28,10 @@ export class Constants {
     return 3;
   }
 
+  static get MUSIC_LIST_VERSION() {
+    return 1;
+  }
+
   static get MUSIC_LIST_URL() {
     return 'https://p.eagate.573.jp/game/ddr/ddra20/p/music/index.html';
   }
