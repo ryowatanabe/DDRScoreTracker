@@ -2,7 +2,10 @@
 
 ## 楽曲リスト
 
-[musics.txt](https://ryowatanabe.github.io/DDRScoreTracker/musics.txt)
+https://github.com/ryowatanabe/DDRScoreTracker/tree/master/docs/musics
+
+データ構造に変更があると、スキーマバージョンを更新します。  
+ファイル名は スキーマバージョン番号.txt です。
 
 UTF-8/LF の TSV 形式。カラムは先頭から順に
 
