@@ -75,6 +75,6 @@ export class MusicData {
   }
 
   get encodedString() {
-    return [this.musicId, this.type, this.difficulty, this.title].flat().join('\t');
+    return [this.musicId, this.type, this.isDeleted, this.difficulty, this.title].flat().join('\t');
   }
 }
