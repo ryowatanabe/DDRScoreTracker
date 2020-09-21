@@ -6,6 +6,10 @@
 
  - Handle deleted musics
 
+### Fixed
+
+ - Filter setting dialogue and functional menu dialogue are now scrollable when their contents overflow
+
 ## [0.0.12] - 2020-09-12
 
 ### Changed

@@ -65,6 +65,7 @@ export function initialize() {
 }
 
 function openFilter() {
+  document.getElementById('filterContainer').scrollTo(0, 0);
   document.getElementById('filterContainer').classList.add('active');
   document.getElementById('filterBackground').classList.add('active');
 }

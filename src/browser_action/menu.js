@@ -72,6 +72,7 @@ export function initialize() {
 }
 
 export function openMenu() {
+  document.getElementById('menuContainer').scrollTo(0, 0);
   document.getElementById('menuContainer').classList.add('active');
   document.getElementById('menuBackground').classList.add('active');
 }

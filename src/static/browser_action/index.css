@@ -40,6 +40,11 @@ a {
 フィルタメニュー
 */
 
+.filter {
+  max-height: 100%;
+  overflow: scroll;
+}
+
 .filter .condition-group {
   border: 1px solid #ffffff;
   width: available;
@@ -60,6 +65,11 @@ a {
 /*
 機能メニュー
 */
+
+.menu {
+  max-height: 100%;
+  overflow: scroll;
+}
 
 .menu .function-group {
   border: 1px solid #ffffff;
