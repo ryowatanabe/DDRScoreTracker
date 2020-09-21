@@ -54,7 +54,7 @@ export class Parser {
         const value = parseInt(element.innerHTML, 10);
         return value ? value : 0;
       });
-      const musicData = new MusicData(musicId, Constants.MUSIC_TYPE.NORMAL, title, difficulty);
+      const musicData = new MusicData(musicId, Constants.MUSIC_TYPE.NORMAL, title, difficulty, 0);
       res.musics.push(musicData);
     });
     res.status = this.STATUS.SUCCESS;
@@ -84,7 +84,7 @@ export class Parser {
       const value = parseInt(element.src.replace(regexpForDifficulties, '$1'), 10);
       return value ? value : 0;
     });
-    const musicData = new MusicData(musicId, Constants.MUSIC_TYPE.NORMAL, title, difficulty);
+    const musicData = new MusicData(musicId, Constants.MUSIC_TYPE.NORMAL, title, difficulty, 0);
     res.musics.push(musicData);
     res.status = this.STATUS.SUCCESS;
     return res;

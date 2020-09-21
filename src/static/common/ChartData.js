@@ -41,6 +41,22 @@ export class ChartData {
     return this.musicData.getLevel(Util.getDifficultyValue(this.playMode, this.difficulty));
   }
 
+  get availability() {
+    // 0: available
+    // 1: deleted music with score
+    // 2: deleted music without score
+    if (this.musicData == null) {
+      return 0;
+    }
+    if (this.musicData.isDeleted) {
+      if (this.scoreDetail === null) {
+        return 2;
+      }
+      return 1;
+    }
+    return 0;
+  }
+
   get score() {
     if (this.scoreDetail === null) {
       return null;
@@ -57,7 +73,7 @@ export class ChartData {
 
   get clearType() {
     if (this.scoreDetail === null) {
-      return null;
+      return Constants.CLEAR_TYPE.NO_PLAY;
     }
     return this.scoreDetail.actualClearType;
   }

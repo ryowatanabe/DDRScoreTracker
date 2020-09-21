@@ -89,6 +89,18 @@
   "browser_action_filter_filter_condition_score_rank": {
     "message": "Score Rank"
   },
+  "browser_action_filter_filter_condition_availability": {
+    "message": "Availability"
+  },
+  "browser_action_filter_filter_condition_availability_0": {
+    "message": "Available"
+  },
+  "browser_action_filter_filter_condition_availability_1": {
+    "message": "Unavailable / Played"
+  },
+  "browser_action_filter_filter_condition_availability_2": {
+    "message": "Unavailable / Not played"
+  },
   "browser_action_filter_sort_condition": {
     "message": "Sort"
   },
