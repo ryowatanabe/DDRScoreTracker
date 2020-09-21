@@ -43,6 +43,9 @@ export class MusicData {
   更新が発生した場合 true, そうでない場合 false を返す
   */
   merge(musicData) {
+    if (this.musicId != musicData.musicId) {
+      throw new Error(`musicId mismatch: ${this.musicId}, ${musicData.musicId}`);
+    }
     const iterator = this.difficulty.keys();
     let isUpdated = false;
     for (const index of iterator) {
@@ -59,7 +62,7 @@ export class MusicData {
       isUpdated = true;
       this.title = musicData.title;
     }
-    if ((this.isDeleted = musicData.isDeleted)) {
+    if (this.isDeleted != musicData.isDeleted) {
       isUpdated = true;
       this.isDeleted = musicData.isDeleted;
     }
