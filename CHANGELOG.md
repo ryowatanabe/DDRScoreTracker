@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+ - Handle deleted musics
+
 ## [0.0.12] - 2020-09-12
 
 ### Changed
