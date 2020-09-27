@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [0.0.13] - 2020-09-27
 
 ### Added
 
@@ -91,7 +91,8 @@
 
 First release
 
-[Unreleased]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.12...HEAD
+[Unreleased]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.13...HEAD
+[0.0.13]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.12...v0.0.13
 [0.0.12]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.11...v0.0.12
 [0.0.11]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.10...v0.0.11
 [0.0.10]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.9...v0.0.10
