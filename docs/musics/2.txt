@@ -52,6 +52,7 @@
 160Oo1q8DolI6068lQi66OQbQ9Q8ODQI	0	0	2	7	11	15	18	7	12	15	17	バンブーソード・ガール
 16IqQ680IioldO69QD61liQod0DQ8boQ	0	0	3	5	8	11	0	6	8	11	0	色は匂へど散りぬるを
 16Pio809ID669Di8OoPblQO0lDq668dQ	0	0	3	4	7	11	0	5	7	10	0	Scorching Moon
+16b91IPI881lPIo8Qq9Pl1IPiD8Ddodl	0	0	3	7	11	14	0	7	11	15	0	ハラショー！おにぎりサーカス団☆
 16bl8D8lOddP9Obq0OIlOI6q8Pi1l9O0	0	0	3	6	10	13	0	7	10	13	0	天ノ弱
 16oDDIlP8bIODQ6Ql0881d9Qqdb19b98	0	0	3	6	10	14	0	6	10	14	0	黒髪乱れし修羅となりて～凛 edition～
 186dd6DQq891Ib9Ilq8Qbo8lIqb0Qoll	0	0	9	13	15	18	19	13	14	18	19	Valkyrie dimension
@@ -337,6 +338,7 @@ DObld6O6OdblOo1di9dlP86DO909O6qI	0	0	1	3	7	12	0	4	9	11	0	cachaca
 DOqPd1Iid6oObd8i96I9oo8obbODb96o	0	0	4	6	9	12	0	5	9	12	0	CAN'T STOP FALLIN' IN LOVE ～SPEED MIX～
 DPQo8Q0l9D8IPiDiq11l8OI6i11OOb6O	0	0	5	9	10	12	0	6	10	13	0	PARANOIA EVOLUTION
 DPo0bi8Dibli118P6D981oQIPPQI01lo	0	0	3	5	8	11	0	5	8	11	0	Go↓Go↑Girls&Boys!
+DQ1dqP1IoiD11QOPiI0Q8PqO0Qddo6q6	0	0	1	4	7	10	0	4	7	10	0	イノセントバイブル
 DQI8O1bD9Oi9i90i0DqqOqbll91IiQI1	0	0	3	5	9	13	0	5	9	13	0	Fly away -mix del matador-
 DQO6qbiP6dldo6IIqlob9i8dqiqOio6o	0	0	4	4	8	11	0	4	8	11	0	夢幻ノ光
 DQilQP810dq8D9i11q6Oq0ooDdQQO0lI	1	0	4	7	12	16	17	7	12	16	17	HARD DANCE
@@ -602,6 +604,7 @@ Qbbqd9O98bl0DobQ9l6blO8iOPP8QdDd	0	0	3	6	10	12	0	5	9	13	0	Sephirot
 QbdQold98oq9lODoIloIbPiIqld6i0Qb	0	0	3	6	10	14	0	6	10	14	0	GUILTY DIAMONDS
 QdIl6D808iDoDQi0Qii99Do6do8DOdQO	0	0	2	5	8	12	0	4	8	12	0	KISS KISS KISS 秋葉工房 MIX
 QdbPPPDlIQiI191qPdblO01O8P8o6D68	0	0	0	0	0	0	10	0	0	0	10	BURNIN' THE FLOOR(BLUE FIRE mix)
+Qi1Q6I80b09Oq91OPldbO19080q0dd0b	0	0	3	6	11	14	0	6	10	13	0	Red Cape Theorem
 QiQi666Qd9I6d1899iii80PdQdDlO1i1	0	0	3	7	12	15	0	7	12	16	0	Sand Blow
 QiboqIool99ol9Q0d08b68OIIiD89qqO	0	0	3	6	10	13	0	7	11	13	0	叛逆のディスパレート
 QlID98Ddoi6O8lP8IQd6iid610011l60	0	0	3	6	9	12	0	7	9	13	0	幻想系世界修復少女
@@ -965,6 +968,7 @@ q6iD8idqo69qIPl00IQidoq1o1o1d1b9	0	0	3	7	10	13	0	6	9	12	0	クリムゾンゲイ�
 q6oOPqQPlOQoooq888bPI1OPDlqDIQQD	1	0	4	7	11	15	17	7	11	16	18	PASSION
 q6qI6llb69D1IQq0OiP8OD06Qioob91Q	0	0	3	8	10	13	0	9	11	13	0	GRADIUSIC CYBER ～AMD G5 MIX～
 q8i11qPbo9iq8lQb9d08di81Q88q8P9o	0	0	2	6	10	15	0	6	10	15	0	Hunny Bunny
+q8iPi1DP6Do6D110OQiQDdPq06q80Qb0	0	0	2	5	8	11	0	5	9	11	0	ウソツキ横丁は雨模様
 q9oQ1Pid9OiIDO66Pd19blOi09019i98	0	0	2	4	7	11	0	4	7	12	0	I/O
 qD1I6qqll88q9dq9PoloD68lqddIDo6O	0	0	3	7	12	15	0	7	12	15	0	Jetcoaster Windy
 qD6P1ldl09Dqq8QP01bbid0b9IdqobPl	0	0	3	7	10	13	0	7	10	13	0	ベィスドロップ・フリークス
