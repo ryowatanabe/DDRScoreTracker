@@ -11,6 +11,7 @@
 08PO96OlIoQqPdq91Q1Qqlo8lPidbPP8	0	0	3	5	9	11	12	6	8	11	12	New Beginning
 08PiiDq6b1oQ8OIIbDql0bDbIID0b1iP	0	0	3	7	10	15	0	8	11	15	0	Drop The Bounce
 08QP8bOQ6OOdd11Dq81db1l8IdiDbod6	0	0	1	0	0	0	0	0	0	0	0	Lesson by DJ
+08io99Obq06Oq6bD6Pq999PDOOb6Oo8o	1	0	3	7	11	14	16	7	11	14	16	SNOW WHITE
 091IQQ1PqOdIl9ioPQDdO60Dq069DP69	0	0	3	4	6	8	0	4	6	9	0	puzzle
 09looidO89Q9DiDdqQiDPlIQDoiobobQ	0	0	5	8	11	14	17	8	11	14	17	London EVOLVED ver.C
 09oIbO1bi8O8Q1o01q610ID0qPOqoQQP	0	0	2	5	8	11	0	5	8	11	0	Party Rock Anthem
@@ -667,6 +668,7 @@ bd8oD0iqDQ8Qobd1oIqi8981QbD6I6Iq	0	0	2	5	9	12	0	5	9	12	0	エイリアンエイ�
 bdQ6IobP6II86I1io686Il9qQ69dOod1	0	0	4	7	12	15	0	7	12	15	0	IN BETWEEN
 bdbQoi98Dlb18DiPDPdD801DoOD8619O	0	0	2	5	9	12	0	5	9	12	0	Alone
 bi1Obd9i99P0O9PqQ1l1P6P6o1IOi11P	0	0	4	5	7	11	0	4	8	11	0	Silver Platform - I wanna get your heart -
+bi9OolI1P9oI8dDPlbQiq01Dl080PQ61	0	0	3	7	11	14	0	7	11	14	0	梅雪夜
 bilO9D91P1lo81oIDP6qOoqdDdQdoDlP	0	0	3	8	11	16	0	8	11	16	0	Truare!
 biqbD9I9q9D16i0i1Idb9d111l1QDq86	0	0	4	7	9	12	14	7	9	12	14	ちくわパフェだよ☆CKP
 bl90QbiqoOlDI6iQQQdo0Iol6PIdQblP	0	0	3	7	14	17	0	7	14	17	0	Pursuer
