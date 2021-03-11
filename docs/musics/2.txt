@@ -502,6 +502,7 @@ Oq900IIl1Ob8qoIPqDP0PD6blbqIqlP1	0	0	1	4	8	12	0	5	9	12	0	いーあるふぁん�
 Oq9QIlI8l11ddqbbDoQ1ql61OqlIi9lo	0	0	3	6	9	12	10	6	9	12	11	Theory of Eternity
 OqIlb9PQIo0Io90PIQi6q86dO8iP19Oi	0	0	2	4	8	12	0	4	8	11	0	ever snow
 P01qbiIoO6dqIIqo6Db9dqq1bI6ddbqI	0	0	0	0	0	0	13	0	0	0	14	AFRONOVA(X-Special)
+P06O6iQbiPPqiIqOd0IQdqolbPbDId6Q	0	0	5	10	14	17	0	10	14	17	0	Evans
 P0IoP69l6q08q8DoPD1Q8bqq099Pi1iP	0	0	3	8	12	16	0	7	12	16	0	海神
 P0O81Dl9Oiiid8bdOi0oqbD8DqolObbP	0	0	4	5	9	12	0	5	10	12	0	BE LOVIN
 P0iOob80dDPqI8oIqq1dOiDd9qilQqDl	0	0	4	8	11	14	16	8	11	14	16	PRANA
@@ -781,6 +782,7 @@ i86qD6Pl61dPI0Q9db1P8bl1ii99q1lD	0	0	3	4	8	13	0	4	7	12	0	BURNING HEAT！（3 Opt
 i89IO1PPOl0boOol0bQI19Q9liQ0l6O1	0	0	2	6	9	13	0	6	9	13	0	キケンな果実
 i8II16blIIbQQd196b616OPbPO910oi9	0	0	4	9	10	11	0	10	11	12	0	LOVE THIS FEELIN'
 i8O81i0iQdqiI8qqP0oo8IPl9IoId1bO	0	0	2	6	9	14	0	5	8	14	0	不沈艦CANDY
+i8iPdIlP1IIDib96Qq080ibq6bblQqQD	0	0	3	7	10	14	0	7	10	14	0	Hella Deep
 i90o9Q0D91bb0Q6qIQ1OiDqqiPPP98oI	0	0	2	5	7	9	14	5	7	9	14	Summer Fairytale
 i916bDibPI9l869o9IIQb8DbO9bPDi6q	0	0	5	11	15	18	18	11	15	18	18	Prey
 i91q8l0bbi8qll000ob6qDiQP891iiql	0	0	4	7	10	13	0	7	10	13	0	乙女繚乱 舞い咲き誇れ
