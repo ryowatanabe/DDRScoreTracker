@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "__MSG_appName__",
   "version": null,
   "description": "__MSG_appDesc__",
@@ -7,7 +7,7 @@
 
   "icons": { "128": "res/icon128.png" },
 
-  "browser_action": {
+  "action": {
     "default_title": "__MSG_appName__"
   },
 
@@ -21,16 +21,21 @@
   ],
 
   "background": {
-    "scripts": ["background/main.js"],
-    "persistent": false
+    "service_worker": "background/main.js"
   },
 
   "options_ui": {
-    "chrome_style": true,
     "page": "options_ui/index.html"
   },
 
-  "web_accessible_resources": ["common/*"],
+  "web_accessible_resources": [
+    {
+      "resources": ["common/*"],
+      "matches": ["https://*/*"]
+    }
+  ],
 
-  "permissions": ["storage", "unlimitedStorage", "http://skillattack.com/"]
+  "permissions": ["storage", "unlimitedStorage"],
+
+  "host_permissions": ["http://skillattack.com/"]
 }
