@@ -49,6 +49,7 @@ const storage = new Storage(
 );
 
 let state = STATE.INITIALIZE;
+let targetGameVersion;
 let targetPlayMode;
 let targetMusicType;
 let targetMusics = [];
@@ -268,7 +269,7 @@ async function updateMusicList() {
 /*
 曲リストに現存する全曲の曲情報を再取得する
 */
-async function refreshAllMusicInfo() {
+async function refreshAllMusicInfo(gameVersion) {
   if (state != STATE.IDLE) {
     const message = `refreshAllMusicInfo: state unmatch (current state: ${state})`;
     Logger.debug(message);
@@ -283,7 +284,7 @@ async function refreshAllMusicInfo() {
     return {
       musicId: musicId,
       type: musicType,
-      url: Constants.MUSIC_DETAIL_URL[musicType].replace('[musicId]', musicId),
+      url: Constants.MUSIC_DETAIL_URL[gameVersion][musicType].replace('[musicId]', musicId),
     };
   });
   if (targetMusics.length == 0) {
@@ -308,7 +309,7 @@ async function refreshAllMusicInfo() {
 ローカルの曲リストと成績リストを比較し、曲情報が欠けている曲について
 その情報を取得する
 */
-async function fetchMissingMusicInfo() {
+async function fetchMissingMusicInfo(gameVersion) {
   if (state != STATE.IDLE) {
     const message = `fetchMissingMusicInfo: state unmatch (current state: ${state})`;
     Logger.debug(message);
@@ -335,7 +336,7 @@ async function fetchMissingMusicInfo() {
     return {
       musicId: musicId,
       type: musicType,
-      url: Constants.MUSIC_DETAIL_URL[musicType].replace('[musicId]', musicId),
+      url: Constants.MUSIC_DETAIL_URL[gameVersion][musicType].replace('[musicId]', musicId),
     };
   });
   if (targetMusics.length == 0) {
@@ -359,7 +360,7 @@ async function fetchMissingMusicInfo() {
 /*
 公式の成績一覧ページから成績情報を取得し、ローカルのスコアリストを更新する
 */
-async function updateScoreList() {
+async function updateScoreList(gameVersion) {
   if (state != STATE.IDLE) {
     const message = `updateScoreList: state unmatch (current state: ${state})`;
     Logger.debug(message);
@@ -369,6 +370,7 @@ async function updateScoreList() {
   changeState(STATE.UPDATE_SCORE_LIST);
   differences = [];
   try {
+    targetGameVersion = gameVersion;
     targetPlayMode = Constants.PLAY_MODE_FIRST;
     targetMusicType = Constants.MUSIC_TYPE_FIRST;
     Logger.info(
@@ -379,7 +381,7 @@ async function updateScoreList() {
         '?',
       ])
     );
-    await browserController.createTab(Constants.SCORE_LIST_URL[targetPlayMode][targetMusicType], options.openTabAsActive);
+    await browserController.createTab(Constants.SCORE_LIST_URL[targetGameVersion][targetPlayMode][targetMusicType], options.openTabAsActive);
   } catch (error) {
     browserController.reset();
     Logger.error(error);
@@ -394,7 +396,7 @@ targets: [
   { musicId:xxx, difficulty:yy }, ...
 ]
 */
-async function updateScoreDetail(targets) {
+async function updateScoreDetail(targets, gameVersion) {
   if (state != STATE.IDLE) {
     const message = `updateScoreDetail: state unmatch (current state: ${state})`;
     Logger.debug(message);
@@ -412,7 +414,7 @@ async function updateScoreDetail(targets) {
     if (musicType == Constants.MUSIC_TYPE.UNKNOWN) {
       musicType = Constants.MUSIC_TYPE.NORMAL;
     }
-    music.url = Constants.SCORE_DETAIL_URL[musicType].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
+    music.url = Constants.SCORE_DETAIL_URL[gameVersion][musicType].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
     return music;
   });
   if (targetMusics.length == 0) {
@@ -600,7 +602,7 @@ function onUpdateTab() {
                   '?',
                 ])
               );
-              await browserController.updateTab(Constants.SCORE_LIST_URL[targetPlayMode][targetMusicType]);
+              await browserController.updateTab(Constants.SCORE_LIST_URL[targetGameVersion][targetPlayMode][targetMusicType]);
             } catch (error) {
               browserController.reset();
               Logger.error(error.message);

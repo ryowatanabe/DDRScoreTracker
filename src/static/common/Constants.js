@@ -1,4 +1,11 @@
 export class Constants {
+  static get GAME_VERSION() {
+    return {
+      A20PLUS: 0,
+      A3: 1,
+    };
+  }
+
   static get PLAY_MODE() {
     return {
       SINGLE: 0,
@@ -38,34 +45,59 @@ export class Constants {
 
   static get SCORE_LIST_URL() {
     const result = {};
-    result[this.PLAY_MODE.SINGLE] = {};
-    result[this.PLAY_MODE.DOUBLE] = {};
-    result[this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_single.html';
-    result[this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_double.html';
-    result[this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/nonstop_data_single.html';
-    result[this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/nonstop_data_double.html';
-    result[this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.GRADE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/grade_data_single.html?folder=0';
-    result[this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.GRADE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/grade_data_double.html?folder=0';
-    result[this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.GRADE_PLUS] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/grade_data_single.html';
-    result[this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.GRADE_PLUS] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/grade_data_double.html';
+    result[this.GAME_VERSION.A20PLUS] = {};
+    result[this.GAME_VERSION.A20PLUS][this.PLAY_MODE.SINGLE] = {};
+    result[this.GAME_VERSION.A20PLUS][this.PLAY_MODE.DOUBLE] = {};
+    result[this.GAME_VERSION.A20PLUS][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_single.html';
+    result[this.GAME_VERSION.A20PLUS][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_double.html';
+    result[this.GAME_VERSION.A20PLUS][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/nonstop_data_single.html';
+    result[this.GAME_VERSION.A20PLUS][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/nonstop_data_double.html';
+    result[this.GAME_VERSION.A20PLUS][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.GRADE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/grade_data_single.html?folder=0';
+    result[this.GAME_VERSION.A20PLUS][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.GRADE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/grade_data_double.html?folder=0';
+    result[this.GAME_VERSION.A20PLUS][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.GRADE_PLUS] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/grade_data_single.html';
+    result[this.GAME_VERSION.A20PLUS][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.GRADE_PLUS] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/grade_data_double.html';
+    result[this.GAME_VERSION.A3] = {};
+    result[this.GAME_VERSION.A3][this.PLAY_MODE.SINGLE] = {};
+    result[this.GAME_VERSION.A3][this.PLAY_MODE.DOUBLE] = {};
+    result[this.GAME_VERSION.A3][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_single.html';
+    result[this.GAME_VERSION.A3][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_double.html';
+    result[this.GAME_VERSION.A3][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/nonstop_data_single.html';
+    result[this.GAME_VERSION.A3][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/nonstop_data_double.html';
+    result[this.GAME_VERSION.A3][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.GRADE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/grade_data_single.html?folder=0';
+    result[this.GAME_VERSION.A3][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.GRADE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/grade_data_double.html?folder=0';
+    result[this.GAME_VERSION.A3][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.GRADE_PLUS] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/grade_data_single.html';
+    result[this.GAME_VERSION.A3][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.GRADE_PLUS] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/grade_data_double.html';
     return result;
   }
 
   static get MUSIC_DETAIL_URL() {
     const result = {};
-    result[this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html?index=[musicId]';
-    result[this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]';
-    result[this.MUSIC_TYPE.GRADE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&gtype=1';
-    result[this.MUSIC_TYPE.GRADE_PLUS] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&gtype=1';
+    result[this.GAME_VERSION.A20PLUS] = {};
+    result[this.GAME_VERSION.A20PLUS][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html?index=[musicId]';
+    result[this.GAME_VERSION.A20PLUS][this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]';
+    result[this.GAME_VERSION.A20PLUS][this.MUSIC_TYPE.GRADE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&gtype=1';
+    result[this.GAME_VERSION.A20PLUS][this.MUSIC_TYPE.GRADE_PLUS] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&gtype=1';
+    result[this.GAME_VERSION.A3] = {};
+    result[this.GAME_VERSION.A3][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html?index=[musicId]';
+    result[this.GAME_VERSION.A3][this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]';
+    result[this.GAME_VERSION.A3][this.MUSIC_TYPE.GRADE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&gtype=1';
+    result[this.GAME_VERSION.A3][this.MUSIC_TYPE.GRADE_PLUS] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&gtype=1';
     return result;
   }
 
   static get SCORE_DETAIL_URL() {
     const result = {};
-    result[this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html?index=[musicId]&diff=[difficulty]';
-    result[this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&diff=[difficulty]';
-    result[this.MUSIC_TYPE.GRADE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&diff=[difficulty]&gtype=1';
-    result[this.MUSIC_TYPE.GRADE_PLUS] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&diff=[difficulty]&gtype=1';
+    result[this.GAME_VERSION.A20PLUS] = {};
+    result[this.GAME_VERSION.A20PLUS][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html?index=[musicId]&diff=[difficulty]';
+    result[this.GAME_VERSION.A20PLUS][this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&diff=[difficulty]';
+    result[this.GAME_VERSION.A20PLUS][this.MUSIC_TYPE.GRADE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&diff=[difficulty]&gtype=1';
+    result[this.GAME_VERSION.A20PLUS][this.MUSIC_TYPE.GRADE_PLUS] =
+      'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&diff=[difficulty]&gtype=1';
+    result[this.GAME_VERSION.A3] = {};
+    result[this.GAME_VERSION.A3][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html?index=[musicId]&diff=[difficulty]';
+    result[this.GAME_VERSION.A3][this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&diff=[difficulty]';
+    result[this.GAME_VERSION.A3][this.MUSIC_TYPE.GRADE] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&diff=[difficulty]&gtype=1';
+    result[this.GAME_VERSION.A3][this.MUSIC_TYPE.GRADE_PLUS] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&diff=[difficulty]&gtype=1';
     return result;
   }
 

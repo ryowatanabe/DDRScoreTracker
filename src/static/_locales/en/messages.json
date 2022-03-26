@@ -138,13 +138,19 @@
     "message": "Fetch latest music list."
   },
   "browser_action_menu_get_missing_music_info": {
-    "message": "Get missing music info"
+    "message": "Get missing music info (A20PLUS)"
+  },
+  "browser_action_menu_get_missing_music_info_a3": {
+    "message": "(A3)"
   },
   "browser_action_menu_get_missing_music_info_description": {
     "message": "Fetch information about musics and charts which exists only in local score list (not in local music list), from official site. Logging in to e-amusement is required."
   },
   "browser_action_menu_get_score_data": {
-    "message": "Get score data"
+    "message": "Get score data (A20PLUS)"
+  },
+  "browser_action_menu_get_score_data_a3": {
+    "message": "(A3)"
   },
   "browser_action_menu_get_score_data_description": {
     "message": "Fetch score data from official site. Logging in to e-amusement is required."
@@ -171,7 +177,10 @@
     "message": "Grade(PLUS)"
   },
   "browser_action_menu_get_score_detail": {
-    "message": "Get detailed score data"
+    "message": "Get detailed score data (A20PLUS)"
+  },
+  "browser_action_menu_get_score_detail_a3": {
+    "message": "(A3)"
   },
   "browser_action_menu_get_score_detail_description": {
     "message": "Fetch detailed score data for musics shown in current list from official site. Logging in to e-amusement is required."
@@ -234,7 +243,10 @@
     "message": "Fetch music list from official site. Hidden musics and charts are not included."
   },
   "browser_action_debug_page_refresh_all_music_info": {
-    "message": "Refresh music list"
+    "message": "Refresh music list (A20PLUS)"
+  },
+  "browser_action_debug_page_refresh_all_music_info_a3": {
+    "message": "(A3)"
   },
   "browser_action_debug_page_refresh_all_music_info_description": {
     "message": "Refresh local music list by fetching data from official site."
