@@ -75,6 +75,7 @@
 1DPD60Q8D1qD8i80P160bqDQ81DObDlP	0	0	2	6	11	15	0	6	10	15	0	Procyon
 1Dl19idl0i0qiqidbDIIbQddiP6o11PP	0	0	9	12	15	18	19	12	15	18	19	MAX 360
 1I9ODbQ81qi1006QoQI6d6dbd9iiPD9O	0	0	3	8	12	16	17	8	12	16	17	Idola
+1IQ16dPQPQ0Q1qdidld6lO1o86q98o69	0	0	3	7	11	15	0	7	11	15	0	Deep tenDon Reflex
 1O9P1DqQQqObOQPP6Il989qDqi0bQ8Qb	0	0	0	0	0	0	12	0	0	0	12	D2R ("FREEZE" Special)
 1OQd9o01Oq6Q018POOdlqodQ6bqDPOob	0	0	2	6	10	12	0	6	10	12	0	炉心融解
 1Ob1I0do8Iq6QqP6PQIiddD18dqDP9oo	0	0	4	10	13	16	0	10	14	16	0	Illegal Function Call
@@ -134,6 +135,7 @@
 66b1Pibq019dqbdPOdlqDbdbbDdi9Q08	0	0	3	6	11	13	0	6	10	13	0	jet coaster☆girl
 68dqbIdOiiiiddlbb1OD66qq6d80I6D8	0	0	3	4	6	10	0	3	6	10	0	Can Be Real
 68iQ9666QIQP1IOQbbd9989DQQ1D0dOl	0	0	5	9	11	15	16	9	11	15	16	PARANOIA survivor MAX
+691bdoD0DIP6di9D6QoPiDbD19Ol0lqi	0	0	4	7	12	14	0	7	12	14	0	Like A Star
 69b01qbo8Qdi6liOPq091bqo01i16oQ9	0	0	1	4	7	11	0	4	7	11	0	I'm an Albatraoz
 69l8lOiooPPPqb9Io9Il01dPD0Q988Iq	0	0	3	5	8	11	0	5	7	12	0	Dazzlin' Darlin-秋葉工房mix-
 69qoD0l6olQqqbl09b069q898b600I6o	0	0	3	4	7	12	0	5	7	13	0	Gamelan de Couple
@@ -213,7 +215,7 @@
 89ooi0i98Qlq9PloIl1b190DIo8Do16l	0	0	2	4	6	9	12	5	6	9	12	Dreamin’
 8DO0DbDioIid8qDQiQdOdOPOo0PO0906	0	0	2	5	9	12	0	5	9	12	0	花は折りたし梢は高し
 8DQDq16PPlli6o9iDl11DqooqOPlOb08	0	0	0	0	0	0	11	0	0	0	11	HIGHER(next morning mix)
-8DdIqobi0liOPDO1qld6lQ9Dq00I66qi	0	0	4	4	8	12	0	3	8	11	0	HAPPY☆ANGEL
+8DdIqobi0liOPDO1qld6lQ9Dq00I66qi	0	0	4	4	8	12	16	3	8	11	16	HAPPY☆ANGEL
 8I090lbOOOP90O01bDbi0Qo0OPldIdP6	0	0	2	4	10	13	0	5	11	14	0	共犯ヘヴンズコード
 8IIoIQQqlooiI6QD9ldIO6qidP98QP68	0	0	3	6	9	12	0	6	9	12	0	L'amour et la liberté(DDR Ver.)
 8IODdDQI6P8o0QobDPOldbQ06169b01o	0	0	2	6	9	13	0	6	9	13	0	Taking It To The Sky (PLUS step)
@@ -271,7 +273,7 @@
 91ioD99OdDD9db8qilod818OPqb88idQ	0	0	2	5	10	13	0	5	11	13	0	BRIDAL FESTIVAL !!!
 91qD6DbDqi96qbIO66oboliPD8IPP6io	0	1	3	7	11	13	16	7	11	13	16	輪廻転生
 96Q0Piqo9PPQoQdi9001DO6P9Piqi0dq	0	0	4	6	8	11	11	6	8	12	12	Waiting 4 u
-96QPqq0q6Id0Ii0QbD1bQqPbiDqb0lPo	0	0	3	6	11	15	0	6	9	14	0	ZETA～素数の世界と超越者～
+96QPqq0q6Id0Ii0QbD1bQqPbiDqb0lPo	0	0	3	6	11	15	17	6	9	14	17	ZETA～素数の世界と超越者～
 96Qo1idlD9o8q9qIdiDl18l0O06Qo108	0	0	2	5	10	14	0	6	10	14	0	Electric Dance System Music
 96d9qiDD8l09DQq6O1DO6O6I1IdP8q0D	0	0	5	9	13	17	0	9	13	17	0	未完成ノ蒸氣驅動乙女 (DDR Edition)
 98D001P6b696O18P8qiIOl811bq1oQ16	0	0	3	6	9	13	0	7	8	13	0	Dance Celebration (System 7 Remix)
@@ -315,6 +317,7 @@
 9lob1d1QPd9qiPlQOQ6l0dbodOoDPq1d	0	0	3	5	6	9	0	6	7	10	0	think ya better D
 9o6bIq98Qo8dOd11DI0d8boblOqO0I1i	0	0	3	7	11	15	0	7	11	15	0	Inner Spirit -GIGA HiTECH MIX-
 9obIQOP8O1l0PQ0Oi1oPQI198o0Pd81o	0	0	2	8	10	13	0	8	10	14	0	創世ノート
+9qO16DoQPDODQI6IPD0lPD10b88Qqi1i	0	0	1	4	9	12	0	4	9	12	0	Surface
 9qP16D6l11i9P1lQ0b1DIqoOqqiIQDl9	0	0	2	7	8	10	12	7	9	11	12	MAKE IT BETTER (So-REAL Mix)
 9qbdq1PiI1O81P1PdioQli66Ob9QiiQP	0	0	2	7	11	13	13	7	12	13	13	bag
 D01oOb0IOQ1bbIIdi88O0d80Qo9dblqP	0	0	4	5	8	11	0	5	7	10	0	Quick Master
@@ -399,6 +402,7 @@ Dooii0960OioP6Q1l0qi68Q8Dbd9OO91	0	0	3	7	11	15	0	7	11	16	0	狂水一華
 Dq0Iio09Pb9iD0lbb0I0qd8Q8i10II09	0	0	3	6	8	11	0	9	11	12	0	GENOM SCREAMS
 Dq8b8DPD06Q8qob8OOiQIlOdD8QQD0q9	0	0	3	6	10	13	0	6	10	13	0	Fly far bounce
 Dqb08DI0Ii8ilD0lioi9o9D1dodl6dO0	0	0	4	7	11	15	0	7	12	15	0	Skywalking
+DqioIqbiolQ0lQlo19idi96Obi6DDl9D	0	0	2	5	8	13	0	5	8	13	0	♡Drive My Heart♡
 I08olqilqQi9Dd0qOq0o09PPqI0l11QI	0	0	3	4	6	10	0	6	9	11	0	HYPER EUROBEAT
 I0DDidl0PIo6bO6o8I08Q1Pq89IdP6Pb	0	0	3	6	8	12	0	6	8	12	0	Sweet Clock
 I0Ql0Di1qD6i0Qq1ql0qPb19q0IQ6iO9	0	0	3	5	9	12	0	5	8	12	0	FUJIMORI -祭- FESTIVAL
@@ -625,6 +629,7 @@ Q86b6I1Qi6Q918l6iOoOQl866oQoIQOi	0	0	2	5	8	11	0	5	8	11	0	ハピ恋☆らぶり�
 Q88dlIQDd9lbiiiio0dddO6QP6O091lI	0	0	5	9	12	15	0	9	12	15	0	THIS IS MY LAST RESORT
 Q8Ioq8POo69ol8bPiOPQPq61oqoPo0DO	0	0	3	4	7	8	0	3	6	8	0	Forever Sunshine
 Q8Q6d00DoIiPolOb9PIO0Pll96O0I1qD	0	0	2	6	8	11	14	5	8	11	14	ヤマトなでなで♡かぐや姫
+Q8b91l6od9bq6IPqlddiP0bb0l1iqD8I	0	0	3	6	9	13	0	5	9	14	0	SAYONARA☆ディスコライト
 Q8bIDb60oPo890oi0l0O9PQd9lOb8o1Q	0	0	5	9	14	17	0	9	14	17	0	The History of the Future
 Q8bIddo10ilqbd6I8QOq1bod1OO8dqlO	0	0	4	7	11	14	0	7	11	14	0	Silly Love
 Q8qb1oQobdqDqi0i19qqb11P1oDoiD8O	0	0	4	8	11	14	15	8	11	14	15	IMANOGUILTS
@@ -699,6 +704,7 @@ b9OboQl6d9PqQddIdQDobP0d8o6dOqob	2	0	0	0	0	0	11	0	0	0	0	二段
 b9QiIQ18b6o1bqPdqI6lI1OIqboPIDI9	0	1	2	5	9	11	0	5	9	12	0	妄想税
 bD1DbibPIq9IIlQd0OIIl0o91QI1il69	0	0	3	6	9	13	16	7	10	13	16	Monkey Business
 bDDd08iP8dlIlOo6iqd91dPiI1lQdOQq	0	0	3	5	10	13	0	5	9	13	0	xenon
+bI0oqdIDPPi8dDqlOO1Ii8qDQb1lq88o	0	0	2	6	11	15	0	6	11	15	0	Pump Pump Pump
 bIb6Q6DD9iP1d61dbOqdi6IQPllOb1IP	3	0	0	0	0	0	0	0	0	0	10	初段 (PLUS)
 bIio1d6QOPlqlDOqoIQoPIbIbb0iQIil	0	0	3	6	9	13	0	6	9	13	0	PARTY ALL NIGHT(DJ KEN-BOW MIX)
 bIloQ900Iq01ql6ddP9idIb6iQ11i9D6	0	0	3	7	11	13	0	7	11	13	0	Far east nightbird kors k Remix -DDR edit ver-
@@ -859,6 +865,7 @@ iO90Qo66I88P1IdDldo1oIqb8bldqDI6	0	0	2	4	8	12	0	5	9	13	0	Rescue Me
 iOPbIi1b99819b9QiD8QbdPbq0DqO0DO	0	0	4	5	8	13	0	5	9	13	0	exotic ethnic
 iObdoO9b1O9o8dP8o0id9b1QioQ0q9q9	0	0	4	7	10	13	0	6	11	13	0	S・A・G・A
 iOqb60DOOolIioDIOPi09P91i8PDiOqq	0	0	3	3	6	10	0	3	6	11	0	Kiss me all night long
+iOql19lQibIoo1bObo0Q1DqQ9qOqI0oq	0	0	4	9	12	16	0	9	12	16	0	Fleur
 iP6qIl6lD809098io0OiPP08Ii18I6OI	0	0	6	10	12	15	18	10	11	16	17	NGO
 iP8ll9I0dd8d689PPqlI9008d06io09q	0	0	3	7	10	12	0	7	10	12	0	恋愛観測
 iQP6PI8oDQi1OPQObDQO1IIP9I8i0I1o	0	0	3	6	9	12	0	6	9	12	0	チョコレートスマイル
@@ -997,6 +1004,7 @@ oD6l698q0bQqoIOi0Dd66bqObII8QqDl	0	0	4	4	8	10	0	4	7	10	0	TRUE♥LOVE
 oDD1DQ161816dd9Dl8IioOoi9OQdO01O	0	0	3	8	11	13	15	8	11	14	16	Straight Oath
 oDIliqQl90bQo6Qil9bOiD1iO19qI1dd	0	0	1	5	7	9	0	5	7	10	0	TIME
 oDQqbI86bdlqbiO1dbiDP0PDd91bI6iP	0	0	2	5	8	11	0	5	8	11	0	毒占欲
+oDiqd818i0IPPoIOddbb8DQiQqqqo098	0	0	4	6	10	13	0	6	10	13	0	Anthurium
 oDlO8QQOQ68IO61q9PQd800QiOll1odI	0	0	4	5	7	12	0	5	7	13	0	Heaven is a '57 metallic gray ～gimmix～
 oI0P1oq89blIobOd0QqilPqd9Didd0OD	0	0	2	4	8	12	0	4	8	11	0	I believe what you said
 oIII9lI0q6i9Q0b18ldoI6o0PQ0qqD01	0	0	4	8	12	16	18	8	13	16	18	Come to Life
@@ -1013,6 +1021,7 @@ oQ0bqIQ8DdPlilO000DQloOo6Od8IdQ6	0	0	4	5	6	11	0	5	7	11	0	Bloody Tears(IIDX EDITI
 oQ1PPlOd8Ilb8I1I6biqO0lQPIoOldP1	0	0	2	5	9	12	0	5	9	12	0	Scarlet Moon
 oQ868oOio6O90i9qO1o8I96P1do11ID0	0	0	5	9	13	17	0	9	13	17	0	東京神話
 oQ8oqddQOObiq0ldo68i1d6o1IidObi6	0	0	2	5	9	12	0	5	9	12	0	雫
+oQ91qO6Dii66bO69I9ooIQD101Dl68Qi	0	0	3	5	10	12	0	5	10	12	0	Dance Phenomena
 oQ9QDQ6I9oo9DP8Oi86id61o9Pbbl9bD	0	0	2	5	8	13	0	5	8	13	0	繚乱ヒットチャート
 oQPdiPPdQO1Ob6DqDi0l0q0PDP06QlO0	0	0	2	5	8	10	13	5	8	11	12	Starry HEAVEN
 oQQqlb666o69DDOQoboOI1b1q09lQ9P6	0	0	2	5	8	11	0	5	8	11	0	Party Lights (Tommie Sunshine's Brooklyn Fire Remix)
@@ -1080,6 +1089,7 @@ qOQQ1qdQPPQ1bbdPldPlIil99IDoPi61	0	0	2	4	7	11	12	5	8	11	13	Sacred Oath
 qObI8DOldoqob8OQD6Dqdiob0dIb0ll9	0	0	4	8	11	13	0	8	11	14	0	HEART BEAT FORMULA (Vinyl Mix)
 qOdib0OIO1qOdiQiOi9qIiQiO91idbQq	0	0	1	4	7	9	0	4	6	9	0	Fever
 qOlDPoiqibIOqod69dPilbiqD6qdO1qQ	0	1	3	5	8	10	12	5	8	11	12	More One Night
+qPDO188oQ0i1b8b1b9OPoO0I10lPbQbi	0	0	4	7	11	14	0	7	11	14	0	Wolf's Rain
 qPDQbQ6lOqqbI9Plb6o9lld0ddIP8oiP	0	0	2	5	9	13	0	5	9	12	0	esrev:eR
 qPi8qIqO1lQd08b01PiPlql9O1dOPDPq	0	1	2	5	8	11	0	5	9	11	0	Shut Up and Dance
 qQ9Oo611P0dObD8q6O0Q968bbl8I91OO	0	0	3	9	10	12	0	9	10	11	0	TRIP MACHINE～luv mix～
