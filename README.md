@@ -4,9 +4,9 @@
 
 ## Abstract / 概要
 
-This is a Google Chrome Extension which enables you collecting score data from [DanceDanceRevolution A20 PLUS official website](https://p.eagate.573.jp/game/ddr/ddra20/p/), organizing and viewing those data.
+This is a Google Chrome Extension which enables you collecting score data from [DanceDanceRevolution A3 official website](https://p.eagate.573.jp/game/ddr/ddra3/p/), organizing and viewing those data.
 
-[DanceDanceRevolution A20 PLUSの公式サイト](https://p.eagate.573.jp/game/ddr/ddra20/p/)で閲覧可能なスコアデータを収集し, 整理して閲覧することができるGoogle Chrome拡張機能です.
+[DanceDanceRevolution A3 の公式サイト](https://p.eagate.573.jp/game/ddr/ddra3/p/)で閲覧可能なスコアデータを収集し, 整理して閲覧することができるGoogle Chrome拡張機能です.
 
 This software is not `Score Manager` but `Score Tracker`. Core concept of this software is to collect and utilize data on official website, without taking time and effort. It is unexpected that users enter data manually. (Though it is possible to consider it in future development, it will have low priority.)
 
