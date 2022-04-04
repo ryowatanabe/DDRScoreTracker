@@ -1,3 +1,4 @@
+import { Constants } from '../../static/common/Constants.js';
 import LogContainer from '../log-container.vue';
 import { STATE as BACKGROUND_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_BACKGROUND_STATE_MESSAGE_TYPE } from '../../static/background/state.js';
 
@@ -8,12 +9,13 @@ function updateMusicList() {
 }
 document.getElementById('updateMusicListButton').addEventListener('click', updateMusicList);
 
-function refreshAllMusicInfo() {
+function refreshAllMusicInfo(gameVersion) {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.refreshAllMusicInfo();
+    backgroundPage.refreshAllMusicInfo(gameVersion);
   });
 }
-document.getElementById('refreshAllMusicInfoButton').addEventListener('click', refreshAllMusicInfo);
+document.getElementById('refreshAllMusicInfoButton').addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A20PLUS));
+document.getElementById('refreshAllMusicInfoButtonA3').addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A3));
 
 function resetStorage() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {

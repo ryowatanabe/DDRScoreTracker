@@ -9,17 +9,18 @@ function fetchParsedMusicList() {
 }
 document.getElementById('fetchParsedMusicListButton').addEventListener('click', fetchParsedMusicList);
 
-function fetchMissingMusicInfo() {
+function fetchMissingMusicInfo(gameVersion) {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.fetchMissingMusicInfo();
+    backgroundPage.fetchMissingMusicInfo(gameVersion);
   });
 }
-document.getElementById('fetchMissingMusicInfoButton').addEventListener('click', fetchMissingMusicInfo);
+document.getElementById('fetchMissingMusicInfoButton').addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.A20PLUS));
+document.getElementById('fetchMissingMusicInfoButtonA3').addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.A3));
 
-function updateScoreList() {
+function updateScoreList(gameVersion) {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
     backgroundPage
-      .updateScoreList()
+      .updateScoreList(gameVersion)
       .then((value) => {
         Logger.debug(`updateScoreList success : ${value}`);
       })
@@ -28,9 +29,10 @@ function updateScoreList() {
       });
   });
 }
-document.getElementById('updateScoreListButton').addEventListener('click', updateScoreList);
+document.getElementById('updateScoreListButton').addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.A20PLUS));
+document.getElementById('updateScoreListButtonA3').addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.A3));
 
-function updateScoreDetail() {
+function updateScoreDetail(gameVersion) {
   const targetMusics = [];
   window.getCharts().forEach(function (chartData) {
     targetMusics.push({
@@ -39,10 +41,11 @@ function updateScoreDetail() {
     });
   });
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.updateScoreDetail(targetMusics);
+    backgroundPage.updateScoreDetail(targetMusics, gameVersion);
   });
 }
-document.getElementById('updateScoreDetailButton').addEventListener('click', updateScoreDetail);
+document.getElementById('updateScoreDetailButton').addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.A20PLUS));
+document.getElementById('updateScoreDetailButtonA3').addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.A3));
 
 document.getElementById('exportScoreToSkillAttackButton').addEventListener('click', () => {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {

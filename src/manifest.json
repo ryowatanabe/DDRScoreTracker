@@ -13,7 +13,7 @@
 
   "content_scripts": [
     {
-      "matches": ["https://p.eagate.573.jp/game/ddr/ddra20/p/*"],
+      "matches": ["https://p.eagate.573.jp/game/ddr/*"],
       "js": ["content_scripts/main.js"],
       "run_at": "document_start",
       "all_frames": false
