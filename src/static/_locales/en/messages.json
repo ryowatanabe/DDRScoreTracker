@@ -248,6 +248,9 @@
   "browser_action_debug_page_refresh_all_music_info_a3": {
     "message": "(A3)"
   },
+  "browser_action_debug_page_refresh_all_music_info_musicid": {
+    "message": "Music ID >="
+  },
   "browser_action_debug_page_refresh_all_music_info_description": {
     "message": "Refresh local music list by fetching data from official site."
   },

@@ -248,6 +248,9 @@
   "browser_action_debug_page_refresh_all_music_info_a3": {
     "message": "(A3)"
   },
+  "browser_action_debug_page_refresh_all_music_info_musicid": {
+    "message": "Music ID >="
+  },
   "browser_action_debug_page_refresh_all_music_info_description": {
     "message": "端末上の楽曲リストに含まれる全ての曲の楽曲情報を、公式サイトから再取得します。"
   },

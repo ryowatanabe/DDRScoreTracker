@@ -11,7 +11,7 @@ document.getElementById('updateMusicListButton').addEventListener('click', updat
 
 function refreshAllMusicInfo(gameVersion) {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.refreshAllMusicInfo(gameVersion);
+    backgroundPage.refreshAllMusicInfo(document.getElementById('refreshAllMusicInfoMusicId').value, gameVersion);
   });
 }
 document.getElementById('refreshAllMusicInfoButton').addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A20PLUS));
