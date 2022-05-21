@@ -279,15 +279,7 @@ async function refreshAllMusicInfo(musicIdForFilter, gameVersion) {
   targetMusics = musicList.musicIds
     .sort()
     .filter((musicId) => {
-      /*
-    サイトに載ってない曲が含まれるとエラーになるので取り除くworkaround
-    段位認定の難易度は変わらないし、削除局の難易度が変わることもない
-    */
-      return (
-        0 == musicList.getMusicDataById(musicId).isDeleted &&
-        musicId >= musicIdForFilter &&
-        (Constants.MUSIC_TYPE.NORMAL == musicList.getMusicDataById(musicId).type || Constants.MUSIC_TYPE.NONSTOP == musicList.getMusicDataById(musicId).type)
-      );
+      return musicId >= musicIdForFilter;
     })
     .map((musicId) => {
       let musicType = musicList.getMusicDataById(musicId).type;
