@@ -527,16 +527,24 @@ function onUpdateTab() {
     case STATE.UPDATE_MUSIC_DETAIL:
       browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL' }, async (res) => {
         console.log(res);
-        if (res.status != Parser.STATUS.SUCCESS) {
+        /*
+        workaround:
+        A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
+        そのような曲のデータを取得しようとしてエラーになったときには
+        処理を中断せずエラーを無視して次へ進む
+        */
+        if (res.status != Parser.STATUS.SUCCESS && res.status != Parser.STATUS.UNKNOWN_ERROR) {
           await handleError(res);
           return;
         }
-        res.musics.forEach(function (music) {
-          music.type = targetMusic.type;
-          musicList.applyObject(music);
-        });
-        saveStorage();
-        updateCharts();
+        if (res.status == Parser.STATUS.SUCCESS) {
+          res.musics.forEach(function (music) {
+            music.type = targetMusic.type;
+            musicList.applyObject(music);
+          });
+          saveStorage();
+          updateCharts();
+        }
         if (targetMusics.length > 0) {
           try {
             targetMusic = targetMusics.shift();
@@ -625,15 +633,23 @@ function onUpdateTab() {
     case STATE.UPDATE_SCORE_DETAIL:
       browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL' }, async (res) => {
         console.log(res);
-        if (res.status != Parser.STATUS.SUCCESS) {
+        /*
+        workaround:
+        A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
+        そのような曲のデータを取得しようとしてエラーになったときには
+        処理を中断せずエラーを無視して次へ進む
+        */
+        if (res.status != Parser.STATUS.SUCCESS && res.status != Parser.STATUS.UNKNOWN_ERROR) {
           await handleError(res);
           return;
         }
-        res.scores.forEach(function (score) {
-          scoreList.applyObject(score);
-        });
-        saveStorage();
-        updateCharts();
+        if (res.status == Parser.STATUS.SUCCESS) {
+          res.scores.forEach(function (score) {
+            scoreList.applyObject(score);
+          });
+          saveStorage();
+          updateCharts();
+        }
         if (targetMusics.length > 0) {
           try {
             const targetMusic = targetMusics.shift();
