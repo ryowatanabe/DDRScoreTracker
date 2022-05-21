@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Fixed
+
+ - Ignore "music not found" error when retrieving data (workaround for A20+ / A3 site compatibility)
+
 ## [0.0.14] - 2022-04-04
 
 ### Added
