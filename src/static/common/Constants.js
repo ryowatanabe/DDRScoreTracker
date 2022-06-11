@@ -8,6 +8,7 @@ export class Constants {
 
   static get PLAY_MODE() {
     return {
+      UNKNOWN: -1,
       SINGLE: 0,
       DOUBLE: 1,
     };
@@ -34,6 +35,36 @@ export class Constants {
   }
   static get MUSIC_TYPE_LAST() {
     return 4;
+  }
+
+  static hasNextMusicType(gameVersion, playMode, musicType) {
+    const nextMusicType = this.getNextMusicType(gameVersion, playMode, musicType);
+    if (nextMusicType.playMode == this.PLAY_MODE.UNKNOWN && nextMusicType.musicType == this.MUSIC_TYPE.UNKNOWN) {
+      return false;
+    }
+    return true;
+  }
+
+  static getNextMusicType(gameVersion, playMode, musicType) {
+    do {
+      if (musicType != this.MUSIC_TYPE_LAST) {
+        musicType++;
+      } else {
+        if (playMode != this.PLAY_MODE_LAST) {
+          playMode++;
+          musicType = this.MUSIC_TYPE_FIRST;
+        } else {
+          return {
+            playMode: this.PLAY_MODE.UNKNOWN,
+            musicType: this.MUSIC_TYPE.UNKNOWN,
+          };
+        }
+      }
+    } while (this.SCORE_LIST_URL[gameVersion][playMode][musicType] == '');
+    return {
+      playMode: playMode,
+      musicType: musicType,
+    };
   }
 
   static get MUSIC_LIST_VERSION() {
