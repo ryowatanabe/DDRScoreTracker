@@ -72,10 +72,13 @@
     "message": "NONSTOP"
   },
   "browser_action_filter_filter_condition_music_type_grade": {
-    "message": "段位認定"
+    "message": "段位認定(A20)"
   },
   "browser_action_filter_filter_condition_music_type_grade_plus": {
-    "message": "段位認定(PLUS)"
+    "message": "段位認定(A20+)"
+  },
+  "browser_action_filter_filter_condition_music_type_grade_a3": {
+    "message": "段位認定(A3)"
   },
   "browser_action_filter_filter_condition_difficulty": {
     "message": "難易度"
@@ -375,10 +378,13 @@
     "message": "NONSTOP"
   },
   "log_message_update_score_list_music_type_2": {
-    "message": "段位認定"
+    "message": "段位認定(A20)"
   },
   "log_message_update_score_list_music_type_3": {
-    "message": "段位認定(PLUS)"
+    "message": "段位認定(A20+)"
+  },
+  "log_message_update_score_list_music_type_4": {
+    "message": "段位認定(A3)"
   },
   "log_message_update_score_detail_begin": {
     "message": "スコア詳細を取得..."

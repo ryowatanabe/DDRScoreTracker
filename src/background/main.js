@@ -600,18 +600,10 @@ function onUpdateTab() {
             Logger.info(I18n.getMessage('log_message_aborted'));
           }
         } else {
-          let hasNext = false;
-          if (targetMusicType != Constants.MUSIC_TYPE_LAST) {
-            hasNext = true;
-            targetMusicType++;
-          } else {
-            if (targetPlayMode != Constants.PLAY_MODE_LAST) {
-              hasNext = true;
-              targetPlayMode++;
-              targetMusicType = Constants.MUSIC_TYPE_FIRST;
-            }
-          }
-          if (hasNext) {
+          if (Constants.hasNextMusicType(targetGameVersion, targetPlayMode, targetMusicType)) {
+            const nextMusicType = Constants.getNextMusicType(targetGameVersion, targetPlayMode, targetMusicType);
+            targetPlayMode = nextMusicType.playMode;
+            targetMusicType = nextMusicType.musicType;
             try {
               Logger.info(
                 I18n.getMessage('log_message_update_score_list_progress', [

@@ -8,7 +8,6 @@ export class Constants {
 
   static get PLAY_MODE() {
     return {
-      UNKNOWN: -1,
       SINGLE: 0,
       DOUBLE: 1,
     };
@@ -39,7 +38,7 @@ export class Constants {
 
   static hasNextMusicType(gameVersion, playMode, musicType) {
     const nextMusicType = this.getNextMusicType(gameVersion, playMode, musicType);
-    if (nextMusicType.playMode == this.PLAY_MODE.UNKNOWN && nextMusicType.musicType == this.MUSIC_TYPE.UNKNOWN) {
+    if (nextMusicType.playMode === null && nextMusicType.musicType === null) {
       return false;
     }
     return true;
@@ -55,8 +54,8 @@ export class Constants {
           musicType = this.MUSIC_TYPE_FIRST;
         } else {
           return {
-            playMode: this.PLAY_MODE.UNKNOWN,
-            musicType: this.MUSIC_TYPE.UNKNOWN,
+            playMode: null,
+            musicType: null,
           };
         }
       }

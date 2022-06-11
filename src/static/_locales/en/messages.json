@@ -72,10 +72,13 @@
     "message": "Nonstop"
   },
   "browser_action_filter_filter_condition_music_type_grade": {
-    "message": "Grade"
+    "message": "Grade(A20)"
   },
   "browser_action_filter_filter_condition_music_type_grade_plus": {
-    "message": "Grade(PLUS)"
+    "message": "Grade(A20+)"
+  },
+  "browser_action_filter_filter_condition_music_type_grade_a3": {
+    "message": "Grade(A3)"
   },
   "browser_action_filter_filter_condition_difficulty": {
     "message": "Difficulty"
@@ -375,10 +378,13 @@
     "message": "Nonstop"
   },
   "log_message_update_score_list_music_type_2": {
-    "message": "Grade"
+    "message": "Grade(A20)"
   },
   "log_message_update_score_list_music_type_3": {
-    "message": "Grade(PLUS)"
+    "message": "Grade(A20+)"
+  },
+  "log_message_update_score_list_music_type_4": {
+    "message": "Grade(A3)"
   },
   "log_message_update_score_detail_begin": {
     "message": "Fetching detailed score data..."
