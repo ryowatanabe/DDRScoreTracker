@@ -10,7 +10,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@babel/plugin-proposal-class-properties": "^7.17.12",
-    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-env": "^7.18.2",
     "babel-jest": "^25.2.3",
     "copy-webpack-plugin": "^5.1.1",
     "cross-env": "^7.0.2",
