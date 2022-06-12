@@ -276,21 +276,24 @@ async function refreshAllMusicInfo(musicIdForFilter, gameVersion) {
     throw new Error(message);
   }
   Logger.info(I18n.getMessage('log_message_refresh_all_music_info_begin'));
-  targetMusics = musicList.musicIds
+  targetMusics = [];
+  musicList.musicIds
     .sort()
     .filter((musicId) => {
       return musicId >= musicIdForFilter;
     })
-    .map((musicId) => {
+    .forEach((musicId) => {
       let musicType = musicList.getMusicDataById(musicId).type;
       if (musicType == Constants.MUSIC_TYPE.UNKNOWN) {
         musicType = Constants.MUSIC_TYPE.NORMAL;
       }
-      return {
-        musicId: musicId,
-        type: musicType,
-        url: Constants.MUSIC_DETAIL_URL[gameVersion][musicType].replace('[musicId]', musicId),
-      };
+      if (Constants.MUSIC_DETAIL_URL[gameVersion][musicType] != '') {
+        targetMusics.push({
+          musicId: musicId,
+          type: musicType,
+          url: Constants.MUSIC_DETAIL_URL[gameVersion][musicType].replace('[musicId]', musicId),
+        });
+      }
     });
   if (targetMusics.length == 0) {
     Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_no_target'));
@@ -409,7 +412,8 @@ async function updateScoreDetail(targets, gameVersion) {
   }
   Logger.info(I18n.getMessage('log_message_update_score_detail_begin'));
   /* 巡回対象のURL一覧を生成 */
-  targetMusics = targets.map((music) => {
+  targetMusics = [];
+  targets.forEach((music) => {
     let musicType = Constants.MUSIC_TYPE.NORMAL;
     if (musicList.hasMusic(music.musicId)) {
       musicType = musicList.getMusicDataById(music.musicId).type;
@@ -419,8 +423,10 @@ async function updateScoreDetail(targets, gameVersion) {
     if (musicType == Constants.MUSIC_TYPE.UNKNOWN) {
       musicType = Constants.MUSIC_TYPE.NORMAL;
     }
-    music.url = Constants.SCORE_DETAIL_URL[gameVersion][musicType].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
-    return music;
+    if (Constants.SCORE_DETAIL_URL[gameVersion][musicType] != '') {
+      music.url = Constants.SCORE_DETAIL_URL[gameVersion][musicType].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
+      targetMusics.push(music);
+    }
   });
   if (targetMusics.length == 0) {
     Logger.info(I18n.getMessage('log_message_update_score_detail_no_target'));
@@ -594,18 +600,10 @@ function onUpdateTab() {
             Logger.info(I18n.getMessage('log_message_aborted'));
           }
         } else {
-          let hasNext = false;
-          if (targetMusicType != Constants.MUSIC_TYPE_LAST) {
-            hasNext = true;
-            targetMusicType++;
-          } else {
-            if (targetPlayMode != Constants.PLAY_MODE_LAST) {
-              hasNext = true;
-              targetPlayMode++;
-              targetMusicType = Constants.MUSIC_TYPE_FIRST;
-            }
-          }
-          if (hasNext) {
+          if (Constants.hasNextMusicType(targetGameVersion, targetPlayMode, targetMusicType)) {
+            const nextMusicType = Constants.getNextMusicType(targetGameVersion, targetPlayMode, targetMusicType);
+            targetPlayMode = nextMusicType.playMode;
+            targetMusicType = nextMusicType.musicType;
             try {
               Logger.info(
                 I18n.getMessage('log_message_update_score_list_progress', [

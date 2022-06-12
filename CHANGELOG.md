@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+ - Support for A3 grades
+
 ## [0.0.15] - 2022-05-21
 
 ### Fixed
