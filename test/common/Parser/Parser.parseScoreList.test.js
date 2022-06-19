@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { Parser } from '../../../src/static/common/Parser.js';
 const fs = require('fs');
 const path = require('path');
