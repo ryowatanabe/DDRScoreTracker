@@ -66,6 +66,7 @@
 16oDDIlP8bIODQ6Ql0881d9Qqdb19b98	0	0	3	6	10	14	0	6	10	14	0	黒髪乱れし修羅となりて～凛 edition～
 186dd6DQq891Ib9Ilq8Qbo8lIqb0Qoll	0	0	9	13	15	18	19	13	14	18	19	Valkyrie dimension
 18911Q6o6do9Dd1blIo6IliPd0PPb99i	0	0	4	7	9	12	0	7	9	13	0	AFRONOVA PRIMEVAL
+18d0iP6oIQQIb6IIOi99iDQ116bbP9I9	0	0	2	6	10	13	0	6	9	12	0	Curry Up
 18ibQ9qbqOI91Q1iiiOd990OPo1q1dPI	0	0	2	6	10	12	0	6	10	12	0	Bombay Bomb
 18id0bi1Q6lbl0091iP0QoOIq9DDPo9I	0	0	2	5	9	12	0	5	10	12	0	bass 2 bass
 18l0blb188Oqqi8I68o8oq91Qbq86QDi	0	0	3	7	11	15	17	7	11	15	17	Magnetic
@@ -115,6 +116,7 @@
 1iIoi89doDiQoo8o0ddl9PQdQP0Ili8O	0	0	1	4	7	12	15	4	7	12	15	THE REASON
 1iQIIPdQQOOlP9l90oPdIi60D9OOlqoQ	0	0	6	8	12	16	0	8	12	16	0	chaos eater
 1idIoi66ll806D8ddldOQi8bdiDO0Oil	0	0	4	6	10	13	0	5	10	12	0	Struggle
+1idPoQOiI8611P01Oddo1D19lQO8dQdl	0	0	2	6	10	14	0	6	11	14	0	CANDY (UFO mix)
 1l01billdl6oPP96Pq8d0lbbblQI8i8l	0	0	2	4	7	12	10	5	7	12	11	smooooch･∀･
 1l8ibdlb0O0q00o6l9Pq1ibdbIQqqOb1	0	0	4	7	10	13	0	7	10	13	0	HEART BEAT FORMULA
 1lqii0IibdbPD19P6DiIl0Id9do6qqd1	0	0	4	7	12	15	0	7	12	15	0	Worst Plan
@@ -222,6 +224,7 @@
 88do8dl8O6Ql1Qlb981lOi8D86oiq91P	0	0	3	7	8	12	0	5	9	11	0	SUPER STAR
 88o0qb8Ii1ldPlDQQdoq90dOd0PoO99d	0	0	2	6	9	14	0	6	9	14	0	KEEP ON MOVIN' (Y&Co. DJ BOSS remix)
 88o8Oq69ldilblP10DI0qqb6b8I0DDi9	1	1	3	7	11	15	16	8	11	15	15	BOUNCE
+88qIddPQ9Q0QbQb0l6obD6IQ99oIiQQi	0	0	2	6	9	12	0	6	9	12	0	STAY (Joey Riot remix)
 890q91iIbO96OOD10Qlob6qOObQoq1bd	0	0	3	5	10	13	0	6	11	13	0	Habibe (Antuh muhleke)
 891b0OdIdO8b9obi69b6PQlPIqDI01dO	0	0	3	8	12	16	0	8	12	15	0	Vanquish The Ghost
 891iilD9Pq1lPQd6diqiP0dd611dOPPl	0	0	4	8	12	15	0	8	12	15	0	Last Card
@@ -448,6 +451,7 @@ I6q1PQ1D1Dblli8Iilo9ood8DbbQlb8O	0	1	2	4	8	12	0	4	9	12	0	妄想感傷代償連�
 I6qdO8Di181P6Q9Ooq0d8d0DOdq1dOOQ	0	0	3	6	12	15	16	6	12	15	16	out of focus
 I81iP0Io9o1l9li0Iq99P1091O8DoDOd	0	0	3	6	9	11	13	6	9	11	13	WILD SIDE
 I86OI9lQ1qQ66dPDlddo8PoPo01PO66i	0	0	3	7	12	16	0	7	12	15	0	斑咲花
+I8Odid0QlODlOilqdllqlQldq996QQbP	0	0	2	5	10	14	0	5	10	14	0	We Will Live Together
 I8b69IdbID0Di06ldo6o1lb1IdI89Iqo	0	0	1	4	7	11	13	4	7	11	13	dirty digital
 I8bQ8ilD9l1Qi9Q9iI0q6qqqiolo01QP	0	0	0	0	0	0	13	0	0	0	14	PARANOiA(X-Special)
 I8diIQiPO90qDD60oQ0o669I99dI69DD	0	0	4	7	9	12	0	7	9	11	0	晴天Bon Voyage
@@ -477,6 +481,7 @@ IP00ID9bdlOoP9o9lo1qlO0D1Pdo9I8l	0	0	5	11	12	16	0	8	12	15	0	PARANOiA-Respect-
 IPDid8ii1iQb19lb6iqOi91O0il018Ql	0	0	3	5	9	12	0	5	9	13	0	Thank You Merry Christmas
 IPOq96Qo911IdQbdqIo0I816i6O86ioO	0	0	2	6	10	12	0	6	10	12	0	LoveLove DokiDoki
 IPdDlblblqO1do9IQbDoi0iOoPDoiDlI	0	0	2	6	9	11	0	6	10	12	0	Dazzlin' Darlin
+IPdQ8qIqPiIdqQloI1dQQ688O0qlOQQo	0	0	1	5	10	13	0	5	11	14	0	BONE BORN
 IPi69l86oqdDd8qoll61166D8969869I	0	0	4	6	9	12	0	5	9	11	0	Electro Tuned ( the SubS Mix )
 IPid909iDid06d68IDo816OqbdQq8O0O	0	0	4	8	12	15	0	8	12	15	0	ユメブキ
 IPq8dO1lD8qidDlI0ObboI9IIldQO6IQ	0	0	3	7	11	14	17	7	11	14	17	RЁVOLUTIФN
@@ -497,6 +502,7 @@ IdIP991OD1O1il98QD0llddQdb6Q1PqQ	4	0	0	0	0	0	17	0	0	0	0	八段 (A3)
 IdlqO9DoOq0qPQdDbOb80dOPDlb98l0l	0	0	3	6	10	14	0	5	10	13	0	ほしのつくりかた
 IidO8qlodqdoioodqqb9Dqiq991Ilo10	0	0	4	8	13	16	0	8	13	16	0	リリーゼと炎龍レーヴァテイン
 Iiq6Qoll0oQi801QdPdlOO06DOdIDdD9	0	0	4	7	12	15	0	7	12	15	0	DOUBLE TORNARD
+IlP88I0bbl91iOD6OQ6o6PPb9o6dlDb8	0	0	3	7	11	14	0	7	11	15	0	THE ANCIENT KING IS BACK
 IlQodD9Dbld8QiOql68bPPQbd6bll6i1	2	0	0	0	0	0	0	0	0	0	11	二段 (A20)
 IlbI1QQOPI0o0IdoPI6QPldqQob16DOq	0	0	4	8	13	16	0	8	13	16	0	ナイト・オブ・ナイツ (Ryu☆Remix)
 Ilo6IboPOq8Q10qDOdDDoO6P989bPPi6	0	0	3	5	8	12	13	5	7	11	13	V ～for EXTREME～
@@ -631,6 +637,7 @@ PQ0bDbI9dPQQ81iPO6lo0IDobb8q66Oq	1	0	4	8	12	15	0	8	12	15	0	FUTURE
 PQP1l9qDilqbD0qOqiD8dd86qboI8bob	0	0	2	5	8	10	0	5	9	11	0	All My Love
 PQPloiIQ19QDP9QoI1ld9DlDObIOP689	0	0	3	5	7	11	0	4	8	12	0	KEEP ON MOVIN' ～DMX MIX～
 PQQd6lQlDqilqliI0IobolqIDlo0Iboq	0	0	4	7	10	13	15	7	10	13	15	Xepher
+Pb0D8b8b8PoDIO9Q9DbiQiI8qi0D89D8	0	0	2	5	11	15	0	5	11	15	0	惑星☆ロリポップ
 Pb9II0oiI9ODQ8OP8IqIPQP9P68biqIi	0	0	3	8	9	10	0	9	10	10	0	TRIP MACHINE
 PbIq9b1I161P0iD18qQiOO9qIoodbDIP	2	0	0	0	0	0	15	0	0	0	0	六段 (A20)
 PbQ8Q9ol09I18IIb0d6iO8i9ODID10iO	0	0	2	5	7	10	0	5	8	10	0	Resurrection
@@ -795,6 +802,7 @@ bq8DOQ9Idq9Ii9PQ1bqPIQoQPl961d1o	0	0	3	5	8	11	0	6	8	13	0	零 - ZERO -
 bqQ1OQDidQD8QbIqql06O6o1QD6oOodP	0	0	3	5	8	12	0	5	8	13	0	BRE∀K DOWN！
 bqi9QiQ0lbi8id6lOi88iIi9lo6Pdd90	0	0	4	8	12	16	0	8	13	16	0	Lightspeed
 bql00PQ1PiboIqDQoD909Il8o1PIDiD1	0	0	0	0	0	0	11	0	0	0	12	TRIP MACHINE(X-Special)
+bqoboI0o8lIObPPdqq8lDDdI8b1QPDb1	0	0	3	8	12	14	0	8	12	14	0	恋愛観測 -2021真夏のエンディング ver.-
 bqqIiO96di90bdP0QD1biD8DoDQIddOD	0	0	2	5	8	10	0	5	8	10	0	Back In Your Arms
 d0DDd1dP6llPbioqPdiQ0IDd918bDqI8	0	1	3	7	10	14	0	7	10	14	0	ありふれたせかいせいふく
 d0IiI99IlI00lq606l68qOIl8PidiOlO	0	0	3	5	7	10	0	4	7	11	0	Beautiful Inside (Cube::Hard Mix)
@@ -848,6 +856,7 @@ dQPPd10QO9d8IiOiIi8iDD1Qdq8lQli0	0	0	4	9	13	17	0	9	13	17	0	PARANOiA (kskst mix)
 dQbolPiDiiObioli96DlOo9OlP9DoDIi	0	0	2	6	10	14	0	5	10	14	0	GHOST KINGDOM
 dQoqo68881IiO9i00bP0q1lOD6i1PdD8	0	0	2	5	7	9	12	5	7	10	12	A Brighter Day
 db1DlQ9qqI8PiqPD6q88O1P8PDbP11dq	0	0	3	6	9	12	16	6	9	12	15	めうめうぺったんたん！！
+db9qPQQ1lDbDIPP98IOqil9IO1i0oilO	0	0	1	6	9	12	0	5	9	12	0	PARADISE
 dbD8PlibPqqdI99901obObb6odqD8qDl	0	0	3	7	10	13	15	7	10	13	15	Amalgamation
 dbod1o098DoibO0PoiPIiQ11Pdlqdoo9	0	0	2	5	9	12	0	6	9	12	0	テレキャスタービーボーイ
 dbq9dPPOQ60ibOol0I6b9iQol9lD669D	0	0	4	6	9	11	0	6	7	11	0	Why not
@@ -881,6 +890,7 @@ dqPDQ8Pb68iib8bIIPld10Q0oD8l600o	0	0	3	7	10	12	11	7	11	13	12	going up
 dqQD9ilqIIilOQi986Ql6dd1ldiPob88	1	0	4	7	12	14	17	8	13	15	17	☆☆☆☆
 dqQbQ9oPlIi6bDdi18d9qPlDb0PiDddi	0	0	4	8	12	17	0	8	12	16	0	DIGITALIZER
 dqb09QD6o0O8PooiqbqQOdqQ1l80o691	0	0	5	8	12	16	0	8	12	16	0	Life is beautiful
+dqbd8PD01bI8qlQ1QQ9iP896P88D1O1o	0	0	1	5	7	11	0	5	8	11	0	Heavens and the Earth
 i00IP06I69Odl80I6Q69QDQooOId8o61	4	0	0	0	0	0	0	0	0	0	14	五段 (A3)
 i0P1O6lbP1oDd6q6b08iPPoq6iPdI818	0	0	4	9	13	16	0	9	13	16	0	最終鬼畜妹フランドール・Ｓ
 i0Q0o98q0DqbbiDd6966QIIoddlob6lI	0	0	5	10	14	17	0	10	14	17	0	TYPHØN
@@ -952,6 +962,7 @@ idIibqoooOlQ1DId8lOidd6il0bdoql8	0	0	3	10	13	16	0	10	13	16	0	GAIA
 idiOI1Qb9D0dQI6IOlob8QbOqdDOoObP	2	0	0	0	0	0	0	0	0	0	17	八段 (A20)
 ii119ll8dOQ8IQqi1IOP1o8DIQbqo8Pi	0	0	3	3	6	8	0	5	7	8	0	dream of love
 ii6Oooool0IoOqi1qdDo96QIil6IoOq0	0	0	3	5	8	10	0	5	7	10	0	BURNIN' THE FLOOR
+iiIblq9IDiOill8qdI68OOIPq6OPdiDo	0	0	1	4	10	14	0	5	10	14	0	Easy Peasy
 il0QbI6IOIidllO108olqd8i9Pb1Oq8Q	0	0	2	5	8	11	0	5	8	12	0	Decade
 il6PIiDq11dD1981dQ00918D96lPQ0iQ	0	0	3	5	7	10	0	5	7	11	0	air
 ilD1Qb1IqqDP1bo1i66q688q6doPq6Qb	3	0	0	0	0	0	0	0	0	0	13	四段 (A20+)
@@ -969,6 +980,7 @@ ioi6db99oOPPDd1db888D6oi6bb06o0P	0	0	3	5	6	11	0	5	6	12	0	CAN'T STOP FALLIN' IN L
 iq6QI06oQlloO9Db9dbI8IDoi91dD8d9	0	0	1	4	6	10	0	4	6	11	0	HEARTBREAK (Sound Selektaz remix)
 iq9qPoPlIlbIDqlD81DqO1110QI1qoOl	0	0	5	10	13	16	0	10	13	16	0	SCHWARZSCHILD FIELD
 iqiqod1l08DlDql98QOi10oibldd8b86	0	0	3	7	11	16	18	7	12	15	18	冥
+iqlOo1bdoiDqDbIODDl0POl1PqlQd8l6	0	0	1	5	7	11	0	5	7	11	0	Take Me
 l08bl1dddob81IP1IbQqbDbiPo9l069l	0	0	3	6	11	15	16	7	11	15	16	Start a New Day
 l0OPoQ1O8q8DPDo0Iol6qD6DiIqdD9P9	0	0	3	8	13	16	0	8	13	16	0	灼熱 Pt.2 Long Train Running
 l0QP6DiIDIId0oiQiOl8q10DlI96OPiO	0	0	2	6	9	11	0	7	9	11	0	A Geisha's Dream
@@ -978,7 +990,7 @@ l1bDOIlb6ddI6od0q1llI0I6blq9oP0l	0	0	2	5	9	13	0	5	9	13	0	ハッピーシンセ�
 l1lO999PqIboPQOD86PDQo1ol1iIiiOi	0	0	3	6	10	13	0	5	9	13	0	革命パッショネイト
 l1o0olodIDDiqDQ101obOD1qo81q0QOP	1	0	4	7	12	16	0	7	12	16	0	ONE HALF
 l609D9lOqbDP6iIld1dI18l888dODQ6Q	0	0	3	4	9	11	0	5	9	11	0	Polovtsian Dances And Chorus
-l61ldlPo1DQ081860O86D0Qo0qdOd0qP	0	0	3	5	9	14	0	5	9	13	0	Ace out
+l61ldlPo1DQ081860O86D0Qo0qdOd0qP	0	0	3	5	9	14	14	5	9	13	14	Ace out
 l666Dd0bIO9O69boPd898b19bPDo1IdO	0	0	3	7	11	15	0	7	11	14	0	starmine
 l66Io69ob00OoOiDOI9lIqlidbDoDq89	0	0	2	5	9	12	0	5	9	12	0	Towards the TOWER
 l6999IbQI61IO9qQbllobqo68lqobibq	0	0	3	6	8	11	13	7	8	11	13	MAX LOVE
@@ -1104,6 +1116,7 @@ oi6P9Oq19ooo00bDiPQ809DQQQD8qPlD	0	0	2	5	9	12	0	5	9	11	0	Play Hard
 oi9q8DQ1QddP1699qIbqP886iOIPI16I	0	0	2	4	7	11	0	5	7	11	0	Something Special
 oiIob81i6d6P6qbddOP6Q0d0obQ0PID9	0	0	2	4	7	10	0	4	7	11	0	Your Angel
 oiQliqIliq91Dl169ldqbb18OPblOb1i	0	0	2	2	5	11	0	3	6	8	0	Under the Sky
+oilPP86l0PPq6Db0qqibQlqDiIOD0l1O	0	0	3	6	10	13	0	6	10	13	0	You You You
 oio6bqP08PPoP9qIq1oi9Dib9PIq9l11	0	0	0	0	0	0	10	0	0	0	11	Silent Hill (3rd christmas mix)
 oiqql6iPq8Oq0QIqlqb1DOOO8ioPo8b9	3	0	0	0	0	0	0	0	0	0	17	八段 (A20+)
 ol6IDd019O0qq8dblPQ96ol1oPbI990b	0	0	6	10	13	16	0	9	13	16	0	HAPPY☆LUCKY☆YEAPPY
