@@ -1,3 +1,4 @@
+/*
 import { MusicList } from '../static/common/MusicList.js';
 import { MusicData } from '../static/common/MusicData.js';
 import { ScoreList } from '../static/common/ScoreList.js';
@@ -218,11 +219,11 @@ function restoreScoreList(object) {
   scoreList = ScoreList.createFromStorage(object);
   updateCharts();
 }
-
+*/
 /*
 gh pagesから曲リストを取得し、ローカルの曲リストを更新する
 */
-
+/*
 async function fetchParsedMusicList() {
   Logger.info(I18n.getMessage('log_message_fetch_parsed_music_list_begin'));
   try {
@@ -243,10 +244,11 @@ async function fetchParsedMusicList() {
     throw error;
   }
 }
-
+*/
 /*
 公式の曲一覧から曲情報を取得し、ローカルの曲リストを更新する
 */
+/*
 async function updateMusicList() {
   if (state != STATE.IDLE) {
     const message = `updateMusicList: state unmatch (current state: ${state})`;
@@ -265,10 +267,11 @@ async function updateMusicList() {
     throw error;
   }
 }
-
+*/
 /*
 曲リストに現存する全曲の曲情報を再取得する
 */
+/*
 async function refreshAllMusicInfo(musicIdForFilter, gameVersion) {
   if (state != STATE.IDLE) {
     const message = `refreshAllMusicInfo: state unmatch (current state: ${state})`;
@@ -312,11 +315,12 @@ async function refreshAllMusicInfo(musicIdForFilter, gameVersion) {
     throw error;
   }
 }
-
+*/
 /*
 ローカルの曲リストと成績リストを比較し、曲情報が欠けている曲について
 その情報を取得する
 */
+/*
 async function fetchMissingMusicInfo(gameVersion) {
   if (state != STATE.IDLE) {
     const message = `fetchMissingMusicInfo: state unmatch (current state: ${state})`;
@@ -324,7 +328,7 @@ async function fetchMissingMusicInfo(gameVersion) {
     throw new Error(message);
   }
   Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_begin'));
-  /* 曲情報が欠けている曲と、曲情報そのものはあるが、譜面情報が欠けている (追加鬼譜面など) 曲を列挙する */
+  // 曲情報が欠けている曲と、曲情報そのものはあるが、譜面情報が欠けている (追加鬼譜面など) 曲を列挙する
   const targetMusicIDs = scoreList.musicIds.filter((musicId) => {
     if (!musicList.hasMusic(musicId)) {
       return true;
@@ -364,10 +368,11 @@ async function fetchMissingMusicInfo(gameVersion) {
     throw error;
   }
 }
-
+*/
 /*
 公式の成績一覧ページから成績情報を取得し、ローカルのスコアリストを更新する
 */
+/*
 async function updateScoreList(gameVersion) {
   if (state != STATE.IDLE) {
     const message = `updateScoreList: state unmatch (current state: ${state})`;
@@ -397,13 +402,14 @@ async function updateScoreList(gameVersion) {
     throw error;
   }
 }
-
+*/
 /*
 公式の成績詳細ページから成績情報を取得し、ローカルのスコアリストを更新する
 targets: [
   { musicId:xxx, difficulty:yy }, ...
 ]
 */
+/*
 async function updateScoreDetail(targets, gameVersion) {
   if (state != STATE.IDLE) {
     const message = `updateScoreDetail: state unmatch (current state: ${state})`;
@@ -411,7 +417,7 @@ async function updateScoreDetail(targets, gameVersion) {
     throw new Error(message);
   }
   Logger.info(I18n.getMessage('log_message_update_score_detail_begin'));
-  /* 巡回対象のURL一覧を生成 */
+  // 巡回対象のURL一覧を生成
   targetMusics = [];
   targets.forEach((music) => {
     let musicType = Constants.MUSIC_TYPE.NORMAL;
@@ -533,12 +539,10 @@ function onUpdateTab() {
     case STATE.UPDATE_MUSIC_DETAIL:
       browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL' }, async (res) => {
         console.log(res);
-        /*
-        workaround:
-        A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
-        そのような曲のデータを取得しようとしてエラーになったときには
-        処理を中断せずエラーを無視して次へ進む
-        */
+        // workaround:
+        // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
+        // そのような曲のデータを取得しようとしてエラーになったときには
+        // 処理を中断せずエラーを無視して次へ進む
         if (res.status != Parser.STATUS.SUCCESS && res.status != Parser.STATUS.UNKNOWN_ERROR) {
           await handleError(res);
           return;
@@ -631,12 +635,10 @@ function onUpdateTab() {
     case STATE.UPDATE_SCORE_DETAIL:
       browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL' }, async (res) => {
         console.log(res);
-        /*
-        workaround:
-        A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
-        そのような曲のデータを取得しようとしてエラーになったときには
-        処理を中断せずエラーを無視して次へ進む
-        */
+        // workaround:
+        // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
+        // そのような曲のデータを取得しようとしてエラーになったときには
+        // 処理を中断せずエラーを無視して次へ進む
         if (res.status != Parser.STATUS.SUCCESS && res.status != Parser.STATUS.UNKNOWN_ERROR) {
           await handleError(res);
           return;
@@ -802,49 +804,12 @@ async function exportScoreToSkillAttack(ddrcode, password) {
 }
 
 const browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT, onUpdateTab);
-
+*/
 (function () {
-  browserController.delay = Constants.LOAD_INTERVAL;
+  //browserController.delay = Constants.LOAD_INTERVAL;
 
-  chrome.runtime.onMessage.addListener(function (_message, _sender, _sendResponse) {
-    //sendResponse({});
-    //return true;
-  });
-
-  const extension_id = 'lmmajknclbeegkjamiaejegnkopbbodj';
-  //const extension_id = chrome.i18n.getMessage('@@extension_id');
-
+  const extension_id = chrome.i18n.getMessage('@@extension_id');
   chrome.action.onClicked.addListener(() => {
     chrome.tabs.create({ url: `chrome-extension://${extension_id}/browser_action/index.html` }, function (_tab) {});
   });
-
-  window.abortAction = abortAction;
-  window.echo = echo;
-  window.exportScoreToSkillAttack = exportScoreToSkillAttack;
-  window.fetchMissingMusicInfo = fetchMissingMusicInfo;
-  window.fetchParsedMusicList = fetchParsedMusicList;
-  window.getBytesInUse = getBytesInUse;
-  window.getChartCount = getChartCount;
-  window.getChartList = getChartList;
-  window.getConditions = getConditions;
-  window.getDifferences = getDifferences;
-  window.getInternalStatus = getInternalStatus;
-  window.getOptions = getOptions;
-  window.getMusicList = getMusicList;
-  window.getSaSettings = getSaSettings;
-  window.getSavedConditions = getSavedConditions;
-  window.getScoreList = getScoreList;
-  window.getState = getState;
-  window.refreshAllMusicInfo = refreshAllMusicInfo;
-  window.resetStorage = resetStorage;
-  window.restoreMusicList = restoreMusicList;
-  window.restoreScoreList = restoreScoreList;
-  window.saveConditions = saveConditions;
-  window.saveOptions = saveOptions;
-  window.saveSavedCondition = saveSavedCondition;
-  window.saveSavedConditions = saveSavedConditions;
-  window.updateCharts = updateCharts;
-  window.updateMusicList = updateMusicList;
-  window.updateScoreDetail = updateScoreDetail;
-  window.updateScoreList = updateScoreList;
 })();
