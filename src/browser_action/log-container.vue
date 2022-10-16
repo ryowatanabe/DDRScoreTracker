@@ -18,11 +18,17 @@ import Vue from 'vue';
 import { I18n } from '../static/common/I18n.js';
 import { LogReceiver } from '../static/common/LogReceiver.js';
 
-function initialize() {
+let app;
+
+function initialize(a) {
+  app = a;
   document.getElementById('logContainer').classList.remove('not-initialized');
   document.getElementById('logBackground').classList.remove('not-initialized');
   document.getElementById('logContainer').classList.add('initialized');
   document.getElementById('logBackground').classList.add('initialized');
+
+  const options = app.getOptions();
+  logReceiver.enableDebugLog = options.enableDebugLog;
 }
 
 function disableButtons() {
@@ -58,9 +64,7 @@ function flush() {
 }
 
 function abort() {
-  chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.abortAction();
-  });
+  app.abortAction();
 }
 
 function copy() {
@@ -88,10 +92,6 @@ function scrollToBottomImpl() {
 
 const logReceiver = new LogReceiver(() => {
   Vue.nextTick(open);
-});
-chrome.runtime.getBackgroundPage(function (backgroundPage) {
-  const options = backgroundPage.getOptions();
-  logReceiver.enableDebugLog = options.enableDebugLog;
 });
 
 export default Vue.extend({
@@ -129,8 +129,8 @@ export default Vue.extend({
     disableButtons: () => {
       disableButtons();
     },
-    initialize: () => {
-      initialize();
+    initialize: (a) => {
+      initialize(a);
     },
   },
 });

@@ -67,7 +67,7 @@ export class App {
     this.options = null;
     this.internalStatus = null;
 
-    this.browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT, this.onUpdateTab);
+    this.browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT, this.onUpdateTab.bind(this));
     this.browserController.delay = Constants.LOAD_INTERVAL;
   }
 
@@ -152,7 +152,7 @@ export class App {
         savedCondition.sort = newSavedCondition.sort;
         isUpdated = true;
       }
-    });
+    }, this);
     if (!isUpdated) {
       this.savedConditions.push(newSavedCondition);
     }
@@ -198,7 +198,7 @@ export class App {
       if (this.musicList.hasMusic(difference.musicId)) {
         difference.musicData = this.musicList.getMusicDataById(difference.musicId);
       }
-    });
+    }, this);
     return this.differences;
   }
 
@@ -215,7 +215,7 @@ export class App {
     Logger.info(I18n.getMessage('log_message_restore_music_list_count', lines.length));
     lines.forEach(function (line) {
       this.musicList.applyEncodedString(line);
-    });
+    }, this);
     this.saveStorage();
     this.updateCharts();
   }
@@ -299,7 +299,7 @@ export class App {
             url: Constants.MUSIC_DETAIL_URL[gameVersion][musicType].replace('[musicId]', musicId),
           });
         }
-      });
+      }, this);
     if (this.targetMusics.length == 0) {
       Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_no_target'));
       return false;
@@ -432,7 +432,7 @@ export class App {
         music.url = Constants.SCORE_DETAIL_URL[gameVersion][musicType].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
         this.targetMusics.push(music);
       }
-    });
+    }, this);
     if (this.targetMusics.length == 0) {
       Logger.info(I18n.getMessage('log_message_update_score_detail_no_target'));
       return false;
@@ -515,7 +515,7 @@ export class App {
           }
           res.musics.forEach(function (music) {
             this.musicList.applyObject(music);
-          });
+          }, this);
           this.saveStorage();
           this.updateCharts();
           if (res.hasNext) {
@@ -550,7 +550,7 @@ export class App {
             res.musics.forEach(function (music) {
               music.type = this.targetMusic.type;
               this.musicList.applyObject(music);
-            });
+            }, this);
             this.saveStorage();
             this.updateCharts();
           }
@@ -582,7 +582,7 @@ export class App {
           res.scores.forEach(function (score) {
             score.musicType = this.targetMusicType;
             this.differences = this.differences.concat(this.scoreList.applyObject(score));
-          });
+          }, this);
           this.saveStorage();
           this.updateCharts();
           if (res.hasNext) {
@@ -645,7 +645,7 @@ export class App {
           if (res.status == Parser.STATUS.SUCCESS) {
             res.scores.forEach(function (score) {
               this.scoreList.applyObject(score);
-            });
+            }, this);
             this.saveStorage();
             this.updateCharts();
           }
