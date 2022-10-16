@@ -1,6 +1,6 @@
 import { Constants } from '../../static/common/Constants.js';
 import LogContainer from '../log-container.vue';
-import { STATE as BACKGROUND_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_BACKGROUND_STATE_MESSAGE_TYPE } from '../../static/background/state.js';
+import { STATE as BACKGROUND_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_BACKGROUND_STATE_MESSAGE_TYPE } from '../../static/common/AppState.js';
 
 function updateMusicList() {
   chrome.runtime.getBackgroundPage(function (backgroundPage) {

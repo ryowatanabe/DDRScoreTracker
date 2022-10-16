@@ -1,7 +1,7 @@
 import ChartList from './chart-list.vue';
 import ChartDiffList from './chart-diff-list.vue';
 import LogContainer from './log-container.vue';
-import { STATE as BACKGROUND_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_BACKGROUND_STATE_MESSAGE_TYPE } from '../static/background/state.js';
+import { STATE as BACKGROUND_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_BACKGROUND_STATE_MESSAGE_TYPE } from '../static/common/AppState.js';
 
 import { initialize as initializeFilter } from './filter.js';
 import { initialize as initializeMenu } from './menu.js';
