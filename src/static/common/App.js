@@ -13,7 +13,7 @@ import { Parser } from './Parser.js';
 import { I18n } from './I18n.js';
 import { Util } from './Util.js';
 
-import { STATE /*, CHANGE_STATE_MESSAGE_TYPE */ } from './AppState.js';
+import { STATE, CHANGE_STATE_MESSAGE_TYPE } from './AppState.js';
 
 export class App {
   constructor() {
@@ -680,7 +680,15 @@ export class App {
   }
 
   changeState(nextState) {
-    //chrome.runtime.sendMessage({ type: CHANGE_STATE_MESSAGE_TYPE, oldState: this.state, state: nextState });
+    chrome.runtime.sendMessage({ type: CHANGE_STATE_MESSAGE_TYPE, oldState: this.state, state: nextState }, () => {
+      if (chrome.runtime.lastError != '') {
+        // メッセージ受信側がコールバックを呼び出さなかった場合
+        // "The message port closed before a response was received." が
+        // chrome.runtime.lastError.message にセットされた状態でコールバックが呼び出される
+        // セットされた chrome.runtime.lastError に触らないと怒られるので、一度参照だけしておく
+        // see: https://developer.chrome.com/docs/extensions/reference/runtime/#method-sendMessage
+      }
+    });
     Logger.debug(`App.changeState ${this.state} -> ${nextState}`);
     this.state = nextState;
   }
