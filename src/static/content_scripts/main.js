@@ -2,9 +2,9 @@ let Logger;
 let Parser;
 
 async function loadModules() {
-  const logger = await import(chrome.extension.getURL('common/Logger.js'));
+  const logger = await import(chrome.runtime.getURL('common/Logger.js'));
   Logger = logger.Logger;
-  const parser = await import(chrome.extension.getURL('common/Parser.js'));
+  const parser = await import(chrome.runtime.getURL('common/Parser.js'));
   Parser = parser.Parser;
   console.log('modules loaded.');
 }
