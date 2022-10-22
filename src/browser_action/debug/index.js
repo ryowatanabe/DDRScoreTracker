@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function onInitialized() {
-  logContainer.initialize();
+  logContainer.initialize(app);
 
   if (app.getState() != APP_STATE.IDLE) {
     logContainer.disableButtons();
