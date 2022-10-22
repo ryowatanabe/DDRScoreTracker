@@ -230,6 +230,7 @@ export class App {
 
   restoreScoreList(object) {
     this.scoreList = ScoreList.createFromStorage(object);
+    this.saveStorage();
     this.updateCharts();
   }
 
