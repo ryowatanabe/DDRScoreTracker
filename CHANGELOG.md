@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Deleted
+
+ - Data retrieval from DDR A20+ website is no longer supported
+
+## [0.0.16] - 2022-06-18
+
 ### Added
 
  - Support for A3 grades
@@ -109,7 +115,8 @@
 
 First release
 
-[Unreleased]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.15...HEAD
+[Unreleased]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.16...HEAD
+[0.0.16]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.15...v0.0.16
 [0.0.15]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.14...v0.0.15
 [0.0.14]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.13...v0.0.14
 [0.0.13]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.12...v0.0.13
