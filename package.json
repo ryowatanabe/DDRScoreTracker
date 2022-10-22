@@ -30,7 +30,7 @@
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^4.10.0",
     "webpack-extension-reloader": "^1.1.4"
   },
   "scripts": {
@@ -38,8 +38,8 @@
     "lint": "eslint --ext .js,.vue src",
     "prettier": "prettier \"src/**/*.{js,vue,json,html}\" \"test/**/*.js\"",
     "prettier:write": "yarn prettier --write",
-    "build": "yarn clean; cross-env NODE_ENV=production webpack --hide-modules",
-    "build:dev": "cross-env NODE_ENV=development webpack --hide-modules",
+    "build": "yarn clean; cross-env NODE_ENV=production webpack",
+    "build:dev": "cross-env NODE_ENV=development webpack",
     "watch": "yarn build --watch",
     "watch:dev": "cross-env HMR=true yarn build:dev --watch",
     "test": "jest"
