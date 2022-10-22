@@ -43,6 +43,9 @@ function getConditions() {
 export function refreshList() {
   const conditions = getConditions();
 
+  const savedFilterSelect = document.getElementById('savedFilterSelect');
+  savedFilterSelect.value = '';
+
   app.saveConditions(conditions.summary, conditions.filter, conditions.sort);
   window.refreshList(
     conditions.summary,

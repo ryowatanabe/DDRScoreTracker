@@ -15,6 +15,8 @@
 import Vue from 'vue';
 import { I18n } from '../static/common/I18n.js';
 
+let app;
+
 export default Vue.extend({
   data: function () {
     return {
@@ -25,7 +27,7 @@ export default Vue.extend({
     getMessage: I18n.getMessage,
     changeName: function (index) {
       this.savedConditions[index].name = document.getElementById('savedConditionName' + index).value;
-      console.log('element name updated');
+      this.save();
     },
     movePrevious: function (index) {
       const element = this.savedConditions.splice(index, 1);
@@ -42,15 +44,14 @@ export default Vue.extend({
       this.save();
     },
     load: function () {
-      chrome.runtime.getBackgroundPage((backgroundPage) => {
-        const savedConditions = backgroundPage.getSavedConditions();
-        this.savedConditions = savedConditions;
-      });
+      const savedConditions = app.getSavedConditions();
+      this.savedConditions = savedConditions;
     },
     save: function () {
-      chrome.runtime.getBackgroundPage((backgroundPage) => {
-        backgroundPage.saveSavedConditions(this.savedConditions);
-      });
+      app.saveSavedConditions(this.savedConditions);
+    },
+    initialize: function (a) {
+      app = a;
     },
   },
 });
