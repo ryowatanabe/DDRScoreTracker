@@ -2,6 +2,7 @@ import { I18n } from '../static/common/I18n.js';
 
 const filterNames = ['playMode', 'musicType', 'difficulty', 'level', 'clearType', 'scoreRank', 'availability'];
 
+let app;
 let savedConditions = [];
 
 function getConditions() {
@@ -42,9 +43,10 @@ function getConditions() {
 export function refreshList() {
   const conditions = getConditions();
 
-  chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.saveConditions(conditions.summary, conditions.filter, conditions.sort);
-  });
+  const savedFilterSelect = document.getElementById('savedFilterSelect');
+  savedFilterSelect.value = '';
+
+  app.saveConditions(conditions.summary, conditions.filter, conditions.sort);
   window.refreshList(
     conditions.summary,
     conditions.filter,
@@ -57,11 +59,29 @@ export function refreshList() {
   );
 }
 
-export function initialize() {
+export function initialize(a) {
+  app = a;
   document.getElementById('filterContainer').classList.remove('not-initialized');
   document.getElementById('filterBackground').classList.remove('not-initialized');
   document.getElementById('filterContainer').classList.add('initialized');
   document.getElementById('filterBackground').classList.add('initialized');
+
+  /* All, Noneのイベントハンドラをつける */
+  document.getElementById('summarySetting_all').addEventListener('click', selectAll.bind(this, 'summarySetting'));
+  document.getElementById('summarySetting_clear').addEventListener('click', selectNone.bind(this, 'summarySetting'));
+  filterNames.forEach((name) => {
+    document.getElementById(`filterCondition_${name}_all`).addEventListener('click', selectAll.bind(this, `filterCondition_${name}`));
+    document.getElementById(`filterCondition_${name}_clear`).addEventListener('click', selectNone.bind(this, `filterCondition_${name}`));
+  });
+  /* saved filtersのプルダウンを作る */
+  savedConditions = app.getSavedConditions();
+  updateSavedFilterSelect();
+
+  /* デフォルトのチェックをつける */
+  const conditions = app.getConditions();
+  applyConditions(conditions);
+
+  refreshList();
 }
 
 function openFilter() {
@@ -158,12 +178,10 @@ function saveFilter() {
     return;
   }
 
-  chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    const conditions = getConditions();
-    conditions.name = filterName;
-    savedConditions = backgroundPage.saveSavedCondition(conditions);
-    updateSavedFilterSelect(filterName);
-  });
+  const conditions = getConditions();
+  conditions.name = filterName;
+  savedConditions = app.saveSavedCondition(conditions);
+  updateSavedFilterSelect(filterName);
 }
 
 function saveAsFilter() {
@@ -172,12 +190,10 @@ function saveAsFilter() {
     filterName = window.prompt('', '').trim();
   } while (filterName == '');
 
-  chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    const conditions = getConditions();
-    conditions.name = filterName;
-    savedConditions = backgroundPage.saveSavedCondition(conditions);
-    updateSavedFilterSelect(filterName);
-  });
+  const conditions = getConditions();
+  conditions.name = filterName;
+  savedConditions = app.saveSavedCondition(conditions);
+  updateSavedFilterSelect(filterName);
 }
 
 document.getElementById('savedFilterSelect').addEventListener('change', applySavedFilter);
@@ -186,24 +202,3 @@ document.getElementById('saveAsFilterButton').addEventListener('click', saveAsFi
 
 document.getElementById('openFilterButton').addEventListener('click', openFilter);
 document.getElementById('closeFilterButton').addEventListener('click', closeFilter);
-
-(function () {
-  /* All, Noneのイベントハンドラをつける */
-  document.getElementById('summarySetting_all').addEventListener('click', selectAll.bind(this, 'summarySetting'));
-  document.getElementById('summarySetting_clear').addEventListener('click', selectNone.bind(this, 'summarySetting'));
-  filterNames.forEach((name) => {
-    document.getElementById(`filterCondition_${name}_all`).addEventListener('click', selectAll.bind(this, `filterCondition_${name}`));
-    document.getElementById(`filterCondition_${name}_clear`).addEventListener('click', selectNone.bind(this, `filterCondition_${name}`));
-  });
-  chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    /* saved filtersのプルダウンを作る */
-    savedConditions = backgroundPage.getSavedConditions();
-    updateSavedFilterSelect();
-
-    /* デフォルトのチェックをつける */
-    const conditions = backgroundPage.getConditions();
-    applyConditions(conditions);
-
-    refreshList();
-  });
-})();

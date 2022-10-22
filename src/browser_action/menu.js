@@ -2,35 +2,29 @@ import { refreshList } from './filter.js';
 import { Constants } from '../static/common/Constants.js';
 import { Logger } from '../static/common/Logger.js';
 
+let app;
+
 function fetchParsedMusicList() {
-  chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.fetchParsedMusicList();
-  });
+  app.fetchParsedMusicList();
 }
 document.getElementById('fetchParsedMusicListButton').addEventListener('click', fetchParsedMusicList);
 
 function fetchMissingMusicInfo(gameVersion) {
-  chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.fetchMissingMusicInfo(gameVersion);
-  });
+  app.fetchMissingMusicInfo(gameVersion);
 }
-document.getElementById('fetchMissingMusicInfoButton').addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.A20PLUS));
-document.getElementById('fetchMissingMusicInfoButtonA3').addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.A3));
+document.getElementById('fetchMissingMusicInfoButton').addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.A3));
 
 function updateScoreList(gameVersion) {
-  chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage
-      .updateScoreList(gameVersion)
-      .then((value) => {
-        Logger.debug(`updateScoreList success : ${value}`);
-      })
-      .catch((error) => {
-        Logger.debug(`updateScoreList failed : ${JSON.stringify(error.message)}`);
-      });
-  });
+  app
+    .updateScoreList(gameVersion)
+    .then((value) => {
+      Logger.debug(`updateScoreList success : ${value}`);
+    })
+    .catch((error) => {
+      Logger.debug(`updateScoreList failed : ${JSON.stringify(error.message)}`);
+    });
 }
-document.getElementById('updateScoreListButton').addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.A20PLUS));
-document.getElementById('updateScoreListButtonA3').addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.A3));
+document.getElementById('updateScoreListButton').addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.A3));
 
 function updateScoreDetail(gameVersion) {
   const targetMusics = [];
@@ -40,24 +34,19 @@ function updateScoreDetail(gameVersion) {
       difficulty: chartData.difficulty + (chartData.playMode == Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0),
     });
   });
-  chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage.updateScoreDetail(targetMusics, gameVersion);
-  });
+  app.updateScoreDetail(targetMusics, gameVersion);
 }
-document.getElementById('updateScoreDetailButton').addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.A20PLUS));
-document.getElementById('updateScoreDetailButtonA3').addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.A3));
+document.getElementById('updateScoreDetailButton').addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.A3));
 
 document.getElementById('exportScoreToSkillAttackButton').addEventListener('click', () => {
-  chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    backgroundPage
-      .exportScoreToSkillAttack(document.getElementById('exportScoreToSkillAttackDdrCode').value, document.getElementById('exportScoreToSkillAttackPassword').value)
-      .then((value) => {
-        Logger.debug(`exportScoreToSkillAttack success : ${value}`);
-      })
-      .catch((error) => {
-        Logger.debug(`exportScoreToSkillAttack failed : ${JSON.stringify(error.message)}`);
-      });
-  });
+  app
+    .exportScoreToSkillAttack(document.getElementById('exportScoreToSkillAttackDdrCode').value, document.getElementById('exportScoreToSkillAttackPassword').value)
+    .then((value) => {
+      Logger.debug(`exportScoreToSkillAttack success : ${value}`);
+    })
+    .catch((error) => {
+      Logger.debug(`exportScoreToSkillAttack failed : ${JSON.stringify(error.message)}`);
+    });
 });
 document.getElementById('openSkillAttackPageButton').addEventListener('click', () => {
   window.open('http://skillattack.com/sa4/');
@@ -67,11 +56,15 @@ document.getElementById('openSkillAttackUserPageButton').addEventListener('click
   window.open('http://skillattack.com/sa4/dancer_profile.php?ddrcode=' + ddrcode);
 });
 
-export function initialize() {
+export function initialize(a) {
+  app = a;
   document.getElementById('menuContainer').classList.remove('not-initialized');
   document.getElementById('menuBackground').classList.remove('not-initialized');
   document.getElementById('menuContainer').classList.add('initialized');
   document.getElementById('menuBackground').classList.add('initialized');
+
+  const saSettings = app.getSaSettings();
+  document.querySelector(`#exportScoreToSkillAttackDdrCode`).value = saSettings.ddrcode;
 }
 
 export function openMenu() {
@@ -91,10 +84,3 @@ function openDiff() {
   window.openDiff();
 }
 document.getElementById('openScoreDiffButton').addEventListener('click', openDiff);
-
-(function () {
-  chrome.runtime.getBackgroundPage(function (backgroundPage) {
-    const saSettings = backgroundPage.getSaSettings();
-    document.querySelector(`#exportScoreToSkillAttackDdrCode`).value = saSettings.ddrcode;
-  });
-})();

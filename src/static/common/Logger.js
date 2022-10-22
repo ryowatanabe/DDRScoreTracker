@@ -1,3 +1,5 @@
+let listeners = [];
+
 export class Logger {
   static get LOG_LEVEL() {
     return {
@@ -12,8 +14,14 @@ export class Logger {
     return 'LOG';
   }
 
+  static addListener(listener) {
+    listeners.push(listener);
+  }
+
   static log(content, level = this.LOG_LEVEL.INFO) {
-    chrome.runtime.sendMessage({ type: this.MESSAGE_TYPE, level: level, content: content });
+    listeners.forEach((listener) => {
+      listener({ type: this.MESSAGE_TYPE, level: level, content: content });
+    }, this);
   }
 
   static error(content) {
