@@ -5,15 +5,19 @@ export class LogReceiver {
     this.data = [];
     this.callback = callback;
     this.enableDebugLog = false;
+  }
 
-    chrome.runtime.onMessage.addListener((message, _sender, _sendResponse) => {
-      if (message.type == Logger.MESSAGE_TYPE) {
-        if (message.level == Logger.LOG_LEVEL.DEBUG && this.enableDebugLog != true) {
-          return;
-        }
-        this.push(message.content);
+  getMessageListener() {
+    return this.messageListener.bind(this);
+  }
+
+  messageListener(message) {
+    if (message.type == Logger.MESSAGE_TYPE) {
+      if (message.level == Logger.LOG_LEVEL.DEBUG && this.enableDebugLog != true) {
+        return;
       }
-    });
+      this.push(message.content);
+    }
   }
 
   flush() {

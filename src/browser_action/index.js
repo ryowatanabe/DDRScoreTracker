@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function onInitialized() {
-  console.log('index.js onInitialized()');
   chartDiffList.initialize(app);
   logContainer.initialize(app);
   initializeFilter(app);
@@ -32,6 +31,20 @@ function onInitialized() {
   } else {
     logContainer.enableButtons();
   }
+
+  app.addMessageListener((message) => {
+    if (message.type == CHANGE_APP_STATE_MESSAGE_TYPE) {
+      console.log(`change app state ${message.oldState} -> ${message.state}`);
+      if (message.state == APP_STATE.IDLE) {
+        logContainer.enableButtons();
+        if (message.oldState == APP_STATE.UPDATE_SCORE_LIST) {
+          chartDiffList.loadAndOpen();
+        }
+      } else {
+        logContainer.disableButtons();
+      }
+    }
+  });
 }
 
 function initialize() {
@@ -77,17 +90,3 @@ window.refreshList = async (summarySettings, filterConditions, sortConditions) =
   chartList.summarySettings = summarySettings;
   chartList.setData(newChartList);
 };
-
-chrome.runtime.onMessage.addListener((message, _sender, _sendResponse) => {
-  if (message.type == CHANGE_APP_STATE_MESSAGE_TYPE) {
-    console.log(`change app state ${message.oldState} -> ${message.state}`);
-    if (message.state == APP_STATE.IDLE) {
-      logContainer.enableButtons();
-      if (message.oldState == APP_STATE.UPDATE_SCORE_LIST) {
-        chartDiffList.loadAndOpen();
-      }
-    } else {
-      logContainer.disableButtons();
-    }
-  }
-});

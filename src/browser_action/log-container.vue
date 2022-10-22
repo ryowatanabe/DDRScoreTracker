@@ -29,6 +29,7 @@ function initialize(a) {
 
   const options = app.getOptions();
   logReceiver.enableDebugLog = options.enableDebugLog;
+  app.addMessageListener(logReceiver.getMessageListener());
 }
 
 function disableButtons() {

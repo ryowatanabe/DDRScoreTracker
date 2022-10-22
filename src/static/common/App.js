@@ -37,6 +37,7 @@ export class App {
           musicListUpdatedAt: 0,
         },
       },
+
       (data) => {
         this.musicList = MusicList.createFromStorage(data.musics);
         this.scoreList = ScoreList.createFromStorage(data.scores);
@@ -69,6 +70,8 @@ export class App {
 
     this.browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT, this.onUpdateTab.bind(this));
     this.browserController.delay = Constants.LOAD_INTERVAL;
+
+    this.messageListeners = [];
   }
 
   abortAction() {
@@ -141,6 +144,11 @@ export class App {
 
   getOptions() {
     return this.options;
+  }
+
+  addMessageListener(messageListener = (_message) => {}) {
+    this.messageListeners.push(messageListener);
+    Logger.addListener(messageListener);
   }
 
   saveSavedCondition(newSavedCondition) {
@@ -680,15 +688,9 @@ export class App {
   }
 
   changeState(nextState) {
-    chrome.runtime.sendMessage({ type: CHANGE_STATE_MESSAGE_TYPE, oldState: this.state, state: nextState }, () => {
-      if (chrome.runtime.lastError != '') {
-        // メッセージ受信側がコールバックを呼び出さなかった場合
-        // "The message port closed before a response was received." が
-        // chrome.runtime.lastError.message にセットされた状態でコールバックが呼び出される
-        // セットされた chrome.runtime.lastError に触らないと怒られるので、一度参照だけしておく
-        // see: https://developer.chrome.com/docs/extensions/reference/runtime/#method-sendMessage
-      }
-    });
+    this.messageListeners.forEach((listener) => {
+      listener({ type: CHANGE_STATE_MESSAGE_TYPE, oldState: this.state, state: nextState });
+    }, this);
     Logger.debug(`App.changeState ${this.state} -> ${nextState}`);
     this.state = nextState;
   }
