@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function onInitialized() {
   console.log('index.js onInitialized()');
-  chartDiffList.initialize();
+  chartDiffList.initialize(app);
   logContainer.initialize(app);
   initializeFilter(app);
   initializeMenu(app);

@@ -94,7 +94,10 @@ function compareScoreDiff(a, b, sortConditions) {
   return gt;
 }
 
-function initialize() {
+let app;
+
+function initialize(a) {
+  app = a;
   document.getElementById('diffContainer').classList.remove('not-initialized');
   document.getElementById('diffBackground').classList.remove('not-initialized');
   document.getElementById('diffContainer').classList.add('initialized');
@@ -135,27 +138,25 @@ export default Vue.extend({
       close();
     },
     loadAndOpen: function () {
-      chrome.runtime.getBackgroundPage(async (backgroundPage) => {
-        const differences = backgroundPage.getDifferences();
-        const sortConditions = [
-          { attribute: 'playMode', order: 'asc' },
-          { attribute: 'level', order: 'desc' },
-          { attribute: 'afterScore', order: 'desc' },
-          { attribute: 'beforeScore', order: 'desc' },
-          { attribute: 'title', order: 'asc' },
-        ];
-        differences.sort(function (a, b) {
-          return compareScoreDiff(a, b, sortConditions);
-        });
-        this.setData(differences);
-        this.open();
+      const differences = app.getDifferences();
+      const sortConditions = [
+        { attribute: 'playMode', order: 'asc' },
+        { attribute: 'level', order: 'desc' },
+        { attribute: 'afterScore', order: 'desc' },
+        { attribute: 'beforeScore', order: 'desc' },
+        { attribute: 'title', order: 'asc' },
+      ];
+      differences.sort(function (a, b) {
+        return compareScoreDiff(a, b, sortConditions);
       });
+      this.setData(differences);
+      this.open();
     },
     open: () => {
       open();
     },
-    initialize: () => {
-      initialize();
+    initialize: (app) => {
+      initialize(app);
     },
   },
 });
