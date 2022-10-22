@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+ - Applied to Manifest V3
+
 ### Deleted
 
  - Data retrieval from DDR A20+ website is no longer supported
