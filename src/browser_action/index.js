@@ -43,7 +43,15 @@ function initialize() {
 }
 
 window.addEventListener('load', () => {
-  initialize();
+  const extension_id = chrome.i18n.getMessage('@@extension_id');
+  // 二重起動抑止
+  chrome.tabs.query({ url: `chrome-extension://${extension_id}/browser_action/*` }, (tabs) => {
+    if (tabs.length > 1) {
+      window.close();
+    } else {
+      initialize();
+    }
+  });
 });
 window.addEventListener('unload', () => {});
 
