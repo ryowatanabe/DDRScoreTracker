@@ -1,6 +1,7 @@
 import { MusicList } from './MusicList.js';
 import { MusicData } from './MusicData.js';
 import { ScoreList } from './ScoreList.js';
+import { ScoreDiff } from './ScoreDiff.js';
 import { ChartList } from './ChartList.js';
 import { ChartData } from './ChartData.js';
 import { SkillAttackIndexMap } from './SkillAttackIndexMap.js';
@@ -36,6 +37,7 @@ export class App {
         internalStatus: {
           musicListUpdatedAt: 0,
         },
+        differences: [],
       },
 
       (data) => {
@@ -46,6 +48,7 @@ export class App {
         this.saSettings = data.saSettings;
         this.options = data.options;
         this.internalStatus = data.internalStatus;
+        this.differences = ScoreDiff.createMultiFromStorage(data.differences);
         this.updateCharts();
         this.changeState(STATE.IDLE);
       }
@@ -115,6 +118,7 @@ export class App {
       saSettings: this.saSettings,
       options: this.options,
       internalStatus: this.internalStatus,
+      differences: this.differences,
     });
   }
 

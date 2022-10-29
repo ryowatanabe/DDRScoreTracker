@@ -1,4 +1,5 @@
 import { Constants } from './Constants.js';
+import { ScoreDetail } from './ScoreDetail.js';
 import { Util } from './Util.js';
 
 export class ScoreDiff {
@@ -8,6 +9,27 @@ export class ScoreDiff {
     this.difficultyValue = null;
     this.before = null;
     this.after = null;
+  }
+
+  static createFromStorage(storageData) {
+    const instance = new ScoreDiff();
+    instance.musicId = storageData['musicId'];
+    instance.difficultyValue = storageData['difficultyValue'];
+    if (storageData['before'] !== null) {
+      instance.before = ScoreDetail.createFromStorage(storageData['before']);
+    }
+    if (storageData['after'] !== null) {
+      instance.after = ScoreDetail.createFromStorage(storageData['after']);
+    }
+    return instance;
+  }
+
+  static createMultiFromStorage(storageData) {
+    const instances = [];
+    storageData.forEach((data) => {
+      instances.push(this.createFromStorage(data));
+    }, this);
+    return instances;
   }
 
   static createMultiFromScoreData(scoreData) {
