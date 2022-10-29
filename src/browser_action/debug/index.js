@@ -94,6 +94,8 @@ function onInitialized() {
   } else {
     logContainer.enableButtons();
   }
+
+  document.getElementById('localStorageBytesInUse').innerText = app.getBytesInUse();
 }
 
 function initialize() {
