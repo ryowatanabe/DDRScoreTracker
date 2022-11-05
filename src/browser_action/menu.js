@@ -12,7 +12,8 @@ document.getElementById('fetchParsedMusicListButton').addEventListener('click', 
 function fetchMissingMusicInfo(gameVersion) {
   app.fetchMissingMusicInfo(gameVersion);
 }
-document.getElementById('fetchMissingMusicInfoButton').addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.A3));
+document.getElementById('fetchMissingMusicInfoButton').addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.A20PLUS));
+document.getElementById('fetchMissingMusicInfoButtonA3').addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.A3));
 
 function updateScoreList(gameVersion) {
   app
@@ -24,7 +25,8 @@ function updateScoreList(gameVersion) {
       Logger.debug(`updateScoreList failed : ${JSON.stringify(error.message)}`);
     });
 }
-document.getElementById('updateScoreListButton').addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.A3));
+document.getElementById('updateScoreListButton').addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.A20PLUS));
+document.getElementById('updateScoreListButtonA3').addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.A3));
 
 function updateScoreDetail(gameVersion) {
   const targetMusics = [];
@@ -36,7 +38,8 @@ function updateScoreDetail(gameVersion) {
   });
   app.updateScoreDetail(targetMusics, gameVersion);
 }
-document.getElementById('updateScoreDetailButton').addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.A3));
+document.getElementById('updateScoreDetailButton').addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.A20PLUS));
+document.getElementById('updateScoreDetailButtonA3').addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.A3));
 
 document.getElementById('exportScoreToSkillAttackButton').addEventListener('click', () => {
   app

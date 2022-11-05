@@ -5,10 +5,7 @@
 ### Changed
 
  - Applied to Manifest V3
-
-### Deleted
-
- - Data retrieval from DDR A20+ website is no longer supported
+ - Data retrieval from DDR A20+ website is now optional (hidden by default)
 
 ## [0.0.16] - 2022-06-18
 
@@ -119,8 +116,7 @@
 
 First release
 
-[Unreleased]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.16...HEAD
-[0.0.16]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.15...v0.0.16
+[Unreleased]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.15...HEAD
 [0.0.15]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.14...v0.0.15
 [0.0.14]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.13...v0.0.14
 [0.0.13]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.12...v0.0.13
