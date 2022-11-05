@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [0.1.0] - 2022-11-05
 
 ### Changed
 
@@ -116,7 +116,7 @@
 
 First release
 
-[Unreleased]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.15...HEAD
+[0.1.0]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.15...v0.1.0
 [0.0.15]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.14...v0.0.15
 [0.0.14]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.13...v0.0.14
 [0.0.13]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.12...v0.0.13
