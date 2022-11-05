@@ -1,11 +1,11 @@
 <template>
   <div>
-    <template v-for="(savedCondition, index) in savedConditions">
-      <div v-bind:key="index">
-        <input type="text" v-bind:id="'savedConditionName' + index" v-bind:value="savedCondition.name" v-on:change="changeName(index)" />
-        <button v-on:click="movePrevious(index)" v-bind:disabled="index == 0">↑</button>
-        <button v-on:click="moveNext(index)" v-bind:disabled="index == savedConditions.length - 1">↓</button>
-        <button v-on:click="deleteSavedCondition(index)">{{ getMessage('filter_editor_delete_button') }}</button>
+    <template v-for="(savedCondition, index) in savedConditions" :key="index">
+      <div>
+        <input :id="'savedConditionName' + index" type="text" :value="savedCondition.name" @change="changeName(index)" />
+        <button :disabled="index == 0" @click="movePrevious(index)">↑</button>
+        <button :disabled="index == savedConditions.length - 1" @click="moveNext(index)">↓</button>
+        <button @click="deleteSavedCondition(index)">{{ getMessage('filter_editor_delete_button') }}</button>
       </div>
     </template>
   </div>

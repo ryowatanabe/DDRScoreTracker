@@ -2,53 +2,39 @@
   <div>
     <div id="diffBackground" class="drawer-background not-initialized"></div>
     <div id="diffContainer" class="drawer diff not-initialized">
-      <div id="closeButton" class="drawer-switch" v-on:click="close">{{ getMessage('diff_container_close_button') }}</div>
+      <div id="closeButton" class="drawer-switch" @click="close">{{ getMessage('diff_container_close_button') }}</div>
 
       <div id="app-charts" class="content">
         <div v-if="maxPage > 1" class="pager">
-          <template v-for="index of maxPage">
-            <a v-if="index == currentPage" v-bind:key="index" v-bind:class="['element', 'current']">[{{ index }}]</a
-            ><a v-if="index != currentPage" v-bind:key="index" v-on:click="gotoPage(index)" v-bind:class="['element', 'link']">[{{ index }}]</a>
+          <template v-for="index of maxPage" :key="index">
+            <a v-if="index == currentPage" :class="['element', 'current']">[{{ index }}]</a
+            ><a v-if="index != currentPage" :class="['element', 'link']" @click="gotoPage(index)">[{{ index }}]</a>
           </template>
         </div>
 
         <template v-if="differences.length > 0">
           <div class="score_list">
-            <template v-for="difference in pageDifferences">
-              <div v-bind:key="'level_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty" v-bind:class="['level', difference.difficultyClassString]">
-                {{ difference.levelString }}{{ difference.playModeSymbol }}
-              </div>
-              <div v-bind:key="'title_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty" class="title">{{ difference.title }}</div>
+            <template v-for="difference in pageDifferences" :key="difference.musicId + '_' + difference.playMode + '_' + difference.difficulty">
+              <div :class="['level', difference.difficultyClassString]">{{ difference.levelString }}{{ difference.playModeSymbol }}</div>
+              <div class="title">{{ difference.title }}</div>
 
-              <div
-                v-bind:key="'beforeScoreRank_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty"
-                v-bind:class="['score_rank', difference.beforeScoreRankClassString]"
-              >
+              <div :class="['score_rank', difference.beforeScoreRankClassString]">
                 {{ difference.beforeScoreRankString }}
               </div>
-              <div
-                v-bind:key="'beforeFullComboType_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty"
-                v-bind:class="['full_combo_type', difference.beforeClearTypeClassString]"
-              >
+              <div :class="['full_combo_type', difference.beforeClearTypeClassString]">
                 {{ difference.beforeFullComboSymbol }}
               </div>
-              <div v-bind:key="'beforeScore_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty" class="score">{{ difference.beforeScoreString }}</div>
+              <div class="score">{{ difference.beforeScoreString }}</div>
 
-              <div v-bind:key="'arrow_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty">→</div>
+              <div>→</div>
 
-              <div
-                v-bind:key="'afterScoreRank_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty"
-                v-bind:class="['score_rank', difference.afterScoreRankClassString]"
-              >
+              <div :class="['score_rank', difference.afterScoreRankClassString]">
                 {{ difference.afterScoreRankString }}
               </div>
-              <div
-                v-bind:key="'afterFullComboType_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty"
-                v-bind:class="['full_combo_type', difference.afterClearTypeClassString]"
-              >
+              <div :class="['full_combo_type', difference.afterClearTypeClassString]">
                 {{ difference.afterFullComboSymbol }}
               </div>
-              <div v-bind:key="'afterScore_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty" class="score">{{ difference.afterScoreString }}</div>
+              <div class="score">{{ difference.afterScoreString }}</div>
             </template>
           </div>
         </template>
@@ -57,14 +43,14 @@
         </template>
 
         <div v-if="maxPage > 1" class="pager">
-          <template v-for="index of maxPage">
-            <a v-if="index == currentPage" v-bind:key="index" v-bind:class="['element', 'current']">[{{ index }}]</a
-            ><a v-if="index != currentPage" v-bind:key="index" v-on:click="gotoPage(index)" v-bind:class="['element', 'link']">[{{ index }}]</a>
+          <template v-for="index of maxPage" :key="index">
+            <a v-if="index == currentPage" :class="['element', 'current']">[{{ index }}]</a
+            ><a v-if="index != currentPage" :class="['element', 'link']" @click="gotoPage(index)">[{{ index }}]</a>
           </template>
         </div>
       </div>
 
-      <div id="closeButton2" class="drawer-switch" v-on:click="close">{{ getMessage('diff_container_close_button') }}</div>
+      <div id="closeButton2" class="drawer-switch" @click="close">{{ getMessage('diff_container_close_button') }}</div>
     </div>
   </div>
 </template>
