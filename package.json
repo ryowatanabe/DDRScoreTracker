@@ -23,7 +23,7 @@
     "husky": ">=4",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^29.2.2",
-    "lint-staged": ">=10",
+    "lint-staged": ">=13",
     "prettier": "^2.7.1",
     "vue": "^2.6.11",
     "vue-loader": "^15.9.1",
