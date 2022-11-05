@@ -1,3 +1,4 @@
+import { createApp } from 'vue';
 import { App } from '../static/common/App.js';
 import { STATE as APP_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_APP_STATE_MESSAGE_TYPE } from '../static/common/AppState.js';
 import ChartList from './chart-list.vue';
@@ -9,14 +10,14 @@ import { initialize as initializeMenu } from './menu.js';
 
 const app = new App();
 
-const chartList = new ChartList();
-const chartDiffList = new ChartDiffList();
-const logContainer = new LogContainer();
+let chartList;
+let chartDiffList;
+let logContainer;
 
 document.addEventListener('DOMContentLoaded', () => {
-  chartList.$mount('#chart-list');
-  chartDiffList.$mount('#chart-diff-list');
-  logContainer.$mount('#log-container');
+  chartList = createApp(ChartList).mount('#chart-list');
+  chartDiffList = createApp(ChartDiffList).mount('#chart-diff-list');
+  logContainer = createApp(LogContainer).mount('#log-container');
 });
 
 function onInitialized() {

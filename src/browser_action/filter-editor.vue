@@ -12,12 +12,11 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import { I18n } from '../static/common/I18n.js';
 
 let app;
 
-export default Vue.extend({
+export default {
   data: function () {
     return {
       savedConditions: [],
@@ -54,7 +53,7 @@ export default Vue.extend({
       app = a;
     },
   },
-});
+};
 </script>
 
 <style scoped></style>

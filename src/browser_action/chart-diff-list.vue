@@ -56,7 +56,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import { Constants } from '../static/common/Constants.js';
 import { I18n } from '../static/common/I18n.js';
 
@@ -100,7 +99,7 @@ function close() {
   document.getElementById('diffBackground').classList.remove('active');
 }
 
-export default Vue.extend({
+export default {
   data: function () {
     return {
       maxPage: 1,
@@ -110,20 +109,22 @@ export default Vue.extend({
     };
   },
   methods: {
-    getMessage: I18n.getMessage,
-    setData: function (differences) {
+    getMessage(key) {
+      return I18n.getMessage(key);
+    },
+    setData(differences) {
       this.differences = differences;
       this.maxPage = Math.ceil(this.differences.length / Constants.PAGE_LENGTH);
       this.gotoPage(1);
     },
-    gotoPage: function (page) {
+    gotoPage(page) {
       this.pageDifferences = this.differences.slice((page - 1) * Constants.PAGE_LENGTH, page * Constants.PAGE_LENGTH);
       this.currentPage = page;
     },
-    close: () => {
+    close() {
       close();
     },
-    loadAndOpen: function () {
+    loadAndOpen() {
       const differences = app.getDifferences();
       const sortConditions = [
         { attribute: 'playMode', order: 'asc' },
@@ -138,14 +139,14 @@ export default Vue.extend({
       this.setData(differences);
       this.open();
     },
-    open: () => {
+    open() {
       open();
     },
-    initialize: (app) => {
+    initialize(app) {
       initialize(app);
     },
   },
-});
+};
 </script>
 
 <style scoped>

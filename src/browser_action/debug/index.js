@@ -1,3 +1,4 @@
+import { createApp } from 'vue';
 import { App } from '../../static/common/App.js';
 import { STATE as APP_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_APP_STATE_MESSAGE_TYPE } from '../../static/common/AppState.js';
 import { Constants } from '../../static/common/Constants.js';
@@ -80,9 +81,9 @@ function restoreScoreList() {
 }
 document.getElementById('restoreScoreListButton').addEventListener('click', restoreScoreList);
 
-const logContainer = new LogContainer();
+let logContainer;
 document.addEventListener('DOMContentLoaded', () => {
-  logContainer.$mount('#log-container');
+  logContainer = createApp(LogContainer).mount('#log-container');
 });
 
 function onInitialized() {

@@ -85,11 +85,10 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import { Constants } from '../static/common/Constants.js';
 import { I18n } from '../static/common/I18n.js';
 
-export default Vue.extend({
+export default {
   data: function () {
     return {
       maxPage: 1,
@@ -113,7 +112,7 @@ export default Vue.extend({
       this.currentPage = page;
     },
   },
-});
+};
 </script>
 
 <style scoped>
