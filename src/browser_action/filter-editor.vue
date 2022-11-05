@@ -23,33 +23,35 @@ export default {
     };
   },
   methods: {
-    getMessage: I18n.getMessage,
-    changeName: function (index) {
+    getMessage(key) {
+      return I18n.getMessage(key);
+    },
+    changeName(index) {
       this.savedConditions[index].name = document.getElementById('savedConditionName' + index).value;
       this.save();
     },
-    movePrevious: function (index) {
+    movePrevious(index) {
       const element = this.savedConditions.splice(index, 1);
       this.savedConditions.splice(index - 1, 0, element[0]);
       this.save();
     },
-    moveNext: function (index) {
+    moveNext(index) {
       const element = this.savedConditions.splice(index, 1);
       this.savedConditions.splice(index + 1, 0, element[0]);
       this.save();
     },
-    deleteSavedCondition: function (index) {
+    deleteSavedCondition(index) {
       this.savedConditions.splice(index, 1);
       this.save();
     },
-    load: function () {
+    load() {
       const savedConditions = app.getSavedConditions();
       this.savedConditions = savedConditions;
     },
-    save: function () {
+    save() {
       app.saveSavedConditions(this.savedConditions);
     },
-    initialize: function (a) {
+    initialize(a) {
       app = a;
     },
   },

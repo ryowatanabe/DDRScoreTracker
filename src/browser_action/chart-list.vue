@@ -3,7 +3,7 @@
     <template v-if="charts.length > 0">
       <template v-if="summarySettings.clearType">
         <template v-for="item in statistics.clearType">
-          <template v-if="item.count > 0"> {{ item.clearTypeString }}:{{ item.count }} </template>
+          <template v-if="item.count > 0"> {{ item.clearTypeString }}:{{ item.count }}&nbsp;</template>
         </template>
         <div class="graph">
           <div class="inner">
@@ -16,7 +16,7 @@
       </template>
       <template v-if="summarySettings.scoreRank">
         <template v-for="item in statistics.scoreRank">
-          <template v-if="item.count > 0"> {{ item.scoreRankString }}:{{ item.count }} </template>
+          <template v-if="item.count > 0"> {{ item.scoreRankString }}:{{ item.count }}&nbsp;</template>
         </template>
         <div class="graph">
           <div class="inner">
@@ -41,7 +41,7 @@
         </template>
       </template>
       <template v-if="summarySettings.scoreStatistics">
-        <template v-for="name in statistics.score.order">{{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }} </template>
+        <template v-for="name in statistics.score.order">{{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }}&nbsp;</template>
       </template>
     </template>
 
@@ -100,14 +100,16 @@ export default {
     };
   },
   methods: {
-    getMessage: I18n.getMessage,
-    setData: function (chartList) {
+    getMessage(key) {
+      return I18n.getMessage(key);
+    },
+    setData(chartList) {
       this.statistics = chartList.statistics;
       this.charts = chartList.charts;
       this.maxPage = Math.ceil(this.charts.length / Constants.PAGE_LENGTH);
       this.gotoPage(1);
     },
-    gotoPage: function (page) {
+    gotoPage(page) {
       this.pageCharts = this.charts.slice((page - 1) * Constants.PAGE_LENGTH, page * Constants.PAGE_LENGTH);
       this.currentPage = page;
     },

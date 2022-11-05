@@ -102,35 +102,37 @@ export default {
     };
   },
   methods: {
-    getMessage: I18n.getMessage,
-    scrollToBottom: () => {
+    getMessage(key) {
+      return I18n.getMessage(key);
+    },
+    scrollToBottom() {
       scrollToBottom();
     },
-    close: () => {
+    close() {
       close();
     },
-    copy: () => {
+    copy() {
       copy();
     },
-    flush: () => {
+    flush() {
       flush();
     },
-    closeAndFlush: () => {
+    closeAndFlush() {
       closeAndFlush();
     },
-    open: () => {
+    open() {
       open();
     },
-    abort: () => {
+    abort() {
       abort();
     },
-    enableButtons: () => {
+    enableButtons() {
       enableButtons();
     },
-    disableButtons: () => {
+    disableButtons() {
       disableButtons();
     },
-    initialize: (a) => {
+    initialize(a) {
       initialize(a);
     },
   },
