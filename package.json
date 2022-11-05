@@ -53,7 +53,5 @@
     "src/**/*.{json,html}": "prettier --write",
     "test/**/*.js": "prettier --write"
   },
-  "dependencies": {
-    "node-notifier": "8.0.1"
-  }
+  "dependencies": {}
 }
