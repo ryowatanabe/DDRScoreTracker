@@ -20,7 +20,7 @@
     "eslint-config-vue": "^2.0.2",
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-vue": "^6.2.2",
-    "husky": ">=8",
+    "husky": "^8.0.0",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^29.2.2",
     "lint-staged": ">=13",
@@ -42,12 +42,8 @@
     "build:dev": "cross-env NODE_ENV=development webpack",
     "watch": "yarn build --watch",
     "watch:dev": "cross-env HMR=true yarn build:dev --watch",
-    "test": "jest"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "test": "jest",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "src/**/*.{js,vue}": [
