@@ -141,19 +141,19 @@
     "message": "最新の楽曲リストを取得します。"
   },
   "browser_action_menu_get_missing_music_info": {
-    "message": "不足している楽曲の情報を取得(A20PLUS)"
+    "message": "(A20PLUS)"
   },
   "browser_action_menu_get_missing_music_info_a3": {
-    "message": "(A3)"
+    "message": "不足している楽曲の情報を取得"
   },
   "browser_action_menu_get_missing_music_info_description": {
     "message": "新曲が追加された場合など、スコアリストに存在するが楽曲リストに存在しない曲・譜面の情報を公式サイトから取得します。e-amusementへのログインが必要です。"
   },
   "browser_action_menu_get_score_data": {
-    "message": "スコア情報を取得(A20PLUS)"
+    "message": "(A20PLUS)"
   },
   "browser_action_menu_get_score_data_a3": {
-    "message": "(A3)"
+    "message": "スコア情報を取得"
   },
   "browser_action_menu_get_score_data_description": {
     "message": "スコアリストを公式サイトから取得します。e-amusementへのログインが必要です。"
@@ -180,10 +180,10 @@
     "message": "段位認定(PLUS)"
   },
   "browser_action_menu_get_score_detail": {
-    "message": "スコア詳細を取得(A20PLUS)"
+    "message": "(A20PLUS)"
   },
   "browser_action_menu_get_score_detail_a3": {
-    "message": "(A3)"
+    "message": "スコア詳細を取得"
   },
   "browser_action_menu_get_score_detail_description": {
     "message": "現在リストに表示されている曲のスコア詳細を公式サイトから取得します。e-amusementへのログインが必要です。"
@@ -246,10 +246,10 @@
     "message": "公式サイトの楽曲一覧から楽曲リストを取得します。隠し曲や追加鬼譜面の情報は含まれていません。"
   },
   "browser_action_debug_page_refresh_all_music_info": {
-    "message": "楽曲情報の再取得(A20PLUS)"
+    "message": "(A20PLUS)"
   },
   "browser_action_debug_page_refresh_all_music_info_a3": {
-    "message": "(A3)"
+    "message": "楽曲情報の再取得"
   },
   "browser_action_debug_page_refresh_all_music_info_musicid": {
     "message": "Music ID >="
@@ -471,6 +471,9 @@
   },
   "options_ui_not_send_data_to_skill_attack": {
     "message": "skill attackへのデータ送信を行わない"
+  },
+  "options_ui_enable_a20_plus_site_access": {
+    "message": "DDR A20 Plus ウェブサイトへのアクセスを有効にする"
   },
   "options_ui_music_list_reload_interval": {
     "message": "楽曲リストのチェック間隔 (ミリ秒, 0でチェック停止)"

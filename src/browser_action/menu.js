@@ -68,6 +68,13 @@ export function initialize(a) {
 
   const saSettings = app.getSaSettings();
   document.querySelector(`#exportScoreToSkillAttackDdrCode`).value = saSettings.ddrcode;
+
+  const options = app.getOptions();
+  if (!options.enableA20PlusSiteAccess) {
+    document.getElementById('fetchMissingMusicInfoButton').style.display = 'none';
+    document.getElementById('updateScoreListButton').style.display = 'none';
+    document.getElementById('updateScoreDetailButton').style.display = 'none';
+  }
 }
 
 export function openMenu() {
