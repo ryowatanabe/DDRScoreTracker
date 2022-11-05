@@ -33,24 +33,26 @@ const config = {
 
   plugins: [
     new VueLoaderPlugin(),
-    new CopyPlugin([
-      { from: 'static', to: './' },
-      { from: 'res', to: './res/' },
-      {
-        from: 'manifest.json',
-        to: 'manifest.json',
-        transform: (content) => {
-          const jsonContent = JSON.parse(content);
-          jsonContent.version = version;
+    new CopyPlugin({
+      patterns: [
+        { from: 'static', to: './' },
+        { from: 'res', to: './res/' },
+        {
+          from: 'manifest.json',
+          to: 'manifest.json',
+          transform: (content) => {
+            const jsonContent = JSON.parse(content);
+            jsonContent.version = version;
 
-          if (config.mode === 'development') {
-            //jsonContent['content_security_policy'] = { "extension_pages": "script-src 'self' 'unsafe-eval'; object-src 'self'" };
-          }
+            if (config.mode === 'development') {
+              //jsonContent['content_security_policy'] = { "extension_pages": "script-src 'self' 'unsafe-eval'; object-src 'self'" };
+            }
 
-          return JSON.stringify(jsonContent, null, 2);
+            return JSON.stringify(jsonContent, null, 2);
+          },
         },
-      },
-    ])
+      ]
+    })
   ],
 
   resolve: {
