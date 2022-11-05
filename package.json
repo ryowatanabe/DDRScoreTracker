@@ -54,6 +54,6 @@
     "test/**/*.js": "prettier --write"
   },
   "dependencies": {
-    "node-notifier": "8.0.1"
+    "node-notifier": "10.0.1"
   }
 }
