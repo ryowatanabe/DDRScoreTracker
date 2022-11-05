@@ -141,12 +141,18 @@
     "message": "Fetch latest music list."
   },
   "browser_action_menu_get_missing_music_info": {
+    "message": "(A20PLUS)"
+  },
+  "browser_action_menu_get_missing_music_info_a3": {
     "message": "Get missing music info"
   },
   "browser_action_menu_get_missing_music_info_description": {
     "message": "Fetch information about musics and charts which exists only in local score list (not in local music list), from official site. Logging in to e-amusement is required."
   },
   "browser_action_menu_get_score_data": {
+    "message": "(A20PLUS)"
+  },
+  "browser_action_menu_get_score_data_a3": {
     "message": "Get score data"
   },
   "browser_action_menu_get_score_data_description": {
@@ -174,6 +180,9 @@
     "message": "Grade(PLUS)"
   },
   "browser_action_menu_get_score_detail": {
+    "message": "(A20PLUS)"
+  },
+  "browser_action_menu_get_score_detail_a3": {
     "message": "Get detailed score data"
   },
   "browser_action_menu_get_score_detail_description": {
@@ -237,10 +246,10 @@
     "message": "Fetch music list from official site. Hidden musics and charts are not included."
   },
   "browser_action_debug_page_refresh_all_music_info": {
-    "message": "Refresh music list (A20PLUS)"
+    "message": "(A20PLUS)"
   },
   "browser_action_debug_page_refresh_all_music_info_a3": {
-    "message": "(A3)"
+    "message": "Refresh music list"
   },
   "browser_action_debug_page_refresh_all_music_info_musicid": {
     "message": "Music ID >="
@@ -462,6 +471,9 @@
   },
   "options_ui_not_send_data_to_skill_attack": {
     "message": "Not send data to skill attack"
+  },
+  "options_ui_enable_a20_plus_site_access": {
+    "message": "Enable access to DDR A20 Plus website"
   },
   "options_ui_music_list_reload_interval": {
     "message": "Interval for checking music list updates (msec, 0 for disable)"

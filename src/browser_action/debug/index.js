@@ -96,6 +96,11 @@ function onInitialized() {
   }
 
   document.getElementById('localStorageBytesInUse').innerText = app.getBytesInUse();
+
+  const options = app.getOptions();
+  if (!options.enableA20PlusSiteAccess) {
+    document.getElementById('refreshAllMusicInfoButton').style.display = 'none';
+  }
 }
 
 function initialize() {
