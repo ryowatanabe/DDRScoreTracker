@@ -257,6 +257,12 @@
   "browser_action_debug_page_refresh_all_music_info_description": {
     "message": "端末上の楽曲リストに含まれる全ての曲の楽曲情報を、公式サイトから再取得します。"
   },
+  "browser_action_debug_page_reset_saved_filters": {
+    "message": "保存されたフィルタのリセット"
+  },
+  "browser_action_debug_page_reset_saved_filters_description": {
+    "message": "端末上に保存されているフィルタの情報をすべて削除します。動作に異常がある場合、この操作を行うことで改善する場合があります。"
+  },
   "browser_action_debug_page_reset_data": {
     "message": "データリセット"
   },

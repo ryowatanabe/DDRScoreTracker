@@ -257,6 +257,12 @@
   "browser_action_debug_page_refresh_all_music_info_description": {
     "message": "Refresh local music list by fetching data from official site."
   },
+  "browser_action_debug_page_reset_saved_filters": {
+    "message": "Reset saved filters"
+  },
+  "browser_action_debug_page_reset_saved_filters_description": {
+    "message": "Delete all saved filters. Malfunction might be fixed by this action."
+  },
   "browser_action_debug_page_reset_data": {
     "message": "Reset data"
   },
