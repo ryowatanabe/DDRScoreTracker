@@ -15,6 +15,7 @@
 import { I18n } from '../static/common/I18n.js';
 
 let app;
+let savedConditions;
 
 export default {
   data: function () {
@@ -27,29 +28,30 @@ export default {
       return I18n.getMessage(key);
     },
     changeName(index) {
-      this.savedConditions[index].name = document.getElementById('savedConditionName' + index).value;
+      savedConditions[index].name = document.getElementById('savedConditionName' + index).value;
       this.save();
     },
     movePrevious(index) {
-      const element = this.savedConditions.splice(index, 1);
-      this.savedConditions.splice(index - 1, 0, element[0]);
+      const element = savedConditions.splice(index, 1);
+      savedConditions.splice(index - 1, 0, element[0]);
       this.save();
     },
     moveNext(index) {
-      const element = this.savedConditions.splice(index, 1);
-      this.savedConditions.splice(index + 1, 0, element[0]);
+      const element = savedConditions.splice(index, 1);
+      savedConditions.splice(index + 1, 0, element[0]);
       this.save();
     },
     deleteSavedCondition(index) {
-      this.savedConditions.splice(index, 1);
+      savedConditions.splice(index, 1);
       this.save();
     },
     load() {
-      const savedConditions = app.getSavedConditions();
+      savedConditions = app.getSavedConditions();
       this.savedConditions = savedConditions;
     },
     save() {
-      app.saveSavedConditions(this.savedConditions);
+      app.saveSavedConditions(savedConditions);
+      this.savedConditions = savedConditions.slice();
     },
     initialize(a) {
       app = a;
