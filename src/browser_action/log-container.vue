@@ -16,89 +16,22 @@
 <script>
 import { nextTick } from 'vue';
 import { I18n } from '../static/common/I18n.js';
-import { LogReceiver } from '../static/common/LogReceiver.js';
+import { Logger } from '../static/common/Logger.js';
 
 let app;
-
-function initialize(a) {
-  app = a;
-  document.getElementById('logContainer').classList.remove('not-initialized');
-  document.getElementById('logBackground').classList.remove('not-initialized');
-  document.getElementById('logContainer').classList.add('initialized');
-  document.getElementById('logBackground').classList.add('initialized');
-
-  const options = app.getOptions();
-  logReceiver.enableDebugLog = options.enableDebugLog;
-  app.addMessageListener(logReceiver.getMessageListener());
-}
-
-function disableButtons() {
-  document.getElementById('closeButton').style.display = 'none';
-  document.getElementById('copyButton').style.display = 'none';
-  document.getElementById('abortButton').style.display = 'block';
-}
-
-function enableButtons() {
-  document.getElementById('closeButton').style.display = 'block';
-  document.getElementById('copyButton').style.display = 'block';
-  document.getElementById('abortButton').style.display = 'none';
-}
-
-function open() {
-  document.getElementById('logContainer').classList.add('active');
-  document.getElementById('logBackground').classList.add('active');
-  scrollToBottom();
-}
-
-function closeAndFlush() {
-  close();
-  flush();
-}
-
-function close() {
-  document.getElementById('logContainer').classList.remove('active');
-  document.getElementById('logBackground').classList.remove('active');
-}
-
-function flush() {
-  logReceiver.flush();
-}
-
-function abort() {
-  app.abortAction();
-}
-
-function copy() {
-  var log = document.getElementById('app-log');
-  document.getSelection().selectAllChildren(log);
-  if (document.execCommand('copy')) {
-    alert(I18n.getMessage('log_container_copied_to_clipboard'));
-  } else {
-    alert(I18n.getMessage('log_container_could_not_copy_to_clipboard'));
-  }
-}
-
 let isScrollLogScheduled = false;
-function scrollToBottom() {
-  if (!isScrollLogScheduled) {
-    isScrollLogScheduled = true;
-    setTimeout(scrollToBottomImpl, 500);
-  }
-}
+
 function scrollToBottomImpl() {
   const logContainer = document.getElementById('logContainer');
   logContainer.scrollTo(0, logContainer.scrollHeight);
   isScrollLogScheduled = false;
 }
 
-const logReceiver = new LogReceiver(() => {
-  nextTick(open);
-});
-
 export default {
   data() {
     return {
-      log: logReceiver.data,
+      log: [],
+      enableDebugLog: false,
     };
   },
   methods: {
@@ -106,34 +39,71 @@ export default {
       return I18n.getMessage(key);
     },
     scrollToBottom() {
-      scrollToBottom();
+      if (!isScrollLogScheduled) {
+        isScrollLogScheduled = true;
+        setTimeout(scrollToBottomImpl, 500);
+      }
     },
     close() {
-      close();
+      document.getElementById('logContainer').classList.remove('active');
+      document.getElementById('logBackground').classList.remove('active');
     },
     copy() {
-      copy();
+      var log = document.getElementById('app-log');
+      document.getSelection().selectAllChildren(log);
+      if (document.execCommand('copy')) {
+        alert(I18n.getMessage('log_container_copied_to_clipboard'));
+      } else {
+        alert(I18n.getMessage('log_container_could_not_copy_to_clipboard'));
+      }
     },
     flush() {
-      flush();
+      this.log = [];
     },
     closeAndFlush() {
-      closeAndFlush();
+      this.close();
+      this.flush();
     },
     open() {
-      open();
+      document.getElementById('logContainer').classList.add('active');
+      document.getElementById('logBackground').classList.add('active');
+      this.scrollToBottom();
     },
     abort() {
-      abort();
+      app.abortAction();
     },
     enableButtons() {
-      enableButtons();
+      document.getElementById('closeButton').style.display = 'block';
+      document.getElementById('copyButton').style.display = 'block';
+      document.getElementById('abortButton').style.display = 'none';
     },
     disableButtons() {
-      disableButtons();
+      document.getElementById('closeButton').style.display = 'none';
+      document.getElementById('copyButton').style.display = 'none';
+      document.getElementById('abortButton').style.display = 'block';
     },
     initialize(a) {
-      initialize(a);
+      app = a;
+      document.getElementById('logContainer').classList.remove('not-initialized');
+      document.getElementById('logBackground').classList.remove('not-initialized');
+      document.getElementById('logContainer').classList.add('initialized');
+      document.getElementById('logBackground').classList.add('initialized');
+
+      const options = app.getOptions();
+      this.enableDebugLog = options.enableDebugLog;
+      app.addMessageListener(this.getMessageListener());
+    },
+    pushLog(message) {
+      if (message.type == Logger.MESSAGE_TYPE) {
+        if (message.level == Logger.LOG_LEVEL.DEBUG && this.enableDebugLog != true) {
+          return;
+        }
+        this.log.push(message.content);
+        nextTick(this.open.bind(this));
+      }
+    },
+    getMessageListener() {
+      return this.pushLog.bind(this);
     },
   },
 };
