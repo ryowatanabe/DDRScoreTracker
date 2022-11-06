@@ -89,7 +89,7 @@ import { Constants } from '../static/common/Constants.js';
 import { I18n } from '../static/common/I18n.js';
 
 export default {
-  data: function () {
+  data() {
     return {
       maxPage: 1,
       currentPage: 1,

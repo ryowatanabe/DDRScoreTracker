@@ -96,7 +96,7 @@ const logReceiver = new LogReceiver(() => {
 });
 
 export default {
-  data: function () {
+  data() {
     return {
       log: logReceiver.data,
     };

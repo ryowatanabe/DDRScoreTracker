@@ -100,7 +100,7 @@ function close() {
 }
 
 export default {
-  data: function () {
+  data() {
     return {
       maxPage: 1,
       currentPage: 1,

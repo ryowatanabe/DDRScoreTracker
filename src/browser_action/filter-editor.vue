@@ -18,7 +18,7 @@ let app;
 let savedConditions;
 
 export default {
-  data: function () {
+  data() {
     return {
       savedConditions: [],
     };
