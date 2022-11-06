@@ -3,83 +3,73 @@
     <template v-if="charts.length > 0">
       <template v-if="summarySettings.clearType">
         <template v-for="item in statistics.clearType">
-          <template v-if="item.count > 0"> {{ item.clearTypeString }}:{{ item.count }} </template>
+          <template v-if="item.count > 0"> {{ item.clearTypeString }}:{{ item.count }}&nbsp;</template>
         </template>
         <div class="graph">
           <div class="inner">
-            <template v-for="item in statistics.clearType"
+            <template v-for="item in statistics.clearType" :key="item.clearType"
               ><template v-if="item.count > 0"
-                ><span
-                  v-bind:key="item.clearType"
-                  v-bind:class="['element', item.clearTypeClassString]"
-                  v-bind:style="{ width: 'calc(' + item.count + ' / ' + charts.length + ' * 100%' }"
-                ></span></template
+                ><span :class="['element', item.clearTypeClassString]" :style="{ width: 'calc(' + item.count + ' / ' + charts.length + ' * 100%' }"></span></template
             ></template>
           </div>
         </div>
       </template>
       <template v-if="summarySettings.scoreRank">
         <template v-for="item in statistics.scoreRank">
-          <template v-if="item.count > 0"> {{ item.scoreRankString }}:{{ item.count }} </template>
+          <template v-if="item.count > 0"> {{ item.scoreRankString }}:{{ item.count }}&nbsp;</template>
         </template>
         <div class="graph">
           <div class="inner">
-            <template v-for="item in statistics.scoreRank"
+            <template v-for="item in statistics.scoreRank" :key="item.scoreRank"
               ><template v-if="item.count > 0"
-                ><span
-                  v-bind:key="item.scoreRank"
-                  v-bind:class="['element', item.scoreRankClassString]"
-                  v-bind:style="{ width: 'calc(' + item.count + ' / ' + charts.length + ' * 100%' }"
-                ></span></template
+                ><span :class="['element', item.scoreRankClassString]" :style="{ width: 'calc(' + item.count + ' / ' + charts.length + ' * 100%' }"></span></template
             ></template>
           </div>
         </div>
       </template>
-      <template v-for="name in statistics.score.order">
+      <template v-for="name in statistics.score.order" :key="name">
         <template v-if="summarySettings[statistics.score[name].label]">
           {{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }}
-          <div class="graph" v-bind:key="name">
+          <div class="graph">
             <div class="inner">
               <span
-                v-bind:class="['element', statistics.score[name].scoreRankClassString]"
-                v-bind:style="{ width: 'calc(' + statistics.score[name].value + ' / ' + 1000000 + ' * 100%' }"
+                :class="['element', statistics.score[name].scoreRankClassString]"
+                :style="{ width: 'calc(' + statistics.score[name].value + ' / ' + 1000000 + ' * 100%' }"
               ></span>
             </div>
           </div>
         </template>
       </template>
       <template v-if="summarySettings.scoreStatistics">
-        <template v-for="name in statistics.score.order">{{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }} </template>
+        <template v-for="name in statistics.score.order">{{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }}&nbsp;</template>
       </template>
     </template>
 
     <div v-if="maxPage > 1" class="pager">
-      <template v-for="index of maxPage">
-        <a v-if="index == currentPage" v-bind:key="index" v-bind:class="['element', 'current']">[{{ index }}]</a
-        ><a v-if="index != currentPage" v-bind:key="index" v-on:click="gotoPage(index)" v-bind:class="['element', 'link']">[{{ index }}]</a>
+      <template v-for="index of maxPage" :key="index">
+        <a v-if="index == currentPage" :class="['element', 'current']">[{{ index }}]</a
+        ><a v-if="index != currentPage" :class="['element', 'link']" @click="gotoPage(index)">[{{ index }}]</a>
       </template>
     </div>
 
     <div class="score_list">
-      <template v-for="chart in pageCharts">
-        <div v-bind:key="'level_' + chart.musicId + '_' + chart.playMode + '_' + chart.difficulty" v-bind:class="['level', chart.difficultyClassString]">
-          {{ chart.levelString }}{{ chart.playModeSymbol }}
-        </div>
-        <div v-bind:key="'title_' + chart.musicId + '_' + chart.playMode + '_' + chart.difficulty" class="title">{{ chart.title }}</div>
-        <div v-bind:key="'clearCount_' + chart.musicId + '_' + chart.playMode + '_' + chart.difficulty" class="clear_count">
+      <template v-for="chart in pageCharts" :key="chart.musicId + '_' + chart.playMode + '_' + chart.difficulty">
+        <div :class="['level', chart.difficultyClassString]">{{ chart.levelString }}{{ chart.playModeSymbol }}</div>
+        <div class="title">{{ chart.title }}</div>
+        <div class="clear_count">
           <template v-if="chart.clearCount !== null">{{ chart.clearCount }}/</template>
         </div>
-        <div v-bind:key="'playCount_' + chart.musicId + '_' + chart.playMode + '_' + chart.difficulty" class="play_count">
+        <div class="play_count">
           <template v-if="chart.playCount !== null">{{ chart.playCount }}</template>
         </div>
-        <div v-bind:key="'scoreRank_' + chart.musicId + '_' + chart.playMode + '_' + chart.difficulty" v-bind:class="['score_rank', chart.scoreRankClassString]">
+        <div :class="['score_rank', chart.scoreRankClassString]">
           {{ chart.scoreRankString }}
         </div>
-        <div v-bind:key="'fullComboType_' + chart.musicId + '_' + chart.playMode + '_' + chart.difficulty" v-bind:class="['full_combo_type', chart.clearTypeClassString]">
+        <div :class="['full_combo_type', chart.clearTypeClassString]">
           {{ chart.fullComboSymbol }}
         </div>
-        <div v-bind:key="'score_' + chart.musicId + '_' + chart.playMode + '_' + chart.difficulty" class="score">{{ chart.scoreString }}</div>
-        <div v-bind:key="'maxCombo_' + chart.musicId + '_' + chart.playMode + '_' + chart.difficulty" class="max_combo">
+        <div class="score">{{ chart.scoreString }}</div>
+        <div class="max_combo">
           <template v-if="chart.maxCombo !== null">/{{ chart.maxCombo }}</template>
         </div>
       </template>
@@ -87,20 +77,19 @@
 
     <div v-if="maxPage > 1" class="pager">
       <template v-for="index of maxPage">
-        <a v-if="index == currentPage" v-bind:key="index" v-bind:class="['element', 'current']">[{{ index }}]</a
-        ><a v-if="index != currentPage" v-bind:key="index" v-on:click="gotoPage(index)" v-bind:class="['element', 'link']">[{{ index }}]</a>
+        <a v-if="index == currentPage" :key="index" :class="['element', 'current']">[{{ index }}]</a
+        ><a v-if="index != currentPage" :key="index" :class="['element', 'link']" @click="gotoPage(index)">[{{ index }}]</a>
       </template>
     </div>
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
 import { Constants } from '../static/common/Constants.js';
 import { I18n } from '../static/common/I18n.js';
 
-export default Vue.extend({
-  data: function () {
+export default {
+  data() {
     return {
       maxPage: 1,
       currentPage: 1,
@@ -111,19 +100,21 @@ export default Vue.extend({
     };
   },
   methods: {
-    getMessage: I18n.getMessage,
-    setData: function (chartList) {
+    getMessage(key) {
+      return I18n.getMessage(key);
+    },
+    setData(chartList) {
       this.statistics = chartList.statistics;
       this.charts = chartList.charts;
       this.maxPage = Math.ceil(this.charts.length / Constants.PAGE_LENGTH);
       this.gotoPage(1);
     },
-    gotoPage: function (page) {
+    gotoPage(page) {
       this.pageCharts = this.charts.slice((page - 1) * Constants.PAGE_LENGTH, page * Constants.PAGE_LENGTH);
       this.currentPage = page;
     },
   },
-});
+};
 </script>
 
 <style scoped>

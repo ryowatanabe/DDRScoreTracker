@@ -92,9 +92,9 @@ By pressing `■Abort` button, you can stop the data retrieving process.
 
 `■中止` ボタンを押すことによって, データ取得処理を停止することができます.
 
-If it doesn't work, in `Window` > `Extensions` in the Google Chrome's menu, turn off DDR Score Tracker and then turn it on again.
+If it doesn't work, close tab on which DDR Score Tracker runs.
 
-もしそれが機能しない場合には, Google Chromeのメニュー `ウィンドウ` → `拡張機能` にて DDR Score Tracker をオフにしたあと, 再度オンにしてください.
+もしそれが機能しない場合には, DDR Score Tracker のタブを閉じてください. 
 
 ## Regarding the handling of data / データの取り扱いについて
 
@@ -102,9 +102,9 @@ This software saves retrieved data on the PC which operates the browser. Once yo
 
 本ソフトウェアで取得したデータは, ブラウザが動作しているPC上に保存されます. 一度取得したデータの閲覧は, インターネット接続がオフラインの状態でも可能です. また, 取得したデータを外部のサーバに送信することはありません.
 
-This software retrieves music list from [github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics.txt). It retrieves any other data from [official website](https://p.eagate.573.jp/game/ddr/ddra20/p/).
+This software retrieves music list from [github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics/2.txt). It retrieves any other data from [official website](https://p.eagate.573.jp/game/ddr/ddra3/p/).
 
-楽曲リストの取得は[github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics.txt)から行っています. それ以外のデータの取得は[公式サイト](https://p.eagate.573.jp/game/ddr/ddra20/p/)から行います.
+楽曲リストの取得は[github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics/2.txt)から行っています. それ以外のデータの取得は[公式サイト](https://p.eagate.573.jp/game/ddr/ddra3/p/)から行います.
 
 ## Changelog / 変更履歴
 

@@ -1,3 +1,4 @@
+import { createApp } from 'vue';
 import { App } from '../../static/common/App.js';
 import { STATE as APP_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_APP_STATE_MESSAGE_TYPE } from '../../static/common/AppState.js';
 import { Constants } from '../../static/common/Constants.js';
@@ -15,6 +16,15 @@ function refreshAllMusicInfo(gameVersion) {
 }
 document.getElementById('refreshAllMusicInfoButton').addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A20PLUS));
 document.getElementById('refreshAllMusicInfoButtonA3').addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A3));
+
+function resetSavedFilters() {
+  if (window.confirm('保存されたフィルタをすべて削除しますか？')) {
+    app.saveSavedConditions([]);
+  } else {
+    alert('キャンセルしました。');
+  }
+}
+document.getElementById('resetSavedFiltersButton').addEventListener('click', resetSavedFilters);
 
 function resetStorage() {
   if (window.confirm('端末上に保存されているデータをすべて削除しますか？')) {
@@ -80,9 +90,9 @@ function restoreScoreList() {
 }
 document.getElementById('restoreScoreListButton').addEventListener('click', restoreScoreList);
 
-const logContainer = new LogContainer();
+let logContainer;
 document.addEventListener('DOMContentLoaded', () => {
-  logContainer.$mount('#log-container');
+  logContainer = createApp(LogContainer).mount('#log-container');
 });
 
 function onInitialized() {

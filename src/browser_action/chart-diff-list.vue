@@ -2,53 +2,39 @@
   <div>
     <div id="diffBackground" class="drawer-background not-initialized"></div>
     <div id="diffContainer" class="drawer diff not-initialized">
-      <div id="closeButton" class="drawer-switch" v-on:click="close">{{ getMessage('diff_container_close_button') }}</div>
+      <div id="closeButton" class="drawer-switch" @click="close">{{ getMessage('diff_container_close_button') }}</div>
 
       <div id="app-charts" class="content">
         <div v-if="maxPage > 1" class="pager">
-          <template v-for="index of maxPage">
-            <a v-if="index == currentPage" v-bind:key="index" v-bind:class="['element', 'current']">[{{ index }}]</a
-            ><a v-if="index != currentPage" v-bind:key="index" v-on:click="gotoPage(index)" v-bind:class="['element', 'link']">[{{ index }}]</a>
+          <template v-for="index of maxPage" :key="index">
+            <a v-if="index == currentPage" :class="['element', 'current']">[{{ index }}]</a
+            ><a v-if="index != currentPage" :class="['element', 'link']" @click="gotoPage(index)">[{{ index }}]</a>
           </template>
         </div>
 
         <template v-if="differences.length > 0">
           <div class="score_list">
-            <template v-for="difference in pageDifferences">
-              <div v-bind:key="'level_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty" v-bind:class="['level', difference.difficultyClassString]">
-                {{ difference.levelString }}{{ difference.playModeSymbol }}
-              </div>
-              <div v-bind:key="'title_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty" class="title">{{ difference.title }}</div>
+            <template v-for="difference in pageDifferences" :key="difference.musicId + '_' + difference.playMode + '_' + difference.difficulty">
+              <div :class="['level', difference.difficultyClassString]">{{ difference.levelString }}{{ difference.playModeSymbol }}</div>
+              <div class="title">{{ difference.title }}</div>
 
-              <div
-                v-bind:key="'beforeScoreRank_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty"
-                v-bind:class="['score_rank', difference.beforeScoreRankClassString]"
-              >
+              <div :class="['score_rank', difference.beforeScoreRankClassString]">
                 {{ difference.beforeScoreRankString }}
               </div>
-              <div
-                v-bind:key="'beforeFullComboType_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty"
-                v-bind:class="['full_combo_type', difference.beforeClearTypeClassString]"
-              >
+              <div :class="['full_combo_type', difference.beforeClearTypeClassString]">
                 {{ difference.beforeFullComboSymbol }}
               </div>
-              <div v-bind:key="'beforeScore_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty" class="score">{{ difference.beforeScoreString }}</div>
+              <div class="score">{{ difference.beforeScoreString }}</div>
 
-              <div v-bind:key="'arrow_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty">→</div>
+              <div>→</div>
 
-              <div
-                v-bind:key="'afterScoreRank_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty"
-                v-bind:class="['score_rank', difference.afterScoreRankClassString]"
-              >
+              <div :class="['score_rank', difference.afterScoreRankClassString]">
                 {{ difference.afterScoreRankString }}
               </div>
-              <div
-                v-bind:key="'afterFullComboType_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty"
-                v-bind:class="['full_combo_type', difference.afterClearTypeClassString]"
-              >
+              <div :class="['full_combo_type', difference.afterClearTypeClassString]">
                 {{ difference.afterFullComboSymbol }}
               </div>
-              <div v-bind:key="'afterScore_' + difference.musicId + '_' + difference.playMode + '_' + difference.difficulty" class="score">{{ difference.afterScoreString }}</div>
+              <div class="score">{{ difference.afterScoreString }}</div>
             </template>
           </div>
         </template>
@@ -57,20 +43,19 @@
         </template>
 
         <div v-if="maxPage > 1" class="pager">
-          <template v-for="index of maxPage">
-            <a v-if="index == currentPage" v-bind:key="index" v-bind:class="['element', 'current']">[{{ index }}]</a
-            ><a v-if="index != currentPage" v-bind:key="index" v-on:click="gotoPage(index)" v-bind:class="['element', 'link']">[{{ index }}]</a>
+          <template v-for="index of maxPage" :key="index">
+            <a v-if="index == currentPage" :class="['element', 'current']">[{{ index }}]</a
+            ><a v-if="index != currentPage" :class="['element', 'link']" @click="gotoPage(index)">[{{ index }}]</a>
           </template>
         </div>
       </div>
 
-      <div id="closeButton2" class="drawer-switch" v-on:click="close">{{ getMessage('diff_container_close_button') }}</div>
+      <div id="closeButton2" class="drawer-switch" @click="close">{{ getMessage('diff_container_close_button') }}</div>
     </div>
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
 import { Constants } from '../static/common/Constants.js';
 import { I18n } from '../static/common/I18n.js';
 
@@ -114,8 +99,8 @@ function close() {
   document.getElementById('diffBackground').classList.remove('active');
 }
 
-export default Vue.extend({
-  data: function () {
+export default {
+  data() {
     return {
       maxPage: 1,
       currentPage: 1,
@@ -124,20 +109,22 @@ export default Vue.extend({
     };
   },
   methods: {
-    getMessage: I18n.getMessage,
-    setData: function (differences) {
+    getMessage(key) {
+      return I18n.getMessage(key);
+    },
+    setData(differences) {
       this.differences = differences;
       this.maxPage = Math.ceil(this.differences.length / Constants.PAGE_LENGTH);
       this.gotoPage(1);
     },
-    gotoPage: function (page) {
+    gotoPage(page) {
       this.pageDifferences = this.differences.slice((page - 1) * Constants.PAGE_LENGTH, page * Constants.PAGE_LENGTH);
       this.currentPage = page;
     },
-    close: () => {
+    close() {
       close();
     },
-    loadAndOpen: function () {
+    loadAndOpen() {
       const differences = app.getDifferences();
       const sortConditions = [
         { attribute: 'playMode', order: 'asc' },
@@ -152,14 +139,14 @@ export default Vue.extend({
       this.setData(differences);
       this.open();
     },
-    open: () => {
+    open() {
       open();
     },
-    initialize: (app) => {
+    initialize(app) {
       initialize(app);
     },
   },
-});
+};
 </script>
 
 <style scoped>

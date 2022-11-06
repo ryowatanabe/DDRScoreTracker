@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Changed
+
+ - Migrated Vue.js 2 to 3
+
 ## [0.1.0] - 2022-11-05
 
 ### Changed
@@ -116,6 +122,7 @@
 
 First release
 
+[Unreleased]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.1.0...HEAD
 [0.1.0]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.16...v0.1.0
 [0.0.16]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.15...v0.0.16
 [0.0.15]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.14...v0.0.15
