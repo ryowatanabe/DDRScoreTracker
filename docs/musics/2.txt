@@ -48,6 +48,7 @@
 0lDDIlQ91lq6O16q9QQ681d6Db1l0oOb	0	0	4	5	7	9	0	5	9	10	0	KEEP ON MOVIN'
 0lDP0P06PIPl1iiIDOb919iqo1oPdlP8	0	0	4	8	10	13	0	9	11	13	0	PARANOiA Rebirth
 0lIIil06b8q819P9lDil09o6qlqo9I1i	0	0	4	8	12	16	0	8	11	16	0	Trill auf G
+0obli91dDO1qddi6bl1bI6iP0606OiD6	4	0	0	0	0	0	0	0	0	0	19	十段 (A3)
 0ol981b18biO0610IqPi9l6Db86PbIQ9	0	0	2	5	7	9	0	6	8	10	0	someday...
 0q8b6O0qOlDql0oP80OI8i8i1088qbIb	0	0	3	7	9	11	0	6	10	12	0	The Heavens Above
 0qDb0d9oIoQPP1Ql0o0OOPoPDbQ699Iq	0	0	3	5	7	12	0	5	7	12	0	She is my wife
@@ -262,6 +263,7 @@
 8Qd118IPdqld06Qd1q10iQd06bDdbdQI	0	0	2	6	11	14	0	6	11	14	0	ノルエピネフリン
 8bI68oIq08d99P880bDPQ9D80O099Q10	0	0	2	7	11	15	0	7	11	15	0	Windy Fairy
 8bQQ0lP96186D8Ibo8IoOd6o16qioiIo	0	0	3	6	8	11	13	6	8	12	13	アルストロメリア (walk with you remix)
+8bb0DOOboOb0b90q9oIoiiq10i1lIQDl	4	0	0	0	0	0	19	0	0	0	0	皆伝 (A3)
 8bqd0Oibbo8q81QdODqdl1OOi1l99O88	0	0	3	6	10	12	0	6	10	12	0	DREAMING-ING!!
 8dbiodDo1i6IolDQdqdOoqDDD90q6liQ	0	0	6	8	13	15	16	8	13	16	17	DDR MEGAMIX
 8dqQDblP6dPI10qq10qiPbqi1llQ06iP	0	0	4	8	12	15	0	7	12	15	0	Better Than Me
@@ -286,6 +288,7 @@
 8qPoPbql190Pi9086ildIlQOqlPoQdP9	0	0	2	4	7	9	0	5	7	11	0	REBORN MAGIC
 8qd0DIiiQ6dPl1b6b0OqDob6i0d1dQP1	0	0	3	6	9	12	0	6	8	12	0	SODA GALAXY
 8qd9d01dPOq1lOOoPiOIoPobdd1QODPq	0	0	3	4	7	10	0	6	7	11	0	jane jana
+8ql0DIiI0D9D1OP0qb8olo9bIQdP0ddq	0	0	3	8	13	17	0	8	13	17	0	Snow Garland Fairy
 901q61iP6lPiDqIQoQod9PDqlOPq1bb9	0	0	4	6	8	10	0	5	9	13	0	La Señorita
 90D66ObIiqP09oqoDoq6b908b699oqqi	0	0	2	4	7	11	12	5	7	11	12	The Lonely Streets
 90lolio9qd6qo6Pl8oo69iqi81oiiQib	0	0	3	6	8	12	16	6	8	12	16	I'm so Happy
@@ -423,6 +426,7 @@ DdQ1lQ1Qb1P1oPl1QOd0Q0O9qqidiI9q	0	0	3	6	9	11	0	6	9	11	0	ここからよろし�
 DdbI8dPqPI8ll69q6QidI6lldDQod8b9	0	0	2	5	8	13	0	5	8	13	0	Something Comforting
 DddIPd6iId8Doqq8OibDlD1dOi8PO8o9	0	0	3	4	8	12	0	3	8	12	0	i feel ...
 Di8lP6PobQ6l8do0llO9IIqQ6iqqiqDo	0	0	3	7	11	15	0	6	11	15	0	Hyper Bomb
+DiO086bqiDbolP6Q6Do1608dPP6DQ61l	4	0	0	0	0	0	0	0	0	0	19	皆伝 (A3)
 DibOOIOD1id66O0DqOQ61O6I9bIIQQ0q	0	0	3	6	9	12	13	6	9	12	13	heron
 DibQ8O0bIodbdQo8D681qlqiDqllDPql	0	0	3	4	8	9	0	4	8	9	0	A Stupid Barber
 DiqobPO1iliqP6DbQiDodPIPDiQO96dl	0	0	3	5	9	12	0	5	8	13	0	Find You Again
@@ -532,6 +536,7 @@ O110IdDiDlDQ66bb1o9lbqiqQq6lOid1	0	0	2	4	7	9	0	5	6	8	0	TimeHollow
 O111bDqd0oQ1O8IqiIDQq091l1IDO8oI	0	0	4	5	8	13	0	4	7	13	0	Flow (Jammin' Ragga Mix)
 O11olQOQIOOqdo1IbPP8iDDqIP0b1Dl6	0	0	2	5	10	13	0	5	10	14	0	CONNECT-
 O1blDPOQ8IQb00o0D89QIDIlo8b06liD	0	0	3	4	7	9	0	4	7	10	0	HIGHER
+O60dPIdO0bQI1d89idDbdi8ib9DoOiq9	4	0	0	0	0	0	0	0	0	0	18	九段 (A3)
 O6I9ioqii8i6I1DIb1PqOD6q0ooo8bDo	0	0	7	8	10	12	13	8	11	13	13	Across the nightmare
 O6Pi0O800b8b6d9dd9P89dD1900I1q80	1	0	5	8	12	15	18	8	12	15	18	HYPER
 O6llIdODQD6oDQ6QiPQDOlob9i8l6qib	0	0	6	11	13	17	18	10	13	17	18	Fascination MAXX
@@ -585,8 +590,9 @@ OiDP81OQD0I810I89qdqIiDDP6i9qO0q	0	0	2	5	8	12	0	5	8	12	0	I'm Flying Away
 OiIOPd80d9PQQIbidO6ObioboO88OD9l	0	0	8	11	14	17	18	11	14	17	18	Elemental Creation
 OiQI998qPiooq60099bPdO886q9bd011	0	0	2	5	10	15	0	5	10	15	0	リスペク風神
 Ol01P9IIoDIOldo8IQI0l6bd9lb9q0oo	0	1	4	5	9	12	16	6	9	12	16	六兆年と一夜物語
-Ol8PPooqO8iOqQ6900o0q0QI9dPo0O0b	0	0	4	9	12	16	0	9	12	16	0	Rampage Hero
+Ol8PPooqO8iOqQ6900o0q0QI9dPo0O0b	0	0	4	9	12	16	17	9	12	16	17	Rampage Hero
 OlDo09P8l0d6d80i8qD0qQddbi0QQD8b	0	0	5	8	11	14	17	8	11	14	17	London EVOLVED ver.B
+OldbDbQo1PP9OD8DOdbDiPdodIiQ0oI0	4	0	0	0	0	0	18	0	0	0	0	九段 (A3)
 Oo91QPdQDd1Od1oQI6IIldbQ1lQ88bO0	0	0	0	0	0	0	14	0	0	0	13	AM-3P ("CHAOS" Special)
 Oo9O18oqOi9DIoOoqb9IqQDo0dbdqP9q	0	0	2	5	7	12	0	5	7	11	0	Hoping To Be Good
 OoIPPqIDbQ6qIb69q8dil0iq0l6q6DQD	0	0	3	5	9	13	0	4	10	12	0	stoic (EXTREME version)
@@ -818,6 +824,7 @@ bqi9QiQ0lbi8id6lOi88iIi9lo6Pdd90	0	0	4	8	12	16	0	8	13	16	0	Lightspeed
 bql00PQ1PiboIqDQoD909Il8o1PIDiD1	0	0	0	0	0	0	11	0	0	0	12	TRIP MACHINE(X-Special)
 bqoboI0o8lIObPPdqq8lDDdI8b1QPDb1	0	0	3	8	12	14	0	8	12	14	0	恋愛観測 -2021真夏のエンディング ver.-
 bqqIiO96di90bdP0QD1biD8DoDQIddOD	0	0	2	5	8	10	0	5	8	10	0	Back In Your Arms
+d06O9IbQi9l801Dodl1d8O91P9qiq10d	1	0	4	7	12	16	0	7	12	17	0	INTENSE
 d0DDd1dP6llPbioqPdiQ0IDd918bDqI8	0	1	3	7	10	14	0	7	10	14	0	ありふれたせかいせいふく
 d0IiI99IlI00lq606l68qOIl8PidiOlO	0	0	3	5	7	10	0	4	7	11	0	Beautiful Inside (Cube::Hard Mix)
 d0P01d9q8oOd8OP1bQPoqlq96906PqPD	0	0	0	0	0	0	12	0	0	0	13	DROP OUT(FROM NONSTOP MEGAMIX)
@@ -1001,6 +1008,7 @@ l08bl1dddob81IP1IbQqbDbiPo9l069l	0	0	3	6	11	15	16	7	11	15	16	Start a New Day
 l0OPoQ1O8q8DPDo0Iol6qD6DiIqdD9P9	0	0	3	8	13	16	0	8	13	16	0	灼熱 Pt.2 Long Train Running
 l0QP6DiIDIId0oiQiOl8q10DlI96OPiO	0	0	2	6	9	11	0	7	9	11	0	A Geisha's Dream
 l0od6D6dl9PQdl1iDPOlD80io0iqqDb8	0	0	2	4	6	8	0	3	6	8	0	Love Again
+l106dqq891bI19iPoIo9OO688l8oOQQ6	0	0	3	6	12	15	0	6	12	15	0	Go To The Oasis
 l1ODQ1bO9POQ6d8O0Iobbio11qb6O6bd	0	0	3	7	9	12	0	7	9	11	0	50th Memorial Songs -二人の時 ～under the cherry blossoms～-
 l1bDOIlb6ddI6od0q1llI0I6blq9oP0l	0	0	2	5	9	13	0	5	9	13	0	ハッピーシンセサイザ
 l1lO999PqIboPQOD86PDQo1ol1iIiiOi	0	0	3	6	10	13	0	5	9	13	0	革命パッショネイト
@@ -1043,6 +1051,7 @@ lQbiI10Qo9DdD8liqPIiob61qDO9d861	0	0	3	4	8	10	0	5	7	11	0	TOMORROW
 lb01Qb1iOOIIobPO06Oob9ODilIDOQ6Q	0	0	5	8	12	15	0	8	12	15	0	paparazzi
 lb19I8d0DPb88QDQlP616lDqoboli90O	0	0	3	8	12	15	0	8	13	15	0	Engraved Mark
 lb1l0DibId6Pb9ddlqlDoP6d6oD0o0IP	0	0	2	4	6	10	0	6	7	9	0	Slip Out (bounce in beat mix)
+lb969IOOoI06P18PPq81o1lPD1b1OqqI	0	0	3	7	12	16	0	7	12	17	0	Get it
 lb9Qo61bbOdQidlQQD8DP8199Q911Id9	0	0	6	8	11	15	0	8	12	16	0	roppongi EVOLVED ver.C
 lbD8DodiOiP8D61lidIi88DIiPqi8o6P	0	0	3	6	10	13	0	6	10	13	0	Mythomane
 ld6P1lbb0bPO9doqbbPOoPb8qoDo8id0	0	0	4	7	13	15	18	7	13	15	18	ACE FOR ACES
@@ -1121,6 +1130,7 @@ oQolO9oOO01ll0I8969i8O1IQliloDqP	0	0	4	8	12	15	0	8	12	15	0	エンドルフィン
 ob0P66Q8dqbI81qi6OQDPP6086iPoO1P	0	0	2	6	8	12	0	6	8	12	0	GRADIUS REMIX（↑↑↓↓←→←→BA Ver.)
 ob86bIdI1IbIl9DoQ1bboq9Q8O6PPPoq	0	0	2	4	7	10	0	5	7	11	0	Taj He Spitz
 obd0PDIDq8qqd9q9qdbDdqD98bd61I8D	0	0	5	8	12	16	0	8	12	16	0	SWEET HOME PARTY
+od0O0QP6i9I61dI6O0l9P6bo8DqIlqd9	4	0	0	0	0	0	19	0	0	0	0	十段 (A3)
 od66Qb16lI019I06lllII811I9ol6l0i	0	1	3	6	10	14	12	6	10	14	13	ようこそジャパリパークへ
 odD0Ql6iQbidDlqdPIdo8iQO09OoIbD0	0	0	1	4	7	10	0	4	7	10	0	MAGIC PARADE
 odOQ1d1i6oil81b1QIDP6dOqqdooD918	0	0	3	5	8	9	13	5	7	10	13	Colors ～for EXTREME～
