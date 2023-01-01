@@ -16,6 +16,12 @@ export class MusicList {
   }
 
   applyMusicData(musicData) {
+    if (musicData.isDeleted == 2) {
+      if (this.removeMusic(musicData.musicId)) {
+        Logger.info(`Removed: ${musicData.encodedString}`);
+      }
+      return;
+    }
     if (this.hasMusic(musicData.musicId)) {
       if (this.getMusicDataById(musicData.musicId).merge(musicData)) {
         Logger.info(`Modified: ${this.getMusicDataById(musicData.musicId).encodedString}`);
@@ -50,6 +56,14 @@ export class MusicList {
 
   hasMusic(musicId) {
     return Object.prototype.hasOwnProperty.call(this.musics, musicId);
+  }
+
+  removeMusic(musicId) {
+    if (this.hasMusic(musicId)) {
+      return delete this.musics[musicId];
+    } else {
+      return false;
+    }
   }
 
   get musicIds() {
