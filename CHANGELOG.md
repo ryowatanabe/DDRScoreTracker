@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+ - Supported (misdelivered) music data removal by using isDeleted flag
+
 ### Changed
 
  - Migrated Vue.js 2 to 3
