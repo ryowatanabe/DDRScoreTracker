@@ -48,7 +48,7 @@ export class SkillAttackDataElement {
   }
 
   get difficultyValue() {
-    return this.difficulty + (this.playMode == Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
+    return Number(this.difficulty) + (this.playMode == Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
   }
 
   get formString() {
