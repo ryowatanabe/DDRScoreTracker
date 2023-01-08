@@ -774,6 +774,8 @@ export class App {
                         Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_no_differences'));
                         return;
                       }
+                      Logger.debug(skillAttackDataListDiff);
+                      Logger.debug(skillAttackDataListDiff.urlSearchParams(ddrcode, password).toString());
                       if (this.options.notSendDataToSkillAttack) {
                         Logger.info(I18n.getMessage('log_message_done'));
                         return;

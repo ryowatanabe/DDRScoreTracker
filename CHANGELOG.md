@@ -10,6 +10,10 @@
 
  - Migrated Vue.js 2 to 3
 
+### Fixed
+
+ - Single play data could not be successfully submitted to Skill Attack
+
 ## [0.1.0] - 2022-11-05
 
 ### Changed
