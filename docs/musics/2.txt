@@ -271,6 +271,7 @@
 8bQQ0lP96186D8Ibo8IoOd6o16qioiIo	0	0	3	6	8	11	13	6	8	12	13	アルストロメリア (walk with you remix)
 8bb0DOOboOb0b90q9oIoiiq10i1lIQDl	4	0	0	0	0	0	19	0	0	0	0	皆伝 (A3)
 8bqd0Oibbo8q81QdODqdl1OOi1l99O88	0	0	3	6	10	12	0	6	10	12	0	DREAMING-ING!!
+8dDQIPOo681iID8IiibbD8IbIldI86P1	0	0	3	7	12	16	0	5	11	15	0	LOVE SHINE (Body Grooverz 2006 mix)
 8dbiodDo1i6IolDQdqdOoqDDD90q6liQ	0	0	6	8	13	15	16	8	13	16	17	DDR MEGAMIX
 8dqQDblP6dPI10qq10qiPbqi1llQ06iP	0	0	4	8	12	15	0	7	12	15	0	Better Than Me
 8i1ii188q9OlD0qQ9lQ0D1OdDbldqQbI	0	0	2	3	6	9	0	3	6	9	0	Take A Chance
@@ -583,7 +584,7 @@ OQb96d6qD9bPdD819QO0b88blIllldoi	0	0	2	5	8	10	12	5	9	11	13	One Sided Love
 OQbPdOIo6dPPIq6d8qid6DbPP0q991i6	0	0	2	5	8	12	0	5	8	12	0	天上の星～黎明記～
 OQbdD9iD898Q01oIddDliq8q9D1QlQ1I	0	0	3	6	9	12	16	6	9	12	16	snow prism
 OQol16I968Q8bDoQd80i90oQQbqOdbdP	0	0	5	6	9	12	0	6	9	11	0	MAXIMIZER
-ObI1oo6QlO981880DDDOlo8bQobI0I9P	0	0	2	5	8	11	0	5	8	12	0	Follow Tomorrow
+ObI1oo6QlO981880DDDOlo8bQobI0I9P	0	0	2	5	8	11	14	5	8	12	14	Follow Tomorrow
 ObIOQ6id8DOdlQlil8819ObqoDQIIoiO	0	0	2	6	10	14	0	6	11	14	0	F4SH10N
 ObP1P1OoDII9b9ll698Q981ilIddb8Id	0	0	2	5	7	8	0	4	7	9	0	BALLAD FOR YOU～想いの雨～
 ObbOibP0ll9I00di6i9oO1qlIQbdD0ql	0	0	4	7	9	12	0	7	9	12	0	ベビーステップ
@@ -716,6 +717,7 @@ Q8bIDb60oPo890oi0l0O9PQd9lOb8o1Q	0	0	5	9	14	17	0	9	14	17	0	The History of the Fu
 Q8bIddo10ilqbd6I8QOq1bod1OO8dqlO	0	0	4	7	11	14	0	7	11	14	0	Silly Love
 Q8iOiOPbl1lI6D6bbib8Il8lPqlIl1b9	0	0	3	6	11	15	0	6	11	15	0	little steps
 Q8qb1oQobdqDqi0i19qqb11P1oDoiD8O	0	0	4	8	11	14	15	8	11	14	15	IMANOGUILTS
+Q910dl1olqQ9qdO6q1q1O9Pq9b80lP6P	0	0	1	3	8	12	0	3	8	12	0	Hold Tight
 Q96Qo0qbQ81odQoqPOOQ98oDbo6Pb1IO	0	0	1	4	10	13	0	5	11	13	0	チルノのパーフェクトさんすう教室 (EDM REMIX)
 Q96bO9D61lib19IiIi0i69P80bo6q69Q	0	0	4	5	9	11	0	5	8	11	0	321STARS
 Q9Q088PPd0bPi9QQ8iil1lQqPdiQP69D	0	0	4	7	12	14	17	8	13	15	17	恋する☆宇宙戦争っ!!
@@ -944,6 +946,7 @@ i18OPo6l8Q6bo9q0qP6889IDqoP8O0Qq	0	0	0	0	0	0	10	0	0	0	9	BRILLIANT 2U(K.O.G G3 MI
 i19IOi90Dq90ll989iIdOP9diodqi968	0	0	2	4	7	12	14	4	7	12	14	Confession
 i1DqPb01I6I1dP8qoO1qiIPDlOD9D9oQ	1	1	3	7	11	15	0	6	10	15	0	PLANET
 i1Q080DDQD81l8o0109Q6blq0oo8o69q	0	0	1	3	5	8	0	4	6	8	0	Taking It To The Sky
+i1ibID6lOoiPQ1lli86P9lIIqOoDlldQ	0	0	4	8	11	14	0	8	11	14	0	the beat
 i1ol0PO8QbQD0q0oDI6qq0IO68868bP8	0	0	3	4	6	10	0	5	6	8	0	Lift You Up
 i66lIl9D60DPq0dQ0O9666ID8bPlID9i	0	0	3	4	7	11	0	4	7	11	0	Playa (Original Mix)
 i6P0dI11PdoIIQ19D6PQPidqd0bI6lqi	0	0	4	9	13	16	0	8	13	16	0	actualization of self (weaponized)
@@ -967,6 +970,7 @@ i9il1DIDl91Db0OdllOddIqO600Pl89q	0	0	3	6	9	11	0	6	9	11	0	恋のパズルマジ�
 iDiiO18PPl6iDlDlddi9ildIqO60bQdo	3	0	0	0	0	0	0	0	0	0	11	二段 (A20+)
 iI1iQD6Id0PiPDoo919doOooDib09I6b	0	0	3	7	9	10	0	7	10	12	0	MIDNIGHT SPECIAL
 iI8qbP0IIb16Oi9bIbb8O9dbDDi1ql86	0	0	3	5	6	8	0	4	7	9	0	♥Love²シュガ→♥
+iI90119iIb9l609b9981l8QDblDOb0I6	0	0	2	7	10	14	0	7	10	14	0	JUST BELIEVE
 iI96000Ib9DlIOPlDQIO00oDiO9DbPI0	0	0	3	7	11	15	0	7	11	15	0	Nostalgia Is Lost
 iIDOlq6QoQPiqoii0iiDOiI9ODiQOIDb	0	0	1	4	10	14	0	4	10	13	0	Go Down
 iIIDo60oO0lOdiQ9ibIPD0106I69098b	0	0	2	5	10	13	0	5	10	13	0	X-ray binary
@@ -992,7 +996,7 @@ ibI69PPO1iP0D1IlI0bb11QOq6081POo	0	0	2	5	10	12	16	6	9	12	16	隅田川夏恋歌
 ibOId89QQPI6dli9I6PO09Qo86686O6i	0	0	3	7	11	15	0	7	11	15	0	MANA
 ibOQ0QOdIPdIbIo0oPoDDI1DqPId00li	0	0	0	0	0	0	9	0	0	0	10	WILD RUSH(FROM NONSTOP MEGAMIX)
 ibdIdIO60b880i8oPOdQD9qIqldOdDl8	0	0	4	6	7	11	0	5	7	11	0	ハルイチバン
-ibiD8868D116OIqbQ1DQ1IOb8OD1qQ98	0	0	2	7	9	11	0	6	10	12	0	Take A Step Forward
+ibiD8868D116OIqbQ1DQ1IOb8OD1qQ98	0	0	2	7	9	11	15	6	10	12	15	Take A Step Forward
 ibl00b69Oli68l96d6o1P1ob8QPillbO	0	0	4	8	10	14	0	8	10	14	0	Cytokinesis
 id099qDODdQ9Ooi9dq1I981Diq101QDO	0	0	1	4	7	10	0	4	7	10	0	Seize The Day
 id0QqdbI8oloO9l08IqI9q1D0819OQID	0	0	1	4	8	13	15	5	9	13	15	無頼ック自己ライザー
