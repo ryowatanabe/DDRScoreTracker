@@ -23,7 +23,7 @@
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "lint-staged": ">=13",
-    "prettier": "^2.8.4",
+    "prettier": "^2.8.5",
     "vue": "^3.2.47",
     "vue-loader": "^17.0.1",
     "vue-style-loader": "^4.1.3",
