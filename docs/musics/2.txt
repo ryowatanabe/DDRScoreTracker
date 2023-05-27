@@ -27,6 +27,7 @@
 0Ib6qIb0iPOoQqqDIl90dP0PI0o9QlDd	0	0	3	6	9	13	0	6	9	12	0	女言葉の消失
 0IldoDlDQql99DqQo0Qq9ioPIiiPoIoi	0	0	5	12	14	17	18	12	14	18	18	Pluto Relinquish
 0OQdlbo111ib1i88IdIPIbollD68Dii1	0	0	4	4	7	10	0	4	7	11	0	rainbow rainbow
+0OQiI9qD6OiodDoQlPllqPoPoqi98D8P	0	0	2	5	7	9	0	5	7	9	0	Open Your Eyes
 0Ob1601118Dii9Qdii9lPbioPP6qoi1I	0	0	3	5	9	12	0	5	10	12	0	The Night Away (MK Remix)
 0Oo6iId08018qOqbo6O1o0QQ9D09Piq1	0	0	3	5	7	12	0	5	8	12	0	Make A Difference
 0Pq6o89llQl10dl8O0DdP6lIO0ib6Doq	0	0	4	8	10	15	0	7	10	14	0	Sakura Reflection
@@ -130,7 +131,7 @@
 1q6Qoi0lldP6qoQI9PI199d6P0Q96ld0	0	0	5	9	13	15	0	9	12	16	0	ANTI ANTHEM
 1q6obddbql8lQdPI19liD6PdQ0dPIODd	0	0	3	5	6	10	0	4	5	8	0	Don't Stop!～AMD 2nd MIX～
 1qDD1DdPlId69010IQ18I6q8Q00IoI6D	0	0	0	0	0	0	11	0	0	0	11	TSUGARU (APPLE MIX)
-1qPIiqqQo0P9dD90I11q90b0ooIidbPO	0	0	2	7	11	15	0	7	11	15	0	CyberConnect
+1qPIiqqQo0P9dD90I11q90b0ooIidbPO	0	0	2	7	11	15	17	7	11	15	17	CyberConnect
 1qPOO8o9089lI1qQIDIDi0lidob9i6lq	0	0	4	7	11	14	0	8	12	15	0	Right Time Right Way
 1qPbqd11l6b8ibq1ODQ6di90PIo0D618	0	0	2	5	9	12	0	5	9	12	0	ロキ(w/緒方恵美)
 1qdb8P8il9li6DOdPolq9d0d9Q6898oi	0	0	4	6	10	13	0	6	10	13	0	ビビットストリーム
@@ -268,6 +269,7 @@
 8Pl1i1o0O6oIio0b681qOoDOQdPPOObb	0	0	1	3	7	9	13	4	7	9	13	The Island Song
 8Q8OiP8QPbl8bqID1loQq896ldPQd99o	0	0	2	5	7	11	0	5	8	11	0	倉野川音頭
 8Q8dP1odl1D9lIbiIO86OPPIoq6qPP1l	0	0	3	5	8	12	0	5	9	11	0	Bad Apple!! feat. nomico
+8QPioDo6lIDdq861DDooq1O9dqdOOPiD	0	0	2	4	6	8	0	4	6	8	0	SAY A PRAYER
 8QbqP80q9PI8bbi0qOoiibOQD08OPdli	0	0	9	11	13	16	18	10	13	17	17	Fascination ～eternal love mix～
 8Qd118IPdqld06Qd1q10iQd06bDdbdQI	0	0	2	6	11	14	0	6	11	14	0	ノルエピネフリン
 8bI68oIq08d99P880bDPQ9D80O099Q10	0	0	2	7	11	15	0	7	11	15	0	Windy Fairy
@@ -475,7 +477,7 @@ I606oqOODOdQoP0IQOdP6b0DPdb86ddO	0	0	4	7	10	13	0	7	10	13	0	御伽噺に幕切れ
 I61ioI01IOPDPbP1OO0l98PD0iDbid0D	0	0	3	7	11	15	0	7	11	15	0	ZEPHYRANTHES
 I6Dd0QIi086il1918dQI6dq0l1d9ibD0	0	0	3	5	10	13	0	5	11	13	0	向日葵サンセット
 I6DdI9O1Oo8O9lo1D08ldOllo0o166I8	0	0	5	9	13	16	0	9	13	16	0	We're so Happy
-I6dI99IOolDD6l6Q1ooPIiDO8Odq0QIP	0	0	4	7	11	15	0	8	12	16	0	UNBELIEVABLE (Sparky remix)
+I6dI99IOolDD6l6Q1ooPIiDO8Odq0QIP	0	0	4	7	11	15	18	8	12	16	18	UNBELIEVABLE (Sparky remix)
 I6q1PQ1D1Dblli8Iilo9ood8DbbQlb8O	0	1	2	4	8	12	0	4	9	12	0	妄想感傷代償連盟
 I6qdO8Di181P6Q9Ooq0d8d0DOdq1dOOQ	0	0	3	6	12	15	16	6	12	15	16	out of focus
 I81iP0Io9o1l9li0Iq99P1091O8DoDOd	0	0	3	6	9	11	13	6	9	11	13	WILD SIDE
@@ -696,7 +698,7 @@ Pi81dQi00lo9i1Pib91lQ01i0biIbPIP	0	0	2	6	9	13	0	6	9	13	0	DeStRuCtIvE FoRcE
 PibQ18qDb06Doq99boODIDQODqiDQIbP	0	0	3	7	12	15	0	7	12	15	0	Vertigo
 Pl0dPid9lQDo6PDQDqPboPqO6iIDIqoo	0	0	5	9	10	12	0	10	12	11	0	PARANOiA MAX～DIRTY MIX～
 PlIiPiPoI9DIbPdIPoqQlIq61Pd8QIDo	0	0	2	5	7	10	13	4	7	10	14	Tribe
-Pld9iO6oi9qlDD08l8QDdIi6d6Q6iDd1	0	0	2	5	9	12	0	5	9	13	0	Programmed Universe
+Pld9iO6oi9qlDD08l8QDdIi6d6Q6iDd1	0	0	2	5	9	12	16	5	9	13	16	Programmed Universe
 PldO10PIiQ6lOiI16o060OQIiq69QO96	0	1	3	5	9	13	0	5	10	13	0	すきなことだけでいいです
 PllDll9di16l8ild6b688l6OP6olQid8	0	0	4	8	12	16	0	8	13	16	0	Last Twilight
 Plld00DiIO9bPqdq190li1iIPDdq6Qlb	1	0	3	7	11	15	17	7	10	14	17	Intelligence
@@ -843,6 +845,7 @@ bllQi9boq8qobOQDOD6QDio9lii8109i	0	0	1	5	8	13	0	5	9	13	0	PUT YOUR FAITH IN ME (D
 blld8o09oQo80PIIoIdbP9688DIqlbdb	0	0	4	8	11	14	0	8	11	15	0	Afterimage d'automne
 blq9q1oI0dPIooqid09Q0lDqD8OdDPbi	1	0	4	9	10	14	0	10	11	14	0	FEELING
 bo6PqbbPQ6D096OIP6dDPbPPiDi88609	0	0	3	7	11	15	17	7	11	16	18	Spanish Snowy Dance
+bo8DPdi09odO8oq9ql0iI8booOioOqi0	0	0	2	7	10	15	0	6	10	14	0	Surrender (PureFocus remix)
 bo9l0Dl0PbqQQQ16Qq6bOOi68o0996Pq	0	0	3	6	9	12	15	6	9	12	15	紅焔
 boDqoIDqDlP1io6bQ0O10diDbbqOD96I	0	0	2	6	11	14	0	6	11	14	0	Unreality
 boO8d11P8o6l89i81i1i1IdPlP109QoQ	0	0	1	5	8	13	0	5	8	13	0	stellar rain
@@ -936,6 +939,7 @@ diOIbOoPIPO9DP1QiOi9QdOlqQbI8Old	1	0	5	7	11	14	0	7	12	14	0	STRANGE
 dib16I1b0o9OdOd1O90dO1Q6iIO9PQo9	2	0	0	0	0	0	0	0	0	0	12	三段 (A20)
 dll6Dq0blbl1iPbIIiQ61QIoo00doqiI	0	1	3	5	8	13	0	5	8	13	0	Hillbilly Shoes
 dll9D90dq1O09oObO66Pl8l9I9l0PbPP	0	2	2	4	9	13	0	4	9	13	0	B4U (The Acolyte mix)
+dlq91b19ld10IdIqQ9q99O8QDOOi18dq	0	0	5	10	14	17	0	10	14	17	0	BREAKING THE FUTURE
 dlqPb1iqPo81qI89816QIoi01b1b0P06	0	0	2	6	10	15	0	7	10	14	0	春風ブローインウィンド
 doIiQl6oDPP6i9qobqoobblPQqPiI9bD	0	0	3	4	9	12	0	5	9	12	0	サナ・モレッテ・ネ・エンテ
 doQI0i6lQbOo66DOi6olPqOPqIqO8Qd1	0	0	3	3	4	9	0	4	6	9	0	CUTIE CHASER(MORNING MIX)
@@ -1056,7 +1060,7 @@ l1lO999PqIboPQOD86PDQo1ol1iIiiOi	0	0	3	6	10	13	0	5	9	13	0	革命パッショネ�
 l1o0olodIDDiqDQ101obOD1qo81q0QOP	1	0	4	7	12	16	0	7	12	16	0	ONE HALF
 l609D9lOqbDP6iIld1dI18l888dODQ6Q	0	0	3	4	9	11	0	5	9	11	0	Polovtsian Dances And Chorus
 l61ldlPo1DQ081860O86D0Qo0qdOd0qP	0	0	3	5	9	14	14	5	9	13	14	Ace out
-l666Dd0bIO9O69boPd898b19bPDo1IdO	0	0	3	7	11	15	0	7	11	14	0	starmine
+l666Dd0bIO9O69boPd898b19bPDo1IdO	0	0	3	7	11	15	17  7	11	14	17	starmine
 l66Io69ob00OoOiDOI9lIqlidbDoDq89	0	0	2	5	9	12	0	5	9	12	0	Towards the TOWER
 l6999IbQI61IO9qQbllobqo68lqobibq	0	0	3	6	8	11	13	7	8	11	13	MAX LOVE
 l69o6Pd0bqO6lqIDObIq8DQ9dq88IlO6	4	0	0	0	0	0	0	0	0	0	11	二段 (A3)
@@ -1162,7 +1166,7 @@ oOI88lollO1OOQQd9DPi0690I6i6oiII	0	0	0	0	0	0	17	0	0	0	18	MAX 300(X-Special)
 oOOI98q81oQQQP88d6Q6qlbl8QI9d0dI	0	1	3	6	10	12	14	6	10	12	14	脳漿炸裂ガール
 oOdl0d1IOo0bd008DOl91606Pd0PP86d	0	0	3	4	8	11	0	4	10	13	0	MARS WAR 3
 oP8iIdilQ0QiDllqDbDIOl0iQPd9PQ9I	0	0	2	6	11	15	0	6	11	15	0	Crystarium
-oPP1Pdl6Qdlb8oq10PP1doDibdbbl9bl	0	0	3	5	8	12	0	7	9	13	0	朧 (dj TAKA Remix)
+oPP1Pdl6Qdlb8oq10PP1doDibdbbl9bl	0	0	3	5	8	12	16	7	9	13	16	朧 (dj TAKA Remix)
 oQ0bqIQ8DdPlilO000DQloOo6Od8IdQ6	0	0	4	5	6	11	0	5	7	11	0	Bloody Tears(IIDX EDITION)
 oQ1PPlOd8Ilb8I1I6biqO0lQPIoOldP1	0	0	2	5	9	12	0	5	9	12	0	Scarlet Moon
 oQ868oOio6O90i9qO1o8I96P1do11ID0	0	0	5	9	13	17	0	9	13	17	0	東京神話
@@ -1199,6 +1203,7 @@ olQQ8QPPqqObDD9ooodOl9i9od8b06I9	0	0	5	7	11	13	0	8	10	14	0	Healing Vision ～Ang
 olQl6Qoi0IbobI980q9Q0QIo9qlbq1PO	0	0	4	8	12	15	0	8	12	14	0	Unreal
 olloQOobddiIIPObP91l0qPl6oo8P9Dl	0	0	2	4	6	13	0	5	7	13	0	What Will Come of Me
 oloPOQPQ8Q8IQQoiO9bqdDOo8o6OQ6qI	0	0	3	6	9	13	0	6	9	13	0	Bang Pad(Werk Mix)
+oloqOddo8oI1696Oqidb081ldlPQ89qO	0	0	2	7	11	15	0	7	11	15	0	Racing with Time (NAOKI's 999 remix)
 oo6iiQQbqQ98D9oP6OQPibIqIPd66Qb0	0	0	4	9	12	15	0	9	12	16	0	STULTI
 oo8DId90dbDliiQQlQPQQoIq6lPliqo9	0	0	3	4	6	10	0	5	6	9	0	Happy Wedding
 ooiqoi6Q0dil6b10QOq8DiOIiq9iQb10	0	0	3	7	10	13	0	7	10	13	0	LIKE A VAMPIRE
