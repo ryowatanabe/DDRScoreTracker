@@ -8,7 +8,7 @@
     "node": "^16.14.0 || >=18.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.0",
+    "@babel/core": "^7.23.2",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.22.20",
     "babel-jest": "^29.7.0",
