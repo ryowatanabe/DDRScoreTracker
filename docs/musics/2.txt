@@ -395,6 +395,7 @@ D11ldIqD8dQIi9oQQIIo86QOI8D9olP8	0	0	2	6	10	13	0	7	11	13	0	幸せになれる隠
 D16P668Q8loqIoDo1IdoIlIloiIoIDll	0	1	3	7	9	13	0	7	9	13	0	*ハロー、プラネット。
 D1D88PPI0PDQqOq00OI6QI1o6dPolqlI	0	0	3	4	8	10	0	4	7	9	0	Tomorrow Perfume
 D1I09111OiQPiDi9doqP9b1PlO1PqII8	0	0	1	3	8	11	0	3	8	11	0	SUN² SUMMER STEP!
+D1QDql1OQDl1dblId0P81Q999dO9POoP	0	0	6	9	13	16	0	9	13	16	0	ｍｅｍｏｒｙ／／ＤＡＴＡＭＯＳＨＥＲ
 D686d06lO9IID8D0boPq0Pd8P89idO99	0	0	2	7	10	15	0	7	10	15	0	未来（ダ）FUTURE
 D68PQib86POo9D6O8Q0qO8bD6bDb1bdl	0	0	4	7	12	15	0	7	12	15	0	天空の華
 D6IIDqlO8idioiPo8l61Ob11D6Di0DiQ	0	0	2	5	8	10	0	5	8	10	0	アリスサイド・キャスリング
@@ -758,6 +759,7 @@ Q8qb1oQobdqDqi0i19qqb11P1oDoiD8O	0	0	4	8	11	14	15	8	11	14	15	IMANOGUILTS
 Q910dl1olqQ9qdO6q1q1O9Pq9b80lP6P	0	0	1	3	8	12	0	3	8	12	0	Hold Tight
 Q96Qo0qbQ81odQoqPOOQ98oDbo6Pb1IO	0	0	1	4	10	13	0	5	11	13	0	チルノのパーフェクトさんすう教室 (EDM REMIX)
 Q96bO9D61lib19IiIi0i69P80bo6q69Q	0	0	4	5	9	11	0	5	8	11	0	321STARS
+Q99q619i0lDqll6Q0lq8l1oQ0qPO8o6I	0	0	6	10	14	17	0	10	14	17	0	Electronic Sports Complex
 Q9Q088PPd0bPi9QQ8iil1lQqPdiQP69D	0	0	4	7	12	14	17	8	13	15	17	恋する☆宇宙戦争っ!!
 Q9QlQI6Dd09P6i1bP9d8q0IQlPoqiQ81	0	0	4	9	12	16	0	9	12	16	0	Never See You Again
 Q9bo8o9600D869o10ioPb8bPO10bIOiq	0	0	3	6	11	14	0	6	11	14	0	On the Night of a Still Wind
@@ -795,6 +797,7 @@ QdIl6D808iDoDQi0Qii99Do6do8DOdQO	0	0	2	5	8	12	0	4	8	12	0	KISS KISS KISS 秋葉�
 QdbPPPDlIQiI191qPdblO01O8P8o6D68	0	0	0	0	0	0	10	0	0	0	10	BURNIN' THE FLOOR(BLUE FIRE mix)
 Qi1Q6I80b09Oq91OPldbO19080q0dd0b	0	0	3	6	11	14	0	6	10	13	0	Red Cape Theorem
 QiOl969Iq1Pl6o60QOQ9PooDbbiOPioo	0	0	3	6	9	12	0	6	9	12	0	スカイクラッドの観測者
+QiPiIb8I99loq8loIq91iP6l1OOoq8oq	0	0	0	0	0	0	19	0	0	0	19	鳳
 QiQi666Qd9I6d1899iii80PdQdDlO1i1	0	0	3	7	12	15	0	7	12	16	0	Sand Blow
 QiboqIool99ol9Q0d08b68OIIiD89qqO	0	0	3	6	10	13	0	7	11	13	0	叛逆のディスパレート
 Qid6OQOIibbOiDo808oq9oQO668bDodP	0	0	2	5	8	13	15	5	8	12	15	Finale
@@ -868,6 +871,7 @@ bl90QbiqoOlDI6iQQQdo0Iol6PIdQblP	0	0	3	7	14	17	0	7	14	17	0	Pursuer
 blDbDqdo1D0odlQd9biIoio8ioQPb80i	0	1	1	4	6	9	7	5	8	12	8	only my railgun
 blI8D10Q1IDQ8Q19bi0IDlD80oD0bloi	0	0	2	4	8	12	0	5	8	11	0	Wings of an Angel (Fly With Me)
 bli1d8qP0diQPDO0DiPDlQlOI6PIlD68	4	0	0	0	0	0	0	0	0	0	17	八段 (A3)
+bll06Di6q1QOlddDlPDPiQDDI09bOOoP	0	0	6	11	15	16	17	11	15	16	17	Come To m1dy
 bllQi9boq8qobOQDOD6QDio9lii8109i	0	0	1	5	8	13	0	5	9	13	0	PUT YOUR FAITH IN ME (DA's Twinkly Disco Remix)
 blld8o09oQo80PIIoIdbP9688DIqlbdb	0	0	4	8	11	14	0	8	11	15	0	Afterimage d'automne
 blq9q1oI0dPIooqid09Q0lDqD8OdDPbi	1	0	4	9	10	14	0	10	11	14	0	FEELING
@@ -1150,6 +1154,7 @@ ll0O8PlqQd0iOO8ib61lO6iDiliQdiPP	0	0	3	6	10	14	0	6	10	14	0	Midnight Amaretto
 ll6iQl0PoiDob8Oi6dlOQ069061doqbq	0	0	2	6	10	13	0	7	11	13	0	Rejoin
 lldPQPDP0qq8iqQ910l8b8PoQ6O668Q0	0	0	3	6	9	13	10	6	10	13	10	DOWNER & UPPER
 lli8bi6DoQ89i6P9PliooloD68QoDolD	1	0	5	9	12	14	0	9	13	15	0	Let's DANCE!
+lliDD9qPqiIDI8P9bb18IO60l9D061Io	0	0	5	10	14	17	18	10	14	17	18	SISYPHUS
 llo89P08I1PlID9DO8lqdbbq69O8Qiib	0	0	2	7	10	13	0	6	10	13	0	逆さま♥シンデレラパレード
 lo6bOoq86d9od6qQ9PiPibOioOQb96lP	0	0	1	4	8	11	10	4	8	11	11	TWINKLE♡HEART
 loD6oi96869O8ilii1QPOPDoP91l1PQQ	0	0	2	7	10	13	11	7	10	13	13	Summer fantasy (Darwin remix)
@@ -1263,6 +1268,7 @@ q8i11qPbo9iq8lQb9d08di81Q88q8P9o	0	0	2	6	10	15	0	6	10	15	0	Hunny Bunny
 q8iPi1DP6Do6D110OQiQDdPq06q80Qb0	0	0	2	5	8	11	0	5	9	11	0	ウソツキ横丁は雨模様
 q8o866OdqqDPOQdO88D1DOdbqQo1q8Q1	0	0	5	9	13	16	0	9	13	16	0	VALLIS-NERIA
 q8q0D8QoP89IqooiiD0q66QPI1b8lDi0	0	0	1	3	8	12	0	3	8	12	0	Musician
+q96q9D9oIIOQl8QQ60ii19P0Dbq8Q609	0	0	6	12	15	17	18	12	15	17	18	New Millennium
 q9oQ1Pid9OiIDO66Pd19blOi09019i98	0	0	2	4	7	11	0	4	7	12	0	I/O
 qD1I6qqll88q9dq9PoloD68lqddIDo6O	0	0	3	7	12	15	0	7	12	15	0	Jetcoaster Windy
 qD6P1ldl09Dqq8QP01bbid0b9IdqobPl	0	0	3	7	10	13	0	7	10	13	0	ベィスドロップ・フリークス
@@ -1289,6 +1295,7 @@ qPDQbQ6lOqqbI9Plb6o9lld0ddIP8oiP	0	0	2	5	9	13	0	5	9	12	0	esrev:eR
 qPi8qIqO1lQd08b01PiPlql9O1dOPDPq	0	1	2	5	8	11	0	5	9	11	0	Shut Up and Dance
 qQ9Oo611P0dObD8q6O0Q968bbl8I91OO	0	0	3	9	10	12	0	9	10	11	0	TRIP MACHINE～luv mix～
 qQI9IQOd061Q69Oo89lll9bd99108Qqd	0	0	4	6	9	11	0	6	10	11	0	In The Air
+qQd06O6d19ODl0QP8l6Q8lPlloo69ddP	0	0	5	8	12	15	0	8	12	15	0	BLUE FOG, SILVER BULLET.
 qQl6O8IdiI6991IiqDqidO96bll1qPDl	0	0	2	5	8	11	0	6	8	11	0	THIS NIGHT
 qb9Od0IQI16b6D9PP0O6ilqoq0dDQO66	0	0	3	6	10	14	0	6	10	14	0	羊皮紙の上の銀河
 qbDidIlodPP6PqI00D18P6dDbioIdDPD	0	0	3	4	6	11	0	3	7	11	0	rainbow flyer
