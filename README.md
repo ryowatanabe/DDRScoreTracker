@@ -34,7 +34,7 @@ This software opens official website on Google Chrome which it works on, then it
 
 #### Install from Chrome web store / Chrome ウェブストアからインストール
 
-https://chrome.google.com/webstore/detail/ddr-score-tracker/kecflehdfdgjkmfbhhhjdfijfaghfipk
+https://chromewebstore.google.com/detail/ddr-score-tracker/kecflehdfdgjkmfbhhhjdfijfaghfipk
 
 #### Build from source / ソースコードからビルド
 
