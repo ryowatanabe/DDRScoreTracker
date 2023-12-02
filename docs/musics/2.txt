@@ -384,6 +384,7 @@
 9o6bIq98Qo8dOd11DI0d8boblOqO0I1i	0	0	3	7	11	15	0	7	11	15	0	Inner Spirit -GIGA HiTECH MIX-
 9oIO98IPOiq1idiIIbOOqdDQIOdQPPd6	0	0	3	7	11	13	17	7	11	14	17	ウサテイ
 9obIQOP8O1l0PQ0Oi1oPQI198o0Pd81o	0	0	2	8	10	13	0	8	10	14	0	創世ノート
+9oll10Dq1qdbPQl68OQ8dOd9q86999i1	0	0	2	6	10	15	0	6	10	15	0	Throw Out
 9qO16DoQPDODQI6IPD0lPD10b88Qqi1i	0	0	1	4	9	12	0	4	9	12	0	Surface
 9qP16D6l11i9P1lQ0b1DIqoOqqiIQDl9	0	0	2	7	8	10	12	7	9	11	12	MAKE IT BETTER (So-REAL Mix)
 9qbdq1PiI1O81P1PdioQli66Ob9QiiQP	0	0	2	7	11	13	13	7	12	13	13	bag
@@ -803,7 +804,7 @@ QdIl6D808iDoDQi0Qii99Do6do8DOdQO	0	0	2	5	8	12	0	4	8	12	0	KISS KISS KISS 秋葉�
 QdbPPPDlIQiI191qPdblO01O8P8o6D68	0	0	0	0	0	0	10	0	0	0	10	BURNIN' THE FLOOR(BLUE FIRE mix)
 Qi1Q6I80b09Oq91OPldbO19080q0dd0b	0	0	3	6	11	14	0	6	10	13	0	Red Cape Theorem
 QiOl969Iq1Pl6o60QOQ9PooDbbiOPioo	0	0	3	6	9	12	0	6	9	12	0	スカイクラッドの観測者
-QiPiIb8I99loq8loIq91iP6l1OOoq8oq	0	0	0	0	0	0	19	0	0	0	19	鳳
+QiPiIb8I99loq8loIq91iP6l1OOoq8oq	0	0	0	0	0	18	19	0	0	18	19	鳳
 QiQi666Qd9I6d1899iii80PdQdDlO1i1	0	0	3	7	12	15	0	7	12	16	0	Sand Blow
 QiboqIool99ol9Q0d08b68OIIiD89qqO	0	0	3	6	10	13	0	7	11	13	0	叛逆のディスパレート
 Qid6OQOIibbOiDo808oq9oQO668bDodP	0	0	2	5	8	13	15	5	8	12	15	Finale
@@ -894,7 +895,7 @@ boqo0IoO8DodOl99Q8P8qOi8PqDq11b1	0	0	4	7	11	14	0	7	11	14	0	スーパー戦湯バ
 bq1O60D90Qbb6iPoi90Ii9olQOIO0Ib1	0	0	3	5	10	9	0	6	9	10	0	STARS☆☆☆（Re-tuned by HΛL） - DDR EDITION -
 bq8DOQ9Idq9Ii9PQ1bqPIQoQPl961d1o	0	0	3	5	8	11	0	6	8	13	0	零 - ZERO -
 bqQ1OQDidQD8QbIqql06O6o1QD6oOodP	0	0	3	5	8	12	0	5	8	13	0	BRE∀K DOWN！
-bqi9QiQ0lbi8id6lOi88iIi9lo6Pdd90	0	0	4	8	12	16	0	8	13	16	0	Lightspeed
+bqi9QiQ0lbi8id6lOi88iIi9lo6Pdd90	0	0	4	8	12	16	18	8	13	16	18	Lightspeed
 bql00PQ1PiboIqDQoD909Il8o1PIDiD1	0	0	0	0	0	0	11	0	0	0	12	TRIP MACHINE(X-Special)
 bqoboI0o8lIObPPdqq8lDDdI8b1QPDb1	0	0	3	8	12	14	0	8	12	14	0	恋愛観測 -2021真夏のエンディング ver.-
 bqqIiO96di90bdP0QD1biD8DoDQIddOD	0	0	2	5	8	10	0	5	8	10	0	Back In Your Arms
