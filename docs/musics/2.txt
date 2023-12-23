@@ -88,6 +88,7 @@
 19q96Q8l1oqbD0OQq6biDbO6O1oqqb6O	0	0	8	11	14	16	18	11	15	17	18	POSSESSION (20th Anniversary Mix)
 1DD68qQdqQ0i6bQ61ddQ06ql1D6O1l6P	0	0	1	4	6	9	12	4	7	10	12	Crazy Control
 1DPD60Q8D1qD8i80P160bqDQ81DObDlP	0	0	2	6	11	15	0	6	10	15	0	Procyon
+1Dd0b8lIQOd011qqOPiq1QDbDqod9Od8	0	0	3	7	12	16	0	7	12	16	0	Continue to the real world?
 1Dl19idl0i0qiqidbDIIbQddiP6o11PP	0	0	9	12	15	18	19	12	15	18	19	MAX 360
 1I9ODbQ81qi1006QoQI6d6dbd9iiPD9O	0	0	3	8	12	16	17	8	12	16	17	Idola
 1II6199qOd1bo0P0D19Q9qd06ll1QOl9	0	0	3	5	13	16	0	5	13	16	0	ROCK THE PARTY
@@ -185,6 +186,7 @@
 6P00ll8bilIob6600dO8Obq69oQdI1OQ	1	0	3	7	12	16	0	7	12	16	0	JAPANESE STYLE
 6P18lOliIQqIO6Di0PP8iDlDQ01b0o0q	0	0	5	9	12	15	0	9	12	15	0	MAX 300
 6P6dPoi66qO980bQo6l1QdlQIooq086l	0	0	3	5	8	11	0	5	9	12	0	MARIA(I believe...)
+6QQ1OdO99Ob001OQ90iP86o0I8OoQbib	0	0	4	7	10	13	17	7	10	13	17	めうめうぺったんたん！！ (ZAQUVA Remix)
 6QdIl8odooDQ0oOQ0IObQqo1lO986PP6	0	0	3	7	12	15	18	7	12	15	18	Astrogazer
 6Qq1q91q8iIPlI89qDq96bO8QDD0qOql	0	0	3	5	7	10	0	5	8	10	0	B4U
 6b6QIoDPoQ010o8Di1q6Q8DdiQll0Di1	0	0	2	6	10	14	0	6	10	14	0	Wowie Zowie!
@@ -247,6 +249,7 @@
 880I00ODqPD1OQQPOP0Pd19Qq1qiloDP	2	0	0	0	0	0	14	0	0	0	0	五段 (A20)
 88Qq96qbdd69bqI089600l9bDDdiQI0l	0	0	2	5	10	15	0	4	10	15	0	Prettiful!
 88do8dl8O6Ql1Qlb981lOi8D86oiq91P	0	0	3	7	8	12	0	5	9	11	0	SUPER STAR
+88lIDIi1Pi0IObl8D9oblqQ9PPdI1DqI	0	0	2	4	10	13	0	4	10	13	0	都会征服Girls☆
 88o0qb8Ii1ldPlDQQdoq90dOd0PoO99d	0	0	2	6	9	14	0	6	9	14	0	KEEP ON MOVIN' (Y&Co. DJ BOSS remix)
 88o8Oq69ldilblP10DI0qqb6b8I0DDi9	1	1	3	7	11	15	16	8	11	15	15	BOUNCE
 88qIddPQ9Q0QbQb0l6obD6IQ99oIiQQi	0	0	2	6	9	12	0	6	9	12	0	STAY (Joey Riot remix)
@@ -320,7 +323,7 @@
 901q61iP6lPiDqIQoQod9PDqlOPq1bb9	0	0	4	6	8	10	0	5	9	13	0	La Señorita
 90D66ObIiqP09oqoDoq6b908b699oqqi	0	0	2	4	7	11	12	5	7	11	12	The Lonely Streets
 90lolio9qd6qo6Pl8oo69iqi81oiiQib	0	0	3	6	8	12	16	6	8	12	16	I'm so Happy
-90qP0000qoO8o8dIidlO611ilO11Oo9Q	0	0	2	5	10	13	0	5	10	13	0	Hopeful
+90qP0000qoO8o8dIidlO611ilO11Oo9Q	0	0	2	5	10	13	15	5	10	13	15	Hopeful
 911lId0IooIOq1oDPoQ0iQiDiOIbd6oo	0	0	5	7	11	13	11	7	11	13	11	桜
 918oPDQDoPlD1OlqlqQI08I6dD9iqoil	0	0	2	5	9	13	0	5	10	13	0	朝色の紙飛行機
 919bPoOo9QO6dODOI6d0loO6qo6OqDlI	0	0	2	8	12	17	0	8	12	17	0	Complete Game Victory
@@ -407,6 +410,7 @@ D68PQib86POo9D6O8Q0qO8bD6bDb1bdl	0	0	4	7	12	15	0	7	12	15	0	天空の華
 D6IIDqlO8idioiPo8l61Ob11D6Di0DiQ	0	0	2	5	8	10	0	5	8	10	0	アリスサイド・キャスリング
 D6IQ1O1D00D1o8IQq0O9qqIibqDiiO0i	0	0	5	8	11	14	17	8	11	14	17	London EVOLVED ver.A
 D6b8boIiOqQOq1QP9D1qd08I6Q0IIqq9	0	0	2	5	8	11	0	5	8	11	0	雑草魂なめんなよ！
+D6iI9O90il0OoIqP1Q86OIQdDQQilII8	0	0	1	5	9	13	16	4	9	13	16	ポラリスノウタ
 D6ll81qoDDPIq0d89O69dIQIldQdQoId	0	0	2	6	10	14	16	6	10	14	16	Draw the Savage
 D6o8lIiDQ80oi6iIbiP9DlOPIl0Q8d69	0	0	2	7	12	14	0	7	11	13	0	Six String Proof
 D6oPIlOlIIOi1oq6Pd6011lqobbqOlib	0	0	3	5	7	9	11	5	8	8	12	LOVE IS ORANGE
@@ -414,6 +418,7 @@ D81D8689llDiOqPq0IP19bbQQiioPl8d	0	0	5	7	9	12	0	7	9	12	0	TRIP MACHINE CLIMAX
 D81Pq66DQPiQdliqIPl0ioPOi9OlQoQ9	0	0	4	5	8	11	0	5	7	11	0	era (nostalmix)
 D89QP18016o01qoOi60I6Q19dlOQPbdo	0	0	6	11	14	17	18	11	15	17	18	Anti-Matter
 D8I68Ibib9ldQDIPIQdO6lqI61PQlPO9	0	0	4	5	8	10	0	5	7	10	0	You gotta move it (feat. Julie Rugaard)
+D8P1qO8bqQIP9bOOP1dPOP660OdIllbD	0	0	3	5	11	14	0	5	11	14	0	ナナイロライト
 D8Q1PPd81b161P1loOOq69bb0q6QoDOq	4	0	0	0	0	0	16	0	0	0	0	七段 (A3)
 D8q1ObblD0i6liQ0OD6OdD0qIo9oPldb	0	0	5	9	13	17	0	9	12	16	0	PRANA＋REVOLUTIONARY ADDICT (U1 DJ Mix)
 D9I8d1PDOQ8QqP1o1IIi0o8d6660ddOQ	0	0	4	6	9	15	0	6	10	15	0	Squeeze
@@ -510,6 +515,7 @@ I8bQ8ilD9l1Qi9Q9iI0q6qqqiolo01QP	0	0	0	0	0	0	13	0	0	0	14	PARANOiA(X-Special)
 I8diIQiPO90qDD60oQ0o669I99dI69DD	0	0	4	7	9	12	0	7	9	11	0	晴天Bon Voyage
 I8lidoibqQqoQOqiDi6QiDbP9DIdd989	0	0	4	4	8	12	13	5	8	13	14	大見解
 I8o880OD09b6dlbOPb9blqPD8O8OoP9d	4	0	0	0	0	0	0	0	0	0	15	六段 (A3)
+I8qDQbQoiPPi9D1bdQ6iOlqb0Il9DlI0	0	0	4	7	10	12	16	7	10	12	16	ちくわパフェだよ☆ＣＫＰ (Yvya Remix)
 I8ql1i90i80oDO0Q9qdIliIqPq66lQd0	0	0	2	5	8	11	12	6	7	11	12	Dance Celebration
 I90bQ81P1blOPIdd9PPl6I9D8DQ1dIob	1	1	4	8	12	15	0	8	12	14	0	TWENTY
 I90bd6obO890P0d1iiPD0dol8o8QloQD	0	0	3	6	9	12	16	5	10	13	16	Grip & Break down !!
@@ -531,7 +537,7 @@ IO0IbQPOP6q8OddoiO99qq9I81l90D1i	0	0	2	4	7	9	0	4	7	9	0	Clarity
 IOb6Qdi861O00I8q969bDdd60I6I89oI	0	0	4	7	11	15	0	7	11	15	0	Let Me Know
 IObPQb9QlP0iIiboObPoPqIqDo0O11Qi	0	0	2	4	8	10	0	4	8	10	0	春を告げる
 IP00ID9bdlOoP9o9lo1qlO0D1Pdo9I8l	0	0	5	11	12	16	0	8	12	15	0	PARANOiA-Respect-
-IPDid8ii1iQb19lb6iqOi91O0il018Ql	0	0	3	5	9	12	0	5	9	13	0	Thank You Merry Christmas
+IPDid8ii1iQb19lb6iqOi91O0il018Ql	0	0	3	5	9	12	16	5	9	13	16	Thank You Merry Christmas
 IPOq96Qo911IdQbdqIo0I816i6O86ioO	0	0	2	6	10	12	0	6	10	12	0	LoveLove DokiDoki
 IPdDlblblqO1do9IQbDoi0iOoPDoiDlI	0	0	2	6	9	11	0	6	10	12	0	Dazzlin' Darlin
 IPdQ8qIqPiIdqQloI1dQQ688O0qlOQQo	0	0	1	5	10	13	0	5	11	14	0	BONE BORN
@@ -615,6 +621,7 @@ OPbd0ldd89Ddll690qiObDld9oDdPdOi	0	0	4	8	14	17	0	8	14	17	0	perditus†paradisus
 OPbqldiq0dQIo1011086IOl1qbOloOl9	0	0	4	6	7	11	0	5	8	11	0	CANDY☆
 OPdooDlO9iO09lI1ODP00660loDiiodi	0	0	4	8	12	16	0	8	12	16	0	Helios
 OPi8oobIDid6q0P18QdD11D6O1I6Ioqo	2	0	0	0	0	0	19	0	0	0	0	十段 (A20)
+OQ6o9D6ldd0iqoqoQQ0QbIi01DI9dO6b	0	0	3	6	12	16	0	6	12	16	0	Finally Dive
 OQO1Di8IQIQqP1d81d1ID9QD110b0888	0	0	3	8	13	17	0	8	13	17	0	Abrupt Madness
 OQb96d6qD9bPdD819QO0b88blIllldoi	0	0	2	5	8	10	12	5	9	11	13	One Sided Love
 OQbPdOIo6dPPIq6d8qid6DbPP0q991i6	0	0	2	5	8	12	0	5	8	12	0	天上の星～黎明記～
@@ -804,7 +811,7 @@ QdIl6D808iDoDQi0Qii99Do6do8DOdQO	0	0	2	5	8	12	0	4	8	12	0	KISS KISS KISS 秋葉�
 QdbPPPDlIQiI191qPdblO01O8P8o6D68	0	0	0	0	0	0	10	0	0	0	10	BURNIN' THE FLOOR(BLUE FIRE mix)
 Qi1Q6I80b09Oq91OPldbO19080q0dd0b	0	0	3	6	11	14	0	6	10	13	0	Red Cape Theorem
 QiOl969Iq1Pl6o60QOQ9PooDbbiOPioo	0	0	3	6	9	12	0	6	9	12	0	スカイクラッドの観測者
-QiPiIb8I99loq8loIq91iP6l1OOoq8oq	0	0	0	0	16	18	19	0	16	18	19	鳳
+QiPiIb8I99loq8loIq91iP6l1OOoq8oq	0	0	7	11	16	18	19	11	16	18	19	鳳
 QiQi666Qd9I6d1899iii80PdQdDlO1i1	0	0	3	7	12	15	0	7	12	16	0	Sand Blow
 QiboqIool99ol9Q0d08b68OIIiD89qqO	0	0	3	6	10	13	0	7	11	13	0	叛逆のディスパレート
 Qid6OQOIibbOiDo808oq9oQO668bDodP	0	0	2	5	8	13	15	5	8	12	15	Finale
@@ -977,6 +984,7 @@ di088lOPlqQ1OoQIbilI1P0q119i8o9O	0	0	9	11	13	15	0	10	12	15	0	osaka EVOLVED -毎�
 di9ddbd1lb80q98ODdod0ODQ0q6PdQP1	0	0	3	5	7	10	0	5	7	10	0	CUTIE CHASER
 diDO6qoqo9li6qDdidDiqO9bi8lOP8ib	0	0	3	5	8	12	0	5	8	11	0	Qipchāq
 diOIbOoPIPO9DP1QiOi9QdOlqQbI8Old	1	0	5	7	11	14	0	7	12	14	0	STRANGE
+diPbi6I8O1lQ1b9lO0q8IoqDqbD9P6dP	0	0	2	5	10	14	0	5	10	14	0	走れメロンパン
 dib16I1b0o9OdOd1O90dO1Q6iIO9PQo9	2	0	0	0	0	0	0	0	0	0	12	三段 (A20)
 diq9D0qbI00iOOb69q6Q1Q90PQOlo6dl	0	0	3	6	12	17	0	6	12	17	0	パーフェクトイーター
 dll6Dq0blbl1iPbIIiQ61QIoo00doqiI	0	1	3	5	8	13	0	5	8	13	0	Hillbilly Shoes
@@ -1167,6 +1175,7 @@ llo89P08I1PlID9DO8lqdbbq69O8Qiib	0	0	2	7	10	13	0	6	10	13	0	逆さま♥シンデ
 lo6bOoq86d9od6qQ9PiPibOioOQb96lP	0	0	1	4	8	11	10	4	8	11	11	TWINKLE♡HEART
 loD6oi96869O8ilii1QPOPDoP91l1PQQ	0	0	2	7	10	13	11	7	10	13	13	Summer fantasy (Darwin remix)
 loP08P1PPi990lPD0O060d888O9o6qb8	0	0	2	5	8	12	0	5	8	12	0	Seasons
+loQ0Ibqqo8OO11oI9i9D6o0DDI0PDiOO	0	0	3	6	12	16	0	6	12	16	0	千客万来☆無問題！
 lob09DPQD0Dl6Q09dbq8biIb6QqDql8i	0	0	3	5	11	14	0	5	11	14	0	INFINITE WORLD
 loii6b8OODDOl9q0OD88Ibb9I0qO0PPo	0	0	2	6	10	14	0	6	10	14	0	ラブキラ☆スプラッシュ
 lq9iPP06O8qiP1iooiboPO910b86di19	0	0	2	7	10	14	0	7	10	14	0	IRON HEART
@@ -1276,6 +1285,7 @@ q6qI6llb69D1IQq0OiP8OD06Qioob91Q	0	0	3	8	10	13	0	9	11	13	0	GRADIUSIC CYBER ～AM
 q8QPqbiQ00i6odq81P0D960I108bIiQb	0	0	3	5	11	14	17	5	11	14	17	Acid,Tribal & Dance (DDR EDITION)
 q8i11qPbo9iq8lQb9d08di81Q88q8P9o	0	0	2	6	10	15	0	6	10	15	0	Hunny Bunny
 q8iPi1DP6Do6D110OQiQDdPq06q80Qb0	0	0	2	5	8	11	0	5	9	11	0	ウソツキ横丁は雨模様
+q8llPoIloObO6QIPlQOl9P06dDQlPlQi	0	0	2	6	10	14	0	5	10	14	0	コンフェイト＊コンチェルト
 q8o866OdqqDPOQdO88D1DOdbqQo1q8Q1	0	0	5	9	13	16	0	9	13	16	0	VALLIS-NERIA
 q8q0D8QoP89IqooiiD0q66QPI1b8lDi0	0	0	1	3	8	12	0	3	8	12	0	Musician
 q96q9D9oIIOQl8QQ60ii19P0Dbq8Q609	0	0	6	12	15	17	18	12	15	17	18	New Millennium
