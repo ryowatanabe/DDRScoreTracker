@@ -6997,10 +6997,10 @@ vue-eslint-parser@^9.3.1:
     lodash "^4.17.21"
     semver "^7.3.6"
 
-vue-loader@^17.3.1:
-  version "17.3.1"
-  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-17.3.1.tgz#03b80e7f65727894ed6b29c65dd54ad215a40c38"
-  integrity sha512-nmVu7KU8geOyzsStyyaxID/uBGDMS8BkPXb6Lu2SNkMawriIbb+hYrNtgftHMKxOSkjjjTF5OSSwPo3KP59egg==
+vue-loader@^17.4.0:
+  version "17.4.0"
+  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-17.4.0.tgz#bd1cbbe858c63513e428caa587e9c6f9d848a14d"
+  integrity sha512-tq81JlBNWYvoYAh5PRZXg5bE7BEv0Id6W7BF5otj18MtHgu5OqiK9rQu0z73r+VGlIq0lLDoEeC7RWYynUpXlQ==
   dependencies:
     chalk "^4.1.0"
     hash-sum "^2.0.0"
