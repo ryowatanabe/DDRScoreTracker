@@ -1,5 +1,4 @@
 const CopyPlugin = require('copy-webpack-plugin');
-const ExtensionReloader = require('webpack-extension-reloader');
 const { VueLoaderPlugin } = require('vue-loader');
 const path = require('path');
 const { version } = require('./package.json');
@@ -72,14 +71,6 @@ const config = {
 
 if (config.mode === 'development') {
   config.devtool = 'inline-source-map';
-}
-
-if (process.env.HMR === 'true') {
-  config.plugins = (config.plugins || []).concat([
-    new ExtensionReloader({
-      manifest: path.join(__dirname, 'dist/manifest.json'),
-    }),
-  ]);
 }
 
 module.exports = config;
