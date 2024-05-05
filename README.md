@@ -41,7 +41,7 @@ https://chromewebstore.google.com/detail/ddr-score-tracker/kecflehdfdgjkmfbhhhjd
 ```
 $ git clone git@github.com:ryowatanabe/DDRScoreTracker
 $ cd DDRScoreTracker
-$ yarn install
+$ yarn
 $ yarn build
 ```
 
