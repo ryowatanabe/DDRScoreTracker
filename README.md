@@ -1,5 +1,9 @@
 # DDR Score Tracker
 
+**Current version (v0.2.0) does not support DDR World.**
+
+**現在のバージョン (v0.2.0) は DDR World に対応していません。**
+
 <img alt="DP LV15 sample screenshot" src="https://ryowatanabe.github.io/DDRScoreTracker/images/screenshot_dplv15.png" width="45%"> <img alt="DP Grades sample screenshot" src="https://ryowatanabe.github.io/DDRScoreTracker/images/screenshot_dpgrades.png" width="45%">
 
 ## Abstract / 概要
