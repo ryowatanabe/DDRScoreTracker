@@ -3,6 +3,7 @@ export class Constants {
     return {
       A20PLUS: 0,
       A3: 1,
+      WORLD: 2,
     };
   }
 
@@ -102,6 +103,20 @@ export class Constants {
     result[this.GAME_VERSION.A3][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.GRADE_PLUS] = '';
     result[this.GAME_VERSION.A3][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.GRADE_A3] = 'https://p.eagate.573.jp/game/ddr/ddra3/p/playdata/grade_data_single.html';
     result[this.GAME_VERSION.A3][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.GRADE_A3] = 'https://p.eagate.573.jp/game/ddr/ddra3/p/playdata/grade_data_double.html';
+    result[this.GAME_VERSION.WORLD] = {};
+    result[this.GAME_VERSION.WORLD][this.PLAY_MODE.SINGLE] = {};
+    result[this.GAME_VERSION.WORLD][this.PLAY_MODE.DOUBLE] = {};
+    result[this.GAME_VERSION.WORLD][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddrworld/playdata/music_data_single.html';
+    result[this.GAME_VERSION.WORLD][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddrworld/playdata/music_data_double.html';
+    result[this.GAME_VERSION.WORLD][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.NONSTOP] = '';
+    result[this.GAME_VERSION.WORLD][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.NONSTOP] = '';
+    result[this.GAME_VERSION.WORLD][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.GRADE] = '';
+    result[this.GAME_VERSION.WORLD][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.GRADE] = '';
+    result[this.GAME_VERSION.WORLD][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.GRADE_PLUS] = '';
+    result[this.GAME_VERSION.WORLD][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.GRADE_PLUS] = '';
+    result[this.GAME_VERSION.WORLD][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.GRADE_A3] = '';
+    result[this.GAME_VERSION.WORLD][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.GRADE_A3] = '';
+
     return result;
   }
 
@@ -119,6 +134,12 @@ export class Constants {
     result[this.GAME_VERSION.A3][this.MUSIC_TYPE.GRADE] = '';
     result[this.GAME_VERSION.A3][this.MUSIC_TYPE.GRADE_PLUS] = '';
     result[this.GAME_VERSION.A3][this.MUSIC_TYPE.GRADE_A3] = 'https://p.eagate.573.jp/game/ddr/ddra3/p/playdata/course_detail.html?index=[musicId]&gtype=1';
+    result[this.GAME_VERSION.WORLD] = {};
+    result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddrworld/playdata/music_detail.html?index=[musicId]';
+    result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.NONSTOP] = '';
+    result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.GRADE] = '';
+    result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.GRADE_PLUS] = '';
+    result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.GRADE_A3] = '';
     return result;
   }
 
@@ -137,6 +158,13 @@ export class Constants {
     result[this.GAME_VERSION.A3][this.MUSIC_TYPE.GRADE] = '';
     result[this.GAME_VERSION.A3][this.MUSIC_TYPE.GRADE_PLUS] = '';
     result[this.GAME_VERSION.A3][this.MUSIC_TYPE.GRADE_A3] = 'https://p.eagate.573.jp/game/ddr/ddra3/p/playdata/course_detail.html?index=[musicId]&diff=[difficulty]&gtype=1';
+    result[this.GAME_VERSION.WORLD] = {};
+    result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.NORMAL] =
+      'https://p.eagate.573.jp/game/ddr/ddrworld/playdata/music_detail.html?index=[musicId]&style=[playMode]&difficulty=[difficulty]';
+    result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.NONSTOP] = '';
+    result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.GRADE] = '';
+    result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.GRADE_PLUS] = '';
+    result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.GRADE_A3] = '';
     return result;
   }
 
@@ -236,6 +264,22 @@ export class Constants {
     };
   }
 
+  static get FLARE_RANK() {
+    return {
+      NONE: 0,
+      FLARE_1: 1,
+      FLARE_2: 2,
+      FLARE_3: 3,
+      FLARE_4: 4,
+      FLARE_5: 5,
+      FLARE_6: 6,
+      FLARE_7: 7,
+      FLARE_8: 8,
+      FLARE_9: 9,
+      FLARE_EX: 10,
+    };
+  }
+
   static get SCORE_TO_SCORE_RANK_THRESHOLD() {
     return [
       { score: 990000, scoreRank: this.SCORE_RANK.AAA },
@@ -296,6 +340,58 @@ export class Constants {
       AA: this.SCORE_RANK.AA,
       'AA+': this.SCORE_RANK.AA_PLUS,
       AAA: this.SCORE_RANK.AAA,
+    };
+  }
+
+  static get CLEAR_TYPE_FILE_MAP_DDRWORLD() {
+    return {
+      'cl_none.png': null,
+      'cl_asclear.png': this.CLEAR_TYPE.ASSIST_CLEAR,
+      'cl_clear.png': this.CLEAR_TYPE.CLEAR,
+      'cl_li4clear.png': this.CLEAR_TYPE.LIFE4,
+      'cl_good.png': this.CLEAR_TYPE.GOOD_FC,
+      'cl_great.png': this.CLEAR_TYPE.GREAT_FC,
+      'cl_perf.png': this.CLEAR_TYPE.PERFECT_FC,
+      'cl_marv.png': this.CLEAR_TYPE.MARVELOUS_FC,
+    };
+  }
+
+  static get SCORE_RANK_FILE_MAP_DDRWORLD() {
+    return {
+      'rank_s_nodisp.png': this.SCORE_RANK.NO_PLAY,
+      'rank_s_none.png': this.SCORE_RANK.NO_PLAY,
+      'rank_s_e.png': this.SCORE_RANK.E,
+      'rank_s_d.png': this.SCORE_RANK.D,
+      'rank_s_d_p.png': this.SCORE_RANK.D_PLUS,
+      'rank_s_c_m.png': this.SCORE_RANK.C_MINUS,
+      'rank_s_c.png': this.SCORE_RANK.C,
+      'rank_s_c_p.png': this.SCORE_RANK.C_PLUS,
+      'rank_s_b_m.png': this.SCORE_RANK.B_MINUS,
+      'rank_s_b.png': this.SCORE_RANK.B,
+      'rank_s_b_p.png': this.SCORE_RANK.B_PLUS,
+      'rank_s_a_m.png': this.SCORE_RANK.A_MINUS,
+      'rank_s_a.png': this.SCORE_RANK.A,
+      'rank_s_a_p.png': this.SCORE_RANK.A_PLUS,
+      'rank_s_aa_m.png': this.SCORE_RANK.AA_MINUS,
+      'rank_s_aa.png': this.SCORE_RANK.AA,
+      'rank_s_aa_p.png': this.SCORE_RANK.AA_PLUS,
+      'rank_s_aaa.png': this.SCORE_RANK.AAA,
+    };
+  }
+
+  static get FLARE_RANK_FILE_MAP_DDRWORLD() {
+    return {
+      'flare_none.png': this.FLARE_RANK.NONE,
+      'flare_1.png': this.FLARE_RANK.FLARE_1,
+      'flare_2.png': this.FLARE_RANK.FLARE_2,
+      'flare_3.png': this.FLARE_RANK.FLARE_3,
+      'flare_4.png': this.FLARE_RANK.FLARE_4,
+      'flare_5.png': this.FLARE_RANK.FLARE_5,
+      'flare_6.png': this.FLARE_RANK.FLARE_6,
+      'flare_7.png': this.FLARE_RANK.FLARE_7,
+      'flare_8.png': this.FLARE_RANK.FLARE_8,
+      'flare_9.png': this.FLARE_RANK.FLARE_9,
+      'flare_ex.png': this.FLARE_RANK.FLARE_EX,
     };
   }
 
@@ -400,6 +496,38 @@ export class Constants {
     result[this.SCORE_RANK.AA] = 'rank_aa';
     result[this.SCORE_RANK.AA_PLUS] = 'rank_aa_p';
     result[this.SCORE_RANK.AAA] = 'rank_aaa';
+    return result;
+  }
+
+  static get FLARE_RANK_STRING() {
+    const result = {};
+    result[this.FLARE_RANK.NONE] = '';
+    result[this.FLARE_RANK.FLARE_1] = '1';
+    result[this.FLARE_RANK.FLARE_2] = '2';
+    result[this.FLARE_RANK.FLARE_3] = '3';
+    result[this.FLARE_RANK.FLARE_4] = '4';
+    result[this.FLARE_RANK.FLARE_5] = '5';
+    result[this.FLARE_RANK.FLARE_6] = '6';
+    result[this.FLARE_RANK.FLARE_7] = '7';
+    result[this.FLARE_RANK.FLARE_8] = '8';
+    result[this.FLARE_RANK.FLARE_9] = '9';
+    result[this.FLARE_RANK.FLARE_EX] = 'EX';
+    return result;
+  }
+
+  static get FLARE_RANK_CLASS_STRING() {
+    const result = {};
+    result[this.FLARE_RANK.NONE] = '';
+    result[this.FLARE_RANK.FLARE_1] = 'flare_1';
+    result[this.FLARE_RANK.FLARE_2] = 'flare_2';
+    result[this.FLARE_RANK.FLARE_3] = 'flare_3';
+    result[this.FLARE_RANK.FLARE_4] = 'flare_4';
+    result[this.FLARE_RANK.FLARE_5] = 'flare_5';
+    result[this.FLARE_RANK.FLARE_6] = 'flare_6';
+    result[this.FLARE_RANK.FLARE_7] = 'flare_7';
+    result[this.FLARE_RANK.FLARE_8] = 'flare_8';
+    result[this.FLARE_RANK.FLARE_9] = 'flare_9';
+    result[this.FLARE_RANK.FLARE_EX] = 'flare_ex';
     return result;
   }
 

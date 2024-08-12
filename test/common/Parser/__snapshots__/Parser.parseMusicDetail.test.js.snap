@@ -1,5 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Parser.ParseMusicDetail (ddrworld/error) 1`] = `
+Object {
+  "musics": Array [],
+  "status": 1,
+}
+`;
+
+exports[`Parser.ParseMusicDetail (ddrworld/noLogin) 1`] = `
+Object {
+  "musics": Array [],
+  "status": 2,
+}
+`;
+
+exports[`Parser.ParseMusicDetail (ddrworld/normal) 1`] = `
+Object {
+  "musics": Array [
+    MusicData {
+      "difficulty": Array [
+        3,
+        6,
+        8,
+        11,
+        13,
+        6,
+        8,
+        12,
+        13,
+      ],
+      "isDeleted": 0,
+      "musicId": "8bQQ0lP96186D8Ibo8IoOd6o16qioiIo",
+      "title": "アルストロメリア (walk with you remix)",
+      "type": 0,
+    },
+  ],
+  "status": 0,
+}
+`;
+
 exports[`Parser.ParseMusicDetail (error) 1`] = `
 Object {
   "musics": Array [],
