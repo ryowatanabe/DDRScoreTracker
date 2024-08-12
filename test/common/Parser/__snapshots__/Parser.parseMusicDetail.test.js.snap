@@ -7,6 +7,31 @@ Object {
 }
 `;
 
+exports[`Parser.ParseMusicDetail (ddrworld/hidden-song) 1`] = `
+Object {
+  "musics": Array [
+    MusicData {
+      "difficulty": Array [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        12,
+        17,
+        0,
+      ],
+      "isDeleted": 0,
+      "musicId": "1IdqDqDdd08dboO911P6OQ8lobb16PDd",
+      "title": "Chromatic Burst",
+      "type": 0,
+    },
+  ],
+  "status": 0,
+}
+`;
+
 exports[`Parser.ParseMusicDetail (ddrworld/no-challenge-chart) 1`] = `
 Object {
   "musics": Array [

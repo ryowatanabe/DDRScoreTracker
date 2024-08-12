@@ -264,6 +264,9 @@
     "message": "(A20PLUS)"
   },
   "browser_action_debug_page_refresh_all_music_info_a3": {
+    "message": "(A3)"
+  },
+  "browser_action_debug_page_refresh_all_music_info_world": {
     "message": "楽曲情報の再取得"
   },
   "browser_action_debug_page_refresh_all_music_info_musicid": {

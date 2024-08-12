@@ -81,6 +81,14 @@ test(`MusicData.merge merge value onto another value (difficulty)`, () => {
   expect(base).toStrictEqual(expected);
 });
 
+test(`MusicData.merge merge smaller value onto another value (difficulty)`, () => {
+  const base = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [11, 12, 13, 14, 15, 16, 17, 18, 19], 0);
+  const target = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 10, 0, 11, 0, 12, 0, 13, 0], 0);
+  const expected = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [11, 10, 13, 11, 15, 12, 17, 13, 19], 0);
+  base.merge(target);
+  expect(base).toStrictEqual(expected);
+});
+
 test(`MusicData.merge merge empty onto value (difficulty)`, () => {
   const base = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [1, 2, 3, 4, 5, 6, 7, 8, 9], 0);
   const target = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0);
