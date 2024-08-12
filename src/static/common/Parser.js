@@ -61,7 +61,7 @@ export class Parser {
     return res;
   }
 
-  static parseMusicDetail(rootElement, _gameVersion) {
+  static parseMusicDetailBase(rootElement) {
     const res = {
       musics: [],
       status: this.getResultStatus(rootElement),
@@ -88,6 +88,46 @@ export class Parser {
     res.musics.push(musicData);
     res.status = this.STATUS.SUCCESS;
     return res;
+  }
+
+  static parseMusicDetailDDRWorld(rootElement) {
+    const res = {
+      musics: [],
+      status: this.getResultStatus(rootElement),
+    };
+    if (res.status != this.STATUS.SUCCESS) {
+      return res;
+    }
+    const musicInfo = rootElement.querySelectorAll('#music_info td');
+    if (musicInfo.length < 1) {
+      res.status = this.STATUS.UNKNOWN_ERROR;
+      return res;
+    }
+    const regexpForMusicId = /^.*img=([0-9a-zA-Z]+).*$/;
+    const src = musicInfo[0].querySelector('img').src;
+    const musicId = src.replace(regexpForMusicId, '$1');
+    const title = musicInfo.length > 1 ? musicInfo[1].innerHTML.split('<br>')[0] : '';
+    const regexpForDifficulties = /^.*songdetails_level_([0-9]*).png$/;
+    const difficulties = Array.from(rootElement.querySelectorAll('li.step'));
+    const difficulty = difficulties.map((element) => {
+      const img = element.querySelector('img');
+      if (img === null) {
+        return 0;
+      }
+      const value = parseInt(img.src.replace(regexpForDifficulties, '$1'), 10);
+      return value ? value : 0;
+    });
+    const musicData = new MusicData(musicId, Constants.MUSIC_TYPE.NORMAL, title, difficulty, 0);
+    res.musics.push(musicData);
+    res.status = this.STATUS.SUCCESS;
+    return res;
+  }
+
+  static parseMusicDetail(rootElement, gameVersion) {
+    if (gameVersion == Constants.GAME_VERSION.WORLD) {
+      return this.parseMusicDetailDDRWorld(rootElement);
+    }
+    return this.parseMusicDetailBase(rootElement);
   }
 
   static parseScoreListBase(rootElement) {

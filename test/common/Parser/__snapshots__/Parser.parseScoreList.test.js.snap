@@ -23,7 +23,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -44,7 +44,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -54,7 +54,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -64,7 +64,7 @@ Object {
         "8": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -85,7 +85,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -101,7 +101,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -111,7 +111,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -127,7 +127,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -137,7 +137,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -153,7 +153,7 @@ Object {
         "5": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -163,7 +163,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -173,7 +173,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 3,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -189,7 +189,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -205,7 +205,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -226,7 +226,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -236,7 +236,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -252,7 +252,7 @@ Object {
         "5": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -262,7 +262,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -283,7 +283,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -299,7 +299,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -309,7 +309,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -325,7 +325,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -335,7 +335,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -351,7 +351,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -361,7 +361,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -377,7 +377,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -387,7 +387,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -403,7 +403,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -413,7 +413,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -429,7 +429,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -439,7 +439,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -449,7 +449,7 @@ Object {
         "8": ScoreDetail {
           "clearCount": null,
           "clearType": null,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -465,7 +465,7 @@ Object {
         "5": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -475,7 +475,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -485,7 +485,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 3,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -501,7 +501,7 @@ Object {
         "5": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -511,7 +511,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -521,7 +521,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 3,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -537,7 +537,7 @@ Object {
         "5": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -547,7 +547,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -557,7 +557,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": null,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -585,7 +585,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -601,7 +601,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -611,7 +611,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -627,7 +627,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -637,7 +637,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -653,7 +653,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -663,7 +663,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 3,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -679,7 +679,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -689,7 +689,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -705,7 +705,7 @@ Object {
         "5": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -715,7 +715,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -725,7 +725,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -741,7 +741,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -751,7 +751,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -767,7 +767,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -777,7 +777,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -793,7 +793,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -803,7 +803,7 @@ Object {
         "8": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -819,7 +819,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -829,7 +829,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -845,7 +845,7 @@ Object {
         "5": ScoreDetail {
           "clearCount": null,
           "clearType": 7,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -855,7 +855,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -871,7 +871,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -887,7 +887,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -903,7 +903,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -913,7 +913,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 3,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -929,7 +929,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -939,7 +939,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -955,7 +955,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -965,7 +965,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -986,7 +986,7 @@ Object {
         "5": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -996,7 +996,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1017,7 +1017,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1027,7 +1027,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1043,7 +1043,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1053,7 +1053,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1063,7 +1063,7 @@ Object {
         "8": ScoreDetail {
           "clearCount": null,
           "clearType": 3,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1079,7 +1079,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1089,7 +1089,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1105,7 +1105,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1115,7 +1115,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1131,7 +1131,7 @@ Object {
         "5": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1141,7 +1141,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1151,7 +1151,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1167,7 +1167,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1177,7 +1177,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1193,7 +1193,7 @@ Object {
         "5": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1203,7 +1203,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1213,7 +1213,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1229,7 +1229,7 @@ Object {
         "5": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1239,7 +1239,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1249,7 +1249,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1265,7 +1265,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1275,7 +1275,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 3,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1291,7 +1291,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1301,7 +1301,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 3,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1317,7 +1317,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1327,7 +1327,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1343,7 +1343,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1353,7 +1353,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1374,7 +1374,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 4,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1384,7 +1384,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1400,7 +1400,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1410,7 +1410,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1420,7 +1420,7 @@ Object {
         "8": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1436,7 +1436,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1446,7 +1446,7 @@ Object {
         "8": ScoreDetail {
           "clearCount": null,
           "clearType": 3,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1462,7 +1462,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1478,7 +1478,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1488,7 +1488,7 @@ Object {
         "8": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1504,7 +1504,7 @@ Object {
         "8": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1520,7 +1520,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1530,7 +1530,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1551,7 +1551,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1561,7 +1561,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 3,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1577,7 +1577,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1593,7 +1593,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1609,7 +1609,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1619,7 +1619,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1635,7 +1635,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1651,7 +1651,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1661,7 +1661,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 3,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1682,7 +1682,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1692,7 +1692,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1708,7 +1708,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1718,7 +1718,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 5,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1734,7 +1734,7 @@ Object {
         "5": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1744,7 +1744,7 @@ Object {
         "6": ScoreDetail {
           "clearCount": null,
           "clearType": 6,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,
@@ -1754,7 +1754,7 @@ Object {
         "7": ScoreDetail {
           "clearCount": null,
           "clearType": 3,
-          "flareRank": null,
+          "flareRank": 0,
           "flareSkill": null,
           "maxCombo": null,
           "playCount": null,

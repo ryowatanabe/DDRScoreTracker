@@ -70,3 +70,11 @@ test('Parser.ParseMusicDetail (ddrworld/normal)', async () => {
   const res = Parser.parseMusicDetail(rootElement, Constants.GAME_VERSION.WORLD);
   expect(res).toMatchSnapshot();
 });
+
+test('Parser.ParseMusicDetail (ddrworld/no-challenge-chart)', async () => {
+  const html = fs.readFileSync(path.resolve(path.join(__dirname, 'fixtures/ddrworld/music-detail-no-challenge.html')), 'utf8');
+  const rootElement = document.createElement('body');
+  rootElement.innerHTML = html;
+  const res = Parser.parseMusicDetail(rootElement, Constants.GAME_VERSION.WORLD);
+  expect(res).toMatchSnapshot();
+});

@@ -7,6 +7,31 @@ Object {
 }
 `;
 
+exports[`Parser.ParseMusicDetail (ddrworld/no-challenge-chart) 1`] = `
+Object {
+  "musics": Array [
+    MusicData {
+      "difficulty": Array [
+        1,
+        4,
+        9,
+        12,
+        0,
+        4,
+        9,
+        12,
+        0,
+      ],
+      "isDeleted": 0,
+      "musicId": "b86i9lPlObdl1008PO0PIi09q9o9l88i",
+      "title": "強風オールバック",
+      "type": 0,
+    },
+  ],
+  "status": 0,
+}
+`;
+
 exports[`Parser.ParseMusicDetail (ddrworld/noLogin) 1`] = `
 Object {
   "musics": Array [],
