@@ -5,6 +5,10 @@
 ### Added
 
 - Support for DDR World
+  - Retrieve data from DDR World website
+  - Filter charts by flare rank
+  - Sort charts by flare skill
+  - Show distribution graph of flare rank
 
 ## [0.2.0] - 2023-01-08
 
