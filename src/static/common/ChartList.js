@@ -19,6 +19,7 @@ export class ChartList {
   updateStatistics() {
     const statistics = {
       clearType: [],
+      flareRank: [],
       scoreRank: [],
       score: {},
     };
@@ -35,6 +36,20 @@ export class ChartList {
     });
     statistics.clearType.sort(function (a, b) {
       return b.clearType - a.clearType;
+    });
+    /* flareRank */
+    Object.values(Constants.FLARE_RANK).forEach((flareRank) => {
+      statistics.flareRank.push({
+        flareRank: flareRank,
+        flareRankString: Constants.FLARE_RANK_STRING[flareRank],
+        flareRankClassString: Constants.FLARE_RANK_CLASS_STRING[flareRank],
+        count: this.charts.filter((chartData) => {
+          return chartData.flareRank == flareRank;
+        }).length,
+      });
+    });
+    statistics.flareRank.sort(function (a, b) {
+      return b.flareRank - a.flareRank;
     });
     /* scoreRank */
     Object.values(Constants.SCORE_RANK).forEach((scoreRank) => {

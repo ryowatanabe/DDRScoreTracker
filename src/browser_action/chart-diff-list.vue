@@ -19,7 +19,7 @@
               <div class="title">{{ difference.title }}</div>
 
               <div :class="['flare_rank', difference.beforeFlareRankClassString]">
-                {{ difference.beforeFlareRankString }}
+                {{ difference.beforeFlareRankSymbol }}
               </div>
               <div class="flare_skill">
                 {{ difference.beforeFlareSkill }}
@@ -35,7 +35,7 @@
               <div>→</div>
 
               <div :class="['flare_rank', difference.afterFlareRankClassString]">
-                {{ difference.afterFlareRankString }}
+                {{ difference.afterFlareRankSymbol }}
               </div>
               <div class="flare_skill">
                 {{ difference.afterFlareSkill }}
@@ -274,7 +274,8 @@ export default {
     minmax(1px, max-content) auto minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(
       1px,
       max-content
-    ) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content)
+    )
+    minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content)
     minmax(1px, max-content);
 }
 

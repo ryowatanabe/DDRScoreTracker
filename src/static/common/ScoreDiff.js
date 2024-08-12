@@ -147,11 +147,11 @@ export class ScoreDiff {
     return Constants.CLEAR_TYPE_CLASS_STRING[this.beforeClearType];
   }
 
-  get beforeFlareRankString() {
+  get beforeFlareRankSymbol() {
     if (this.beforeFlareRank === null) {
       return '';
     }
-    return Constants.FLARE_RANK_STRING[this.beforeFlareRank];
+    return Constants.FLARE_RANK_SYMBOL[this.beforeFlareRank];
   }
 
   get beforeFlareRankClassString() {
@@ -238,11 +238,11 @@ export class ScoreDiff {
     return Constants.CLEAR_TYPE_CLASS_STRING[this.afterClearType];
   }
 
-  get afterFlareRankString() {
+  get afterFlareRankSymbol() {
     if (this.afterFlareRank === null) {
       return '';
     }
-    return Constants.FLARE_RANK_STRING[this.afterFlareRank];
+    return Constants.FLARE_RANK_SYMBOL[this.afterFlareRank];
   }
 
   get afterFlareRankClassString() {

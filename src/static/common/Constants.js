@@ -501,6 +501,22 @@ export class Constants {
 
   static get FLARE_RANK_STRING() {
     const result = {};
+    result[this.FLARE_RANK.NONE] = 'None';
+    result[this.FLARE_RANK.FLARE_1] = 'Ⅰ';
+    result[this.FLARE_RANK.FLARE_2] = 'Ⅱ';
+    result[this.FLARE_RANK.FLARE_3] = 'Ⅲ';
+    result[this.FLARE_RANK.FLARE_4] = 'Ⅳ';
+    result[this.FLARE_RANK.FLARE_5] = 'Ⅴ';
+    result[this.FLARE_RANK.FLARE_6] = 'Ⅵ';
+    result[this.FLARE_RANK.FLARE_7] = 'Ⅶ';
+    result[this.FLARE_RANK.FLARE_8] = 'Ⅷ';
+    result[this.FLARE_RANK.FLARE_9] = 'Ⅸ';
+    result[this.FLARE_RANK.FLARE_EX] = 'EX';
+    return result;
+  }
+
+  static get FLARE_RANK_SYMBOL() {
+    const result = {};
     result[this.FLARE_RANK.NONE] = '';
     result[this.FLARE_RANK.FLARE_1] = 'Ⅰ';
     result[this.FLARE_RANK.FLARE_2] = 'Ⅱ';
@@ -517,7 +533,7 @@ export class Constants {
 
   static get FLARE_RANK_CLASS_STRING() {
     const result = {};
-    result[this.FLARE_RANK.NONE] = '';
+    result[this.FLARE_RANK.NONE] = 'flare_none';
     result[this.FLARE_RANK.FLARE_1] = 'flare_1';
     result[this.FLARE_RANK.FLARE_2] = 'flare_2';
     result[this.FLARE_RANK.FLARE_3] = 'flare_3';

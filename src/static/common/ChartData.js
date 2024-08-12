@@ -155,6 +155,13 @@ export class ChartData {
     return Constants.SCORE_RANK_CLASS_STRING[this.scoreDetail.scoreRank];
   }
 
+  get flareRankSymbol() {
+    if (this.scoreDetail === null || this.scoreDetail.flareRank === null) {
+      return '';
+    }
+    return Constants.FLARE_RANK_SYMBOL[this.scoreDetail.flareRank];
+  }
+
   get flareRankString() {
     if (this.scoreDetail === null || this.scoreDetail.flareRank === null) {
       return '';
