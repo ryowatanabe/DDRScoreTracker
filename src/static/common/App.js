@@ -520,7 +520,7 @@ export class App {
   onUpdateTab() {
     switch (this.state) {
       case STATE.UPDATE_MUSIC_LIST:
-        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST' }, async (res) => {
+        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST', gameVersion: this.targetGameVersion }, async (res) => {
           console.log(res);
           if (res.status != Parser.STATUS.SUCCESS) {
             await this.handleError(res);
@@ -549,7 +549,7 @@ export class App {
         });
         break;
       case STATE.UPDATE_MUSIC_DETAIL:
-        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL' }, async (res) => {
+        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL', gameVersion: this.targetGameVersion }, async (res) => {
           console.log(res);
           // workaround:
           // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
@@ -586,7 +586,7 @@ export class App {
         });
         break;
       case STATE.UPDATE_SCORE_LIST:
-        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST' }, async (res) => {
+        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST', gameVersion: this.targetGameVersion }, async (res) => {
           console.log(res);
           if (res.status != Parser.STATUS.SUCCESS) {
             await this.handleError(res);
@@ -645,7 +645,7 @@ export class App {
         });
         break;
       case STATE.UPDATE_SCORE_DETAIL:
-        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL' }, async (res) => {
+        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL', gameVersion: this.targetGameVersion }, async (res) => {
           console.log(res);
           // workaround:
           // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため

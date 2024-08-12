@@ -502,15 +502,15 @@ export class Constants {
   static get FLARE_RANK_STRING() {
     const result = {};
     result[this.FLARE_RANK.NONE] = '';
-    result[this.FLARE_RANK.FLARE_1] = '1';
-    result[this.FLARE_RANK.FLARE_2] = '2';
-    result[this.FLARE_RANK.FLARE_3] = '3';
-    result[this.FLARE_RANK.FLARE_4] = '4';
-    result[this.FLARE_RANK.FLARE_5] = '5';
-    result[this.FLARE_RANK.FLARE_6] = '6';
-    result[this.FLARE_RANK.FLARE_7] = '7';
-    result[this.FLARE_RANK.FLARE_8] = '8';
-    result[this.FLARE_RANK.FLARE_9] = '9';
+    result[this.FLARE_RANK.FLARE_1] = 'Ⅰ';
+    result[this.FLARE_RANK.FLARE_2] = 'Ⅱ';
+    result[this.FLARE_RANK.FLARE_3] = 'Ⅲ';
+    result[this.FLARE_RANK.FLARE_4] = 'Ⅳ';
+    result[this.FLARE_RANK.FLARE_5] = 'Ⅴ';
+    result[this.FLARE_RANK.FLARE_6] = 'Ⅵ';
+    result[this.FLARE_RANK.FLARE_7] = 'Ⅶ';
+    result[this.FLARE_RANK.FLARE_8] = 'Ⅷ';
+    result[this.FLARE_RANK.FLARE_9] = 'Ⅸ';
     result[this.FLARE_RANK.FLARE_EX] = 'EX';
     return result;
   }
