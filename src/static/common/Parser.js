@@ -188,7 +188,7 @@ export class Parser {
         const scoreValue = parseInt(detail[0].querySelector('.data_score').innerHTML, 10);
         scoreDetail.score = scoreValue ? scoreValue : 0;
         const flareSkill = parseInt(detail[0].querySelector('.data_flareskill').innerHTML, 10);
-        scoreDetail.flareSkill = flareSkill ? flareSkill : 0;
+        scoreDetail.flareSkill = flareSkill ? flareSkill : null;
         const regexp = /^.*\/([^/]+)$/;
         const scoreRankFileName = detail[0].querySelectorAll('div.data_rank img')[0].src.replace(regexp, '$1');
         const clearTypeFileName = detail[0].querySelectorAll('div.data_clearkind img')[0].src.replace(regexp, '$1');
