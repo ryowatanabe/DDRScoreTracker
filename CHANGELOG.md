@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- Support for DDR World
+
 ## [0.2.0] - 2023-01-08
 
 ### Added
@@ -130,6 +136,7 @@
 
 First release
 
+[Unreleased]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.2.0...HEAD
 [0.2.0]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.1.0...v0.2.0
 [0.1.0]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.16...v0.1.0
 [0.0.16]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.0.15...v0.0.16
