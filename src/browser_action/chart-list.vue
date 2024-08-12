@@ -232,10 +232,12 @@ export default {
 .score_list {
   clear: right;
   display: grid;
-  grid-template-columns: minmax(1px, max-content) auto minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(
+  grid-template-columns:
+    minmax(1px, max-content) auto minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(
       1px,
       max-content
-    ) minmax(1px, max-content) minmax(1px, max-content);
+    )
+    minmax(1px, max-content) minmax(1px, max-content);
 }
 
 .score_list > div {
@@ -253,19 +255,16 @@ export default {
   overflow-x: hidden;
   text-overflow: ellipsis;
 }
-
 .score_list > .flare_rank {
   text-align: center;
   font-size: 1.2rem;
   font-weight: bold;
 }
-
 .score_list > .flare_skill {
   text-align: right;
   font-family: monospace;
   font-size: 1rem;
 }
-
 .score_list > .clear_count {
   text-align: right;
   font-family: monospace;
