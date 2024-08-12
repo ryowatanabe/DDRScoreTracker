@@ -82,7 +82,7 @@ export class ChartData {
     if (this.scoreDetail === null) {
       return Constants.FLARE_RANK.NONE;
     }
-    return this.scoreDetail.flareRank;
+    return this.scoreDetail.actualFlareRank;
   }
 
   get flareSkill() {

@@ -78,4 +78,11 @@ export class ScoreDetail {
     }
     return this.scoreRank;
   }
+
+  get actualFlareRank() {
+    if (this.flareRank === null) {
+      return Constants.FLARE_RANK.NONE;
+    }
+    return this.flareRank;
+  }
 }
