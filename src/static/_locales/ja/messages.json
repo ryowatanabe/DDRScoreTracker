@@ -92,6 +92,9 @@
   "browser_action_filter_filter_condition_score_rank": {
     "message": "スコアランク"
   },
+  "browser_action_filter_filter_condition_flare_rank": {
+    "message": "フレアランク"
+  },
   "browser_action_filter_filter_condition_availability": {
     "message": "収録状況"
   },
@@ -109,6 +112,9 @@
   },
   "browser_action_filter_sort_condition_score": {
     "message": "スコア"
+  },
+  "browser_action_filter_sort_condition_flare_skill": {
+    "message": "フレアスキル"
   },
   "browser_action_filter_sort_condition_title": {
     "message": "曲名"

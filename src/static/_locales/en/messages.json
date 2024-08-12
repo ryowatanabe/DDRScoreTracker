@@ -92,6 +92,9 @@
   "browser_action_filter_filter_condition_score_rank": {
     "message": "Score Rank"
   },
+  "browser_action_filter_filter_condition_flare_rank": {
+    "message": "Flare Rank"
+  },
   "browser_action_filter_filter_condition_availability": {
     "message": "Availability"
   },
@@ -109,6 +112,9 @@
   },
   "browser_action_filter_sort_condition_score": {
     "message": "Score"
+  },
+  "browser_action_filter_sort_condition_flare_skill": {
+    "message": "Flare Skill"
   },
   "browser_action_filter_sort_condition_title": {
     "message": "Title"

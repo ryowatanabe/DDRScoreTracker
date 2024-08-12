@@ -1,6 +1,6 @@
 import { I18n } from '../static/common/I18n.js';
 
-const filterNames = ['playMode', 'musicType', 'difficulty', 'level', 'clearType', 'scoreRank', 'availability'];
+const filterNames = ['playMode', 'musicType', 'difficulty', 'level', 'clearType', 'flareRank', 'scoreRank', 'availability'];
 
 let app;
 let savedConditions = [];

@@ -62,6 +62,12 @@
         <div class="play_count">
           <template v-if="chart.playCount !== null">{{ chart.playCount }}</template>
         </div>
+        <div :class="['flare_rank', chart.flareRankClassString]">
+          {{ chart.flareRankString }}
+        </div>
+        <div class="flare_skill">
+          {{ chart.flareSkill }}
+        </div>
         <div :class="['score_rank', chart.scoreRankClassString]">
           {{ chart.scoreRankString }}
         </div>
@@ -229,7 +235,7 @@ export default {
   grid-template-columns: minmax(1px, max-content) auto minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(
       1px,
       max-content
-    );
+    ) minmax(1px, max-content) minmax(1px, max-content);
 }
 
 .score_list > div {
@@ -247,6 +253,19 @@ export default {
   overflow-x: hidden;
   text-overflow: ellipsis;
 }
+
+.score_list > .flare_rank {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.score_list > .flare_skill {
+  text-align: right;
+  font-family: monospace;
+  font-size: 1rem;
+}
+
 .score_list > .clear_count {
   text-align: right;
   font-family: monospace;
@@ -337,5 +356,36 @@ export default {
 }
 .marvelous_fc {
   color: #ffffff;
+}
+
+.flare_1 {
+  color: #0000ff;
+}
+.flare_2 {
+  color: #00ffff;
+}
+.flare_3 {
+  color: #00ff00;
+}
+.flare_4 {
+  color: #ffff00;
+}
+.flare_5 {
+  color: #ff0000;
+}
+.flare_6 {
+  color: #ff00ff;
+}
+.flare_7 {
+  color: #999999;
+}
+.flare_8 {
+  color: #cccccc;
+}
+.flare_9 {
+  color: #ffffff;
+}
+.flare_ex {
+  color: #00ffff;
 }
 </style>
