@@ -286,6 +286,7 @@ export class App {
 
   /*
   曲リストに現存する全曲の曲情報を再取得する
+  難易度更新検知に使えるが、未解禁曲の情報は取得できない場合があるため注意
   */
   async refreshAllMusicInfo(musicIdForFilter, gameVersion) {
     if (this.state != STATE.IDLE) {
@@ -294,6 +295,7 @@ export class App {
       throw new Error(message);
     }
     Logger.info(I18n.getMessage('log_message_refresh_all_music_info_begin'));
+    this.targetGameVersion = gameVersion;
     this.targetMusics = [];
     this.musicList.musicIds
       .sort()
@@ -354,6 +356,7 @@ export class App {
       });
       return missing;
     });
+    this.targetGameVersion = gameVersion;
     this.targetMusics = targetMusicIDs.map((musicId) => {
       let musicType = this.scoreList.getScoreDataByMusicId(musicId).musicType;
       if (musicType == Constants.MUSIC_TYPE.UNKNOWN) {
@@ -520,7 +523,7 @@ export class App {
   onUpdateTab() {
     switch (this.state) {
       case STATE.UPDATE_MUSIC_LIST:
-        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST' }, async (res) => {
+        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST', gameVersion: this.targetGameVersion }, async (res) => {
           console.log(res);
           if (res.status != Parser.STATUS.SUCCESS) {
             await this.handleError(res);
@@ -549,7 +552,7 @@ export class App {
         });
         break;
       case STATE.UPDATE_MUSIC_DETAIL:
-        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL' }, async (res) => {
+        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL', gameVersion: this.targetGameVersion }, async (res) => {
           console.log(res);
           // workaround:
           // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
@@ -586,7 +589,7 @@ export class App {
         });
         break;
       case STATE.UPDATE_SCORE_LIST:
-        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST' }, async (res) => {
+        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST', gameVersion: this.targetGameVersion }, async (res) => {
           console.log(res);
           if (res.status != Parser.STATUS.SUCCESS) {
             await this.handleError(res);
@@ -645,7 +648,7 @@ export class App {
         });
         break;
       case STATE.UPDATE_SCORE_DETAIL:
-        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL' }, async (res) => {
+        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL', gameVersion: this.targetGameVersion }, async (res) => {
           console.log(res);
           // workaround:
           // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため

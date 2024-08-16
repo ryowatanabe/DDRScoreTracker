@@ -14,6 +14,7 @@ function fetchMissingMusicInfo(gameVersion) {
 }
 document.getElementById('fetchMissingMusicInfoButton').addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.A20PLUS));
 document.getElementById('fetchMissingMusicInfoButtonA3').addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.A3));
+document.getElementById('fetchMissingMusicInfoButtonWorld').addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.WORLD));
 
 function updateScoreList(gameVersion) {
   app
@@ -27,6 +28,7 @@ function updateScoreList(gameVersion) {
 }
 document.getElementById('updateScoreListButton').addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.A20PLUS));
 document.getElementById('updateScoreListButtonA3').addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.A3));
+document.getElementById('updateScoreListButtonWorld').addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.WORLD));
 
 function updateScoreDetail(gameVersion) {
   const targetMusics = [];
@@ -40,6 +42,7 @@ function updateScoreDetail(gameVersion) {
 }
 document.getElementById('updateScoreDetailButton').addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.A20PLUS));
 document.getElementById('updateScoreDetailButtonA3').addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.A3));
+document.getElementById('updateScoreDetailButtonWorld').addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.WORLD));
 
 document.getElementById('exportScoreToSkillAttackButton').addEventListener('click', () => {
   app

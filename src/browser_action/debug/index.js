@@ -16,6 +16,7 @@ function refreshAllMusicInfo(gameVersion) {
 }
 document.getElementById('refreshAllMusicInfoButton').addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A20PLUS));
 document.getElementById('refreshAllMusicInfoButtonA3').addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A3));
+document.getElementById('refreshAllMusicInfoButtonWorld').addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.WORLD));
 
 function resetSavedFilters() {
   if (window.confirm('保存されたフィルタをすべて削除しますか？')) {

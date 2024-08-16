@@ -92,6 +92,9 @@
   "browser_action_filter_filter_condition_score_rank": {
     "message": "スコアランク"
   },
+  "browser_action_filter_filter_condition_flare_rank": {
+    "message": "フレアランク"
+  },
   "browser_action_filter_filter_condition_availability": {
     "message": "収録状況"
   },
@@ -109,6 +112,9 @@
   },
   "browser_action_filter_sort_condition_score": {
     "message": "スコア"
+  },
+  "browser_action_filter_sort_condition_flare_skill": {
+    "message": "フレアスキル"
   },
   "browser_action_filter_sort_condition_title": {
     "message": "曲名"
@@ -144,7 +150,10 @@
     "message": "(A20PLUS)"
   },
   "browser_action_menu_get_missing_music_info_a3": {
-    "message": "不足している楽曲の情報を取得"
+    "message": "(A3)"
+  },
+  "browser_action_menu_get_missing_music_info_world": {
+    "message": "不足している楽曲の情報を取得 (World)"
   },
   "browser_action_menu_get_missing_music_info_description": {
     "message": "新曲が追加された場合など、スコアリストに存在するが楽曲リストに存在しない曲・譜面の情報を公式サイトから取得します。e-amusementへのログインが必要です。"
@@ -153,7 +162,10 @@
     "message": "(A20PLUS)"
   },
   "browser_action_menu_get_score_data_a3": {
-    "message": "スコア情報を取得"
+    "message": "(A3)"
+  },
+  "browser_action_menu_get_score_data_world": {
+    "message": "スコア情報を取得 (World)"
   },
   "browser_action_menu_get_score_data_description": {
     "message": "スコアリストを公式サイトから取得します。e-amusementへのログインが必要です。"
@@ -183,7 +195,10 @@
     "message": "(A20PLUS)"
   },
   "browser_action_menu_get_score_detail_a3": {
-    "message": "スコア詳細を取得"
+    "message": "(A3)"
+  },
+  "browser_action_menu_get_score_detail_world": {
+    "message": "スコア詳細を取得 (World)"
   },
   "browser_action_menu_get_score_detail_description": {
     "message": "現在リストに表示されている曲のスコア詳細を公式サイトから取得します。e-amusementへのログインが必要です。"
@@ -249,6 +264,9 @@
     "message": "(A20PLUS)"
   },
   "browser_action_debug_page_refresh_all_music_info_a3": {
+    "message": "(A3)"
+  },
+  "browser_action_debug_page_refresh_all_music_info_world": {
     "message": "楽曲情報の再取得"
   },
   "browser_action_debug_page_refresh_all_music_info_musicid": {

@@ -8,6 +8,8 @@ export class ScoreDetail {
     this.clearType = null;
     this.playCount = null;
     this.clearCount = null;
+    this.flareRank = null;
+    this.flareSkill = null;
     this.maxCombo = null;
   }
 
@@ -28,7 +30,7 @@ export class ScoreDetail {
   merge(scoreDetail) {
     let isUpdated = false;
     const before = this.clone();
-    const attributes = ['score', 'scoreRank', 'clearType', 'playCount', 'clearCount', 'maxCombo'];
+    const attributes = ['score', 'scoreRank', 'clearType', 'playCount', 'clearCount', 'flareRank', 'flareSkill', 'maxCombo'];
     attributes.forEach((attributeName) => {
       if (scoreDetail[attributeName] !== null) {
         if (this[attributeName] === null || scoreDetail[attributeName] > this[attributeName]) {
@@ -75,5 +77,12 @@ export class ScoreDetail {
       return Constants.SCORE_RANK.NO_PLAY;
     }
     return this.scoreRank;
+  }
+
+  get actualFlareRank() {
+    if (this.flareRank === null) {
+      return Constants.FLARE_RANK.NONE;
+    }
+    return this.flareRank;
   }
 }

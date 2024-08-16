@@ -78,6 +78,20 @@ export class ChartData {
     return this.scoreDetail.actualClearType;
   }
 
+  get flareRank() {
+    if (this.scoreDetail === null) {
+      return Constants.FLARE_RANK.NONE;
+    }
+    return this.scoreDetail.actualFlareRank;
+  }
+
+  get flareSkill() {
+    if (this.scoreDetail === null) {
+      return null;
+    }
+    return this.scoreDetail.flareSkill;
+  }
+
   get playCount() {
     if (this.scoreDetail === null) {
       return null;
@@ -139,6 +153,27 @@ export class ChartData {
       return '';
     }
     return Constants.SCORE_RANK_CLASS_STRING[this.scoreDetail.scoreRank];
+  }
+
+  get flareRankSymbol() {
+    if (this.scoreDetail === null || this.scoreDetail.flareRank === null) {
+      return '';
+    }
+    return Constants.FLARE_RANK_SYMBOL[this.scoreDetail.flareRank];
+  }
+
+  get flareRankString() {
+    if (this.scoreDetail === null || this.scoreDetail.flareRank === null) {
+      return '';
+    }
+    return Constants.FLARE_RANK_STRING[this.scoreDetail.flareRank];
+  }
+
+  get flareRankClassString() {
+    if (this.scoreDetail === null || this.scoreDetail.flareRank === null) {
+      return '';
+    }
+    return Constants.FLARE_RANK_CLASS_STRING[this.scoreDetail.flareRank];
   }
 
   get difficultyClassString() {

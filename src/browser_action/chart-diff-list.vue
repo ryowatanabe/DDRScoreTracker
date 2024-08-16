@@ -18,6 +18,12 @@
               <div :class="['level', difference.difficultyClassString]">{{ difference.levelString }}{{ difference.playModeSymbol }}</div>
               <div class="title">{{ difference.title }}</div>
 
+              <div :class="['flare_rank', difference.beforeFlareRankClassString]">
+                {{ difference.beforeFlareRankSymbol }}
+              </div>
+              <div class="flare_skill">
+                {{ difference.beforeFlareSkill }}
+              </div>
               <div :class="['score_rank', difference.beforeScoreRankClassString]">
                 {{ difference.beforeScoreRankString }}
               </div>
@@ -28,6 +34,12 @@
 
               <div>→</div>
 
+              <div :class="['flare_rank', difference.afterFlareRankClassString]">
+                {{ difference.afterFlareRankSymbol }}
+              </div>
+              <div class="flare_skill">
+                {{ difference.afterFlareSkill }}
+              </div>
               <div :class="['score_rank', difference.afterScoreRankClassString]">
                 {{ difference.afterScoreRankString }}
               </div>
@@ -263,6 +275,7 @@ export default {
       1px,
       max-content
     )
+    minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content)
     minmax(1px, max-content);
 }
 
@@ -280,6 +293,16 @@ export default {
   font-size: 1rem;
   overflow-x: hidden;
   text-overflow: ellipsis;
+}
+.score_list > .flare_rank {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.score_list > .flare_skill {
+  text-align: right;
+  font-family: monospace;
+  font-size: 1rem;
 }
 .score_list > .clear_count {
   text-align: right;
@@ -371,6 +394,37 @@ export default {
 }
 .marvelous_fc {
   color: #ffffff;
+}
+
+.flare_1 {
+  color: #0000ff;
+}
+.flare_2 {
+  color: #00ffff;
+}
+.flare_3 {
+  color: #00ff00;
+}
+.flare_4 {
+  color: #ffff00;
+}
+.flare_5 {
+  color: #ff0000;
+}
+.flare_6 {
+  color: #ff00ff;
+}
+.flare_7 {
+  color: #999999;
+}
+.flare_8 {
+  color: #cccccc;
+}
+.flare_9 {
+  color: #ffffff;
+}
+.flare_ex {
+  color: #00ffff;
 }
 </style>
 <style scoped>

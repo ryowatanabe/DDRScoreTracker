@@ -14,6 +14,19 @@
           </div>
         </div>
       </template>
+      <template v-if="summarySettings.flareRank">
+        <template v-for="item in statistics.flareRank">
+          <template v-if="item.count > 0"> {{ item.flareRankString }}:{{ item.count }}&nbsp;</template>
+        </template>
+        <div class="graph">
+          <div class="inner">
+            <template v-for="item in statistics.flareRank" :key="item.flareRank"
+              ><template v-if="item.count > 0"
+                ><span :class="['element', item.flareRankClassString]" :style="{ width: 'calc(' + item.count + ' / ' + charts.length + ' * 100%' }"></span></template
+            ></template>
+          </div>
+        </div>
+      </template>
       <template v-if="summarySettings.scoreRank">
         <template v-for="item in statistics.scoreRank">
           <template v-if="item.count > 0"> {{ item.scoreRankString }}:{{ item.count }}&nbsp;</template>
@@ -61,6 +74,12 @@
         </div>
         <div class="play_count">
           <template v-if="chart.playCount !== null">{{ chart.playCount }}</template>
+        </div>
+        <div :class="['flare_rank', chart.flareRankClassString]">
+          {{ chart.flareRankSymbol }}
+        </div>
+        <div class="flare_skill">
+          {{ chart.flareSkill }}
         </div>
         <div :class="['score_rank', chart.scoreRankClassString]">
           {{ chart.scoreRankString }}
@@ -185,6 +204,40 @@ export default {
   background-color: #ffffff;
 }
 
+.graph .flare_none {
+  background-color: #555555;
+}
+.graph .flare_1 {
+  background-color: #0000ff;
+}
+.graph .flare_2 {
+  background-color: #00ffff;
+}
+.graph .flare_3 {
+  background-color: #00ff00;
+}
+.graph .flare_4 {
+  background-color: #ffff00;
+}
+.graph .flare_5 {
+  background-color: #ff0000;
+}
+.graph .flare_6 {
+  background-color: #ff00ff;
+}
+.graph .flare_7 {
+  background-color: #999999;
+}
+.graph .flare_8 {
+  background-color: #cccccc;
+}
+.graph .flare_9 {
+  background-color: #ffffff;
+}
+.graph .flare_ex {
+  background-color: #00ffff;
+}
+
 .graph .rank_aaa {
   background-color: #ffffff;
 }
@@ -226,10 +279,12 @@ export default {
 .score_list {
   clear: right;
   display: grid;
-  grid-template-columns: minmax(1px, max-content) auto minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(
+  grid-template-columns:
+    minmax(1px, max-content) auto minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(
       1px,
       max-content
-    );
+    )
+    minmax(1px, max-content) minmax(1px, max-content);
 }
 
 .score_list > div {
@@ -246,6 +301,16 @@ export default {
   font-size: 1rem;
   overflow-x: hidden;
   text-overflow: ellipsis;
+}
+.score_list > .flare_rank {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.score_list > .flare_skill {
+  text-align: right;
+  font-family: monospace;
+  font-size: 1rem;
 }
 .score_list > .clear_count {
   text-align: right;
@@ -337,5 +402,36 @@ export default {
 }
 .marvelous_fc {
   color: #ffffff;
+}
+
+.flare_1 {
+  color: #0000ff;
+}
+.flare_2 {
+  color: #00ffff;
+}
+.flare_3 {
+  color: #00ff00;
+}
+.flare_4 {
+  color: #ffff00;
+}
+.flare_5 {
+  color: #ff0000;
+}
+.flare_6 {
+  color: #ff00ff;
+}
+.flare_7 {
+  color: #999999;
+}
+.flare_8 {
+  color: #cccccc;
+}
+.flare_9 {
+  color: #ffffff;
+}
+.flare_ex {
+  color: #00ffff;
 }
 </style>

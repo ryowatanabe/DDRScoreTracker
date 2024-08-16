@@ -92,6 +92,9 @@
   "browser_action_filter_filter_condition_score_rank": {
     "message": "Score Rank"
   },
+  "browser_action_filter_filter_condition_flare_rank": {
+    "message": "Flare Rank"
+  },
   "browser_action_filter_filter_condition_availability": {
     "message": "Availability"
   },
@@ -109,6 +112,9 @@
   },
   "browser_action_filter_sort_condition_score": {
     "message": "Score"
+  },
+  "browser_action_filter_sort_condition_flare_skill": {
+    "message": "Flare Skill"
   },
   "browser_action_filter_sort_condition_title": {
     "message": "Title"
@@ -144,7 +150,10 @@
     "message": "(A20PLUS)"
   },
   "browser_action_menu_get_missing_music_info_a3": {
-    "message": "Get missing music info"
+    "message": "(A3)"
+  },
+  "browser_action_menu_get_missing_music_info_world": {
+    "message": "Get missing music info (World)"
   },
   "browser_action_menu_get_missing_music_info_description": {
     "message": "Fetch information about musics and charts which exists only in local score list (not in local music list), from official site. Logging in to e-amusement is required."
@@ -153,7 +162,10 @@
     "message": "(A20PLUS)"
   },
   "browser_action_menu_get_score_data_a3": {
-    "message": "Get score data"
+    "message": "(A3)"
+  },
+  "browser_action_menu_get_score_data_world": {
+    "message": "Get score data (World)"
   },
   "browser_action_menu_get_score_data_description": {
     "message": "Fetch score data from official site. Logging in to e-amusement is required."
@@ -183,7 +195,10 @@
     "message": "(A20PLUS)"
   },
   "browser_action_menu_get_score_detail_a3": {
-    "message": "Get detailed score data"
+    "message": "(A3)"
+  },
+  "browser_action_menu_get_score_detail_world": {
+    "message": "Get detailed score data (World)"
   },
   "browser_action_menu_get_score_detail_description": {
     "message": "Fetch detailed score data for musics shown in current list from official site. Logging in to e-amusement is required."
@@ -249,6 +264,9 @@
     "message": "(A20PLUS)"
   },
   "browser_action_debug_page_refresh_all_music_info_a3": {
+    "message": "(A3)"
+  },
+  "browser_action_debug_page_refresh_all_music_info_world": {
     "message": "Refresh music list"
   },
   "browser_action_debug_page_refresh_all_music_info_musicid": {

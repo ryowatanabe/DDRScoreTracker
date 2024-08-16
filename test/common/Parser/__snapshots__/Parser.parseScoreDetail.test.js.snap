@@ -1,5 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Parser.ParseScoreDetail (ddrworld/error) 1`] = `
+Object {
+  "scores": Array [],
+  "status": 1,
+}
+`;
+
+exports[`Parser.ParseScoreDetail (ddrworld/noLogin) 1`] = `
+Object {
+  "scores": Array [],
+  "status": 2,
+}
+`;
+
+exports[`Parser.ParseScoreDetail (ddrworld/noPlay) 1`] = `
+Object {
+  "scores": Array [],
+  "status": 0,
+}
+`;
+
+exports[`Parser.ParseScoreDetail (ddrworld/normal) 1`] = `
+Object {
+  "scores": Array [
+    ScoreData {
+      "difficulty": Object {
+        "null": ScoreDetail {
+          "clearCount": 1,
+          "clearType": null,
+          "flareRank": null,
+          "flareSkill": null,
+          "maxCombo": 323,
+          "playCount": 1,
+          "score": null,
+          "scoreRank": null,
+        },
+      },
+      "musicId": "b86i9lPlObdl1008PO0PIi09q9o9l88i",
+      "musicType": -1,
+    },
+  ],
+  "status": 0,
+}
+`;
+
 exports[`Parser.ParseScoreDetail (error) 1`] = `
 Object {
   "scores": Array [],
@@ -15,6 +60,8 @@ Object {
         "null": ScoreDetail {
           "clearCount": 134,
           "clearType": 6,
+          "flareRank": null,
+          "flareSkill": null,
           "maxCombo": 575,
           "playCount": 136,
           "score": 978110,
@@ -37,6 +84,8 @@ Object {
         "null": ScoreDetail {
           "clearCount": 1,
           "clearType": null,
+          "flareRank": null,
+          "flareSkill": null,
           "maxCombo": 453,
           "playCount": 17,
           "score": 737560,
@@ -73,6 +122,8 @@ Object {
         "null": ScoreDetail {
           "clearCount": 4,
           "clearType": null,
+          "flareRank": null,
+          "flareSkill": null,
           "maxCombo": 776,
           "playCount": 4,
           "score": 900110,
@@ -95,6 +146,8 @@ Object {
         "null": ScoreDetail {
           "clearCount": 47,
           "clearType": null,
+          "flareRank": null,
+          "flareSkill": null,
           "maxCombo": 381,
           "playCount": 47,
           "score": 852650,

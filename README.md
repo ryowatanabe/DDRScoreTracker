@@ -8,9 +8,9 @@
 
 ## Abstract / 概要
 
-This is a Google Chrome Extension which enables you collecting score data from [DanceDanceRevolution A3 official website](https://p.eagate.573.jp/game/ddr/ddra3/p/), organizing and viewing those data.
+This is a Google Chrome Extension which enables you collecting score data from [DanceDanceRevolution World official website](https://p.eagate.573.jp/game/ddr/ddrworld/top/), organizing and viewing those data.
 
-[DanceDanceRevolution A3 の公式サイト](https://p.eagate.573.jp/game/ddr/ddra3/p/)で閲覧可能なスコアデータを収集し, 整理して閲覧することができるGoogle Chrome拡張機能です.
+[DanceDanceRevolution World の公式サイト](https://p.eagate.573.jp/game/ddr/ddrworld/top/)で閲覧可能なスコアデータを収集し, 整理して閲覧することができるGoogle Chrome拡張機能です.
 
 This software is not `Score Manager` but `Score Tracker`. Core concept of this software is to collect and utilize data on official website, without taking time and effort. It is unexpected that users enter data manually. (Though it is possible to consider it in future development, it will have low priority.)
 
@@ -106,9 +106,9 @@ This software saves retrieved data on the PC which operates the browser. Once yo
 
 本ソフトウェアで取得したデータは, ブラウザが動作しているPC上に保存されます. 一度取得したデータの閲覧は, インターネット接続がオフラインの状態でも可能です. また, 取得したデータを外部のサーバに送信することはありません.
 
-This software retrieves music list from [github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics/2.txt). It retrieves any other data from [official website](https://p.eagate.573.jp/game/ddr/ddra3/p/).
+This software retrieves music list from [github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics/2.txt). It retrieves any other data from [official website](https://p.eagate.573.jp/game/ddr/ddrworld/top/).
 
-楽曲リストの取得は[github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics/2.txt)から行っています. それ以外のデータの取得は[公式サイト](https://p.eagate.573.jp/game/ddr/ddra3/p/)から行います.
+楽曲リストの取得は[github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics/2.txt)から行っています. それ以外のデータの取得は[公式サイト](https://p.eagate.573.jp/game/ddr/ddrworld/top/)から行います.
 
 ## Changelog / 変更履歴
 

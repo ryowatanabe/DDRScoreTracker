@@ -98,6 +98,20 @@ export class ScoreDiff {
     return this.before.actualScoreRank;
   }
 
+  get beforeFlareRank() {
+    if (this.before === null) {
+      return null;
+    }
+    return this.before.flareRank;
+  }
+
+  get beforeFlareSkill() {
+    if (this.before === null) {
+      return null;
+    }
+    return this.before.flareSkill;
+  }
+
   get beforeClearType() {
     if (this.before === null) {
       return null;
@@ -133,6 +147,20 @@ export class ScoreDiff {
     return Constants.CLEAR_TYPE_CLASS_STRING[this.beforeClearType];
   }
 
+  get beforeFlareRankSymbol() {
+    if (this.beforeFlareRank === null) {
+      return '';
+    }
+    return Constants.FLARE_RANK_SYMBOL[this.beforeFlareRank];
+  }
+
+  get beforeFlareRankClassString() {
+    if (this.beforeFlareRank === null) {
+      return '';
+    }
+    return Constants.FLARE_RANK_CLASS_STRING[this.beforeFlareRank];
+  }
+
   get beforeScoreRankString() {
     if (this.beforeScoreRank === null) {
       return '';
@@ -159,6 +187,20 @@ export class ScoreDiff {
       return null;
     }
     return this.after.actualScoreRank;
+  }
+
+  get afterFlareRank() {
+    if (this.after === null) {
+      return null;
+    }
+    return this.after.flareRank;
+  }
+
+  get afterFlareSkill() {
+    if (this.after === null) {
+      return null;
+    }
+    return this.after.flareSkill;
   }
 
   get afterClearType() {
@@ -194,6 +236,20 @@ export class ScoreDiff {
       return '';
     }
     return Constants.CLEAR_TYPE_CLASS_STRING[this.afterClearType];
+  }
+
+  get afterFlareRankSymbol() {
+    if (this.afterFlareRank === null) {
+      return '';
+    }
+    return Constants.FLARE_RANK_SYMBOL[this.afterFlareRank];
+  }
+
+  get afterFlareRankClassString() {
+    if (this.afterFlareRank === null) {
+      return '';
+    }
+    return Constants.FLARE_RANK_CLASS_STRING[this.afterFlareRank];
   }
 
   get afterScoreRankString() {

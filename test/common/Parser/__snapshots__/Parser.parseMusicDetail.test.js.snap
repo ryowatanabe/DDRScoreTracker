@@ -1,5 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Parser.ParseMusicDetail (ddrworld/error) 1`] = `
+Object {
+  "musics": Array [],
+  "status": 1,
+}
+`;
+
+exports[`Parser.ParseMusicDetail (ddrworld/hidden-song) 1`] = `
+Object {
+  "musics": Array [
+    MusicData {
+      "difficulty": Array [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        12,
+        17,
+        0,
+      ],
+      "isDeleted": 0,
+      "musicId": "1IdqDqDdd08dboO911P6OQ8lobb16PDd",
+      "title": "Chromatic Burst",
+      "type": 0,
+    },
+  ],
+  "status": 0,
+}
+`;
+
+exports[`Parser.ParseMusicDetail (ddrworld/no-challenge-chart) 1`] = `
+Object {
+  "musics": Array [
+    MusicData {
+      "difficulty": Array [
+        1,
+        4,
+        9,
+        12,
+        0,
+        4,
+        9,
+        12,
+        0,
+      ],
+      "isDeleted": 0,
+      "musicId": "b86i9lPlObdl1008PO0PIi09q9o9l88i",
+      "title": "強風オールバック",
+      "type": 0,
+    },
+  ],
+  "status": 0,
+}
+`;
+
+exports[`Parser.ParseMusicDetail (ddrworld/noLogin) 1`] = `
+Object {
+  "musics": Array [],
+  "status": 2,
+}
+`;
+
+exports[`Parser.ParseMusicDetail (ddrworld/normal) 1`] = `
+Object {
+  "musics": Array [
+    MusicData {
+      "difficulty": Array [
+        3,
+        6,
+        8,
+        11,
+        13,
+        6,
+        8,
+        12,
+        13,
+      ],
+      "isDeleted": 0,
+      "musicId": "8bQQ0lP96186D8Ibo8IoOd6o16qioiIo",
+      "title": "アルストロメリア (walk with you remix)",
+      "type": 0,
+    },
+  ],
+  "status": 0,
+}
+`;
+
 exports[`Parser.ParseMusicDetail (error) 1`] = `
 Object {
   "musics": Array [],
