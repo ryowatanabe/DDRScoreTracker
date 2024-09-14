@@ -41,6 +41,9 @@
   "browser_action_filter_summary_setting_clear_type": {
     "message": "フルコンボ・クリア種別"
   },
+  "browser_action_filter_summary_setting_flare_rank": {
+    "message": "フレアランク"
+  },
   "browser_action_filter_summary_setting_score_rank": {
     "message": "スコアランク"
   },

@@ -41,6 +41,9 @@
   "browser_action_filter_summary_setting_clear_type": {
     "message": "Clear Type"
   },
+  "browser_action_filter_summary_setting_flare_rank": {
+    "message": "Flare Rank"
+  },
   "browser_action_filter_summary_setting_score_rank": {
     "message": "Score Rank"
   },
