@@ -4,7 +4,7 @@
 
 ### Fixed
 
- - Fixed mis-translated message
+ - Added missing label (Filter > Summary > Flare Rank)
 
 ## [0.3.0] - 2024-08-17
 
