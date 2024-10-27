@@ -1261,7 +1261,7 @@ o6qi6idD9oqIdi81ldQlODqIqIiqlD1d	0	0	3	5	9	13	0	5	9	13	0	aftershock!!
 o81iq91q6lI6OODP9Pb9OboDlQD9Q08d	0	0	2	4	8	12	14	4	8	12	14	ACROSS WORLD
 o8996Q8lQ08dQbOoqP0id80bi18lql9b	0	0	3	7	11	13	0	7	10	13	0	Are U Ready
 o89biodIl0Oo1bQqll86QDi0oQQd61Db	0	0	3	8	13	17	0	7	13	17	0	Sparkle Dreams
-o8IDq8P8lP9o8IIO6lPPqqQP91bo0ddl	0	0	2	5	8	11	0	5	8	11	0	サイカ
+o8IDq8P8lP9o8IIO6lPPqqQP91bo0ddl	0	1	2	5	8	11	0	5	8	11	0	サイカ
 o91qiqqDi9b6d6l1dQ6qO6oO0QDIlPql	0	0	3	5	8	11	0	6	8	11	0	凛として咲く花の如く ～ひなビタ♪ edition～
 o96i9P9iO9o0DdbPb9bbQ66DqDq88Db1	0	0	2	6	8	13	0	6	8	13	0	M.A.Y.U.
 o9Ib8bob6b9qIDq1d09bq8q1I06Odi90	0	0	2	6	10	13	0	6	9	13	0	TSUBASA
