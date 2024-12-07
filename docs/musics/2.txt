@@ -1,3 +1,4 @@
+006i1i6OOl1bPdql9ID8o6QQ6IIiqP0P	0	0	4	8	13	16	18	8	13	16	18	1116
 006ob1iI9b1I8dDl0dq1bqIOP8886li1	0	0	2	5	8	11	0	5	8	11	0	☆shining☆
 0088dOQPiD0Qb0Dl8ol09D98IOllI1id	0	0	3	5	10	13	0	5	10	13	0	take me higher
 00Qbd9qoI681Q0biQOIiI08bI91i080l	0	1	1	3	8	11	0	3	8	11	0	I Want You To Know
@@ -18,6 +19,7 @@
 08QP8bOQ6OOdd11Dq81db1l8IdiDbod6	0	1	1	0	0	0	0	0	0	0	0	Lesson by DJ
 08io99Obq06Oq6bD6Pq999PDOOb6Oo8o	1	0	3	7	11	14	16	7	11	14	16	SNOW WHITE
 091IQQ1PqOdIl9ioPQDdO60Dq069DP69	0	0	3	4	6	8	0	4	6	9	0	puzzle
+09P10l1q98b1DiDQdlIii0bld111O86D	0	0	2	7	12	17	0	7	12	17	0	quaver♪
 09PIO19oPoo09q0ioli6oO1di89o8Ilb	0	0	2	4	10	14	0	4	10	14	0	ポッピンキャンディ☆フィーバー！
 09looidO89Q9DiDdqQiDPlIQDoiobobQ	0	0	5	8	11	14	17	8	11	14	17	London EVOLVED ver.C
 09oIbO1bi8O8Q1o01q610ID0qPOqoQQP	0	0	2	5	8	11	0	5	8	11	0	Party Rock Anthem
@@ -29,6 +31,7 @@
 0IIO08bII0QQDOdobqbl8Ib8Q8O8q1li	0	0	3	7	9	12	0	8	10	13	0	50th Memorial Songs -Flagship medley-
 0Ib6qIb0iPOoQqqDIl90dP0PI0o9QlDd	0	0	3	6	9	13	0	6	9	12	0	女言葉の消失
 0IldoDlDQql99DqQo0Qq9ioPIiiPoIoi	0	0	5	12	14	17	18	12	14	18	18	Pluto Relinquish
+0ODl10P0O10D1OQID91QiPlQd988bio8	0	0	2	4	9	12	0	4	9	13	0	TYCOON
 0OQdlbo111ib1i88IdIPIbollD68Dii1	0	0	4	4	7	10	0	4	7	11	0	rainbow rainbow
 0OQiI9qD6OiodDoQlPllqPoPoqi98D8P	0	0	2	5	7	9	0	5	7	9	0	Open Your Eyes
 0Ob1601118Dii9Qdii9lPbioPP6qoi1I	0	0	3	5	9	12	0	5	10	12	0	The Night Away (MK Remix)
@@ -38,6 +41,7 @@
 0QPib0lq9o611I0Od616O699QI80doOP	4	0	0	0	0	0	0	0	0	0	12	三段 (A3)
 0Qb8PDoQ06Q66obPI1P988oI61ioPb6l	0	0	3	6	9	12	0	6	9	13	0	フー・フローツ
 0b1660ibo0liI01ibOO6lD8olIb88qDi	0	0	3	6	9	11	13	6	9	11	13	Uranus
+0b8lD690qQO1bDOib1IqiO0OO169o9IQ	0	0	3	6	10	14	17	6	10	14	17	Red. by Full Metal Jacket
 0bDqIO9Q0PPIPlPll1D8Pbol9O6DlPdb	0	0	2	7	10	13	0	7	11	13	0	ラキラキ
 0bq9qI9PoPIlQl89bDO60o9q8I1iIP66	0	0	5	8	12	15	18	8	12	15	18	HyperTwist
 0bqi6lPDP1qOl9dIb0DD1I9i8l8OlbQb	0	0	1	3	9	13	0	3	9	12	0	ブタサンダー
@@ -267,6 +271,7 @@
 88o0qb8Ii1ldPlDQQdoq90dOd0PoO99d	0	0	2	6	9	14	0	6	9	14	0	KEEP ON MOVIN' (Y&Co. DJ BOSS remix)
 88o8Oq69ldilblP10DI0qqb6b8I0DDi9	1	1	3	7	11	15	16	8	11	15	15	BOUNCE
 88qIddPQ9Q0QbQb0l6obD6IQ99oIiQQi	0	0	2	6	9	12	0	6	9	12	0	STAY (Joey Riot remix)
+88qq1I89IQ8P9PdqbbdD0ood8oi9d68I	0	0	4	9	13	16	0	9	13	16	0	蛇神
 890q91iIbO96OOD10Qlob6qOObQoq1bd	0	0	3	5	10	13	0	6	11	13	0	Habibe (Antuh muhleke)
 891b0OdIdO8b9obi69b6PQlPIqDI01dO	0	0	3	8	12	16	0	8	12	15	0	Vanquish The Ghost
 891iilD9Pq1lPQd6diqiP0dd611dOPPl	0	0	4	8	12	15	0	8	12	15	0	Last Card
@@ -318,7 +323,7 @@
 8i8IDQ19dOlbIllD9I8dPb1dD8Qi89o1	1	0	5	9	12	16	0	10	12	15	0	MACHINE
 8i9llqdbQ6qP611I90lldPq1o1oQl69o	0	0	3	4	8	11	0	6	8	11	0	魔法のたまご ～心菜 ELECTRO POP edition～
 8idID0Pq0O68Qb0Q69P6IDldqI91qi1O	0	0	4	5	8	13	0	5	8	13	0	volcano
-8iiqQ9o1P089901DPIq8PDPOl6oDOl1P	0	0	4	9	12	16	0	9	12	16	0	Step This Way
+8iiqQ9o1P089901DPIq8PDPOl6oDOl1P	0	0	4	9	12	16	17	9	12	16	17	Step This Way
 8l0ld8Oq86P09lb91DdD9OliiPq9oq9D	0	0	2	5	8	12	13	5	7	12	13	Freeze
 8l808Do60DP0qDbD066QQqP1qOQdob90	0	0	5	7	8	11	0	4	8	10	0	HYSTERIA
 8lDOiqP0biD8dD9lOQO619i1PqbqDiP8	0	0	3	8	9	13	0	7	10	13	0	LEADING CYBER
@@ -503,7 +508,8 @@ DiqobPO1iliqP6DbQiDodPIPDiQO96dl	0	0	3	5	9	12	0	5	8	13	0	Find You Again
 Dl09QdQ19IoQl6D81qdlPPIdolP1lDi0	0	0	2	6	10	13	0	6	10	13	0	ヴァンパイア
 Dl690bPIlIq0Ol1PdPbb9QO0I66lIqO0	0	0	3	5	8	11	0	5	8	11	0	虹色の花
 Dl69Pb9OQDlbOi80OQdIObiQ1Q08Dlqo	0	0	4	5	8	12	0	5	9	13	0	三毛猫ロック
-Dl91ldlb8PODoO96OI801DP0PPl8Plqi	0	0	4	8	11	14	0	8	11	14	0	ONYX
+Dl89dQdOQooI0i0DoPQd68db6di86PD8	0	0	4	9	13	16	18	9	13	16	18	逆月
+Dl91ldlb8PODoO96OI801DP0PPl8Plqi	0	0	4	8	11	14	17	8	11	14	17	ONYX
 Dlq6qdP1bOPDObbbQQ6b8iPbd1ODq69P	0	0	3	6	9	12	0	6	9	12	0	どきドキ バレンタイン
 Do06Q18olQo0bloll9919olDQ8lDoqbd	0	0	2	6	11	15	0	6	11	15	0	ナナホシ
 Do6oPoo1QbOPo9DIii0Q0180l8b1Doqi	0	0	2	4	9	12	15	6	8	12	14	SABER WING (satellite silhouette remix)
@@ -630,7 +636,7 @@ O6q9qPQ1q69ddPl6DPO0bQO6989QO1ii	0	0	5	8	12	16	0	8	12	16	0	Sector
 O86D9iqi81QllOqP19dQqqId1qdIolqI	0	0	2	5	8	11	0	6	9	11	0	We Can Win the Fight
 O8Qb086QQIQ109d1lqilOQ9QD8lPIqdd	0	0	2	6	12	16	0	6	12	16	0	BREDLI
 O8lq1l6qIi6I9l69IOPdoI6lbiodQOP6	0	0	2	8	13	16	0	8	13	16	0	KING
-O8oPP6D8OQq1Q6Q860dqlOi6609bO1lD	0	0	3	7	11	14	0	7	11	14	0	Come Back To Me
+O8oPP6D8OQq1Q6Q860dqlOi6609bO1lD	0	0	3	7	11	14	16	7	11	14	16	Come Back To Me
 O8qii6oiooPd8lbPqDo9QQioIoQQOoq0	0	0	3	4	6	9	0	3	6	9	0	INSIDE YOUR HEART
 O91QbQb0QdObIO6d8lo8lq00ibOQP9PQ	3	0	0	0	0	0	17	0	0	0	0	八段 (A20+)
 O9Id8Qi6OIDIQ6bPi610q0001l1P099q	0	0	4	9	11	15	0	9	11	15	0	PARANOIA survivor
@@ -639,7 +645,7 @@ O9qDQOQO8dDDIiO9dPP0Pb8qQo9l89D9	0	0	5	11	14	17	0	11	15	17	0	最小三倍完全�
 ODQOP1dblD6q8d160Ioi0dIoQloI6oQO	0	0	4	4	6	9	0	5	6	9	0	THE SHINING POLARIS
 ODd6QDIIdi6ild0O8lqIdl0oiQ98669l	0	0	2	5	8	11	0	5	8	11	0	ROOM
 ODdoiODodb0ddIP06IqDQdl100q0dIP6	0	0	3	6	11	15	0	6	11	15	0	Re:GENERATION
-ODli9liO1loIiqb9qIol6o1PO91DP8QQ	0	0	4	8	12	16	0	8	12	16	0	High & Low
+ODli9liO1loIiqb9qIol6o1PO91DP8QQ	0	0	4	8	12	16	18	8	12	16	18	High & Low
 ODq019O9o1OPdq9PiPl0o8D8DQ8bid88	0	0	4	7	9	11	0	7	8	11	0	Holic
 OI01b6I6OQ9IdQidll890oqlOPDql9ol	0	0	3	5	8	9	0	5	7	12	0	PUT YOUR FAITH IN ME ～SATURDAY NIGHT MIX～
 OIOdod8llPlO0lOlb6P8iIQ90qQqoDiP	0	0	3	6	10	14	18	6	11	14	18	Yuni's Nocturnal Days
@@ -763,6 +769,7 @@ Pd8bD1od1iOOl80oOiiiIb9QdqIQQllQ	0	0	5	10	14	17	0	10	14	17	0	新蛇姫
 Pd99DQo0bD9D9oIbPIId18P6l8qlDQO6	0	0	5	7	9	13	0	8	9	13	0	AFRONOVA
 PdPdbdQ1lDI18O90Q0li8QI0bo99bidd	0	0	2	5	8	11	0	5	8	10	0	This Beat Is.....
 PddldblI909IqI8PPiQIo9lIIiQdDo1l	0	0	4	9	12	16	18	9	12	16	18	MEGALOVANIA
+Pdlib1o06DD6oIbdIdIoIqQqO8P896do	0	0	3	8	13	16	18	8	13	16	18	DIAVOLO
 PdqQ0oO8lIOi800i69I9100olb9Q6D8Q	0	0	3	6	9	12	14	6	9	12	14	New Gravity
 Pi69o0idP1obO9QDqIDbPdqlb90q8Dq8	0	0	4	8	12	16	18	8	12	16	18	嘆きの樹
 Pi81dQi00lo9i1Pib91lQ01i0biIbPIP	0	0	2	6	9	13	0	6	9	13	0	DeStRuCtIvE FoRcE
@@ -855,6 +862,7 @@ Qi1Q6I80b09Oq91OPldbO19080q0dd0b	0	0	3	6	11	14	0	6	10	13	0	Red Cape Theorem
 QiOl969Iq1Pl6o60QOQ9PooDbbiOPioo	0	1	3	6	9	12	0	6	9	12	0	スカイクラッドの観測者
 QiPiIb8I99loq8loIq91iP6l1OOoq8oq	0	0	7	11	16	18	19	11	16	18	19	鳳
 QiQi666Qd9I6d1899iii80PdQdDlO1i1	0	0	3	7	12	15	0	7	12	16	0	Sand Blow
+Qib986b6oDqPl8IQiOoDOQ06IlbD68bl	0	0	4	9	13	15	18	9	13	15	18	Fly Like You
 QiboqIool99ol9Q0d08b68OIIiD89qqO	0	0	3	6	10	13	0	7	11	13	0	叛逆のディスパレート
 Qid6OQOIibbOiDo808oq9oQO668bDodP	0	0	2	5	8	13	15	5	8	12	15	Finale
 QlID98Ddoi6O8lP8IQd6iid610011l60	0	0	3	6	9	12	0	7	9	13	0	幻想系世界修復少女
@@ -896,7 +904,9 @@ b8dqI0Iq60iQPPobiiQ8O6PiIqdodDiQ	0	0	4	5	7	12	0	5	8	12	0	GIRIGILI門前雀羅
 b9IoO68b1Qd9I6O8qqoo6q1o8DQ8l9lo	0	0	3	7	10	14	0	7	10	14	0	Synergy For Angels
 b9OboQl6d9PqQddIdQDobP0d8o6dOqob	2	0	0	0	0	0	11	0	0	0	0	二段 (A20)
 b9QiIQ18b6o1bqPdqI6lI1OIqboPIDI9	0	1	2	5	9	11	0	5	9	12	0	妄想税
+b9iI8O6bd0bq0I1OoooQ9i9iddidODbO	0	0	2	5	9	11	0	5	9	11	0	罪と罰
 bD1DbibPIq9IIlQd0OIIl0o91QI1il69	0	0	3	7	9	13	16	7	10	13	16	Monkey Business
+bD1P1l6dDPdl0b99lPl0llD9i9blQIi1	0	0	2	5	8	13	0	5	8	13	0	MVP
 bDDd08iP8dlIlOo6iqd91dPiI1lQdOQq	0	0	3	5	10	13	0	5	9	13	0	xenon
 bDDq1qO80o6806dQOb1Qo0bPI6899q1D	0	0	2	5	9	13	0	5	9	13	0	No Matter What
 bI0oqdIDPPi8dDqlOO1Ii8qDQb1lq88o	0	0	2	6	11	15	0	6	11	15	0	Pump Pump Pump
@@ -906,6 +916,7 @@ bIloQ900Iq01ql6ddP9idIb6iQ11i9D6	0	0	3	7	11	13	0	7	11	13	0	Far east nightbird ko
 bIlqP91O9ld1lqlq6qoq9OiPdqIDPP0l	0	0	5	9	14	18	19	9	14	18	19	Lachryma《Re:Queen’M》
 bOQ0dIIIilDD9Do6qIDdlObQdo01DD80	0	0	2	7	10	14	0	7	10	14	0	Playing With Fire
 bP10qq9dPDDqIl16lPIDDd8b00dIIP08	0	0	2	5	10	14	0	5	10	14	0	50th Memorial Songs -Beginning Story-
+bP61iObqb9Oo1IOQOdlQ0idilOII9O66	0	0	3	5	10	13	0	5	10	13	0	Beyond The Earth
 bP69QdDQ0QQ9dP0dDio0dO61i9Dbdl00	0	0	3	6	7	10	0	6	7	10	0	Let the beat hit em!(CLASSIC R&B STYLE)
 bPD6ObloQPOOiQb1DbQDdilodiddlIlb	0	0	4	5	8	10	0	6	8	11	0	ECSTASY
 bPQDblO8Do0Oo9O0PP0b8PO1PblDioDP	2	0	0	0	0	0	0	0	0	0	19	十段 (A20)
@@ -1346,6 +1357,7 @@ q1qI0QibDDP6oPdl8DlIlPo80DqDd66P	0	0	4	7	11	14	0	7	11	14	0	突撃！ガラスの
 q6661PIbbb1O80OQQ11iD6bP1l6bio0Q	0	1	2	5	9	13	0	5	9	13	0	The Light
 q6di1DQbi88i9QlPol1iIPbb8lP1qP1b	0	0	7	10	14	17	18	11	14	17	19	POSSESSION
 q6iD8idqo69qIPl00IQidoq1o1o1d1b9	0	0	3	7	10	13	0	6	9	12	0	クリムゾンゲイト
+q6o1id8doDb988l1o01P8dllQ0d6IP9P	0	0	2	7	12	15	0	7	12	15	0	Time to HYPERDRIVE
 q6oOPqQPlOQoooq888bPI1OPDlqDIQQD	1	1	4	7	11	15	17	7	11	16	18	PASSION
 q6qI6llb69D1IQq0OiP8OD06Qioob91Q	0	0	3	8	10	13	0	9	11	13	0	GRADIUSIC CYBER ～AMD G5 MIX～
 q8QPqbiQ00i6odq81P0D960I108bIiQb	0	0	3	5	11	14	17	5	11	14	17	Acid,Tribal & Dance (DDR EDITION)
@@ -1397,10 +1409,12 @@ qdi88l6bo1Iqi9Qiqli8lIQQIPO1doQ9	0	0	3	4	8	11	0	4	7	11	0	ABSOLUTE
 qi0lbbDIo8Qlo9IiD8oqqo69DIPQ1IIO	0	0	3	7	10	14	0	7	10	14	0	Come Back to Me (Feel It)
 qi9qP1dPd6PPDlldbb8OIlD08Pbd9006	0	0	3	5	8	11	14	5	8	11	14	Love♡Shine わんだふるmix
 qiDOD0iidOli9l0qbP6IbOD19OQ8D8Po	0	0	5	5	9	11	0	4	9	11	0	月光蝶
+qib6O1d6010d8Iql8IQ0q8diqOP6dIqb	0	0	3	7	11	15	16	6	11	15	17	雪上断火
 qilOP8l6bDPi98lqDbO6O1obOi068QOQ	0	0	4	7	11	14	0	6	11	14	0	恋はどう？モロ◎波動OK☆方程式！！
 qiqP8qb8Qlld0Oqbll00o0bqlq9PoO09	0	0	2	6	10	15	0	6	10	15	0	Next FUTURE
 ql1Q8P100IIlbl0Pdi08I8qD900idqQq	0	0	3	4	7	9	0	4	7	9	0	カゲロウ
 qlPqO10q6PliDQDbd01IP0b6iqO0bDb6	0	0	3	6	9	12	0	6	10	12	0	至上のラトゥーリア
+qlQbI6dQ8i1iOO1oPbOoQ9b6ODII08Qb	0	0	4	8	12	15	0	8	12	15	0	Sahara
 qo6Ib8QqqDd16i91d8dlQoqIq08bo68d	0	0	3	5	8	10	0	5	7	10	0	Shades of Grey
 qo6l9dbb8D0iDQI1odo0Qb9O1ibDdoIb	0	0	5	9	12	15	0	9	12	16	0	Remain
 qoD0olPq6qbOi6bbPllOib0q1i16iI1O	0	0	3	5	12	16	0	5	12	16	0	Concertino in Blue
