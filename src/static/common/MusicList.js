@@ -24,8 +24,7 @@ export class MusicList {
         Logger.info(`Removed: ${musicData.encodedString}`);
         return true;
       }
-    }
-    if (this.hasMusic(musicData.musicId)) {
+    } else if (this.hasMusic(musicData.musicId)) {
       if (this.getMusicDataById(musicData.musicId).merge(musicData)) {
         Logger.info(`Modified: ${this.getMusicDataById(musicData.musicId).encodedString}`);
         return true;

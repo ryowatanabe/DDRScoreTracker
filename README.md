@@ -110,6 +110,19 @@ This software retrieves music list from [github pages](https://ryowatanabe.githu
 
 [CHANGELOG.md (English only)](https://github.com/ryowatanabe/DDRScoreTracker/blob/master/CHANGELOG.md)
 
+## For Developers / 開発者向け
+
+```
+# apply prettier and correct files
+yarn prettier:write
+
+# run the linter
+yarn lint
+
+# run the test
+yarn test
+```
+
 ## Internal Specifications / 内部仕様
 
 [SPEC.md (Japanese only)](https://github.com/ryowatanabe/DDRScoreTracker/blob/master/SPEC.md)
