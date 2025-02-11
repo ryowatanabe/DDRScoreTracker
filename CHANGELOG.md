@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+ - When we retrieve missing information about new songs, that information is also stored on GCS for future data updates
+
 ## [0.3.1] - 2024-09-15
 
 ### Fixed
@@ -146,6 +152,7 @@
 
 First release
 
+[Unreleased]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.3.1...HEAD
 [0.3.1]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.3.0...v0.3.1
 [0.3.0]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.2.0...v0.3.0
 [0.2.0]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.1.0...v0.2.0

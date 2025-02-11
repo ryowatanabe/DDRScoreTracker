@@ -98,9 +98,9 @@ If it doesn't work, close tab on which DDR Score Tracker runs.
 
 ## Regarding the handling of data / データの取り扱いについて
 
-This software saves retrieved data on the PC which operates the browser. Once you retrieve data, you can browse them without internet connection. It does not send retrieved data to remote server.
+This software saves retrieved personal data on the PC which operates the browser. Once you retrieve data, you can browse them without internet connection. It does not send personal data to remote server.
 
-本ソフトウェアで取得したデータは, ブラウザが動作しているPC上に保存されます. 一度取得したデータの閲覧は, インターネット接続がオフラインの状態でも可能です. また, 取得したデータを外部のサーバに送信することはありません.
+本ソフトウェアで取得した個人データは, ブラウザが動作しているPC上に保存されます. 一度取得したデータの閲覧は, インターネット接続がオフラインの状態でも可能です. また, 個人データを外部のサーバに送信することはありません.
 
 This software retrieves music list from [github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics/2.txt). It retrieves any other data from [official website](https://p.eagate.573.jp/game/ddr/ddrworld/top/).
 
@@ -109,6 +109,19 @@ This software retrieves music list from [github pages](https://ryowatanabe.githu
 ## Changelog / 変更履歴
 
 [CHANGELOG.md (English only)](https://github.com/ryowatanabe/DDRScoreTracker/blob/master/CHANGELOG.md)
+
+## For Developers / 開発者向け
+
+```
+# apply prettier and correct files
+yarn prettier:write
+
+# run the linter
+yarn lint
+
+# run the test
+yarn test
+```
 
 ## Internal Specifications / 内部仕様
 
