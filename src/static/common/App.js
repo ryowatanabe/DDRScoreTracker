@@ -565,7 +565,23 @@ export class App {
           if (res.status == Parser.STATUS.SUCCESS) {
             res.musics.forEach(function (music) {
               music.type = this.targetMusic.type;
-              this.musicList.applyObject(music);
+              const musicData = MusicData.createFromStorage(music);
+              const body = JSON.stringify({ text: musicData.encodedString });
+              if (this.musicList.applyMusicData(musicData)) {
+                fetch('https://us-west1-blissful-mile-450603-h9.cloudfunctions.net/unregistered_music', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: body,
+                })
+                  .then((response) => {
+                    Logger.debug(response);
+                  })
+                  .catch((reason) => {
+                    Logger.debug(reason);
+                  });
+              }
             }, this);
             this.saveStorage();
             this.updateCharts();

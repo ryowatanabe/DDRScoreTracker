@@ -37,5 +37,5 @@
 
   "permissions": ["tabs", "storage", "unlimitedStorage"],
 
-  "host_permissions": ["http://skillattack.com/"]
+  "host_permissions": ["http://skillattack.com/", "https://us-west1-blissful-mile-450603-h9.cloudfunctions.net/"]
 }
