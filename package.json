@@ -15,7 +15,7 @@
     "copy-webpack-plugin": "^13.0.0",
     "cross-env": "^7.0.2",
     "css-loader": "^7.1.2",
-    "eslint": "^9.21.0",
+    "eslint": "^9.22.0",
     "eslint-config-prettier": "^10.0.2",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-vue": "^9.32.0",
