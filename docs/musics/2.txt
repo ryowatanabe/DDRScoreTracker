@@ -1,3 +1,4 @@
+
 006i1i6OOl1bPdql9ID8o6QQ6IIiqP0P	0	0	4	8	13	16	18	8	13	16	18	1116
 006ob1iI9b1I8dDl0dq1bqIOP8886li1	0	0	2	5	8	11	0	5	8	11	0	☆shining☆
 0088dOQPiD0Qb0Dl8ol09D98IOllI1id	0	0	3	5	10	13	0	5	10	13	0	take me higher
@@ -31,6 +32,7 @@
 0IIO08bII0QQDOdobqbl8Ib8Q8O8q1li	0	0	3	7	9	12	0	8	10	13	0	50th Memorial Songs -Flagship medley-
 0Ib6qIb0iPOoQqqDIl90dP0PI0o9QlDd	0	0	3	6	9	13	0	6	9	12	0	女言葉の消失
 0IldoDlDQql99DqQo0Qq9ioPIiiPoIoi	0	0	5	12	14	17	18	12	14	18	18	Pluto Relinquish
+0Ilqbl8q8Q6l6886Q9P9DOi69oIb1b1d	0	0	4	8	13	16	0	8	13	17	0	Gale Rider
 0ODl10P0O10D1OQID91QiPlQd988bio8	0	0	2	4	9	12	0	4	9	13	0	TYCOON
 0OQdlbo111ib1i88IdIPIbollD68Dii1	0	0	4	4	7	10	0	4	7	11	0	rainbow rainbow
 0OQiI9qD6OiodDoQlPllqPoPoqi98D8P	0	0	2	5	7	9	0	5	7	9	0	Open Your Eyes
@@ -125,6 +127,7 @@
 1Q809666i9oblO8qO688OiD6OIbiP0Oq	0	0	2	5	8	11	0	5	8	11	0	ヒカリユリイカ
 1Q9l881P1bq8bQQ9OOqQ10OioP68bQ8o	0	0	3	4	7	10	13	5	7	9	13	Malacca
 1QIPID18qib8D9Oo9lOo8I6DPi9qiod6	0	0	3	6	10	12	12	7	8	11	12	DYNAMITE RAVE
+1QbddbDiOiii8O90Dq68dqO91oQq0oqi	0	0	3	6	10	14	0	6	10	14	0	Dense Flyer
 1QqObIQPDOq6bI6iOqDiiI66oDQQidlb	0	0	3	8	12	15	0	8	12	15	0	Starlight Fantasia (Endorphins Mix)
 1Qqo9bID18OdiI1Qb0lP9DIqIO6ldPOP	0	0	4	5	7	10	0	4	7	10	0	CANDY♡
 1bo1qQDPidPPOlD16Ii9PoQOlQ996qb8	0	0	3	6	9	12	0	6	9	12	0	極地大衝撃
@@ -192,6 +195,7 @@
 6DQ9D9oi66I8ODi8o0dPdOD1ibbIqIdI	0	0	5	9	13	17	0	9	13	17	0	voltississimo
 6DQoDoliDO6P96P8D1POoOd8q9QbOibQ	0	0	2	4	7	11	0	4	7	11	0	invisible rain
 6Ddo196olOPi9IQdbQ8Qbd8do8Q1obOD	0	0	3	4	9	12	0	5	8	11	0	MY SUMMER LOVE
+6DibIbiiDlq1OiI6QOlPlO1loQOiDb1q	0	0	3	7	10	13	0	6	10	13	0	カタルシスの月
 6I0d1d8d690dl8boOb60O1Iq1Ddi6P8d	0	0	4	5	9	12	0	6	8	13	0	Star Gate Heaven (FUTURE LOVE Mix)
 6ID160b99ibbd9OoblD0DPOl98lPbq6D	0	0	4	8	12	15	17	8	12	15	17	If
 6IOdDo08ddQ6ido69d011diP1liD1lOq	1	0	4	6	10	14	0	6	10	14	0	CHEER UP!
@@ -205,6 +209,7 @@
 6P00ll8bilIob6600dO8Obq69oQdI1OQ	1	0	3	7	12	16	0	7	12	16	0	JAPANESE STYLE
 6P18lOliIQqIO6Di0PP8iDlDQ01b0o0q	0	0	5	9	12	15	0	9	12	15	0	MAX 300
 6P6dPoi66qO980bQo6l1QdlQIooq086l	0	0	3	5	8	11	0	5	9	12	0	MARIA(I believe...)
+6PoillDiqb0Oo9qOiIDOb1qQQIbPqDoi	0	0	4	8	11	16	17	8	10	16	17	Eira
 6QQ1OdO99Ob001OQ90iP86o0I8OoQbib	0	0	4	7	10	13	17	7	10	13	17	めうめうぺったんたん！！ (ZAQUVA Remix)
 6QdIl8odooDQ0oOQ0IObQqo1lO986PP6	0	0	3	7	12	15	18	7	12	15	18	Astrogazer
 6Qq1q91q8iIPlI89qDq96bO8QDD0qOql	0	0	3	5	7	10	0	5	8	10	0	B4U
@@ -252,7 +257,7 @@
 6qQb9I0QbD89IID9b9iOPdO6dbqPDolQ	0	0	3	6	8	9	0	6	8	11	0	STARS☆☆☆(2nd NAOKI's style)
 6qdbqO66oOo1Q0d6I10IIIbQI9D1dDP6	0	0	3	7	10	13	0	7	10	13	0	Arcadia
 8006PP188Qldob68ld6OPqlbl1biod6D	0	0	9	11	13	15	0	10	12	15	0	osaka EVOLVED -毎度、おおきに！- (TYPE2)
-8069d8dPiqloqD8i8od1o1Pq1Q6Q8i9D	0	0	3	9	12	16	0	9	12	16	0	トランスダンスアナーキー
+8069d8dPiqloqD8i8od1o1Pq1Q6Q8i9D	0	0	3	9	12	16	18	9	12	16	18	トランスダンスアナーキー
 808dq8OIq16PP19i1bP0IDP1OqPOlo6q	0	0	0	0	0	0	10	0	0	0	11	AM-3P(AM EAST mix)
 80OqPo1D6lD616lIDI1IPq0oPllld6b1	0	0	2	6	9	12	0	6	9	12	0	Starry Sky
 80PdqQ0iiOQb9i91lIliodiO9PI8O609	0	0	4	8	11	13	0	8	11	13	0	エキサイティング！！も・ちゃ・ちゃ☆
@@ -266,6 +271,7 @@
 81qibDQqq8idiD1lQqq0qdqD6i6q1QDb	0	0	4	5	9	13	0	5	9	12	0	No.13
 86106098616o998i9d1PD6Pl0bD19dlD	0	0	1	7	10	13	0	7	10	13	0	Dance and Death
 86688l9096PdIqDPl8qoQ10dI8Ioi86l	0	0	2	3	7	9	0	5	6	9	0	Slip Out
+86q90PPqld0qili801IqDOD0Q6boblI1	0	0	4	7	12	16	0	7	13	16	0	Couleur=Blanche
 8809ol0qbbd6919bbl0b8id1669PqQ08	0	0	4	5	9	13	0	5	8	11	0	Sweet Sweet ♥ Magic
 880I00ODqPD1OQQPOP0Pd19Qq1qiloDP	2	0	0	0	0	0	14	0	0	0	0	五段 (A20)
 88Qq96qbdd69bqI089600l9bDDdiQI0l	0	0	2	5	10	15	0	4	10	15	0	Prettiful!
@@ -320,7 +326,7 @@
 8d9Q0olQ980lQdPIdqbIiD8o1l1dQPI0	0	0	3	8	14	17	0	8	14	17	0	GLOW THE CROWN
 8dDQIPOo681iID8IiibbD8IbIldI86P1	0	0	3	7	12	16	0	5	11	15	0	LOVE SHINE (Body Grooverz 2006 mix)
 8dbiodDo1i6IolDQdqdOoqDDD90q6liQ	0	0	6	8	13	15	16	8	13	16	17	DDR MEGAMIX
-8dqQDblP6dPI10qq10qiPbqi1llQ06iP	0	0	4	8	12	15	0	7	12	15	0	Better Than Me
+8dqQDblP6dPI10qq10qiPbqi1llQ06iP	0	0	4	8	12	15	16	7	12	15	17	Better Than Me
 8i0QblodqDQ196b0Oi81I0811QI99Q8b	0	0	1	5	9	11	0	3	9	12	0	ハジマリノアイズ ft. りんたる
 8i1ii188q9OlD0qQ9lQ0D1OdDbldqQbI	0	0	2	3	6	9	0	3	6	9	0	Take A Chance
 8i61Oi09bOIP0lOldI668b8IPbIq8l0Q	0	0	3	7	11	14	0	7	11	14	0	Sparkle Smilin'
@@ -355,6 +361,7 @@
 919bPoOo9QO6dODOI6d0loO6qo6OqDlI	0	0	2	8	12	17	0	8	12	17	0	Complete Game Victory
 91DOoD99iIq9oIdOi9QqDQ0qlQPQPOii	3	0	0	0	0	0	14	0	0	0	0	五段 (A20+)
 91Qdq6DbPDlQOiOq08di0IQo8IP8PPqQ	0	0	3	7	10	13	0	7	10	13	0	Twinkle Wonderland
+91bPDIdqPbdOIQPP68Q6IP61Io980QlI	0	0	2	6	9	12	0	5	9	12	0	ロマンシングエスケープ
 91dD6iqPO066do99169POPbQPbo9o6oq	0	0	2	6	10	13	0	7	10	13	0	地方創生☆チクワクティクス
 91ioD99OdDD9db8qilod818OPqb88idQ	0	0	2	5	10	13	0	5	11	13	0	BRIDAL FESTIVAL !!!
 91qD6DbDqi96qbIO66oboliPD8IPP6io	0	1	3	7	11	13	16	7	11	13	16	輪廻転生
@@ -387,7 +394,7 @@
 9IliQ1O0dOQPiObPDDDblDO6oliDodlb	2	0	0	0	0	0	0	0	0	0	10	初段 (A20)
 9O0b1DddI6OiOD6PQbboPbdd8Pi1iPlb	3	0	0	0	0	0	0	0	0	0	18	十段 (A20+)
 9O1O0o8O1qbQ08Q961Ib1iOIDPQid109	0	0	4	7	11	15	16	7	11	15	15	Another Phase
-9O8bq8b1Pi6Dl08OiPq10OddOdol1qOi	0	0	3	6	10	12	0	6	10	12	0	ロンロンへ　ライライライ！
+9O8bq8b1Pi6Dl08OiPq10OddOdol1qOi	0	0	3	6	10	12	15	6	10	12	15	ロンロンへ　ライライライ！
 9OOIPiqDooPb1QQ900QODl60dqbP8Dib	0	0	2	4	10	13	0	4	9	13	0	BRE∀K DOWN! (World Version)
 9OP0iqDD8PDIb8lblD0ol09oP1I1d9PO	0	1	3	5	9	12	0	6	8	13	0	Happy
 9P16o1bO16PDDObloibo1Il8IIDdo869	0	0	2	4	8	12	0	4	7	12	0	Share The Love
@@ -410,7 +417,7 @@
 9iOoPoQ998qD66DoOOOqD9oDQD88P8I0	0	0	3	7	12	15	0	7	12	15	0	Samurai Shogun vs. Master Ninja
 9ib91bdq6i11l69d081qDD989Q0qO0qI	0	0	2	4	7	10	8	4	7	11	8	BALLAD THE FEATHERS
 9idOOIdDO01D8PO06bOPPbOIOoiQ8O0P	0	0	3	7	10	14	0	7	10	14	0	この子の七つのお祝いに
-9ioI0IQ16OPb1Q0q8Oqdd6D9dPqDb618	0	0	3	4	10	15	0	4	10	15	0	コメット⇒スケイター
+9ioI0IQ16OPb1Q0q8Oqdd6D9dPqDb618	0	0	3	4	10	15	17	4	10	15	17	コメット⇒スケイター
 9lO9do19O1I9dbiPi8q9OdqdiOoQ8PQQ	0	0	1	3	7	11	0	3	7	11	0	Moving On
 9ldQqb9oqi60Q80iob61OiQbbDO6PID9	0	0	4	9	12	15	0	9	12	14	0	Shout It Out
 9lo10Dl06QIblQqOOid1qi0bd10I9lQ9	0	0	4	7	11	15	18	7	11	15	17	Valanga
@@ -504,7 +511,7 @@ DdO1iboqI6980Q6QPD9P1PbQQ88I16lq	0	0	0	0	0	0	10	0	0	0	10	AFRONOVA(FROM NONSTOP M
 DdQ1lQ1Qb1P1oPl1QOd0Q0O9qqidiI9q	0	0	3	6	9	11	0	6	9	11	0	ここからよろしく大作戦143
 DdbI8dPqPI8ll69q6QidI6lldDQod8b9	0	0	2	3	7	13	0	3	7	13	0	Something Comforting
 DddIPd6iId8Doqq8OibDlD1dOi8PO8o9	0	0	3	4	8	12	0	3	8	12	0	i feel ...
-Di0ODIlddo8d90oo09qqd98QObQP1llI	0	0	4	8	14	17	0	8	14	17	0	[ ]DENTITY
+Di0ODIlddo8d90oo09qqd98QObQP1llI	0	0	4	8	14	17	18	8	14	17	18	[ ]DENTITY
 Di8lP6PobQ6l8do0llO9IIqQ6iqqiqDo	0	0	3	7	11	15	0	6	11	15	0	Hyper Bomb
 DiO086bqiDbolP6Q6Do1608dPP6DQ61l	4	0	0	0	0	0	0	0	0	0	19	皆伝 (A3)
 DibOOIOD1id66O0DqOQ61O6I9bIIQQ0q	0	0	3	6	9	12	13	6	9	12	13	heron
@@ -539,8 +546,9 @@ I0qiD6Ob86D1oQOib81lID6Dll8iOOOP	0	0	4	7	11	15	17	7	11	15	17	ホーンテッド�
 I189iqQI6iPDdIDbo81b1iD6lIQiI0Po	0	0	4	7	11	15	16	7	11	15	16	Run The Show
 I18Iolqio01IlPi9QIqPQ8Q9O6iOod0O	0	0	3	7	12	14	16	7	12	14	16	Ødyssey
 I1DiOI16Id0qdlqbQ6ObPlilDP1oiI98	0	0	2	5	9	13	0	6	9	13	0	Star Trail
-I1I0qd19DqIoI0qdqd6oPO68O8DDi6OI	0	0	4	8	11	14	0	8	11	14	0	勇猛無比
+I1I0qd19DqIoI0qdqd6oPO68O8DDi6OI	0	0	4	8	11	14	18	8	11	14	18	勇猛無比
 I1PodiblDldOdD119Dd6io9dq1D111oi	1	1	3	7	11	13	15	7	11	13	15	RUNNING
+I1i6li9l091l6ooqPlP91OlODPbqqo9P	0	0	3	7	11	15	0	7	11	15	0	ムラサキグルマ
 I1qd16dPdqPi96ql0lP10OQDbo11D89P	0	0	3	7	9	12	0	7	9	13	0	恋時雨
 I606oqOODOdQoP0IQOdP6b0DPdb86ddO	0	0	4	7	10	13	0	7	10	13	0	御伽噺に幕切れを
 I61ioI01IOPDPbP1OO0l98PD0iDbid0D	0	0	3	7	11	15	0	7	11	15	0	ZEPHYRANTHES
@@ -564,12 +572,13 @@ I90bQ81P1blOPIdd9PPl6I9D8DQ1dIob	1	1	4	8	12	15	0	8	12	14	0	TWENTY
 I90bd6obO890P0d1iiPD0dol8o8QloQD	0	0	3	6	9	12	16	5	10	13	16	Grip & Break down !!
 I96dOqqqQIi9oiqbqDPbQ8I8PQbqOb1o	0	0	3	6	8	11	13	6	10	12	14	朧
 I9Ob6PlIiOQl6iQ6qO6QO0iQ1ld9DDO0	0	0	3	9	12	16	0	9	12	16	0	BLSTR
-I9Oood9l9li0D08Q6d6DQPiIQiloidO6	0	0	4	8	12	16	0	8	12	16	0	Riot of Color
+I9Oood9l9li0D08Q6d6DQPiIQiloidO6	0	0	4	8	12	16	17	8	12	16	17	Riot of Color
 I9P1dbOqD1qIP8bd9O80Ooo869bldobD	0	0	3	7	11	14	0	7	11	14	0	No Life Queen [DJ Command Remix]
 I9iODl9bl1d8PilOilii9Dd19PP6QI66	0	0	4	5	8	10	0	4	9	13	0	チカラ
 ID00liOPPd6PiDb09608dQbOIDlQ68qo	0	0	3	6	9	12	0	6	9	12	0	HYPERDRIVE
 ID8Q0oO98i0D0o1i0doIqo6O0O9QDO68	0	0	3	6	10	15	0	6	10	15	0	ラビットホール
 ID9Dqo9QQQIP9ObD0lbbi6O6PiD18oD0	2	0	0	0	0	0	0	0	0	0	18	九段 (A20)
+IDIQilDID9lO6lO86dq6ldoDlqiii1o1	0	0	3	8	12	14	0	8	12	14	0	Robot Footwork
 IDP9ldQoD8bdQ6d9Q0oI6QlI9b6Db9Oo	0	0	4	8	12	15	0	8	12	15	0	星屑の夜果て
 IDPbb8oiQl0od6b8OqlPDo08o0QDo6iQ	0	0	3	4	7	11	13	5	7	11	13	La receta
 IDldD8o8P8dbIP6oiDo11i10lo6bP6oQ	0	0	2	4	6	8	0	4	6	9	0	real-high-SPEED
@@ -597,6 +606,7 @@ IQ9ddqDqq908QqQl196DQODQD9Q6oOiQ	0	0	2	6	12	15	0	5	12	14	0	ヤサイマシ☆ニ
 IQqOIb6ob8bIbOII66ID0oIQDPl6bdbb	0	0	2	6	7	9	11	7	8	11	11	PUT YOUR FAITH IN ME (Jazzy Groove)
 IQqi9Q9qD0DDQIqQOb868QIOioqDqI01	0	0	7	9	13	17	0	8	13	17	0	Triple Cross
 Ib01P6O8OPl8qqQi9QO6dii18ID69I8P	0	0	3	7	11	13	0	7	11	13	0	Grand Chariot
+Ib08idDooQbP00Q1Io0QlObloibb1b8Q	0	0	4	7	11	14	0	7	11	14	0	Dance wiz the Rhythm
 IbDoODD9qb66Iqd6DbOQiOoDll1DqiO9	0	0	3	6	10	12	0	6	10	13	0	君氏危うくも近うよれ
 IbI90PiioDlqPP19D1odPPbP1PP0009O	0	1	2	5	9	12	17	6	9	12	17	SKY HIGH (20th Anniversary Mix)
 Ibd8d0bllqOo61lqlQPd8lP01D0Qb9o6	0	0	3	4	7	11	0	4	7	13	0	ヒマワリ
@@ -609,7 +619,7 @@ IdOQPlbD9d9IO16Pd1IDO0b88Qo0boO9	0	0	2	4	8	13	0	4	8	13	0	寝起きヤシの木
 IdPl6QoiqIl86iQ1QdIoDQdqlq98OIib	0	0	3	6	12	15	0	6	11	15	0	STOMP!!
 IdlqO9DoOq0qPQdDbOb80dOPDlb98l0l	0	0	3	6	10	14	0	5	10	13	0	ほしのつくりかた
 Iib6ooOO9dIqPDbobq1Dd1li0I11bIDi	1	0	3	7	10	14	0	7	10	14	0	GALAXY
-IidO8qlodqdoioodqqb9Dqiq991Ilo10	0	0	4	8	13	16	0	8	13	16	0	リリーゼと炎龍レーヴァテイン
+IidO8qlodqdoioodqqb9Dqiq991Ilo10	0	0	4	8	13	16	18	8	13	16	18	リリーゼと炎龍レーヴァテイン
 IiiqDblQ8Oqlbo8OOiqI6IqO6P8I8I1d	0	0	3	7	13	15	0	7	13	15	0	Pure Rude
 Iiq6Qoll0oQi801QdPdlOO06DOdIDdD9	0	0	4	7	12	15	0	7	12	15	0	DOUBLE TORNARD
 IlP88I0bbl91iOD6OQ6o6PPb9o6dlDb8	0	0	3	7	11	14	0	7	11	15	0	THE ANCIENT KING IS BACK
@@ -683,6 +693,7 @@ ObIOQ6id8DOdlQlil8819ObqoDQIIoiO	0	0	2	6	10	14	16	6	11	14	16	F4SH10N
 ObP1P1OoDII9b9ll698Q981ilIddb8Id	0	0	2	5	7	8	0	4	7	9	0	BALLAD FOR YOU～想いの雨～
 ObbOibP0ll9I00di6i9oO1qlIQbdD0ql	0	0	4	7	9	12	0	7	9	12	0	ベビーステップ
 ObiIq6PDlOiPd0d1oP8IIQbqiq09IDII	0	0	2	5	8	11	0	4	8	13	0	DROP
+ObiiQb81io69166olbOqODQOQO10DbQi	0	0	3	7	10	14	0	6	10	14	0	まにぃまにあ××
 OboID1PloIIoOOObQdQOP110I61Ddl9I	0	0	2	4	7	9	0	4	7	11	0	蒼い衝動 ～for EXTREME～
 Od08diDbdbl1Pi90QdO0ibqq8D111q9b	0	0	2	4	7	11	0	4	7	11	0	追憶のアリア
 Od6bOOb69PqbqPdb6lO1QI66DOqo0POO	0	0	3	8	12	17	0	8	13	17	0	chaplet
@@ -905,7 +916,7 @@ b0lI9Ili8loOb1DD6Dd8lqII60b90101	0	0	3	5	8	12	0	6	7	12	0	Taj He Spitz (Tommie Su
 b0o6bl18Q1bqI9o9oqQ9POoP8DiDDibP	0	0	2	7	12	17	0	7	12	17	0	Drive Away
 b16OP1o9qb6bQd66qOl98iq0boiQP919	0	0	5	8	12	15	17	8	12	15	18	CHAOS Terror-Tech Mix
 b1ObooOQ9iI0DilD9Q6qlIQ8D1d8dQO9	0	0	2	4	7	9	0	4	7	9	0	in love wit you
-b1QllqO8oQdqo086QdIlIblDDbPodDoP	0	0	6	9	13	17	0	9	13	17	0	Lose Your Sense
+b1QllqO8oQdqo086QdIlIblDDbPodDoP	0	0	6	9	13	17	18	9	13	17	18	Lose Your Sense
 b1do8OI6qDDlQO0PI16868ql6bdbI886	0	0	6	10	13	16	0	11	13	16	0	Splash Gold
 b60odbPO1IQd6d0qPIi1dQODq16i9811	0	0	2	5	8	11	13	5	8	11	13	Elysium
 b6dqPiOO6iO6b8D90Ido6QPOlObd9o98	0	0	3	5	9	13	0	5	8	10	0	Mind Parasite
@@ -1268,7 +1279,7 @@ lliDD9qPqiIDI8P9bb18IO60l9D061Io	0	0	5	10	14	17	18	10	14	17	18	SISYPHUS
 llo89P08I1PlID9DO8lqdbbq69O8Qiib	0	0	2	7	10	13	0	6	10	13	0	逆さま♥シンデレラパレード
 lo6bOoq86d9od6qQ9PiPibOioOQb96lP	0	0	2	4	8	11	10	4	8	11	11	TWINKLE♡HEART
 loD6oi96869O8ilii1QPOPDoP91l1PQQ	0	0	2	7	10	13	11	7	10	13	13	Summer fantasy (Darwin remix)
-loD8qPl09qqi0o1iqbbDOdllDblioDIl	0	0	4	9	14	17	0	9	14	17	0	3y3s
+loD8qPl09qqi0o1iqbbDOdllDblioDIl	0	0	4	9	14	17	18	9	14	17	18	3y3s
 loP08P1PPi990lPD0O060d888O9o6qb8	0	0	2	5	8	12	0	5	8	12	0	Seasons
 loQ0Ibqqo8OO11oI9i9D6o0DDI0PDiOO	0	0	3	6	12	16	0	6	12	16	0	千客万来☆無問題！
 lob09DPQD0Dl6Q09dbq8biIb6QqDql8i	0	0	3	5	11	14	0	5	11	14	0	INFINITE WORLD
@@ -1357,7 +1368,7 @@ oiqql6iPq8Oq0QIqlqb1DOOO8ioPo8b9	3	0	0	0	0	0	0	0	0	0	17	八段 (A20+)
 ol6IDd019O0qq8dblPQ96ol1oPbI990b	0	0	6	10	13	16	17	9	13	16	17	HAPPY☆LUCKY☆YEAPPY
 ol8oiPo8iod9bDPPD1qdlbPd1ddqP6oP	2	0	0	0	0	0	18	0	0	0	0	九段 (A20)
 olDoq69qD008Q9bb8d9OOlPO160Qd0dq	0	0	2	5	9	11	0	5	9	11	0	Stay 4 Ever
-olIo8PdO8dq16QqDIQboQq6oPqDO9qoo	0	0	2	7	9	12	0	7	10	12	0	Get Back Up!
+olIo8PdO8dq16QqDIQboQq6oPqDO9qoo	0	0	2	7	9	12	15	7	10	12	15	Get Back Up!
 olOOdb66Q0bP0dqQPdIdQ8IPQql8D6bi	0	0	4	5	7	12	0	4	7	10	0	MOONSTER
 olQQ8QPPqqObDD9ooodOl9i9od8b06I9	0	0	5	7	11	13	0	8	10	14	0	Healing Vision ～Angelic mix～
 olQl6Qoi0IbobI980q9Q0QIo9qlbq1PO	0	0	4	8	12	15	0	8	12	14	0	Unreal
@@ -1371,7 +1382,7 @@ ooiqoi6Q0dil6b10QOq8DiOIiq9iQb10	0	0	3	7	10	13	0	7	10	13	0	LIKE A VAMPIRE
 ooo6qID66I6191bQib1QQdlPoio6Iodl	0	0	4	6	10	13	0	6	10	13	0	STERLING SILVER
 oqPii6QDdPOI6lDDQ96DOI8ill61bobd	0	0	4	7	11	14	0	7	11	14	0	STERLING SILVER (U1 overground mix)
 q08PbOPPbPobob0OII096bP9iil9908D	0	0	3	7	10	13	15	6	9	13	15	FLOWER
-q0I018lPqbdi66qiiiQlqIb9O19O9061	0	0	0	0	0	0	0	0	12	16	0	Is this dance a Hakken?
+q0I018lPqbdi66qiiiQlqIb9O19O9061	0	0	3	7	12	16	0	7	12	16	0	Is this dance a Hakken?
 q0IObiQdI9o918O0DbPlldqd01liQ8Ql	3	0	0	0	0	0	0	0	0	0	14	五段 (A20+)
 q0QIob1PDI6IP86dlPb6I6il9d6bP606	0	0	3	7	11	16	9	7	12	16	9	†渚の小悪魔ラヴリィ～レイディオ†
 q11d0oiQIlbP91dqqddPq9D80lbODbDi	0	0	2	7	9	14	13	7	9	14	13	Right on time (Ryu☆Remix)
@@ -1430,6 +1441,7 @@ qbl10iqqdO1Do1dIq181Pl6oi8QilQo1	0	0	2	6	10	12	0	6	10	12	0	Seule
 qdQoQli1d8DP0Obb919I6P1Odilib1Dd	0	0	2	3	8	11	0	3	8	11	0	おねがいダーリン
 qdbDo1oP6D9ioODd1dQO0QObObidilbP	0	0	2	5	9	12	0	6	9	13	0	TECH-NOID
 qdbO199oIDIbQ61iDQIPObOPQOIDP68i	0	0	4	8	13	16	0	8	13	16	0	White Stream
+qdbod6lI0I8O118DPq80D8b0o00OodlI	0	0	3	9	12	16	0	8	12	16	0	Hollywood Galaxy
 qdi88l6bo1Iqi9Qiqli8lIQQIPO1doQ9	0	0	3	4	8	11	0	4	7	11	0	ABSOLUTE
 qi0lbbDIo8Qlo9IiD8oqqo69DIPQ1IIO	0	0	3	7	10	14	0	7	10	14	0	Come Back to Me (Feel It)
 qi9qP1dPd6PPDlldbb8OIlD08Pbd9006	0	0	3	5	8	11	14	5	8	11	14	Love♡Shine わんだふるmix
