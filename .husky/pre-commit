@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+export PATH="$HOME/.local/bin:$PATH"
+eval "$(fnm env --shell bash)"
 yarn lint-staged

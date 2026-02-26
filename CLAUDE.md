@@ -78,6 +78,11 @@ SCORE_RANK: {
 }
 ```
 
+## manifest.json 設計メモ
+
+- `unlimitedStorage`: MV3 では非推奨だが意図的に残している。スコア・楽曲リスト・差分履歴の蓄積により chrome.storage.local のデフォルト上限 10MB を超えるリスクがあるため。
+- `http://skillattack.com/`: skillattack.com が HTTPS 非対応のため http のまま。
+
 ## Critical Rules
 
 1. **i18n**: When adding any user-visible string, update **both** `en/messages.json` and `ja/messages.json`.
