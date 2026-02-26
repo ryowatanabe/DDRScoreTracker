@@ -12,31 +12,38 @@ async function loadModules() {
 function onMessage(message, sender, sendResponse) {
   loadModules().then(
     (_value) => {
-      if (message.type == 'PARSE_MUSIC_LIST') {
-        console.log('parsing music list ...');
-        sendResponse(Parser.parseMusicList(document.body, message.gameVersion));
-        return;
+      try {
+        if (message.type == 'PARSE_MUSIC_LIST') {
+          console.log('parsing music list ...');
+          sendResponse(Parser.parseMusicList(document.body, message.gameVersion));
+          return;
+        }
+        if (message.type == 'PARSE_MUSIC_DETAIL') {
+          console.log('parsing music detail ...');
+          sendResponse(Parser.parseMusicDetail(document.body, message.gameVersion));
+          return;
+        }
+        if (message.type == 'PARSE_SCORE_LIST') {
+          console.log('parsing score list ...');
+          sendResponse(Parser.parseScoreList(document.body, message.gameVersion));
+          return;
+        }
+        if (message.type == 'PARSE_SCORE_DETAIL') {
+          console.log('parsing score detail ...');
+          sendResponse(Parser.parseScoreDetail(document.body, message.gameVersion));
+          return;
+        }
+        console.log('received unknown message');
+        console.log(message);
+      } catch (e) {
+        Logger.error(e);
+        sendResponse({ status: Parser.STATUS.UNKNOWN_ERROR });
       }
-      if (message.type == 'PARSE_MUSIC_DETAIL') {
-        console.log('parsing music detail ...');
-        sendResponse(Parser.parseMusicDetail(document.body, message.gameVersion));
-        return;
-      }
-      if (message.type == 'PARSE_SCORE_LIST') {
-        console.log('parsing score list ...');
-        sendResponse(Parser.parseScoreList(document.body, message.gameVersion));
-        return;
-      }
-      if (message.type == 'PARSE_SCORE_DETAIL') {
-        console.log('parsing score detail ...');
-        sendResponse(Parser.parseScoreDetail(document.body, message.gameVersion));
-        return;
-      }
-      console.log('received unknown message');
-      console.log(message);
     },
     (reason) => {
-      Logger.error(reason);
+      // Logger may not be available if loadModules() failed before loading Logger
+      console.error(reason);
+      sendResponse({ status: 1 }); // Parser.STATUS.UNKNOWN_ERROR
     }
   );
   return true;
