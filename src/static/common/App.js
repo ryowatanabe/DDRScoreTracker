@@ -523,192 +523,174 @@ export class App {
   onUpdateTab() {
     switch (this.state) {
       case STATE.UPDATE_MUSIC_LIST:
-        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST', gameVersion: this.targetGameVersion }, async (res) => {
-          console.log(res);
-          if (res.status !== Parser.STATUS.SUCCESS) {
-            await this.handleError(res);
-            return;
-          }
-          res.musics.forEach(function (music) {
-            this.musicList.applyObject(music);
-          }, this);
-          this.saveStorage();
-          this.updateCharts();
-          if (res.hasNext) {
-            try {
-              Logger.info(I18n.getMessage('log_message_update_music_list_progress', [res.currentPage + 1, res.maxPage]));
-              await this.browserController.updateTab(res.nextUrl);
-            } catch (error) {
-              this.browserController.reset();
-              Logger.error(error.message);
-              this.changeState(STATE.IDLE);
-              Logger.info(I18n.getMessage('log_message_aborted'));
-            }
-          } else {
-            await this.closeTab();
-            this.changeState(STATE.IDLE);
-            Logger.info(I18n.getMessage('log_message_done'));
-          }
-        });
+        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST', gameVersion: this.targetGameVersion }, (res) => this.handleMusicListResponse(res));
         break;
       case STATE.UPDATE_MUSIC_DETAIL:
-        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL', gameVersion: this.targetGameVersion }, async (res) => {
-          console.log(res);
-          // workaround:
-          // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
-          // そのような曲のデータを取得しようとしてエラーになったときには
-          // 処理を中断せずエラーを無視して次へ進む
-          if (res.status !== Parser.STATUS.SUCCESS && res.status !== Parser.STATUS.UNKNOWN_ERROR) {
-            await this.handleError(res);
-            return;
-          }
-          if (res.status === Parser.STATUS.SUCCESS) {
-            res.musics.forEach(function (music) {
-              music.type = this.targetMusic.type;
-              const musicData = MusicData.createFromStorage(music);
-              const body = JSON.stringify({ text: musicData.encodedString });
-              if (this.musicList.applyMusicData(musicData)) {
-                fetch('https://us-west1-blissful-mile-450603-h9.cloudfunctions.net/unregistered_music', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: body,
-                })
-                  .then((response) => {
-                    Logger.debug(response);
-                  })
-                  .catch((reason) => {
-                    Logger.debug(reason);
-                  });
-              }
-            }, this);
-            this.saveStorage();
-            this.updateCharts();
-          }
-          if (this.targetMusics.length > 0) {
-            try {
-              this.targetMusic = this.targetMusics.shift();
-              Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.targetMusic.musicId, this.targetMusics.length]));
-              await this.browserController.updateTab(this.targetMusic.url);
-            } catch (error) {
-              this.browserController.reset();
-              Logger.error(error.message);
-              this.changeState(STATE.IDLE);
-              Logger.info(I18n.getMessage('log_message_aborted'));
-            }
-          } else {
-            await this.closeTab();
-            this.changeState(STATE.IDLE);
-            Logger.info(I18n.getMessage('log_message_done'));
-          }
-        });
+        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL', gameVersion: this.targetGameVersion }, (res) => this.handleMusicDetailResponse(res));
         break;
       case STATE.UPDATE_SCORE_LIST:
-        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST', gameVersion: this.targetGameVersion }, async (res) => {
-          console.log(res);
-          if (res.status !== Parser.STATUS.SUCCESS) {
-            await this.handleError(res);
-            return;
-          }
-          res.scores.forEach(function (score) {
-            score.musicType = this.targetMusicType;
-            this.differences = this.differences.concat(this.scoreList.applyObject(score));
-          }, this);
-          this.saveStorage();
-          this.updateCharts();
-          if (res.hasNext) {
-            try {
-              Logger.info(
-                I18n.getMessage('log_message_update_score_list_progress', [
-                  I18n.getMessage(`log_message_update_score_list_play_mode_${this.targetPlayMode}`),
-                  I18n.getMessage(`log_message_update_score_list_music_type_${this.targetMusicType}`),
-                  res.currentPage + 1,
-                  res.maxPage,
-                ])
-              );
-              await this.browserController.updateTab(res.nextUrl);
-            } catch (error) {
-              this.browserController.reset();
-              Logger.error(error.message);
-              this.changeState(STATE.IDLE);
-              Logger.info(I18n.getMessage('log_message_aborted'));
-            }
-          } else {
-            if (Constants.hasNextMusicType(this.targetGameVersion, this.targetPlayMode, this.targetMusicType)) {
-              const nextMusicType = Constants.getNextMusicType(this.targetGameVersion, this.targetPlayMode, this.targetMusicType);
-              this.targetPlayMode = nextMusicType.playMode;
-              this.targetMusicType = nextMusicType.musicType;
-              try {
-                Logger.info(
-                  I18n.getMessage('log_message_update_score_list_progress', [
-                    I18n.getMessage(`log_message_update_score_list_play_mode_${this.targetPlayMode}`),
-                    I18n.getMessage(`log_message_update_score_list_music_type_${this.targetMusicType}`),
-                    1,
-                    '?',
-                  ])
-                );
-                await this.browserController.updateTab(Constants.SCORE_LIST_URL[this.targetGameVersion][this.targetPlayMode][this.targetMusicType]);
-              } catch (error) {
-                this.browserController.reset();
-                Logger.error(error.message);
-                this.changeState(STATE.IDLE);
-                Logger.info(I18n.getMessage('log_message_aborted'));
-              }
-            } else {
-              await this.closeTab();
-              this.changeState(STATE.IDLE);
-              Logger.info(I18n.getMessage('log_message_done'));
-            }
-          }
-        });
+        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST', gameVersion: this.targetGameVersion }, (res) => this.handleScoreListResponse(res));
         break;
       case STATE.UPDATE_SCORE_DETAIL:
-        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL', gameVersion: this.targetGameVersion }, async (res) => {
-          console.log(res);
-          // workaround:
-          // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
-          // そのような曲のデータを取得しようとしてエラーになったときには
-          // 処理を中断せずエラーを無視して次へ進む
-          if (res.status !== Parser.STATUS.SUCCESS && res.status !== Parser.STATUS.UNKNOWN_ERROR) {
-            await this.handleError(res);
-            return;
-          }
-          if (res.status === Parser.STATUS.SUCCESS) {
-            res.scores.forEach(function (score) {
-              this.scoreList.applyObject(score);
-            }, this);
-            this.saveStorage();
-            this.updateCharts();
-          }
-          if (this.targetMusics.length > 0) {
-            try {
-              const targetMusic = this.targetMusics.shift();
-              Logger.info(
-                I18n.getMessage('log_message_update_score_detail_progress', [
-                  this.musicList.hasMusic(targetMusic.musicId) ? this.musicList.getMusicDataById(targetMusic.musicId).title : targetMusic.musicId,
-                  Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty],
-                  this.targetMusics.length,
-                ])
-              );
-              await this.browserController.updateTab(targetMusic.url);
-            } catch (error) {
-              this.browserController.reset();
-              Logger.error(error.message);
-              this.changeState(STATE.IDLE);
-              Logger.info(I18n.getMessage('log_message_aborted'));
-            }
-          } else {
-            await this.closeTab();
-            this.changeState(STATE.IDLE);
-            Logger.info(I18n.getMessage('log_message_done'));
-          }
-        });
+        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL', gameVersion: this.targetGameVersion }, (res) => this.handleScoreDetailResponse(res));
         break;
       default:
         Logger.debug('onUpdateTab: event was ignored.');
         break;
     }
+  }
+
+  async handleMusicListResponse(res) {
+    console.log(res);
+    if (res.status !== Parser.STATUS.SUCCESS) {
+      await this.handleError(res);
+      return;
+    }
+    res.musics.forEach(function (music) {
+      this.musicList.applyObject(music);
+    }, this);
+    this.saveStorage();
+    this.updateCharts();
+    if (res.hasNext) {
+      Logger.info(I18n.getMessage('log_message_update_music_list_progress', [res.currentPage + 1, res.maxPage]));
+      await this.navigateTo(res.nextUrl);
+    } else {
+      await this.finishAction();
+    }
+  }
+
+  async handleMusicDetailResponse(res) {
+    console.log(res);
+    // workaround:
+    // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
+    // そのような曲のデータを取得しようとしてエラーになったときには
+    // 処理を中断せずエラーを無視して次へ進む
+    if (res.status !== Parser.STATUS.SUCCESS && res.status !== Parser.STATUS.UNKNOWN_ERROR) {
+      await this.handleError(res);
+      return;
+    }
+    if (res.status === Parser.STATUS.SUCCESS) {
+      res.musics.forEach(function (music) {
+        music.type = this.targetMusic.type;
+        const musicData = MusicData.createFromStorage(music);
+        const body = JSON.stringify({ text: musicData.encodedString });
+        if (this.musicList.applyMusicData(musicData)) {
+          fetch('https://us-west1-blissful-mile-450603-h9.cloudfunctions.net/unregistered_music', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: body,
+          })
+            .then((response) => {
+              Logger.debug(response);
+            })
+            .catch((reason) => {
+              Logger.debug(reason);
+            });
+        }
+      }, this);
+      this.saveStorage();
+      this.updateCharts();
+    }
+    if (this.targetMusics.length > 0) {
+      this.targetMusic = this.targetMusics.shift();
+      Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.targetMusic.musicId, this.targetMusics.length]));
+      await this.navigateTo(this.targetMusic.url);
+    } else {
+      await this.finishAction();
+    }
+  }
+
+  async handleScoreListResponse(res) {
+    console.log(res);
+    if (res.status !== Parser.STATUS.SUCCESS) {
+      await this.handleError(res);
+      return;
+    }
+    res.scores.forEach(function (score) {
+      score.musicType = this.targetMusicType;
+      this.differences = this.differences.concat(this.scoreList.applyObject(score));
+    }, this);
+    this.saveStorage();
+    this.updateCharts();
+    if (res.hasNext) {
+      Logger.info(
+        I18n.getMessage('log_message_update_score_list_progress', [
+          I18n.getMessage(`log_message_update_score_list_play_mode_${this.targetPlayMode}`),
+          I18n.getMessage(`log_message_update_score_list_music_type_${this.targetMusicType}`),
+          res.currentPage + 1,
+          res.maxPage,
+        ])
+      );
+      await this.navigateTo(res.nextUrl);
+    } else if (Constants.hasNextMusicType(this.targetGameVersion, this.targetPlayMode, this.targetMusicType)) {
+      const nextMusicType = Constants.getNextMusicType(this.targetGameVersion, this.targetPlayMode, this.targetMusicType);
+      this.targetPlayMode = nextMusicType.playMode;
+      this.targetMusicType = nextMusicType.musicType;
+      Logger.info(
+        I18n.getMessage('log_message_update_score_list_progress', [
+          I18n.getMessage(`log_message_update_score_list_play_mode_${this.targetPlayMode}`),
+          I18n.getMessage(`log_message_update_score_list_music_type_${this.targetMusicType}`),
+          1,
+          '?',
+        ])
+      );
+      await this.navigateTo(Constants.SCORE_LIST_URL[this.targetGameVersion][this.targetPlayMode][this.targetMusicType]);
+    } else {
+      await this.finishAction();
+    }
+  }
+
+  async handleScoreDetailResponse(res) {
+    console.log(res);
+    // workaround:
+    // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
+    // そのような曲のデータを取得しようとしてエラーになったときには
+    // 処理を中断せずエラーを無視して次へ進む
+    if (res.status !== Parser.STATUS.SUCCESS && res.status !== Parser.STATUS.UNKNOWN_ERROR) {
+      await this.handleError(res);
+      return;
+    }
+    if (res.status === Parser.STATUS.SUCCESS) {
+      res.scores.forEach(function (score) {
+        this.scoreList.applyObject(score);
+      }, this);
+      this.saveStorage();
+      this.updateCharts();
+    }
+    if (this.targetMusics.length > 0) {
+      const targetMusic = this.targetMusics.shift();
+      Logger.info(
+        I18n.getMessage('log_message_update_score_detail_progress', [
+          this.musicList.hasMusic(targetMusic.musicId) ? this.musicList.getMusicDataById(targetMusic.musicId).title : targetMusic.musicId,
+          Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty],
+          this.targetMusics.length,
+        ])
+      );
+      await this.navigateTo(targetMusic.url);
+    } else {
+      await this.finishAction();
+    }
+  }
+
+  // updateTab を呼び出し、失敗時は reset してアボートする
+  async navigateTo(url) {
+    try {
+      await this.browserController.updateTab(url);
+    } catch (error) {
+      this.browserController.reset();
+      Logger.error(error.message);
+      this.changeState(STATE.IDLE);
+      Logger.info(I18n.getMessage('log_message_aborted'));
+    }
+  }
+
+  // タブを閉じて IDLE に戻り、完了ログを出す
+  async finishAction() {
+    await this.closeTab();
+    this.changeState(STATE.IDLE);
+    Logger.info(I18n.getMessage('log_message_done'));
   }
 
   changeState(nextState) {
@@ -749,93 +731,69 @@ export class App {
     }
     this.saveSaSettings(ddrcode);
 
-    let skillAttackIndexMap;
-    let skillAttackDataList;
     const params = new URLSearchParams();
     params.append('_', '');
     params.append('password', password);
     params.append('ddrcode', ddrcode);
     Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_begin'));
-    fetch('http://skillattack.com/sa4/dancer_input.php', {
-      method: 'POST',
-      body: params,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP status: ${response.status}`);
-        }
-        response.text().then((text) => {
-          if (text.indexOf('Password invalid') >= 0) {
-            Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_password_invalid'));
-            Logger.info(I18n.getMessage('log_message_aborted'));
-            return;
-          }
-          fetch('http://skillattack.com/sa4/data/master_music.txt', { cache: 'no-store' })
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error(`HTTP status: ${response.status}`);
-              }
-              Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_fetch_music_master_success'));
-              response.text().then((text) => {
-                skillAttackIndexMap = SkillAttackIndexMap.createFromText(text);
 
-                fetch(`http://skillattack.com/sa4/data/dancer/${ddrcode}/score_${ddrcode}.txt`, { cache: 'no-store' })
-                  .then((response) => {
-                    if (!response.ok) {
-                      throw new Error(`HTTP status: ${response.status}`);
-                    }
-                    Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_fetch_score_data_success'));
-                    response.text().then((text) => {
-                      skillAttackDataList = new SkillAttackDataList(skillAttackIndexMap);
-                      skillAttackDataList.applyText(text);
-                      const skillAttackDataListDiff = skillAttackDataList.getDiff(this.musicList, this.scoreList);
-                      if (skillAttackDataListDiff.count === 0) {
-                        Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_no_differences'));
-                        return;
-                      }
-                      Logger.debug(skillAttackDataListDiff);
-                      Logger.debug(skillAttackDataListDiff.urlSearchParams(ddrcode, password).toString());
-                      if (this.options.notSendDataToSkillAttack) {
-                        Logger.info(I18n.getMessage('log_message_done'));
-                        return;
-                      }
-                      Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_send_data'));
-                      fetch('http://skillattack.com/sa4/dancer_input.php', {
-                        method: 'POST',
-                        body: skillAttackDataListDiff.urlSearchParams(ddrcode, password),
-                      })
-                        .then((response) => {
-                          if (!response.ok) {
-                            throw new Error(`HTTP status: ${response.status}`);
-                          }
-                          Logger.info(I18n.getMessage('log_message_done'));
-                        })
-                        .catch((reason) => {
-                          Logger.info(I18n.getMessage('log_message_network_error'));
-                          Logger.debug(reason);
-                          Logger.info(I18n.getMessage('log_message_aborted'));
-                        });
-                    });
-                  })
-                  .catch((reason) => {
-                    Logger.info(I18n.getMessage('log_message_network_error'));
-                    Logger.debug(reason);
-                    Logger.info(I18n.getMessage('log_message_aborted'));
-                  });
-              });
-            })
-            .catch((reason) => {
-              Logger.info(I18n.getMessage('log_message_network_error'));
-              Logger.debug(reason);
-              Logger.info(I18n.getMessage('log_message_aborted'));
-            });
-        });
-      })
-      .catch((reason) => {
-        Logger.info(I18n.getMessage('log_message_network_error'));
-        Logger.debug(reason);
+    try {
+      // Step 1: ログイン認証
+      const loginResponse = await fetch('http://skillattack.com/sa4/dancer_input.php', { method: 'POST', body: params });
+      if (!loginResponse.ok) {
+        throw new Error(`HTTP status: ${loginResponse.status}`);
+      }
+      const loginText = await loginResponse.text();
+      if (loginText.indexOf('Password invalid') >= 0) {
+        Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_password_invalid'));
         Logger.info(I18n.getMessage('log_message_aborted'));
+        return;
+      }
+
+      // Step 2: 楽曲マスターデータ取得
+      const masterResponse = await fetch('http://skillattack.com/sa4/data/master_music.txt', { cache: 'no-store' });
+      if (!masterResponse.ok) {
+        throw new Error(`HTTP status: ${masterResponse.status}`);
+      }
+      Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_fetch_music_master_success'));
+      const skillAttackIndexMap = SkillAttackIndexMap.createFromText(await masterResponse.text());
+
+      // Step 3: プレイヤーのスコアデータ取得
+      const scoreResponse = await fetch(`http://skillattack.com/sa4/data/dancer/${ddrcode}/score_${ddrcode}.txt`, { cache: 'no-store' });
+      if (!scoreResponse.ok) {
+        throw new Error(`HTTP status: ${scoreResponse.status}`);
+      }
+      Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_fetch_score_data_success'));
+      const skillAttackDataList = new SkillAttackDataList(skillAttackIndexMap);
+      skillAttackDataList.applyText(await scoreResponse.text());
+      const skillAttackDataListDiff = skillAttackDataList.getDiff(this.musicList, this.scoreList);
+
+      if (skillAttackDataListDiff.count === 0) {
+        Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_no_differences'));
+        return;
+      }
+      Logger.debug(skillAttackDataListDiff);
+      Logger.debug(skillAttackDataListDiff.urlSearchParams(ddrcode, password).toString());
+
+      if (this.options.notSendDataToSkillAttack) {
+        Logger.info(I18n.getMessage('log_message_done'));
+        return;
+      }
+
+      // Step 4: スコアデータ送信
+      Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_send_data'));
+      const submitResponse = await fetch('http://skillattack.com/sa4/dancer_input.php', {
+        method: 'POST',
+        body: skillAttackDataListDiff.urlSearchParams(ddrcode, password),
       });
-    return;
+      if (!submitResponse.ok) {
+        throw new Error(`HTTP status: ${submitResponse.status}`);
+      }
+      Logger.info(I18n.getMessage('log_message_done'));
+    } catch (reason) {
+      Logger.info(I18n.getMessage('log_message_network_error'));
+      Logger.debug(reason);
+      Logger.info(I18n.getMessage('log_message_aborted'));
+    }
   }
 }
