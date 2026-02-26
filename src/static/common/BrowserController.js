@@ -26,11 +26,11 @@ export class BrowserController {
       Logger.error(`BrowserController.onUpdateTabInternalImpl: called when tabId is null`);
       return;
     }
-    if (tid != this.tabId) {
+    if (tid !== this.tabId) {
       return;
     }
     Logger.debug(`${tid}, ${JSON.stringify(changeInfo)}, ${JSON.stringify(tab)}`);
-    if (changeInfo.status == 'complete') {
+    if (changeInfo.status === 'complete') {
       switch (this.state) {
         case this.constructor.STATE.NAVIGATING:
           this.changeState(this.constructor.STATE.IDLE);
@@ -51,7 +51,7 @@ export class BrowserController {
 
   createTab(url, active = false) {
     return new Promise((resolve, reject) => {
-      if (this.state != this.constructor.STATE.INITIALIZED) {
+      if (this.state !== this.constructor.STATE.INITIALIZED) {
         reject(new Error(`BrowserController.createTab: state unmatch (current state: ${this.state})`));
         return;
       }
@@ -68,13 +68,13 @@ export class BrowserController {
 
   updateTab(url, delay = this.delay) {
     return new Promise((resolve, reject) => {
-      if (this.state != this.constructor.STATE.IDLE) {
+      if (this.state !== this.constructor.STATE.IDLE) {
         reject(new Error(`BrowserController.updateTab: state unmatch (current state: ${this.state})`));
         return;
       }
       this.changeState(this.constructor.STATE.WAITING);
       setTimeout(() => {
-        if (this.state == this.constructor.STATE.WAITING) {
+        if (this.state === this.constructor.STATE.WAITING) {
           chrome.tabs.update(this.tabId, { url: url }, (_tab) => {
             Logger.debug(`BrowserController.updateTab: navigate to ${url})`);
             if (typeof chrome.runtime.lastError !== 'undefined') {
@@ -92,7 +92,7 @@ export class BrowserController {
 
   closeTab(force = false) {
     return new Promise((resolve, reject) => {
-      if (!force && this.state != this.constructor.STATE.IDLE) {
+      if (!force && this.state !== this.constructor.STATE.IDLE) {
         reject(new Error(`BrowserController.closeTab: state unmatch (current state: ${this.state})`));
         return;
       }
@@ -110,7 +110,7 @@ export class BrowserController {
   }
 
   sendMessageToTab(message, callback) {
-    if (this.state != this.constructor.STATE.IDLE) {
+    if (this.state !== this.constructor.STATE.IDLE) {
       throw new Error(`BrowserController.sendMessageToTab: state unmatch (current state: ${this.state})`);
     }
     chrome.tabs.sendMessage(this.tabId, message, {}, callback);

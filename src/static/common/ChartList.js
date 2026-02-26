@@ -30,7 +30,7 @@ export class ChartList {
         clearTypeString: Constants.CLEAR_TYPE_STRING[clearType],
         clearTypeClassString: Constants.CLEAR_TYPE_CLASS_STRING[clearType],
         count: this.charts.filter((chartData) => {
-          return chartData.clearType == clearType;
+          return chartData.clearType === clearType;
         }).length,
       });
     });
@@ -44,7 +44,7 @@ export class ChartList {
         flareRankString: Constants.FLARE_RANK_STRING[flareRank],
         flareRankClassString: Constants.FLARE_RANK_CLASS_STRING[flareRank],
         count: this.charts.filter((chartData) => {
-          return chartData.flareRank == flareRank;
+          return chartData.flareRank === flareRank;
         }).length,
       });
     });
@@ -58,7 +58,7 @@ export class ChartList {
         scoreRankString: Constants.SCORE_RANK_STRING[scoreRank],
         scoreRankClassString: Constants.SCORE_RANK_CLASS_STRING[scoreRank],
         count: this.charts.filter((chartData) => {
-          return chartData.scoreRank == scoreRank;
+          return chartData.scoreRank === scoreRank;
         }).length,
       });
     });
@@ -145,13 +145,13 @@ export class ChartList {
   }
 
   static compareChartData(a, b, sortConditions) {
-    if (sortConditions.length == 0) {
+    if (sortConditions.length === 0) {
       return 0;
     }
     const attribute = sortConditions[0].attribute;
     let lt = -1;
     let gt = 1;
-    if (sortConditions[0].order == 'desc') {
+    if (sortConditions[0].order === 'desc') {
       lt = 1;
       gt = -1;
     }

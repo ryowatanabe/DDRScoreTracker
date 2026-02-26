@@ -3,7 +3,7 @@ export class Statistics {
     if (!Array.isArray(values)) {
       return null;
     }
-    if (values.length == 0) {
+    if (values.length === 0) {
       return null;
     }
     let copy = values.slice();
@@ -16,7 +16,7 @@ export class Statistics {
     if (!Array.isArray(values)) {
       return null;
     }
-    if (values.length == 0) {
+    if (values.length === 0) {
       return null;
     }
     let copy = values.slice();
@@ -29,7 +29,7 @@ export class Statistics {
     if (!Array.isArray(values)) {
       return null;
     }
-    if (values.length == 0) {
+    if (values.length === 0) {
       return null;
     }
     return (
@@ -43,7 +43,7 @@ export class Statistics {
     if (!Array.isArray(values)) {
       return null;
     }
-    if (values.length == 0) {
+    if (values.length === 0) {
       return null;
     }
     let copy = values.slice();

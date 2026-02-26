@@ -37,7 +37,7 @@ function onInitialized() {
 }
 
 function initialize() {
-  if (app.getState() == STATE.INITIALIZE) {
+  if (app.getState() === STATE.INITIALIZE) {
     setTimeout(initialize, 100);
   } else {
     onInitialized();

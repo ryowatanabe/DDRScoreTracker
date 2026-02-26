@@ -60,8 +60,8 @@
 
     <div v-if="maxPage > 1" class="pager">
       <template v-for="index of maxPage" :key="index">
-        <a v-if="index == currentPage" :class="['element', 'current']">[{{ index }}]</a
-        ><a v-if="index != currentPage" :class="['element', 'link']" @click="gotoPage(index)">[{{ index }}]</a>
+        <a v-if="index === currentPage" :class="['element', 'current']">[{{ index }}]</a
+        ><a v-if="index !== currentPage" :class="['element', 'link']" @click="gotoPage(index)">[{{ index }}]</a>
       </template>
     </div>
 
@@ -96,8 +96,8 @@
 
     <div v-if="maxPage > 1" class="pager">
       <template v-for="index of maxPage">
-        <a v-if="index == currentPage" :key="index" :class="['element', 'current']">[{{ index }}]</a
-        ><a v-if="index != currentPage" :key="index" :class="['element', 'link']" @click="gotoPage(index)">[{{ index }}]</a>
+        <a v-if="index === currentPage" :key="index" :class="['element', 'current']">[{{ index }}]</a
+        ><a v-if="index !== currentPage" :key="index" :class="['element', 'link']" @click="gotoPage(index)">[{{ index }}]</a>
       </template>
     </div>
   </div>

@@ -13,22 +13,22 @@ function onMessage(message, sender, sendResponse) {
   loadModules().then(
     (_value) => {
       try {
-        if (message.type == 'PARSE_MUSIC_LIST') {
+        if (message.type === 'PARSE_MUSIC_LIST') {
           console.log('parsing music list ...');
           sendResponse(Parser.parseMusicList(document.body, message.gameVersion));
           return;
         }
-        if (message.type == 'PARSE_MUSIC_DETAIL') {
+        if (message.type === 'PARSE_MUSIC_DETAIL') {
           console.log('parsing music detail ...');
           sendResponse(Parser.parseMusicDetail(document.body, message.gameVersion));
           return;
         }
-        if (message.type == 'PARSE_SCORE_LIST') {
+        if (message.type === 'PARSE_SCORE_LIST') {
           console.log('parsing score list ...');
           sendResponse(Parser.parseScoreList(document.body, message.gameVersion));
           return;
         }
-        if (message.type == 'PARSE_SCORE_DETAIL') {
+        if (message.type === 'PARSE_SCORE_DETAIL') {
           console.log('parsing score detail ...');
           sendResponse(Parser.parseScoreDetail(document.body, message.gameVersion));
           return;

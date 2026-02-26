@@ -31,7 +31,7 @@ export class Parser {
       musics: [],
       status: this.getResultStatus(rootElement),
     };
-    if (res.status != this.STATUS.SUCCESS) {
+    if (res.status !== this.STATUS.SUCCESS) {
       return res;
     }
     const next = rootElement.querySelectorAll('#next.arrow');
@@ -67,7 +67,7 @@ export class Parser {
       musics: [],
       status: this.getResultStatus(rootElement),
     };
-    if (res.status != this.STATUS.SUCCESS) {
+    if (res.status !== this.STATUS.SUCCESS) {
       return res;
     }
     const musicInfo = rootElement.querySelectorAll('#music_info td');
@@ -86,7 +86,7 @@ export class Parser {
 
   static parseMusicDetail(rootElement, gameVersion) {
     const regexpForDifficulties = /^.*songdetails_level_([0-9]*).png$/;
-    if (gameVersion == Constants.GAME_VERSION.WORLD) {
+    if (gameVersion === Constants.GAME_VERSION.WORLD) {
       return this.parseMusicDetailCore(rootElement, (root) => {
         return Array.from(root.querySelectorAll('li.step')).map((element) => {
           const img = element.querySelector('img');
@@ -116,7 +116,7 @@ export class Parser {
       scores: [],
       status: this.getResultStatus(rootElement),
     };
-    if (res.status != this.STATUS.SUCCESS) {
+    if (res.status !== this.STATUS.SUCCESS) {
       return res;
     }
     const next = rootElement.querySelectorAll('#next.arrow');
@@ -139,7 +139,7 @@ export class Parser {
         const difficulty = Constants.DIFFICULTY_NAME_MAP[difficultyName] + (isDouble ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
 
         const detail = score.querySelectorAll('#' + difficultyName + '.rank');
-        if (detail.length == 0) {
+        if (detail.length === 0) {
           return;
         }
 
@@ -157,7 +157,7 @@ export class Parser {
 
   static parseScoreList(rootElement, gameVersion) {
     const fileNameRegexp = /^.*\/([^/]+)$/;
-    if (gameVersion == Constants.GAME_VERSION.WORLD) {
+    if (gameVersion === Constants.GAME_VERSION.WORLD) {
       return this.parseScoreListCore(rootElement, (detail) => {
         const scoreDetail = new ScoreDetail();
         const scoreValue = parseInt(detail.querySelector('.data_score').innerHTML, 10);
@@ -170,7 +170,7 @@ export class Parser {
         scoreDetail.scoreRank = Constants.SCORE_RANK_FILE_MAP_DDRWORLD[scoreRankFileName];
         scoreDetail.clearType = Constants.CLEAR_TYPE_FILE_MAP_DDRWORLD[clearTypeFileName];
         scoreDetail.flareRank = Constants.FLARE_RANK_FILE_MAP_DDRWORLD[flareRankFileName];
-        if (scoreDetail.scoreRank == Constants.SCORE_RANK.NO_PLAY) {
+        if (scoreDetail.scoreRank === Constants.SCORE_RANK.NO_PLAY) {
           return null;
         }
         return scoreDetail;
@@ -184,7 +184,7 @@ export class Parser {
       const clearTypeFileName = detail.querySelectorAll('div.data_rank img')[1].src.replace(fileNameRegexp, '$1');
       scoreDetail.scoreRank = Constants.SCORE_RANK_FILE_MAP[scoreRankFileName];
       scoreDetail.clearType = Constants.CLEAR_TYPE_FILE_MAP[clearTypeFileName];
-      if (scoreDetail.scoreRank == Constants.SCORE_RANK.NO_PLAY) {
+      if (scoreDetail.scoreRank === Constants.SCORE_RANK.NO_PLAY) {
         return null;
       }
       return scoreDetail;
@@ -197,7 +197,7 @@ export class Parser {
       scores: [],
       status: this.getResultStatus(rootElement),
     };
-    if (res.status != this.STATUS.SUCCESS) {
+    if (res.status !== this.STATUS.SUCCESS) {
       return res;
     }
     const detail = Array.from(rootElement.querySelectorAll('#music_detail_table td, #course_detail_table td')).map((element) => {
@@ -222,7 +222,7 @@ export class Parser {
   }
 
   static parseScoreDetail(rootElement, gameVersion) {
-    if (gameVersion == Constants.GAME_VERSION.WORLD) {
+    if (gameVersion === Constants.GAME_VERSION.WORLD) {
       return this.parseScoreDetailCore(rootElement, (detail, scoreDetail) => {
         scoreDetail.playCount = parseInt(detail[6], 10) ? parseInt(detail[6], 10) : 0;
         scoreDetail.clearCount = parseInt(detail[7], 10) ? parseInt(detail[7], 10) : 0;

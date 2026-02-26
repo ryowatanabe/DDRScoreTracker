@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function onInitialized() {
   logContainer.initialize(app);
 
-  if (app.getState() != APP_STATE.IDLE) {
+  if (app.getState() !== APP_STATE.IDLE) {
     logContainer.disableButtons();
     logContainer.open();
   } else {
@@ -115,7 +115,7 @@ function onInitialized() {
 }
 
 function initialize() {
-  if (app.getState() == APP_STATE.INITIALIZE) {
+  if (app.getState() === APP_STATE.INITIALIZE) {
     setTimeout(initialize, 100);
   } else {
     onInitialized();
@@ -128,9 +128,9 @@ window.addEventListener('load', () => {
 window.addEventListener('unload', () => {});
 
 chrome.runtime.onMessage.addListener((message, _sender, _sendResponse) => {
-  if (message.type == CHANGE_APP_STATE_MESSAGE_TYPE) {
+  if (message.type === CHANGE_APP_STATE_MESSAGE_TYPE) {
     console.log(`change background state ${message.oldState} -> ${message.state}`);
-    if (message.state == APP_STATE.IDLE) {
+    if (message.state === APP_STATE.IDLE) {
       logContainer.enableButtons();
     } else {
       logContainer.disableButtons();

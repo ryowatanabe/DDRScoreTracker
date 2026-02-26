@@ -4,7 +4,7 @@ export class I18n {
       substitutions = [substitutions];
     }
     const value = chrome.i18n.getMessage(key, substitutions, options);
-    if (value == '') {
+    if (value === '') {
       return `[[${key}]]`;
     }
     return value;

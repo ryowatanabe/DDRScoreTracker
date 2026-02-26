@@ -3,7 +3,7 @@
   chrome.action.onClicked.addListener(() => {
     // 二重起動抑止
     chrome.tabs.query({ url: `chrome-extension://${extension_id}/browser_action/*` }, (tabs) => {
-      if (tabs.length == 0) {
+      if (tabs.length === 0) {
         chrome.tabs.create({ url: `chrome-extension://${extension_id}/browser_action/index.html` }, function (_tab) {});
       } else {
         const windowId = tabs[0].windowId;

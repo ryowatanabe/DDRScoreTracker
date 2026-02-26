@@ -71,7 +71,7 @@ export class ScoreDiff {
   }
 
   get levelString() {
-    if (this.level == 0) {
+    if (this.level === 0) {
       return '?';
     }
     return String(this.level);

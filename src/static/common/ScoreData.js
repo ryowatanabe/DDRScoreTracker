@@ -11,7 +11,7 @@ export class ScoreData {
 
   static createFromStorage(storageData) {
     const instance = new ScoreData(storageData['musicId']);
-    if (typeof storageData['musicType'] != 'undefined') {
+    if (typeof storageData['musicType'] !== 'undefined') {
       instance.musicType = storageData['musicType'];
     }
     Object.getOwnPropertyNames(storageData['difficulty']).forEach(function (index) {
@@ -37,7 +37,7 @@ export class ScoreData {
   }
 
   merge(scoreData) {
-    if (scoreData.musicType != Constants.MUSIC_TYPE.UNKNOWN) {
+    if (scoreData.musicType !== Constants.MUSIC_TYPE.UNKNOWN) {
       this.musicType = scoreData.musicType;
     }
     const differences = [];

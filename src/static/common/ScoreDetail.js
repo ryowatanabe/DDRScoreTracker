@@ -16,7 +16,7 @@ export class ScoreDetail {
   static createFromStorage(storageData) {
     const instance = new ScoreDetail();
     Object.getOwnPropertyNames(storageData).forEach((attributeName) => {
-      if (typeof storageData[attributeName] != 'undefined') {
+      if (typeof storageData[attributeName] !== 'undefined') {
         instance[attributeName] = storageData[attributeName];
       }
     });
@@ -61,7 +61,7 @@ export class ScoreDetail {
           default:
             return Constants.CLEAR_TYPE.CLEAR;
         }
-      } else if (this.clearCount == 0) {
+      } else if (this.clearCount === 0) {
         if (this.scoreRank > Constants.SCORE_RANK.E) {
           return Constants.CLEAR_TYPE.ASSIST_CLEAR;
         }

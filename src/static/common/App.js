@@ -158,7 +158,7 @@ export class App {
   saveSavedCondition(newSavedCondition) {
     let isUpdated = false;
     this.savedConditions.forEach((savedCondition) => {
-      if (savedCondition.name == newSavedCondition.name) {
+      if (savedCondition.name === newSavedCondition.name) {
         savedCondition.summary = newSavedCondition.summary;
         savedCondition.filter = newSavedCondition.filter;
         savedCondition.sort = newSavedCondition.sort;
@@ -266,7 +266,7 @@ export class App {
   公式の曲一覧から曲情報を取得し、ローカルの曲リストを更新する
   */
   async updateMusicList() {
-    if (this.state != STATE.IDLE) {
+    if (this.state !== STATE.IDLE) {
       const message = `updateMusicList: state unmatch (current state: ${this.state})`;
       Logger.debug(message);
       throw new Error(message);
@@ -289,7 +289,7 @@ export class App {
   難易度更新検知に使えるが、未解禁曲の情報は取得できない場合があるため注意
   */
   async refreshAllMusicInfo(musicIdForFilter, gameVersion) {
-    if (this.state != STATE.IDLE) {
+    if (this.state !== STATE.IDLE) {
       const message = `refreshAllMusicInfo: state unmatch (current state: ${this.state})`;
       Logger.debug(message);
       throw new Error(message);
@@ -304,10 +304,10 @@ export class App {
       })
       .forEach((musicId) => {
         let musicType = this.musicList.getMusicDataById(musicId).type;
-        if (musicType == Constants.MUSIC_TYPE.UNKNOWN) {
+        if (musicType === Constants.MUSIC_TYPE.UNKNOWN) {
           musicType = Constants.MUSIC_TYPE.NORMAL;
         }
-        if (Constants.MUSIC_DETAIL_URL[gameVersion][musicType] != '') {
+        if (Constants.MUSIC_DETAIL_URL[gameVersion][musicType] !== '') {
           this.targetMusics.push({
             musicId: musicId,
             type: musicType,
@@ -315,7 +315,7 @@ export class App {
           });
         }
       }, this);
-    if (this.targetMusics.length == 0) {
+    if (this.targetMusics.length === 0) {
       Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_no_target'));
       return false;
     }
@@ -338,7 +338,7 @@ export class App {
   その情報を取得する
   */
   async fetchMissingMusicInfo(gameVersion) {
-    if (this.state != STATE.IDLE) {
+    if (this.state !== STATE.IDLE) {
       const message = `fetchMissingMusicInfo: state unmatch (current state: ${this.state})`;
       Logger.debug(message);
       throw new Error(message);
@@ -350,7 +350,7 @@ export class App {
         return true;
       }
       const missing = this.scoreList.getScoreDataByMusicId(musicId).difficulties.find((difficulty) => {
-        if (this.musicList.getMusicDataById(musicId).difficulty[difficulty] == 0) {
+        if (this.musicList.getMusicDataById(musicId).difficulty[difficulty] === 0) {
           return true;
         }
       });
@@ -359,7 +359,7 @@ export class App {
     this.targetGameVersion = gameVersion;
     this.targetMusics = targetMusicIDs.map((musicId) => {
       let musicType = this.scoreList.getScoreDataByMusicId(musicId).musicType;
-      if (musicType == Constants.MUSIC_TYPE.UNKNOWN) {
+      if (musicType === Constants.MUSIC_TYPE.UNKNOWN) {
         musicType = Constants.MUSIC_TYPE.NORMAL;
       }
       return {
@@ -368,7 +368,7 @@ export class App {
         url: Constants.MUSIC_DETAIL_URL[gameVersion][musicType].replace('[musicId]', musicId),
       };
     });
-    if (this.targetMusics.length == 0) {
+    if (this.targetMusics.length === 0) {
       Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_no_target'));
       return false;
     }
@@ -390,7 +390,7 @@ export class App {
   公式の成績一覧ページから成績情報を取得し、ローカルのスコアリストを更新する
   */
   async updateScoreList(gameVersion) {
-    if (this.state != STATE.IDLE) {
+    if (this.state !== STATE.IDLE) {
       const message = `updateScoreList: state unmatch (current state: ${this.state})`;
       Logger.debug(message);
       throw new Error(message);
@@ -426,7 +426,7 @@ export class App {
   ]
   */
   async updateScoreDetail(targets, gameVersion) {
-    if (this.state != STATE.IDLE) {
+    if (this.state !== STATE.IDLE) {
       const message = `updateScoreDetail: state unmatch (current state: ${this.state})`;
       Logger.debug(message);
       throw new Error(message);
@@ -441,15 +441,15 @@ export class App {
       } else if (this.scoreList.hasMusic(music.musicId)) {
         musicType = this.scoreList.getScoreDataByMusicId(music.musicId).musicType;
       }
-      if (musicType == Constants.MUSIC_TYPE.UNKNOWN) {
+      if (musicType === Constants.MUSIC_TYPE.UNKNOWN) {
         musicType = Constants.MUSIC_TYPE.NORMAL;
       }
-      if (Constants.SCORE_DETAIL_URL[gameVersion][musicType] != '') {
+      if (Constants.SCORE_DETAIL_URL[gameVersion][musicType] !== '') {
         music.url = Constants.SCORE_DETAIL_URL[gameVersion][musicType].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
         this.targetMusics.push(music);
       }
     }, this);
-    if (this.targetMusics.length == 0) {
+    if (this.targetMusics.length === 0) {
       Logger.info(I18n.getMessage('log_message_update_score_detail_no_target'));
       return false;
     }
@@ -478,7 +478,7 @@ export class App {
     this.musicList.musicIds.forEach(function (musicId) {
       Object.values(Constants.PLAY_MODE).forEach(function (playMode) {
         Object.values(Constants.DIFFICULTIES).forEach(function (difficulty) {
-          if (playMode == Constants.PLAY_MODE.DOUBLE && difficulty == Constants.DIFFICULTIES.BEGINNER) {
+          if (playMode === Constants.PLAY_MODE.DOUBLE && difficulty === Constants.DIFFICULTIES.BEGINNER) {
             return;
           }
           const musicData = this.musicList.getMusicDataById(musicId);
@@ -525,7 +525,7 @@ export class App {
       case STATE.UPDATE_MUSIC_LIST:
         this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST', gameVersion: this.targetGameVersion }, async (res) => {
           console.log(res);
-          if (res.status != Parser.STATUS.SUCCESS) {
+          if (res.status !== Parser.STATUS.SUCCESS) {
             await this.handleError(res);
             return;
           }
@@ -558,11 +558,11 @@ export class App {
           // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
           // そのような曲のデータを取得しようとしてエラーになったときには
           // 処理を中断せずエラーを無視して次へ進む
-          if (res.status != Parser.STATUS.SUCCESS && res.status != Parser.STATUS.UNKNOWN_ERROR) {
+          if (res.status !== Parser.STATUS.SUCCESS && res.status !== Parser.STATUS.UNKNOWN_ERROR) {
             await this.handleError(res);
             return;
           }
-          if (res.status == Parser.STATUS.SUCCESS) {
+          if (res.status === Parser.STATUS.SUCCESS) {
             res.musics.forEach(function (music) {
               music.type = this.targetMusic.type;
               const musicData = MusicData.createFromStorage(music);
@@ -607,7 +607,7 @@ export class App {
       case STATE.UPDATE_SCORE_LIST:
         this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST', gameVersion: this.targetGameVersion }, async (res) => {
           console.log(res);
-          if (res.status != Parser.STATUS.SUCCESS) {
+          if (res.status !== Parser.STATUS.SUCCESS) {
             await this.handleError(res);
             return;
           }
@@ -670,11 +670,11 @@ export class App {
           // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
           // そのような曲のデータを取得しようとしてエラーになったときには
           // 処理を中断せずエラーを無視して次へ進む
-          if (res.status != Parser.STATUS.SUCCESS && res.status != Parser.STATUS.UNKNOWN_ERROR) {
+          if (res.status !== Parser.STATUS.SUCCESS && res.status !== Parser.STATUS.UNKNOWN_ERROR) {
             await this.handleError(res);
             return;
           }
-          if (res.status == Parser.STATUS.SUCCESS) {
+          if (res.status === Parser.STATUS.SUCCESS) {
             res.scores.forEach(function (score) {
               this.scoreList.applyObject(score);
             }, this);
@@ -736,13 +736,13 @@ export class App {
   }
 
   async closeTab(force) {
-    if (this.options.notCloseTabAfterUse != true) {
+    if (this.options.notCloseTabAfterUse !== true) {
       await this.browserController.closeTab(force);
     }
   }
 
   async exportScoreToSkillAttack(ddrcode, password) {
-    if (ddrcode.trim() == '') {
+    if (ddrcode.trim() === '') {
       Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_password_invalid'));
       Logger.info(I18n.getMessage('log_message_aborted'));
       return;
@@ -789,7 +789,7 @@ export class App {
                       skillAttackDataList = new SkillAttackDataList(skillAttackIndexMap);
                       skillAttackDataList.applyText(text);
                       const skillAttackDataListDiff = skillAttackDataList.getDiff(this.musicList, this.scoreList);
-                      if (skillAttackDataListDiff.count == 0) {
+                      if (skillAttackDataListDiff.count === 0) {
                         Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_no_differences'));
                         return;
                       }
