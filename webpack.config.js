@@ -1,5 +1,6 @@
 const CopyPlugin = require('copy-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const webpack = require('webpack');
 const path = require('path');
 const { version } = require('./package.json');
 
@@ -37,6 +38,11 @@ const config = {
 
   plugins: [
     new VueLoaderPlugin(),
+    new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: JSON.stringify(true),
+      __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false),
+    }),
     new CopyPlugin({
       patterns: [
         { from: 'static', to: './' },
