@@ -11,7 +11,7 @@ export class SkillAttackIndexMap {
     const lines = text.split('\n');
     Logger.debug(`SkillAttackIndexMap.createFromText: text contains ${lines.length} elements.`);
     lines.forEach((line) => {
-      if (line.trim() == '') {
+      if (line.trim() === '') {
         return;
       }
       const elements = line.split('\t');

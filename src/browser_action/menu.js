@@ -35,7 +35,7 @@ function updateScoreDetail(gameVersion) {
   window.getCharts().forEach(function (chartData) {
     targetMusics.push({
       musicId: chartData.musicId,
-      difficulty: chartData.difficulty + (chartData.playMode == Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0),
+      difficulty: chartData.difficulty + (chartData.playMode === Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0),
     });
   });
   app.updateScoreDetail(targetMusics, gameVersion);

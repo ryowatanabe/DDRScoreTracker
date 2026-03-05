@@ -19,7 +19,7 @@ export class MusicList {
   更新があればtrue, なければfalseを返す
   */
   applyMusicData(musicData) {
-    if (musicData.isDeleted == 2) {
+    if (musicData.isDeleted === 2) {
       if (this.removeMusic(musicData.musicId)) {
         Logger.info(`Removed: ${musicData.encodedString}`);
         return true;

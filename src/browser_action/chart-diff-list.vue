@@ -7,8 +7,8 @@
       <div id="app-charts" class="content">
         <div v-if="maxPage > 1" class="pager">
           <template v-for="index of maxPage" :key="index">
-            <a v-if="index == currentPage" :class="['element', 'current']">[{{ index }}]</a
-            ><a v-if="index != currentPage" :class="['element', 'link']" @click="gotoPage(index)">[{{ index }}]</a>
+            <a v-if="index === currentPage" :class="['element', 'current']">[{{ index }}]</a
+            ><a v-if="index !== currentPage" :class="['element', 'link']" @click="gotoPage(index)">[{{ index }}]</a>
           </template>
         </div>
 
@@ -56,8 +56,8 @@
 
         <div v-if="maxPage > 1" class="pager">
           <template v-for="index of maxPage" :key="index">
-            <a v-if="index == currentPage" :class="['element', 'current']">[{{ index }}]</a
-            ><a v-if="index != currentPage" :class="['element', 'link']" @click="gotoPage(index)">[{{ index }}]</a>
+            <a v-if="index === currentPage" :class="['element', 'current']">[{{ index }}]</a
+            ><a v-if="index !== currentPage" :class="['element', 'link']" @click="gotoPage(index)">[{{ index }}]</a>
           </template>
         </div>
       </div>
@@ -72,13 +72,13 @@ import { Constants } from '../static/common/Constants.js';
 import { I18n } from '../static/common/I18n.js';
 
 function compareScoreDiff(a, b, sortConditions) {
-  if (sortConditions.length == 0) {
+  if (sortConditions.length === 0) {
     return 0;
   }
   const attribute = sortConditions[0].attribute;
   let lt = -1;
   let gt = 1;
-  if (sortConditions[0].order == 'desc') {
+  if (sortConditions[0].order === 'desc') {
     lt = 1;
     gt = -1;
   }

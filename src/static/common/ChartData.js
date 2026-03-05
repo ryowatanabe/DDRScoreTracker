@@ -11,31 +11,31 @@ export class ChartData {
   }
 
   get musicType() {
-    if (this.musicData == null) {
+    if (this.musicData === null) {
       return Constants.MUSIC_TYPE.UNKNOWN;
     }
     return this.musicData.type;
   }
 
   get title() {
-    if (this.musicData == null) {
+    if (this.musicData === null) {
       return this.musicId;
     }
-    if (this.musicData.title == '') {
+    if (this.musicData.title === '') {
       return this.musicId;
     }
     return this.musicData.title;
   }
 
   get levelString() {
-    if (this.level == 0) {
+    if (this.level === 0) {
       return '?';
     }
     return String(this.level);
   }
 
   get level() {
-    if (this.musicData == null) {
+    if (this.musicData === null) {
       return 0;
     }
     return this.musicData.getLevel(Util.getDifficultyValue(this.playMode, this.difficulty));
@@ -45,7 +45,7 @@ export class ChartData {
     // 0: available
     // 1: deleted music with score
     // 2: deleted music without score
-    if (this.musicData == null) {
+    if (this.musicData === null) {
       return 0;
     }
     if (this.musicData.isDeleted) {

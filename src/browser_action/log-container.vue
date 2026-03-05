@@ -94,8 +94,8 @@ export default {
       app.addMessageListener(this.getMessageListener());
     },
     pushLog(message) {
-      if (message.type == Logger.MESSAGE_TYPE) {
-        if (message.level == Logger.LOG_LEVEL.DEBUG && this.enableDebugLog != true) {
+      if (message.type === Logger.MESSAGE_TYPE) {
+        if (message.level === Logger.LOG_LEVEL.DEBUG && this.enableDebugLog !== true) {
           return;
         }
         this.log.push(message.content);

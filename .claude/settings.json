@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(**)",
+      "Write(src/**)",
+      "Write(tests/**)",
+      "Bash(npm run *)",
+      "Bash(yarn *)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git status)"
+    ],
+    "deny": [
+      "Bash(git push*)",
+      "Bash(git commit*)",
+      "Bash(rm -rf *)",
+      "Bash(curl *)",
+      "Bash(wget *)"
+    ]
+  }
+}

@@ -26,7 +26,8 @@ export default [
                   "args": "after-used",
                   "argsIgnorePattern": "^_"
                 }
-              ]
+              ],
+            "eqeqeq": ["error", "always", {"null": "ignore"}]
 		}
 	}
 ]

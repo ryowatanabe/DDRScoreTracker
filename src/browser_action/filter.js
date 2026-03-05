@@ -148,7 +148,7 @@ function applyConditions(conditions) {
       }
     });
   });
-  if (conditions.sort.length == 0) {
+  if (conditions.sort.length === 0) {
     conditions.sort.push({ attribute: 'score', order: 'desc' });
   }
   conditions.sort.forEach(function (condition) {
@@ -159,9 +159,9 @@ function applyConditions(conditions) {
 
 function applySavedFilter() {
   const filterName = document.getElementById('savedFilterSelect').value;
-  if (filterName != '') {
+  if (filterName !== '') {
     savedConditions.forEach((savedCondition) => {
-      if (savedCondition.name == filterName) {
+      if (savedCondition.name === filterName) {
         applyConditions(savedCondition);
       }
     });
@@ -170,7 +170,7 @@ function applySavedFilter() {
 
 function saveFilter() {
   const filterName = document.getElementById('savedFilterSelect').value;
-  if (filterName == '') {
+  if (filterName === '') {
     saveAsFilter();
     return;
   }
@@ -185,7 +185,7 @@ function saveAsFilter() {
   let filterName;
   do {
     filterName = window.prompt('', '').trim();
-  } while (filterName == '');
+  } while (filterName === '');
 
   const conditions = getConditions();
   conditions.name = filterName;

@@ -13,7 +13,7 @@ export class SkillAttackDataElement {
 
   get scoreString() {
     let string = this.score.toLocaleString();
-    if (this.clearType != 0) {
+    if (this.clearType !== 0) {
       string = string + ' ' + this.clearTypeString[this.clearType];
     }
     return string;
@@ -29,7 +29,7 @@ export class SkillAttackDataElement {
   }
 
   static createFromString(encodedString) {
-    if (encodedString.trim() == '') {
+    if (encodedString.trim() === '') {
       return null;
     }
     const elements = encodedString.split('\t');
@@ -48,7 +48,7 @@ export class SkillAttackDataElement {
   }
 
   get difficultyValue() {
-    return Number(this.difficulty) + (this.playMode == Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
+    return Number(this.difficulty) + (this.playMode === Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
   }
 
   get formString() {
@@ -62,7 +62,7 @@ export class SkillAttackDataElement {
   }
 
   merge(skillAttackDataElement) {
-    if (this.index != skillAttackDataElement.index || this.playMode != skillAttackDataElement.playMode || this.difficulty != skillAttackDataElement.difficulty) {
+    if (this.index !== skillAttackDataElement.index || this.playMode !== skillAttackDataElement.playMode || this.difficulty !== skillAttackDataElement.difficulty) {
       return false;
     }
     if (this.updatedAt < skillAttackDataElement.updatedAt) {

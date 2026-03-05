@@ -47,10 +47,10 @@ export class Constants {
 
   static getNextMusicType(gameVersion, playMode, musicType) {
     do {
-      if (musicType != this.MUSIC_TYPE_LAST) {
+      if (musicType !== this.MUSIC_TYPE_LAST) {
         musicType++;
       } else {
-        if (playMode != this.PLAY_MODE_LAST) {
+        if (playMode !== this.PLAY_MODE_LAST) {
           playMode++;
           musicType = this.MUSIC_TYPE_FIRST;
         } else {
@@ -60,7 +60,7 @@ export class Constants {
           };
         }
       }
-    } while (this.SCORE_LIST_URL[gameVersion][playMode][musicType] == '');
+    } while (this.SCORE_LIST_URL[gameVersion][playMode][musicType] === '');
     return {
       playMode: playMode,
       musicType: musicType,

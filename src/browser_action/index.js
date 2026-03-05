@@ -26,7 +26,7 @@ function onInitialized() {
   initializeFilter(app);
   initializeMenu(app);
 
-  if (app.getState() != APP_STATE.IDLE) {
+  if (app.getState() !== APP_STATE.IDLE) {
     logContainer.disableButtons();
     logContainer.open();
   } else {
@@ -34,11 +34,11 @@ function onInitialized() {
   }
 
   app.addMessageListener((message) => {
-    if (message.type == CHANGE_APP_STATE_MESSAGE_TYPE) {
+    if (message.type === CHANGE_APP_STATE_MESSAGE_TYPE) {
       console.log(`change app state ${message.oldState} -> ${message.state}`);
-      if (message.state == APP_STATE.IDLE) {
+      if (message.state === APP_STATE.IDLE) {
         logContainer.enableButtons();
-        if (message.oldState == APP_STATE.UPDATE_SCORE_LIST) {
+        if (message.oldState === APP_STATE.UPDATE_SCORE_LIST) {
           chartDiffList.loadAndOpen();
         }
       } else {
@@ -49,7 +49,7 @@ function onInitialized() {
 }
 
 function initialize() {
-  if (app.getState() == APP_STATE.INITIALIZE) {
+  if (app.getState() === APP_STATE.INITIALIZE) {
     setTimeout(initialize, 100);
   } else {
     onInitialized();

@@ -20,11 +20,11 @@ export class MusicData {
   }
 
   static createFromString(encodedString) {
-    if (encodedString.trim() == '') {
+    if (encodedString.trim() === '') {
       return null;
     }
     const elements = encodedString.split('\t');
-    if (elements.length != 13) {
+    if (elements.length !== 13) {
       Logger.error(`MusicData.create invalid string: ${encodedString}`);
       return null;
     }
@@ -43,26 +43,26 @@ export class MusicData {
   更新が発生した場合 true, そうでない場合 false を返す
   */
   merge(musicData) {
-    if (this.musicId != musicData.musicId) {
+    if (this.musicId !== musicData.musicId) {
       throw new Error(`musicId mismatch: ${this.musicId}, ${musicData.musicId}`);
     }
     const iterator = this.difficulty.keys();
     let isUpdated = false;
     for (const index of iterator) {
-      if (musicData.difficulty[index] != 0 && this.difficulty[index] != musicData.difficulty[index]) {
+      if (musicData.difficulty[index] !== 0 && this.difficulty[index] !== musicData.difficulty[index]) {
         isUpdated = true;
         this.difficulty[index] = musicData.difficulty[index];
       }
     }
-    if (musicData.type != Constants.MUSIC_TYPE.UNKNOWN && this.type != musicData.type) {
+    if (musicData.type !== Constants.MUSIC_TYPE.UNKNOWN && this.type !== musicData.type) {
       isUpdated = true;
       this.type = musicData.type;
     }
-    if (musicData.title != '' && this.title != musicData.title) {
+    if (musicData.title !== '' && this.title !== musicData.title) {
       isUpdated = true;
       this.title = musicData.title;
     }
-    if (this.isDeleted != musicData.isDeleted) {
+    if (this.isDeleted !== musicData.isDeleted) {
       isUpdated = true;
       this.isDeleted = musicData.isDeleted;
     }
@@ -74,7 +74,7 @@ export class MusicData {
   }
 
   hasDifficulty(index) {
-    return this.difficulty[index] != 0;
+    return this.difficulty[index] !== 0;
   }
 
   get encodedString() {
