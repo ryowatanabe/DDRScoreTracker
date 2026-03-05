@@ -3,6 +3,9 @@
 # Claude Code local settings (personal, not shared)
 .claude/settings.local.json
 
+# Serena (AI coding assistant) project config (personal, not shared)
+.serena/
+
 # Chrome Extension artifacts
 *.pem
 *.crx
