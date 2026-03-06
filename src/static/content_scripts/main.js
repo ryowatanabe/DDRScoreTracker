@@ -43,7 +43,8 @@ function onMessage(message, sender, sendResponse) {
     (reason) => {
       // Logger may not be available if loadModules() failed before loading Logger
       console.error(reason);
-      sendResponse({ status: 1 }); // Parser.STATUS.UNKNOWN_ERROR
+      const PARSER_STATUS_UNKNOWN_ERROR = 1; // Parser.STATUS.UNKNOWN_ERROR
+      sendResponse({ status: PARSER_STATUS_UNKNOWN_ERROR });
     }
   );
   return true;

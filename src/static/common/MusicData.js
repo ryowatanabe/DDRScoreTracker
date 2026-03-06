@@ -24,16 +24,23 @@ export class MusicData {
       return null;
     }
     const elements = encodedString.split('\t');
-    if (elements.length !== 13) {
+    const MUSIC_ID_INDEX = 0;
+    const TYPE_INDEX = 1;
+    const IS_DELETED_INDEX = 2;
+    const DIFFICULTY_START_INDEX = 3;
+    const DIFFICULTY_END_INDEX = 12;
+    const TITLE_INDEX = 12;
+    const ELEMENT_COUNT = 13;
+    if (elements.length !== ELEMENT_COUNT) {
       Logger.error(`MusicData.create invalid string: ${encodedString}`);
       return null;
     }
     const instance = new MusicData(
-      elements[0],
-      parseInt(elements[1], 10),
-      elements[12],
-      elements.slice(3, 12).map((element) => parseInt(element, 10)),
-      parseInt(elements[2], 10)
+      elements[MUSIC_ID_INDEX],
+      parseInt(elements[TYPE_INDEX], 10),
+      elements[TITLE_INDEX],
+      elements.slice(DIFFICULTY_START_INDEX, DIFFICULTY_END_INDEX).map((element) => parseInt(element, 10)),
+      parseInt(elements[IS_DELETED_INDEX], 10)
     );
     return instance;
   }
