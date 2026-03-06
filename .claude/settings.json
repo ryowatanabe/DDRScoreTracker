@@ -8,14 +8,12 @@
       "Bash(yarn *)",
       "Bash(git diff*)",
       "Bash(git log*)",
-      "Bash(git status)"
+      "Bash(git status)",
+      "Bash(git push*)",
+      "Bash(git commit*)"
     ],
     "deny": [
-      "Bash(git push*)",
-      "Bash(git commit*)",
-      "Bash(rm -rf *)",
-      "Bash(curl *)",
-      "Bash(wget *)"
+      "Bash(rm -rf *)"
     ]
   }
 }
