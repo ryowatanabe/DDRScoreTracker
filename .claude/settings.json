@@ -10,7 +10,9 @@
       "Bash(git log*)",
       "Bash(git status)",
       "Bash(git push*)",
-      "Bash(git commit*)"
+      "Bash(git commit*)",
+      "Bash(gh issue view:*)",
+      "WebFetch(*)"
     ],
     "deny": [
       "Bash(rm -rf *)"
