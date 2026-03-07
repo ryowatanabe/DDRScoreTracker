@@ -138,6 +138,12 @@ export default {
     },
     loadAndOpen() {
       const differences = app.getDifferences();
+      const musicList = app.getMusicList();
+      differences.forEach((difference) => {
+        if (musicList.hasMusic(difference.musicId)) {
+          difference.musicData = musicList.getMusicDataById(difference.musicId);
+        }
+      });
       const sortConditions = [
         { attribute: 'playMode', order: 'asc' },
         { attribute: 'level', order: 'desc' },

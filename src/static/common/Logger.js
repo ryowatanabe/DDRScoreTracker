@@ -1,6 +1,6 @@
-let listeners = [];
-
 export class Logger {
+  static #listeners = [];
+
   static get LOG_LEVEL() {
     return {
       DEBUG: 0,
@@ -15,11 +15,15 @@ export class Logger {
   }
 
   static addListener(listener) {
-    listeners.push(listener);
+    this.#listeners.push(listener);
+  }
+
+  static clearListeners() {
+    this.#listeners = [];
   }
 
   static log(content, level = this.LOG_LEVEL.INFO) {
-    listeners.forEach((listener) => {
+    this.#listeners.forEach((listener) => {
       listener({ type: this.MESSAGE_TYPE, level: level, content: content });
     }, this);
   }

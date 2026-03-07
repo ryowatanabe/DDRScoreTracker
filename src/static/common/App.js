@@ -115,8 +115,8 @@ export class App {
 
   saveStorage() {
     this.storage.saveStorage({
-      scores: this.scoreList.musics,
-      musics: this.musicList.musics,
+      scores: this.scoreList.toStorageData(),
+      musics: this.musicList.toStorageData(),
       savedConditions: this.savedConditions,
       conditions: this.conditions,
       saSettings: this.saSettings,
@@ -210,11 +210,6 @@ export class App {
   }
 
   getDifferences() {
-    this.dataFetchController.differences.forEach((difference) => {
-      if (this.musicList.hasMusic(difference.musicId)) {
-        difference.musicData = this.musicList.getMusicDataById(difference.musicId);
-      }
-    }, this);
     return this.dataFetchController.differences;
   }
 
