@@ -5,6 +5,7 @@ import { ScoreDiff } from './ScoreDiff.js';
 import { ChartList } from './ChartList.js';
 import { ChartData } from './ChartData.js';
 import { SkillAttackExporter } from './SkillAttackExporter.js';
+import { DataFetchController } from './DataFetchController.js';
 import { Constants } from './Constants.js';
 import { Logger } from './Logger.js';
 import { Storage } from './Storage.js';
@@ -47,28 +48,32 @@ export class App {
         this.saSettings = data.saSettings;
         this.options = data.options;
         this.internalStatus = data.internalStatus;
-        this.differences = ScoreDiff.createMultiFromStorage(data.differences);
+        this.dataFetchController.differences = ScoreDiff.createMultiFromStorage(data.differences);
         this.updateCharts();
         this.changeState(STATE.IDLE);
       }
     );
 
     this.state = STATE.INITIALIZE;
-    this.targetGameVersion = null;
-    this.targetPlayMode = null;
-    this.targetMusicType = null;
-    this.targetMusics = [];
-    this.targetMusic = null;
 
     this.musicList = null; // 曲リスト。1曲1エントリ。
     this.scoreList = null; // スコアリスト。1曲1エントリ。
     this.chartList = new ChartList(); // 曲リストとスコアリストを結合したもの。1譜面1エントリ。
-    this.differences = []; // スコア差分リスト。
     this.savedConditions = null;
     this.conditions = null;
     this.saSettings = null;
     this.options = null;
     this.internalStatus = null;
+
+    this.dataFetchController = new DataFetchController({
+      getMusicList: () => this.musicList,
+      getScoreList: () => this.scoreList,
+      onSaveStorage: () => this.saveStorage(),
+      onUpdateCharts: () => this.updateCharts(),
+      onNavigateTo: (url) => this.navigateTo(url),
+      onFinishAction: () => this.finishAction(),
+      onHandleError: (res) => this.handleError(res),
+    });
 
     this.browserController = new BrowserController(chrome.windows.WINDOW_ID_CURRENT, this.onUpdateTab.bind(this));
     this.browserController.delay = Constants.LOAD_INTERVAL;
@@ -117,7 +122,7 @@ export class App {
       saSettings: this.saSettings,
       options: this.options,
       internalStatus: this.internalStatus,
-      differences: this.differences,
+      differences: this.dataFetchController.differences,
     });
   }
 
@@ -205,12 +210,12 @@ export class App {
   }
 
   getDifferences() {
-    this.differences.forEach((difference) => {
+    this.dataFetchController.differences.forEach((difference) => {
       if (this.musicList.hasMusic(difference.musicId)) {
         difference.musicData = this.musicList.getMusicDataById(difference.musicId);
       }
     }, this);
-    return this.differences;
+    return this.dataFetchController.differences;
   }
 
   getChartCount() {
@@ -294,8 +299,8 @@ export class App {
       throw new Error(message);
     }
     Logger.info(I18n.getMessage('log_message_refresh_all_music_info_begin'));
-    this.targetGameVersion = gameVersion;
-    this.targetMusics = [];
+    this.dataFetchController.targetGameVersion = gameVersion;
+    this.dataFetchController.targetMusics = [];
     this.musicList.musicIds
       .sort()
       .filter((musicId) => {
@@ -307,23 +312,23 @@ export class App {
           musicType = Constants.MUSIC_TYPE.NORMAL;
         }
         if (Constants.MUSIC_DETAIL_URL[gameVersion][musicType] !== '') {
-          this.targetMusics.push({
+          this.dataFetchController.targetMusics.push({
             musicId: musicId,
             type: musicType,
             url: Constants.MUSIC_DETAIL_URL[gameVersion][musicType].replace('[musicId]', musicId),
           });
         }
       }, this);
-    if (this.targetMusics.length === 0) {
+    if (this.dataFetchController.targetMusics.length === 0) {
       Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_no_target'));
       return false;
     }
-    Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_target_found', this.targetMusics.length));
+    Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_target_found', this.dataFetchController.targetMusics.length));
     this.changeState(STATE.UPDATE_MUSIC_DETAIL);
     try {
-      this.targetMusic = this.targetMusics.shift();
-      Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.targetMusic.musicId, this.targetMusics.length]));
-      await this.browserController.createTab(this.targetMusic.url, this.options.openTabAsActive);
+      this.dataFetchController.targetMusic = this.dataFetchController.targetMusics.shift();
+      Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.dataFetchController.targetMusic.musicId, this.dataFetchController.targetMusics.length]));
+      await this.browserController.createTab(this.dataFetchController.targetMusic.url, this.options.openTabAsActive);
     } catch (error) {
       this.browserController.reset();
       Logger.error(error);
@@ -355,8 +360,8 @@ export class App {
       });
       return missing;
     });
-    this.targetGameVersion = gameVersion;
-    this.targetMusics = targetMusicIDs.map((musicId) => {
+    this.dataFetchController.targetGameVersion = gameVersion;
+    this.dataFetchController.targetMusics = targetMusicIDs.map((musicId) => {
       let musicType = this.scoreList.getScoreDataByMusicId(musicId).musicType;
       if (musicType === Constants.MUSIC_TYPE.UNKNOWN) {
         musicType = Constants.MUSIC_TYPE.NORMAL;
@@ -367,16 +372,16 @@ export class App {
         url: Constants.MUSIC_DETAIL_URL[gameVersion][musicType].replace('[musicId]', musicId),
       };
     });
-    if (this.targetMusics.length === 0) {
+    if (this.dataFetchController.targetMusics.length === 0) {
       Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_no_target'));
       return false;
     }
-    Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_target_found', this.targetMusics.length));
+    Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_target_found', this.dataFetchController.targetMusics.length));
     this.changeState(STATE.UPDATE_MUSIC_DETAIL);
     try {
-      this.targetMusic = this.targetMusics.shift();
-      Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.targetMusic.musicId, this.targetMusics.length]));
-      await this.browserController.createTab(this.targetMusic.url, this.options.openTabAsActive);
+      this.dataFetchController.targetMusic = this.dataFetchController.targetMusics.shift();
+      Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.dataFetchController.targetMusic.musicId, this.dataFetchController.targetMusics.length]));
+      await this.browserController.createTab(this.dataFetchController.targetMusic.url, this.options.openTabAsActive);
     } catch (error) {
       this.browserController.reset();
       Logger.error(error);
@@ -396,20 +401,23 @@ export class App {
     }
     Logger.info(I18n.getMessage('log_message_update_score_list_begin'));
     this.changeState(STATE.UPDATE_SCORE_LIST);
-    this.differences = [];
+    this.dataFetchController.differences = [];
     try {
-      this.targetGameVersion = gameVersion;
-      this.targetPlayMode = Constants.PLAY_MODE_FIRST;
-      this.targetMusicType = Constants.MUSIC_TYPE_FIRST;
+      this.dataFetchController.targetGameVersion = gameVersion;
+      this.dataFetchController.targetPlayMode = Constants.PLAY_MODE_FIRST;
+      this.dataFetchController.targetMusicType = Constants.MUSIC_TYPE_FIRST;
       Logger.info(
         I18n.getMessage('log_message_update_score_list_progress', [
-          I18n.getMessage(`log_message_update_score_list_play_mode_${this.targetPlayMode}`),
-          I18n.getMessage(`log_message_update_score_list_music_type_${this.targetMusicType}`),
+          I18n.getMessage(`log_message_update_score_list_play_mode_${this.dataFetchController.targetPlayMode}`),
+          I18n.getMessage(`log_message_update_score_list_music_type_${this.dataFetchController.targetMusicType}`),
           1,
           '?',
         ])
       );
-      await this.browserController.createTab(Constants.SCORE_LIST_URL[this.targetGameVersion][this.targetPlayMode][this.targetMusicType], this.options.openTabAsActive);
+      await this.browserController.createTab(
+        Constants.SCORE_LIST_URL[this.dataFetchController.targetGameVersion][this.dataFetchController.targetPlayMode][this.dataFetchController.targetMusicType],
+        this.options.openTabAsActive
+      );
     } catch (error) {
       this.browserController.reset();
       Logger.error(error);
@@ -432,7 +440,7 @@ export class App {
     }
     Logger.info(I18n.getMessage('log_message_update_score_detail_begin'));
     // 巡回対象のURL一覧を生成
-    this.targetMusics = [];
+    this.dataFetchController.targetMusics = [];
     targets.forEach((music) => {
       let musicType = Constants.MUSIC_TYPE.NORMAL;
       if (this.musicList.hasMusic(music.musicId)) {
@@ -445,22 +453,22 @@ export class App {
       }
       if (Constants.SCORE_DETAIL_URL[gameVersion][musicType] !== '') {
         music.url = Constants.SCORE_DETAIL_URL[gameVersion][musicType].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
-        this.targetMusics.push(music);
+        this.dataFetchController.targetMusics.push(music);
       }
     }, this);
-    if (this.targetMusics.length === 0) {
+    if (this.dataFetchController.targetMusics.length === 0) {
       Logger.info(I18n.getMessage('log_message_update_score_detail_no_target'));
       return false;
     }
-    Logger.info(I18n.getMessage('log_message_update_score_detail_target_found', this.targetMusics.length));
+    Logger.info(I18n.getMessage('log_message_update_score_detail_target_found', this.dataFetchController.targetMusics.length));
     this.changeState(STATE.UPDATE_SCORE_DETAIL);
     try {
-      const targetMusic = this.targetMusics.shift();
+      const targetMusic = this.dataFetchController.targetMusics.shift();
       Logger.info(
         I18n.getMessage('log_message_update_score_detail_progress', [
           this.musicList.hasMusic(targetMusic.musicId) ? this.musicList.getMusicDataById(targetMusic.musicId).title : targetMusic.musicId,
           Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty],
-          this.targetMusics.length,
+          this.dataFetchController.targetMusics.length,
         ])
       );
       await this.browserController.createTab(targetMusic.url, this.options.openTabAsActive);
@@ -522,154 +530,28 @@ export class App {
   onUpdateTab() {
     switch (this.state) {
       case STATE.UPDATE_MUSIC_LIST:
-        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST', gameVersion: this.targetGameVersion }, (res) => this.handleMusicListResponse(res));
+        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST', gameVersion: this.dataFetchController.targetGameVersion }, (res) =>
+          this.dataFetchController.handleMusicListResponse(res)
+        );
         break;
       case STATE.UPDATE_MUSIC_DETAIL:
-        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL', gameVersion: this.targetGameVersion }, (res) => this.handleMusicDetailResponse(res));
+        this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL', gameVersion: this.dataFetchController.targetGameVersion }, (res) =>
+          this.dataFetchController.handleMusicDetailResponse(res)
+        );
         break;
       case STATE.UPDATE_SCORE_LIST:
-        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST', gameVersion: this.targetGameVersion }, (res) => this.handleScoreListResponse(res));
+        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST', gameVersion: this.dataFetchController.targetGameVersion }, (res) =>
+          this.dataFetchController.handleScoreListResponse(res)
+        );
         break;
       case STATE.UPDATE_SCORE_DETAIL:
-        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL', gameVersion: this.targetGameVersion }, (res) => this.handleScoreDetailResponse(res));
+        this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL', gameVersion: this.dataFetchController.targetGameVersion }, (res) =>
+          this.dataFetchController.handleScoreDetailResponse(res)
+        );
         break;
       default:
         Logger.debug('onUpdateTab: event was ignored.');
         break;
-    }
-  }
-
-  async handleMusicListResponse(res) {
-    Logger.debug(res);
-    if (res.status !== Parser.STATUS.SUCCESS) {
-      await this.handleError(res);
-      return;
-    }
-    res.musics.forEach(function (music) {
-      this.musicList.applyObject(music);
-    }, this);
-    this.saveStorage();
-    this.updateCharts();
-    if (res.hasNext) {
-      Logger.info(I18n.getMessage('log_message_update_music_list_progress', [res.currentPage + 1, res.maxPage]));
-      await this.navigateTo(res.nextUrl);
-    } else {
-      await this.finishAction();
-    }
-  }
-
-  async handleMusicDetailResponse(res) {
-    Logger.debug(res);
-    // workaround:
-    // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
-    // そのような曲のデータを取得しようとしてエラーになったときには
-    // 処理を中断せずエラーを無視して次へ進む
-    if (res.status !== Parser.STATUS.SUCCESS && res.status !== Parser.STATUS.UNKNOWN_ERROR) {
-      await this.handleError(res);
-      return;
-    }
-    if (res.status === Parser.STATUS.SUCCESS) {
-      res.musics.forEach(function (music) {
-        music.type = this.targetMusic.type;
-        const musicData = MusicData.createFromStorage(music);
-        const body = JSON.stringify({ text: musicData.encodedString });
-        if (this.musicList.applyMusicData(musicData)) {
-          fetch('https://us-west1-blissful-mile-450603-h9.cloudfunctions.net/unregistered_music', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: body,
-          })
-            .then((response) => {
-              Logger.debug(response);
-            })
-            .catch((reason) => {
-              Logger.debug(reason);
-            });
-        }
-      }, this);
-      this.saveStorage();
-      this.updateCharts();
-    }
-    if (this.targetMusics.length > 0) {
-      this.targetMusic = this.targetMusics.shift();
-      Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.targetMusic.musicId, this.targetMusics.length]));
-      await this.navigateTo(this.targetMusic.url);
-    } else {
-      await this.finishAction();
-    }
-  }
-
-  async handleScoreListResponse(res) {
-    Logger.debug(res);
-    if (res.status !== Parser.STATUS.SUCCESS) {
-      await this.handleError(res);
-      return;
-    }
-    res.scores.forEach(function (score) {
-      score.musicType = this.targetMusicType;
-      this.differences = this.differences.concat(this.scoreList.applyObject(score));
-    }, this);
-    this.saveStorage();
-    this.updateCharts();
-    if (res.hasNext) {
-      Logger.info(
-        I18n.getMessage('log_message_update_score_list_progress', [
-          I18n.getMessage(`log_message_update_score_list_play_mode_${this.targetPlayMode}`),
-          I18n.getMessage(`log_message_update_score_list_music_type_${this.targetMusicType}`),
-          res.currentPage + 1,
-          res.maxPage,
-        ])
-      );
-      await this.navigateTo(res.nextUrl);
-    } else if (Constants.hasNextMusicType(this.targetGameVersion, this.targetPlayMode, this.targetMusicType)) {
-      const nextMusicType = Constants.getNextMusicType(this.targetGameVersion, this.targetPlayMode, this.targetMusicType);
-      this.targetPlayMode = nextMusicType.playMode;
-      this.targetMusicType = nextMusicType.musicType;
-      Logger.info(
-        I18n.getMessage('log_message_update_score_list_progress', [
-          I18n.getMessage(`log_message_update_score_list_play_mode_${this.targetPlayMode}`),
-          I18n.getMessage(`log_message_update_score_list_music_type_${this.targetMusicType}`),
-          1,
-          '?',
-        ])
-      );
-      await this.navigateTo(Constants.SCORE_LIST_URL[this.targetGameVersion][this.targetPlayMode][this.targetMusicType]);
-    } else {
-      await this.finishAction();
-    }
-  }
-
-  async handleScoreDetailResponse(res) {
-    Logger.debug(res);
-    // workaround:
-    // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
-    // そのような曲のデータを取得しようとしてエラーになったときには
-    // 処理を中断せずエラーを無視して次へ進む
-    if (res.status !== Parser.STATUS.SUCCESS && res.status !== Parser.STATUS.UNKNOWN_ERROR) {
-      await this.handleError(res);
-      return;
-    }
-    if (res.status === Parser.STATUS.SUCCESS) {
-      res.scores.forEach(function (score) {
-        this.scoreList.applyObject(score);
-      }, this);
-      this.saveStorage();
-      this.updateCharts();
-    }
-    if (this.targetMusics.length > 0) {
-      const targetMusic = this.targetMusics.shift();
-      Logger.info(
-        I18n.getMessage('log_message_update_score_detail_progress', [
-          this.musicList.hasMusic(targetMusic.musicId) ? this.musicList.getMusicDataById(targetMusic.musicId).title : targetMusic.musicId,
-          Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty],
-          this.targetMusics.length,
-        ])
-      );
-      await this.navigateTo(targetMusic.url);
-    } else {
-      await this.finishAction();
     }
   }
 
