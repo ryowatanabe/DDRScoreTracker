@@ -55,6 +55,23 @@ export class ScoreDiff {
     return diff;
   }
 
+  toStorageData() {
+    return {
+      musicId: this.musicId,
+      difficultyValue: this.difficultyValue,
+      before: this.before !== null ? Object.assign({}, this.before) : null,
+      after: this.after !== null ? Object.assign({}, this.after) : null,
+    };
+  }
+
+  #getDetailField(detail, field) {
+    return detail === null ? null : detail[field];
+  }
+
+  #lookupOrEmpty(value, table) {
+    return value === null ? '' : table[value];
+  }
+
   get title() {
     if (this.musicData === null) {
       return this.musicId;
@@ -85,185 +102,107 @@ export class ScoreDiff {
   }
 
   get beforeScore() {
-    if (this.before === null) {
-      return null;
-    }
-    return this.before.score;
+    return this.#getDetailField(this.before, 'score');
   }
 
   get beforeScoreRank() {
-    if (this.before === null) {
-      return null;
-    }
-    return this.before.actualScoreRank;
+    return this.#getDetailField(this.before, 'actualScoreRank');
   }
 
   get beforeFlareRank() {
-    if (this.before === null) {
-      return null;
-    }
-    return this.before.flareRank;
+    return this.#getDetailField(this.before, 'flareRank');
   }
 
   get beforeFlareSkill() {
-    if (this.before === null) {
-      return null;
-    }
-    return this.before.flareSkill;
+    return this.#getDetailField(this.before, 'flareSkill');
   }
 
   get beforeClearType() {
-    if (this.before === null) {
-      return null;
-    }
-    return this.before.actualClearType;
+    return this.#getDetailField(this.before, 'actualClearType');
   }
 
   get beforeScoreString() {
-    if (this.beforeScore === null) {
-      return '';
-    }
-    return this.beforeScore.toLocaleString();
+    return this.beforeScore === null ? '' : this.beforeScore.toLocaleString();
   }
 
   get beforeClearTypeString() {
-    if (this.beforeClearType === null) {
-      return '';
-    }
-    return Constants.CLEAR_TYPE_STRING[this.beforeClearType];
+    return this.#lookupOrEmpty(this.beforeClearType, Constants.CLEAR_TYPE_STRING);
   }
 
   get beforeFullComboSymbol() {
-    if (this.beforeClearType === null) {
-      return '';
-    }
-    return Constants.FULL_COMBO_SYMBOL[this.beforeClearType];
+    return this.#lookupOrEmpty(this.beforeClearType, Constants.FULL_COMBO_SYMBOL);
   }
 
   get beforeClearTypeClassString() {
-    if (this.beforeClearType === null) {
-      return '';
-    }
-    return Constants.CLEAR_TYPE_CLASS_STRING[this.beforeClearType];
+    return this.#lookupOrEmpty(this.beforeClearType, Constants.CLEAR_TYPE_CLASS_STRING);
   }
 
   get beforeFlareRankSymbol() {
-    if (this.beforeFlareRank === null) {
-      return '';
-    }
-    return Constants.FLARE_RANK_SYMBOL[this.beforeFlareRank];
+    return this.#lookupOrEmpty(this.beforeFlareRank, Constants.FLARE_RANK_SYMBOL);
   }
 
   get beforeFlareRankClassString() {
-    if (this.beforeFlareRank === null) {
-      return '';
-    }
-    return Constants.FLARE_RANK_CLASS_STRING[this.beforeFlareRank];
+    return this.#lookupOrEmpty(this.beforeFlareRank, Constants.FLARE_RANK_CLASS_STRING);
   }
 
   get beforeScoreRankString() {
-    if (this.beforeScoreRank === null) {
-      return '';
-    }
-    return Constants.SCORE_RANK_STRING[this.beforeScoreRank];
+    return this.#lookupOrEmpty(this.beforeScoreRank, Constants.SCORE_RANK_STRING);
   }
 
   get beforeScoreRankClassString() {
-    if (this.beforeScoreRank === null) {
-      return '';
-    }
-    return Constants.SCORE_RANK_CLASS_STRING[this.beforeScoreRank];
+    return this.#lookupOrEmpty(this.beforeScoreRank, Constants.SCORE_RANK_CLASS_STRING);
   }
 
   get afterScore() {
-    if (this.after === null) {
-      return null;
-    }
-    return this.after.score;
+    return this.#getDetailField(this.after, 'score');
   }
 
   get afterScoreRank() {
-    if (this.after === null) {
-      return null;
-    }
-    return this.after.actualScoreRank;
+    return this.#getDetailField(this.after, 'actualScoreRank');
   }
 
   get afterFlareRank() {
-    if (this.after === null) {
-      return null;
-    }
-    return this.after.flareRank;
+    return this.#getDetailField(this.after, 'flareRank');
   }
 
   get afterFlareSkill() {
-    if (this.after === null) {
-      return null;
-    }
-    return this.after.flareSkill;
+    return this.#getDetailField(this.after, 'flareSkill');
   }
 
   get afterClearType() {
-    if (this.after === null) {
-      return null;
-    }
-    return this.after.actualClearType;
+    return this.#getDetailField(this.after, 'actualClearType');
   }
 
   get afterScoreString() {
-    if (this.afterScore === null) {
-      return '';
-    }
-    return this.afterScore.toLocaleString();
+    return this.afterScore === null ? '' : this.afterScore.toLocaleString();
   }
 
   get afterClearTypeString() {
-    if (this.afterClearType === null) {
-      return '';
-    }
-    return Constants.CLEAR_TYPE_STRING[this.afterClearType];
+    return this.#lookupOrEmpty(this.afterClearType, Constants.CLEAR_TYPE_STRING);
   }
 
   get afterFullComboSymbol() {
-    if (this.afterClearType === null) {
-      return '';
-    }
-    return Constants.FULL_COMBO_SYMBOL[this.afterClearType];
+    return this.#lookupOrEmpty(this.afterClearType, Constants.FULL_COMBO_SYMBOL);
   }
 
   get afterClearTypeClassString() {
-    if (this.afterClearType === null) {
-      return '';
-    }
-    return Constants.CLEAR_TYPE_CLASS_STRING[this.afterClearType];
+    return this.#lookupOrEmpty(this.afterClearType, Constants.CLEAR_TYPE_CLASS_STRING);
   }
 
   get afterFlareRankSymbol() {
-    if (this.afterFlareRank === null) {
-      return '';
-    }
-    return Constants.FLARE_RANK_SYMBOL[this.afterFlareRank];
+    return this.#lookupOrEmpty(this.afterFlareRank, Constants.FLARE_RANK_SYMBOL);
   }
 
   get afterFlareRankClassString() {
-    if (this.afterFlareRank === null) {
-      return '';
-    }
-    return Constants.FLARE_RANK_CLASS_STRING[this.afterFlareRank];
+    return this.#lookupOrEmpty(this.afterFlareRank, Constants.FLARE_RANK_CLASS_STRING);
   }
 
   get afterScoreRankString() {
-    if (this.afterScoreRank === null) {
-      return '';
-    }
-    return Constants.SCORE_RANK_STRING[this.afterScoreRank];
+    return this.#lookupOrEmpty(this.afterScoreRank, Constants.SCORE_RANK_STRING);
   }
 
   get afterScoreRankClassString() {
-    if (this.afterScoreRank === null) {
-      return '';
-    }
-    return Constants.SCORE_RANK_CLASS_STRING[this.afterScoreRank];
+    return this.#lookupOrEmpty(this.afterScoreRank, Constants.SCORE_RANK_CLASS_STRING);
   }
 
   get difficultyClassString() {

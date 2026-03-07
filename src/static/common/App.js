@@ -97,7 +97,7 @@ export class App {
           this.changeState(STATE.IDLE);
           Logger.info(I18n.getMessage('log_message_aborted'));
         }, 0);
-        this.state = STATE.ABORTING;
+        this.changeState(STATE.ABORTING);
         break;
       default:
         Logger.debug(`abortAction: state unmatch (current state: ${this.state})`);
@@ -122,7 +122,7 @@ export class App {
       saSettings: this.saSettings,
       options: this.options,
       internalStatus: this.internalStatus,
-      differences: this.dataFetchController.differences,
+      differences: this.dataFetchController.differences.map((d) => d.toStorageData()),
     });
   }
 

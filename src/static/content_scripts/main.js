@@ -6,7 +6,7 @@ async function loadModules() {
   Logger = logger.Logger;
   const parser = await import(chrome.runtime.getURL('common/Parser.js'));
   Parser = parser.Parser;
-  console.log('modules loaded.');
+  Logger.debug('modules loaded.');
 }
 
 function onMessage(message, sender, sendResponse) {
@@ -14,27 +14,27 @@ function onMessage(message, sender, sendResponse) {
     (_value) => {
       try {
         if (message.type === 'PARSE_MUSIC_LIST') {
-          console.log('parsing music list ...');
+          Logger.debug('parsing music list ...');
           sendResponse(Parser.parseMusicList(document.body, message.gameVersion));
           return;
         }
         if (message.type === 'PARSE_MUSIC_DETAIL') {
-          console.log('parsing music detail ...');
+          Logger.debug('parsing music detail ...');
           sendResponse(Parser.parseMusicDetail(document.body, message.gameVersion));
           return;
         }
         if (message.type === 'PARSE_SCORE_LIST') {
-          console.log('parsing score list ...');
+          Logger.debug('parsing score list ...');
           sendResponse(Parser.parseScoreList(document.body, message.gameVersion));
           return;
         }
         if (message.type === 'PARSE_SCORE_DETAIL') {
-          console.log('parsing score detail ...');
+          Logger.debug('parsing score detail ...');
           sendResponse(Parser.parseScoreDetail(document.body, message.gameVersion));
           return;
         }
-        console.log('received unknown message');
-        console.log(message);
+        Logger.debug('received unknown message');
+        Logger.debug(message);
       } catch (e) {
         Logger.error(e);
         sendResponse({ status: Parser.STATUS.UNKNOWN_ERROR });
