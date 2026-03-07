@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import { App } from '../static/common/App.js';
 import { STATE as APP_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_APP_STATE_MESSAGE_TYPE } from '../static/common/AppState.js';
+import { Logger } from '../static/common/Logger.js';
 import ChartList from './chart-list.vue';
 import ChartDiffList from './chart-diff-list.vue';
 import LogContainer from './log-container.vue';
@@ -35,7 +36,7 @@ function onInitialized() {
 
   app.addMessageListener((message) => {
     if (message.type === CHANGE_APP_STATE_MESSAGE_TYPE) {
-      console.log(`change app state ${message.oldState} -> ${message.state}`);
+      Logger.debug(`change app state ${message.oldState} -> ${message.state}`);
       if (message.state === APP_STATE.IDLE) {
         logContainer.enableButtons();
         if (message.oldState === APP_STATE.UPDATE_SCORE_LIST) {
@@ -84,7 +85,7 @@ window.refreshList = async (summarySettings, filterConditions, sortConditions) =
     try {
       await app.fetchParsedMusicList();
     } catch (error) {
-      console.log(error);
+      Logger.debug(error);
     }
   }
   const newChartList = app.getChartList().getFilteredAndSorted(filterConditions, sortConditions);

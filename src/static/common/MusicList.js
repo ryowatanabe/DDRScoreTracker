@@ -73,6 +73,10 @@ export class MusicList {
     return Object.getOwnPropertyNames(this.musics);
   }
 
+  toStorageData() {
+    return this.musics;
+  }
+
   get encodedString() {
     return Object.getOwnPropertyNames(this.musics)
       .map((musicId) => {

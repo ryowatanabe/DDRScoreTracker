@@ -42,4 +42,8 @@ export class ScoreList {
   get musicIds() {
     return Object.getOwnPropertyNames(this.musics);
   }
+
+  toStorageData() {
+    return this.musics;
+  }
 }
