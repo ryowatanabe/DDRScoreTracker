@@ -40,7 +40,7 @@ export class Logger {
   }
 
   static debug(content) {
-    console.log(content);
+    console.debug(content);
     this.log(content, this.LOG_LEVEL.DEBUG);
   }
 }

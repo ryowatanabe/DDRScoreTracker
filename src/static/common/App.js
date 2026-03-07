@@ -541,7 +541,7 @@ export class App {
   }
 
   async handleMusicListResponse(res) {
-    console.log(res);
+    Logger.debug(res);
     if (res.status !== Parser.STATUS.SUCCESS) {
       await this.handleError(res);
       return;
@@ -560,7 +560,7 @@ export class App {
   }
 
   async handleMusicDetailResponse(res) {
-    console.log(res);
+    Logger.debug(res);
     // workaround:
     // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
     // そのような曲のデータを取得しようとしてエラーになったときには
@@ -603,7 +603,7 @@ export class App {
   }
 
   async handleScoreListResponse(res) {
-    console.log(res);
+    Logger.debug(res);
     if (res.status !== Parser.STATUS.SUCCESS) {
       await this.handleError(res);
       return;
@@ -643,7 +643,7 @@ export class App {
   }
 
   async handleScoreDetailResponse(res) {
-    console.log(res);
+    Logger.debug(res);
     // workaround:
     // A20PLUSのサイトには無い曲、A3のサイトには無い曲がそれぞれ存在するため
     // そのような曲のデータを取得しようとしてエラーになったときには

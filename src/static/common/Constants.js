@@ -1,3 +1,7 @@
+let _scoreListUrl = null;
+let _musicDetailUrl = null;
+let _scoreDetailUrl = null;
+
 export class Constants {
   static get GAME_VERSION() {
     return {
@@ -76,6 +80,7 @@ export class Constants {
   }
 
   static get SCORE_LIST_URL() {
+    if (_scoreListUrl !== null) return _scoreListUrl;
     const result = {};
     result[this.GAME_VERSION.A20PLUS] = {};
     result[this.GAME_VERSION.A20PLUS][this.PLAY_MODE.SINGLE] = {};
@@ -116,11 +121,12 @@ export class Constants {
     result[this.GAME_VERSION.WORLD][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.GRADE_PLUS] = '';
     result[this.GAME_VERSION.WORLD][this.PLAY_MODE.SINGLE][this.MUSIC_TYPE.GRADE_A3] = '';
     result[this.GAME_VERSION.WORLD][this.PLAY_MODE.DOUBLE][this.MUSIC_TYPE.GRADE_A3] = '';
-
-    return result;
+    _scoreListUrl = result;
+    return _scoreListUrl;
   }
 
   static get MUSIC_DETAIL_URL() {
+    if (_musicDetailUrl !== null) return _musicDetailUrl;
     const result = {};
     result[this.GAME_VERSION.A20PLUS] = {};
     result[this.GAME_VERSION.A20PLUS][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html?index=[musicId]';
@@ -140,10 +146,12 @@ export class Constants {
     result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.GRADE] = '';
     result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.GRADE_PLUS] = '';
     result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.GRADE_A3] = '';
-    return result;
+    _musicDetailUrl = result;
+    return _musicDetailUrl;
   }
 
   static get SCORE_DETAIL_URL() {
+    if (_scoreDetailUrl !== null) return _scoreDetailUrl;
     const result = {};
     result[this.GAME_VERSION.A20PLUS] = {};
     result[this.GAME_VERSION.A20PLUS][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html?index=[musicId]&diff=[difficulty]';
@@ -165,7 +173,8 @@ export class Constants {
     result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.GRADE] = '';
     result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.GRADE_PLUS] = '';
     result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.GRADE_A3] = '';
-    return result;
+    _scoreDetailUrl = result;
+    return _scoreDetailUrl;
   }
 
   static get PARSED_MUSIC_LIST_URL() {
@@ -516,18 +525,8 @@ export class Constants {
   }
 
   static get FLARE_RANK_SYMBOL() {
-    const result = {};
+    const result = Object.assign({}, this.FLARE_RANK_STRING);
     result[this.FLARE_RANK.NONE] = '';
-    result[this.FLARE_RANK.FLARE_1] = 'Ⅰ';
-    result[this.FLARE_RANK.FLARE_2] = 'Ⅱ';
-    result[this.FLARE_RANK.FLARE_3] = 'Ⅲ';
-    result[this.FLARE_RANK.FLARE_4] = 'Ⅳ';
-    result[this.FLARE_RANK.FLARE_5] = 'Ⅴ';
-    result[this.FLARE_RANK.FLARE_6] = 'Ⅵ';
-    result[this.FLARE_RANK.FLARE_7] = 'Ⅶ';
-    result[this.FLARE_RANK.FLARE_8] = 'Ⅷ';
-    result[this.FLARE_RANK.FLARE_9] = 'Ⅸ';
-    result[this.FLARE_RANK.FLARE_EX] = 'EX';
     return result;
   }
 
