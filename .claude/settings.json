@@ -12,6 +12,7 @@
       "Bash(git push*)",
       "Bash(git commit*)",
       "Bash(gh issue view:*)",
+      "Bash(gh pr*)",
       "WebFetch(*)"
     ],
     "deny": [
