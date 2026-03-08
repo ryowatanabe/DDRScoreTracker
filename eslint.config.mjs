@@ -6,6 +6,9 @@ import tsParser from "@typescript-eslint/parser";
 
 export default [
 	{
+		ignores: ["dist/**"]
+	},
+	{
 		files: ["src/**/*.js", "src/**/*.vue"],
 		languageOptions: {
 			parser: vueParser,
