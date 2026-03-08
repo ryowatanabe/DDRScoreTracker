@@ -1,8 +1,14 @@
-import { Constants } from './Constants.js';
+import { Constants, type MusicType } from './Constants.js';
 import { Logger } from './Logger.js';
 
 export class MusicData {
-  constructor(musicId, type, title, difficulty, isDeleted) {
+  musicId: string;
+  type: MusicType;
+  title: string;
+  difficulty: number[];
+  isDeleted: number;
+
+  constructor(musicId: string, type: MusicType, title: string, difficulty: number[], isDeleted: number) {
     this.musicId = musicId;
     this.type = type;
     this.title = title;
@@ -10,16 +16,22 @@ export class MusicData {
     this.isDeleted = isDeleted;
   }
 
-  static createEmptyData(musicId, musicType) {
+  static createEmptyData(musicId: string, musicType: MusicType): MusicData {
     return new MusicData(musicId, musicType, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0);
   }
 
-  static createFromStorage(storageData) {
-    const instance = new MusicData(storageData['musicId'], storageData['type'], storageData['title'], storageData['difficulty'], storageData['isDeleted']);
+  static createFromStorage(storageData: Record<string, unknown>): MusicData {
+    const instance = new MusicData(
+      storageData['musicId'] as string,
+      storageData['type'] as MusicType,
+      storageData['title'] as string,
+      storageData['difficulty'] as number[],
+      storageData['isDeleted'] as number
+    );
     return instance;
   }
 
-  static createFromString(encodedString) {
+  static createFromString(encodedString: string): MusicData | null {
     if (encodedString.trim() === '') {
       return null;
     }
@@ -37,7 +49,7 @@ export class MusicData {
     }
     const instance = new MusicData(
       elements[MUSIC_ID_INDEX],
-      parseInt(elements[TYPE_INDEX], 10),
+      parseInt(elements[TYPE_INDEX], 10) as MusicType,
       elements[TITLE_INDEX],
       elements.slice(DIFFICULTY_START_INDEX, DIFFICULTY_END_INDEX).map((element) => parseInt(element, 10)),
       parseInt(elements[IS_DELETED_INDEX], 10)
@@ -49,7 +61,7 @@ export class MusicData {
   引数に与えられたmusicDataの方により新しいデータがあればこのオブジェクトに反映
   更新が発生した場合 true, そうでない場合 false を返す
   */
-  merge(musicData) {
+  merge(musicData: MusicData): boolean {
     if (this.musicId !== musicData.musicId) {
       throw new Error(`musicId mismatch: ${this.musicId}, ${musicData.musicId}`);
     }
@@ -76,15 +88,15 @@ export class MusicData {
     return isUpdated;
   }
 
-  getLevel(index) {
+  getLevel(index: number): number {
     return this.difficulty[index];
   }
 
-  hasDifficulty(index) {
+  hasDifficulty(index: number): boolean {
     return this.difficulty[index] !== 0;
   }
 
-  get encodedString() {
+  get encodedString(): string {
     return [this.musicId, this.type, this.isDeleted, this.difficulty, this.title].flat().join('\t');
   }
 }

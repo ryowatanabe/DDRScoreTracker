@@ -1,9 +1,16 @@
-import { Constants } from './Constants.js';
+import { Constants, type PlayMode, type Difficulty, type ClearType, type ScoreRank, type FlareRank } from './Constants.js';
 import { Util } from './Util.js';
-import { NullScoreDetail } from './ScoreDetail.js';
+import { NullScoreDetail, ScoreDetail } from './ScoreDetail.js';
+import type { MusicData } from './MusicData.js';
 
 export class ChartData {
-  constructor(musicId, playMode, difficulty) {
+  musicId: string;
+  playMode: PlayMode;
+  difficulty: Difficulty;
+  musicData: MusicData | null;
+  scoreDetail: ScoreDetail | NullScoreDetail;
+
+  constructor(musicId: string, playMode: PlayMode, difficulty: Difficulty) {
     this.musicId = musicId;
     this.playMode = playMode;
     this.difficulty = difficulty;
@@ -18,7 +25,7 @@ export class ChartData {
     return this.musicData.type;
   }
 
-  get title() {
+  get title(): string {
     if (this.musicData === null) {
       return this.musicId;
     }
@@ -28,21 +35,21 @@ export class ChartData {
     return this.musicData.title;
   }
 
-  get levelString() {
+  get levelString(): string {
     if (this.level === 0) {
       return '?';
     }
     return String(this.level);
   }
 
-  get level() {
+  get level(): number {
     if (this.musicData === null) {
       return 0;
     }
     return this.musicData.getLevel(Util.getDifficultyValue(this.playMode, this.difficulty));
   }
 
-  get availability() {
+  get availability(): number {
     // 0: available
     // 1: deleted music with score
     // 2: deleted music without score
@@ -58,109 +65,109 @@ export class ChartData {
     return 0;
   }
 
-  get score() {
+  get score(): number | null {
     return this.scoreDetail.score;
   }
 
-  get scoreRank() {
+  get scoreRank(): ScoreRank {
     return this.scoreDetail.actualScoreRank;
   }
 
-  get clearType() {
+  get clearType(): ClearType {
     return this.scoreDetail.actualClearType;
   }
 
-  get flareRank() {
+  get flareRank(): FlareRank {
     return this.scoreDetail.actualFlareRank;
   }
 
-  get flareSkill() {
+  get flareSkill(): number | null {
     return this.scoreDetail.flareSkill;
   }
 
-  get playCount() {
+  get playCount(): number | null {
     return this.scoreDetail.playCount;
   }
 
-  get clearCount() {
+  get clearCount(): number | null {
     return this.scoreDetail.clearCount;
   }
 
-  get maxCombo() {
+  get maxCombo(): number | null {
     return this.scoreDetail.maxCombo;
   }
 
-  get scoreString() {
+  get scoreString(): string {
     if (this.scoreDetail.score === null) {
       return '';
     }
     return this.scoreDetail.score.toLocaleString();
   }
 
-  get clearTypeString() {
+  get clearTypeString(): string {
     if (this.scoreDetail.clearType === null) {
       return '';
     }
     return Constants.CLEAR_TYPE_STRING[this.scoreDetail.clearType];
   }
 
-  get fullComboSymbol() {
+  get fullComboSymbol(): string {
     if (this.scoreDetail.clearType === null) {
       return '';
     }
     return Constants.FULL_COMBO_SYMBOL[this.scoreDetail.clearType];
   }
 
-  get clearTypeClassString() {
+  get clearTypeClassString(): string {
     if (this.scoreDetail.clearType === null) {
       return '';
     }
     return Constants.CLEAR_TYPE_CLASS_STRING[this.scoreDetail.clearType];
   }
 
-  get scoreRankString() {
+  get scoreRankString(): string {
     if (this.scoreDetail.scoreRank === null) {
       return '';
     }
     return Constants.SCORE_RANK_STRING[this.scoreDetail.scoreRank];
   }
 
-  get scoreRankClassString() {
+  get scoreRankClassString(): string {
     if (this.scoreDetail.scoreRank === null) {
       return '';
     }
     return Constants.SCORE_RANK_CLASS_STRING[this.scoreDetail.scoreRank];
   }
 
-  get flareRankSymbol() {
+  get flareRankSymbol(): string {
     if (this.scoreDetail.flareRank === null) {
       return '';
     }
     return Constants.FLARE_RANK_SYMBOL[this.scoreDetail.flareRank];
   }
 
-  get flareRankString() {
+  get flareRankString(): string {
     if (this.scoreDetail.flareRank === null) {
       return '';
     }
     return Constants.FLARE_RANK_STRING[this.scoreDetail.flareRank];
   }
 
-  get flareRankClassString() {
+  get flareRankClassString(): string {
     if (this.scoreDetail.flareRank === null) {
       return '';
     }
     return Constants.FLARE_RANK_CLASS_STRING[this.scoreDetail.flareRank];
   }
 
-  get difficultyClassString() {
+  get difficultyClassString(): string {
     if (this.difficulty === null) {
       return '';
     }
     return Constants.DIFFICULTY_CLASS_STRING[this.difficulty];
   }
 
-  get playModeSymbol() {
+  get playModeSymbol(): string {
     if (this.playMode === null) {
       return '';
     }
