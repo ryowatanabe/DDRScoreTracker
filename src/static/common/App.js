@@ -18,41 +18,26 @@ import { STATE, CHANGE_STATE_MESSAGE_TYPE } from './AppState.js';
 
 export class App {
   constructor() {
-    this.storage = new Storage(
-      {
-        scores: {},
-        musics: {},
-        savedConditions: [],
-        conditions: {
-          summary: { clearType: true },
-          filter: [],
-          sort: [],
-        },
-        saSettings: {
-          ddrcode: '',
-        },
-        options: {
-          musicListReloadInterval: Constants.MUSIC_LIST_RELOAD_INTERVAL,
-        },
-        internalStatus: {
-          musicListUpdatedAt: 0,
-        },
-        differences: [],
+    this.storage = new Storage({
+      scores: {},
+      musics: {},
+      savedConditions: [],
+      conditions: {
+        summary: { clearType: true },
+        filter: [],
+        sort: [],
       },
-
-      (data) => {
-        this.musicList = MusicList.createFromStorage(data.musics);
-        this.scoreList = ScoreList.createFromStorage(data.scores);
-        this.savedConditions = data.savedConditions;
-        this.conditions = data.conditions;
-        this.saSettings = data.saSettings;
-        this.options = data.options;
-        this.internalStatus = data.internalStatus;
-        this.dataFetchController.differences = ScoreDiff.createMultiFromStorage(data.differences);
-        this.updateCharts();
-        this.changeState(STATE.IDLE);
-      }
-    );
+      saSettings: {
+        ddrcode: '',
+      },
+      options: {
+        musicListReloadInterval: Constants.MUSIC_LIST_RELOAD_INTERVAL,
+      },
+      internalStatus: {
+        musicListUpdatedAt: 0,
+      },
+      differences: [],
+    });
 
     this.state = STATE.INITIALIZE;
 
@@ -79,6 +64,20 @@ export class App {
     this.browserController.delay = Constants.LOAD_INTERVAL;
 
     this.messageListeners = [];
+  }
+
+  async init() {
+    const data = await this.storage.ready;
+    this.musicList = MusicList.createFromStorage(data.musics);
+    this.scoreList = ScoreList.createFromStorage(data.scores);
+    this.savedConditions = data.savedConditions;
+    this.conditions = data.conditions;
+    this.saSettings = data.saSettings;
+    this.options = data.options;
+    this.internalStatus = data.internalStatus;
+    this.dataFetchController.differences = ScoreDiff.createMultiFromStorage(data.differences);
+    this.updateCharts();
+    this.changeState(STATE.IDLE);
   }
 
   abortAction() {
@@ -113,8 +112,8 @@ export class App {
     return this.state;
   }
 
-  saveStorage() {
-    this.storage.saveStorage({
+  async saveStorage() {
+    await this.storage.saveStorage({
       scores: this.scoreList.toStorageData(),
       musics: this.musicList.toStorageData(),
       savedConditions: this.savedConditions,
@@ -126,8 +125,8 @@ export class App {
     });
   }
 
-  resetStorage() {
-    this.storage.resetStorage();
+  async resetStorage() {
+    await this.storage.resetStorage();
   }
 
   getBytesInUse() {

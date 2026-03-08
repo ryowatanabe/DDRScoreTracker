@@ -52,15 +52,6 @@ describe('Storage constructor', () => {
     expect(storage.bytesInUse).toBe(1234);
   });
 
-  test('loadCallback がロードデータとともに呼ばれる', async () => {
-    const mockData = { foo: 'bar' };
-    chrome.storage.local.get.mockResolvedValue(mockData);
-    const callback = jest.fn();
-    const storage = new Storage({}, callback);
-    await storage.ready;
-    expect(callback).toHaveBeenCalledWith(mockData);
-  });
-
   test('defaultData が chrome.storage.local.get に渡される', async () => {
     const defaults = { score: 0 };
     const storage = new Storage(defaults);
@@ -79,25 +70,6 @@ describe('Storage.loadStorage', () => {
     chrome.storage.local.get.mockResolvedValue(newData);
     await storage.loadStorage();
     expect(storage.storageData).toStrictEqual(newData);
-  });
-
-  test('指定したコールバックがロードデータとともに呼ばれる', async () => {
-    const storage = new Storage();
-    await storage.ready;
-    const newData = { score: 200 };
-    chrome.storage.local.get.mockResolvedValue(newData);
-    const callback = jest.fn();
-    await storage.loadStorage(callback);
-    expect(callback).toHaveBeenCalledWith(newData);
-  });
-
-  test('コールバック省略時はデフォルト loadCallback が使われる', async () => {
-    const callback = jest.fn();
-    const storage = new Storage({}, callback);
-    await storage.ready;
-    callback.mockClear();
-    await storage.loadStorage();
-    expect(callback).toHaveBeenCalled();
   });
 
   test('ロードしたデータが返り値として返される', async () => {

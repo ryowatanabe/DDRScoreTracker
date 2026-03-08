@@ -49,22 +49,15 @@ function onInitialized() {
   });
 }
 
-function initialize() {
-  if (app.getState() === APP_STATE.INITIALIZE) {
-    setTimeout(initialize, 100);
-  } else {
-    onInitialized();
-  }
-}
-
 window.addEventListener('load', () => {
   const extension_id = chrome.i18n.getMessage('@@extension_id');
   // 二重起動抑止
-  chrome.tabs.query({ url: `chrome-extension://${extension_id}/browser_action/*` }, (tabs) => {
+  chrome.tabs.query({ url: `chrome-extension://${extension_id}/browser_action/*` }, async (tabs) => {
     if (tabs.length > 1) {
       window.close();
     } else {
-      initialize();
+      await app.init();
+      onInitialized();
     }
   });
 });

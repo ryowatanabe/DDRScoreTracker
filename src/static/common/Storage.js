@@ -2,19 +2,17 @@ import { Logger } from './Logger.js';
 import { I18n } from './I18n.js';
 
 export class Storage {
-  constructor(defaultData = {}, loadCallback = function () {}) {
+  constructor(defaultData = {}) {
     this.storageData = {};
     this.defaultData = defaultData;
-    this.loadCallback = loadCallback;
     this.bytesInUse = 0;
     this.ready = this.loadStorage();
   }
 
-  async loadStorage(callback = this.loadCallback) {
+  async loadStorage() {
     const data = await chrome.storage.local.get(this.defaultData);
     this.storageData = data;
     await this.updateBytesInUse();
-    callback(data);
     return data;
   }
 
