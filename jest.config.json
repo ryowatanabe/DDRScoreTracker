@@ -9,5 +9,8 @@
   },
   "testEnvironment": "jsdom",
   "testPathIgnorePatterns": ["/node_modules/", "/test-e2e/"],
-  "moduleFileExtensions": ["ts", "js", "json", "vue"]
+  "moduleFileExtensions": ["ts", "js", "json", "vue"],
+  "moduleNameMapper": {
+    "^(\\.{1,2}.*)\\.js$": "$1"
+  }
 }
