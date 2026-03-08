@@ -1,6 +1,31 @@
 import { ScoreDiff } from './ScoreDiff.js';
 import { Constants } from './Constants.js';
 
+export class NullScoreDetail {
+  constructor() {
+    this.score = null;
+    this.scoreRank = null;
+    this.clearType = null;
+    this.playCount = null;
+    this.clearCount = null;
+    this.flareRank = null;
+    this.flareSkill = null;
+    this.maxCombo = null;
+  }
+
+  get actualClearType() {
+    return Constants.CLEAR_TYPE.NO_PLAY;
+  }
+
+  get actualScoreRank() {
+    return Constants.SCORE_RANK.NO_PLAY;
+  }
+
+  get actualFlareRank() {
+    return Constants.FLARE_RANK.NONE;
+  }
+}
+
 export class ScoreDetail {
   constructor() {
     this.score = null;
