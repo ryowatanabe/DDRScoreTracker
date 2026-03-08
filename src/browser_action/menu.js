@@ -3,6 +3,7 @@ import { Constants } from '../static/common/Constants.js';
 import { Logger } from '../static/common/Logger.js';
 
 let app;
+let chartList;
 
 function fetchParsedMusicList() {
   app.fetchParsedMusicList();
@@ -32,7 +33,7 @@ document.getElementById('updateScoreListButtonWorld').addEventListener('click', 
 
 function updateScoreDetail(gameVersion) {
   const targetMusics = [];
-  window.getCharts().forEach(function (chartData) {
+  chartList.charts.forEach(function (chartData) {
     targetMusics.push({
       musicId: chartData.musicId,
       difficulty: chartData.difficulty + (chartData.playMode === Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0),
@@ -62,8 +63,9 @@ document.getElementById('openSkillAttackUserPageButton').addEventListener('click
   window.open('http://skillattack.com/sa4/dancer_profile.php?ddrcode=' + ddrcode);
 });
 
-export function initialize(a) {
+export function initialize(a, cl) {
   app = a;
+  chartList = cl;
   document.getElementById('menuContainer').classList.remove('not-initialized');
   document.getElementById('menuBackground').classList.remove('not-initialized');
   document.getElementById('menuContainer').classList.add('initialized');
@@ -94,6 +96,6 @@ document.getElementById('openMenuButton').addEventListener('click', openMenu);
 document.getElementById('closeMenuButton').addEventListener('click', closeMenu);
 
 function openDiff() {
-  window.openDiff();
+  document.dispatchEvent(new CustomEvent('open-diff'));
 }
 document.getElementById('openScoreDiffButton').addEventListener('click', openDiff);

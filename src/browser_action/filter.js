@@ -44,15 +44,19 @@ export function refreshList() {
   const conditions = getConditions();
 
   app.saveConditions(conditions.summary, conditions.filter, conditions.sort);
-  window.refreshList(
-    conditions.summary,
-    conditions.filter,
-    conditions.sort.concat([
-      /* tie breakers */
-      { attribute: 'title', order: 'asc' },
-      { attribute: 'playMode', order: 'asc' },
-      { attribute: 'difficulty', order: 'asc' },
-    ])
+  document.dispatchEvent(
+    new CustomEvent('refresh-chart-list', {
+      detail: {
+        summarySettings: conditions.summary,
+        filterConditions: conditions.filter,
+        sortConditions: conditions.sort.concat([
+          /* tie breakers */
+          { attribute: 'title', order: 'asc' },
+          { attribute: 'playMode', order: 'asc' },
+          { attribute: 'difficulty', order: 'asc' },
+        ]),
+      },
+    })
   );
 }
 
