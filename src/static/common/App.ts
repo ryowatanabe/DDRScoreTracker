@@ -6,7 +6,7 @@ import { ChartList } from './ChartList.js';
 import { ChartData } from './ChartData.js';
 import { SkillAttackExporter } from './SkillAttackExporter.js';
 import { DataFetchController } from './DataFetchController.js';
-import { Constants } from './Constants.js';
+import { Constants, type GameVersion, type PlayMode, type MusicType, type Difficulty } from './Constants.js';
 import { Logger } from './Logger.js';
 import { Storage } from './Storage.js';
 import { BrowserController } from './BrowserController.js';
@@ -16,7 +16,39 @@ import { Util } from './Util.js';
 
 import { STATE, CHANGE_STATE_MESSAGE_TYPE } from './AppState.js';
 
+type MessageListener = (message: Record<string, unknown>) => void;
+
+type ParseResponse = {
+  status: number;
+  musics?: Record<string, unknown>[];
+  scores?: Record<string, unknown>[];
+  hasNext?: boolean;
+  currentPage?: number;
+  maxPage?: number;
+  nextUrl?: string;
+};
+
+type UpdateScoreDetailTarget = {
+  musicId: string;
+  difficulty: number;
+  url?: string;
+};
+
 export class App {
+  storage: Storage;
+  state: number;
+  musicList: MusicList | null;
+  scoreList: ScoreList | null;
+  chartList: ChartList;
+  savedConditions: unknown[] | null;
+  conditions: unknown | null;
+  saSettings: Record<string, unknown> | null;
+  options: Record<string, unknown> | null;
+  internalStatus: Record<string, unknown> | null;
+  dataFetchController: DataFetchController;
+  browserController: BrowserController;
+  messageListeners: MessageListener[];
+
   constructor() {
     this.storage = new Storage({
       scores: {},
@@ -51,8 +83,8 @@ export class App {
     this.internalStatus = null;
 
     this.dataFetchController = new DataFetchController({
-      getMusicList: () => this.musicList,
-      getScoreList: () => this.scoreList,
+      getMusicList: () => this.musicList!,
+      getScoreList: () => this.scoreList!,
       onSaveStorage: () => this.saveStorage(),
       onUpdateCharts: () => this.updateCharts(),
       onNavigateTo: (url) => this.navigateTo(url),
@@ -66,21 +98,21 @@ export class App {
     this.messageListeners = [];
   }
 
-  async init() {
+  async init(): Promise<void> {
     const data = await this.storage.ready;
-    this.musicList = MusicList.createFromStorage(data.musics);
-    this.scoreList = ScoreList.createFromStorage(data.scores);
-    this.savedConditions = data.savedConditions;
-    this.conditions = data.conditions;
-    this.saSettings = data.saSettings;
-    this.options = data.options;
-    this.internalStatus = data.internalStatus;
-    this.dataFetchController.differences = ScoreDiff.createMultiFromStorage(data.differences);
+    this.musicList = MusicList.createFromStorage(data['musics'] as Record<string, unknown>);
+    this.scoreList = ScoreList.createFromStorage(data['scores'] as Record<string, unknown>);
+    this.savedConditions = data['savedConditions'] as unknown[];
+    this.conditions = data['conditions'];
+    this.saSettings = data['saSettings'] as Record<string, unknown>;
+    this.options = data['options'] as Record<string, unknown>;
+    this.internalStatus = data['internalStatus'] as Record<string, unknown>;
+    this.dataFetchController.differences = ScoreDiff.createMultiFromStorage(data['differences'] as Record<string, unknown>[]);
     this.updateCharts();
     this.changeState(STATE.IDLE);
   }
 
-  abortAction() {
+  abortAction(): void {
     switch (this.state) {
       case STATE.UPDATE_MUSIC_LIST:
       case STATE.UPDATE_SCORE_LIST:
@@ -104,18 +136,18 @@ export class App {
     }
   }
 
-  echo(message) {
+  echo(message: unknown): void {
     Logger.debug(message);
   }
 
-  getState() {
+  getState(): number {
     return this.state;
   }
 
-  async saveStorage() {
+  async saveStorage(): Promise<void> {
     await this.storage.saveStorage({
-      scores: this.scoreList.toStorageData(),
-      musics: this.musicList.toStorageData(),
+      scores: this.scoreList!.toStorageData(),
+      musics: this.musicList!.toStorageData(),
       savedConditions: this.savedConditions,
       conditions: this.conditions,
       saSettings: this.saSettings,
@@ -125,63 +157,63 @@ export class App {
     });
   }
 
-  async resetStorage() {
+  async resetStorage(): Promise<void> {
     await this.storage.resetStorage();
   }
 
-  getBytesInUse() {
+  getBytesInUse(): number {
     return this.storage.bytesInUse;
   }
 
-  getSavedConditions() {
+  getSavedConditions(): unknown[] | null {
     return this.savedConditions;
   }
 
-  getConditions() {
+  getConditions(): unknown {
     return this.conditions;
   }
 
-  getInternalStatus() {
+  getInternalStatus(): Record<string, unknown> | null {
     return this.internalStatus;
   }
 
-  getSaSettings() {
+  getSaSettings(): Record<string, unknown> | null {
     return this.saSettings;
   }
 
-  getOptions() {
+  getOptions(): Record<string, unknown> | null {
     return this.options;
   }
 
-  addMessageListener(messageListener = (_message) => {}) {
+  addMessageListener(messageListener: MessageListener = (_message) => {}): void {
     this.messageListeners.push(messageListener);
     Logger.addListener(messageListener);
   }
 
-  saveSavedCondition(newSavedCondition) {
+  saveSavedCondition(newSavedCondition: Record<string, unknown>): unknown[] {
     let isUpdated = false;
-    this.savedConditions.forEach((savedCondition) => {
-      if (savedCondition.name === newSavedCondition.name) {
-        savedCondition.summary = newSavedCondition.summary;
-        savedCondition.filter = newSavedCondition.filter;
-        savedCondition.sort = newSavedCondition.sort;
+    (this.savedConditions as Record<string, unknown>[]).forEach((savedCondition) => {
+      if (savedCondition['name'] === newSavedCondition['name']) {
+        savedCondition['summary'] = newSavedCondition['summary'];
+        savedCondition['filter'] = newSavedCondition['filter'];
+        savedCondition['sort'] = newSavedCondition['sort'];
         isUpdated = true;
       }
     }, this);
     if (!isUpdated) {
-      this.savedConditions.push(newSavedCondition);
+      this.savedConditions!.push(newSavedCondition);
     }
     this.saveStorage();
-    return this.savedConditions;
+    return this.savedConditions!;
   }
 
-  saveSavedConditions(newSavedConditions) {
+  saveSavedConditions(newSavedConditions: unknown[]): unknown[] {
     this.savedConditions = newSavedConditions;
     this.saveStorage();
     return this.savedConditions;
   }
 
-  saveConditions(summarySettings, filterConditions, sortConditions) {
+  saveConditions(summarySettings: unknown, filterConditions: unknown, sortConditions: unknown): void {
     this.conditions = {
       summary: summarySettings,
       filter: filterConditions,
@@ -190,47 +222,47 @@ export class App {
     this.saveStorage();
   }
 
-  saveSaSettings(ddrcode) {
-    this.saSettings.ddrcode = ddrcode;
+  saveSaSettings(ddrcode: string): void {
+    this.saSettings!['ddrcode'] = ddrcode;
     this.saveStorage();
   }
 
-  saveOptions(newOptions) {
+  saveOptions(newOptions: Record<string, unknown>): void {
     this.options = newOptions;
     this.saveStorage();
   }
 
-  getMusicList() {
+  getMusicList(): MusicList | null {
     return this.musicList;
   }
 
-  getScoreList() {
+  getScoreList(): ScoreList | null {
     return this.scoreList;
   }
 
-  getDifferences() {
+  getDifferences(): ScoreDiff[] {
     return this.dataFetchController.differences;
   }
 
-  getChartCount() {
+  getChartCount(): number {
     return this.chartList.charts.length;
   }
 
-  getChartList() {
+  getChartList(): ChartList {
     return this.chartList;
   }
 
-  restoreMusicList(string) {
+  restoreMusicList(string: string): void {
     const lines = string.split('\n');
-    Logger.info(I18n.getMessage('log_message_restore_music_list_count', lines.length));
+    Logger.info(I18n.getMessage('log_message_restore_music_list_count', String(lines.length)));
     lines.forEach(function (line) {
-      this.musicList.applyEncodedString(line);
+      this.musicList!.applyEncodedString(line);
     }, this);
     this.saveStorage();
     this.updateCharts();
   }
 
-  restoreScoreList(object) {
+  restoreScoreList(object: Record<string, unknown>): void {
     this.scoreList = ScoreList.createFromStorage(object);
     this.saveStorage();
     this.updateCharts();
@@ -239,17 +271,17 @@ export class App {
   /*
   gh pagesから曲リストを取得し、ローカルの曲リストを更新する
   */
-  async fetchParsedMusicList() {
+  async fetchParsedMusicList(): Promise<void> {
     Logger.info(I18n.getMessage('log_message_fetch_parsed_music_list_begin'));
     try {
-      const response = await fetch(Constants.PARSED_MUSIC_LIST_URL.replace('[version]', Constants.MUSIC_LIST_VERSION), { cache: 'no-store' });
+      const response = await fetch(Constants.PARSED_MUSIC_LIST_URL.replace('[version]', String(Constants.MUSIC_LIST_VERSION)), { cache: 'no-store' });
       if (!response.ok) {
         throw new Error(`HTTP status: ${response.status}`);
       }
       Logger.info(I18n.getMessage('log_message_fetch_parsed_music_list_fetch_success'));
       const text = await response.text();
       this.restoreMusicList(text);
-      this.internalStatus.musicListUpdatedAt = Date.now();
+      this.internalStatus!['musicListUpdatedAt'] = Date.now();
       this.saveStorage();
       Logger.info(I18n.getMessage('log_message_done'));
     } catch (error) {
@@ -263,7 +295,7 @@ export class App {
   /*
   公式の曲一覧から曲情報を取得し、ローカルの曲リストを更新する
   */
-  async updateMusicList() {
+  async updateMusicList(): Promise<void> {
     if (this.state !== STATE.IDLE) {
       const message = `updateMusicList: state unmatch (current state: ${this.state})`;
       Logger.debug(message);
@@ -272,8 +304,8 @@ export class App {
     Logger.info(I18n.getMessage('log_message_update_music_list_begin'));
     this.changeState(STATE.UPDATE_MUSIC_LIST);
     try {
-      Logger.info(I18n.getMessage('log_message_update_music_list_progress', [1, '?']));
-      await this.browserController.createTab(Constants.MUSIC_LIST_URL, this.options.openTabAsActive);
+      Logger.info(I18n.getMessage('log_message_update_music_list_progress', ['1', '?']));
+      await this.browserController.createTab(Constants.MUSIC_LIST_URL, this.options!['openTabAsActive'] as boolean);
     } catch (error) {
       this.browserController.reset();
       Logger.error(error);
@@ -286,7 +318,7 @@ export class App {
   曲リストに現存する全曲の曲情報を再取得する
   難易度更新検知に使えるが、未解禁曲の情報は取得できない場合があるため注意
   */
-  async refreshAllMusicInfo(musicIdForFilter, gameVersion) {
+  async refreshAllMusicInfo(musicIdForFilter: string, gameVersion: GameVersion): Promise<boolean | void> {
     if (this.state !== STATE.IDLE) {
       const message = `refreshAllMusicInfo: state unmatch (current state: ${this.state})`;
       Logger.debug(message);
@@ -295,15 +327,15 @@ export class App {
     Logger.info(I18n.getMessage('log_message_refresh_all_music_info_begin'));
     this.dataFetchController.targetGameVersion = gameVersion;
     this.dataFetchController.targetMusics = [];
-    this.musicList.musicIds
+    this.musicList!.musicIds
       .sort()
       .filter((musicId) => {
         return musicId >= musicIdForFilter;
       })
       .forEach((musicId) => {
-        let musicType = this.musicList.getMusicDataById(musicId).type;
+        let musicType = this.musicList!.getMusicDataById(musicId).type;
         if (musicType === Constants.MUSIC_TYPE.UNKNOWN) {
-          musicType = Constants.MUSIC_TYPE.NORMAL;
+          musicType = Constants.MUSIC_TYPE.NORMAL as MusicType;
         }
         if (Constants.MUSIC_DETAIL_URL[gameVersion][musicType] !== '') {
           this.dataFetchController.targetMusics.push({
@@ -317,12 +349,12 @@ export class App {
       Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_no_target'));
       return false;
     }
-    Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_target_found', this.dataFetchController.targetMusics.length));
+    Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_target_found', String(this.dataFetchController.targetMusics.length)));
     this.changeState(STATE.UPDATE_MUSIC_DETAIL);
     try {
-      this.dataFetchController.targetMusic = this.dataFetchController.targetMusics.shift();
-      Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.dataFetchController.targetMusic.musicId, this.dataFetchController.targetMusics.length]));
-      await this.browserController.createTab(this.dataFetchController.targetMusic.url, this.options.openTabAsActive);
+      this.dataFetchController.targetMusic = this.dataFetchController.targetMusics.shift()!;
+      Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.dataFetchController.targetMusic.musicId, String(this.dataFetchController.targetMusics.length)]));
+      await this.browserController.createTab(this.dataFetchController.targetMusic.url, this.options!['openTabAsActive'] as boolean);
     } catch (error) {
       this.browserController.reset();
       Logger.error(error);
@@ -335,7 +367,7 @@ export class App {
   ローカルの曲リストと成績リストを比較し、曲情報が欠けている曲について
   その情報を取得する
   */
-  async fetchMissingMusicInfo(gameVersion) {
+  async fetchMissingMusicInfo(gameVersion: GameVersion): Promise<boolean | void> {
     if (this.state !== STATE.IDLE) {
       const message = `fetchMissingMusicInfo: state unmatch (current state: ${this.state})`;
       Logger.debug(message);
@@ -343,12 +375,12 @@ export class App {
     }
     Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_begin'));
     // 曲情報が欠けている曲と、曲情報そのものはあるが、譜面情報が欠けている (追加鬼譜面など) 曲を列挙する
-    const targetMusicIDs = this.scoreList.musicIds.filter((musicId) => {
-      if (!this.musicList.hasMusic(musicId)) {
+    const targetMusicIDs = this.scoreList!.musicIds.filter((musicId) => {
+      if (!this.musicList!.hasMusic(musicId)) {
         return true;
       }
-      const missing = this.scoreList.getScoreDataByMusicId(musicId).difficulties.find((difficulty) => {
-        if (this.musicList.getMusicDataById(musicId).difficulty[difficulty] === 0) {
+      const missing = this.scoreList!.getScoreDataByMusicId(musicId).difficulties.find((difficulty) => {
+        if (this.musicList!.getMusicDataById(musicId).difficulty[difficulty] === 0) {
           return true;
         }
       });
@@ -356,9 +388,9 @@ export class App {
     });
     this.dataFetchController.targetGameVersion = gameVersion;
     this.dataFetchController.targetMusics = targetMusicIDs.map((musicId) => {
-      let musicType = this.scoreList.getScoreDataByMusicId(musicId).musicType;
+      let musicType = this.scoreList!.getScoreDataByMusicId(musicId).musicType;
       if (musicType === Constants.MUSIC_TYPE.UNKNOWN) {
-        musicType = Constants.MUSIC_TYPE.NORMAL;
+        musicType = Constants.MUSIC_TYPE.NORMAL as MusicType;
       }
       return {
         musicId: musicId,
@@ -370,12 +402,12 @@ export class App {
       Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_no_target'));
       return false;
     }
-    Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_target_found', this.dataFetchController.targetMusics.length));
+    Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_target_found', String(this.dataFetchController.targetMusics.length)));
     this.changeState(STATE.UPDATE_MUSIC_DETAIL);
     try {
-      this.dataFetchController.targetMusic = this.dataFetchController.targetMusics.shift();
-      Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.dataFetchController.targetMusic.musicId, this.dataFetchController.targetMusics.length]));
-      await this.browserController.createTab(this.dataFetchController.targetMusic.url, this.options.openTabAsActive);
+      this.dataFetchController.targetMusic = this.dataFetchController.targetMusics.shift()!;
+      Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.dataFetchController.targetMusic.musicId, String(this.dataFetchController.targetMusics.length)]));
+      await this.browserController.createTab(this.dataFetchController.targetMusic.url, this.options!['openTabAsActive'] as boolean);
     } catch (error) {
       this.browserController.reset();
       Logger.error(error);
@@ -387,7 +419,7 @@ export class App {
   /*
   公式の成績一覧ページから成績情報を取得し、ローカルのスコアリストを更新する
   */
-  async updateScoreList(gameVersion) {
+  async updateScoreList(gameVersion: GameVersion): Promise<void> {
     if (this.state !== STATE.IDLE) {
       const message = `updateScoreList: state unmatch (current state: ${this.state})`;
       Logger.debug(message);
@@ -398,19 +430,19 @@ export class App {
     this.dataFetchController.differences = [];
     try {
       this.dataFetchController.targetGameVersion = gameVersion;
-      this.dataFetchController.targetPlayMode = Constants.PLAY_MODE_FIRST;
-      this.dataFetchController.targetMusicType = Constants.MUSIC_TYPE_FIRST;
+      this.dataFetchController.targetPlayMode = Constants.PLAY_MODE_FIRST as PlayMode;
+      this.dataFetchController.targetMusicType = Constants.MUSIC_TYPE_FIRST as MusicType;
       Logger.info(
         I18n.getMessage('log_message_update_score_list_progress', [
           I18n.getMessage(`log_message_update_score_list_play_mode_${this.dataFetchController.targetPlayMode}`),
           I18n.getMessage(`log_message_update_score_list_music_type_${this.dataFetchController.targetMusicType}`),
-          1,
+          '1',
           '?',
         ])
       );
       await this.browserController.createTab(
-        Constants.SCORE_LIST_URL[this.dataFetchController.targetGameVersion][this.dataFetchController.targetPlayMode][this.dataFetchController.targetMusicType],
-        this.options.openTabAsActive
+        Constants.SCORE_LIST_URL[this.dataFetchController.targetGameVersion!][this.dataFetchController.targetPlayMode!][this.dataFetchController.targetMusicType!],
+        this.options!['openTabAsActive'] as boolean
       );
     } catch (error) {
       this.browserController.reset();
@@ -426,7 +458,7 @@ export class App {
     { musicId:xxx, difficulty:yy }, ...
   ]
   */
-  async updateScoreDetail(targets, gameVersion) {
+  async updateScoreDetail(targets: UpdateScoreDetailTarget[], gameVersion: GameVersion): Promise<boolean | void> {
     if (this.state !== STATE.IDLE) {
       const message = `updateScoreDetail: state unmatch (current state: ${this.state})`;
       Logger.debug(message);
@@ -437,35 +469,35 @@ export class App {
     this.dataFetchController.targetMusics = [];
     targets.forEach((music) => {
       let musicType = Constants.MUSIC_TYPE.NORMAL;
-      if (this.musicList.hasMusic(music.musicId)) {
-        musicType = this.musicList.getMusicDataById(music.musicId).type;
-      } else if (this.scoreList.hasMusic(music.musicId)) {
-        musicType = this.scoreList.getScoreDataByMusicId(music.musicId).musicType;
+      if (this.musicList!.hasMusic(music.musicId)) {
+        musicType = this.musicList!.getMusicDataById(music.musicId).type;
+      } else if (this.scoreList!.hasMusic(music.musicId)) {
+        musicType = this.scoreList!.getScoreDataByMusicId(music.musicId).musicType;
       }
       if (musicType === Constants.MUSIC_TYPE.UNKNOWN) {
         musicType = Constants.MUSIC_TYPE.NORMAL;
       }
       if (Constants.SCORE_DETAIL_URL[gameVersion][musicType] !== '') {
-        music.url = Constants.SCORE_DETAIL_URL[gameVersion][musicType].replace('[musicId]', music.musicId).replace('[difficulty]', music.difficulty);
-        this.dataFetchController.targetMusics.push(music);
+        music.url = Constants.SCORE_DETAIL_URL[gameVersion][musicType].replace('[musicId]', music.musicId).replace('[difficulty]', String(music.difficulty));
+        this.dataFetchController.targetMusics.push(music as UpdateScoreDetailTarget & { url: string });
       }
     }, this);
     if (this.dataFetchController.targetMusics.length === 0) {
       Logger.info(I18n.getMessage('log_message_update_score_detail_no_target'));
       return false;
     }
-    Logger.info(I18n.getMessage('log_message_update_score_detail_target_found', this.dataFetchController.targetMusics.length));
+    Logger.info(I18n.getMessage('log_message_update_score_detail_target_found', String(this.dataFetchController.targetMusics.length)));
     this.changeState(STATE.UPDATE_SCORE_DETAIL);
     try {
-      const targetMusic = this.dataFetchController.targetMusics.shift();
+      const targetMusic = this.dataFetchController.targetMusics.shift()!;
       Logger.info(
         I18n.getMessage('log_message_update_score_detail_progress', [
-          this.musicList.hasMusic(targetMusic.musicId) ? this.musicList.getMusicDataById(targetMusic.musicId).title : targetMusic.musicId,
-          Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty],
-          this.dataFetchController.targetMusics.length,
+          this.musicList!.hasMusic(targetMusic.musicId) ? this.musicList!.getMusicDataById(targetMusic.musicId).title : targetMusic.musicId,
+          Constants.PLAY_MODE_AND_DIFFICULTY_STRING[targetMusic.difficulty!],
+          String(this.dataFetchController.targetMusics.length),
         ])
       );
-      await this.browserController.createTab(targetMusic.url, this.options.openTabAsActive);
+      await this.browserController.createTab(targetMusic.url!, this.options!['openTabAsActive'] as boolean);
     } catch (error) {
       this.browserController.reset();
       Logger.error(error);
@@ -474,45 +506,45 @@ export class App {
     }
   }
 
-  updateCharts() {
+  updateCharts(): void {
     this.chartList.reset();
-    this.musicList.musicIds.forEach(function (musicId) {
+    this.musicList!.musicIds.forEach(function (musicId) {
       Object.values(Constants.PLAY_MODE).forEach(function (playMode) {
         Object.values(Constants.DIFFICULTIES).forEach(function (difficulty) {
           if (playMode === Constants.PLAY_MODE.DOUBLE && difficulty === Constants.DIFFICULTIES.BEGINNER) {
             return;
           }
-          const musicData = this.musicList.getMusicDataById(musicId);
-          const difficultyValue = Util.getDifficultyValue(playMode, difficulty);
-          const scoreDataExists = this.scoreList.hasMusic(musicId) && this.scoreList.getScoreDataByMusicId(musicId).hasDifficulty(difficultyValue);
+          const musicData = this.musicList!.getMusicDataById(musicId);
+          const difficultyValue = Util.getDifficultyValue(playMode as PlayMode, difficulty as Difficulty);
+          const scoreDataExists = this.scoreList!.hasMusic(musicId) && this.scoreList!.getScoreDataByMusicId(musicId).hasDifficulty(difficultyValue);
           if (!musicData.hasDifficulty(difficultyValue) && !scoreDataExists) {
             return;
           }
 
-          const chartData = new ChartData(musicId, playMode, difficulty);
+          const chartData = new ChartData(musicId, playMode as PlayMode, difficulty as Difficulty);
           chartData.musicData = musicData;
 
           if (scoreDataExists) {
-            chartData.scoreDetail = this.scoreList.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
+            chartData.scoreDetail = this.scoreList!.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
           }
 
           this.chartList.addChartData(chartData);
         }, this);
       }, this);
     }, this);
-    this.scoreList.musicIds.forEach(function (musicId) {
-      if (!this.musicList.hasMusic(musicId)) {
+    this.scoreList!.musicIds.forEach(function (musicId) {
+      if (!this.musicList!.hasMusic(musicId)) {
         Object.values(Constants.PLAY_MODE).forEach(function (playMode) {
           Object.values(Constants.DIFFICULTIES).forEach(function (difficulty) {
-            const difficultyValue = Util.getDifficultyValue(playMode, difficulty);
-            const scoreDataExists = this.scoreList.hasMusic(musicId) && this.scoreList.getScoreDataByMusicId(musicId).hasDifficulty(difficultyValue);
+            const difficultyValue = Util.getDifficultyValue(playMode as PlayMode, difficulty as Difficulty);
+            const scoreDataExists = this.scoreList!.hasMusic(musicId) && this.scoreList!.getScoreDataByMusicId(musicId).hasDifficulty(difficultyValue);
             if (!scoreDataExists) {
               return;
             }
 
-            const chartData = new ChartData(musicId, playMode, difficulty);
-            chartData.musicData = MusicData.createEmptyData(musicId, this.scoreList.getScoreDataByMusicId(musicId).musicType);
-            chartData.scoreDetail = this.scoreList.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
+            const chartData = new ChartData(musicId, playMode as PlayMode, difficulty as Difficulty);
+            chartData.musicData = MusicData.createEmptyData(musicId, this.scoreList!.getScoreDataByMusicId(musicId).musicType);
+            chartData.scoreDetail = this.scoreList!.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
 
             this.chartList.addChartData(chartData);
           }, this);
@@ -521,26 +553,26 @@ export class App {
     }, this);
   }
 
-  onUpdateTab() {
+  onUpdateTab(): void {
     switch (this.state) {
       case STATE.UPDATE_MUSIC_LIST:
         this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_LIST', gameVersion: this.dataFetchController.targetGameVersion }, (res) =>
-          this.dataFetchController.handleMusicListResponse(res)
+          this.dataFetchController.handleMusicListResponse(res as ParseResponse)
         );
         break;
       case STATE.UPDATE_MUSIC_DETAIL:
         this.browserController.sendMessageToTab({ type: 'PARSE_MUSIC_DETAIL', gameVersion: this.dataFetchController.targetGameVersion }, (res) =>
-          this.dataFetchController.handleMusicDetailResponse(res)
+          this.dataFetchController.handleMusicDetailResponse(res as ParseResponse)
         );
         break;
       case STATE.UPDATE_SCORE_LIST:
         this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_LIST', gameVersion: this.dataFetchController.targetGameVersion }, (res) =>
-          this.dataFetchController.handleScoreListResponse(res)
+          this.dataFetchController.handleScoreListResponse(res as ParseResponse)
         );
         break;
       case STATE.UPDATE_SCORE_DETAIL:
         this.browserController.sendMessageToTab({ type: 'PARSE_SCORE_DETAIL', gameVersion: this.dataFetchController.targetGameVersion }, (res) =>
-          this.dataFetchController.handleScoreDetailResponse(res)
+          this.dataFetchController.handleScoreDetailResponse(res as ParseResponse)
         );
         break;
       default:
@@ -550,33 +582,33 @@ export class App {
   }
 
   // updateTab を呼び出し、失敗時は reset してアボートする
-  async navigateTo(url) {
+  async navigateTo(url: string): Promise<void> {
     try {
       await this.browserController.updateTab(url);
     } catch (error) {
       this.browserController.reset();
-      Logger.error(error.message);
+      Logger.error((error as Error).message);
       this.changeState(STATE.IDLE);
       Logger.info(I18n.getMessage('log_message_aborted'));
     }
   }
 
   // タブを閉じて IDLE に戻り、完了ログを出す
-  async finishAction() {
+  async finishAction(): Promise<void> {
     await this.closeTab();
     this.changeState(STATE.IDLE);
     Logger.info(I18n.getMessage('log_message_done'));
   }
 
-  changeState(nextState) {
+  changeState(nextState: number): void {
     this.messageListeners.forEach((listener) => {
-      listener({ type: CHANGE_STATE_MESSAGE_TYPE, oldState: this.state, state: nextState });
+      listener({ type: CHANGE_STATE_MESSAGE_TYPE, oldState: this.state, state: nextState } as unknown as Record<string, unknown>);
     }, this);
     Logger.debug(`App.changeState ${this.state} -> ${nextState}`);
     this.state = nextState;
   }
 
-  async handleError(res) {
+  async handleError(res: ParseResponse): Promise<void> {
     switch (res.status) {
       case Parser.STATUS.UNKNOWN_ERROR:
         Logger.info(I18n.getMessage('log_message_unknown_error'));
@@ -592,20 +624,20 @@ export class App {
     Logger.info(I18n.getMessage('log_message_aborted'));
   }
 
-  async closeTab(force) {
-    if (this.options.notCloseTabAfterUse !== true) {
+  async closeTab(force?: boolean): Promise<void> {
+    if (this.options!['notCloseTabAfterUse'] !== true) {
       await this.browserController.closeTab(force);
     }
   }
 
-  async exportScoreToSkillAttack(ddrcode, password) {
+  async exportScoreToSkillAttack(ddrcode: string, password: string): Promise<void> {
     if (ddrcode.trim() === '') {
       Logger.info(I18n.getMessage('log_message_export_score_to_skill_attack_password_invalid'));
       Logger.info(I18n.getMessage('log_message_aborted'));
       return;
     }
     this.saveSaSettings(ddrcode);
-    const exporter = new SkillAttackExporter(this.musicList, this.scoreList, this.options);
+    const exporter = new SkillAttackExporter(this.musicList!, this.scoreList!, this.options!);
     await exporter.export(ddrcode, password);
   }
 }

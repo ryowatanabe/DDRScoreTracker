@@ -1,6 +1,13 @@
 import { Logger } from './Logger.js';
 
 export class BrowserController {
+  tabId: number | null;
+  windowId: number;
+  state: number;
+  delay: number;
+  onUpdateTab: () => void;
+  onUpdateTabInternal: (tid: number, changeInfo: chrome.tabs.TabChangeInfo, tab: chrome.tabs.Tab) => void;
+
   static get STATE() {
     return {
       INITIALIZED: 1,
@@ -12,16 +19,16 @@ export class BrowserController {
     };
   }
 
-  constructor(windowId, onUpdateTab = () => {}) {
+  constructor(windowId: number, onUpdateTab: () => void = () => {}) {
     this.tabId = null;
     this.windowId = windowId;
-    this.state = this.constructor.STATE.INITIALIZED;
+    this.state = BrowserController.STATE.INITIALIZED;
     this.delay = 0;
     this.onUpdateTab = onUpdateTab;
     this.onUpdateTabInternal = this.onUpdateTabInternalImpl.bind(this);
   }
 
-  onUpdateTabInternalImpl(tid, changeInfo, tab) {
+  onUpdateTabInternalImpl(tid: number, changeInfo: chrome.tabs.TabChangeInfo, tab: chrome.tabs.Tab): void {
     if (this.tabId === null) {
       Logger.error(`BrowserController.onUpdateTabInternalImpl: called when tabId is null`);
       return;
@@ -32,8 +39,8 @@ export class BrowserController {
     Logger.debug(`${tid}, ${JSON.stringify(changeInfo)}, ${JSON.stringify(tab)}`);
     if (changeInfo.status === 'complete') {
       switch (this.state) {
-        case this.constructor.STATE.NAVIGATING:
-          this.changeState(this.constructor.STATE.IDLE);
+        case BrowserController.STATE.NAVIGATING:
+          this.changeState(BrowserController.STATE.IDLE);
           this.onUpdateTab();
           break;
         default:
@@ -43,46 +50,46 @@ export class BrowserController {
     }
   }
 
-  reset() {
+  reset(): void {
     chrome.tabs.onUpdated.removeListener(this.onUpdateTabInternal);
     this.tabId = null;
-    this.changeState(this.constructor.STATE.INITIALIZED);
+    this.changeState(BrowserController.STATE.INITIALIZED);
   }
 
-  createTab(url, active = false) {
+  createTab(url: string, active: boolean = false): Promise<string> {
     return new Promise((resolve, reject) => {
-      if (this.state !== this.constructor.STATE.INITIALIZED) {
+      if (this.state !== BrowserController.STATE.INITIALIZED) {
         reject(new Error(`BrowserController.createTab: state unmatch (current state: ${this.state})`));
         return;
       }
-      this.changeState(this.constructor.STATE.CREATING);
+      this.changeState(BrowserController.STATE.CREATING);
       chrome.tabs.onUpdated.addListener(this.onUpdateTabInternal);
       chrome.tabs.create({ windowId: this.windowId, url: url, active: active }, (tab) => {
         Logger.debug(`BrowserController.createTab: tab created (id: ${tab.id}, url: ${url})`);
-        this.tabId = tab.id;
-        this.changeState(this.constructor.STATE.NAVIGATING);
+        this.tabId = tab.id ?? null;
+        this.changeState(BrowserController.STATE.NAVIGATING);
         resolve(`tab created (id: ${this.tabId})`);
       });
     });
   }
 
-  updateTab(url, delay = this.delay) {
+  updateTab(url: string, delay: number = this.delay): Promise<string> {
     return new Promise((resolve, reject) => {
-      if (this.state !== this.constructor.STATE.IDLE) {
+      if (this.state !== BrowserController.STATE.IDLE) {
         reject(new Error(`BrowserController.updateTab: state unmatch (current state: ${this.state})`));
         return;
       }
-      this.changeState(this.constructor.STATE.WAITING);
+      this.changeState(BrowserController.STATE.WAITING);
       setTimeout(() => {
-        if (this.state === this.constructor.STATE.WAITING) {
-          chrome.tabs.update(this.tabId, { url: url }, (_tab) => {
+        if (this.state === BrowserController.STATE.WAITING) {
+          chrome.tabs.update(this.tabId as number, { url: url }, (_tab) => {
             Logger.debug(`BrowserController.updateTab: navigate to ${url})`);
             if (typeof chrome.runtime.lastError !== 'undefined') {
               this.reset();
               reject(new Error(chrome.runtime.lastError.message));
               return;
             }
-            this.changeState(this.constructor.STATE.NAVIGATING);
+            this.changeState(BrowserController.STATE.NAVIGATING);
             resolve(`navigate to: ${url}`);
           });
         }
@@ -90,15 +97,15 @@ export class BrowserController {
     });
   }
 
-  closeTab(force = false) {
+  closeTab(force: boolean = false): Promise<string> {
     return new Promise((resolve, reject) => {
-      if (!force && this.state !== this.constructor.STATE.IDLE) {
+      if (!force && this.state !== BrowserController.STATE.IDLE) {
         reject(new Error(`BrowserController.closeTab: state unmatch (current state: ${this.state})`));
         return;
       }
-      this.changeState(this.constructor.STATE.CLOSING);
+      this.changeState(BrowserController.STATE.CLOSING);
       chrome.tabs.onUpdated.removeListener(this.onUpdateTabInternal);
-      chrome.tabs.remove(this.tabId, () => {
+      chrome.tabs.remove(this.tabId as number, () => {
         this.reset();
         if (typeof chrome.runtime.lastError !== 'undefined') {
           reject(new Error(chrome.runtime.lastError.message));
@@ -109,14 +116,14 @@ export class BrowserController {
     });
   }
 
-  sendMessageToTab(message, callback) {
-    if (this.state !== this.constructor.STATE.IDLE) {
+  sendMessageToTab(message: unknown, callback: (response: unknown) => void): void {
+    if (this.state !== BrowserController.STATE.IDLE) {
       throw new Error(`BrowserController.sendMessageToTab: state unmatch (current state: ${this.state})`);
     }
-    chrome.tabs.sendMessage(this.tabId, message, {}, callback);
+    chrome.tabs.sendMessage(this.tabId as number, message, {}, callback);
   }
 
-  changeState(nextState) {
+  changeState(nextState: number): void {
     Logger.debug(`BrowserController.changeState: ${this.state} -> ${nextState}`);
     this.state = nextState;
   }

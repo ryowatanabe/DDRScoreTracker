@@ -2,14 +2,16 @@ import { MusicData } from './MusicData.js';
 import { Logger } from './Logger.js';
 
 export class MusicList {
+  musics: Record<string, MusicData>;
+
   constructor() {
     this.musics = {};
   }
 
-  static createFromStorage(storageData) {
+  static createFromStorage(storageData: Record<string, unknown>): MusicList {
     const instance = new MusicList();
     Object.getOwnPropertyNames(storageData).forEach((musicId) => {
-      const musicData = MusicData.createFromStorage(storageData[musicId]);
+      const musicData = MusicData.createFromStorage(storageData[musicId] as Record<string, unknown>);
       instance.applyMusicData(musicData);
     });
     return instance;
@@ -18,7 +20,7 @@ export class MusicList {
   /*
   更新があればtrue, なければfalseを返す
   */
-  applyMusicData(musicData) {
+  applyMusicData(musicData: MusicData): boolean {
     if (musicData.isDeleted === 2) {
       if (this.removeMusic(musicData.musicId)) {
         Logger.info(`Removed: ${musicData.encodedString}`);
@@ -37,7 +39,7 @@ export class MusicList {
     return false;
   }
 
-  applyObject(object) {
+  applyObject(object: Record<string, unknown>): boolean {
     const musicData = MusicData.createFromStorage(object);
     if (musicData === null) {
       return false;
@@ -45,7 +47,7 @@ export class MusicList {
     return this.applyMusicData(musicData);
   }
 
-  applyEncodedString(encodedString) {
+  applyEncodedString(encodedString: string): boolean {
     const musicData = MusicData.createFromString(encodedString);
     if (musicData === null) {
       return false;
@@ -53,15 +55,15 @@ export class MusicList {
     return this.applyMusicData(musicData);
   }
 
-  getMusicDataById(musicId) {
+  getMusicDataById(musicId: string): MusicData {
     return this.musics[musicId];
   }
 
-  hasMusic(musicId) {
+  hasMusic(musicId: string): boolean {
     return Object.prototype.hasOwnProperty.call(this.musics, musicId);
   }
 
-  removeMusic(musicId) {
+  removeMusic(musicId: string): boolean {
     if (this.hasMusic(musicId)) {
       return delete this.musics[musicId];
     } else {
@@ -69,15 +71,15 @@ export class MusicList {
     }
   }
 
-  get musicIds() {
+  get musicIds(): string[] {
     return Object.getOwnPropertyNames(this.musics);
   }
 
-  toStorageData() {
+  toStorageData(): Record<string, MusicData> {
     return this.musics;
   }
 
-  get encodedString() {
+  get encodedString(): string {
     return Object.getOwnPropertyNames(this.musics)
       .map((musicId) => {
         return this.getMusicDataById(musicId).encodedString;

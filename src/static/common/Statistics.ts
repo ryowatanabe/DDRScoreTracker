@@ -1,5 +1,5 @@
 export class Statistics {
-  static max(values) {
+  static max(values: number[]): number | null {
     if (!Array.isArray(values)) {
       return null;
     }
@@ -12,7 +12,7 @@ export class Statistics {
     })[0];
   }
 
-  static min(values) {
+  static min(values: number[]): number | null {
     if (!Array.isArray(values)) {
       return null;
     }
@@ -25,7 +25,7 @@ export class Statistics {
     })[0];
   }
 
-  static average(values) {
+  static average(values: number[]): number | null {
     if (!Array.isArray(values)) {
       return null;
     }
@@ -39,7 +39,7 @@ export class Statistics {
     );
   }
 
-  static median(values) {
+  static median(values: number[]): number | null {
     if (!Array.isArray(values)) {
       return null;
     }
