@@ -18,11 +18,14 @@ jest.mock('../../../src/static/common/Parser.js', () => ({
 jest.mock('../../../src/static/common/Storage.js', () => ({ Storage: jest.fn() }));
 jest.mock('../../../src/static/common/BrowserController.js', () => ({ BrowserController: jest.fn() }));
 jest.mock('../../../src/static/common/DataFetchController.js', () => ({ DataFetchController: jest.fn() }));
+jest.mock('../../../src/static/common/SkillAttackExporter.js', () => ({ SkillAttackExporter: jest.fn() }));
 
 import { Storage } from '../../../src/static/common/Storage.js';
 import { BrowserController } from '../../../src/static/common/BrowserController.js';
 import { DataFetchController } from '../../../src/static/common/DataFetchController.js';
+import { SkillAttackExporter } from '../../../src/static/common/SkillAttackExporter.js';
 import { Logger } from '../../../src/static/common/Logger.js';
+import { Constants } from '../../../src/static/common/Constants.js';
 
 // ---- Helpers ----
 
@@ -632,5 +635,328 @@ describe('App.restoreScoreList', () => {
     const spy = jest.spyOn(app, 'updateCharts');
     app.restoreScoreList({});
     expect(spy).toHaveBeenCalled();
+  });
+});
+
+// ================================================================
+// Phase 3: Async Flow
+// ================================================================
+
+// ---- updateMusicList ----
+
+describe('App.updateMusicList', () => {
+  test('IDLE 状態では UPDATE_MUSIC_LIST に遷移する', async () => {
+    const app = await makeInitializedApp();
+    await app.updateMusicList();
+    expect(app.getState()).toBe(STATE.UPDATE_MUSIC_LIST);
+  });
+
+  test('browserController.createTab が MUSIC_LIST_URL で呼ばれる', async () => {
+    const app = await makeInitializedApp();
+    await app.updateMusicList();
+    expect(browserControllerMock.createTab).toHaveBeenCalledWith(Constants.MUSIC_LIST_URL, expect.anything());
+  });
+
+  test('IDLE 以外の状態では例外をスローする', async () => {
+    const app = await makeInitializedApp();
+    app.changeState(STATE.UPDATE_SCORE_LIST);
+    await expect(app.updateMusicList()).rejects.toThrow();
+  });
+
+  test('createTab が失敗した場合、state が IDLE に戻り例外が再スローされる', async () => {
+    browserControllerMock.createTab.mockRejectedValue(new Error('tab error'));
+    const app = await makeInitializedApp();
+    await expect(app.updateMusicList()).rejects.toThrow('tab error');
+    expect(app.getState()).toBe(STATE.IDLE);
+    expect(browserControllerMock.reset).toHaveBeenCalled();
+  });
+});
+
+// ---- updateScoreList ----
+
+describe('App.updateScoreList', () => {
+  test('IDLE 状態では UPDATE_SCORE_LIST に遷移する', async () => {
+    const app = await makeInitializedApp();
+    await app.updateScoreList(Constants.GAME_VERSION.WORLD);
+    expect(app.getState()).toBe(STATE.UPDATE_SCORE_LIST);
+  });
+
+  test('browserController.createTab が呼ばれる', async () => {
+    const app = await makeInitializedApp();
+    await app.updateScoreList(Constants.GAME_VERSION.WORLD);
+    expect(browserControllerMock.createTab).toHaveBeenCalled();
+  });
+
+  test('IDLE 以外の状態では例外をスローする', async () => {
+    const app = await makeInitializedApp();
+    app.changeState(STATE.UPDATE_MUSIC_LIST);
+    await expect(app.updateScoreList(Constants.GAME_VERSION.WORLD)).rejects.toThrow();
+  });
+
+  test('createTab が失敗した場合、state が IDLE に戻り例外が再スローされる', async () => {
+    browserControllerMock.createTab.mockRejectedValue(new Error('tab error'));
+    const app = await makeInitializedApp();
+    await expect(app.updateScoreList(Constants.GAME_VERSION.WORLD)).rejects.toThrow('tab error');
+    expect(app.getState()).toBe(STATE.IDLE);
+    expect(browserControllerMock.reset).toHaveBeenCalled();
+  });
+
+  test('differences がリセットされる', async () => {
+    dataFetchControllerMock.differences = [{ dummy: true }];
+    const app = await makeInitializedApp();
+    await app.updateScoreList(Constants.GAME_VERSION.WORLD);
+    expect(dataFetchControllerMock.differences).toEqual([]);
+  });
+});
+
+// ---- updateScoreDetail ----
+
+describe('App.updateScoreDetail', () => {
+  test('targets が空の場合、false を返す', async () => {
+    const app = await makeInitializedApp();
+    const result = await app.updateScoreDetail([], Constants.GAME_VERSION.A20PLUS);
+    expect(result).toBe(false);
+  });
+
+  test('有効な targets がある場合、UPDATE_SCORE_DETAIL に遷移する', async () => {
+    const app = await makeInitializedApp();
+    app.musicList = {
+      musicIds: [],
+      hasMusic: jest.fn().mockReturnValue(false),
+      getMusicDataById: jest.fn(),
+    };
+    app.scoreList = {
+      musicIds: [],
+      hasMusic: jest.fn().mockReturnValue(false),
+      getScoreDataByMusicId: jest.fn(),
+    };
+    const targets = [{ musicId: '001', difficulty: 3 }];
+    await app.updateScoreDetail(targets, Constants.GAME_VERSION.A20PLUS);
+    expect(app.getState()).toBe(STATE.UPDATE_SCORE_DETAIL);
+  });
+
+  test('有効な targets がある場合、browserController.createTab が呼ばれる', async () => {
+    const app = await makeInitializedApp();
+    app.musicList = {
+      musicIds: [],
+      hasMusic: jest.fn().mockReturnValue(false),
+      getMusicDataById: jest.fn(),
+    };
+    app.scoreList = {
+      musicIds: [],
+      hasMusic: jest.fn().mockReturnValue(false),
+      getScoreDataByMusicId: jest.fn(),
+    };
+    const targets = [{ musicId: '001', difficulty: 3 }];
+    await app.updateScoreDetail(targets, Constants.GAME_VERSION.A20PLUS);
+    expect(browserControllerMock.createTab).toHaveBeenCalled();
+  });
+
+  test('IDLE 以外の状態では例外をスローする', async () => {
+    const app = await makeInitializedApp();
+    app.changeState(STATE.UPDATE_MUSIC_LIST);
+    await expect(app.updateScoreDetail([{ musicId: '001', difficulty: 3 }], Constants.GAME_VERSION.A20PLUS)).rejects.toThrow();
+  });
+
+  test('createTab が失敗した場合、state が IDLE に戻り例外が再スローされる', async () => {
+    browserControllerMock.createTab.mockRejectedValue(new Error('tab error'));
+    const app = await makeInitializedApp();
+    app.musicList = {
+      musicIds: [],
+      hasMusic: jest.fn().mockReturnValue(false),
+      getMusicDataById: jest.fn(),
+    };
+    app.scoreList = {
+      musicIds: [],
+      hasMusic: jest.fn().mockReturnValue(false),
+      getScoreDataByMusicId: jest.fn(),
+    };
+    const targets = [{ musicId: '001', difficulty: 3 }];
+    await expect(app.updateScoreDetail(targets, Constants.GAME_VERSION.A20PLUS)).rejects.toThrow('tab error');
+    expect(app.getState()).toBe(STATE.IDLE);
+    expect(browserControllerMock.reset).toHaveBeenCalled();
+  });
+});
+
+// ---- fetchParsedMusicList ----
+
+describe('App.fetchParsedMusicList', () => {
+  test('fetch が成功した場合、restoreMusicList が呼ばれる', async () => {
+    global.fetch = jest.fn().mockResolvedValue({ ok: true, text: jest.fn().mockResolvedValue('line1\nline2') });
+    const app = await makeInitializedApp();
+    const spy = jest.spyOn(app, 'restoreMusicList');
+    await app.fetchParsedMusicList();
+    expect(spy).toHaveBeenCalledWith('line1\nline2');
+  });
+
+  test('fetch 成功後、internalStatus.musicListUpdatedAt が更新される', async () => {
+    global.fetch = jest.fn().mockResolvedValue({ ok: true, text: jest.fn().mockResolvedValue('') });
+    const app = await makeInitializedApp();
+    const before = app.getInternalStatus().musicListUpdatedAt;
+    await app.fetchParsedMusicList();
+    expect(app.getInternalStatus().musicListUpdatedAt).toBeGreaterThan(before);
+  });
+
+  test('fetch 成功後、saveStorage が呼ばれる', async () => {
+    global.fetch = jest.fn().mockResolvedValue({ ok: true, text: jest.fn().mockResolvedValue('') });
+    const app = await makeInitializedApp();
+    await app.fetchParsedMusicList();
+    expect(storageMock.saveStorage).toHaveBeenCalled();
+  });
+
+  test('HTTP エラーの場合、例外をスローする', async () => {
+    global.fetch = jest.fn().mockResolvedValue({ ok: false, status: 500 });
+    const app = await makeInitializedApp();
+    await expect(app.fetchParsedMusicList()).rejects.toThrow('HTTP status: 500');
+  });
+
+  test('ネットワークエラーの場合、例外をスローする', async () => {
+    global.fetch = jest.fn().mockRejectedValue(new Error('network error'));
+    const app = await makeInitializedApp();
+    await expect(app.fetchParsedMusicList()).rejects.toThrow('network error');
+  });
+});
+
+// ---- exportScoreToSkillAttack ----
+
+describe('App.exportScoreToSkillAttack', () => {
+  let skillAttackExporterMock;
+
+  beforeEach(() => {
+    skillAttackExporterMock = { export: jest.fn().mockResolvedValue(undefined) };
+    SkillAttackExporter.mockImplementation(() => skillAttackExporterMock);
+  });
+
+  test('ddrcode が空文字の場合、SkillAttackExporter は生成されない', async () => {
+    const app = await makeInitializedApp();
+    await app.exportScoreToSkillAttack('', 'password');
+    expect(SkillAttackExporter).not.toHaveBeenCalled();
+  });
+
+  test('ddrcode がスペースのみの場合、SkillAttackExporter は生成されない', async () => {
+    const app = await makeInitializedApp();
+    await app.exportScoreToSkillAttack('   ', 'password');
+    expect(SkillAttackExporter).not.toHaveBeenCalled();
+  });
+
+  test('有効な ddrcode の場合、SkillAttackExporter が生成される', async () => {
+    const app = await makeInitializedApp();
+    await app.exportScoreToSkillAttack('1234567890', 'password');
+    expect(SkillAttackExporter).toHaveBeenCalled();
+  });
+
+  test('有効な ddrcode の場合、exporter.export が呼ばれる', async () => {
+    const app = await makeInitializedApp();
+    await app.exportScoreToSkillAttack('1234567890', 'password');
+    expect(skillAttackExporterMock.export).toHaveBeenCalledWith('1234567890', 'password');
+  });
+
+  test('saveSaSettings が呼ばれて ddrcode が更新される', async () => {
+    const app = await makeInitializedApp();
+    await app.exportScoreToSkillAttack('1234567890', 'password');
+    expect(app.getSaSettings().ddrcode).toBe('1234567890');
+  });
+});
+
+// ---- handleError ----
+
+describe('App.handleError', () => {
+  test('UNKNOWN_ERROR の場合、state が IDLE に戻る', async () => {
+    const app = await makeInitializedApp();
+    app.changeState(STATE.UPDATE_MUSIC_LIST);
+    await app.handleError({ status: 'UNKNOWN_ERROR' });
+    expect(app.getState()).toBe(STATE.IDLE);
+  });
+
+  test('LOGIN_REQUIRED の場合、state が IDLE に戻る', async () => {
+    const app = await makeInitializedApp();
+    app.changeState(STATE.UPDATE_MUSIC_LIST);
+    await app.handleError({ status: 'LOGIN_REQUIRED' });
+    expect(app.getState()).toBe(STATE.IDLE);
+  });
+
+  test('エラー後、browserController.reset が呼ばれる', async () => {
+    const app = await makeInitializedApp();
+    await app.handleError({ status: 'UNKNOWN_ERROR' });
+    expect(browserControllerMock.reset).toHaveBeenCalled();
+  });
+
+  test('不明な status の場合、例外をスローする', async () => {
+    const app = await makeInitializedApp();
+    await expect(app.handleError({ status: 'INVALID_STATUS' })).rejects.toThrow();
+  });
+});
+
+// ---- navigateTo ----
+
+describe('App.navigateTo', () => {
+  test('browserController.updateTab が指定 URL で呼ばれる', async () => {
+    const app = await makeInitializedApp();
+    await app.navigateTo('https://example.com');
+    expect(browserControllerMock.updateTab).toHaveBeenCalledWith('https://example.com');
+  });
+
+  test('updateTab が失敗した場合、state が IDLE に戻る', async () => {
+    browserControllerMock.updateTab.mockRejectedValue(new Error('update error'));
+    const app = await makeInitializedApp();
+    app.changeState(STATE.UPDATE_MUSIC_LIST);
+    await app.navigateTo('https://example.com');
+    expect(app.getState()).toBe(STATE.IDLE);
+    expect(browserControllerMock.reset).toHaveBeenCalled();
+  });
+});
+
+// ---- finishAction ----
+
+describe('App.finishAction', () => {
+  test('browserController.closeTab が呼ばれる', async () => {
+    const app = await makeInitializedApp();
+    await app.finishAction();
+    expect(browserControllerMock.closeTab).toHaveBeenCalled();
+  });
+
+  test('state が IDLE に遷移する', async () => {
+    const app = await makeInitializedApp();
+    app.changeState(STATE.UPDATE_MUSIC_LIST);
+    await app.finishAction();
+    expect(app.getState()).toBe(STATE.IDLE);
+  });
+});
+
+// ---- onUpdateTab ----
+
+describe('App.onUpdateTab', () => {
+  test('UPDATE_MUSIC_LIST 状態では PARSE_MUSIC_LIST メッセージが送信される', async () => {
+    const app = await makeInitializedApp();
+    app.changeState(STATE.UPDATE_MUSIC_LIST);
+    app.onUpdateTab();
+    expect(browserControllerMock.sendMessageToTab).toHaveBeenCalledWith(expect.objectContaining({ type: 'PARSE_MUSIC_LIST' }), expect.any(Function));
+  });
+
+  test('UPDATE_MUSIC_DETAIL 状態では PARSE_MUSIC_DETAIL メッセージが送信される', async () => {
+    const app = await makeInitializedApp();
+    app.changeState(STATE.UPDATE_MUSIC_DETAIL);
+    app.onUpdateTab();
+    expect(browserControllerMock.sendMessageToTab).toHaveBeenCalledWith(expect.objectContaining({ type: 'PARSE_MUSIC_DETAIL' }), expect.any(Function));
+  });
+
+  test('UPDATE_SCORE_LIST 状態では PARSE_SCORE_LIST メッセージが送信される', async () => {
+    const app = await makeInitializedApp();
+    app.changeState(STATE.UPDATE_SCORE_LIST);
+    app.onUpdateTab();
+    expect(browserControllerMock.sendMessageToTab).toHaveBeenCalledWith(expect.objectContaining({ type: 'PARSE_SCORE_LIST' }), expect.any(Function));
+  });
+
+  test('UPDATE_SCORE_DETAIL 状態では PARSE_SCORE_DETAIL メッセージが送信される', async () => {
+    const app = await makeInitializedApp();
+    app.changeState(STATE.UPDATE_SCORE_DETAIL);
+    app.onUpdateTab();
+    expect(browserControllerMock.sendMessageToTab).toHaveBeenCalledWith(expect.objectContaining({ type: 'PARSE_SCORE_DETAIL' }), expect.any(Function));
+  });
+
+  test('IDLE 状態では sendMessageToTab は呼ばれない', async () => {
+    const app = await makeInitializedApp();
+    app.onUpdateTab();
+    expect(browserControllerMock.sendMessageToTab).not.toHaveBeenCalled();
   });
 });
