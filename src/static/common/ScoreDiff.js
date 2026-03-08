@@ -64,11 +64,11 @@ export class ScoreDiff {
     };
   }
 
-  #getDetailField(detail, field) {
+  _getDetailField(detail, field) {
     return detail === null ? null : detail[field];
   }
 
-  #lookupOrEmpty(value, table) {
+  _lookupOrEmpty(value, table) {
     return value === null ? '' : table[value];
   }
 
@@ -102,23 +102,23 @@ export class ScoreDiff {
   }
 
   get beforeScore() {
-    return this.#getDetailField(this.before, 'score');
+    return this._getDetailField(this.before, 'score');
   }
 
   get beforeScoreRank() {
-    return this.#getDetailField(this.before, 'actualScoreRank');
+    return this._getDetailField(this.before, 'actualScoreRank');
   }
 
   get beforeFlareRank() {
-    return this.#getDetailField(this.before, 'flareRank');
+    return this._getDetailField(this.before, 'flareRank');
   }
 
   get beforeFlareSkill() {
-    return this.#getDetailField(this.before, 'flareSkill');
+    return this._getDetailField(this.before, 'flareSkill');
   }
 
   get beforeClearType() {
-    return this.#getDetailField(this.before, 'actualClearType');
+    return this._getDetailField(this.before, 'actualClearType');
   }
 
   get beforeScoreString() {
@@ -126,51 +126,51 @@ export class ScoreDiff {
   }
 
   get beforeClearTypeString() {
-    return this.#lookupOrEmpty(this.beforeClearType, Constants.CLEAR_TYPE_STRING);
+    return this._lookupOrEmpty(this.beforeClearType, Constants.CLEAR_TYPE_STRING);
   }
 
   get beforeFullComboSymbol() {
-    return this.#lookupOrEmpty(this.beforeClearType, Constants.FULL_COMBO_SYMBOL);
+    return this._lookupOrEmpty(this.beforeClearType, Constants.FULL_COMBO_SYMBOL);
   }
 
   get beforeClearTypeClassString() {
-    return this.#lookupOrEmpty(this.beforeClearType, Constants.CLEAR_TYPE_CLASS_STRING);
+    return this._lookupOrEmpty(this.beforeClearType, Constants.CLEAR_TYPE_CLASS_STRING);
   }
 
   get beforeFlareRankSymbol() {
-    return this.#lookupOrEmpty(this.beforeFlareRank, Constants.FLARE_RANK_SYMBOL);
+    return this._lookupOrEmpty(this.beforeFlareRank, Constants.FLARE_RANK_SYMBOL);
   }
 
   get beforeFlareRankClassString() {
-    return this.#lookupOrEmpty(this.beforeFlareRank, Constants.FLARE_RANK_CLASS_STRING);
+    return this._lookupOrEmpty(this.beforeFlareRank, Constants.FLARE_RANK_CLASS_STRING);
   }
 
   get beforeScoreRankString() {
-    return this.#lookupOrEmpty(this.beforeScoreRank, Constants.SCORE_RANK_STRING);
+    return this._lookupOrEmpty(this.beforeScoreRank, Constants.SCORE_RANK_STRING);
   }
 
   get beforeScoreRankClassString() {
-    return this.#lookupOrEmpty(this.beforeScoreRank, Constants.SCORE_RANK_CLASS_STRING);
+    return this._lookupOrEmpty(this.beforeScoreRank, Constants.SCORE_RANK_CLASS_STRING);
   }
 
   get afterScore() {
-    return this.#getDetailField(this.after, 'score');
+    return this._getDetailField(this.after, 'score');
   }
 
   get afterScoreRank() {
-    return this.#getDetailField(this.after, 'actualScoreRank');
+    return this._getDetailField(this.after, 'actualScoreRank');
   }
 
   get afterFlareRank() {
-    return this.#getDetailField(this.after, 'flareRank');
+    return this._getDetailField(this.after, 'flareRank');
   }
 
   get afterFlareSkill() {
-    return this.#getDetailField(this.after, 'flareSkill');
+    return this._getDetailField(this.after, 'flareSkill');
   }
 
   get afterClearType() {
-    return this.#getDetailField(this.after, 'actualClearType');
+    return this._getDetailField(this.after, 'actualClearType');
   }
 
   get afterScoreString() {
@@ -178,31 +178,31 @@ export class ScoreDiff {
   }
 
   get afterClearTypeString() {
-    return this.#lookupOrEmpty(this.afterClearType, Constants.CLEAR_TYPE_STRING);
+    return this._lookupOrEmpty(this.afterClearType, Constants.CLEAR_TYPE_STRING);
   }
 
   get afterFullComboSymbol() {
-    return this.#lookupOrEmpty(this.afterClearType, Constants.FULL_COMBO_SYMBOL);
+    return this._lookupOrEmpty(this.afterClearType, Constants.FULL_COMBO_SYMBOL);
   }
 
   get afterClearTypeClassString() {
-    return this.#lookupOrEmpty(this.afterClearType, Constants.CLEAR_TYPE_CLASS_STRING);
+    return this._lookupOrEmpty(this.afterClearType, Constants.CLEAR_TYPE_CLASS_STRING);
   }
 
   get afterFlareRankSymbol() {
-    return this.#lookupOrEmpty(this.afterFlareRank, Constants.FLARE_RANK_SYMBOL);
+    return this._lookupOrEmpty(this.afterFlareRank, Constants.FLARE_RANK_SYMBOL);
   }
 
   get afterFlareRankClassString() {
-    return this.#lookupOrEmpty(this.afterFlareRank, Constants.FLARE_RANK_CLASS_STRING);
+    return this._lookupOrEmpty(this.afterFlareRank, Constants.FLARE_RANK_CLASS_STRING);
   }
 
   get afterScoreRankString() {
-    return this.#lookupOrEmpty(this.afterScoreRank, Constants.SCORE_RANK_STRING);
+    return this._lookupOrEmpty(this.afterScoreRank, Constants.SCORE_RANK_STRING);
   }
 
   get afterScoreRankClassString() {
-    return this.#lookupOrEmpty(this.afterScoreRank, Constants.SCORE_RANK_CLASS_STRING);
+    return this._lookupOrEmpty(this.afterScoreRank, Constants.SCORE_RANK_CLASS_STRING);
   }
 
   get difficultyClassString() {
