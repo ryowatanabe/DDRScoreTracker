@@ -75,7 +75,10 @@ const config = {
   ],
 
   resolve: {
-    extensions: [".ts", ".vue", ".js"]
+    extensions: [".ts", ".vue", ".js"],
+    extensionAlias: {
+      ".js": [".ts", ".js"]
+    }
   },
 
   output: {

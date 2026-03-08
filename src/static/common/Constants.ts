@@ -1,6 +1,15 @@
-let _scoreListUrl = null;
-let _musicDetailUrl = null;
-let _scoreDetailUrl = null;
+export type GameVersion = 0 | 1 | 2;
+export type PlayMode = 0 | 1;
+export type MusicType = -1 | 0 | 1 | 2 | 3 | 4;
+export type Difficulty = 0 | 1 | 2 | 3 | 4;
+export type DifficultyValue = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+export type ClearType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+export type ScoreRank = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
+export type FlareRank = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+
+let _scoreListUrl: Record<number, Record<number, Record<number, string>>> | null = null;
+let _musicDetailUrl: Record<number, Record<number, string>> | null = null;
+let _scoreDetailUrl: Record<number, Record<number, string>> | null = null;
 
 export class Constants {
   static get GAME_VERSION() {
@@ -41,7 +50,7 @@ export class Constants {
     return 4;
   }
 
-  static hasNextMusicType(gameVersion, playMode, musicType) {
+  static hasNextMusicType(gameVersion: GameVersion, playMode: PlayMode, musicType: MusicType): boolean {
     const nextMusicType = this.getNextMusicType(gameVersion, playMode, musicType);
     if (nextMusicType.playMode === null && nextMusicType.musicType === null) {
       return false;
@@ -49,7 +58,7 @@ export class Constants {
     return true;
   }
 
-  static getNextMusicType(gameVersion, playMode, musicType) {
+  static getNextMusicType(gameVersion: GameVersion, playMode: number, musicType: number): { playMode: number | null; musicType: number | null } {
     do {
       if (musicType !== this.MUSIC_TYPE_LAST) {
         musicType++;
@@ -79,9 +88,9 @@ export class Constants {
     return 'https://p.eagate.573.jp/game/ddr/ddra20/p/music/index.html';
   }
 
-  static get SCORE_LIST_URL() {
+  static get SCORE_LIST_URL(): Record<number, Record<number, Record<number, string>>> {
     if (_scoreListUrl !== null) return _scoreListUrl;
-    const result = {};
+    const result: Record<number, Record<number, Record<number, string>>> = {};
     result[this.GAME_VERSION.A20PLUS] = {};
     result[this.GAME_VERSION.A20PLUS][this.PLAY_MODE.SINGLE] = {};
     result[this.GAME_VERSION.A20PLUS][this.PLAY_MODE.DOUBLE] = {};
@@ -125,9 +134,9 @@ export class Constants {
     return _scoreListUrl;
   }
 
-  static get MUSIC_DETAIL_URL() {
+  static get MUSIC_DETAIL_URL(): Record<number, Record<number, string>> {
     if (_musicDetailUrl !== null) return _musicDetailUrl;
-    const result = {};
+    const result: Record<number, Record<number, string>> = {};
     result[this.GAME_VERSION.A20PLUS] = {};
     result[this.GAME_VERSION.A20PLUS][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html?index=[musicId]';
     result[this.GAME_VERSION.A20PLUS][this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]';
@@ -150,9 +159,9 @@ export class Constants {
     return _musicDetailUrl;
   }
 
-  static get SCORE_DETAIL_URL() {
+  static get SCORE_DETAIL_URL(): Record<number, Record<number, string>> {
     if (_scoreDetailUrl !== null) return _scoreDetailUrl;
-    const result = {};
+    const result: Record<number, Record<number, string>> = {};
     result[this.GAME_VERSION.A20PLUS] = {};
     result[this.GAME_VERSION.A20PLUS][this.MUSIC_TYPE.NORMAL] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html?index=[musicId]&diff=[difficulty]';
     result[this.GAME_VERSION.A20PLUS][this.MUSIC_TYPE.NONSTOP] = 'https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html?index=[musicId]&diff=[difficulty]';
@@ -203,7 +212,7 @@ export class Constants {
     };
   }
 
-  static get DIFFICULTY_NAME_MAP() {
+  static get DIFFICULTY_NAME_MAP(): Record<string, number> {
     return {
       beginner: this.DIFFICULTIES.BEGINNER,
       basic: this.DIFFICULTIES.BASIC,
@@ -231,17 +240,17 @@ export class Constants {
     };
   }
 
-  static get CLEAR_TYPE_FILE_MAP() {
+  static get CLEAR_TYPE_FILE_MAP(): Record<string, number | null> {
     return {
       'full_none.png': null,
       'full_good.png': this.CLEAR_TYPE.GOOD_FC,
       'full_great.png': this.CLEAR_TYPE.GREAT_FC,
       'full_perfect.png': this.CLEAR_TYPE.PERFECT_FC,
-      'full_mar.png': this.CLEAR_TYPE.MARFVELOUS_FC,
+      'full_mar.png': this.CLEAR_TYPE.MARVELOUS_FC,
     };
   }
 
-  static get CLEAR_TYPE_NAME_MAP() {
+  static get CLEAR_TYPE_NAME_MAP(): Record<string, number | null> {
     return {
       '---': null,
       グッドフルコンボ: this.CLEAR_TYPE.GOOD_FC,
@@ -289,7 +298,7 @@ export class Constants {
     };
   }
 
-  static get SCORE_TO_SCORE_RANK_THRESHOLD() {
+  static get SCORE_TO_SCORE_RANK_THRESHOLD(): Array<{ score: number; scoreRank: number }> {
     return [
       { score: 990000, scoreRank: this.SCORE_RANK.AAA },
       { score: 950000, scoreRank: this.SCORE_RANK.AA_PLUS },
@@ -309,7 +318,7 @@ export class Constants {
     ];
   }
 
-  static get SCORE_RANK_FILE_MAP() {
+  static get SCORE_RANK_FILE_MAP(): Record<string, number> {
     return {
       'rank_s_none.png': this.SCORE_RANK.NO_PLAY,
       'rank_s_e.png': this.SCORE_RANK.E,
@@ -331,7 +340,7 @@ export class Constants {
     };
   }
 
-  static get SCORE_RANK_NAME_MAP() {
+  static get SCORE_RANK_NAME_MAP(): Record<string, number> {
     return {
       E: this.SCORE_RANK.E,
       D: this.SCORE_RANK.D,
@@ -352,7 +361,7 @@ export class Constants {
     };
   }
 
-  static get CLEAR_TYPE_FILE_MAP_DDRWORLD() {
+  static get CLEAR_TYPE_FILE_MAP_DDRWORLD(): Record<string, number | null> {
     return {
       'cl_none.png': null,
       'cl_asclear.png': this.CLEAR_TYPE.ASSIST_CLEAR,
@@ -365,7 +374,7 @@ export class Constants {
     };
   }
 
-  static get SCORE_RANK_FILE_MAP_DDRWORLD() {
+  static get SCORE_RANK_FILE_MAP_DDRWORLD(): Record<string, number> {
     return {
       'rank_s_nodisp.png': this.SCORE_RANK.NO_PLAY,
       'rank_s_none.png': this.SCORE_RANK.NO_PLAY,
@@ -388,7 +397,7 @@ export class Constants {
     };
   }
 
-  static get FLARE_RANK_FILE_MAP_DDRWORLD() {
+  static get FLARE_RANK_FILE_MAP_DDRWORLD(): Record<string, number> {
     return {
       'flare_none.png': this.FLARE_RANK.NONE,
       'flare_1.png': this.FLARE_RANK.FLARE_1,
@@ -408,8 +417,8 @@ export class Constants {
   表示・CSS class用文字列
   */
 
-  static get PLAY_MODE_AND_DIFFICULTY_STRING() {
-    const result = {};
+  static get PLAY_MODE_AND_DIFFICULTY_STRING(): Record<number, string> {
+    const result: Record<number, string> = {};
     result[0] = 'bSP';
     result[1] = 'BSP';
     result[2] = 'DSP';
@@ -422,8 +431,8 @@ export class Constants {
     return result;
   }
 
-  static get CLEAR_TYPE_STRING() {
-    const result = {};
+  static get CLEAR_TYPE_STRING(): Record<number, string> {
+    const result: Record<number, string> = {};
     result[this.CLEAR_TYPE.NO_PLAY] = 'NoPlay';
     result[this.CLEAR_TYPE.FAILED] = 'Failed';
     result[this.CLEAR_TYPE.ASSIST_CLEAR] = 'AssistClear';
@@ -436,8 +445,8 @@ export class Constants {
     return result;
   }
 
-  static get FULL_COMBO_SYMBOL() {
-    const result = {};
+  static get FULL_COMBO_SYMBOL(): Record<number, string> {
+    const result: Record<number, string> = {};
     result[this.CLEAR_TYPE.NO_PLAY] = '';
     result[this.CLEAR_TYPE.FAILED] = '';
     result[this.CLEAR_TYPE.ASSIST_CLEAR] = '';
@@ -450,8 +459,8 @@ export class Constants {
     return result;
   }
 
-  static get CLEAR_TYPE_CLASS_STRING() {
-    const result = {};
+  static get CLEAR_TYPE_CLASS_STRING(): Record<number, string> {
+    const result: Record<number, string> = {};
     result[this.CLEAR_TYPE.NO_PLAY] = 'no_play';
     result[this.CLEAR_TYPE.FAILED] = 'failed';
     result[this.CLEAR_TYPE.ASSIST_CLEAR] = 'assist_clear';
@@ -464,8 +473,8 @@ export class Constants {
     return result;
   }
 
-  static get SCORE_RANK_STRING() {
-    const result = {};
+  static get SCORE_RANK_STRING(): Record<number, string> {
+    const result: Record<number, string> = {};
     result[this.SCORE_RANK.NO_PLAY] = 'NoPlay';
     result[this.SCORE_RANK.E] = 'E';
     result[this.SCORE_RANK.D] = 'D';
@@ -486,8 +495,8 @@ export class Constants {
     return result;
   }
 
-  static get SCORE_RANK_CLASS_STRING() {
-    const result = {};
+  static get SCORE_RANK_CLASS_STRING(): Record<number, string> {
+    const result: Record<number, string> = {};
     result[this.SCORE_RANK.NO_PLAY] = 'rank_none';
     result[this.SCORE_RANK.E] = 'rank_e';
     result[this.SCORE_RANK.D] = 'rank_d';
@@ -508,8 +517,8 @@ export class Constants {
     return result;
   }
 
-  static get FLARE_RANK_STRING() {
-    const result = {};
+  static get FLARE_RANK_STRING(): Record<number, string> {
+    const result: Record<number, string> = {};
     result[this.FLARE_RANK.NONE] = 'None';
     result[this.FLARE_RANK.FLARE_1] = 'Ⅰ';
     result[this.FLARE_RANK.FLARE_2] = 'Ⅱ';
@@ -524,14 +533,14 @@ export class Constants {
     return result;
   }
 
-  static get FLARE_RANK_SYMBOL() {
+  static get FLARE_RANK_SYMBOL(): Record<number, string> {
     const result = Object.assign({}, this.FLARE_RANK_STRING);
     result[this.FLARE_RANK.NONE] = '';
     return result;
   }
 
-  static get FLARE_RANK_CLASS_STRING() {
-    const result = {};
+  static get FLARE_RANK_CLASS_STRING(): Record<number, string> {
+    const result: Record<number, string> = {};
     result[this.FLARE_RANK.NONE] = 'flare_none';
     result[this.FLARE_RANK.FLARE_1] = 'flare_1';
     result[this.FLARE_RANK.FLARE_2] = 'flare_2';
@@ -546,8 +555,8 @@ export class Constants {
     return result;
   }
 
-  static get DIFFICULTY_CLASS_STRING() {
-    const result = {};
+  static get DIFFICULTY_CLASS_STRING(): Record<number, string> {
+    const result: Record<number, string> = {};
     result[this.DIFFICULTIES.BEGINNER] = 'beginner';
     result[this.DIFFICULTIES.BASIC] = 'basic';
     result[this.DIFFICULTIES.DIFFICULT] = 'difficult';
@@ -556,8 +565,8 @@ export class Constants {
     return result;
   }
 
-  static get PLAY_MODE_SYMBOL() {
-    const result = {};
+  static get PLAY_MODE_SYMBOL(): Record<number, string> {
+    const result: Record<number, string> = {};
     result[this.PLAY_MODE.SINGLE] = "'";
     result[this.PLAY_MODE.DOUBLE] = '"';
     return result;
