@@ -22,145 +22,157 @@ function makeChromeMock() {
 
 beforeEach(() => {
   global.chrome = makeChromeMock();
-  // デフォルト: get/getBytesInUse を同期コールバックで動作させる
-  chrome.storage.local.get.mockImplementation((_defaults, cb) => cb({}));
-  chrome.storage.local.getBytesInUse.mockImplementation((_key, cb) => cb(0));
+  // デフォルト: 各メソッドを Promise で動作させる
+  chrome.storage.local.get.mockResolvedValue({});
+  chrome.storage.local.set.mockResolvedValue(undefined);
+  chrome.storage.local.clear.mockResolvedValue(undefined);
+  chrome.storage.local.getBytesInUse.mockResolvedValue(0);
 });
 
 // ---- constructor ----
 
 describe('Storage constructor', () => {
-  test('コンストラクタで loadStorage が呼ばれる', () => {
-    new Storage();
+  test('コンストラクタで loadStorage が呼ばれる', async () => {
+    const storage = new Storage();
+    await storage.ready;
     expect(chrome.storage.local.get).toHaveBeenCalledTimes(1);
   });
 
-  test('ロードされたデータが storageData に格納される', () => {
-    chrome.storage.local.get.mockImplementation((_defaults, cb) => cb({ key: 'value' }));
+  test('ロードされたデータが storageData に格納される', async () => {
+    chrome.storage.local.get.mockResolvedValue({ key: 'value' });
     const storage = new Storage();
+    await storage.ready;
     expect(storage.storageData).toStrictEqual({ key: 'value' });
   });
 
-  test('getBytesInUse の結果が bytesInUse に格納される', () => {
-    chrome.storage.local.getBytesInUse.mockImplementation((_key, cb) => cb(1234));
+  test('getBytesInUse の結果が bytesInUse に格納される', async () => {
+    chrome.storage.local.getBytesInUse.mockResolvedValue(1234);
     const storage = new Storage();
+    await storage.ready;
     expect(storage.bytesInUse).toBe(1234);
   });
 
-  test('loadCallback がロードデータとともに呼ばれる', () => {
+  test('loadCallback がロードデータとともに呼ばれる', async () => {
     const mockData = { foo: 'bar' };
-    chrome.storage.local.get.mockImplementation((_defaults, cb) => cb(mockData));
+    chrome.storage.local.get.mockResolvedValue(mockData);
     const callback = jest.fn();
-    new Storage({}, callback);
+    const storage = new Storage({}, callback);
+    await storage.ready;
     expect(callback).toHaveBeenCalledWith(mockData);
   });
 
-  test('defaultData が chrome.storage.local.get に渡される', () => {
+  test('defaultData が chrome.storage.local.get に渡される', async () => {
     const defaults = { score: 0 };
-    new Storage(defaults);
-    expect(chrome.storage.local.get).toHaveBeenCalledWith(defaults, expect.any(Function));
+    const storage = new Storage(defaults);
+    await storage.ready;
+    expect(chrome.storage.local.get).toHaveBeenCalledWith(defaults);
   });
 });
 
 // ---- loadStorage ----
 
 describe('Storage.loadStorage', () => {
-  test('ロードしたデータで storageData が更新される', () => {
+  test('ロードしたデータで storageData が更新される', async () => {
     const storage = new Storage();
+    await storage.ready;
     const newData = { score: 100 };
-    chrome.storage.local.get.mockImplementation((_defaults, cb) => cb(newData));
-    storage.loadStorage();
+    chrome.storage.local.get.mockResolvedValue(newData);
+    await storage.loadStorage();
     expect(storage.storageData).toStrictEqual(newData);
   });
 
-  test('指定したコールバックがロードデータとともに呼ばれる', () => {
+  test('指定したコールバックがロードデータとともに呼ばれる', async () => {
     const storage = new Storage();
+    await storage.ready;
     const newData = { score: 200 };
-    chrome.storage.local.get.mockImplementation((_defaults, cb) => cb(newData));
+    chrome.storage.local.get.mockResolvedValue(newData);
     const callback = jest.fn();
-    storage.loadStorage(callback);
+    await storage.loadStorage(callback);
     expect(callback).toHaveBeenCalledWith(newData);
   });
 
-  test('コールバック省略時はデフォルト loadCallback が使われる', () => {
+  test('コールバック省略時はデフォルト loadCallback が使われる', async () => {
     const callback = jest.fn();
     const storage = new Storage({}, callback);
+    await storage.ready;
     callback.mockClear();
-    storage.loadStorage();
+    await storage.loadStorage();
     expect(callback).toHaveBeenCalled();
+  });
+
+  test('ロードしたデータが返り値として返される', async () => {
+    const storage = new Storage();
+    await storage.ready;
+    const newData = { score: 300 };
+    chrome.storage.local.get.mockResolvedValue(newData);
+    const result = await storage.loadStorage();
+    expect(result).toStrictEqual(newData);
   });
 });
 
 // ---- saveStorage ----
 
 describe('Storage.saveStorage', () => {
-  test('chrome.storage.local.set にデータが渡される', () => {
-    chrome.storage.local.set.mockImplementation((_data, cb) => cb());
+  test('chrome.storage.local.set にデータが渡される', async () => {
     const storage = new Storage();
+    await storage.ready;
     const newData = { score: 999 };
-    storage.saveStorage(newData);
-    expect(chrome.storage.local.set).toHaveBeenCalledWith(newData, expect.any(Function));
+    await storage.saveStorage(newData);
+    expect(chrome.storage.local.set).toHaveBeenCalledWith(newData);
   });
 
-  test('保存後に storageData が更新される', () => {
-    chrome.storage.local.set.mockImplementation((_data, cb) => cb());
+  test('保存後に storageData が更新される', async () => {
     const storage = new Storage();
+    await storage.ready;
     const newData = { score: 999 };
-    storage.saveStorage(newData);
+    await storage.saveStorage(newData);
     expect(storage.storageData).toStrictEqual(newData);
   });
 
-  test('保存後にコールバックが呼ばれる', () => {
-    chrome.storage.local.set.mockImplementation((_data, cb) => cb());
+  test('保存後に bytesInUse が更新される', async () => {
     const storage = new Storage();
-    const callback = jest.fn();
-    storage.saveStorage({}, callback);
-    expect(callback).toHaveBeenCalled();
+    await storage.ready;
+    chrome.storage.local.getBytesInUse.mockResolvedValue(2048);
+    await storage.saveStorage({});
+    expect(storage.bytesInUse).toBe(2048);
   });
 });
 
 // ---- resetStorage ----
 
 describe('Storage.resetStorage', () => {
-  test('chrome.storage.local.clear が呼ばれる', () => {
-    chrome.storage.local.clear.mockImplementation((cb) => cb());
+  test('chrome.storage.local.clear が呼ばれる', async () => {
     const storage = new Storage();
-    storage.resetStorage();
+    await storage.ready;
+    await storage.resetStorage();
     expect(chrome.storage.local.clear).toHaveBeenCalled();
   });
 
-  test('clear 後に loadStorage が再実行される', () => {
-    chrome.storage.local.clear.mockImplementation((cb) => cb());
+  test('clear 後に loadStorage が再実行される', async () => {
     const storage = new Storage();
+    await storage.ready;
     const getCallsBefore = chrome.storage.local.get.mock.calls.length;
-    storage.resetStorage();
+    await storage.resetStorage();
     expect(chrome.storage.local.get.mock.calls.length).toBe(getCallsBefore + 1);
-  });
-
-  test('完了後にコールバックが呼ばれる', () => {
-    chrome.storage.local.clear.mockImplementation((cb) => cb());
-    const storage = new Storage();
-    const callback = jest.fn();
-    storage.resetStorage(callback);
-    expect(callback).toHaveBeenCalled();
   });
 });
 
 // ---- updateBytesInUse ----
 
 describe('Storage.updateBytesInUse', () => {
-  test('bytesInUse プロパティが更新される', () => {
+  test('bytesInUse プロパティが更新される', async () => {
     const storage = new Storage();
-    chrome.storage.local.getBytesInUse.mockImplementation((_key, cb) => cb(5000));
-    storage.updateBytesInUse();
+    await storage.ready;
+    chrome.storage.local.getBytesInUse.mockResolvedValue(5000);
+    await storage.updateBytesInUse();
     expect(storage.bytesInUse).toBe(5000);
   });
 
-  test('コールバックにバイト数が渡される', () => {
+  test('戻り値としてバイト数が返される', async () => {
     const storage = new Storage();
-    chrome.storage.local.getBytesInUse.mockImplementation((_key, cb) => cb(7500));
-    const callback = jest.fn();
-    storage.updateBytesInUse(callback);
-    expect(callback).toHaveBeenCalledWith(7500);
+    await storage.ready;
+    chrome.storage.local.getBytesInUse.mockResolvedValue(7500);
+    const result = await storage.updateBytesInUse();
+    expect(result).toBe(7500);
   });
 });

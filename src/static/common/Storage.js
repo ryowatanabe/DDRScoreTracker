@@ -7,38 +7,33 @@ export class Storage {
     this.defaultData = defaultData;
     this.loadCallback = loadCallback;
     this.bytesInUse = 0;
-    this.loadStorage();
+    this.ready = this.loadStorage();
   }
 
-  loadStorage(callback = this.loadCallback) {
-    chrome.storage.local.get(this.defaultData, (data) => {
-      this.storageData = data;
-      this.updateBytesInUse();
-      callback(data);
-    });
+  async loadStorage(callback = this.loadCallback) {
+    const data = await chrome.storage.local.get(this.defaultData);
+    this.storageData = data;
+    await this.updateBytesInUse();
+    callback(data);
+    return data;
   }
 
-  saveStorage(data = {}, callback = function () {}) {
-    chrome.storage.local.set(data, () => {
-      this.storageData = data;
-      this.updateBytesInUse();
-      callback();
-    });
+  async saveStorage(data = {}) {
+    await chrome.storage.local.set(data);
+    this.storageData = data;
+    await this.updateBytesInUse();
   }
 
-  resetStorage(callback = function () {}) {
+  async resetStorage() {
     Logger.info(I18n.getMessage('log_message_reset_local_storage_begin'));
-    chrome.storage.local.clear(() => {
-      Logger.info(I18n.getMessage('log_message_done'));
-      this.loadStorage();
-      callback();
-    });
+    await chrome.storage.local.clear();
+    Logger.info(I18n.getMessage('log_message_done'));
+    await this.loadStorage();
   }
 
-  updateBytesInUse(callback = function () {}) {
-    chrome.storage.local.getBytesInUse(null, (bytesInUse) => {
-      this.bytesInUse = bytesInUse;
-      callback(bytesInUse);
-    });
+  async updateBytesInUse() {
+    const bytesInUse = await chrome.storage.local.getBytesInUse(null);
+    this.bytesInUse = bytesInUse;
+    return bytesInUse;
   }
 }
