@@ -22,6 +22,15 @@ const config = {
         loader: 'vue-loader'
       },
       {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+          transpileOnly: true
+        },
+        exclude: /node_modules/
+      },
+      {
         test: /\.css$/,
         use: [
             'vue-style-loader',
@@ -66,7 +75,7 @@ const config = {
   ],
 
   resolve: {
-    extensions: [".vue", ".js"]
+    extensions: [".ts", ".vue", ".js"]
   },
 
   output: {
