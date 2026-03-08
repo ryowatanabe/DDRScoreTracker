@@ -1,5 +1,4 @@
-import { App } from '../common/App.js';
-import { STATE } from '../common/AppState.js';
+import { App } from '../static/common/App.js';
 const app = new App();
 
 function saveOptions() {
@@ -36,14 +35,7 @@ function onInitialized() {
   document.getElementById('options_openDebugPage').href = `chrome-extension://${extension_id}/browser_action/debug/index.html`;
 }
 
-function initialize() {
-  if (app.getState() === STATE.INITIALIZE) {
-    setTimeout(initialize, 100);
-  } else {
-    onInitialized();
-  }
-}
-
-(function () {
-  initialize();
-})();
+window.addEventListener('load', async () => {
+  await app.init();
+  onInitialized();
+});

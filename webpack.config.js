@@ -13,6 +13,7 @@ const config = {
     "browser_action/index": './browser_action/index.js',
     "browser_action/editFilter": './browser_action/editFilter.js',
     "browser_action/debug/index": './browser_action/debug/index.js',
+    "options_ui/index": './options_ui/index.js',
   },
 
   module: {
