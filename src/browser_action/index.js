@@ -24,8 +24,29 @@ document.addEventListener('DOMContentLoaded', () => {
 function onInitialized() {
   chartDiffList.initialize(app);
   logContainer.initialize(app);
+
+  document.addEventListener('open-diff', () => {
+    chartDiffList.loadAndOpen();
+  });
+
+  document.addEventListener('refresh-chart-list', async (event) => {
+    const { summarySettings, filterConditions, sortConditions } = event.detail;
+    const internalStatus = app.getInternalStatus();
+    const options = app.getOptions();
+    if (options.musicListReloadInterval > 0 && internalStatus.musicListUpdatedAt + options.musicListReloadInterval < Date.now()) {
+      try {
+        await app.fetchParsedMusicList();
+      } catch (error) {
+        Logger.debug(error);
+      }
+    }
+    const newChartList = app.getChartList().getFilteredAndSorted(filterConditions, sortConditions);
+    chartList.summarySettings = summarySettings;
+    chartList.setData(newChartList);
+  });
+
   initializeFilter(app);
-  initializeMenu(app);
+  initializeMenu(app, chartList);
 
   if (app.getState() !== APP_STATE.IDLE) {
     logContainer.disableButtons();
@@ -62,26 +83,3 @@ window.addEventListener('load', () => {
   });
 });
 window.addEventListener('unload', () => {});
-
-window.getCharts = () => {
-  return chartList.charts;
-};
-
-window.openDiff = () => {
-  chartDiffList.loadAndOpen();
-};
-
-window.refreshList = async (summarySettings, filterConditions, sortConditions) => {
-  const internalStatus = app.getInternalStatus();
-  const options = app.getOptions();
-  if (options.musicListReloadInterval > 0 && internalStatus.musicListUpdatedAt + options.musicListReloadInterval < Date.now()) {
-    try {
-      await app.fetchParsedMusicList();
-    } catch (error) {
-      Logger.debug(error);
-    }
-  }
-  const newChartList = app.getChartList().getFilteredAndSorted(filterConditions, sortConditions);
-  chartList.summarySettings = summarySettings;
-  chartList.setData(newChartList);
-};

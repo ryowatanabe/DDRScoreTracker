@@ -1,5 +1,6 @@
 import { Constants } from './Constants.js';
 import { Util } from './Util.js';
+import { NullScoreDetail } from './ScoreDetail.js';
 
 export class ChartData {
   constructor(musicId, playMode, difficulty) {
@@ -7,7 +8,7 @@ export class ChartData {
     this.playMode = playMode;
     this.difficulty = difficulty;
     this.musicData = null;
-    this.scoreDetail = null;
+    this.scoreDetail = new NullScoreDetail();
   }
 
   get musicType() {
@@ -49,7 +50,7 @@ export class ChartData {
       return 0;
     }
     if (this.musicData.isDeleted) {
-      if (this.scoreDetail === null) {
+      if (this.scoreDetail.score === null) {
         return 2;
       }
       return 1;
@@ -58,119 +59,95 @@ export class ChartData {
   }
 
   get score() {
-    if (this.scoreDetail === null) {
-      return null;
-    }
     return this.scoreDetail.score;
   }
 
   get scoreRank() {
-    if (this.scoreDetail === null) {
-      return null;
-    }
     return this.scoreDetail.actualScoreRank;
   }
 
   get clearType() {
-    if (this.scoreDetail === null) {
-      return Constants.CLEAR_TYPE.NO_PLAY;
-    }
     return this.scoreDetail.actualClearType;
   }
 
   get flareRank() {
-    if (this.scoreDetail === null) {
-      return Constants.FLARE_RANK.NONE;
-    }
     return this.scoreDetail.actualFlareRank;
   }
 
   get flareSkill() {
-    if (this.scoreDetail === null) {
-      return null;
-    }
     return this.scoreDetail.flareSkill;
   }
 
   get playCount() {
-    if (this.scoreDetail === null) {
-      return null;
-    }
     return this.scoreDetail.playCount;
   }
 
   get clearCount() {
-    if (this.scoreDetail === null) {
-      return null;
-    }
     return this.scoreDetail.clearCount;
   }
 
   get maxCombo() {
-    if (this.scoreDetail === null) {
-      return null;
-    }
     return this.scoreDetail.maxCombo;
   }
 
   get scoreString() {
-    if (this.scoreDetail === null || this.scoreDetail.score === null) {
+    if (this.scoreDetail.score === null) {
       return '';
     }
     return this.scoreDetail.score.toLocaleString();
   }
 
   get clearTypeString() {
-    if (this.scoreDetail === null || this.scoreDetail.clearType === null) {
+    if (this.scoreDetail.clearType === null) {
       return '';
     }
     return Constants.CLEAR_TYPE_STRING[this.scoreDetail.clearType];
   }
 
   get fullComboSymbol() {
-    if (this.scoreDetail === null || this.scoreDetail.clearType === null) {
+    if (this.scoreDetail.clearType === null) {
       return '';
     }
     return Constants.FULL_COMBO_SYMBOL[this.scoreDetail.clearType];
   }
 
   get clearTypeClassString() {
-    if (this.scoreDetail === null || this.scoreDetail.clearType === null) {
+    if (this.scoreDetail.clearType === null) {
       return '';
     }
     return Constants.CLEAR_TYPE_CLASS_STRING[this.scoreDetail.clearType];
   }
 
   get scoreRankString() {
-    if (this.scoreDetail === null || this.scoreDetail.scoreRank === null) {
+    if (this.scoreDetail.scoreRank === null) {
       return '';
     }
     return Constants.SCORE_RANK_STRING[this.scoreDetail.scoreRank];
   }
 
   get scoreRankClassString() {
-    if (this.scoreDetail === null || this.scoreDetail.scoreRank === null) {
+    if (this.scoreDetail.scoreRank === null) {
       return '';
     }
     return Constants.SCORE_RANK_CLASS_STRING[this.scoreDetail.scoreRank];
   }
 
   get flareRankSymbol() {
-    if (this.scoreDetail === null || this.scoreDetail.flareRank === null) {
+    if (this.scoreDetail.flareRank === null) {
       return '';
     }
     return Constants.FLARE_RANK_SYMBOL[this.scoreDetail.flareRank];
   }
 
   get flareRankString() {
-    if (this.scoreDetail === null || this.scoreDetail.flareRank === null) {
+    if (this.scoreDetail.flareRank === null) {
       return '';
     }
     return Constants.FLARE_RANK_STRING[this.scoreDetail.flareRank];
   }
 
   get flareRankClassString() {
-    if (this.scoreDetail === null || this.scoreDetail.flareRank === null) {
+    if (this.scoreDetail.flareRank === null) {
       return '';
     }
     return Constants.FLARE_RANK_CLASS_STRING[this.scoreDetail.flareRank];

@@ -1,9 +1,9 @@
 import { ChartData } from '../../../src/static/common/ChartData.js';
 import { MusicData } from '../../../src/static/common/MusicData.js';
-import { ScoreDetail } from '../../../src/static/common/ScoreDetail.js';
+import { ScoreDetail, NullScoreDetail } from '../../../src/static/common/ScoreDetail.js';
 import { Constants } from '../../../src/static/common/Constants.js';
 
-function makeChartData(playMode, difficulty, musicData = null, scoreDetail = null) {
+function makeChartData(playMode, difficulty, musicData = null, scoreDetail = new NullScoreDetail()) {
   const chartData = new ChartData('music001', playMode, difficulty);
   chartData.musicData = musicData;
   chartData.scoreDetail = scoreDetail;
@@ -73,7 +73,7 @@ test('ChartData.availability returns 0 when music is not deleted', () => {
 
 test('ChartData.availability returns 2 when music is deleted without score', () => {
   const musicData = new MusicData('music001', Constants.MUSIC_TYPE.NORMAL, 'Title', [0, 5, 8, 12, 0, 0, 0, 0, 0], 1);
-  const chartData = makeChartData(Constants.PLAY_MODE.SINGLE, Constants.DIFFICULTIES.EXPERT, musicData, null);
+  const chartData = makeChartData(Constants.PLAY_MODE.SINGLE, Constants.DIFFICULTIES.EXPERT, musicData);
   expect(chartData.availability).toBe(2);
 });
 
