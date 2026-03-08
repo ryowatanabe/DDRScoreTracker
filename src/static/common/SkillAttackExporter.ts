@@ -2,15 +2,25 @@ import { SkillAttackIndexMap } from './SkillAttackIndexMap.js';
 import { SkillAttackDataList } from './SkillAttackDataList.js';
 import { Logger } from './Logger.js';
 import { I18n } from './I18n.js';
+import { MusicList } from './MusicList.js';
+import { ScoreList } from './ScoreList.js';
+
+type SkillAttackExporterOptions = {
+  notSendDataToSkillAttack?: boolean;
+};
 
 export class SkillAttackExporter {
-  constructor(musicList, scoreList, options) {
+  musicList: MusicList;
+  scoreList: ScoreList;
+  options: SkillAttackExporterOptions;
+
+  constructor(musicList: MusicList, scoreList: ScoreList, options: SkillAttackExporterOptions) {
     this.musicList = musicList;
     this.scoreList = scoreList;
     this.options = options;
   }
 
-  async export(ddrcode, password) {
+  async export(ddrcode: string, password: string): Promise<void> {
     const params = new URLSearchParams();
     params.append('_', '');
     params.append('password', password);
