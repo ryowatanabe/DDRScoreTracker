@@ -1,12 +1,15 @@
 import { Logger } from './Logger.js';
 
 export class SkillAttackIndexMap {
+  indexToMusicIdMap: Record<number, string>;
+  musicIdToIndexMap: Record<string, number>;
+
   constructor() {
     this.indexToMusicIdMap = {};
     this.musicIdToIndexMap = {};
   }
 
-  static createFromText(text) {
+  static createFromText(text: string): SkillAttackIndexMap {
     const instance = new SkillAttackIndexMap();
     const lines = text.split('\n');
     Logger.debug(`SkillAttackIndexMap.createFromText: text contains ${lines.length} elements.`);
@@ -23,19 +26,19 @@ export class SkillAttackIndexMap {
     return instance;
   }
 
-  hasIndex(index) {
+  hasIndex(index: number): boolean {
     return Object.prototype.hasOwnProperty.call(this.indexToMusicIdMap, index);
   }
 
-  hasMusicId(musicId) {
+  hasMusicId(musicId: string): boolean {
     return Object.prototype.hasOwnProperty.call(this.musicIdToIndexMap, musicId);
   }
 
-  getMusicIdByIndex(index) {
+  getMusicIdByIndex(index: number): string {
     return this.indexToMusicIdMap[index];
   }
 
-  getIndexByMusicId(musicId) {
+  getIndexByMusicId(musicId: string): number {
     return this.musicIdToIndexMap[musicId];
   }
 }
