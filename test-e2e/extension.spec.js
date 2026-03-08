@@ -119,7 +119,7 @@ test.describe('Chrome Extension: browser_action UI', () => {
 
   test('#app-charts 要素が存在する', async () => {
     // The chart list container should be rendered by Vue
-    await expect(page.locator('#app-charts')).toBeVisible({ timeout: 5000 });
+    await expect(page.locator('#chart-list #app-charts')).toBeVisible({ timeout: 5000 });
   });
 
   test('chrome.storage.local にデータを注入後に再読み込みするとチャートが表示される', async () => {

@@ -4,7 +4,7 @@
     <div id="diffContainer" class="drawer diff not-initialized">
       <div id="closeButton" class="drawer-switch" @click="close">{{ getMessage('diff_container_close_button') }}</div>
 
-      <div id="app-charts" class="content">
+      <div id="diff-app-charts" class="content">
         <div v-if="maxPage > 1" class="pager">
           <template v-for="index of maxPage" :key="index">
             <a v-if="index === currentPage" :class="['element', 'current']">[{{ index }}]</a
