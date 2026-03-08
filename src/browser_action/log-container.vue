@@ -13,7 +13,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { nextTick } from 'vue';
 import { I18n } from '../static/common/I18n.js';
 import { Logger } from '../static/common/Logger.js';

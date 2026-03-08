@@ -5,6 +5,7 @@
  * injects the template as a JSON-stringified string property (to avoid
  * any template literal escaping issues), and compiles the script with
  * Babel (using @babel/preset-env targeting current node version).
+ * When <script lang="ts"> is used, @babel/preset-typescript is added.
  *
  * The template extraction uses the Vue SFC structure invariant:
  *   <template>...</template>  <script>...</script>  <style>...</style>
@@ -43,20 +44,24 @@ function extractOuterTemplateContent(source) {
 }
 
 /**
- * Extract the <script>...</script> section's inner content.
+ * Extract the <script>...</script> section's inner content and detect lang="ts".
  * Assumes there is only one <script> block in a Vue SFC.
+ * Returns { content, isTypeScript }.
  */
-function extractScriptContent(source) {
-  const match = source.match(/<script(?:\s[^>]*)?\s*>([\s\S]*?)<\/script>/i);
-  return match ? match[1] : null;
+function extractScriptInfo(source) {
+  const match = source.match(/<script(\s[^>]*)?\s*>([\s\S]*?)<\/script>/i);
+  if (!match) return null;
+  const attrs = match[1] || '';
+  const isTypeScript = /\blang\s*=\s*["']ts["']/.test(attrs);
+  return { content: match[2], isTypeScript };
 }
 
 module.exports = {
   process(sourceText, sourcePath) {
-    const scriptContent = extractScriptContent(sourceText);
+    const scriptInfo = extractScriptInfo(sourceText);
     const templateContent = extractOuterTemplateContent(sourceText);
 
-    if (!scriptContent) {
+    if (!scriptInfo) {
       return { code: 'module.exports = { template: "<div></div>" }' };
     }
 
@@ -70,12 +75,19 @@ module.exports = {
     // Use a function replacement to prevent $ in the template from being
     // interpreted as special replacement patterns by String.prototype.replace().
     const templateInjection = `export default {\n  template: ${templateJsonStr},`;
-    const transformed = scriptContent.replace(/export\s+default\s+\{/, () => templateInjection);
+    const transformed = scriptInfo.content.replace(/export\s+default\s+\{/, () => templateInjection);
+
+    // Build Babel presets — add TypeScript preset for <script lang="ts">
+    const presets = [['@babel/preset-env', { targets: { node: 'current' } }]];
+    if (scriptInfo.isTypeScript) {
+      presets.unshift(['@babel/preset-typescript']);
+    }
 
     // Transform ES modules to CommonJS with Babel
+    const ext = scriptInfo.isTypeScript ? '.ts' : '.js';
     const result = babelCore.transformSync(transformed, {
-      filename: sourcePath.replace(/\.vue$/, '.js'),
-      presets: [['@babel/preset-env', { targets: { node: 'current' } }]],
+      filename: sourcePath.replace(/\.vue$/, ext),
+      presets,
     });
 
     return { code: result.code };

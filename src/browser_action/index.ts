@@ -11,14 +11,14 @@ import { initialize as initializeMenu } from './menu.js';
 
 const app = new App();
 
-let chartList;
-let chartDiffList;
-let logContainer;
+let chartList: InstanceType<typeof ChartList>;
+let chartDiffList: InstanceType<typeof ChartDiffList>;
+let logContainer: InstanceType<typeof LogContainer>;
 
 document.addEventListener('DOMContentLoaded', () => {
-  chartList = createApp(ChartList).mount('#chart-list');
-  chartDiffList = createApp(ChartDiffList).mount('#chart-diff-list');
-  logContainer = createApp(LogContainer).mount('#log-container');
+  chartList = createApp(ChartList).mount('#chart-list') as InstanceType<typeof ChartList>;
+  chartDiffList = createApp(ChartDiffList).mount('#chart-diff-list') as InstanceType<typeof ChartDiffList>;
+  logContainer = createApp(LogContainer).mount('#log-container') as InstanceType<typeof LogContainer>;
 });
 
 function onInitialized() {
@@ -30,7 +30,7 @@ function onInitialized() {
   });
 
   document.addEventListener('refresh-chart-list', async (event) => {
-    const { summarySettings, filterConditions, sortConditions } = event.detail;
+    const { summarySettings, filterConditions, sortConditions } = (event as CustomEvent).detail;
     const internalStatus = app.getInternalStatus();
     const options = app.getOptions();
     if (options.musicListReloadInterval > 0 && internalStatus.musicListUpdatedAt + options.musicListReloadInterval < Date.now()) {

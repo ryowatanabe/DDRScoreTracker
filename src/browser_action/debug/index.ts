@@ -9,14 +9,14 @@ const app = new App();
 function updateMusicList() {
   app.updateMusicList();
 }
-document.getElementById('updateMusicListButton').addEventListener('click', updateMusicList);
+document.getElementById('updateMusicListButton')!.addEventListener('click', updateMusicList);
 
-function refreshAllMusicInfo(gameVersion) {
-  app.refreshAllMusicInfo(document.getElementById('refreshAllMusicInfoMusicId').value, gameVersion);
+function refreshAllMusicInfo(gameVersion: number) {
+  app.refreshAllMusicInfo((document.getElementById('refreshAllMusicInfoMusicId') as HTMLInputElement).value, gameVersion);
 }
-document.getElementById('refreshAllMusicInfoButton').addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A20PLUS));
-document.getElementById('refreshAllMusicInfoButtonA3').addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A3));
-document.getElementById('refreshAllMusicInfoButtonWorld').addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.WORLD));
+document.getElementById('refreshAllMusicInfoButton')!.addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A20PLUS));
+document.getElementById('refreshAllMusicInfoButtonA3')!.addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A3));
+document.getElementById('refreshAllMusicInfoButtonWorld')!.addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.WORLD));
 
 function resetSavedFilters() {
   if (window.confirm('保存されたフィルタをすべて削除しますか？')) {
@@ -25,7 +25,7 @@ function resetSavedFilters() {
     alert('キャンセルしました。');
   }
 }
-document.getElementById('resetSavedFiltersButton').addEventListener('click', resetSavedFilters);
+document.getElementById('resetSavedFiltersButton')!.addEventListener('click', resetSavedFilters);
 
 function resetStorage() {
   if (window.confirm('端末上に保存されているデータをすべて削除しますか？')) {
@@ -34,12 +34,12 @@ function resetStorage() {
     alert('キャンセルしました。');
   }
 }
-document.getElementById('resetStorageButton').addEventListener('click', resetStorage);
+document.getElementById('resetStorageButton')!.addEventListener('click', resetStorage);
 
 function dumpMusicList() {
   const musics = app.getMusicList();
-  document.getElementById('dumpMusicListArea').innerHTML = musics.encodedString;
-  var copyText = document.getElementById('dumpMusicListArea');
+  document.getElementById('dumpMusicListArea')!.innerHTML = musics.encodedString;
+  const copyText = document.getElementById('dumpMusicListArea') as HTMLTextAreaElement;
   copyText.select();
   if (document.execCommand('copy')) {
     alert('クリップボードにコピーしました。');
@@ -47,10 +47,10 @@ function dumpMusicList() {
     alert('クリップボードにコピーできませんでした。');
   }
 }
-document.getElementById('dumpMusicListButton').addEventListener('click', dumpMusicList);
+document.getElementById('dumpMusicListButton')!.addEventListener('click', dumpMusicList);
 
 function restoreMusicList() {
-  const string = document.getElementById('restoreMusicListArea').value;
+  const string = (document.getElementById('restoreMusicListArea') as HTMLTextAreaElement).value;
   if (window.confirm('フォームの内容で楽曲リストをリストアしますか？')) {
     app.restoreMusicList(string);
     alert('リストアしました。');
@@ -58,12 +58,12 @@ function restoreMusicList() {
     alert('キャンセルしました。');
   }
 }
-document.getElementById('restoreMusicListButton').addEventListener('click', restoreMusicList);
+document.getElementById('restoreMusicListButton')!.addEventListener('click', restoreMusicList);
 
 function dumpScoreList() {
   const scoreList = app.getScoreList();
-  document.getElementById('dumpScoreListArea').innerHTML = JSON.stringify(scoreList.musics);
-  var copyText = document.getElementById('dumpScoreListArea');
+  document.getElementById('dumpScoreListArea')!.innerHTML = JSON.stringify(scoreList.musics);
+  const copyText = document.getElementById('dumpScoreListArea') as HTMLTextAreaElement;
   copyText.select();
   if (document.execCommand('copy')) {
     alert('クリップボードにコピーしました。');
@@ -71,12 +71,12 @@ function dumpScoreList() {
     alert('クリップボードにコピーできませんでした。');
   }
 }
-document.getElementById('dumpScoreListButton').addEventListener('click', dumpScoreList);
+document.getElementById('dumpScoreListButton')!.addEventListener('click', dumpScoreList);
 
 function restoreScoreList() {
-  let object;
+  let object: any;
   try {
-    object = JSON.parse(document.getElementById('restoreScoreListArea').value);
+    object = JSON.parse((document.getElementById('restoreScoreListArea') as HTMLTextAreaElement).value);
   } catch (error) {
     console.log(error);
     alert(error);
@@ -89,11 +89,11 @@ function restoreScoreList() {
     alert('キャンセルしました。');
   }
 }
-document.getElementById('restoreScoreListButton').addEventListener('click', restoreScoreList);
+document.getElementById('restoreScoreListButton')!.addEventListener('click', restoreScoreList);
 
-let logContainer;
+let logContainer: InstanceType<typeof LogContainer>;
 document.addEventListener('DOMContentLoaded', () => {
-  logContainer = createApp(LogContainer).mount('#log-container');
+  logContainer = createApp(LogContainer).mount('#log-container') as InstanceType<typeof LogContainer>;
 });
 
 function onInitialized() {
@@ -106,11 +106,11 @@ function onInitialized() {
     logContainer.enableButtons();
   }
 
-  document.getElementById('localStorageBytesInUse').innerText = app.getBytesInUse();
+  (document.getElementById('localStorageBytesInUse') as HTMLElement).innerText = app.getBytesInUse();
 
   const options = app.getOptions();
   if (!options.enableA20PlusSiteAccess) {
-    document.getElementById('refreshAllMusicInfoButton').style.display = 'none';
+    document.getElementById('refreshAllMusicInfoButton')!.style.display = 'none';
   }
 }
 
