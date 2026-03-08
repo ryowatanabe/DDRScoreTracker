@@ -1,23 +1,53 @@
-import { Constants } from './Constants.js';
+import { Constants, type ScoreRank } from './Constants.js';
 import { Statistics } from './Statistics.js';
+import type { ChartData } from './ChartData.js';
+
+type FilterCondition = {
+  attribute: string;
+  values: unknown[];
+};
+
+type SortCondition = {
+  attribute: string;
+  order: 'asc' | 'desc';
+};
+
+type ScoreStatEntry = {
+  label: string;
+  value: number;
+  string?: string;
+  scoreRank?: ScoreRank;
+  scoreRankString?: string;
+  scoreRankClassString?: string;
+};
+
+type Statistics_ = {
+  clearType: { clearType: number; clearTypeString: string; clearTypeClassString: string; count: number }[];
+  flareRank: { flareRank: number; flareRankString: string; flareRankClassString: string; count: number }[];
+  scoreRank: { scoreRank: number; scoreRankString: string; scoreRankClassString: string; count: number }[];
+  score: Record<string, ScoreStatEntry> & { order?: string[] };
+};
 
 export class ChartList {
+  charts: ChartData[];
+  statistics: Partial<Statistics_>;
+
   constructor() {
     this.charts = [];
     this.statistics = {};
   }
 
-  reset() {
+  reset(): void {
     this.charts = [];
     this.statistics = {};
   }
 
-  addChartData(chartData) {
+  addChartData(chartData: ChartData): void {
     this.charts.push(chartData);
   }
 
-  updateStatistics() {
-    const statistics = {
+  updateStatistics(): void {
+    const statistics: Statistics_ = {
       clearType: [],
       flareRank: [],
       scoreRank: [],
@@ -72,10 +102,10 @@ export class ChartList {
       });
       const attributeNames = ['max', 'min', 'average', 'median'];
       statistics.score = {
-        max: { label: 'scoreMax', value: Statistics.max(values) },
-        min: { label: 'scoreMin', value: Statistics.min(values) },
-        average: { label: 'scoreAverage', value: Math.round(Statistics.average(values)) },
-        median: { label: 'scoreMedian', value: Statistics.median(values) },
+        max: { label: 'scoreMax', value: Statistics.max(values) as number },
+        min: { label: 'scoreMin', value: Statistics.min(values) as number },
+        average: { label: 'scoreAverage', value: Math.round(Statistics.average(values) as number) },
+        median: { label: 'scoreMedian', value: Statistics.median(values) as number },
       };
       attributeNames.forEach((attributeName) => {
         statistics.score[attributeName].string = statistics.score[attributeName].value.toLocaleString();
@@ -93,14 +123,14 @@ export class ChartList {
     this.statistics = statistics;
   }
 
-  scoreToScoreRank(score) {
+  scoreToScoreRank(score: number): ScoreRank {
     for (let i = 0; i < Constants.SCORE_TO_SCORE_RANK_THRESHOLD.length; i++) {
       const element = Constants.SCORE_TO_SCORE_RANK_THRESHOLD[i];
       if (score >= element.score) {
-        return element.scoreRank;
+        return element.scoreRank as ScoreRank;
       }
     }
-    return Constants.SCORE_RANK.NO_PLAY;
+    return Constants.SCORE_RANK.NO_PLAY as ScoreRank;
   }
 
   /*
@@ -121,13 +151,13 @@ export class ChartList {
     ...
   ]
   */
-  getFilteredAndSorted(filterConditions, sortConditions) {
+  getFilteredAndSorted(filterConditions: FilterCondition[], sortConditions: SortCondition[]): ChartList {
     /* filter */
     const chartList = new ChartList();
     this.charts.forEach(function (chartData) {
       let isMatched = true;
       filterConditions.forEach((condition) => {
-        if (!condition.values.includes(chartData[condition.attribute])) {
+        if (!condition.values.includes((chartData as unknown as Record<string, unknown>)[condition.attribute])) {
           isMatched = false;
         }
       });
@@ -144,7 +174,7 @@ export class ChartList {
     return chartList;
   }
 
-  static compareChartData(a, b, sortConditions) {
+  static compareChartData(a: ChartData, b: ChartData, sortConditions: SortCondition[]): number {
     if (sortConditions.length === 0) {
       return 0;
     }
@@ -155,10 +185,12 @@ export class ChartList {
       lt = 1;
       gt = -1;
     }
-    if (a[attribute] === b[attribute]) {
+    const aVal = (a as unknown as Record<string, unknown>)[attribute];
+    const bVal = (b as unknown as Record<string, unknown>)[attribute];
+    if (aVal === bVal) {
       return this.compareChartData(a, b, sortConditions.slice(1));
     }
-    if (a[attribute] < b[attribute] || a[attribute] === null) {
+    if (aVal < bVal || aVal === null) {
       return lt;
     }
     return gt;
