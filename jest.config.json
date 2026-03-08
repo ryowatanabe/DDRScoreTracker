@@ -1,5 +1,12 @@
 {
-    "snapshotFormat": {
-        "printBasicPrototype": true
-    }
+  "snapshotFormat": {
+    "printBasicPrototype": true
+  },
+  "transform": {
+    "^.+\\.vue$": "<rootDir>/test/vue-transformer.cjs",
+    "^.+\\.js$": "babel-jest"
+  },
+  "testEnvironment": "jsdom",
+  "testPathIgnorePatterns": ["/node_modules/", "/test-e2e/"],
+  "moduleFileExtensions": ["js", "json", "vue"]
 }
