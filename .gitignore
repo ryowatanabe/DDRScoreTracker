@@ -119,6 +119,10 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
+# Playwright e2e test artifacts
+.playwright-user-data/
+test-results/
+
 # yarn v2
 
 .yarn/cache
