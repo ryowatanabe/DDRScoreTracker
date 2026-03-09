@@ -9,6 +9,7 @@ const config = {
   context: path.join(__dirname, 'src'),
 
   entry: {
+    "content_scripts/main": './content_scripts/main.js',
     "background/main": './background/main.js',
     "browser_action/index": './browser_action/index.js',
     "browser_action/editFilter": './browser_action/editFilter.js',

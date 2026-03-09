@@ -28,13 +28,6 @@
     "page": "options_ui/index.html"
   },
 
-  "web_accessible_resources": [
-    {
-      "resources": ["common/*"],
-      "matches": ["https://*/*"]
-    }
-  ],
-
   "permissions": ["tabs", "storage", "unlimitedStorage"],
 
   "host_permissions": ["http://skillattack.com/", "https://us-west1-blissful-mile-450603-h9.cloudfunctions.net/"]
