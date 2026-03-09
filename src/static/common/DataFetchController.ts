@@ -86,9 +86,9 @@ export class DataFetchController {
       await this.onHandleError(res);
       return;
     }
-    res.musics!.forEach(function (music) {
+    res.musics!.forEach((music) => {
       this.musicList.applyObject(music);
-    }, this);
+    });
     this.onSaveStorage();
     this.onUpdateCharts();
     if (res.hasNext) {
@@ -110,7 +110,7 @@ export class DataFetchController {
       return;
     }
     if (res.status === Parser.STATUS.SUCCESS) {
-      res.musics!.forEach(function (music) {
+      res.musics!.forEach((music) => {
         music['type'] = this.targetMusic!.type;
         const musicData = MusicData.createFromStorage(music);
         const body = JSON.stringify({ text: musicData.encodedString });
@@ -129,7 +129,7 @@ export class DataFetchController {
               Logger.debug(reason);
             });
         }
-      }, this);
+      });
       this.onSaveStorage();
       this.onUpdateCharts();
     }
@@ -148,10 +148,10 @@ export class DataFetchController {
       await this.onHandleError(res);
       return;
     }
-    res.scores!.forEach(function (score) {
+    res.scores!.forEach((score) => {
       score['musicType'] = this.targetMusicType;
       this.differences = this.differences.concat(this.scoreList.applyObject(score));
-    }, this);
+    });
     this.onSaveStorage();
     this.onUpdateCharts();
     if (res.hasNext) {
@@ -193,9 +193,9 @@ export class DataFetchController {
       return;
     }
     if (res.status === Parser.STATUS.SUCCESS) {
-      res.scores!.forEach(function (score) {
+      res.scores!.forEach((score) => {
         this.scoreList.applyObject(score);
-      }, this);
+      });
       this.onSaveStorage();
       this.onUpdateCharts();
     }

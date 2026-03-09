@@ -78,7 +78,8 @@ export class SkillAttackDataList {
         const scoreDetail = scoreData.getScoreDetailByDifficulty(difficultyValue);
         const currentData = this.getElement(index, Number(difficultyValue));
         const score = scoreDetail.score;
-        const clearType = scoreDetail.clearType > 5 ? scoreDetail.clearType - 5 : scoreDetail.clearType === 5 ? 1 : 0;
+        const clearTypeValue = scoreDetail.clearType ?? 0;
+        const clearType = clearTypeValue > 5 ? clearTypeValue - 5 : clearTypeValue === 5 ? 1 : 0;
         const musicTitle = musicList.hasMusic(musicId) ? musicList.getMusicDataById(musicId).title : '???';
         const difficultyString = Constants.PLAY_MODE_AND_DIFFICULTY_STRING[Number(difficultyValue)];
         const data = new SkillAttackDataElement(index, Util.getPlayMode(Number(difficultyValue) as import('./Constants.js').DifficultyValue), Util.getDifficulty(Number(difficultyValue) as import('./Constants.js').DifficultyValue), 0, score as number, clearType as number);

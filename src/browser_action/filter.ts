@@ -74,14 +74,14 @@ export function initialize(a: App) {
   document.getElementById('filterBackground')!.classList.add('initialized');
 
   /* All, Noneのイベントハンドラをつける */
-  document.getElementById('summarySetting_all')!.addEventListener('click', selectAll.bind(this, 'summarySetting'));
-  document.getElementById('summarySetting_clear')!.addEventListener('click', selectNone.bind(this, 'summarySetting'));
+  document.getElementById('summarySetting_all')!.addEventListener('click', selectAll.bind(null, 'summarySetting'));
+  document.getElementById('summarySetting_clear')!.addEventListener('click', selectNone.bind(null, 'summarySetting'));
   filterNames.forEach((name) => {
-    document.getElementById(`filterCondition_${name}_all`)!.addEventListener('click', selectAll.bind(this, `filterCondition_${name}`));
-    document.getElementById(`filterCondition_${name}_clear`)!.addEventListener('click', selectNone.bind(this, `filterCondition_${name}`));
+    document.getElementById(`filterCondition_${name}_all`)!.addEventListener('click', selectAll.bind(null, `filterCondition_${name}`));
+    document.getElementById(`filterCondition_${name}_clear`)!.addEventListener('click', selectNone.bind(null, `filterCondition_${name}`));
   });
   /* saved filtersのプルダウンを作る */
-  savedConditions = app.getSavedConditions();
+  savedConditions = app.getSavedConditions() ?? [];
   updateSavedFilterSelect();
 
   /* デフォルトのチェックをつける */

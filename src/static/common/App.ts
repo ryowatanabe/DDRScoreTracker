@@ -255,9 +255,9 @@ export class App {
   restoreMusicList(string: string): void {
     const lines = string.split('\n');
     Logger.info(I18n.getMessage('log_message_restore_music_list_count', String(lines.length)));
-    lines.forEach(function (line) {
+    lines.forEach((line) => {
       this.musicList!.applyEncodedString(line);
-    }, this);
+    });
     this.saveStorage();
     this.updateCharts();
   }
@@ -380,7 +380,7 @@ export class App {
         return true;
       }
       const missing = this.scoreList!.getScoreDataByMusicId(musicId).difficulties.find((difficulty) => {
-        if (this.musicList!.getMusicDataById(musicId).difficulty[difficulty] === 0) {
+        if (this.musicList!.getMusicDataById(musicId).difficulty[Number(difficulty)] === 0) {
           return true;
         }
       });
@@ -508,15 +508,15 @@ export class App {
 
   updateCharts(): void {
     this.chartList.reset();
-    this.musicList!.musicIds.forEach(function (musicId) {
-      Object.values(Constants.PLAY_MODE).forEach(function (playMode) {
-        Object.values(Constants.DIFFICULTIES).forEach(function (difficulty) {
+    this.musicList!.musicIds.forEach((musicId) => {
+      Object.values(Constants.PLAY_MODE).forEach((playMode) => {
+        Object.values(Constants.DIFFICULTIES).forEach((difficulty) => {
           if (playMode === Constants.PLAY_MODE.DOUBLE && difficulty === Constants.DIFFICULTIES.BEGINNER) {
             return;
           }
           const musicData = this.musicList!.getMusicDataById(musicId);
           const difficultyValue = Util.getDifficultyValue(playMode as PlayMode, difficulty as Difficulty);
-          const scoreDataExists = this.scoreList!.hasMusic(musicId) && this.scoreList!.getScoreDataByMusicId(musicId).hasDifficulty(difficultyValue);
+          const scoreDataExists = this.scoreList!.hasMusic(musicId) && this.scoreList!.getScoreDataByMusicId(musicId).hasDifficulty(String(difficultyValue));
           if (!musicData.hasDifficulty(difficultyValue) && !scoreDataExists) {
             return;
           }
@@ -525,32 +525,32 @@ export class App {
           chartData.musicData = musicData;
 
           if (scoreDataExists) {
-            chartData.scoreDetail = this.scoreList!.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
+            chartData.scoreDetail = this.scoreList!.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(String(difficultyValue));
           }
 
           this.chartList.addChartData(chartData);
-        }, this);
-      }, this);
-    }, this);
-    this.scoreList!.musicIds.forEach(function (musicId) {
+        });
+      });
+    });
+    this.scoreList!.musicIds.forEach((musicId) => {
       if (!this.musicList!.hasMusic(musicId)) {
-        Object.values(Constants.PLAY_MODE).forEach(function (playMode) {
-          Object.values(Constants.DIFFICULTIES).forEach(function (difficulty) {
+        Object.values(Constants.PLAY_MODE).forEach((playMode) => {
+          Object.values(Constants.DIFFICULTIES).forEach((difficulty) => {
             const difficultyValue = Util.getDifficultyValue(playMode as PlayMode, difficulty as Difficulty);
-            const scoreDataExists = this.scoreList!.hasMusic(musicId) && this.scoreList!.getScoreDataByMusicId(musicId).hasDifficulty(difficultyValue);
+            const scoreDataExists = this.scoreList!.hasMusic(musicId) && this.scoreList!.getScoreDataByMusicId(musicId).hasDifficulty(String(difficultyValue));
             if (!scoreDataExists) {
               return;
             }
 
             const chartData = new ChartData(musicId, playMode as PlayMode, difficulty as Difficulty);
             chartData.musicData = MusicData.createEmptyData(musicId, this.scoreList!.getScoreDataByMusicId(musicId).musicType);
-            chartData.scoreDetail = this.scoreList!.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(difficultyValue);
+            chartData.scoreDetail = this.scoreList!.getScoreDataByMusicId(musicId).getScoreDetailByDifficulty(String(difficultyValue));
 
             this.chartList.addChartData(chartData);
-          }, this);
-        }, this);
+          });
+        });
       }
-    }, this);
+    });
   }
 
   onUpdateTab(): void {
