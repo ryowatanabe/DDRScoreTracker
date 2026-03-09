@@ -1,3 +1,4 @@
+import '../styles/tailwind.css';
 import { createApp } from 'vue';
 import { App } from '../static/common/App.js';
 import { STATE as APP_STATE } from '../static/common/AppState.js';

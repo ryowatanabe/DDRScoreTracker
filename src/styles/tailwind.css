@@ -1,0 +1,53 @@
+@import "tailwindcss" layer(tailwind);
+
+/* HTML ファイルは JS から import されないため明示的にスキャン対象に含める */
+@source "../static/browser_action/*.html";
+@source "../static/browser_action/debug/*.html";
+@source "../static/options_ui/*.html";
+
+/* DDR ゲームドメイン カスタムテーマ（色の定義） */
+@theme {
+  --color-difficulty-beginner: #00ffff;
+  --color-difficulty-basic: #ff8800;
+  --color-difficulty-difficult: #ff4444;
+  --color-difficulty-expert: #00ff00;
+  --color-difficulty-challenge: #ff00ff;
+
+  --color-clear-noplay: #888888;
+  --color-clear-failed: #883300;
+  --color-clear-assist: #8000ff;
+  --color-clear-clear: #ff8800;
+  --color-clear-life4: #ff0000;
+  --color-clear-gfc: #0088ff;
+  --color-clear-fc: #00ff00;
+  --color-clear-pfc: #ffff00;
+  --color-clear-mfc: #ffffff;
+
+  --color-rank-aaa: #ffffff;
+  --color-rank-aa-plus: #ffffaa;
+  --color-rank-aa: #ffffaa;
+  --color-rank-aa-minus: #ffffaa;
+  --color-rank-a-plus: #ffaaaa;
+  --color-rank-a: #ffaaaa;
+  --color-rank-a-minus: #ffaaaa;
+  --color-rank-b-plus: #aaaaff;
+  --color-rank-b: #aaaaff;
+  --color-rank-b-minus: #aaaaff;
+  --color-rank-c-plus: #aaffaa;
+  --color-rank-c: #aaffaa;
+  --color-rank-c-minus: #aaffaa;
+  --color-rank-d-plus: #aaaaaa;
+  --color-rank-d: #aaaaaa;
+  --color-rank-e: #888888;
+  --color-rank-noplay: #555555;
+
+  --color-flare-none: #555555;
+  --color-flare-ex: #00ffff;
+  --color-flare-1: #ff8800;
+  --color-flare-2: #ff4444;
+  --color-flare-3: #ff00ff;
+  --color-flare-4: #ffff00;
+  --color-flare-5: #00ff00;
+  --color-flare-6: #0088ff;
+  --color-flare-7: #ffffff;
+}
