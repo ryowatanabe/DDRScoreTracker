@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { I18n } from '../static/common/I18n.js';
 
 let app;

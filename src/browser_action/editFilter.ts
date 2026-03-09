@@ -4,10 +4,10 @@ import { STATE as APP_STATE } from '../static/common/AppState.js';
 import FilterEditor from './filter-editor.vue';
 
 const app = new App();
-let filterEditor;
+let filterEditor: InstanceType<typeof FilterEditor>;
 
 document.addEventListener('DOMContentLoaded', () => {
-  filterEditor = createApp(FilterEditor).mount('#filter-editor');
+  filterEditor = createApp(FilterEditor).mount('#filter-editor') as InstanceType<typeof FilterEditor>;
 });
 
 function onInitialized() {

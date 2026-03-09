@@ -1,7 +1,7 @@
 import { Logger } from '../static/common/Logger.js';
 import { Parser } from '../static/common/Parser.js';
 
-function onMessage(message, sender, sendResponse) {
+function onMessage(message: any, sender: chrome.runtime.MessageSender, sendResponse: (response?: any) => void) {
   try {
     if (message.type === 'PARSE_MUSIC_LIST') {
       Logger.debug('parsing music list ...');

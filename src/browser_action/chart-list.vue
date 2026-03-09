@@ -103,7 +103,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { Constants } from '../static/common/Constants.js';
 import { I18n } from '../static/common/I18n.js';
 
