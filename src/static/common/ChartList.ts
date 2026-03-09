@@ -185,12 +185,12 @@ export class ChartList {
       lt = 1;
       gt = -1;
     }
-    const aVal = (a as unknown as Record<string, unknown>)[attribute];
-    const bVal = (b as unknown as Record<string, unknown>)[attribute];
+    const aVal = (a as unknown as Record<string, unknown>)[attribute] as number | string | null;
+    const bVal = (b as unknown as Record<string, unknown>)[attribute] as number | string | null;
     if (aVal === bVal) {
       return this.compareChartData(a, b, sortConditions.slice(1));
     }
-    if (aVal < bVal || aVal === null) {
+    if (aVal === null || (bVal !== null && aVal < bVal)) {
       return lt;
     }
     return gt;

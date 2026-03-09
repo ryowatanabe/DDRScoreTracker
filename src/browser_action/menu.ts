@@ -1,5 +1,5 @@
 import { refreshList } from './filter.js';
-import { Constants } from '../static/common/Constants.js';
+import { Constants, type GameVersion } from '../static/common/Constants.js';
 import { Logger } from '../static/common/Logger.js';
 import { App } from '../static/common/App.js';
 
@@ -11,14 +11,14 @@ function fetchParsedMusicList() {
 }
 document.getElementById('fetchParsedMusicListButton')!.addEventListener('click', fetchParsedMusicList);
 
-function fetchMissingMusicInfo(gameVersion: number) {
+function fetchMissingMusicInfo(gameVersion: GameVersion) {
   app.fetchMissingMusicInfo(gameVersion);
 }
-document.getElementById('fetchMissingMusicInfoButton')!.addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.A20PLUS));
-document.getElementById('fetchMissingMusicInfoButtonA3')!.addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.A3));
-document.getElementById('fetchMissingMusicInfoButtonWorld')!.addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.WORLD));
+document.getElementById('fetchMissingMusicInfoButton')!.addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.A20PLUS as GameVersion));
+document.getElementById('fetchMissingMusicInfoButtonA3')!.addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.A3 as GameVersion));
+document.getElementById('fetchMissingMusicInfoButtonWorld')!.addEventListener('click', fetchMissingMusicInfo.bind(null, Constants.GAME_VERSION.WORLD as GameVersion));
 
-function updateScoreList(gameVersion: number) {
+function updateScoreList(gameVersion: GameVersion) {
   app
     .updateScoreList(gameVersion)
     .then((value) => {
@@ -28,11 +28,11 @@ function updateScoreList(gameVersion: number) {
       Logger.debug(`updateScoreList failed : ${JSON.stringify(error.message)}`);
     });
 }
-document.getElementById('updateScoreListButton')!.addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.A20PLUS));
-document.getElementById('updateScoreListButtonA3')!.addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.A3));
-document.getElementById('updateScoreListButtonWorld')!.addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.WORLD));
+document.getElementById('updateScoreListButton')!.addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.A20PLUS as GameVersion));
+document.getElementById('updateScoreListButtonA3')!.addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.A3 as GameVersion));
+document.getElementById('updateScoreListButtonWorld')!.addEventListener('click', updateScoreList.bind(null, Constants.GAME_VERSION.WORLD as GameVersion));
 
-function updateScoreDetail(gameVersion: number) {
+function updateScoreDetail(gameVersion: GameVersion) {
   const targetMusics: { musicId: string; difficulty: number }[] = [];
   chartList.charts.forEach(function (chartData: any) {
     targetMusics.push({
@@ -42,9 +42,9 @@ function updateScoreDetail(gameVersion: number) {
   });
   app.updateScoreDetail(targetMusics, gameVersion);
 }
-document.getElementById('updateScoreDetailButton')!.addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.A20PLUS));
-document.getElementById('updateScoreDetailButtonA3')!.addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.A3));
-document.getElementById('updateScoreDetailButtonWorld')!.addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.WORLD));
+document.getElementById('updateScoreDetailButton')!.addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.A20PLUS as GameVersion));
+document.getElementById('updateScoreDetailButtonA3')!.addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.A3 as GameVersion));
+document.getElementById('updateScoreDetailButtonWorld')!.addEventListener('click', updateScoreDetail.bind(null, Constants.GAME_VERSION.WORLD as GameVersion));
 
 document.getElementById('exportScoreToSkillAttackButton')!.addEventListener('click', () => {
   app
@@ -76,10 +76,10 @@ export function initialize(a: App, cl: any) {
   document.getElementById('menuBackground')!.classList.add('initialized');
 
   const saSettings = app.getSaSettings();
-  (document.querySelector(`#exportScoreToSkillAttackDdrCode`) as HTMLInputElement).value = saSettings.ddrcode;
+  (document.querySelector(`#exportScoreToSkillAttackDdrCode`) as HTMLInputElement).value = saSettings!['ddrcode'] as string;
 
   const options = app.getOptions();
-  if (!options.enableA20PlusSiteAccess) {
+  if (!options!['enableA20PlusSiteAccess']) {
     document.getElementById('fetchMissingMusicInfoButton')!.style.display = 'none';
     document.getElementById('updateScoreListButton')!.style.display = 'none';
     document.getElementById('updateScoreDetailButton')!.style.display = 'none';

@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import { App } from '../../static/common/App.js';
 import { STATE as APP_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_APP_STATE_MESSAGE_TYPE } from '../../static/common/AppState.js';
-import { Constants } from '../../static/common/Constants.js';
+import { Constants, type GameVersion } from '../../static/common/Constants.js';
 import LogContainer from '../log-container.vue';
 
 const app = new App();
@@ -11,12 +11,12 @@ function updateMusicList() {
 }
 document.getElementById('updateMusicListButton')!.addEventListener('click', updateMusicList);
 
-function refreshAllMusicInfo(gameVersion: number) {
+function refreshAllMusicInfo(gameVersion: GameVersion) {
   app.refreshAllMusicInfo((document.getElementById('refreshAllMusicInfoMusicId') as HTMLInputElement).value, gameVersion);
 }
-document.getElementById('refreshAllMusicInfoButton')!.addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A20PLUS));
-document.getElementById('refreshAllMusicInfoButtonA3')!.addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A3));
-document.getElementById('refreshAllMusicInfoButtonWorld')!.addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.WORLD));
+document.getElementById('refreshAllMusicInfoButton')!.addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A20PLUS as GameVersion));
+document.getElementById('refreshAllMusicInfoButtonA3')!.addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A3 as GameVersion));
+document.getElementById('refreshAllMusicInfoButtonWorld')!.addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.WORLD as GameVersion));
 
 function resetSavedFilters() {
   if (window.confirm('保存されたフィルタをすべて削除しますか？')) {
@@ -38,7 +38,7 @@ document.getElementById('resetStorageButton')!.addEventListener('click', resetSt
 
 function dumpMusicList() {
   const musics = app.getMusicList();
-  document.getElementById('dumpMusicListArea')!.innerHTML = musics.encodedString;
+  document.getElementById('dumpMusicListArea')!.innerHTML = musics!.encodedString;
   const copyText = document.getElementById('dumpMusicListArea') as HTMLTextAreaElement;
   copyText.select();
   if (document.execCommand('copy')) {
@@ -62,7 +62,7 @@ document.getElementById('restoreMusicListButton')!.addEventListener('click', res
 
 function dumpScoreList() {
   const scoreList = app.getScoreList();
-  document.getElementById('dumpScoreListArea')!.innerHTML = JSON.stringify(scoreList.musics);
+  document.getElementById('dumpScoreListArea')!.innerHTML = JSON.stringify(scoreList!.musics);
   const copyText = document.getElementById('dumpScoreListArea') as HTMLTextAreaElement;
   copyText.select();
   if (document.execCommand('copy')) {
@@ -106,10 +106,10 @@ function onInitialized() {
     logContainer.enableButtons();
   }
 
-  (document.getElementById('localStorageBytesInUse') as HTMLElement).innerText = app.getBytesInUse();
+  (document.getElementById('localStorageBytesInUse') as HTMLElement).innerText = String(app.getBytesInUse());
 
   const options = app.getOptions();
-  if (!options.enableA20PlusSiteAccess) {
+  if (!options!['enableA20PlusSiteAccess']) {
     document.getElementById('refreshAllMusicInfoButton')!.style.display = 'none';
   }
 }

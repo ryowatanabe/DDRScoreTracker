@@ -70,16 +70,16 @@ export class Parser {
       res.nextUrl = (next[0].querySelector('a') as HTMLAnchorElement).href;
     }
 
-    res.currentPage = parseInt((rootElement.querySelector('#thispage') as Element).querySelector('a').innerHTML, 10);
+    res.currentPage = parseInt((rootElement.querySelector('#thispage') as Element).querySelector('a')!.innerHTML, 10);
     const pages = rootElement.querySelectorAll('#paging_box')[0].querySelectorAll('.page_num');
-    res.maxPage = parseInt(pages[pages.length - 1].querySelector('a').innerHTML, 10);
+    res.maxPage = parseInt(pages[pages.length - 1].querySelector('a')!.innerHTML, 10);
 
     const musics = rootElement.querySelectorAll('tr.data');
     musics.forEach(function (music) {
       const regexp = /^.*img=([0-9a-zA-Z]+).*$/;
       const src = (music.querySelector('td img') as HTMLImageElement).src;
       const musicId = src.replace(regexp, '$1');
-      const title = music.querySelector('.music_tit').innerHTML;
+      const title = (music.querySelector('.music_tit') as Element).innerHTML;
       const difficulty = Array.from(music.querySelectorAll('.difficult')).map(function (element) {
         const value = parseInt(element.innerHTML, 10);
         return value ? value : 0;
@@ -155,9 +155,9 @@ export class Parser {
       res.nextUrl = (next[0].querySelector('a') as HTMLAnchorElement).href;
     }
 
-    res.currentPage = parseInt((rootElement.querySelector('#thispage') as Element).querySelector('a').innerHTML, 10);
+    res.currentPage = parseInt((rootElement.querySelector('#thispage') as Element).querySelector('a')!.innerHTML, 10);
     const pages = rootElement.querySelectorAll('#paging_box')[0].querySelectorAll('.page_num');
-    res.maxPage = parseInt(pages[pages.length - 1].querySelector('a').innerHTML, 10);
+    res.maxPage = parseInt(pages[pages.length - 1].querySelector('a')!.innerHTML, 10);
 
     const isDouble = rootElement.querySelectorAll('#t_double.game_type .select, #t_double.grade_type .select, #t_double_p.grade_type .select').length > 0;
     const scores = Array.from(rootElement.querySelectorAll('tr.data'));
@@ -244,7 +244,7 @@ export class Parser {
       const scoreData = new ScoreData(musicId);
       const scoreDetail = new ScoreDetail();
       fillScoreDetail(detail, scoreDetail);
-      scoreData.applyScoreDetail(difficulty, scoreDetail);
+      scoreData.applyScoreDetail(difficulty ?? '', scoreDetail);
       res.scores.push(scoreData);
     }
     res.status = this.STATUS.SUCCESS as ParseStatus;

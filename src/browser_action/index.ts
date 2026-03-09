@@ -33,7 +33,7 @@ function onInitialized() {
     const { summarySettings, filterConditions, sortConditions } = (event as CustomEvent).detail;
     const internalStatus = app.getInternalStatus();
     const options = app.getOptions();
-    if (options.musicListReloadInterval > 0 && internalStatus.musicListUpdatedAt + options.musicListReloadInterval < Date.now()) {
+    if ((options!['musicListReloadInterval'] as number) > 0 && (internalStatus!['musicListUpdatedAt'] as number) + (options!['musicListReloadInterval'] as number) < Date.now()) {
       try {
         await app.fetchParsedMusicList();
       } catch (error) {

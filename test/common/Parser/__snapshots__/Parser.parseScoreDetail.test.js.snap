@@ -26,7 +26,7 @@ Object {
   "scores": Array [
     ScoreData {
       "difficulty": Object {
-        "null": ScoreDetail {
+        "": ScoreDetail {
           "clearCount": 1,
           "clearType": null,
           "flareRank": null,
@@ -57,7 +57,7 @@ Object {
   "scores": Array [
     ScoreData {
       "difficulty": Object {
-        "null": ScoreDetail {
+        "": ScoreDetail {
           "clearCount": 134,
           "clearType": 6,
           "flareRank": null,
@@ -81,7 +81,7 @@ Object {
   "scores": Array [
     ScoreData {
       "difficulty": Object {
-        "null": ScoreDetail {
+        "": ScoreDetail {
           "clearCount": 1,
           "clearType": null,
           "flareRank": null,
@@ -119,7 +119,7 @@ Object {
   "scores": Array [
     ScoreData {
       "difficulty": Object {
-        "null": ScoreDetail {
+        "": ScoreDetail {
           "clearCount": 4,
           "clearType": null,
           "flareRank": null,
@@ -143,7 +143,7 @@ Object {
   "scores": Array [
     ScoreData {
       "difficulty": Object {
-        "null": ScoreDetail {
+        "": ScoreDetail {
           "clearCount": 47,
           "clearType": null,
           "flareRank": null,

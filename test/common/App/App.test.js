@@ -526,7 +526,7 @@ describe('App.updateCharts', () => {
   test('scoreList のみに存在する曲の chart も生成される', async () => {
     const app = await makeInitializedApp();
     const mockScoreData = {
-      hasDifficulty: (diffValue) => diffValue === 3, // SINGLE EXPERT
+      hasDifficulty: (diffValue) => diffValue === '3', // SINGLE EXPERT
       getScoreDetailByDifficulty: jest.fn().mockReturnValue({}),
       musicType: 0,
     };
