@@ -11,6 +11,7 @@
       "Bash(git status)",
       "Bash(git push*)",
       "Bash(git commit*)",
+      "Bash(git rebase*)",
       "Bash(gh issue view:*)",
       "Bash(gh pr*)",
       "WebFetch(*)"
