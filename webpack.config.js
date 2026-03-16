@@ -41,7 +41,8 @@ const config = {
                 options: {
                   esModule: false
                 }
-            }
+            },
+            'postcss-loader'
         ]
       }
     ]
