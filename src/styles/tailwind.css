@@ -1,4 +1,5 @@
 @import "tailwindcss" layer(tailwind);
+@import "./ddr-components.css";
 
 /* HTML ファイルは JS から import されないため明示的にスキャン対象に含める */
 @source "../static/browser_action/*.html";
