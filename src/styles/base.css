@@ -18,6 +18,18 @@ button {
   border: 1px solid #ffffff;
   color: #ffffff;
   cursor: pointer;
+  user-select: none;
+}
+button:hover {
+  background-color: #555555;
+}
+button:active {
+  background-color: #222222;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+button:focus-visible {
+  outline: 2px solid #ffff00;
+  outline-offset: 2px;
 }
 
 table { width: 100%; }
