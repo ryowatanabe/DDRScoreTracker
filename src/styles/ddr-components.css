@@ -195,4 +195,131 @@
   .graph .rank_none {
     background-color: #888888;
   }
+
+  /*
+  ドロワー共通 (フィルタメニュー, 機能メニュー, ロガー)
+  */
+
+  .drawer-switch {
+    @apply float-right text-[1.2rem] text-[#ffff00] ml-[5px] cursor-pointer;
+  }
+  .drawer-close-button {
+    @apply w-[100px];
+  }
+  .drawer {
+    @apply z-10 fixed top-0 left-0 box-border w-full bg-black border border-white p-[5px] translate-x-full;
+  }
+  .drawer.not-initialized {
+    @apply transition-none;
+  }
+  .drawer.initialized {
+    transition: all 0.3s ease-in-out 0s;
+  }
+  .drawer.active {
+    @apply translate-x-0;
+  }
+  .drawer-background {
+    @apply z-[9] invisible fixed top-0 left-0 w-full h-full bg-white opacity-0;
+  }
+  .drawer-background.not-initialized {
+    @apply transition-none;
+  }
+  .drawer-background.initialized {
+    transition: all 0.3s ease-in-out 0s;
+  }
+  .drawer-background.active {
+    @apply translate-x-0 visible opacity-60;
+  }
+
+  /*
+  フィルタメニュー・機能メニュー
+  */
+
+  .filter {
+    @apply max-h-full overflow-scroll;
+  }
+  .filter .condition-group {
+    @apply border border-white w-full mb-[5px] p-[5px] leading-[150%];
+  }
+  .filter .element {
+    @apply whitespace-nowrap;
+  }
+  .filter a {
+    @apply cursor-pointer;
+  }
+  .filter select {
+    @apply h-[2em];
+  }
+  .menu {
+    @apply max-h-full overflow-scroll;
+  }
+  .menu .function-group {
+    @apply border border-white w-full mb-[5px] p-[5px] leading-[150%];
+  }
+
+  /*
+  ページャー
+  */
+
+  .pager .element {
+    @apply text-[1.2rem] mx-[5px];
+  }
+  .pager .current {
+    @apply text-white;
+  }
+  .pager .link {
+    @apply text-[#ffff00] cursor-pointer;
+  }
+
+  /*
+  進捗グラフ
+  */
+
+  .graph {
+    @apply box-border w-full h-[20px] p-[2px] border border-white;
+  }
+  .graph .inner {
+    @apply box-border h-full;
+  }
+  .graph .element {
+    @apply box-border inline-block h-full;
+  }
+
+  /*
+  スコアリスト共通セルスタイル
+  */
+
+  .score_list > div {
+    @apply border-b border-white whitespace-nowrap p-[2px];
+  }
+  .score_list > .level {
+    @apply text-right text-[1.2rem] font-bold;
+  }
+  .score_list > .title {
+    @apply text-[1rem] overflow-x-hidden text-ellipsis;
+  }
+  .score_list > .flare_rank {
+    @apply text-center text-[1.2rem] font-bold;
+  }
+  .score_list > .flare_skill {
+    @apply text-right font-mono text-[1rem];
+  }
+  .score_list > .clear_count {
+    @apply text-right font-mono text-[1rem];
+  }
+  .score_list > .play_count {
+    @apply text-right font-mono text-[1rem];
+  }
+  .score_list > .score_rank {
+    @apply text-[1.2rem] font-bold;
+  }
+  .score_list > .full_combo_type {
+    @apply text-[1.2rem] font-bold;
+  }
+  .score_list > .score {
+    @apply text-right font-mono text-[1rem];
+  }
+  .score_list > .max_combo {
+    @apply text-right font-mono text-[1rem];
+  }
 }
