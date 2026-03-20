@@ -1,3 +1,5 @@
+import '../../styles/base.css';
+import '../../styles/drawer.css';
 import { createApp } from 'vue';
 import { App } from '../../static/common/App.js';
 import { STATE as APP_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_APP_STATE_MESSAGE_TYPE } from '../../static/common/AppState.js';
@@ -38,7 +40,11 @@ document.getElementById('resetStorageButton')!.addEventListener('click', resetSt
 
 function dumpMusicList() {
   const musics = app.getMusicList();
-  document.getElementById('dumpMusicListArea')!.innerHTML = musics!.encodedString;
+  if (!musics) {
+    alert('楽曲リストが読み込まれていません。');
+    return;
+  }
+  document.getElementById('dumpMusicListArea')!.innerHTML = musics.encodedString;
   const copyText = document.getElementById('dumpMusicListArea') as HTMLTextAreaElement;
   copyText.select();
   if (document.execCommand('copy')) {
@@ -62,7 +68,11 @@ document.getElementById('restoreMusicListButton')!.addEventListener('click', res
 
 function dumpScoreList() {
   const scoreList = app.getScoreList();
-  document.getElementById('dumpScoreListArea')!.innerHTML = JSON.stringify(scoreList!.musics);
+  if (!scoreList) {
+    alert('スコアリストが読み込まれていません。');
+    return;
+  }
+  document.getElementById('dumpScoreListArea')!.innerHTML = JSON.stringify(scoreList.musics);
   const copyText = document.getElementById('dumpScoreListArea') as HTMLTextAreaElement;
   copyText.select();
   if (document.execCommand('copy')) {
@@ -109,21 +119,14 @@ function onInitialized() {
   (document.getElementById('localStorageBytesInUse') as HTMLElement).innerText = String(app.getBytesInUse());
 
   const options = app.getOptions();
-  if (!options!['enableA20PlusSiteAccess']) {
+  if (!options || !options['enableA20PlusSiteAccess']) {
     document.getElementById('refreshAllMusicInfoButton')!.style.display = 'none';
   }
 }
 
-function initialize() {
-  if (app.getState() === APP_STATE.INITIALIZE) {
-    setTimeout(initialize, 100);
-  } else {
-    onInitialized();
-  }
-}
-
-window.addEventListener('load', () => {
-  initialize();
+window.addEventListener('load', async () => {
+  await app.init();
+  onInitialized();
 });
 window.addEventListener('unload', () => {});
 

@@ -118,4 +118,3 @@ export default {
   clear: right;
 }
 </style>
-<style src="../static/browser_action/drawer.css" scoped></style>

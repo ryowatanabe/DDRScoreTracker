@@ -276,7 +276,6 @@ export default {
   font-family: monospace;
   font-size: 1rem;
 }
-
 </style>
 <style scoped>
 .diff {
@@ -287,4 +286,3 @@ export default {
   clear: right;
 }
 </style>
-<style src="../static/browser_action/drawer.css" scoped></style>
