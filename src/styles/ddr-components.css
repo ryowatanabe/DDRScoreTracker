@@ -296,19 +296,19 @@
     @apply text-right text-[1.2rem] font-bold;
   }
   .score_list > .title {
-    @apply text-[1rem] overflow-x-hidden text-ellipsis;
+    @apply text-[1.2rem] overflow-x-hidden text-ellipsis;
   }
   .score_list > .flare_rank {
     @apply text-center text-[1.2rem] font-bold;
   }
   .score_list > .flare_skill {
-    @apply text-right font-mono text-[1rem];
+    @apply text-right font-mono text-[1.2rem];
   }
   .score_list > .clear_count {
-    @apply text-right font-mono text-[1rem];
+    @apply text-right font-mono text-[1.2rem];
   }
   .score_list > .play_count {
-    @apply text-right font-mono text-[1rem];
+    @apply text-right font-mono text-[1.2rem];
   }
   .score_list > .score_rank {
     @apply text-[1.2rem] font-bold;
@@ -317,9 +317,9 @@
     @apply text-[1.2rem] font-bold;
   }
   .score_list > .score {
-    @apply text-right font-mono text-[1rem];
+    @apply text-right font-mono text-[1.2rem];
   }
   .score_list > .max_combo {
-    @apply text-right font-mono text-[1rem];
+    @apply text-right font-mono text-[1.2rem];
   }
 }
