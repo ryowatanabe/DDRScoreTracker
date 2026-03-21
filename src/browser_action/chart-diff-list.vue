@@ -169,51 +169,11 @@ export default {
 
 <style scoped>
 /*
-ページャー
-*/
-
-.pager .element {
-  font-size: 1.2rem;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.pager .current {
-  color: #ffffff;
-}
-
-.pager .link {
-  color: #ffff00;
-  cursor: pointer;
-}
-
-/*
-進捗グラフ
-*/
-
-.graph {
-  box-sizing: border-box;
-  width: 100%;
-  height: 20px;
-  padding: 2px;
-  border: 1px solid #ffffff;
-}
-.graph .inner {
-  box-sizing: border-box;
-  height: 100%;
-}
-.graph .element {
-  box-sizing: border-box;
-  display: inline-block;
-  height: 100%;
-}
-/*
-スコアリストのグリッド表示
+スコアリストのグリッド表示（列定義のみ、共通セルスタイルは ddr-components.css）
 */
 
 .score_list {
-  clear: right;
-  display: grid;
+  @apply clear-right grid;
   grid-template-columns:
     minmax(1px, max-content) auto minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(1px, max-content) minmax(
       1px,
@@ -223,66 +183,10 @@ export default {
     minmax(1px, max-content);
 }
 
-.score_list > div {
-  border-bottom: 1px solid #ffffff;
-  white-space: nowrap;
-  padding: 2px;
-}
-.score_list > .level {
-  text-align: right;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.score_list > .title {
-  font-size: 1rem;
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-}
-.score_list > .flare_rank {
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.score_list > .flare_skill {
-  text-align: right;
-  font-family: monospace;
-  font-size: 1rem;
-}
-.score_list > .clear_count {
-  text-align: right;
-  font-family: monospace;
-  font-size: 1rem;
-}
-.score_list > .play_count {
-  text-align: right;
-  font-family: monospace;
-  font-size: 1rem;
-}
-.score_list > .score_rank {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.score_list > .full_combo_type {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.score_list > .score {
-  text-align: right;
-  font-family: monospace;
-  font-size: 1rem;
-}
-.score_list > .max_combo {
-  text-align: right;
-  font-family: monospace;
-  font-size: 1rem;
-}
-</style>
-<style scoped>
 .diff {
-  height: 100%;
-  overflow: scroll;
+  @apply h-full overflow-scroll;
 }
 .content {
-  clear: right;
+  @apply clear-right;
 }
 </style>

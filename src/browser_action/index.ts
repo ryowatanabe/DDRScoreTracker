@@ -1,6 +1,4 @@
 import '../styles/tailwind.css';
-import '../styles/base.css';
-import '../styles/drawer.css';
 import { createApp } from 'vue';
 import { App } from '../static/common/App.js';
 import { STATE as APP_STATE, CHANGE_STATE_MESSAGE_TYPE as CHANGE_APP_STATE_MESSAGE_TYPE } from '../static/common/AppState.js';
