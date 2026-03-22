@@ -95,7 +95,7 @@
   }
   tr,
   td {
-    @apply text-[1rem] leading-[150%] p-0;
+    @apply text-[1.2rem] leading-[150%] p-0;
   }
   td.hr {
     border-style: none none solid none;
