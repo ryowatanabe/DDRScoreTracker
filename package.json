@@ -33,7 +33,7 @@
     "postcss": "^8.5.8",
     "postcss-loader": "^8.2.1",
     "prettier": "^3.8.1",
-    "tailwindcss": "^4.2.1",
+    "tailwindcss": "^4.2.2",
     "ts-jest": "^29.4.0",
     "ts-loader": "^9.5.1",
     "typescript": "^5.8.2",
