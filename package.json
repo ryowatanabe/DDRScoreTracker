@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.28.6",
-    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-env": "^7.29.2",
     "@babel/preset-typescript": "^7.28.0",
     "@playwright/test": "^1.50.0",
     "@tailwindcss/postcss": "^4.2.2",
