@@ -105,7 +105,10 @@
     border-bottom-color: #ffffff;
   }
   a {
-    @apply text-[#ffff00];
+    @apply text-[1.2rem] text-[#ffff00];
+  }
+  label {
+    @apply text-[1.2rem];
   }
   #contentArea {
     @apply text-[1.2rem] overflow-x-hidden;
