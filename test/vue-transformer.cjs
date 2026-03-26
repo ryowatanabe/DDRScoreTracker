@@ -74,8 +74,11 @@ module.exports = {
     // Inject the template property into the default export object.
     // Use a function replacement to prevent $ in the template from being
     // interpreted as special replacement patterns by String.prototype.replace().
-    const templateInjection = `export default {\n  template: ${templateJsonStr},`;
-    const transformed = scriptInfo.content.replace(/export\s+default\s+\{/, () => templateInjection);
+    // Supports both `export default {` and `export default defineComponent({`.
+    const transformed = scriptInfo.content.replace(/export\s+default\s+(defineComponent\()?\{/, (_, dc) => {
+      const prefix = dc ? `export default defineComponent({` : `export default {`;
+      return `${prefix}\n  template: ${templateJsonStr},`;
+    });
 
     // Build Babel presets — add TypeScript preset for <script lang="ts">
     const presets = [['@babel/preset-env', { targets: { node: 'current' } }]];

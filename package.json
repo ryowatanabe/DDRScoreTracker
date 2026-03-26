@@ -50,8 +50,8 @@
     "lint": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.mjs",
     "prettier": "prettier \"src/**/*.{js,vue,json,html}\" \"test/**/*.js\"",
     "prettier:write": "yarn prettier --write",
-    "build": "yarn clean; export NODE_OPTIONS=--openssl-legacy-provider; cross-env NODE_ENV=production webpack",
-    "build:dev": "cross-env NODE_ENV=development webpack",
+    "build": "yarn clean; export NODE_OPTIONS=--openssl-legacy-provider; tsc --noEmit && cross-env NODE_ENV=production webpack",
+    "build:dev": "tsc --noEmit && cross-env NODE_ENV=development webpack",
     "test": "jest",
     "test:e2e": "playwright test",
     "prepare": "husky"

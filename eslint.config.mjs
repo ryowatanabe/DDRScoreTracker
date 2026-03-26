@@ -18,7 +18,8 @@ export default [
                 ...globals.es2020
 			},
 			parserOptions: {
-				ecmaVersion: 2022
+				ecmaVersion: 2022,
+				parser: tsParser,
 			},
 		},
 		plugins: {

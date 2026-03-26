@@ -28,7 +28,7 @@ const config = {
         loader: 'ts-loader',
         options: {
           appendTsSuffixTo: [/\.vue$/],
-          transpileOnly: true
+          transpileOnly: true,
         },
         exclude: /node_modules/
       },
