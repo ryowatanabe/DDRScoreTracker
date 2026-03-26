@@ -63,5 +63,8 @@
     ],
     "src/**/*.{json,html}": "prettier --write",
     "test/**/*.js": "prettier --write"
+  },
+  "resolutions": {
+    "picomatch": "4.0.4"
   }
 }
