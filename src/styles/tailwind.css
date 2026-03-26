@@ -65,7 +65,8 @@
   input[type='number'],
   input[type='search'],
   input[type='email'],
-  textarea {
+  textarea,
+  select {
     @apply text-[1.2rem] leading-[150%] px-[6px] py-[2px] bg-[#222222] border border-[#888888] text-white;
   }
   input[type='text']:focus,
@@ -73,7 +74,8 @@
   input[type='number']:focus,
   input[type='search']:focus,
   input[type='email']:focus,
-  textarea:focus {
+  textarea:focus,
+  select:focus {
     @apply border-white outline-none;
   }
   button {
