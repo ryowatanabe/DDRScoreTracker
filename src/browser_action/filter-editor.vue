@@ -12,15 +12,16 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue';
 import { I18n } from '../static/common/I18n.js';
 
-let app;
-let savedConditions;
+let app: any;
+let savedConditions: any[];
 
-export default {
+export default defineComponent({
   data() {
     return {
-      savedConditions: [],
+      savedConditions: [] as { name: string }[],
     };
   },
   methods: {
@@ -57,7 +58,7 @@ export default {
       app = a;
     },
   },
-};
+});
 </script>
 
 <style scoped></style>

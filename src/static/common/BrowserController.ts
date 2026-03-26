@@ -6,7 +6,7 @@ export class BrowserController {
   state: number;
   delay: number;
   onUpdateTab: () => void;
-  onUpdateTabInternal: (tid: number, changeInfo: chrome.tabs.TabChangeInfo, tab: chrome.tabs.Tab) => void;
+  onUpdateTabInternal: (tid: number, changeInfo: chrome.tabs.OnUpdatedInfo, tab: chrome.tabs.Tab) => void;
 
   static get STATE() {
     return {
@@ -28,7 +28,7 @@ export class BrowserController {
     this.onUpdateTabInternal = this.onUpdateTabInternalImpl.bind(this);
   }
 
-  onUpdateTabInternalImpl(tid: number, changeInfo: chrome.tabs.TabChangeInfo, tab: chrome.tabs.Tab): void {
+  onUpdateTabInternalImpl(tid: number, changeInfo: chrome.tabs.OnUpdatedInfo, tab: chrome.tabs.Tab): void {
     if (this.tabId === null) {
       Logger.error(`BrowserController.onUpdateTabInternalImpl: called when tabId is null`);
       return;
