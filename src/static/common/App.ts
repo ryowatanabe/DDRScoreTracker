@@ -660,6 +660,8 @@ export class App {
       case Parser.STATUS.LOGIN_REQUIRED:
         Logger.info(I18n.getMessage('log_message_login_required'));
         break;
+      case Parser.STATUS.RIVAL_DATA_NOT_PUBLIC:
+        break;
       default:
         throw new Error(`unknown Parser.STATUS (${res.status})`);
     }
