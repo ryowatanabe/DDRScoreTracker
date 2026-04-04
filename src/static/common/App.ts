@@ -118,6 +118,7 @@ export class App {
       case STATE.UPDATE_SCORE_LIST:
       case STATE.UPDATE_MUSIC_DETAIL:
       case STATE.UPDATE_SCORE_DETAIL:
+      case STATE.UPDATE_RIVAL_MUSIC_LIST:
         Logger.info(I18n.getMessage('log_message_aborting'));
         setTimeout(async () => {
           try {
@@ -453,6 +454,44 @@ export class App {
   }
 
   /*
+  ライバルの楽曲データ一覧から楽曲ID・楽曲名を収集し、ローカルの楽曲リストを更新する
+  */
+  async updateRivalMusicList(rivalId: string): Promise<void> {
+    if (this.state !== STATE.IDLE) {
+      const message = `updateRivalMusicList: state unmatch (current state: ${this.state})`;
+      Logger.debug(message);
+      throw new Error(message);
+    }
+    if (!rivalId) {
+      const message = 'updateRivalMusicList: rivalId is empty';
+      Logger.error(message);
+      throw new Error(message);
+    }
+    Logger.info(I18n.getMessage('log_message_update_rival_music_list_begin'));
+    this.changeState(STATE.UPDATE_RIVAL_MUSIC_LIST);
+    try {
+      this.dataFetchController.targetRivalId = rivalId;
+      this.dataFetchController.targetPlayMode = Constants.PLAY_MODE.SINGLE as PlayMode;
+      Logger.info(
+        I18n.getMessage('log_message_update_rival_music_list_progress', [
+          I18n.getMessage(`log_message_update_score_list_play_mode_${this.dataFetchController.targetPlayMode}`),
+          '1',
+          '?',
+        ])
+      );
+      await this.browserController.createTab(
+        Constants.RIVAL_MUSIC_DATA_URL[Constants.GAME_VERSION.WORLD][this.dataFetchController.targetPlayMode].replace('[rivalId]', rivalId),
+        this.options!['openTabAsActive'] as boolean
+      );
+    } catch (error) {
+      this.browserController.reset();
+      Logger.error(error);
+      this.changeState(STATE.IDLE);
+      throw error;
+    }
+  }
+
+  /*
   公式の成績詳細ページから成績情報を取得し、ローカルのスコアリストを更新する
   targets: [
     { musicId:xxx, difficulty:yy }, ...
@@ -575,6 +614,11 @@ export class App {
           this.dataFetchController.handleScoreDetailResponse(res as ParseResponse)
         );
         break;
+      case STATE.UPDATE_RIVAL_MUSIC_LIST:
+        this.browserController.sendMessageToTab({ type: 'PARSE_RIVAL_MUSIC_LIST' }, (res) =>
+          this.dataFetchController.handleRivalMusicListResponse(res as ParseResponse)
+        );
+        break;
       default:
         Logger.debug('onUpdateTab: event was ignored.');
         break;
@@ -615,6 +659,8 @@ export class App {
         break;
       case Parser.STATUS.LOGIN_REQUIRED:
         Logger.info(I18n.getMessage('log_message_login_required'));
+        break;
+      case Parser.STATUS.RIVAL_DATA_NOT_PUBLIC:
         break;
       default:
         throw new Error(`unknown Parser.STATUS (${res.status})`);

@@ -278,6 +278,15 @@
   "browser_action_debug_page_refresh_all_music_info_description": {
     "message": "Refresh local music list by fetching data from official site."
   },
+  "browser_action_debug_page_get_rival_music_list": {
+    "message": "Get Rival Music List"
+  },
+  "browser_action_debug_page_get_rival_music_list_rival_id_label": {
+    "message": "Rival ID:"
+  },
+  "browser_action_debug_page_get_rival_music_list_description": {
+    "message": "Collect music IDs and titles from the specified rival player's music data and add them to the local music list."
+  },
   "browser_action_debug_page_reset_saved_filters": {
     "message": "Reset saved filters"
   },
@@ -504,5 +513,25 @@
   },
   "options_ui_music_list_reload_interval": {
     "message": "Interval for checking music list updates (msec, 0 for disable)"
+  },
+  "log_message_update_rival_music_list_begin": {
+    "message": "Fetching rival music list..."
+  },
+  "log_message_update_rival_music_list_progress": {
+    "message": "$MODE$, $CURRENT$ / $MAX$ pages",
+    "placeholders": {
+      "mode": {
+        "content": "$1"
+      },
+      "current": {
+        "content": "$2"
+      },
+      "max": {
+        "content": "$3"
+      }
+    }
+  },
+  "log_message_update_rival_music_list_rival_data_not_public": {
+    "message": "The specified rival's data is not public."
   }
 }

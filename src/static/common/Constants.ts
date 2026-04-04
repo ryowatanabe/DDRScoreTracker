@@ -10,6 +10,7 @@ export type FlareRank = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 let _scoreListUrl: Record<number, Record<number, Record<number, string>>> | null = null;
 let _musicDetailUrl: Record<number, Record<number, string>> | null = null;
 let _scoreDetailUrl: Record<number, Record<number, string>> | null = null;
+let _rivalMusicDataUrl: Record<number, Record<number, string>> | null = null;
 
 export class Constants {
   static get GAME_VERSION() {
@@ -184,6 +185,16 @@ export class Constants {
     result[this.GAME_VERSION.WORLD][this.MUSIC_TYPE.GRADE_A3] = '';
     _scoreDetailUrl = result;
     return _scoreDetailUrl;
+  }
+
+  static get RIVAL_MUSIC_DATA_URL(): Record<number, Record<number, string>> {
+    if (_rivalMusicDataUrl !== null) return _rivalMusicDataUrl;
+    const result: Record<number, Record<number, string>> = {};
+    result[this.GAME_VERSION.WORLD] = {};
+    result[this.GAME_VERSION.WORLD][this.PLAY_MODE.SINGLE] = 'https://p.eagate.573.jp/game/ddr/ddrworld/rival/music_data_single.html?rival_id=[rivalId]';
+    result[this.GAME_VERSION.WORLD][this.PLAY_MODE.DOUBLE] = 'https://p.eagate.573.jp/game/ddr/ddrworld/rival/music_data_double.html?rival_id=[rivalId]';
+    _rivalMusicDataUrl = result;
+    return _rivalMusicDataUrl;
   }
 
   static get PARSED_MUSIC_LIST_URL() {

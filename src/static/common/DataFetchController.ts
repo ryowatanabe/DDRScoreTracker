@@ -53,6 +53,7 @@ export class DataFetchController {
   targetMusicType: MusicType | null;
   targetMusics: TargetMusic[];
   targetMusic: TargetMusic | null;
+  targetRivalId: string | null;
   differences: ScoreDiff[];
 
   constructor({ getMusicList, getScoreList, onSaveStorage, onUpdateCharts, onNavigateTo, onFinishAction, onHandleError }: DataFetchControllerOptions) {
@@ -69,6 +70,7 @@ export class DataFetchController {
     this.targetMusicType = null;
     this.targetMusics = [];
     this.targetMusic = null;
+    this.targetRivalId = null;
     this.differences = [];
   }
 
@@ -177,6 +179,47 @@ export class DataFetchController {
         ])
       );
       await this.onNavigateTo(Constants.SCORE_LIST_URL[this.targetGameVersion!][this.targetPlayMode][this.targetMusicType]);
+    } else {
+      await this.onFinishAction();
+    }
+  }
+
+  async handleRivalMusicListResponse(res: ParseResponse): Promise<void> {
+    Logger.debug(res);
+    if (res.status === Parser.STATUS.RIVAL_DATA_NOT_PUBLIC) {
+      Logger.info(I18n.getMessage('log_message_update_rival_music_list_rival_data_not_public'));
+      await this.onHandleError(res);
+      return;
+    }
+    if (res.status !== Parser.STATUS.SUCCESS) {
+      await this.onHandleError(res);
+      return;
+    }
+    res.musics!.forEach((music) => {
+      const musicData = new MusicData(music['musicId'] as string, Constants.MUSIC_TYPE.NORMAL as MusicType, music['title'] as string, [0, 0, 0, 0, 0, 0, 0, 0, 0], 0);
+      this.musicList.applyMusicData(musicData);
+    });
+    this.onSaveStorage();
+    this.onUpdateCharts();
+    if (res.hasNext) {
+      Logger.info(
+        I18n.getMessage('log_message_update_rival_music_list_progress', [
+          I18n.getMessage(`log_message_update_score_list_play_mode_${this.targetPlayMode}`),
+          String(res.currentPage! + 1),
+          String(res.maxPage),
+        ])
+      );
+      await this.onNavigateTo(res.nextUrl!);
+    } else if (this.targetPlayMode === Constants.PLAY_MODE.SINGLE) {
+      this.targetPlayMode = Constants.PLAY_MODE.DOUBLE as PlayMode;
+      Logger.info(
+        I18n.getMessage('log_message_update_rival_music_list_progress', [
+          I18n.getMessage(`log_message_update_score_list_play_mode_${this.targetPlayMode}`),
+          '1',
+          '?',
+        ])
+      );
+      await this.onNavigateTo(Constants.RIVAL_MUSIC_DATA_URL[Constants.GAME_VERSION.WORLD][this.targetPlayMode].replace('[rivalId]', this.targetRivalId!));
     } else {
       await this.onFinishAction();
     }

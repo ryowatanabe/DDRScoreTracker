@@ -23,6 +23,11 @@ function onMessage(message: any, sender: chrome.runtime.MessageSender, sendRespo
       sendResponse(Parser.parseScoreDetail(document.body, message.gameVersion));
       return;
     }
+    if (message.type === 'PARSE_RIVAL_MUSIC_LIST') {
+      Logger.debug('parsing rival music list ...');
+      sendResponse(Parser.parseRivalMusicList(document.body));
+      return;
+    }
     Logger.debug('received unknown message');
     Logger.debug(message);
   } catch (e) {
