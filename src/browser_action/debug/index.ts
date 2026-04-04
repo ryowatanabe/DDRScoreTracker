@@ -121,6 +121,16 @@ function onInitialized() {
     logContainer.enableButtons();
   }
 
+  app.addMessageListener((message) => {
+    if (message.type === CHANGE_APP_STATE_MESSAGE_TYPE) {
+      if (message.state === APP_STATE.IDLE) {
+        logContainer.enableButtons();
+      } else {
+        logContainer.disableButtons();
+      }
+    }
+  });
+
   (document.getElementById('localStorageBytesInUse') as HTMLElement).innerText = String(app.getBytesInUse());
 
   const options = app.getOptions();
