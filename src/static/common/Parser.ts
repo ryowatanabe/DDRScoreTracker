@@ -3,7 +3,7 @@ import { ScoreData } from './ScoreData.js';
 import { ScoreDetail } from './ScoreDetail.js';
 import { Constants, type GameVersion, type MusicType, type ScoreRank, type ClearType, type FlareRank } from './Constants.js';
 
-type ParseStatus = 0 | 1 | 2;
+type ParseStatus = 0 | 1 | 2 | 3;
 
 type MusicListResult = {
   hasNext: boolean;
@@ -33,12 +33,27 @@ type ScoreDetailResult = {
   status: ParseStatus;
 };
 
+type RivalMusicData = {
+  musicId: string;
+  title: string;
+};
+
+type RivalMusicListResult = {
+  hasNext: boolean;
+  nextUrl: string;
+  currentPage: number | null;
+  maxPage: number | null;
+  musics: RivalMusicData[];
+  status: ParseStatus;
+};
+
 export class Parser {
   static get STATUS() {
     return {
       SUCCESS: 0,
       UNKNOWN_ERROR: 1,
       LOGIN_REQUIRED: 2,
+      RIVAL_DATA_NOT_PUBLIC: 3,
     };
   }
 
@@ -267,5 +282,53 @@ export class Parser {
       scoreDetail.clearCount = parseInt(detail[8], 10) ? parseInt(detail[8], 10) : 0;
       scoreDetail.maxCombo = parseInt(detail[3], 10) ? parseInt(detail[3], 10) : 0;
     });
+  }
+
+  static parseRivalMusicList(rootElement: Element): RivalMusicListResult {
+    const res: RivalMusicListResult = {
+      hasNext: false,
+      nextUrl: '',
+      currentPage: null,
+      maxPage: null,
+      musics: [],
+      status: this.STATUS.UNKNOWN_ERROR as ParseStatus,
+    };
+
+    const baseStatus = this.getResultStatus(rootElement);
+    if (baseStatus !== this.STATUS.SUCCESS) {
+      res.status = baseStatus;
+      return res;
+    }
+
+    // ページネーション要素が存在しない場合はデータ非公開
+    if (rootElement.querySelector('#thispage') === null) {
+      res.status = this.STATUS.RIVAL_DATA_NOT_PUBLIC as ParseStatus;
+      return res;
+    }
+
+    const next = rootElement.querySelectorAll('#next.arrow');
+    if (next.length > 0) {
+      res.hasNext = true;
+      res.nextUrl = (next[0].querySelector('a') as HTMLAnchorElement).href;
+    }
+
+    res.currentPage = parseInt((rootElement.querySelector('#thispage') as Element).querySelector('a')!.innerHTML, 10);
+    const pages = rootElement.querySelectorAll('#paging_box')[0].querySelectorAll('.page_num');
+    res.maxPage = parseInt(pages[pages.length - 1].querySelector('a')!.innerHTML, 10);
+
+    const rows = Array.from(rootElement.querySelectorAll('tr.data'));
+    rows.forEach(function (row) {
+      const regexp = /^.*img=([0-9a-zA-Z]+).*$/;
+      const imgElement = row.querySelector('td img.jk, td img.jk2') as HTMLImageElement | null;
+      if (!imgElement) return;
+      const musicId = imgElement.src.replace(regexp, '$1');
+      const titleElement = row.querySelector('td a.music_info') as HTMLElement | null;
+      if (!titleElement) return;
+      const title = titleElement.textContent?.trim() ?? '';
+      res.musics.push({ musicId, title });
+    });
+
+    res.status = this.STATUS.SUCCESS as ParseStatus;
+    return res;
   }
 }

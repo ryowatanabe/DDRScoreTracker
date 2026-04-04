@@ -1,0 +1,289 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Parser.parseRivalMusicList (hasNext:false) 1`] = `
+Object {
+  "currentPage": 29,
+  "hasNext": false,
+  "maxPage": 29,
+  "musics": Array [
+    Object {
+      "musicId": "006i1i6OOl1bPdql9ID8o6QQ6IIiqP0P",
+      "title": "1116",
+    },
+    Object {
+      "musicId": "ddOOOibQ6qIi9DI1bl8b108I1Ib6QDl9",
+      "title": "1998",
+    },
+    Object {
+      "musicId": "dPb99qdqOQ1ioQ9Dqb1I9Q1bI0l0POII",
+      "title": "1998 (Sparky 2006)",
+    },
+    Object {
+      "musicId": "loD8qPl09qqi0o1iqbbDOdllDblioDIl",
+      "title": "3y3s",
+    },
+    Object {
+      "musicId": "i9Pidb18b9O8bdqQ91QQP0oPdIdIODq1",
+      "title": "30 Lives (Up-Up-Down-Dance Mix)",
+    },
+    Object {
+      "musicId": "Q96bO9D61lib19IiIi0i69P80bo6q69Q",
+      "title": "321STARS",
+    },
+    Object {
+      "musicId": "08QQ8iPldb6o96bl0ld61qb99Q0Q19Qd",
+      "title": "4NT1 D34D",
+    },
+    Object {
+      "musicId": "l1ODQ1bO9POQ6d8O0Iobbio11qb6O6bd",
+      "title": "50th Memorial Songs -二人の時 ～under the cherry blossoms～-",
+    },
+    Object {
+      "musicId": "bP10qq9dPDDqIl16lPIDDd8b00dIIP08",
+      "title": "50th Memorial Songs -Beginning Story-",
+    },
+    Object {
+      "musicId": "0IIO08bII0QQDOdobqbl8Ib8Q8O8q1li",
+      "title": "50th Memorial Songs -Flagship medley-",
+    },
+    Object {
+      "musicId": "D0iDbio81PIbI8dD6QOIP9IidDOP0PDP",
+      "title": "50th Memorial Songs -The BEMANI History-",
+    },
+    Object {
+      "musicId": "Dd98lDdo8Ob698d9qbO9iD0PqO19oQbI",
+      "title": "8000000",
+    },
+    Object {
+      "musicId": "id9oObq9P6Q6Pq6lQPqI88OP1DD8D0O1",
+      "title": "888",
+    },
+    Object {
+      "musicId": "00obPO6oPIPOoD9qb0dIl6q6D8P6o9bI",
+      "title": "IX",
+    },
+    Object {
+      "musicId": "Q9PP10bOQdIPD1iI99llI9QID9b09q0o",
+      "title": "9th Outburst",
+    },
+    Object {
+      "musicId": "Di0ODIlddo8d90oo09qqd98QObQP1llI",
+      "title": "[ ]DENTITY",
+    },
+  ],
+  "nextUrl": "",
+  "status": 0,
+}
+`;
+
+exports[`Parser.parseRivalMusicList (hasNext:true) 1`] = `
+Object {
+  "currentPage": 1,
+  "hasNext": true,
+  "maxPage": 29,
+  "musics": Array [
+    Object {
+      "musicId": "dD6DOI1lDI8o90iO006Dl96D1doDdQ69",
+      "title": "愛氏AIされ",
+    },
+    Object {
+      "musicId": "6iqOPoP6lQi8ilD10o8ol11DQbqooOqP",
+      "title": "アイスクリームマジック",
+    },
+    Object {
+      "musicId": "OboID1PloIIoOOObQdQOP110I61Ddl9I",
+      "title": "蒼い衝動 ～for EXTREME～",
+    },
+    Object {
+      "musicId": "6d10P0Pd1PiD1l6DPQdoPD1Q8DP0QlqQ",
+      "title": "蒼が消えるとき",
+    },
+    Object {
+      "musicId": "PP0P9ilQb1o160O6O6PqQIl60oDi8Db6",
+      "title": "あおばの足音",
+    },
+    Object {
+      "musicId": "d6Doi9oi600lP9lI9iiO8q68li8iOO8D",
+      "title": "朱と碧のランページ",
+    },
+    Object {
+      "musicId": "8IQIld8DI9OPD00dqio1lDQ1bq6Q6P6D",
+      "title": "朱と碧のランページ",
+    },
+    Object {
+      "musicId": "918oPDQDoPlD1OlqlqQI08I6dD9iqoil",
+      "title": "朝色の紙飛行機",
+    },
+    Object {
+      "musicId": "iD8qIio8d1QQblQ06iPDlo69D9bQI9b8",
+      "title": "足神様ノ復活祭",
+    },
+    Object {
+      "musicId": "111O66bbPIQb09PlIoolIOD666QqqIdP",
+      "title": "アドレナリン",
+    },
+    Object {
+      "musicId": "16bl8D8lOddP9Obq0OIlOI6q8Pi1l9O0",
+      "title": "天ノ弱",
+    },
+    Object {
+      "musicId": "06O0ObdQobq86lPDo6P18dQ1QPdilIQO",
+      "title": "妖隠し -あやかしかくし-",
+    },
+    Object {
+      "musicId": "PDoiQoi9q08PQ96Pl6oD9IIi6iq0Q6D6",
+      "title": "アユミ☆マジカルショータイム",
+    },
+    Object {
+      "musicId": "D6IIDqlO8idioiPo8l61Ob11D6Di0DiQ",
+      "title": "アリスサイド・キャスリング",
+    },
+    Object {
+      "musicId": "8bQQ0lP96186D8Ibo8IoOd6o16qioiIo",
+      "title": "アルストロメリア (walk with you remix)",
+    },
+    Object {
+      "musicId": "1d9lDIl6iiiD0D0d8qd6dlDlq6P8o0QI",
+      "title": "阿波おどり -Awaodori- やっぱり踊りはやめられない",
+    },
+    Object {
+      "musicId": "Oq900IIl1Ob8qoIPqDP0PD6blbqIqlP1",
+      "title": "いーあるふぁんくらぶ",
+    },
+    Object {
+      "musicId": "61oIP0QIlO90d18ObDP1Dii6PoIQoOD8",
+      "title": "イーディーエム・ジャンパーズ",
+    },
+    Object {
+      "musicId": "oQIO6Il1IboPPDb6oDql61oIob9l619q",
+      "title": "イガク",
+    },
+    Object {
+      "musicId": "ibI0QllidqQ089ql8dob6bIoodbbIoqq",
+      "title": "怒れる大きな白い馬",
+    },
+    Object {
+      "musicId": "dqP6loDiD0l6b0I6i0iO90i6D0O68qO1",
+      "title": "一途",
+    },
+    Object {
+      "musicId": "Odb0b0ld6P80b8b6QD0IIO866iq8OQ0b",
+      "title": "鋳鉄の檻",
+    },
+    Object {
+      "musicId": "DQ1dqP1IoiD11QOPiI0Q8PqO0Qddo6q6",
+      "title": "イノセントバイブル",
+    },
+    Object {
+      "musicId": "d01QdIl6i69DqIbbQQd6IPOiQOObPdIi",
+      "title": "イマココ！この瞬間",
+    },
+    Object {
+      "musicId": "16IqQ680IioldO69QD61liQod0DQ8boQ",
+      "title": "色は匂へど散りぬるを",
+    },
+    Object {
+      "musicId": "Dl09QdQ19IoQl6D81qdlPPIdolP1lDi0",
+      "title": "ヴァンパイア",
+    },
+    Object {
+      "musicId": "8ooI09QP161IqI00IdPOD1QdDd8oDod9",
+      "title": "↑↑↓↓←→←→BA",
+    },
+    Object {
+      "musicId": "9oIO98IPOiq1idiIIbOOqdDQIOdQPPd6",
+      "title": "ウサテイ",
+    },
+    Object {
+      "musicId": "q8iPi1DP6Do6D110OQiQDdPq06q80Qb0",
+      "title": "ウソツキ横丁は雨模様",
+    },
+    Object {
+      "musicId": "bi9OolI1P9oI8dDPlbQiq01Dl080PQ61",
+      "title": "梅雪夜",
+    },
+    Object {
+      "musicId": "bd8oD0iqDQ8Qobd1oIqi8981QbD6I6Iq",
+      "title": "エイリアンエイリアン",
+    },
+    Object {
+      "musicId": "80PdqQ0iiOQb9i91lIliodiO9PI8O609",
+      "title": "エキサイティング！！も・ちゃ・ちゃ☆",
+    },
+    Object {
+      "musicId": "0Od1iPb8QO8oDd9db9iq6iOP8DQ08I01",
+      "title": "エクスプロウル",
+    },
+    Object {
+      "musicId": "oQolO9oOO01ll0I8969i8O1IQliloDqP",
+      "title": "エンドルフィン",
+    },
+    Object {
+      "musicId": "lqI8DD9Plq6IO8P8P6Pl8Di98DlI9oP8",
+      "title": "おーまい！らぶりー！すうぃーてぃ！だーりん！",
+    },
+    Object {
+      "musicId": "9I00D9Id61iD6QP8i8Dd6698PoQ9bdi9",
+      "title": "お米の美味しい炊き方、そしてお米を食べることによるその効果。",
+    },
+    Object {
+      "musicId": "ilD80b8QQl9Qo0PP0lQ00b8bO9Oqoobo",
+      "title": "御千手メディテーション",
+    },
+    Object {
+      "musicId": "I606oqOODOdQoP0IQOdP6b0DPdb86ddO",
+      "title": "御伽噺に幕切れを",
+    },
+    Object {
+      "musicId": "i91q8l0bbi8qll000ob6qDiQP891iiql",
+      "title": "乙女繚乱 舞い咲き誇れ",
+    },
+    Object {
+      "musicId": "8IoP10odbqPdPPbIq01OID99o98DIoQl",
+      "title": "踊れ！！バーチャルアニマル！！",
+    },
+    Object {
+      "musicId": "qdQoQli1d8DP0Obb919I6P1Odilib1Dd",
+      "title": "おねがいダーリン",
+    },
+    Object {
+      "musicId": "9oP18iDQ9P96bdooq0boQDPQqiiIqOql",
+      "title": "おひさし中華街！",
+    },
+    Object {
+      "musicId": "I96dOqqqQIi9oiqbqDPbQ8I8PQbqOb1o",
+      "title": "朧",
+    },
+    Object {
+      "musicId": "oPP1Pdl6Qdlb8oq10PP1doDibdbbl9bl",
+      "title": "朧 (dj TAKA Remix)",
+    },
+    Object {
+      "musicId": "bdP0IOiPiQ8OlIbD1QQO8O6dPQqqb1Qb",
+      "title": "音楽 (STARDOM Remix)",
+    },
+    Object {
+      "musicId": "0Ib6qIb0iPOoQqqDIl90dP0PI0o9QlDd",
+      "title": "女言葉の消失",
+    },
+    Object {
+      "musicId": "88qq1I89IQ8P9PdqbbdD0ood8oi9d68I",
+      "title": "蛇神",
+    },
+    Object {
+      "musicId": "dDqq9QbDDO8l6q8i1l91oQPbQD8Pqi0i",
+      "title": "覚悟せよ！エンタンメ～ン ～より身の切り売り自暴自棄版～",
+    },
+    Object {
+      "musicId": "l9lq19DdiD8qQPoPOlboi1qQii0IQI86",
+      "title": "革命",
+    },
+    Object {
+      "musicId": "qIqqdd1Odqi1Iiolq9qqPOi0bPPld8Pb",
+      "title": "革命(X-Special)",
+    },
+  ],
+  "nextUrl": "http://localhost/game/ddr/ddrworld/rival/music_data_single.html?offset=1&filter=0&filtertype=0&display=score&rival_id=41129325",
+  "status": 0,
+}
+`;

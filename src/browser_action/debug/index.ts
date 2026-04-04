@@ -19,6 +19,12 @@ document.getElementById('refreshAllMusicInfoButton')!.addEventListener('click', 
 document.getElementById('refreshAllMusicInfoButtonA3')!.addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.A3 as GameVersion));
 document.getElementById('refreshAllMusicInfoButtonWorld')!.addEventListener('click', refreshAllMusicInfo.bind(null, Constants.GAME_VERSION.WORLD as GameVersion));
 
+function updateRivalMusicList() {
+  const rivalId = (document.getElementById('rivalId') as HTMLInputElement).value;
+  app.updateRivalMusicList(rivalId);
+}
+document.getElementById('updateRivalMusicListButton')!.addEventListener('click', updateRivalMusicList);
+
 function resetSavedFilters() {
   if (window.confirm('保存されたフィルタをすべて削除しますか？')) {
     app.saveSavedConditions([]);

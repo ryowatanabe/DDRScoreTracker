@@ -7,7 +7,7 @@ jest.mock('../../../src/static/common/I18n.js', () => ({
   I18n: { getMessage: jest.fn().mockReturnValue('') },
 }));
 jest.mock('../../../src/static/common/Parser.js', () => ({
-  Parser: { STATUS: { SUCCESS: 'SUCCESS', UNKNOWN_ERROR: 'UNKNOWN_ERROR', LOGIN_REQUIRED: 'LOGIN_REQUIRED' } },
+  Parser: { STATUS: { SUCCESS: 'SUCCESS', UNKNOWN_ERROR: 'UNKNOWN_ERROR', LOGIN_REQUIRED: 'LOGIN_REQUIRED', RIVAL_DATA_NOT_PUBLIC: 'RIVAL_DATA_NOT_PUBLIC' } },
 }));
 jest.mock('../../../src/static/common/Constants.js', () => ({
   Constants: {
@@ -15,13 +15,22 @@ jest.mock('../../../src/static/common/Constants.js', () => ({
     getNextMusicType: jest.fn(),
     SCORE_LIST_URL: {},
     PLAY_MODE_AND_DIFFICULTY_STRING: {},
+    PLAY_MODE: { SINGLE: 0, DOUBLE: 1 },
+    GAME_VERSION: { WORLD: 2 },
+    MUSIC_TYPE: { NORMAL: 0 },
+    RIVAL_MUSIC_DATA_URL: {
+      2: {
+        0: 'https://p.eagate.573.jp/game/ddr/ddrworld/rival/music_data_single.html?rival_id=[rivalId]',
+        1: 'https://p.eagate.573.jp/game/ddr/ddrworld/rival/music_data_double.html?rival_id=[rivalId]',
+      },
+    },
   },
 }));
-jest.mock('../../../src/static/common/MusicData.js', () => ({
-  MusicData: {
-    createFromStorage: jest.fn().mockReturnValue({ encodedString: 'encoded' }),
-  },
-}));
+jest.mock('../../../src/static/common/MusicData.js', () => {
+  const MusicDataMock = jest.fn().mockImplementation(() => ({ encodedString: 'encoded' }));
+  MusicDataMock.createFromStorage = jest.fn().mockReturnValue({ encodedString: 'encoded' });
+  return { MusicData: MusicDataMock };
+});
 
 import { Parser } from '../../../src/static/common/Parser.js';
 import { Constants } from '../../../src/static/common/Constants.js';
@@ -233,5 +242,89 @@ describe('DataFetchController.handleScoreDetailResponse', () => {
 
     expect(callbacks.onNavigateTo).toHaveBeenCalledWith('http://score2');
     expect(callbacks.onFinishAction).not.toHaveBeenCalled();
+  });
+});
+
+describe('DataFetchController.handleRivalMusicListResponse', () => {
+  afterEach(() => jest.clearAllMocks());
+
+  test('ステータスが SUCCESS でない場合は onHandleError を呼ぶ', async () => {
+    const { controller, callbacks } = makeController();
+    const res = { status: Parser.STATUS.LOGIN_REQUIRED };
+
+    await controller.handleRivalMusicListResponse(res);
+
+    expect(callbacks.onHandleError).toHaveBeenCalledWith(res);
+    expect(callbacks.onSaveStorage).not.toHaveBeenCalled();
+  });
+
+  test('RIVAL_DATA_NOT_PUBLIC の場合は onHandleError を呼ぶ', async () => {
+    const { controller, callbacks } = makeController();
+    const res = { status: Parser.STATUS.RIVAL_DATA_NOT_PUBLIC };
+
+    await controller.handleRivalMusicListResponse(res);
+
+    expect(callbacks.onHandleError).toHaveBeenCalledWith(res);
+    expect(callbacks.onSaveStorage).not.toHaveBeenCalled();
+  });
+
+  test('成功時に楽曲を musicList に追加してストレージを保存する', async () => {
+    const { controller, musicList, callbacks } = makeController();
+    controller.targetPlayMode = Constants.PLAY_MODE.SINGLE;
+    controller.targetRivalId = '12345';
+    const res = {
+      status: Parser.STATUS.SUCCESS,
+      musics: [
+        { musicId: 'abc', title: 'Song A' },
+        { musicId: 'def', title: 'Song B' },
+      ],
+      hasNext: false,
+    };
+
+    await controller.handleRivalMusicListResponse(res);
+
+    expect(MusicData).toHaveBeenCalledTimes(2);
+    expect(MusicData).toHaveBeenCalledWith('abc', 0, 'Song A', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0);
+    expect(MusicData).toHaveBeenCalledWith('def', 0, 'Song B', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0);
+    expect(musicList.applyMusicData).toHaveBeenCalledTimes(2);
+    expect(callbacks.onSaveStorage).toHaveBeenCalled();
+    expect(callbacks.onUpdateCharts).toHaveBeenCalled();
+  });
+
+  test('hasNext=true の場合は次のページに遷移する', async () => {
+    const { controller, callbacks } = makeController();
+    controller.targetPlayMode = Constants.PLAY_MODE.SINGLE;
+    controller.targetRivalId = '12345';
+    const res = { status: Parser.STATUS.SUCCESS, musics: [], hasNext: true, currentPage: 0, maxPage: 3, nextUrl: 'http://next?rival_id=12345' };
+
+    await controller.handleRivalMusicListResponse(res);
+
+    expect(callbacks.onNavigateTo).toHaveBeenCalledWith('http://next?rival_id=12345');
+    expect(callbacks.onFinishAction).not.toHaveBeenCalled();
+  });
+
+  test('SINGLE 完了後は DOUBLE に切り替えて遷移する', async () => {
+    const { controller, callbacks } = makeController();
+    controller.targetPlayMode = Constants.PLAY_MODE.SINGLE;
+    controller.targetRivalId = '12345';
+    const res = { status: Parser.STATUS.SUCCESS, musics: [], hasNext: false };
+
+    await controller.handleRivalMusicListResponse(res);
+
+    expect(controller.targetPlayMode).toBe(Constants.PLAY_MODE.DOUBLE);
+    expect(callbacks.onNavigateTo).toHaveBeenCalledWith('https://p.eagate.573.jp/game/ddr/ddrworld/rival/music_data_double.html?rival_id=12345');
+    expect(callbacks.onFinishAction).not.toHaveBeenCalled();
+  });
+
+  test('DOUBLE 完了後は onFinishAction を呼ぶ', async () => {
+    const { controller, callbacks } = makeController();
+    controller.targetPlayMode = Constants.PLAY_MODE.DOUBLE;
+    controller.targetRivalId = '12345';
+    const res = { status: Parser.STATUS.SUCCESS, musics: [], hasNext: false };
+
+    await controller.handleRivalMusicListResponse(res);
+
+    expect(callbacks.onFinishAction).toHaveBeenCalled();
+    expect(callbacks.onNavigateTo).not.toHaveBeenCalled();
   });
 });
