@@ -52,6 +52,7 @@
     "prettier:write": "yarn prettier --write",
     "build": "yarn clean; export NODE_OPTIONS=--openssl-legacy-provider; tsc --noEmit && cross-env NODE_ENV=production webpack",
     "build:dev": "tsc --noEmit && cross-env NODE_ENV=development webpack",
+    "update-difficulties": "node scripts/updateDifficultiesFromBemaniwiki.mjs",
     "test": "jest",
     "test:e2e": "playwright test",
     "prepare": "husky"
