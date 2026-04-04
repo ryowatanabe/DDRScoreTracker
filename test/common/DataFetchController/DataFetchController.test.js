@@ -113,7 +113,6 @@ describe('DataFetchController.handleMusicDetailResponse', () => {
   });
 
   test('成功時に曲データを適用してストレージを保存する', async () => {
-    global.fetch = jest.fn();
     const { controller, musicList, callbacks } = makeController();
     controller.targetMusic = { type: 1 };
     controller.targetMusics = [];
@@ -129,7 +128,6 @@ describe('DataFetchController.handleMusicDetailResponse', () => {
   });
 
   test('targetMusics が残っている場合は次の曲へ遷移する', async () => {
-    global.fetch = jest.fn();
     const { controller, callbacks } = makeController();
     controller.targetMusic = { type: 1 };
     controller.targetMusics = [{ musicId: '2', url: 'http://music2' }];
