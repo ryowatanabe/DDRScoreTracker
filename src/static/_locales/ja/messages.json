@@ -278,6 +278,15 @@
   "browser_action_debug_page_refresh_all_music_info_description": {
     "message": "端末上の楽曲リストに含まれる全ての曲の楽曲情報を、公式サイトから再取得します。"
   },
+  "browser_action_debug_page_get_rival_music_list": {
+    "message": "ライバル楽曲リストの取得"
+  },
+  "browser_action_debug_page_get_rival_music_list_rival_id_label": {
+    "message": "ライバルID:"
+  },
+  "browser_action_debug_page_get_rival_music_list_description": {
+    "message": "指定したライバルIDのプレイヤーがプレイ済みの楽曲IDと楽曲名を取得し、楽曲リストに追加します。"
+  },
   "browser_action_debug_page_reset_saved_filters": {
     "message": "保存されたフィルタのリセット"
   },
@@ -504,5 +513,25 @@
   },
   "options_ui_music_list_reload_interval": {
     "message": "楽曲リストのチェック間隔 (ミリ秒, 0でチェック停止)"
+  },
+  "log_message_update_rival_music_list_begin": {
+    "message": "ライバル楽曲リストを取得..."
+  },
+  "log_message_update_rival_music_list_progress": {
+    "message": "$MODE$, $CURRENT$ / $MAX$ ページ",
+    "placeholders": {
+      "mode": {
+        "content": "$1"
+      },
+      "current": {
+        "content": "$2"
+      },
+      "max": {
+        "content": "$3"
+      }
+    }
+  },
+  "log_message_update_rival_music_list_rival_data_not_public": {
+    "message": "指定したライバルはデータを公開していません。"
   }
 }
