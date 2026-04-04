@@ -115,22 +115,7 @@ export class DataFetchController {
       res.musics!.forEach((music) => {
         music['type'] = this.targetMusic!.type;
         const musicData = MusicData.createFromStorage(music);
-        const body = JSON.stringify({ text: musicData.encodedString });
-        if (this.musicList.applyMusicData(musicData)) {
-          fetch('https://us-west1-blissful-mile-450603-h9.cloudfunctions.net/unregistered_music', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: body,
-          })
-            .then((response) => {
-              Logger.debug(response);
-            })
-            .catch((reason) => {
-              Logger.debug(reason);
-            });
-        }
+        this.musicList.applyMusicData(musicData);
       });
       this.onSaveStorage();
       this.onUpdateCharts();
