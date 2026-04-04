@@ -13,6 +13,16 @@ test('normalizeTitle: 脚注マーカーを除去する', () => {
   expect(normalizeTitle('Fly With Me[*12]')).toBe('Fly With Me');
 });
 
+test('parseBemaniwikiHtml: note_super 注釈が曲名に残らない', () => {
+  const songs = parseBemaniwikiHtml(html);
+  const titles = songs.map((s) => s.title);
+  // note_super タグ由来の *N が除去されていること
+  expect(titles).toContain('Timepiece phase II');
+  expect(titles).not.toContain('Timepiece phase II*7');
+  expect(titles).toContain('羽根亡キ少女唄');
+  expect(titles).not.toContain('羽根亡キ少女唄*8');
+});
+
 test('normalizeTitle: 全角英数を半角に変換する', () => {
   expect(normalizeTitle('Ａ')).toBe('A');
   expect(normalizeTitle('１２３')).toBe('123');

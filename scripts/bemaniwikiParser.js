@@ -68,6 +68,10 @@ function normalizeTitle(title) {
 function parseBemaniwikiHtml(htmlString) {
   const dom = new JSDOM(htmlString);
   const doc = dom.window.document;
+
+  // note_super 注釈リンクをDOMから除去 (textContent に *N が混入するのを防ぐ)
+  doc.querySelectorAll('a.note_super').forEach((el) => el.remove());
+
   const tables = doc.querySelectorAll('table');
 
   const songs = [];
