@@ -13,7 +13,7 @@
     "@babel/preset-typescript": "7.28.5",
     "@playwright/test": "1.58.2",
     "@tailwindcss/postcss": "4.2.2",
-    "@types/chrome": "0.1.38",
+    "@types/chrome": "0.1.39",
     "@typescript-eslint/eslint-plugin": "8.57.2",
     "@typescript-eslint/parser": "8.57.2",
     "@vue/test-utils": "2.4.6",
