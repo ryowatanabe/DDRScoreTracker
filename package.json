@@ -11,7 +11,7 @@
     "@babel/core": "7.28.6",
     "@babel/preset-env": "7.29.2",
     "@babel/preset-typescript": "7.28.5",
-    "@playwright/test": "1.58.2",
+    "@playwright/test": "1.59.1",
     "@tailwindcss/postcss": "4.2.2",
     "@types/chrome": "0.1.38",
     "@typescript-eslint/eslint-plugin": "8.57.2",
