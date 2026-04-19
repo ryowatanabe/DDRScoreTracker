@@ -108,7 +108,24 @@ test(`MusicData.merge merge value onto empty (isDeleted)`, () => {
 test(`MusicData.merge merge empty onto value (isDeleted)`, () => {
   const base = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 1);
   const target = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0);
-  const expected = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0);
-  base.merge(target);
+  const expected = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 1);
+  const result = base.merge(target);
   expect(base).toStrictEqual(expected);
+  expect(result).toBe(false);
+});
+
+test(`MusicData.merge merge value onto empty (isDeleted) returns true`, () => {
+  const base = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0);
+  const target = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 1);
+  const result = base.merge(target);
+  expect(base.isDeleted).toBe(1);
+  expect(result).toBe(true);
+});
+
+test(`MusicData.merge same isDeleted value does not update`, () => {
+  const base = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 1);
+  const target = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 1);
+  const result = base.merge(target);
+  expect(base.isDeleted).toBe(1);
+  expect(result).toBe(false);
 });

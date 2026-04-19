@@ -81,7 +81,7 @@ export class MusicData {
       isUpdated = true;
       this.title = musicData.title;
     }
-    if (this.isDeleted !== musicData.isDeleted) {
+    if (musicData.isDeleted !== 0 && this.isDeleted !== musicData.isDeleted) {
       isUpdated = true;
       this.isDeleted = musicData.isDeleted;
     }
