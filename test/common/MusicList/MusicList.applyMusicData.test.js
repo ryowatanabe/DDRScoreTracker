@@ -74,3 +74,27 @@ test('MusicList.applyEncodedString applies from encoded string', () => {
   expect(result).toBe(true);
   expect(musicList.hasMusic('91qD6DbDqi96qbIO66oboliPD8IPP6io')).toBe(true);
 });
+
+test('MusicList.applyMusicData does not overwrite isDeleted=1 with isDeleted=0', () => {
+  const musicList = new MusicList();
+  const musicData1 = new MusicData('music001', Constants.MUSIC_TYPE.NORMAL, 'Deleted Song', [0, 5, 8, 12, 0, 0, 0, 0, 0], 1);
+  musicList.applyMusicData(musicData1);
+  expect(musicList.getMusicDataById('music001').isDeleted).toBe(1);
+
+  const musicData2 = new MusicData('music001', Constants.MUSIC_TYPE.NORMAL, 'Deleted Song', [0, 5, 8, 12, 0, 0, 0, 0, 0], 0);
+  const result = musicList.applyMusicData(musicData2);
+  expect(result).toBe(false);
+  expect(musicList.getMusicDataById('music001').isDeleted).toBe(1);
+});
+
+test('MusicList.applyMusicData allows isDeleted=1 to mark an active song as deleted', () => {
+  const musicList = new MusicList();
+  const musicData1 = new MusicData('music001', Constants.MUSIC_TYPE.NORMAL, 'Song A', [0, 5, 8, 12, 0, 0, 0, 0, 0], 0);
+  musicList.applyMusicData(musicData1);
+  expect(musicList.getMusicDataById('music001').isDeleted).toBe(0);
+
+  const musicData2 = new MusicData('music001', Constants.MUSIC_TYPE.NORMAL, 'Song A', [0, 5, 8, 12, 0, 0, 0, 0, 0], 1);
+  const result = musicList.applyMusicData(musicData2);
+  expect(result).toBe(true);
+  expect(musicList.getMusicDataById('music001').isDeleted).toBe(1);
+});
