@@ -158,8 +158,14 @@ async function main() {
 
     // 6. レポート出力
     const shortPath = filePath.replace(__dirname + '/../', '');
+    const totalLines = updatedLines.filter((line) => line.split('\t').length === FIELD.COUNT).length;
+    const nullVersionCount = updatedLines.filter((line) => {
+      const fields = line.split('\t');
+      return fields.length === FIELD.COUNT && fields[FIELD.CONTAINED_VERSION] === '';
+    }).length;
     console.log(`\n========== ${shortPath} ==========`);
     console.log(`更新した曲: ${updateReport.length} 曲`);
+    console.log(`バージョン未設定のまま: ${nullVersionCount} / ${totalLines} 曲`);
     if (updateReport.length > 0) {
       for (const { title, version } of updateReport) {
         console.log(`  [更新] ${title} → version=${version}`);
