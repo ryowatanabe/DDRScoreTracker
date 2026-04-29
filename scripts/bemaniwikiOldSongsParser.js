@@ -39,6 +39,9 @@ function parseBemaniwikiOldSongsHtml(htmlString) {
 
       // rowspan/colspan を考慮して論理セル配列を組み立てる
       const cells = Array.from(row.querySelectorAll('td'));
+      // ヘッダ行 (<th> のみ) は <td> が 0 個。分類+曲名の 2 列は rowspan なしで全行に存在するため
+      // 最低 2 セルないと楽曲行ではない
+      if (cells.length < 2) continue;
       const logicalCells = [];
       let cellIdx = 0;
       let c = 0;
@@ -58,14 +61,16 @@ function parseBemaniwikiOldSongsHtml(htmlString) {
         }
         c += colspan;
       }
-
-      // 楽曲行は論理列 15 列前後。ヘッダ行や短い行はスキップ
-      if (logicalCells.length < 5) continue;
+      // 全セルを消費した後も、rowspan が残っている列を当該行でデクリメントする。
+      // 例: artist/source が rowspan=3 で BPM も rowspan=2 の場合、Type C / TYPE3 行は
+      // <td> が 2 個しかなく上記 while が c=2 で終了するが、colOccupied[2..] はまだ残っている。
+      for (let i = c; i < colOccupied.length; i++) {
+        if (colOccupied[i] > 0) colOccupied[i]--;
+      }
 
       // 旧曲リストの列構成: 分類[0] 曲名[1] アーティスト[2] 出典[3] BPM[4] MV[5] 難易度×9
-      const titleCell = logicalCells[1];
-      if (!titleCell) continue;
-      const rawTitle = titleCell.textContent.trim();
+      // 分類・曲名列は rowspan なしで全行に存在するため cells[1] = 曲名セル
+      const rawTitle = cells[1].textContent.trim();
       const title = normalizeTitle(rawTitle);
       if (!title) continue;
 
