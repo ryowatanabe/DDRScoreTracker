@@ -97,6 +97,7 @@ async function main() {
     const updateReport = [];
     const conflictReport = [];
     const unmatchedWiki = [];
+    const nullVersionTitles = [];
 
     // docs/musics に存在するが wiki に無い曲を後で検出するため、wiki 側タイトルセットを使う
     const docsTitles = new Set();
@@ -115,6 +116,7 @@ async function main() {
 
       if (newVersion === undefined) {
         // wiki に存在しない楽曲 → そのまま保持 (warn は後でまとめて)
+        if (existingVersionStr === '') nullVersionTitles.push(parsed.title);
         updatedLines.push(buildLine(parsed.fields));
         continue;
       }
@@ -159,13 +161,9 @@ async function main() {
     // 6. レポート出力
     const shortPath = filePath.replace(__dirname + '/../', '');
     const totalLines = updatedLines.filter((line) => line.split('\t').length === FIELD.COUNT).length;
-    const nullVersionCount = updatedLines.filter((line) => {
-      const fields = line.split('\t');
-      return fields.length === FIELD.COUNT && fields[FIELD.CONTAINED_VERSION] === '';
-    }).length;
     console.log(`\n========== ${shortPath} ==========`);
     console.log(`更新した曲: ${updateReport.length} 曲`);
-    console.log(`バージョン未設定のまま: ${nullVersionCount} / ${totalLines} 曲`);
+    console.log(`バージョン未設定のまま: ${nullVersionTitles.length} / ${totalLines} 曲`);
     if (updateReport.length > 0) {
       for (const { title, version } of updateReport) {
         console.log(`  [更新] ${title} → version=${version}`);
@@ -175,6 +173,12 @@ async function main() {
       console.log(`\n[警告] 既存値と wiki の値が異なるため更新をスキップ: ${conflictReport.length} 曲`);
       for (const { title, existingVersion, newVersion } of conflictReport) {
         console.log(`  [競合] ${title} (既存=${existingVersion}, wiki=${newVersion})`);
+      }
+    }
+    if (nullVersionTitles.length > 0) {
+      console.log(`\n[未設定] wiki に存在せずバージョン未設定のまま: ${nullVersionTitles.length} 曲`);
+      for (const title of nullVersionTitles) {
+        console.log(`  [未設定] ${title}`);
       }
     }
     if (unmatchedWiki.length > 0) {
