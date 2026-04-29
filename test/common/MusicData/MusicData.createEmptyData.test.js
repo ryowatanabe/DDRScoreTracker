@@ -8,6 +8,7 @@ test('MusicData.createEmptyData creates an instance with expected defaults', () 
   expect(musicData.title).toBe('');
   expect(musicData.difficulty).toStrictEqual([0, 0, 0, 0, 0, 0, 0, 0, 0]);
   expect(musicData.isDeleted).toBe(0);
+  expect(musicData.containedVersion).toBeNull();
 });
 
 test('MusicData.createEmptyData with NONSTOP type', () => {

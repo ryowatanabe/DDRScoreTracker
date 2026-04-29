@@ -11,6 +11,7 @@ exports[`Parser.ParseMusicDetail (ddrworld/hidden-song) 1`] = `
 Object {
   "musics": Array [
     MusicData {
+      "containedVersion": null,
       "difficulty": Array [
         0,
         0,
@@ -36,6 +37,7 @@ exports[`Parser.ParseMusicDetail (ddrworld/no-challenge-chart) 1`] = `
 Object {
   "musics": Array [
     MusicData {
+      "containedVersion": null,
       "difficulty": Array [
         1,
         4,
@@ -68,6 +70,7 @@ exports[`Parser.ParseMusicDetail (ddrworld/normal) 1`] = `
 Object {
   "musics": Array [
     MusicData {
+      "containedVersion": null,
       "difficulty": Array [
         3,
         6,
@@ -100,6 +103,7 @@ exports[`Parser.ParseMusicDetail (grade) 1`] = `
 Object {
   "musics": Array [
     MusicData {
+      "containedVersion": null,
       "difficulty": Array [
         0,
         0,
@@ -132,6 +136,7 @@ exports[`Parser.ParseMusicDetail (nonstop) 1`] = `
 Object {
   "musics": Array [
     MusicData {
+      "containedVersion": null,
       "difficulty": Array [
         4,
         8,
@@ -157,6 +162,7 @@ exports[`Parser.ParseMusicDetail (normal) 1`] = `
 Object {
   "musics": Array [
     MusicData {
+      "containedVersion": null,
       "difficulty": Array [
         4,
         7,

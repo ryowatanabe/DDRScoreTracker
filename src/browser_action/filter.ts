@@ -1,7 +1,7 @@
 import { I18n } from '../static/common/I18n.js';
 import { App } from '../static/common/App.js';
 
-const filterNames = ['playMode', 'musicType', 'difficulty', 'level', 'clearType', 'flareRank', 'scoreRank', 'availability'];
+const filterNames = ['playMode', 'musicType', 'difficulty', 'level', 'containedVersion', 'clearType', 'flareRank', 'scoreRank', 'availability'];
 
 let app: App;
 let savedConditions: any[] = [];
@@ -80,6 +80,9 @@ export function initialize(a: App) {
     document.getElementById(`filterCondition_${name}_all`)!.addEventListener('click', selectAll.bind(null, `filterCondition_${name}`));
     document.getElementById(`filterCondition_${name}_clear`)!.addEventListener('click', selectNone.bind(null, `filterCondition_${name}`));
   });
+  document.getElementById('filterCondition_containedVersion_classic')!.addEventListener('click', selectRange.bind(null, 'filterCondition_containedVersion', 0, 12));
+  document.getElementById('filterCondition_containedVersion_white')!.addEventListener('click', selectRange.bind(null, 'filterCondition_containedVersion', 13, 15));
+  document.getElementById('filterCondition_containedVersion_gold')!.addEventListener('click', selectRange.bind(null, 'filterCondition_containedVersion', 16, 19));
   /* saved filtersのプルダウンを作る */
   savedConditions = app.getSavedConditions() ?? [];
   updateSavedFilterSelect();
@@ -112,6 +115,13 @@ function selectNone(name: string) {
   const elements = document.querySelectorAll(`input[name=${name}]`) as NodeListOf<HTMLInputElement>;
   elements.forEach((element) => {
     element.checked = false;
+  });
+}
+function selectRange(name: string, min: number, max: number) {
+  const elements = document.querySelectorAll(`input[name=${name}]`) as NodeListOf<HTMLInputElement>;
+  elements.forEach((element) => {
+    const value = parseInt(element.value, 10);
+    element.checked = value >= min && value <= max;
   });
 }
 

@@ -9,7 +9,7 @@ const { parseBemaniwikiHtml, normalizeTitle } = require('./bemaniwikiParser.js')
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const BEMANIWIKI_URL = 'https://bemaniwiki.com/?DanceDanceRevolution+WORLD/%E6%96%B0%E6%9B%B2%E3%83%AA%E3%82%B9%E3%83%88';
-const MUSIC_LIST_PATH = join(__dirname, '../docs/musics/2.txt');
+const MUSIC_LIST_PATH = join(__dirname, '../docs/musics/3.txt');
 
 // docs/musics/2.txt のフィールド定義 (MusicData.ts と同一)
 const FIELD = {
@@ -18,8 +18,9 @@ const FIELD = {
   IS_DELETED: 2,
   DIFFICULTY_START: 3, // difficulty[0..8] = fields[3..11]
   DIFFICULTY_END: 12, // exclusive
-  TITLE: 12,
-  COUNT: 13,
+  CONTAINED_VERSION: 12,
+  TITLE: 13,
+  COUNT: 14,
 };
 
 const DIFFICULTY_NAMES = ['bSP', 'BSP', 'DSP', 'ESP', 'CSP', 'BDP', 'DDP', 'EDP', 'CDP'];
@@ -28,12 +29,18 @@ const DIFFICULTY_NAMES = ['bSP', 'BSP', 'DSP', 'ESP', 'CSP', 'BDP', 'DDP', 'EDP'
 
 function readMusicList(filePath) {
   const content = readFileSync(filePath, 'utf8');
-  return content.split('\n').filter((line) => line.trim() !== '');
+  return content.split(/\r?\n/).filter((line) => line.trim() !== '');
 }
 
 function parseLine(line) {
   const fields = line.split('\t');
-  if (fields.length !== FIELD.COUNT) return null;
+  if (fields.length !== 13 && fields.length !== FIELD.COUNT) return null;
+  // 13要素の旧形式: [12]=title → 新形式: [12]=containedVersion(空), [13]=title に変換
+  if (fields.length === 13) {
+    const title = fields[12];
+    fields[12] = '';
+    fields[13] = title;
+  }
   return {
     fields,
     title: fields[FIELD.TITLE],

@@ -89,6 +89,9 @@
   "browser_action_filter_filter_condition_level": {
     "message": "レベル"
   },
+  "browser_action_filter_filter_condition_contained_version": {
+    "message": "バージョン"
+  },
   "browser_action_filter_filter_condition_clear_type": {
     "message": "フルコンボ・クリア種別"
   },

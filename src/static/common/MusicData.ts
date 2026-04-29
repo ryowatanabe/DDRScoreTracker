@@ -1,4 +1,4 @@
-import { Constants, type MusicType } from './Constants.js';
+import { Constants, type MusicType, type MusicVersion } from './Constants.js';
 import { Logger } from './Logger.js';
 
 export class MusicData {
@@ -7,17 +7,19 @@ export class MusicData {
   title: string;
   difficulty: number[];
   isDeleted: number;
+  containedVersion: MusicVersion;
 
-  constructor(musicId: string, type: MusicType, title: string, difficulty: number[], isDeleted: number) {
+  constructor(musicId: string, type: MusicType, title: string, difficulty: number[], isDeleted: number, containedVersion: MusicVersion = null) {
     this.musicId = musicId;
     this.type = type;
     this.title = title;
     this.difficulty = difficulty;
     this.isDeleted = isDeleted;
+    this.containedVersion = containedVersion;
   }
 
   static createEmptyData(musicId: string, musicType: MusicType): MusicData {
-    return new MusicData(musicId, musicType, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0);
+    return new MusicData(musicId, musicType, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0, null);
   }
 
   static createFromStorage(storageData: Record<string, unknown>): MusicData {
@@ -26,7 +28,8 @@ export class MusicData {
       storageData['type'] as MusicType,
       storageData['title'] as string,
       storageData['difficulty'] as number[],
-      storageData['isDeleted'] as number
+      storageData['isDeleted'] as number,
+      (storageData['containedVersion'] as MusicVersion) ?? null
     );
     return instance;
   }
@@ -41,18 +44,31 @@ export class MusicData {
     const IS_DELETED_INDEX = 2;
     const DIFFICULTY_START_INDEX = 3;
     const DIFFICULTY_END_INDEX = 12;
-    const TITLE_INDEX = 12;
-    const ELEMENT_COUNT = 13;
-    if (elements.length !== ELEMENT_COUNT) {
+    const CONTAINED_VERSION_INDEX = 12;
+    const TITLE_INDEX = 13;
+    if (elements.length !== 13 && elements.length !== 14) {
       Logger.error(`MusicData.create invalid string: ${encodedString}`);
       return null;
+    }
+    // 13要素は旧形式: [12]=title, containedVersion なし
+    // 14要素は新形式: [12]=containedVersion, [13]=title
+    let title: string;
+    let containedVersion: MusicVersion = null;
+    if (elements.length === 13) {
+      title = elements[DIFFICULTY_END_INDEX];
+    } else {
+      title = elements[TITLE_INDEX];
+      if (elements[CONTAINED_VERSION_INDEX] !== '') {
+        containedVersion = parseInt(elements[CONTAINED_VERSION_INDEX], 10) as MusicVersion;
+      }
     }
     const instance = new MusicData(
       elements[MUSIC_ID_INDEX],
       parseInt(elements[TYPE_INDEX], 10) as MusicType,
-      elements[TITLE_INDEX],
+      title,
       elements.slice(DIFFICULTY_START_INDEX, DIFFICULTY_END_INDEX).map((element) => parseInt(element, 10)),
-      parseInt(elements[IS_DELETED_INDEX], 10)
+      parseInt(elements[IS_DELETED_INDEX], 10),
+      containedVersion
     );
     return instance;
   }
@@ -85,6 +101,10 @@ export class MusicData {
       isUpdated = true;
       this.isDeleted = musicData.isDeleted;
     }
+    if (musicData.containedVersion !== null && this.containedVersion !== musicData.containedVersion) {
+      isUpdated = true;
+      this.containedVersion = musicData.containedVersion;
+    }
     return isUpdated;
   }
 
@@ -97,6 +117,7 @@ export class MusicData {
   }
 
   get encodedString(): string {
-    return [this.musicId, this.type, this.isDeleted, this.difficulty, this.title].flat().join('\t');
+    const containedVersionStr = this.containedVersion !== null ? String(this.containedVersion) : '';
+    return [this.musicId, this.type, this.isDeleted, this.difficulty, containedVersionStr, this.title].flat().join('\t');
   }
 }

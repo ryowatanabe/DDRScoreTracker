@@ -1,4 +1,4 @@
-import { Constants, type PlayMode, type Difficulty, type ClearType, type ScoreRank, type FlareRank } from './Constants.js';
+import { Constants, type PlayMode, type Difficulty, type ClearType, type ScoreRank, type FlareRank, type MusicVersion } from './Constants.js';
 import { Util } from './Util.js';
 import { NullScoreDetail, ScoreDetail } from './ScoreDetail.js';
 import type { MusicData } from './MusicData.js';
@@ -47,6 +47,13 @@ export class ChartData {
       return 0;
     }
     return this.musicData.getLevel(Util.getDifficultyValue(this.playMode, this.difficulty));
+  }
+
+  get containedVersion(): MusicVersion {
+    if (this.musicData === null) {
+      return null;
+    }
+    return this.musicData.containedVersion;
   }
 
   get availability(): number {

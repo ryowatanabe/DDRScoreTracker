@@ -1,6 +1,7 @@
 export type GameVersion = 0 | 1 | 2;
 export type PlayMode = 0 | 1;
 export type MusicType = -1 | 0 | 1 | 2 | 3 | 4;
+export type MusicVersion = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | null;
 export type Difficulty = 0 | 1 | 2 | 3 | 4;
 export type DifficultyValue = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 export type ClearType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
@@ -18,6 +19,59 @@ export class Constants {
       A20PLUS: 0,
       A3: 1,
       WORLD: 2,
+    };
+  }
+
+  // DDR シリーズの初収録バージョン定数。GAME_VERSION (eagate 対象シリーズ) とは別概念。
+  // bemaniwiki アンカー ID との対応は scripts/musicVersionMap.cjs に記載。
+  // 値を追加した場合は MusicVersion 型と musicVersionMap.cjs も合わせて更新すること。
+  static get MUSIC_VERSION() {
+    return {
+      DDR_1ST: 0,
+      DDR_2ND: 1,
+      DDR_3RD: 2,
+      DDR_4TH: 3,
+      DDR_5TH: 4,
+      DDRMAX: 5,
+      DDRMAX2: 6,
+      DDR_EXTREME: 7,
+      DDR_SUPERNOVA: 8,
+      DDR_SUPERNOVA2: 9,
+      DDR_X: 10,
+      DDR_X2: 11,
+      DDR_X3: 12,
+      DDR_2013: 13,
+      DDR_2014: 14,
+      DDR_A: 15,
+      DDR_A20: 16,
+      DDR_A20PLUS: 17,
+      DDR_A3: 18,
+      DDR_WORLD: 19,
+    };
+  }
+
+  static get MUSIC_VERSION_NAME_MAP(): Record<number, string> {
+    return {
+      0: '1stMIX',
+      1: '2ndMIX',
+      2: '3rdMIX',
+      3: '4thMIX',
+      4: '5thMIX',
+      5: 'MAX',
+      6: 'MAX2',
+      7: 'EXTREME',
+      8: 'SuperNOVA',
+      9: 'SuperNOVA2',
+      10: 'X',
+      11: 'X2',
+      12: 'X3 VS 2ndMIX',
+      13: '(2013)',
+      14: '(2014)',
+      15: 'A',
+      16: 'A20',
+      17: 'A20 PLUS',
+      18: 'A3',
+      19: 'WORLD',
     };
   }
 
@@ -82,7 +136,7 @@ export class Constants {
   }
 
   static get MUSIC_LIST_VERSION() {
-    return 2;
+    return 3;
   }
 
   static get MUSIC_LIST_URL() {
