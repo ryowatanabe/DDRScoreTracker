@@ -26,6 +26,28 @@ test('MusicData.createFromString with wrong element count returns null', () => {
   expect(MusicData.createFromString(shortString)).toBeNull();
 });
 
+test('MusicData.createFromString with 14-element string sets containedVersion', () => {
+  const encodedString = '91qD6DbDqi96qbIO66oboliPD8IPP6io\t0\t0\t3\t7\t11\t13\t16\t7\t11\t13\t16\t輪廻転生\t15';
+  const musicData = MusicData.createFromString(encodedString);
+  expect(musicData).not.toBeNull();
+  expect(musicData.containedVersion).toBe(15);
+  expect(musicData.title).toBe('輪廻転生');
+});
+
+test('MusicData.createFromString with 14-element string and empty containedVersion field sets null', () => {
+  const encodedString = '91qD6DbDqi96qbIO66oboliPD8IPP6io\t0\t0\t3\t7\t11\t13\t16\t7\t11\t13\t16\t輪廻転生\t';
+  const musicData = MusicData.createFromString(encodedString);
+  expect(musicData).not.toBeNull();
+  expect(musicData.containedVersion).toBeNull();
+});
+
+test('MusicData.createFromString with legacy 13-element string sets containedVersion to null', () => {
+  const encodedString = '91qD6DbDqi96qbIO66oboliPD8IPP6io\t0\t0\t3\t7\t11\t13\t16\t7\t11\t13\t16\t輪廻転生';
+  const musicData = MusicData.createFromString(encodedString);
+  expect(musicData).not.toBeNull();
+  expect(musicData.containedVersion).toBeNull();
+});
+
 test('MusicData.createFromString with isDeleted=1', () => {
   const encodedString = 'musicId001\t0\t1\t3\t7\t11\t13\t16\t7\t11\t13\t16\tSong Title';
   const musicData = MusicData.createFromString(encodedString);

@@ -129,3 +129,35 @@ test(`MusicData.merge same isDeleted value does not update`, () => {
   expect(base.isDeleted).toBe(1);
   expect(result).toBe(false);
 });
+
+test(`MusicData.merge sets containedVersion when target has value and base is null`, () => {
+  const base = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0, null);
+  const target = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0, 15);
+  const result = base.merge(target);
+  expect(base.containedVersion).toBe(15);
+  expect(result).toBe(true);
+});
+
+test(`MusicData.merge does not overwrite containedVersion when target is null`, () => {
+  const base = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0, 15);
+  const target = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0, null);
+  const result = base.merge(target);
+  expect(base.containedVersion).toBe(15);
+  expect(result).toBe(false);
+});
+
+test(`MusicData.merge updates containedVersion when target has different non-null value`, () => {
+  const base = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0, 15);
+  const target = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0, 19);
+  const result = base.merge(target);
+  expect(base.containedVersion).toBe(19);
+  expect(result).toBe(true);
+});
+
+test(`MusicData.merge does not update when containedVersion values are equal`, () => {
+  const base = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0, 15);
+  const target = new MusicData('id', Constants.MUSIC_TYPE.NORMAL, '', [0, 0, 0, 0, 0, 0, 0, 0, 0], 0, 15);
+  const result = base.merge(target);
+  expect(base.containedVersion).toBe(15);
+  expect(result).toBe(false);
+});

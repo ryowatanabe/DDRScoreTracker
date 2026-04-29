@@ -28,3 +28,28 @@ test('MusicData.createFromStorage with isDeleted=1', () => {
   const musicData = MusicData.createFromStorage(storageData);
   expect(musicData.isDeleted).toBe(1);
 });
+
+test('MusicData.createFromStorage without containedVersion sets null', () => {
+  const storageData = {
+    musicId: 'abc123',
+    type: Constants.MUSIC_TYPE.NORMAL,
+    title: 'Test Song',
+    difficulty: [0, 5, 8, 12, 0, 0, 0, 0, 0],
+    isDeleted: 0,
+  };
+  const musicData = MusicData.createFromStorage(storageData);
+  expect(musicData.containedVersion).toBeNull();
+});
+
+test('MusicData.createFromStorage with containedVersion sets the value', () => {
+  const storageData = {
+    musicId: 'abc123',
+    type: Constants.MUSIC_TYPE.NORMAL,
+    title: 'Test Song',
+    difficulty: [0, 5, 8, 12, 0, 0, 0, 0, 0],
+    isDeleted: 0,
+    containedVersion: 15,
+  };
+  const musicData = MusicData.createFromStorage(storageData);
+  expect(musicData.containedVersion).toBe(15);
+});
