@@ -82,20 +82,16 @@ async function main() {
   const deletedSongs = parseBemaniwikiDeletedSongsHtml(deletedHtml);
   console.log(`旧曲ページ: ${oldSongs.length} 曲, 新曲ページ: ${newSongs.length} 曲, 削除曲ページ: ${deletedSongs.length} 曲`);
 
-  // 3. title → version の Map を構築 (旧曲 > 削除曲 > 新曲 の優先順位)
+  // 3. title → version の Map を構築 (新曲 > 旧曲 > 削除曲 の優先順位)
   const titleToVersion = new Map();
+  for (const { title, version } of deletedSongs) {
+    if (version !== null) titleToVersion.set(title, version);
+  }
   for (const { title, version } of oldSongs) {
     if (version !== null) titleToVersion.set(title, version);
   }
-  for (const { title, version } of deletedSongs) {
-    if (version !== null && !titleToVersion.has(title)) {
-      titleToVersion.set(title, version);
-    }
-  }
   for (const { title } of newSongs) {
-    if (!titleToVersion.has(title)) {
-      titleToVersion.set(title, MUSIC_VERSION.DDR_WORLD);
-    }
+    titleToVersion.set(title, MUSIC_VERSION.DDR_WORLD);
   }
   console.log(`バージョン情報: ${titleToVersion.size} 曲`);
 
