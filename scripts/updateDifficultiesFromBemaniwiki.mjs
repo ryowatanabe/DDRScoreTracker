@@ -33,7 +33,7 @@ function readMusicList(filePath) {
 
 function parseLine(line) {
   const fields = line.split('\t');
-  if (fields.length !== FIELD.COUNT) return null;
+  if (fields.length !== FIELD.COUNT && fields.length !== FIELD.COUNT + 1) return null;
   return {
     fields,
     title: fields[FIELD.TITLE],
