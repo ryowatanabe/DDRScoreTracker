@@ -89,6 +89,9 @@
   "browser_action_filter_filter_condition_level": {
     "message": "Level"
   },
+  "browser_action_filter_filter_condition_contained_version": {
+    "message": "Version"
+  },
   "browser_action_filter_filter_condition_clear_type": {
     "message": "Clear Type"
   },
