@@ -44,20 +44,28 @@ export class MusicData {
     const IS_DELETED_INDEX = 2;
     const DIFFICULTY_START_INDEX = 3;
     const DIFFICULTY_END_INDEX = 12;
-    const TITLE_INDEX = 12;
-    const CONTAINED_VERSION_INDEX = 13;
+    const CONTAINED_VERSION_INDEX = 12;
+    const TITLE_INDEX = 13;
     if (elements.length !== 13 && elements.length !== 14) {
       Logger.error(`MusicData.create invalid string: ${encodedString}`);
       return null;
     }
+    // 13要素は旧形式: [12]=title, containedVersion なし
+    // 14要素は新形式: [12]=containedVersion, [13]=title
+    let title: string;
     let containedVersion: MusicVersion = null;
-    if (elements.length === 14 && elements[CONTAINED_VERSION_INDEX] !== '') {
-      containedVersion = parseInt(elements[CONTAINED_VERSION_INDEX], 10) as MusicVersion;
+    if (elements.length === 13) {
+      title = elements[DIFFICULTY_END_INDEX];
+    } else {
+      title = elements[TITLE_INDEX];
+      if (elements[CONTAINED_VERSION_INDEX] !== '') {
+        containedVersion = parseInt(elements[CONTAINED_VERSION_INDEX], 10) as MusicVersion;
+      }
     }
     const instance = new MusicData(
       elements[MUSIC_ID_INDEX],
       parseInt(elements[TYPE_INDEX], 10) as MusicType,
-      elements[TITLE_INDEX],
+      title,
       elements.slice(DIFFICULTY_START_INDEX, DIFFICULTY_END_INDEX).map((element) => parseInt(element, 10)),
       parseInt(elements[IS_DELETED_INDEX], 10),
       containedVersion
@@ -110,6 +118,6 @@ export class MusicData {
 
   get encodedString(): string {
     const containedVersionStr = this.containedVersion !== null ? String(this.containedVersion) : '';
-    return [this.musicId, this.type, this.isDeleted, this.difficulty, this.title, containedVersionStr].flat().join('\t');
+    return [this.musicId, this.type, this.isDeleted, this.difficulty, containedVersionStr, this.title].flat().join('\t');
   }
 }

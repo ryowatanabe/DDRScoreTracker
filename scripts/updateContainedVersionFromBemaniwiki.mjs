@@ -20,8 +20,8 @@ const FIELD = {
   IS_DELETED: 2,
   DIFFICULTY_START: 3,
   DIFFICULTY_END: 12,
-  TITLE: 12,
-  CONTAINED_VERSION: 13,
+  CONTAINED_VERSION: 12,
+  TITLE: 13,
   COUNT: 14,
 };
 
@@ -34,9 +34,13 @@ function readMusicList(filePath) {
 
 function parseLine(line) {
   const fields = line.split('\t');
-  if (fields.length !== 13 && fields.length !== 14) return null;
-  // 13 要素の旧形式は末尾に空欄を追加して 14 要素に正規化
-  if (fields.length === 13) fields.push('');
+  if (fields.length !== 13 && fields.length !== FIELD.COUNT) return null;
+  // 13要素の旧形式: [12]=title → 新形式: [12]=containedVersion(空), [13]=title に変換
+  if (fields.length === 13) {
+    const title = fields[12];
+    fields[12] = '';
+    fields[13] = title;
+  }
   return { fields, title: fields[FIELD.TITLE] };
 }
 
