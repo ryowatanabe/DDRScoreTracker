@@ -29,7 +29,7 @@ const FIELD = {
 
 function readMusicList(filePath) {
   const content = readFileSync(filePath, 'utf8');
-  return content.split('\n').filter((line) => line.trim() !== '');
+  return content.split(/\r?\n/).filter((line) => line.trim() !== '');
 }
 
 function parseLine(line) {
