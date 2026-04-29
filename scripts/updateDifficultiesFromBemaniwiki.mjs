@@ -9,7 +9,7 @@ const { parseBemaniwikiHtml, normalizeTitle } = require('./bemaniwikiParser.js')
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const BEMANIWIKI_URL = 'https://bemaniwiki.com/?DanceDanceRevolution+WORLD/%E6%96%B0%E6%9B%B2%E3%83%AA%E3%82%B9%E3%83%88';
-const MUSIC_LIST_PATH = join(__dirname, '../docs/musics/2.txt');
+const MUSIC_LIST_PATH = join(__dirname, '../docs/musics/3.txt');
 
 // docs/musics/2.txt のフィールド定義 (MusicData.ts と同一)
 const FIELD = {

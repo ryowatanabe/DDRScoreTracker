@@ -136,7 +136,7 @@ export class Constants {
   }
 
   static get MUSIC_LIST_VERSION() {
-    return 2;
+    return 3;
   }
 
   static get MUSIC_LIST_URL() {

@@ -12,7 +12,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const NEW_SONGS_URL = 'https://bemaniwiki.com/?DanceDanceRevolution+WORLD/%E6%96%B0%E6%9B%B2%E3%83%AA%E3%82%B9%E3%83%88';
 const OLD_SONGS_URL = 'https://bemaniwiki.com/?DanceDanceRevolution+WORLD/%E6%97%A7%E6%9B%B2%E3%83%AA%E3%82%B9%E3%83%88';
-const MUSIC_LIST_PATHS = [join(__dirname, '../docs/musics/2.txt')];
+const MUSIC_LIST_PATHS = [join(__dirname, '../docs/musics/3.txt')];
 
 const FIELD = {
   MUSIC_ID: 0,
