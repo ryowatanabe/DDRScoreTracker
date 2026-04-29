@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`パース結果のスナップショット 1`] = `
+Array [
+  Object {
+    "title": "Butterfly",
+    "version": 0,
+  },
+  Object {
+    "title": "Have You Never Been Mellow",
+    "version": 0,
+  },
+  Object {
+    "title": "KUNG FU FIGHTING",
+    "version": 0,
+  },
+  Object {
+    "title": "一途",
+    "version": 18,
+  },
+  Object {
+    "title": "ミックスナッツ",
+    "version": 18,
+  },
+]
+`;

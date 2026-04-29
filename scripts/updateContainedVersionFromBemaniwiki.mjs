@@ -6,12 +6,14 @@ import { dirname, join } from 'path';
 const require = createRequire(import.meta.url);
 const { parseBemaniwikiHtml, normalizeTitle } = require('./bemaniwikiParser.js');
 const { parseBemaniwikiOldSongsHtml } = require('./bemaniwikiOldSongsParser.js');
+const { parseBemaniwikiDeletedSongsHtml } = require('./bemaniwikiDeletedSongsParser.js');
 const { MUSIC_VERSION } = require('./musicVersionMap.cjs');
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const NEW_SONGS_URL = 'https://bemaniwiki.com/?DanceDanceRevolution+WORLD/%E6%96%B0%E6%9B%B2%E3%83%AA%E3%82%B9%E3%83%88';
 const OLD_SONGS_URL = 'https://bemaniwiki.com/?DanceDanceRevolution+WORLD/%E6%97%A7%E6%9B%B2%E3%83%AA%E3%82%B9%E3%83%88';
+const DELETED_SONGS_URL = 'https://bemaniwiki.com/?DanceDanceRevolution+WORLD/%E5%89%8A%E9%99%A4%E6%9B%B2%E3%83%AA%E3%82%B9%E3%83%88';
 const MUSIC_LIST_PATHS = [join(__dirname, '../docs/musics/3.txt')];
 
 const FIELD = {
@@ -51,17 +53,21 @@ function buildLine(fields) {
 // ---- メイン処理 ----
 
 async function main() {
-  // 1. bemaniwiki から 2 ページ並列取得
+  // 1. bemaniwiki から 3 ページ並列取得
   console.log('bemaniwiki からデータを取得中...');
-  let newHtml, oldHtml;
+  let newHtml, oldHtml, deletedHtml;
   try {
-    [newHtml, oldHtml] = await Promise.all([
+    [newHtml, oldHtml, deletedHtml] = await Promise.all([
       fetch(NEW_SONGS_URL).then((r) => {
         if (!r.ok) throw new Error(`新曲ページ HTTP ${r.status}`);
         return r.text();
       }),
       fetch(OLD_SONGS_URL).then((r) => {
         if (!r.ok) throw new Error(`旧曲ページ HTTP ${r.status}`);
+        return r.text();
+      }),
+      fetch(DELETED_SONGS_URL).then((r) => {
+        if (!r.ok) throw new Error(`削除曲ページ HTTP ${r.status}`);
         return r.text();
       }),
     ]);
@@ -73,12 +79,18 @@ async function main() {
   // 2. パース
   const oldSongs = parseBemaniwikiOldSongsHtml(oldHtml);
   const newSongs = parseBemaniwikiHtml(newHtml);
-  console.log(`旧曲ページ: ${oldSongs.length} 曲, 新曲ページ: ${newSongs.length} 曲`);
+  const deletedSongs = parseBemaniwikiDeletedSongsHtml(deletedHtml);
+  console.log(`旧曲ページ: ${oldSongs.length} 曲, 新曲ページ: ${newSongs.length} 曲, 削除曲ページ: ${deletedSongs.length} 曲`);
 
-  // 3. title → version の Map を構築 (旧曲優先: 旧曲ページの方が古いバージョンを示す)
+  // 3. title → version の Map を構築 (旧曲 > 削除曲 > 新曲 の優先順位)
   const titleToVersion = new Map();
   for (const { title, version } of oldSongs) {
     if (version !== null) titleToVersion.set(title, version);
+  }
+  for (const { title, version } of deletedSongs) {
+    if (version !== null && !titleToVersion.has(title)) {
+      titleToVersion.set(title, version);
+    }
   }
   for (const { title } of newSongs) {
     if (!titleToVersion.has(title)) {
