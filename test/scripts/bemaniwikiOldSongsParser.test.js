@@ -54,6 +54,27 @@ test('ACA3 セクション内の曲が DDR_A3 バージョンに割り当てら�
   expect(song.version).toBe(MUSIC_VERSION.DDR_A3);
 });
 
+test('rowspan 先頭行 (Type A) の曲が正しいバージョンに割り当てられる', () => {
+  const songs = parseBemaniwikiOldSongsHtml(html);
+  const song = songs.find((s) => s.title === 'New York EVOLVED (Type A)');
+  expect(song).toBeDefined();
+  expect(song.version).toBe(MUSIC_VERSION.DDR_X3);
+});
+
+test('rowspan 継続行 (Type B) の曲が正しいバージョンに割り当てられる', () => {
+  const songs = parseBemaniwikiOldSongsHtml(html);
+  const song = songs.find((s) => s.title === 'New York EVOLVED (Type B)');
+  expect(song).toBeDefined();
+  expect(song.version).toBe(MUSIC_VERSION.DDR_X3);
+});
+
+test('rowspan 継続行 (Type C) の曲が正しいバージョンに割り当てられる', () => {
+  const songs = parseBemaniwikiOldSongsHtml(html);
+  const song = songs.find((s) => s.title === 'New York EVOLVED (Type C)');
+  expect(song).toBeDefined();
+  expect(song.version).toBe(MUSIC_VERSION.DDR_X3);
+});
+
 test('パース結果のスナップショット', () => {
   const songs = parseBemaniwikiOldSongsHtml(html);
   expect(songs).toMatchSnapshot();

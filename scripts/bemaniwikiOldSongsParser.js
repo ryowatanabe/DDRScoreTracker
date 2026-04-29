@@ -25,6 +25,8 @@ function parseBemaniwikiOldSongsHtml(htmlString) {
   for (const table of tables) {
     let currentVersion = null;
     const rows = table.querySelectorAll('tr');
+    // rowspan 状態: 各論理列が今後何行占有されているかを保持
+    const colOccupied = [];
 
     for (const row of rows) {
       // アンカー ID を持つ行はバージョンセクション切替行
@@ -35,12 +37,35 @@ function parseBemaniwikiOldSongsHtml(htmlString) {
         continue;
       }
 
+      // rowspan/colspan を考慮して論理セル配列を組み立てる
       const cells = Array.from(row.querySelectorAll('td'));
-      // 楽曲行は 15 列前後。ヘッダ行や短い行はスキップ
-      if (cells.length < 5) continue;
+      const logicalCells = [];
+      let cellIdx = 0;
+      let c = 0;
+      while (cellIdx < cells.length) {
+        // 前行の rowspan に占有されている列はスキップ
+        while (colOccupied[c] > 0) {
+          logicalCells[c] = null;
+          colOccupied[c]--;
+          c++;
+        }
+        const td = cells[cellIdx++];
+        const colspan = parseInt(td.getAttribute('colspan') || '1', 10);
+        const rowspan = parseInt(td.getAttribute('rowspan') || '1', 10);
+        for (let k = 0; k < colspan; k++) {
+          logicalCells[c + k] = td;
+          if (rowspan > 1) colOccupied[c + k] = rowspan - 1;
+        }
+        c += colspan;
+      }
+
+      // 楽曲行は論理列 15 列前後。ヘッダ行や短い行はスキップ
+      if (logicalCells.length < 5) continue;
 
       // 旧曲リストの列構成: 分類[0] 曲名[1] アーティスト[2] 出典[3] BPM[4] MV[5] 難易度×9
-      const rawTitle = cells[1].textContent.trim();
+      const titleCell = logicalCells[1];
+      if (!titleCell) continue;
+      const rawTitle = titleCell.textContent.trim();
       const title = normalizeTitle(rawTitle);
       if (!title) continue;
 
