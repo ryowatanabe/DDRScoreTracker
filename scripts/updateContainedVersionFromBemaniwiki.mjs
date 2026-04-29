@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const require = createRequire(import.meta.url);
-const { parseBemaniwikiHtml, normalizeTitle } = require('./bemaniwikiParser.js');
+const { parseBemaniwikiNewSongTitles, normalizeTitle } = require('./bemaniwikiParser.js');
 const { parseBemaniwikiOldSongsHtml } = require('./bemaniwikiOldSongsParser.js');
 const { parseBemaniwikiDeletedSongsHtml } = require('./bemaniwikiDeletedSongsParser.js');
 const { MUSIC_VERSION } = require('./musicVersionMap.cjs');
@@ -78,9 +78,9 @@ async function main() {
 
   // 2. パース
   const oldSongs = parseBemaniwikiOldSongsHtml(oldHtml);
-  const newSongs = parseBemaniwikiHtml(newHtml);
+  const newSongTitles = parseBemaniwikiNewSongTitles(newHtml);
   const deletedSongs = parseBemaniwikiDeletedSongsHtml(deletedHtml);
-  console.log(`旧曲ページ: ${oldSongs.length} 曲, 新曲ページ: ${newSongs.length} 曲, 削除曲ページ: ${deletedSongs.length} 曲`);
+  console.log(`旧曲ページ: ${oldSongs.length} 曲, 新曲ページ: ${newSongTitles.length} 曲, 削除曲ページ: ${deletedSongs.length} 曲`);
 
   // 3. title → version の Map を構築 (新曲 > 旧曲 > 削除曲 の優先順位)
   const titleToVersion = new Map();
@@ -90,7 +90,7 @@ async function main() {
   for (const { title, version } of oldSongs) {
     if (version !== null) titleToVersion.set(title, version);
   }
-  for (const { title } of newSongs) {
+  for (const title of newSongTitles) {
     titleToVersion.set(title, MUSIC_VERSION.DDR_WORLD);
   }
   console.log(`バージョン情報: ${titleToVersion.size} 曲`);

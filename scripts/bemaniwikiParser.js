@@ -110,4 +110,41 @@ function parseBemaniwikiHtml(htmlString) {
   return songs;
 }
 
-module.exports = { parseBemaniwikiHtml, normalizeTitle };
+/**
+ * bemaniwiki 新曲リストページの「新曲リスト」セクション (a#new) のテーブルのみを対象に
+ * 曲名の一覧を返す。「旧曲追加譜面・復活曲リスト」テーブルは含まない。
+ *
+ * @param {string} htmlString
+ * @returns {string[]}
+ */
+function parseBemaniwikiNewSongTitles(htmlString) {
+  const dom = new JSDOM(htmlString);
+  const doc = dom.window.document;
+
+  doc.querySelectorAll('a.note_super').forEach((el) => el.remove());
+
+  const anchor = doc.querySelector('#new');
+  if (!anchor) return [];
+
+  let sibling = anchor.closest('h2')?.nextElementSibling;
+  let table = null;
+  while (sibling) {
+    table = sibling.querySelector('table.style_table') ?? (sibling.matches('table.style_table') ? sibling : null);
+    if (table) break;
+    sibling = sibling.nextElementSibling;
+  }
+  if (!table) return [];
+
+  const titles = [];
+  const rows = table.querySelectorAll('tr');
+  for (let i = 2; i < rows.length; i++) {
+    const cells = Array.from(rows[i].querySelectorAll('td'));
+    if (cells.length < 13) continue;
+    const titleIndex = cells.length >= 16 ? 2 : 1;
+    const title = normalizeTitle(cells[titleIndex].textContent.trim());
+    if (title) titles.push(title);
+  }
+  return titles;
+}
+
+module.exports = { parseBemaniwikiHtml, parseBemaniwikiNewSongTitles, normalizeTitle };
