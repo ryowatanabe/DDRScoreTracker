@@ -123,9 +123,12 @@ dist
 .playwright-user-data/
 test-results/
 
-# yarn v2
-
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
+# yarn berry (zero-installs を採用しない方針)
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.yarn/install-state.gz
 .pnp.*
