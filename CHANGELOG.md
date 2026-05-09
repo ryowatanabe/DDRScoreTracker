@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.5.0] - 2026-05-09
+
+### Added
+
+- Filter charts by game version (version filter UI)
+- Collect rival music list from DDR World
+
+### Fixed
+
+- Revived songs were incorrectly classified as DDR WORLD songs
+- Dark theme display issues: select elements, input/textarea backgrounds, and button hover/active/focus states
+- Font size inconsistencies in score list and table cells (unified to 1.2rem)
+- Storage read/write in options_ui was non-functional
+- Chart list appeared blank on extension open (filter initialization timing)
+- `isDeleted` flag was lost when merging music data from sources without deletion info
+- Parsing errors for rowspan continuation rows in bemaniwiki old songs table
+
+### Changed
+
+- Removed GCS data collection for unregistered songs
+- Migrated codebase to TypeScript
+- Introduced Tailwind CSS v4 for styling
+
+### Security
+
+- Updated picomatch to 4.0.4 (CVE-2026-33672)
+
 ## [0.4.0] - 2025-02-11
 
 ### Added
@@ -152,6 +179,7 @@
 
 First release
 
+[0.5.0]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.4.0...v0.5.0
 [0.4.0]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.3.1...v0.4.0
 [0.3.1]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.3.0...v0.3.1
 [0.3.0]:https://github.com/ryowatanabe/DDRScoreTracker/compare/v0.2.0...v0.3.0

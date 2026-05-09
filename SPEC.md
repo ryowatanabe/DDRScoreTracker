@@ -7,7 +7,7 @@ https://github.com/ryowatanabe/DDRScoreTracker/tree/master/docs/musics
 データ構造に変更があると、スキーマバージョンを更新します。  
 ファイル名は スキーマバージョン番号.txt です。
 
-UTF-8/LF の TSV 形式。カラムは先頭から順に (ver.2)
+UTF-8/LF の TSV 形式。カラムは先頭から順に (ver.3)
 
  - 楽曲ID
  - 楽曲種別
@@ -15,6 +15,7 @@ UTF-8/LF の TSV 形式。カラムは先頭から順に (ver.2)
    - 1 : NONSTOP
    - 2 : 段位(A20)
    - 3 : 段位(A20 PLUS)
+   - 4 : 段位(A3)
  - 削除曲フラグ
    - 0 : 収録中
    - 1 : 収録終了
@@ -24,7 +25,30 @@ UTF-8/LF の TSV 形式。カラムは先頭から順に (ver.2)
  - レベル
    - 順に bSP, BSP, DSP, ESP, CSP, BDP, DDP, EDP, CDP
    - 譜面が存在しない場合は 0
+ - 初収録バージョン (空文字の場合は不明)
+   - 0 : 1stMIX
+   - 1 : 2ndMIX
+   - 2 : 3rdMIX
+   - 3 : 4thMIX
+   - 4 : 5thMIX
+   - 5 : MAX
+   - 6 : MAX2
+   - 7 : EXTREME
+   - 8 : SuperNOVA
+   - 9 : SuperNOVA2
+   - 10 : X
+   - 11 : X2
+   - 12 : X3 VS 2ndMIX
+   - 13 : (2013)
+   - 14 : (2014)
+   - 15 : A
+   - 16 : A20
+   - 17 : A20 PLUS
+   - 18 : A3
+   - 19 : WORLD
  - 曲名
+
+ver.2 形式 (13カラム、初収録バージョンなし) も後方互換として読み込み可能です。
 
 ### 楽曲IDについて
 
