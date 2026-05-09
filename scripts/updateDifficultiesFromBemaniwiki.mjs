@@ -2,6 +2,8 @@ import { createRequire } from 'module';
 import { readFileSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { MusicData } from '../src/static/common/MusicData.js';
+import { MusicList } from '../src/static/common/MusicList.js';
 
 const require = createRequire(import.meta.url);
 const { parseBemaniwikiHtml, normalizeTitle } = require('./bemaniwikiParser.js');
@@ -11,74 +13,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const BEMANIWIKI_URL = 'https://bemaniwiki.com/?DanceDanceRevolution+WORLD/%E6%96%B0%E6%9B%B2%E3%83%AA%E3%82%B9%E3%83%88';
 const MUSIC_LIST_PATH = join(__dirname, '../docs/musics/3.txt');
 
-// docs/musics/2.txt のフィールド定義 (MusicData.ts と同一)
-const FIELD = {
-  MUSIC_ID: 0,
-  TYPE: 1,
-  IS_DELETED: 2,
-  DIFFICULTY_START: 3, // difficulty[0..8] = fields[3..11]
-  DIFFICULTY_END: 12, // exclusive
-  CONTAINED_VERSION: 12,
-  TITLE: 13,
-  COUNT: 14,
-};
-
 const DIFFICULTY_NAMES = ['bSP', 'BSP', 'DSP', 'ESP', 'CSP', 'BDP', 'DDP', 'EDP', 'CDP'];
-
-// ---- 楽曲リストの読み込み・書き込み ----
-
-function readMusicList(filePath) {
-  const content = readFileSync(filePath, 'utf8');
-  return content.split(/\r?\n/).filter((line) => line.trim() !== '');
-}
-
-function parseLine(line) {
-  const fields = line.split('\t');
-  if (fields.length !== 13 && fields.length !== FIELD.COUNT) return null;
-  // 13要素の旧形式: [12]=title → 新形式: [12]=containedVersion(空), [13]=title に変換
-  if (fields.length === 13) {
-    const title = fields[12];
-    fields[12] = '';
-    fields[13] = title;
-  }
-  return {
-    fields,
-    title: fields[FIELD.TITLE],
-    difficulties: fields.slice(FIELD.DIFFICULTY_START, FIELD.DIFFICULTY_END).map(Number),
-  };
-}
-
-function buildLine(fields, difficulties) {
-  const updated = [...fields];
-  for (let i = 0; i < 9; i++) {
-    updated[FIELD.DIFFICULTY_START + i] = String(difficulties[i]);
-  }
-  return updated.join('\t');
-}
-
-// ---- 突合・更新ロジック ----
-
-function mergeDifficulties(local, remote) {
-  const result = [...local];
-  const updates = [];
-  for (let i = 0; i < 9; i++) {
-    if (local[i] === 0 && remote[i] !== 0) {
-      result[i] = remote[i];
-      updates.push({ index: i, name: DIFFICULTY_NAMES[i], oldValue: 0, newValue: remote[i] });
-    }
-  }
-  return { merged: result, updates };
-}
-
-function detectConflicts(title, local, remote) {
-  const conflicts = [];
-  for (let i = 0; i < 9; i++) {
-    if (local[i] !== 0 && remote[i] !== 0 && local[i] !== remote[i]) {
-      conflicts.push({ name: DIFFICULTY_NAMES[i], localValue: local[i], remoteValue: remote[i] });
-    }
-  }
-  return conflicts;
-}
 
 // ---- メイン処理 ----
 
@@ -99,66 +34,76 @@ async function main() {
   const wikiSongs = parseBemaniwikiHtml(html);
   console.log(`bemaniwiki から ${wikiSongs.length} 曲取得`);
 
-  // 3. 楽曲リストを読み込み、曲名 → 行インデックスの Map を構築
-  let lines;
-  try {
-    lines = readMusicList(MUSIC_LIST_PATH);
-  } catch (err) {
-    console.error(`[ERROR] 楽曲リストの読み込みに失敗しました: ${err.message}`);
-    process.exit(1);
+  // 3. 楽曲リストを読み込み
+  const fileContent = readFileSync(MUSIC_LIST_PATH, 'utf8');
+  const musicList = new MusicList();
+  for (const line of fileContent.split(/\r?\n/)) {
+    if (line.trim() === '') continue;
+    const md = MusicData.createFromString(line);
+    if (md === null) {
+      console.error(`[ERROR] 不正な行があります: ${line}`);
+      process.exit(1);
+    }
+    musicList.musics[md.musicId] = md;
   }
 
-  const titleToIndex = new Map();
-  for (let i = 0; i < lines.length; i++) {
-    const parsed = parseLine(lines[i]);
-    if (!parsed) continue;
-    const normalized = normalizeTitle(parsed.title);
-    if (normalized) titleToIndex.set(normalized, i);
+  // 4. title → MusicData の Map を構築
+  const titleToMusicData = new Map();
+  for (const id of musicList.musicIds) {
+    const md = musicList.musics[id];
+    const normalized = normalizeTitle(md.title);
+    if (normalized) titleToMusicData.set(normalized, md);
   }
-  console.log(`楽曲リスト: ${lines.length} 曲読み込み`);
+  console.log(`楽曲リスト: ${musicList.musicIds.length} 曲読み込み`);
 
-  // 4. 突合・更新
-  const updatedLines = [...lines];
+  // 5. 突合・更新
   const updateReport = [];
   const unmatchedTitles = [];
   const conflictReport = [];
 
   for (const wikiSong of wikiSongs) {
-    const idx = titleToIndex.get(wikiSong.title);
+    const md = titleToMusicData.get(wikiSong.title);
 
-    if (idx === undefined) {
+    if (md === undefined) {
       unmatchedTitles.push(wikiSong.title);
       continue;
     }
 
-    const parsed = parseLine(lines[idx]);
-    if (!parsed) continue;
-
-    // 値の食い違いを警告として記録
-    const conflicts = detectConflicts(wikiSong.title, parsed.difficulties, wikiSong.difficulties);
+    // 値の食い違いを警告として記録 (上書きしない)
+    const conflicts = [];
+    for (let i = 0; i < 9; i++) {
+      if (md.difficulty[i] !== 0 && wikiSong.difficulties[i] !== 0 && md.difficulty[i] !== wikiSong.difficulties[i]) {
+        conflicts.push({ name: DIFFICULTY_NAMES[i], localValue: md.difficulty[i], remoteValue: wikiSong.difficulties[i] });
+      }
+    }
     if (conflicts.length > 0) {
       conflictReport.push({ title: wikiSong.title, conflicts });
     }
 
     // 0 の箇所のみ更新
-    const { merged, updates } = mergeDifficulties(parsed.difficulties, wikiSong.difficulties);
+    const updates = [];
+    for (let i = 0; i < 9; i++) {
+      if (md.difficulty[i] === 0 && wikiSong.difficulties[i] !== 0) {
+        md.difficulty[i] = wikiSong.difficulties[i];
+        updates.push({ name: DIFFICULTY_NAMES[i], oldValue: 0, newValue: wikiSong.difficulties[i] });
+      }
+    }
     if (updates.length > 0) {
-      updatedLines[idx] = buildLine(parsed.fields, merged);
       updateReport.push({ title: wikiSong.title, updates });
     }
   }
 
-  // 5. ファイル書き戻し
+  // 6. ファイル書き戻し
   if (updateReport.length > 0) {
     try {
-      writeFileSync(MUSIC_LIST_PATH, updatedLines.join('\n') + '\n', 'utf8');
+      writeFileSync(MUSIC_LIST_PATH, musicList.encodedString + '\n', 'utf8');
     } catch (err) {
       console.error(`[ERROR] 楽曲リストの書き込みに失敗しました: ${err.message}`);
       process.exit(1);
     }
   }
 
-  // 6. レポート出力
+  // 7. レポート出力
   console.log('\n========== 更新結果 ==========');
   console.log(`更新した曲: ${updateReport.length} 曲`);
   if (updateReport.length > 0) {

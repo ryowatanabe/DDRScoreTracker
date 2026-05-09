@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { parseBemaniwikiHtml, normalizeTitle } = require('../../scripts/bemaniwikiParser');
+const { parseBemaniwikiHtml, parseBemaniwikiNewSongTitles, normalizeTitle } = require('../../scripts/bemaniwikiParser');
 
 // ---- normalizeTitle ----
 
@@ -93,4 +93,32 @@ test('parseBemaniwikiHtml: rowspan で配信日が省略された行も正しく
 test('parseBemaniwikiHtml: スナップショット', () => {
   const songs = parseBemaniwikiHtml(html);
   expect(songs).toMatchSnapshot();
+});
+
+// ---- parseBemaniwikiNewSongTitles (フィクスチャ使用) ----
+
+test('parseBemaniwikiNewSongTitles: 1曲以上パースできる', () => {
+  const titles = parseBemaniwikiNewSongTitles(html);
+  expect(titles.length).toBeGreaterThan(0);
+});
+
+test('parseBemaniwikiNewSongTitles: 各エントリが空でない文字列', () => {
+  const titles = parseBemaniwikiNewSongTitles(html);
+  for (const title of titles) {
+    expect(typeof title).toBe('string');
+    expect(title.length).toBeGreaterThan(0);
+  }
+});
+
+test('parseBemaniwikiNewSongTitles: 記号説明テーブルを含まない (全曲が曲名として有効)', () => {
+  const titles = parseBemaniwikiNewSongTitles(html);
+  // 記号説明テーブルが誤混入していれば "記号" や "意味" が曲名として現れる
+  expect(titles).not.toContain('記号');
+  expect(titles).not.toContain('意味');
+});
+
+test('parseBemaniwikiNewSongTitles: きゅうくらりん・強風オールバックを含む', () => {
+  const titles = parseBemaniwikiNewSongTitles(html);
+  expect(titles).toContain('きゅうくらりん');
+  expect(titles).toContain('強風オールバック');
 });
