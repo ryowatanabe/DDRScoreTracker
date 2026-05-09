@@ -38,9 +38,16 @@ https://chromewebstore.google.com/detail/ddr-score-tracker/kecflehdfdgjkmfbhhhjd
 
 #### Build from source / ソースコードからビルド
 
+This project uses Yarn Berry (v4). [Corepack](https://nodejs.org/api/corepack.html) (bundled with Node.js 16.9+) is required to activate it automatically.
+
+本プロジェクトは Yarn Berry (v4) を使用しています。自動的に有効化するには [Corepack](https://nodejs.org/api/corepack.html)（Node.js 16.9 以降に同梱）が必要です。
+
+> **Note / 注意**: If you have Yarn Classic installed via `npm i -g yarn`, remove it first to avoid conflicts. / `npm i -g yarn` でインストールした Yarn Classic が PATH にある場合は、競合を避けるため先にアンインストールしてください。
+
 ```
 $ git clone git@github.com:ryowatanabe/DDRScoreTracker
 $ cd DDRScoreTracker
+$ corepack enable
 $ yarn
 $ yarn build
 ```
@@ -112,6 +119,10 @@ This software retrieves music list from [github pages](https://ryowatanabe.githu
 
 ## For Developers / 開発者向け
 
+Run `corepack enable` once before the first `yarn install` if you haven't already.
+
+初回の `yarn install` の前に、一度 `corepack enable` を実行してください（未実施の場合）。
+
 ```
 # apply prettier and correct files
 yarn prettier:write
@@ -122,6 +133,10 @@ yarn lint
 # run the test
 yarn test
 ```
+
+> **Supply chain protection / サプライチェーン保護**: This project enforces `npmMinimalAgeGate: 14d` — packages released within the last 14 days cannot be installed. If you urgently need a package not yet 14 days old (e.g. a CVE fix), add a pinned entry to `npmPreapprovedPackages` in `.yarnrc.yml` and remove it after the cooldown period.
+>
+> このプロジェクトでは `npmMinimalAgeGate: 14d` を設定しており、リリースから 14 日未満のパッケージはインストールできません。緊急の CVE 修正など 14 日を待てない場合は、`.yarnrc.yml` の `npmPreapprovedPackages` にバージョン固定で例外を追加し、期間経過後に削除してください。
 
 ## Internal Specifications / 内部仕様
 
