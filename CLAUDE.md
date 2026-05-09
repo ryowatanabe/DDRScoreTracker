@@ -21,6 +21,8 @@ yarn clean              # Remove dist/
 
 > Always use `yarn build` (not direct webpack) — the script sets `NODE_OPTIONS=--openssl-legacy-provider` required for the build.
 
+> **Yarn Berry (corepack 必須)**: このプロジェクトは Yarn 4.x (Berry) を使用。初回セットアップ時は `corepack enable` を実行すること。`npm i -g yarn` でインストールした Yarn Classic が PATH にある場合は事前に削除すること。
+
 ## Architecture & Data Flow
 
 ```
