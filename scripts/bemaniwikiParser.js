@@ -129,8 +129,14 @@ function parseBemaniwikiNewSongTitles(htmlString) {
   let sibling = anchor.closest('h2')?.nextElementSibling;
   let table = null;
   while (sibling) {
-    table = sibling.querySelector('table.style_table') ?? (sibling.matches('table.style_table') ? sibling : null);
-    if (table) break;
+    // 次の h2 セクション (旧曲追加譜面・復活曲リスト等) に入ったら打ち切り
+    if (sibling.tagName === 'H2') break;
+    const candidate = sibling.querySelector('table.style_table') ?? (sibling.matches('table.style_table') ? sibling : null);
+    // 記号説明テーブル等をスキップし、SINGLE/DOUBLE ヘッダーを持つ難易度テーブルのみを対象にする
+    if (candidate && isMainDifficultyTable(candidate)) {
+      table = candidate;
+      break;
+    }
     sibling = sibling.nextElementSibling;
   }
   if (!table) return [];
