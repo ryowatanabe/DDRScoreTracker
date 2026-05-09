@@ -42,7 +42,9 @@ This project uses Yarn Berry (v4). [Corepack](https://nodejs.org/api/corepack.ht
 
 本プロジェクトは Yarn Berry (v4) を使用しています。自動的に有効化するには [Corepack](https://nodejs.org/api/corepack.html)（Node.js 16.9 以降に同梱）が必要です。
 
-> **Note / 注意**: If you have Yarn Classic installed via `npm i -g yarn`, remove it first to avoid conflicts. / `npm i -g yarn` でインストールした Yarn Classic が PATH にある場合は、競合を避けるため先にアンインストールしてください。
+> **Note**: If you have Yarn Classic installed via `npm i -g yarn`, remove it first to avoid conflicts.
+>
+> **注意**: `npm i -g yarn` でインストールした Yarn Classic が PATH にある場合は、競合を避けるため先にアンインストールしてください。
 
 ```
 $ git clone git@github.com:ryowatanabe/DDRScoreTracker
@@ -134,9 +136,9 @@ yarn lint
 yarn test
 ```
 
-> **Supply chain protection / サプライチェーン保護**: This project enforces `npmMinimalAgeGate: 14d` — packages released within the last 14 days cannot be installed. If you urgently need a package not yet 14 days old (e.g. a CVE fix), add a pinned entry to `npmPreapprovedPackages` in `.yarnrc.yml` and remove it after the cooldown period.
+> **Supply chain protection**: This project enforces `npmMinimalAgeGate: 14d` — packages released within the last 14 days cannot be installed. If you urgently need a package not yet 14 days old (e.g. a CVE fix), add a pinned entry to `npmPreapprovedPackages` in `.yarnrc.yml` and remove it after the cooldown period.
 >
-> このプロジェクトでは `npmMinimalAgeGate: 14d` を設定しており、リリースから 14 日未満のパッケージはインストールできません。緊急の CVE 修正など 14 日を待てない場合は、`.yarnrc.yml` の `npmPreapprovedPackages` にバージョン固定で例外を追加し、期間経過後に削除してください。
+> **サプライチェーン保護**: このプロジェクトでは `npmMinimalAgeGate: 14d` を設定しており、リリースから 14 日未満のパッケージはインストールできません。緊急の CVE 修正など 14 日を待てない場合は、`.yarnrc.yml` の `npmPreapprovedPackages` にバージョン固定で例外を追加し、期間経過後に削除してください。
 
 ## Internal Specifications / 内部仕様
 
