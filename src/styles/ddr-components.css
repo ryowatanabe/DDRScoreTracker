@@ -355,6 +355,7 @@
     }
 
     #openFilterButton,
+    #closeFilterButton,
     #filterBackground {
       display: none;
     }
