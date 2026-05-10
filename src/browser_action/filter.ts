@@ -92,6 +92,24 @@ export function initialize(a: App) {
   applyConditions(conditions);
 
   refreshList();
+
+  /* チェックボックス・ラジオボタンの変更で即時リスト更新 */
+  document.getElementById('filterContainer')!.addEventListener('change', (e) => {
+    if ((e.target as HTMLElement).tagName === 'INPUT') {
+      refreshList();
+    }
+  });
+
+  /* 2ペインの閾値をまたぐ瞬間だけ transition を一時停止してドロワーアニメーションを抑制する */
+  const filterEl = document.getElementById('filterContainer')!;
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', () => {
+    filterEl.classList.replace('initialized', 'not-initialized');
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        filterEl.classList.replace('not-initialized', 'initialized');
+      });
+    });
+  });
 }
 
 function openFilter() {
@@ -110,12 +128,14 @@ function selectAll(name: string) {
   elements.forEach((element) => {
     element.checked = true;
   });
+  refreshList();
 }
 function selectNone(name: string) {
   const elements = document.querySelectorAll(`input[name=${name}]`) as NodeListOf<HTMLInputElement>;
   elements.forEach((element) => {
     element.checked = false;
   });
+  refreshList();
 }
 function selectRange(name: string, min: number, max: number) {
   const elements = document.querySelectorAll(`input[name=${name}]`) as NodeListOf<HTMLInputElement>;
@@ -123,6 +143,7 @@ function selectRange(name: string, min: number, max: number) {
     const value = parseInt(element.value, 10);
     element.checked = value >= min && value <= max;
   });
+  refreshList();
 }
 
 function updateSavedFilterSelect(selectedValue = '') {
@@ -185,6 +206,7 @@ function applySavedFilter() {
         applyConditions(savedCondition);
       }
     });
+    refreshList();
   }
 }
 

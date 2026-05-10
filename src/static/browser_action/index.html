@@ -7,8 +7,13 @@
   </head>
   <body>
     <div id="contentArea">
-      <div id="openMenuButton" class="drawer-switch">&lt;&lt;Menu</div>
-      <div id="openFilterButton" class="drawer-switch">&lt;&lt;Filter</div>
+      <div id="mainPane">
+        <div id="openMenuButton" class="drawer-switch">&lt;&lt;Menu</div>
+        <div id="openFilterButton" class="drawer-switch">&lt;&lt;Filter</div>
+        <div id="log-container"></div>
+        <div id="chart-diff-list"></div>
+        <div id="chart-list"></div>
+      </div>
 
       <div id="filterBackground" class="drawer-background not-initialized"></div>
       <div id="filterContainer" class="drawer filter not-initialized">
@@ -653,10 +658,6 @@
           <a href="./debug/index.html" data-i18n-key="browser_action_menu_to_debug_page_button" data-i18n-text></a>
         </div>
       </div>
-
-      <div id="log-container"></div>
-      <div id="chart-diff-list"></div>
-      <div id="chart-list"></div>
     </div>
   </body>
 </html>
