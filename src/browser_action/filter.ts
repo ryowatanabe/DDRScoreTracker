@@ -178,7 +178,8 @@ function applyConditions(conditions: any) {
   });
   // check
   Object.keys(conditions.summary).forEach(function (key) {
-    (document.querySelector(`#summarySetting_${key}`) as HTMLInputElement).checked = true;
+    const element = document.querySelector(`#summarySetting_${key}`) as HTMLInputElement;
+    if (element) element.checked = true;
   });
   conditions.filter.forEach(function (condition: any) {
     condition.values.forEach(function (value: number) {
