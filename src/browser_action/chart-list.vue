@@ -40,19 +40,6 @@
           </div>
         </div>
       </template>
-      <template v-for="name in statistics.score.order" :key="name">
-        <template v-if="summarySettings[statistics.score[name].label]">
-          {{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }}
-          <div class="graph">
-            <div class="inner">
-              <span
-                :class="['element', statistics.score[name].scoreRankClassString]"
-                :style="{ width: 'calc(' + statistics.score[name].value + ' / ' + 1000000 + ' * 100%' }"
-              ></span>
-            </div>
-          </div>
-        </template>
-      </template>
       <template v-if="summarySettings.scoreStatistics">
         <template v-for="name in statistics.score.order">{{ getMessage('chart_list_summary_score_' + name) }}:{{ statistics.score[name].string }}&nbsp;</template>
       </template>

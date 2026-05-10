@@ -56,7 +56,10 @@ export class App {
       savedConditions: [],
       conditions: {
         summary: { clearType: true },
-        filter: [],
+        filter: [
+          { attribute: 'playMode', values: [0] },
+          { attribute: 'availability', values: [0] },
+        ],
         sort: [],
       },
       saSettings: {

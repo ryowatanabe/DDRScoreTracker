@@ -47,18 +47,6 @@
   "browser_action_filter_summary_setting_score_rank": {
     "message": "Score Rank"
   },
-  "browser_action_filter_summary_setting_score_max": {
-    "message": "Max Score"
-  },
-  "browser_action_filter_summary_setting_score_min": {
-    "message": "Min Score"
-  },
-  "browser_action_filter_summary_setting_score_average": {
-    "message": "Avg Score"
-  },
-  "browser_action_filter_summary_setting_score_median": {
-    "message": "Median"
-  },
   "browser_action_filter_summary_setting_score_statistics": {
     "message": "Score Statistics"
   },
