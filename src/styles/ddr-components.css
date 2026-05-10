@@ -209,6 +209,9 @@
   .drawer {
     @apply z-10 fixed top-0 left-0 box-border w-full bg-black border border-white p-[5px] translate-x-full;
   }
+  #logContainer.drawer {
+    z-index: 20;
+  }
   .drawer.not-initialized {
     @apply transition-none;
   }
@@ -352,6 +355,7 @@
       width: auto;
       max-height: none;
       overflow: visible;
+      z-index: 1;
     }
 
     #openFilterButton,
