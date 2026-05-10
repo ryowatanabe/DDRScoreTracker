@@ -322,4 +322,41 @@
   .score_list > .max_combo {
     @apply text-right font-mono text-[1.2rem];
   }
+
+  /*
+  レスポンシブ 2ペインレイアウト
+  1024px 以上: 左ペインにスコアリスト、右ペインにフィルタを常時表示
+  1280px 以上: 全体最大幅 1280px で中央寄せ
+  */
+
+  @media (min-width: 1024px) {
+    #contentArea {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 380px;
+      gap: 10px;
+      max-width: 1280px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    #mainPane {
+      min-width: 0;
+    }
+
+    #filterContainer.drawer {
+      grid-column: 2;
+      grid-row: 1 / span 99;
+      position: sticky;
+      top: 5px;
+      transform: none;
+      translate: none;
+      width: auto;
+      max-height: calc(100vh - 10px);
+    }
+
+    #openFilterButton,
+    #filterBackground {
+      display: none;
+    }
+  }
 }

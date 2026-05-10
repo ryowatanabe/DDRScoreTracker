@@ -92,6 +92,17 @@ export function initialize(a: App) {
   applyConditions(conditions);
 
   refreshList();
+
+  /* 2ペインの閾値をまたぐ瞬間だけ transition を一時停止してドロワーアニメーションを抑制する */
+  const filterEl = document.getElementById('filterContainer')!;
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', () => {
+    filterEl.classList.replace('initialized', 'not-initialized');
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        filterEl.classList.replace('not-initialized', 'initialized');
+      });
+    });
+  });
 }
 
 function openFilter() {
