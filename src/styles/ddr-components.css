@@ -351,7 +351,8 @@
       transform: none;
       translate: none;
       width: auto;
-      max-height: calc(100vh - 10px);
+      max-height: none;
+      overflow: visible;
     }
 
     #openFilterButton,
