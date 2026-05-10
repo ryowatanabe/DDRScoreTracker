@@ -76,8 +76,7 @@ export function initialize(a: App) {
   /* All, Noneのイベントハンドラをつける */
   document.getElementById('summarySetting_all')!.addEventListener('click', selectAll.bind(null, 'summarySetting'));
   document.getElementById('summarySetting_clear')!.addEventListener('click', selectNone.bind(null, 'summarySetting'));
-  filterNames.forEach((name) => {
-    document.getElementById(`filterCondition_${name}_all`)!.addEventListener('click', selectAll.bind(null, `filterCondition_${name}`));
+  filterNames.filter((name) => name !== 'playMode').forEach((name) => {
     document.getElementById(`filterCondition_${name}_clear`)!.addEventListener('click', selectNone.bind(null, `filterCondition_${name}`));
   });
   document.getElementById('filterCondition_containedVersion_classic')!.addEventListener('click', selectRange.bind(null, 'filterCondition_containedVersion', 0, 12));
@@ -196,6 +195,9 @@ function applyConditions(conditions: any) {
     (document.querySelector(`#sortCondition_attribute_${condition.attribute}`) as HTMLInputElement).checked = true;
     (document.querySelector(`#sortCondition_order_${condition.order}`) as HTMLInputElement).checked = true;
   });
+  if (!document.querySelector('input[name=filterCondition_playMode]:checked')) {
+    (document.querySelector('#filterCondition_playMode_0') as HTMLInputElement).checked = true;
+  }
 }
 
 function applySavedFilter() {
