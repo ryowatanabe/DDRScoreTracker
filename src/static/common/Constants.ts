@@ -503,8 +503,8 @@ export class Constants {
     result[this.CLEAR_TYPE.ASSIST_CLEAR] = 'AssistClear';
     result[this.CLEAR_TYPE.CLEAR] = 'Clear';
     result[this.CLEAR_TYPE.LIFE4] = 'LIFE4';
-    result[this.CLEAR_TYPE.GOOD_FC] = 'GFC';
-    result[this.CLEAR_TYPE.GREAT_FC] = 'FC';
+    result[this.CLEAR_TYPE.GOOD_FC] = 'FC';
+    result[this.CLEAR_TYPE.GREAT_FC] = 'GFC';
     result[this.CLEAR_TYPE.PERFECT_FC] = 'PFC';
     result[this.CLEAR_TYPE.MARVELOUS_FC] = 'MFC';
     return result;
