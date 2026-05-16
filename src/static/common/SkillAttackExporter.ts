@@ -63,7 +63,9 @@ export class SkillAttackExporter {
         return;
       }
       Logger.debug(skillAttackDataListDiff);
-      Logger.debug(skillAttackDataListDiff.urlSearchParams(ddrcode, password).toString());
+      const maskedParams = new URLSearchParams(skillAttackDataListDiff.urlSearchParams(ddrcode, password));
+      maskedParams.set('password', '***');
+      Logger.debug(maskedParams.toString());
 
       if (this.options.notSendDataToSkillAttack) {
         Logger.info(I18n.getMessage('log_message_done'));
