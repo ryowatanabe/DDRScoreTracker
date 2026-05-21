@@ -2770,13 +2770,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/test-utils@npm:2.4.6":
-  version: 2.4.6
-  resolution: "@vue/test-utils@npm:2.4.6"
+"@vue/test-utils@npm:2.4.10":
+  version: 2.4.10
+  resolution: "@vue/test-utils@npm:2.4.10"
   dependencies:
     js-beautify: "npm:^1.14.9"
-    vue-component-type-helpers: "npm:^2.0.0"
-  checksum: 10c0/37fa46cb6b98f90affb2faf5aa41422617bbd23ff35bc714d08035334e593ae31d18757d5ae688f778dd8b4c28de431601c0b9b7ca17fc1b55f1401a5577375e
+    vue-component-type-helpers: "npm:^3.0.0"
+  peerDependencies:
+    "@vue/compiler-dom": 3.x
+    "@vue/server-renderer": 3.x
+    vue: 3.x
+  peerDependenciesMeta:
+    "@vue/server-renderer":
+      optional: true
+  checksum: 10c0/5dee1a15a4908d1ad82d9940307223214d9fa93e2cdffdc294b72880f73db3e1938bd2f290b096a22b8b8d84db481d4aea7989fcb4c9e5e63ea16896c9a4f4fd
   languageName: node
   linkType: hard
 
@@ -2957,7 +2964,7 @@ __metadata:
     "@types/chrome": "npm:0.1.38"
     "@typescript-eslint/eslint-plugin": "npm:8.57.2"
     "@typescript-eslint/parser": "npm:8.57.2"
-    "@vue/test-utils": "npm:2.4.6"
+    "@vue/test-utils": "npm:2.4.10"
     babel-jest: "npm:30.3.0"
     copy-webpack-plugin: "npm:14.0.0"
     cross-env: "npm:10.1.0"
@@ -7260,10 +7267,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-component-type-helpers@npm:^2.0.0":
-  version: 2.2.12
-  resolution: "vue-component-type-helpers@npm:2.2.12"
-  checksum: 10c0/ce15a2cdec4a57262a292ac1565aa18da9be73f3dfbcf28758a8a541199944bfff1aefb75802d6de5d955a5529c9667f1b651c659d14815c075e8965ac05175d
+"vue-component-type-helpers@npm:^3.0.0":
+  version: 3.2.8
+  resolution: "vue-component-type-helpers@npm:3.2.8"
+  checksum: 10c0/bc5aa38c7e063c5b43bfed68ebc6b4cfaaeb71a1c239fdb3bb404385faadd5f42e7c81fd3e9368084f66e40ddf74f65318b11fd57f7694ef2f5048f27a0f0a04
   languageName: node
   linkType: hard
 
