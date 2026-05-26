@@ -203,23 +203,60 @@ export class Parser {
   static parseScoreList(rootElement: Element, gameVersion: GameVersion): ScoreListResult {
     const fileNameRegexp = /^.*\/([^/]+)$/;
     if (gameVersion === Constants.GAME_VERSION.WORLD) {
-      return this.parseScoreListCore(rootElement, (detail) => {
-        const scoreDetail = new ScoreDetail();
-        const scoreValue = parseInt((detail.querySelector('.data_score') as Element).innerHTML, 10);
-        scoreDetail.score = scoreValue ? scoreValue : 0;
-        const flareSkill = parseInt((detail.querySelector('.data_flareskill') as Element).innerHTML, 10);
-        scoreDetail.flareSkill = flareSkill ? flareSkill : null;
-        const scoreRankFileName = (detail.querySelectorAll('div.data_rank img')[0] as HTMLImageElement).src.replace(fileNameRegexp, '$1');
-        const clearTypeFileName = (detail.querySelectorAll('div.data_clearkind img')[0] as HTMLImageElement).src.replace(fileNameRegexp, '$1');
-        const flareRankFileName = (detail.querySelectorAll('div.data_flarerank img')[0] as HTMLImageElement).src.replace(fileNameRegexp, '$1');
-        scoreDetail.scoreRank = Constants.SCORE_RANK_FILE_MAP_DDRWORLD[scoreRankFileName] as ScoreRank;
-        scoreDetail.clearType = Constants.CLEAR_TYPE_FILE_MAP_DDRWORLD[clearTypeFileName] as ClearType;
-        scoreDetail.flareRank = Constants.FLARE_RANK_FILE_MAP_DDRWORLD[flareRankFileName] as FlareRank;
-        if (scoreDetail.scoreRank === Constants.SCORE_RANK.NO_PLAY) {
-          return null;
-        }
-        return scoreDetail;
+      const res: ScoreListResult = {
+        hasNext: false,
+        nextUrl: '',
+        currentPage: null,
+        maxPage: null,
+        scores: [],
+        status: this.getResultStatus(rootElement),
+      };
+      if (res.status !== this.STATUS.SUCCESS) {
+        return res;
+      }
+      const next = rootElement.querySelectorAll('#next.arrow');
+      if (next.length > 0) {
+        res.hasNext = true;
+        res.nextUrl = (next[0].querySelector('a') as HTMLAnchorElement).href;
+      }
+      res.currentPage = parseInt((rootElement.querySelector('#thispage') as Element).querySelector('a')!.innerHTML, 10);
+      const pages = rootElement.querySelectorAll('#paging_box')[0].querySelectorAll('.page_num');
+      res.maxPage = parseInt(pages[pages.length - 1].querySelector('a')!.innerHTML, 10);
+
+      const isDouble = rootElement.querySelectorAll('.style-button a.select img[src*="style_double"]').length > 0;
+      const regexp = /^.*img=([0-9a-zA-Z]+).*$/;
+
+      Array.from(rootElement.querySelectorAll('.music-card')).forEach((card) => {
+        const imgEl = card.querySelector('img.left-image') as HTMLImageElement | null;
+        if (!imgEl) return;
+        const musicId = imgEl.src.replace(regexp, '$1');
+        const scoreData = new ScoreData(musicId);
+
+        Array.from(card.querySelectorAll('.playdata > .rank')).forEach((rankDiv, index) => {
+          const dataEl = rankDiv.querySelector('.data');
+          if (!dataEl || !dataEl.querySelector('.data_score')) return;
+
+          const difficulty = index + (isDouble ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0);
+          const scoreDetail = new ScoreDetail();
+          const scoreValue = parseInt((dataEl.querySelector('.data_score') as Element).innerHTML, 10);
+          scoreDetail.score = scoreValue ? scoreValue : 0;
+          const flareSkill = parseInt((dataEl.querySelector('.data_flareskill') as Element).innerHTML, 10);
+          scoreDetail.flareSkill = flareSkill ? flareSkill : null;
+          const scoreRankFileName = (dataEl.querySelectorAll('div.data_rank img')[0] as HTMLImageElement).src.replace(fileNameRegexp, '$1');
+          const clearTypeFileName = (dataEl.querySelectorAll('div.data_clearkind img')[0] as HTMLImageElement).src.replace(fileNameRegexp, '$1');
+          const flareRankFileName = (dataEl.querySelectorAll('div.data_flarerank img')[0] as HTMLImageElement).src.replace(fileNameRegexp, '$1');
+          scoreDetail.scoreRank = Constants.SCORE_RANK_FILE_MAP_DDRWORLD[scoreRankFileName] as ScoreRank;
+          scoreDetail.clearType = Constants.CLEAR_TYPE_FILE_MAP_DDRWORLD[clearTypeFileName] as ClearType;
+          scoreDetail.flareRank = Constants.FLARE_RANK_FILE_MAP_DDRWORLD[flareRankFileName] as FlareRank;
+          if (scoreDetail.scoreRank === Constants.SCORE_RANK.NO_PLAY) {
+            return;
+          }
+          scoreData.applyScoreDetail(String(difficulty), scoreDetail);
+        });
+        res.scores.push(scoreData);
       });
+      res.status = this.STATUS.SUCCESS as ParseStatus;
+      return res;
     }
     return this.parseScoreListCore(rootElement, (detail) => {
       const scoreDetail = new ScoreDetail();
@@ -268,11 +305,44 @@ export class Parser {
 
   static parseScoreDetail(rootElement: Element, gameVersion: GameVersion): ScoreDetailResult {
     if (gameVersion === Constants.GAME_VERSION.WORLD) {
-      return this.parseScoreDetailCore(rootElement, (detail, scoreDetail) => {
-        scoreDetail.playCount = parseInt(detail[6], 10) ? parseInt(detail[6], 10) : 0;
-        scoreDetail.clearCount = parseInt(detail[7], 10) ? parseInt(detail[7], 10) : 0;
-        scoreDetail.maxCombo = parseInt(detail[8], 10) ? parseInt(detail[8], 10) : 0;
-      });
+      const res: ScoreDetailResult = {
+        scores: [],
+        status: this.getResultStatus(rootElement),
+      };
+      if (res.status !== this.STATUS.SUCCESS) {
+        return res;
+      }
+      const regexpForMusicId = /^.*img=([0-9a-zA-Z]+).*$/;
+      const jacketImg = rootElement.querySelector('img.jacket') as HTMLImageElement | null;
+      if (!jacketImg) {
+        res.status = this.STATUS.UNKNOWN_ERROR as ParseStatus;
+        return res;
+      }
+      const musicId = jacketImg.src.replace(regexpForMusicId, '$1');
+      const params = new URL(document.location.href).searchParams;
+      const difficulty = params.get('difficulty');
+
+      if (rootElement.querySelector('.no-play') !== null) {
+        res.status = this.STATUS.SUCCESS as ParseStatus;
+        return res;
+      }
+
+      const scoreData = new ScoreData(musicId);
+      const scoreDetail = new ScoreDetail();
+
+      const maxComboEl = rootElement.querySelector('.maxcombo .value');
+      scoreDetail.maxCombo = maxComboEl ? parseInt(maxComboEl.textContent ?? '0', 10) || 0 : 0;
+
+      const countItems = Array.from(rootElement.querySelectorAll('.play-count .count-item'));
+      const playItem = countItems.find((el) => el.querySelector('.header')?.textContent?.trim() === 'PLAY');
+      const clearItem = countItems.find((el) => el.querySelector('.header')?.textContent?.trim() === 'CLEAR');
+      scoreDetail.playCount = playItem ? parseInt(playItem.children[1]?.textContent ?? '0', 10) || 0 : 0;
+      scoreDetail.clearCount = clearItem ? parseInt(clearItem.children[1]?.textContent ?? '0', 10) || 0 : 0;
+
+      scoreData.applyScoreDetail(difficulty ?? '', scoreDetail);
+      res.scores.push(scoreData);
+      res.status = this.STATUS.SUCCESS as ParseStatus;
+      return res;
     }
     return this.parseScoreDetailCore(rootElement, (detail, scoreDetail) => {
       scoreDetail.score = parseInt(detail[2], 10) ? parseInt(detail[2], 10) : 0;
@@ -316,13 +386,13 @@ export class Parser {
     const pages = rootElement.querySelectorAll('#paging_box')[0].querySelectorAll('.page_num');
     res.maxPage = parseInt(pages[pages.length - 1].querySelector('a')!.innerHTML, 10);
 
-    const rows = Array.from(rootElement.querySelectorAll('tr.data'));
+    const regexp = /^.*img=([0-9a-zA-Z]+).*$/;
+    const rows = Array.from(rootElement.querySelectorAll('.music-card'));
     rows.forEach(function (row) {
-      const regexp = /^.*img=([0-9a-zA-Z]+).*$/;
-      const imgElement = row.querySelector('td img.jk, td img.jk2') as HTMLImageElement | null;
+      const imgElement = row.querySelector('img.left-image') as HTMLImageElement | null;
       if (!imgElement) return;
       const musicId = imgElement.src.replace(regexp, '$1');
-      const titleElement = row.querySelector('td a.music_info') as HTMLElement | null;
+      const titleElement = row.querySelector('.music-name') as HTMLElement | null;
       if (!titleElement) return;
       const title = titleElement.textContent?.trim() ?? '';
       res.musics.push({ musicId, title });
