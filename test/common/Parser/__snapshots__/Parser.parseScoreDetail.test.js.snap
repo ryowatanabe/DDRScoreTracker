@@ -26,7 +26,7 @@ Object {
   "scores": Array [
     ScoreData {
       "difficulty": Object {
-        "": ScoreDetail {
+        "0": ScoreDetail {
           "clearCount": 50,
           "clearType": null,
           "flareRank": null,

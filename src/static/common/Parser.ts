@@ -320,7 +320,9 @@ export class Parser {
       }
       const musicId = jacketImg.src.replace(regexpForMusicId, '$1');
       const params = new URL(document.location.href).searchParams;
-      const difficulty = params.get('difficulty');
+      const style = parseInt(params.get('style') ?? '0', 10);
+      const rawDifficulty = parseInt(params.get('difficulty') ?? '0', 10);
+      const difficulty = String(rawDifficulty + (style === Constants.PLAY_MODE.DOUBLE ? Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : 0));
 
       if (rootElement.querySelector('.no-play') !== null) {
         res.status = this.STATUS.SUCCESS as ParseStatus;

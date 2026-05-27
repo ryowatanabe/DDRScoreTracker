@@ -520,7 +520,15 @@ export class App {
         musicType = Constants.MUSIC_TYPE.NORMAL;
       }
       if (Constants.SCORE_DETAIL_URL[gameVersion][musicType] !== '') {
-        music.url = Constants.SCORE_DETAIL_URL[gameVersion][musicType].replace('[musicId]', music.musicId).replace('[difficulty]', String(music.difficulty));
+        let url = Constants.SCORE_DETAIL_URL[gameVersion][musicType].replace('[musicId]', music.musicId);
+        if (gameVersion === Constants.GAME_VERSION.WORLD) {
+          const style = music.difficulty! > Constants.DIFFICULTIES.CHALLENGE ? Constants.PLAY_MODE.DOUBLE : Constants.PLAY_MODE.SINGLE;
+          const rawDifficulty = style === Constants.PLAY_MODE.DOUBLE ? music.difficulty! - Constants.DIFFICULTIES_OFFSET_FOR_DOUBLE : music.difficulty!;
+          url = url.replace('[playMode]', String(style)).replace('[difficulty]', String(rawDifficulty));
+        } else {
+          url = url.replace('[difficulty]', String(music.difficulty));
+        }
+        music.url = url;
         this.dataFetchController.targetMusics.push(music as UpdateScoreDetailTarget & { url: string });
       }
     }, this);
