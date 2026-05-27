@@ -132,16 +132,37 @@ export class Parser {
   static parseMusicDetail(rootElement: Element, gameVersion: GameVersion): MusicDetailResult {
     const regexpForDifficulties = /^.*songdetails_level_([0-9]*).png$/;
     if (gameVersion === Constants.GAME_VERSION.WORLD) {
-      return this.parseMusicDetailCore(rootElement, (root) => {
-        return Array.from(root.querySelectorAll('li.step')).map((element) => {
-          const img = element.querySelector('img') as HTMLImageElement | null;
-          if (img === null) {
-            return 0;
-          }
-          const value = parseInt(img.src.replace(regexpForDifficulties, '$1'), 10);
-          return value ? value : 0;
-        });
+      const res: MusicDetailResult = {
+        musics: [],
+        status: this.getResultStatus(rootElement),
+      };
+      if (res.status !== this.STATUS.SUCCESS) {
+        return res;
+      }
+      const regexpForMusicId = /^.*img=([0-9a-zA-Z]+).*$/;
+      const jacketImg = rootElement.querySelector('img.jacket') as HTMLImageElement | null;
+      if (jacketImg === null) {
+        res.status = this.STATUS.UNKNOWN_ERROR as ParseStatus;
+        return res;
+      }
+      const musicId = jacketImg.src.replace(regexpForMusicId, '$1');
+      const musicNameEl = rootElement.querySelector('.music-name');
+      const title = musicNameEl ? (musicNameEl.textContent ?? '').trim() : '';
+      // id→MusicData.difficulty index: SP(0-4)→0-4, DP(11-14)→5-8
+      const idToIndex: Record<number, number> = { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 11: 5, 12: 6, 13: 7, 14: 8 };
+      const difficulty = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      rootElement.querySelectorAll('.diff-item a[id]').forEach((anchor) => {
+        const id = parseInt((anchor as HTMLAnchorElement).id, 10);
+        const index = idToIndex[id];
+        if (index === undefined) return;
+        const img = anchor.querySelector('img') as HTMLImageElement | null;
+        if (img === null) return;
+        const value = parseInt(img.src.replace(regexpForDifficulties, '$1'), 10);
+        difficulty[index] = value || 0;
       });
+      res.musics.push(new MusicData(musicId, Constants.MUSIC_TYPE.NORMAL as MusicType, title, difficulty, 0));
+      res.status = this.STATUS.SUCCESS as ParseStatus;
+      return res;
     }
     return this.parseMusicDetailCore(rootElement, (root) => {
       return Array.from(root.querySelectorAll('li.step img')).map((element) => {
