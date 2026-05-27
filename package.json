@@ -33,7 +33,7 @@
     "lint-staged": "16.4.0",
     "postcss": "8.5.13",
     "postcss-loader": "8.2.1",
-    "prettier": "3.8.1",
+    "prettier": "3.8.3",
     "tailwindcss": "4.2.2",
     "ts-jest": "29.4.6",
     "ts-loader": "9.5.4",
