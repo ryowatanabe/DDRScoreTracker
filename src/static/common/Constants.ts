@@ -429,6 +429,7 @@ export class Constants {
   static get CLEAR_TYPE_FILE_MAP_DDRWORLD(): Record<string, number | null> {
     return {
       'cl_none.png': null,
+      'cl_nodisp.png': null,
       'cl_asclear.png': this.CLEAR_TYPE.ASSIST_CLEAR,
       'cl_clear.png': this.CLEAR_TYPE.CLEAR,
       'cl_li4clear.png': this.CLEAR_TYPE.LIFE4,
@@ -465,6 +466,7 @@ export class Constants {
   static get FLARE_RANK_FILE_MAP_DDRWORLD(): Record<string, number> {
     return {
       'flare_none.png': this.FLARE_RANK.NONE,
+      'flare_nodisp.png': this.FLARE_RANK.NONE,
       'flare_1.png': this.FLARE_RANK.FLARE_1,
       'flare_2.png': this.FLARE_RANK.FLARE_2,
       'flare_3.png': this.FLARE_RANK.FLARE_3,

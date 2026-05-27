@@ -26,18 +26,18 @@ Object {
   "scores": Array [
     ScoreData {
       "difficulty": Object {
-        "": ScoreDetail {
-          "clearCount": 1,
+        "0": ScoreDetail {
+          "clearCount": 50,
           "clearType": null,
           "flareRank": null,
           "flareSkill": null,
-          "maxCombo": 323,
-          "playCount": 1,
+          "maxCombo": 537,
+          "playCount": 54,
           "score": null,
           "scoreRank": null,
         },
       },
-      "musicId": "b86i9lPlObdl1008PO0PIi09q9o9l88i",
+      "musicId": "id9oObq9P6Q6Pq6lQPqI88OP1DD8D0O1",
       "musicType": -1,
     },
   ],
