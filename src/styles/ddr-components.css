@@ -350,8 +350,7 @@
       grid-column: 2;
       position: sticky;
       top: 5px;
-      transform: none;
-      translate: none;
+      translate: 0;
       width: auto;
       max-height: none;
       overflow: visible;
