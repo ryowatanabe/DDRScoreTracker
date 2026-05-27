@@ -508,6 +508,7 @@ export class App {
     }
     Logger.info(I18n.getMessage('log_message_update_score_detail_begin'));
     // 巡回対象のURL一覧を生成
+    this.dataFetchController.targetGameVersion = gameVersion;
     this.dataFetchController.targetMusics = [];
     targets.forEach((music) => {
       let musicType = Constants.MUSIC_TYPE.NORMAL;
