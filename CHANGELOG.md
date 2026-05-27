@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1] - 2026-05-27
+
+### Fixed
+
+- Filter panel not visible in two-pane mode in production build (Lightning CSS was converting `translate: none` to `transform: translate(0)`, failing to reset the CSS `translate` property)
+- `command not found: export` error on `yarn build` after migrating to Yarn Berry (replaced shell `export` with `cross-env`)
+
 ## [0.6.0] - 2026-05-27
 
 ### Added
