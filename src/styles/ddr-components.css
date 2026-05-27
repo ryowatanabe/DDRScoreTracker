@@ -209,8 +209,18 @@
   .drawer {
     @apply z-10 fixed top-0 left-0 box-border w-full bg-black border border-white p-[5px] translate-x-full;
   }
+  /* 重なり順 (上→下): log > diff > menu/filter */
   #logContainer.drawer {
     z-index: 20;
+  }
+  #logBackground.drawer-background {
+    z-index: 19;
+  }
+  #diffContainer.drawer {
+    z-index: 15;
+  }
+  #diffBackground.drawer-background {
+    z-index: 14;
   }
   .drawer.not-initialized {
     @apply transition-none;
