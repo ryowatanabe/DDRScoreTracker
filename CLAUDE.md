@@ -4,7 +4,7 @@
 
 Chrome Extension (Manifest V3) that collects and tracks DanceDanceRevolution scores from the DDR World official website. Built with Vue 3, webpack, and Jest.
 
-- **Version**: 0.6.1
+- **Version**: 0.6.2
 - **Node requirement**: >=18.12.0
 
 ## Commands

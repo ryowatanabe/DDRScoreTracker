@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.2] - 2026-05-28
+
+### Fixed
+
+- Updated difficulty parser for DDR World music detail pages to match the redesigned site structure
+- Fixed drawer z-index layering so the recent updates panel no longer appears above the menu
+
 ## [0.6.1] - 2026-05-27
 
 ### Fixed
