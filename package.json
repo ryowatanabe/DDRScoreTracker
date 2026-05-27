@@ -1,6 +1,6 @@
 {
   "name": "DDRScoreTracker",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Google Chrome extension for tracking your DanceDanceRevolution play records",
   "author": "Ryo Watanabe (https://github.com/ryowatanabe)",
   "license": "MIT",
@@ -54,6 +54,7 @@
     "build:dev": "tsc --noEmit && cross-env NODE_ENV=development webpack",
     "update-difficulties": "node --import './scripts/_ts-register.mjs' scripts/updateDifficultiesFromBemaniwiki.mjs",
     "update-contained-version": "node --import './scripts/_ts-register.mjs' scripts/updateContainedVersionFromBemaniwiki.mjs",
+    "package": "node scripts/packageExtension.mjs",
     "test": "jest",
     "test:e2e": "playwright test",
     "prepare": "husky"

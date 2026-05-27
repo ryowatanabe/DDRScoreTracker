@@ -1,5 +1,35 @@
 # Changelog
 
+## [0.6.0] - 2026-05-27
+
+### Added
+
+- Responsive two-pane layout for score list screen
+- Score list updates immediately when filter changes; close button hidden in two-pane mode
+
+### Changed
+
+- Revised filter specifications; removed score summary individual display settings from UI
+- Migrated package manager from Yarn Classic to Yarn Berry (v4) for supply chain hardening
+
+### Fixed
+
+- DDR World site redesign: updated parser, URL construction, and play count retrieval
+- Fixed `targetGameVersion` not being set in `updateScoreDetail`
+- Fixed FC/GFC labels in `CLEAR_TYPE_STRING` to current terminology
+- Fixed filter labels
+- Fixed duplicate scrolling in filter panel in two-pane mode
+- Fixed empty space at bottom of page in two-pane mode
+- Fixed drawer z-index layering issues
+- Fixed two-pane layout incorrectly applied to debug page
+- Fixed `applyConditions` error when deprecated `summarySetting` key existed in storage
+- Fixed `parseBemaniwikiNewSongTitles` always returning 0 results
+
+### Security
+
+- Masked password from debug logs
+- Updated dependencies to address CVE vulnerabilities (3 high, 2 moderate)
+
 ## [0.5.0] - 2026-05-09
 
 ### Added
