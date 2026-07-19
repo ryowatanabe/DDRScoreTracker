@@ -111,9 +111,9 @@ This software saves retrieved personal data on the PC which operates the browser
 
 本ソフトウェアで取得した個人データは, ブラウザが動作しているPC上に保存されます. 一度取得したデータの閲覧は, インターネット接続がオフラインの状態でも可能です. また, 個人データを外部のサーバに送信することはありません.
 
-This software retrieves music list from [github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics/2.txt). It retrieves any other data from [official website](https://p.eagate.573.jp/game/ddr/ddrworld/top/).
+This software retrieves music list from [github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics/3.txt). It retrieves any other data from [official website](https://p.eagate.573.jp/game/ddr/ddrworld/top/).
 
-楽曲リストの取得は[github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics/2.txt)から行っています. それ以外のデータの取得は[公式サイト](https://p.eagate.573.jp/game/ddr/ddrworld/top/)から行います.
+楽曲リストの取得は[github pages](https://ryowatanabe.github.io/DDRScoreTracker/musics/3.txt)から行っています. それ以外のデータの取得は[公式サイト](https://p.eagate.573.jp/game/ddr/ddrworld/top/)から行います.
 
 ## Changelog / 変更履歴
 
