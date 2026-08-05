@@ -23,9 +23,13 @@ updates:
     #   - npmMinimalAgeGate : install 時に実際に取り込みを拒否する強制力。
     #                         手動の yarn up や security update PR にも効く (→ #701)。
     #
-    # semver-major/minor/patch-days は未指定なら default-days が使われるので指定しない。
+    # semver-major/minor/patch-days は未指定でも default-days が使われるが、ジョブ定義上は
+    # 0 として直列化され「未指定」か「cooldown なし」か区別できないため、明示しておく。
     cooldown:
       default-days: 14
+      semver-major-days: 14
+      semver-minor-days: 14
+      semver-patch-days: 14
 
     # 全依存が devDependencies のため、minor/patch を 1 PR にまとめて PR 数を抑える。
     # これをやらないと毎週数件〜十数件の PR が開き、open-pull-requests-limit に
@@ -40,3 +44,13 @@ updates:
         update-types:
           - "minor"
           - "patch"
+
+    # TypeScript 7 は Go 実装への書き換えで lib/_tsc.js を同梱しなくなり、Yarn の
+    # builtin<compat/typescript> パッチが ENOENT で落ちる。加えて @typescript-eslint が
+    # peer で typescript <6.1.0 を要求しており、現時点の toolchain では採用できない。
+    # 更新のたびにジョブ全体が exit 1 になるため major のみ除外する。
+    # 解除条件と確認手順は #708 に記載。両方解消したら本エントリを削除すること。
+    ignore:
+      - dependency-name: "typescript"
+        update-types:
+          - "version-update:semver-major"
