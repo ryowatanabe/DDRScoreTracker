@@ -50,7 +50,7 @@ document.getElementById('exportScoreToSkillAttackButton')!.addEventListener('cli
   app
     .exportScoreToSkillAttack(
       (document.getElementById('exportScoreToSkillAttackDdrCode') as HTMLInputElement).value,
-      (document.getElementById('exportScoreToSkillAttackPassword') as HTMLInputElement).value,
+      (document.getElementById('exportScoreToSkillAttackPassword') as HTMLInputElement).value
     )
     .then((value) => {
       Logger.debug(`exportScoreToSkillAttack success : ${value}`);
