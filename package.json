@@ -24,8 +24,6 @@
     "cross-env": "10.1.0",
     "css-loader": "7.1.4",
     "eslint": "10.7.0",
-    "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-prettier": "5.5.6",
     "eslint-plugin-vue": "10.10.0",
     "globals": "17.7.0",
     "husky": "9.1.7",
@@ -49,8 +47,9 @@
   "scripts": {
     "clean": "rm -rf dist",
     "lint": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.mjs",
-    "prettier": "prettier \"src/**/*.{js,vue,json,html}\" \"test/**/*.js\"",
+    "prettier": "prettier \"src/**/*.{js,ts,vue,json,html}\" \"test/**/*.js\"",
     "prettier:write": "yarn prettier --write",
+    "prettier:check": "yarn prettier --check",
     "build": "yarn clean && cross-env NODE_OPTIONS=--openssl-legacy-provider tsc --noEmit && cross-env NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=production webpack",
     "build:dev": "tsc --noEmit && cross-env NODE_ENV=development webpack",
     "update-difficulties": "node --import './scripts/_ts-register.mjs' scripts/updateDifficultiesFromBemaniwiki.mjs",
@@ -61,7 +60,7 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*.{js,vue}": [
+    "src/**/*.{js,ts,vue}": [
       "prettier --write",
       "eslint --fix"
     ],
