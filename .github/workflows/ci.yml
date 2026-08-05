@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+# 同一ブランチで新しい push があれば古い実行をキャンセルする
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Lint / Typecheck / Test / Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # Yarn Berry (4.x) は corepack 経由で起動する
+      - name: Enable Corepack
+        run: corepack enable
+
+      # --immutable: yarn.lock に差分が出たら失敗させる
+      # (.yarnrc.yml の enableHardenedMode と合わせて lockfile の改竄を検知する)
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Typecheck
+        run: yarn tsc --noEmit
+
+      - name: Test
+        run: yarn test
+
+      - name: Build
+        run: yarn build
+
+  # E2E (Playwright) は現在すべて失敗するため CI に含めていない。
+  # 修復後にジョブを追加すること。
+  # https://github.com/ryowatanabe/DDRScoreTracker/issues/692

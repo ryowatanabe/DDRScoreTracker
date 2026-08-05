@@ -5,7 +5,7 @@
   "author": "Ryo Watanabe (https://github.com/ryowatanabe)",
   "license": "MIT",
   "engines": {
-    "node": ">=18.12.0"
+    "node": ">=24.0.0"
   },
   "packageManager": "yarn@4.14.1",
   "devDependencies": {
@@ -30,7 +30,7 @@
     "husky": "9.1.7",
     "jest": "30.3.0",
     "jest-environment-jsdom": "30.3.0",
-    "lint-staged": "16.4.0",
+    "lint-staged": "17.1.0",
     "postcss": "8.5.13",
     "postcss-loader": "8.2.1",
     "prettier": "3.8.1",
