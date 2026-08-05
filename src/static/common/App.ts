@@ -331,8 +331,7 @@ export class App {
     Logger.info(I18n.getMessage('log_message_refresh_all_music_info_begin'));
     this.dataFetchController.targetGameVersion = gameVersion;
     this.dataFetchController.targetMusics = [];
-    this.musicList!.musicIds
-      .sort()
+    this.musicList!.musicIds.sort()
       .filter((musicId) => {
         return musicId >= musicIdForFilter;
       })
@@ -357,7 +356,9 @@ export class App {
     this.changeState(STATE.UPDATE_MUSIC_DETAIL);
     try {
       this.dataFetchController.targetMusic = this.dataFetchController.targetMusics.shift()!;
-      Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.dataFetchController.targetMusic.musicId, String(this.dataFetchController.targetMusics.length)]));
+      Logger.info(
+        I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.dataFetchController.targetMusic.musicId, String(this.dataFetchController.targetMusics.length)])
+      );
       await this.browserController.createTab(this.dataFetchController.targetMusic.url, this.options!['openTabAsActive'] as boolean);
     } catch (error) {
       this.browserController.reset();
@@ -410,7 +411,9 @@ export class App {
     this.changeState(STATE.UPDATE_MUSIC_DETAIL);
     try {
       this.dataFetchController.targetMusic = this.dataFetchController.targetMusics.shift()!;
-      Logger.info(I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.dataFetchController.targetMusic.musicId, String(this.dataFetchController.targetMusics.length)]));
+      Logger.info(
+        I18n.getMessage('log_message_fetch_missing_music_info_progress', [this.dataFetchController.targetMusic.musicId, String(this.dataFetchController.targetMusics.length)])
+      );
       await this.browserController.createTab(this.dataFetchController.targetMusic.url, this.options!['openTabAsActive'] as boolean);
     } catch (error) {
       this.browserController.reset();
@@ -627,9 +630,7 @@ export class App {
         );
         break;
       case STATE.UPDATE_RIVAL_MUSIC_LIST:
-        this.browserController.sendMessageToTab({ type: 'PARSE_RIVAL_MUSIC_LIST' }, (res) =>
-          this.dataFetchController.handleRivalMusicListResponse(res as ParseResponse)
-        );
+        this.browserController.sendMessageToTab({ type: 'PARSE_RIVAL_MUSIC_LIST' }, (res) => this.dataFetchController.handleRivalMusicListResponse(res as ParseResponse));
         break;
       default:
         Logger.debug('onUpdateTab: event was ignored.');

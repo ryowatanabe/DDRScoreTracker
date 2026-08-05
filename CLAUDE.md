@@ -19,7 +19,8 @@ yarn test --updateSnapshot   # Update Jest snapshots
 yarn test:e2e           # Playwright E2E（現在は全件失敗する → #692）
 yarn lint               # ESLint (flat config)
 yarn prettier           # 整形結果を stdout に出すだけ (チェックでも書き換えでもない)
-yarn prettier:write     # Format src/**/*.{js,vue,json,html} and test/**/*.js
+yarn prettier:write     # Format src/**/*.{js,ts,vue,json,html} and test/**/*.js
+yarn prettier:check     # 整形されているかを検査するだけ (CI が実行する)
 yarn package            # 配布用 zip を作成 (scripts/packageExtension.mjs)
 yarn update-difficulties        # BEMANIWiki から難易度データを更新
 yarn update-contained-version   # BEMANIWiki から収録バージョンを更新
@@ -81,10 +82,10 @@ JavaScript のまま残っているのは `src/static/common/i18n4html.js` /
 - **Prettier**: single quotes, print width 180, trailing commas (ES5)
 - **No npm** — always use `yarn`
 
-> **`.ts` は自動整形されない**: `yarn prettier:write` の glob（`src/**/*.{js,vue,json,html}` と
-> `test/**/*.js`）に `.ts` が含まれておらず、`eslint.config.mjs` も prettier プラグインを
-> 有効にしていない。lint-staged も同じ glob。`.ts` を編集したときは手で整形規約に合わせること
-> （→ #711）。
+> **整形は prettier、lint は eslint と役割を分ける**: `eslint.config.mjs` に整形系のルールは
+> 入れない（`eslint-plugin-prettier` / `eslint-config-prettier` は使わないので devDependencies
+> にも入っていない）。整形は `yarn prettier:write` と lint-staged が担当し、CI は
+> `yarn prettier:check` で検査する。glob は `src/**/*.{js,ts,vue,json,html}` と `test/**/*.js`。
 
 ## Game Domain Constants (src/static/common/Constants.ts)
 
@@ -142,7 +143,7 @@ FLARE_RANK: { NONE: 0, FLARE_1: 1, ... FLARE_9: 9, FLARE_EX: 10 }
 
 ## CI (.github/workflows/ci.yml)
 
-PR と master への push で `yarn install --immutable` → `lint` → `tsc --noEmit` → `test` → `build` を実行。
+PR と master への push で `yarn install --immutable` → `prettier:check` → `lint` → `tsc --noEmit` → `test` → `build` を実行。
 E2E は全件失敗中のため CI に含めていない（#692）。
 
 ## Critical Rules

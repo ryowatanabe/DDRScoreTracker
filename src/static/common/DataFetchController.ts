@@ -197,13 +197,7 @@ export class DataFetchController {
       await this.onNavigateTo(res.nextUrl!);
     } else if (this.targetPlayMode === Constants.PLAY_MODE.SINGLE) {
       this.targetPlayMode = Constants.PLAY_MODE.DOUBLE as PlayMode;
-      Logger.info(
-        I18n.getMessage('log_message_update_rival_music_list_progress', [
-          I18n.getMessage(`log_message_update_score_list_play_mode_${this.targetPlayMode}`),
-          '1',
-          '?',
-        ])
-      );
+      Logger.info(I18n.getMessage('log_message_update_rival_music_list_progress', [I18n.getMessage(`log_message_update_score_list_play_mode_${this.targetPlayMode}`), '1', '?']));
       await this.onNavigateTo(Constants.RIVAL_MUSIC_DATA_URL[Constants.GAME_VERSION.WORLD][this.targetPlayMode].replace('[rivalId]', this.targetRivalId!));
     } else {
       await this.onFinishAction();

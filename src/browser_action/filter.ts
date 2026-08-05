@@ -76,9 +76,11 @@ export function initialize(a: App) {
   /* All, Noneのイベントハンドラをつける */
   document.getElementById('summarySetting_all')!.addEventListener('click', selectAll.bind(null, 'summarySetting'));
   document.getElementById('summarySetting_clear')!.addEventListener('click', selectNone.bind(null, 'summarySetting'));
-  filterNames.filter((name) => name !== 'playMode').forEach((name) => {
-    document.getElementById(`filterCondition_${name}_clear`)!.addEventListener('click', selectNone.bind(null, `filterCondition_${name}`));
-  });
+  filterNames
+    .filter((name) => name !== 'playMode')
+    .forEach((name) => {
+      document.getElementById(`filterCondition_${name}_clear`)!.addEventListener('click', selectNone.bind(null, `filterCondition_${name}`));
+    });
   document.getElementById('filterCondition_containedVersion_classic')!.addEventListener('click', selectRange.bind(null, 'filterCondition_containedVersion', 0, 12));
   document.getElementById('filterCondition_containedVersion_white')!.addEventListener('click', selectRange.bind(null, 'filterCondition_containedVersion', 13, 15));
   document.getElementById('filterCondition_containedVersion_gold')!.addEventListener('click', selectRange.bind(null, 'filterCondition_containedVersion', 16, 19));
