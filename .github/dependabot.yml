@@ -1,17 +1,42 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+# Dependabot version updates
+# https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
+  - package-ecosystem: "npm" # Yarn Berry も npm ecosystem として扱われる
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+
+    # グルーピング後に開く PR は「devDependencies の minor/patch まとめ 1 件」+
+    # 「major 個別数件」程度に収まるため 10 で十分な余裕がある。
+    # セキュリティ更新 PR はこの上限の対象外 (カウントもされない)。
     open-pull-requests-limit: 10
+
+    # サプライチェーン攻撃対策。.yarnrc.yml の npmMinimalAgeGate と値を揃えること。
+    # cooldown を外すと Dependabot 既定の 3 日になり、npmMinimalAgeGate に弾かれて
+    # yarn install が失敗する PR が量産される。
+    #
+    # 両者は役割が異なるため片方には寄せられない:
+    #   - cooldown          : version update PR を作らせないための入口側の制御。
+    #                         security update には適用されない。
+    #   - npmMinimalAgeGate : install 時に実際に取り込みを拒否する強制力。
+    #                         手動の yarn up や security update PR にも効く (→ #701)。
+    #
+    # semver-major/minor/patch-days は未指定なら default-days が使われるので指定しない。
     cooldown:
       default-days: 14
-      semver-major-days: 14
-      semver-minor-days: 14
-      semver-patch-days: 14
+
+    # 全依存が devDependencies のため、minor/patch を 1 PR にまとめて PR 数を抑える。
+    # これをやらないと毎週数件〜十数件の PR が開き、open-pull-requests-limit に
+    # 張り付いて新しい更新 PR が作られなくなる (→ #702 で起きた陳腐化の原因)。
+    #
+    # major は破壊的変更の切り分け・revert 単位を保つため個別 PR のままにする。
+    # security update はグループ化しない。npmMinimalAgeGate で 1 件でも解禁待ちに
+    # なると、まとめた PR 全体が取り込めなくなるため (→ #701)。
+    groups:
+      dev-dependencies:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
