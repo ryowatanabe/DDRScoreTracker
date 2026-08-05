@@ -83,7 +83,8 @@ JavaScript のまま残っているのは `src/static/common/i18n4html.js` /
 
 > **`.ts` は自動整形されない**: `yarn prettier:write` の glob（`src/**/*.{js,vue,json,html}` と
 > `test/**/*.js`）に `.ts` が含まれておらず、`eslint.config.mjs` も prettier プラグインを
-> 有効にしていない。lint-staged も同じ glob。`.ts` を編集したときは手で整形規約に合わせること。
+> 有効にしていない。lint-staged も同じ glob。`.ts` を編集したときは手で整形規約に合わせること
+> （→ #711）。
 
 ## Game Domain Constants (src/static/common/Constants.ts)
 
