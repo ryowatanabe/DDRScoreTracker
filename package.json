@@ -56,7 +56,7 @@
     "update-contained-version": "node --import './scripts/_ts-register.mjs' scripts/updateContainedVersionFromBemaniwiki.mjs",
     "package": "node scripts/packageExtension.mjs",
     "test": "jest",
-    "test:e2e": "playwright test",
+    "test:e2e": "playwright install chromium && playwright test",
     "prepare": "husky"
   },
   "lint-staged": {

@@ -19,28 +19,32 @@
  */
 
 const { chromium, test, expect } = require('@playwright/test');
+const fs = require('fs');
+const os = require('os');
 const path = require('path');
 
 const pathToExtension = path.join(__dirname, '..', 'dist');
 
 /**
  * Launch a persistent Chromium context with the extension loaded.
- * Returns { context, extensionId }.
+ * Returns { context, userDataDir, extensionId }.
+ *
+ * MV3 の Service Worker を検出するには chromium 本体が必要で、
+ * headless の既定である chrome-headless-shell では検出できない。
+ * channel: 'chromium' が本体を選ばせる（生の --headless* 引数は渡さないこと。
+ * Chrome 側の headless 実装変更に巻き込まれて起動ごと落ちた前例がある → #692）。
+ *
+ * ローカルで目視したい場合は HEADED=1 yarn test:e2e。
  */
 async function launchExtensionContext() {
-  const userDataDir = path.join(__dirname, '..', '.playwright-user-data');
-  const isCI = !!process.env.CI;
+  // プロファイルを使い回すと chrome.storage.local が実行を跨いで残り、
+  // まっさらな CI と状態が食い違うため、起動ごとに捨てる
+  const userDataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ddrst-e2e-'));
 
   const context = await chromium.launchPersistentContext(userDataDir, {
-    headless: false,
-    args: [
-      `--disable-extensions-except=${pathToExtension}`,
-      `--load-extension=${pathToExtension}`,
-      // Use new headless mode for CI (supports extensions unlike old headless)
-      ...(isCI ? ['--headless=new'] : []),
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-    ],
+    headless: process.env.HEADED !== '1',
+    channel: 'chromium',
+    args: [`--disable-extensions-except=${pathToExtension}`, `--load-extension=${pathToExtension}`, '--no-sandbox', '--disable-setuid-sandbox'],
   });
 
   // Wait for the service worker to start and get the extension ID
@@ -50,19 +54,28 @@ async function launchExtensionContext() {
   }
 
   const extensionId = background.url().split('/')[2];
-  return { context, extensionId };
+  return { context, userDataDir, extensionId };
+}
+
+/**
+ * Close the context and remove its throwaway user data directory.
+ */
+async function closeExtensionContext(context, userDataDir) {
+  await context.close();
+  fs.rmSync(userDataDir, { recursive: true, force: true });
 }
 
 test.describe('Chrome Extension: 拡張機能ロード', () => {
   let context;
+  let userDataDir;
   let extensionId;
 
   test.beforeAll(async () => {
-    ({ context, extensionId } = await launchExtensionContext());
+    ({ context, userDataDir, extensionId } = await launchExtensionContext());
   });
 
   test.afterAll(async () => {
-    await context.close();
+    await closeExtensionContext(context, userDataDir);
   });
 
   test('Service Worker が起動し拡張機能 ID が取得できる', () => {
@@ -92,15 +105,16 @@ test.describe('Chrome Extension: 拡張機能ロード', () => {
 
 test.describe('Chrome Extension: browser_action UI', () => {
   let context;
+  let userDataDir;
   let extensionId;
   let page;
 
   test.beforeAll(async () => {
-    ({ context, extensionId } = await launchExtensionContext());
+    ({ context, userDataDir, extensionId } = await launchExtensionContext());
   });
 
   test.afterAll(async () => {
-    await context.close();
+    await closeExtensionContext(context, userDataDir);
   });
 
   test.beforeEach(async () => {
@@ -144,14 +158,15 @@ test.describe('Chrome Extension: browser_action UI', () => {
 
 test.describe('Chrome Extension: options_ui ページ', () => {
   let context;
+  let userDataDir;
   let extensionId;
 
   test.beforeAll(async () => {
-    ({ context, extensionId } = await launchExtensionContext());
+    ({ context, userDataDir, extensionId } = await launchExtensionContext());
   });
 
   test.afterAll(async () => {
-    await context.close();
+    await closeExtensionContext(context, userDataDir);
   });
 
   test('options ページが存在し表示される', async () => {

@@ -51,6 +51,46 @@ jobs:
       - name: Build
         run: yarn build
 
-  # E2E (Playwright) は現在すべて失敗するため CI に含めていない。
-  # 修復後にジョブを追加すること。
-  # https://github.com/ryowatanabe/DDRScoreTracker/issues/692
+  # E2E は他のチェックと壊れ方の性質が違う (flaky になり得る) ため、
+  # verify とは別ジョブにして並列に実行する。dist は自前で用意する。
+  e2e:
+    name: E2E (Playwright)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      # runner イメージには Chromium 実行に必要な共有ライブラリが揃っていないため
+      # --with-deps が必要。MV3 の Service Worker 検出には chromium 本体が要るので
+      # chrome-headless-shell だけでは足りない。
+      - name: Install Playwright browsers
+        run: yarn playwright install --with-deps chromium
+
+      # E2E は development ビルドの dist/ を読み込む
+      - name: Build extension
+        run: yarn build:dev
+
+      - name: Run E2E tests
+        run: yarn test:e2e
+
+      # 失敗時のみ trace (retries: 1 + trace: on-first-retry で生成される) を残す
+      - name: Upload Playwright artifacts
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-results
+          path: test-results/
+          retention-days: 7

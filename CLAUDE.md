@@ -16,7 +16,7 @@ yarn build              # Production build (clean + tsc --noEmit + webpack。NOD
 yarn test               # Run Jest tests
 yarn test Parser        # Run specific test file (位置引数。最も簡潔)
 yarn test --updateSnapshot   # Update Jest snapshots
-yarn test:e2e           # Playwright E2E（現在は全件失敗する → #692）
+yarn test:e2e           # Playwright E2E（要 `yarn build:dev`。ブラウザは自動で用意される）
 yarn lint               # ESLint (flat config)
 yarn prettier           # 整形結果を stdout に出すだけ (チェックでも書き換えでもない)
 yarn prettier:write     # Format src/**/*.{js,ts,vue,json,html} and test/**/*.js
@@ -143,8 +143,12 @@ FLARE_RANK: { NONE: 0, FLARE_1: 1, ... FLARE_9: 9, FLARE_EX: 10 }
 
 ## CI (.github/workflows/ci.yml)
 
-PR と master への push で `yarn install --immutable` → `prettier:check` → `lint` → `tsc --noEmit` → `test` → `build` を実行。
-E2E は全件失敗中のため CI に含めていない（#692）。
+PR と master への push で 2 ジョブを並列実行する。
+
+| ジョブ | 内容 |
+|---|---|
+| `verify` | `yarn install --immutable` → `prettier:check` → `lint` → `tsc --noEmit` → `test` → `build` |
+| `e2e` | `playwright install --with-deps chromium` → `build:dev` → `test:e2e`。失敗時のみ `test-results/`（trace）を artifact に残す |
 
 ## Critical Rules
 
@@ -167,4 +171,8 @@ E2E は全件失敗中のため CI に含めていない（#692）。
 - **Run single test**: `yarn test Parser`（`--` を付けない。上の Commands の注記を参照）
 - **Update snapshots**: `yarn test --updateSnapshot`
 - Unit tests live in `test/`; fixture HTML files live in the `fixtures/` directory alongside each test
-- E2E tests live in `test-e2e/`（現在は全件失敗する → #692）
+- E2E tests live in `test-e2e/`。`yarn build:dev` で `dist/` を作ってから `yarn test:e2e`
+- **E2E のブラウザ起動方法は変えないこと**: MV3 の Service Worker は `channel: 'chromium'`
+  （＝chromium 本体）でないと検出できず、chrome-headless-shell では取得できない。
+  生の `--headless` / `--headless=new` を引数で渡すのも禁止（Chrome 側の実装変更で
+  起動ごとクラッシュした前例がある → #692）。目視したいときは `HEADED=1 yarn test:e2e`
