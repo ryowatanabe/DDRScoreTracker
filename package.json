@@ -9,7 +9,7 @@
   },
   "packageManager": "yarn@4.18.1",
   "devDependencies": {
-    "@babel/core": "7.29.7",
+    "@babel/core": "8.0.7",
     "@babel/preset-env": "7.29.7",
     "@babel/preset-typescript": "7.29.7",
     "@playwright/test": "1.64.0",
